@@ -1,0 +1,83 @@
+import { Component, ElementRef, inject, viewChild } from '@angular/core';
+import { WheelConfigurator } from '../../../services/wheel-configurator.service';
+
+@Component({
+  selector: 'wl-fire-effect',
+  imports: [],
+  templateUrl: './fire-effect.html',
+  styleUrl: './fire-effect.css',
+})
+export class FireEffect implements IWinnerEffect {
+  wheelConfigurator = inject(WheelConfigurator);
+  
+  effectType: effectType = 'fire';
+
+  fireCanvasRef = viewChild<ElementRef<HTMLCanvasElement>>('fireCanvas');
+  private fireParticles: any[] = [];
+
+  // Animazione Fuoco (Particle System)
+  initAnimation(): void {
+    if (!this.fireCanvasRef()) return;
+    const canvas = this.fireCanvasRef()!.nativeElement;
+    const fctx = canvas.getContext('2d')!;
+    canvas.width = 600;
+    canvas.height = 600;
+    this.fireParticles = [];
+
+    const animateFire = () => {
+      fctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      // Crea nuove particelle
+      if (this.fireParticles.length < 150) {
+        for(let i=0; i<5; i++) {
+          this.fireParticles.push({
+            x: canvas.width / 2 + (Math.random() - 0.5) * 120,
+            y: canvas.height / 2 + 50,
+            vx: (Math.random() - 0.5) * 2,
+            vy: -Math.random() * 4 - 2,
+            life: 1,
+            color: Math.random() > 0.5 ? '#f97316' : '#facc15',
+            size: Math.random() * 15 + 5
+          });
+        }
+      }
+
+      // Aggiorna e disegna
+      for (let i = this.fireParticles.length - 1; i >= 0; i--) {
+        const p = this.fireParticles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 0.02;
+        p.size *= 0.96;
+
+        if (p.life <= 0) {
+          this.fireParticles.splice(i, 1);
+          continue;
+        }
+
+        fctx.globalAlpha = p.life;
+        fctx.beginPath();
+        fctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        fctx.fillStyle = p.color;
+        fctx.fill();
+        
+        // Glow effect
+        fctx.shadowBlur = 15;
+        fctx.shadowColor = p.color;
+      }
+      
+      fctx.globalAlpha = 1;
+      this.wheelConfigurator.fireAnimationId.set(requestAnimationFrame(animateFire));
+    };
+
+    animateFire();
+  }
+
+  resetWinner(): void {
+    this.wheelConfigurator.winner.set(null);
+    cancelAnimationFrame(this.wheelConfigurator.fireAnimationId()!);
+    this.wheelConfigurator.drawWheel();
+    
+    this.wheelConfigurator.fireAnimationId.set(undefined);
+  }
+}

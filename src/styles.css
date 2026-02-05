@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "tailwindcss";
+
+/* Button */
+.primaryButton {
+    @apply px-6 py-2 text-black bg-[#F59E0B] hover:cursor-pointer hover:bg-[#dd900aff] rounded-md font-semibold transition-all active:scale-95;
+}
+
+.secondaryButton {
+    @apply px-6 py-2 text-white border border-[#F59E0B] hover:cursor-pointer hover:bg-[#dd900aff]/40 rounded-md font-semibold transition-all active:scale-95;
+}

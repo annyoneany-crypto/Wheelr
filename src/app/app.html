@@ -1,0 +1,26 @@
+<!-- Container Principale -->
+<div 
+  class="min-h-screen text-white font-sans flex flex-col items-center justify-center p-4 overflow-hidden bg-cover bg-center bg-no-repeat transition-all duration-500"
+  [style.backgroundColor]="wheelConfigurator.bgColor()"
+  [style.backgroundImage]="wheelConfigurator.bgImage() ? 'url(' + wheelConfigurator.bgImage() + ')' : 'none'">
+  
+  @if(wheelConfigurator.bgImage()){
+    <div class="fixed inset-0 bg-black/40 z-0"></div>
+  }
+
+  <!-- Header -->
+  <wl-header [winnerEffect]="winnerEffect"></wl-header>
+
+  <!-- Central Wheel -->
+  <wl-wheel>
+    <wl-fire-effect #winnerEffect></wl-fire-effect>
+  </wl-wheel>
+  <!-- <wl-linear-wheel>
+    <wl-fire-effect #winnerEffect></wl-fire-effect>
+  </wl-linear-wheel> -->
+
+  <!-- Modal settings -->
+  @if (wheelConfigurator.showModal()) {
+    <wl-settings (onClose)="closeModal()"></wl-settings>
+  }
+</div>
