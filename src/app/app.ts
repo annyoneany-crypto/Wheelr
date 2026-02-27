@@ -27,6 +27,8 @@ export class App {
 
   showPanelSettings = signal<boolean>(false);
   displyPanel = signal<boolean>(true);
+  // track which panel is currently selected (route path)
+  currentPanelPath = signal<string>('');
 
   closeModal() {
     this.wheelConfigurator.drawWheel();
@@ -34,8 +36,17 @@ export class App {
   }
 
   togglePaletSettings(path: string): void {
+    // if same button clicked twice -> toggle visibility
+    if (this.showPanelSettings() && this.currentPanelPath() === path) {
+      this.showPanelSettings.set(false);
+      return;
+    }
+    // open panel for new path
+    this.currentPanelPath.set(path);
     this.router.navigate([path]);
-    this.showPanelSettings.set(!this.showPanelSettings());
+    if (!this.showPanelSettings()) {
+      this.showPanelSettings.set(true);
+    }
   }
 
   closeUserPaneltransitionEnd(): void {
