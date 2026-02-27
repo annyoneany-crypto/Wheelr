@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, viewChild } from '@angular/core';
+import { Component, effect, ElementRef, inject, viewChild } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 
 @Component({
@@ -14,6 +14,35 @@ export class FireEffect implements IWinnerEffect {
 
   fireCanvasRef = viewChild<ElementRef<HTMLCanvasElement>>('fireCanvas');
   private fireParticles: any[] = [];
+  private starting = false;
+
+  ngAfterViewInit(): void {
+    effect(() => {
+      const winner = this.wheelConfigurator.winner();
+      const runningId = this.wheelConfigurator.fireAnimationId();
+
+      if (winner && !runningId && !this.starting) {
+        this.starting = true;
+        setTimeout(() => {
+          this.starting = false;
+          this.initAnimation();
+        }, 50);
+      }
+
+      if (!winner && runningId) {
+        cancelAnimationFrame(runningId);
+        this.wheelConfigurator.fireAnimationId.set(undefined);
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    const id = this.wheelConfigurator.fireAnimationId();
+    if (id) {
+      cancelAnimationFrame(id);
+      this.wheelConfigurator.fireAnimationId.set(undefined);
+    }
+  }
 
   // Animazione Fuoco (Particle System)
   initAnimation(): void {
@@ -74,10 +103,6 @@ export class FireEffect implements IWinnerEffect {
   }
 
   resetWinner(): void {
-    this.wheelConfigurator.winner.set(null);
-    cancelAnimationFrame(this.wheelConfigurator.fireAnimationId()!);
-    this.wheelConfigurator.drawWheel();
-    
-    this.wheelConfigurator.fireAnimationId.set(undefined);
+    this.wheelConfigurator.resetWinnerEffect();
   }
 }

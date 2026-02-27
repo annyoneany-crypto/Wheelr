@@ -8,6 +8,7 @@ const STORAGE_KEYS = {
   bgImage: 'giveawayWheel.bgImage',
   centerImage: 'giveawayWheel.centerImage',
   centerLogoSize: 'giveawayWheel.centerLogoSize',
+  wheelView: 'giveawayWheel.wheelView',
 } as const;
 
 const DEFAULT_PALETTES: ColorPalette[] = [
@@ -62,11 +63,13 @@ function contrastForHex(hex: string): '#000000' | '#FFFFFF' {
 export class WheelConfigurator {
   showModal = signal(false);
 
+  wheelView = signal<'wheel' | 'linear'>('wheel');
+
   palettes = signal<ColorPalette[]>(DEFAULT_PALETTES);
 
   names = signal<string[]>([]);
   centerImage = signal<string>('');
-  centerLogoSize = signal<'s' | 'm' | 'l' | 'xl'>('m');
+  centerLogoSize = signal<'s' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'>('m');
   bgColor = signal<string>('#000'); 
   bgImage = signal<string>('');
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
@@ -139,6 +142,7 @@ export class WheelConfigurator {
     const storedBgImage = readJson<string>(STORAGE_KEYS.bgImage);
     const storedCenterImage = readJson<string>(STORAGE_KEYS.centerImage);
     const storedCenterLogoSize = readJson<string>(STORAGE_KEYS.centerLogoSize);
+    const storedWheelView = readJson<string>(STORAGE_KEYS.wheelView);
 
     if (Array.isArray(storedPalettes) && storedPalettes.length) {
       // Merge defaults (new app versions) with stored palettes (including custom ones)
@@ -168,9 +172,15 @@ export class WheelConfigurator {
       storedCenterLogoSize === 's' ||
       storedCenterLogoSize === 'm' ||
       storedCenterLogoSize === 'l' ||
-      storedCenterLogoSize === 'xl'
+      storedCenterLogoSize === 'xl' ||
+      storedCenterLogoSize === 'xxl' ||
+      storedCenterLogoSize === 'xxxl'
     ) {
       this.centerLogoSize.set(storedCenterLogoSize);
+    }
+
+    if (storedWheelView === 'wheel' || storedWheelView === 'linear') {
+      this.wheelView.set(storedWheelView);
     }
 
     const palettes = this.palettes();
@@ -213,6 +223,10 @@ export class WheelConfigurator {
     });
 
     effect(() => {
+      writeJson(STORAGE_KEYS.wheelView, this.wheelView());
+    });
+
+    effect(() => {
       const palettes = this.palettes();
       const selectedName = this.selectedPalette().name;
       const stillExists = palettes.some(p => p.name === selectedName);
@@ -223,35 +237,39 @@ export class WheelConfigurator {
   }
 
   drawWheel() {
-    const canvas = this.canvasRef()!.nativeElement;
+    const canvasRef = this.canvasRef();
+    const ctx = this.ctx();
+    if (!canvasRef || !ctx) return;
+
+    const canvas = canvasRef.nativeElement;
     const n = this.names().length;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const radius = centerX - 10;
     const colors = this.selectedPalette().colors;
 
-    this.ctx()!.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (n === 0) return;
 
     const sliceAngle = (Math.PI * 2) / n;
     this.names().forEach((name, i) => {
       const angle = i * sliceAngle;
-      this.ctx()!.beginPath();
-      this.ctx()!.moveTo(centerX, centerY);
-      this.ctx()!.arc(centerX, centerY, radius, angle, angle + sliceAngle);
-      this.ctx()!.fillStyle = colors[i % colors.length];
-      this.ctx()!.fill();
-      this.ctx()!.strokeStyle = 'rgba(255,255,255,0.2)';
-      this.ctx()!.stroke();
+      ctx.beginPath();
+      ctx.moveTo(centerX, centerY);
+      ctx.arc(centerX, centerY, radius, angle, angle + sliceAngle);
+      ctx.fillStyle = colors[i % colors.length];
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
+      ctx.stroke();
 
-      this.ctx()!.save();
-      this.ctx()!.translate(centerX, centerY);
-      this.ctx()!.rotate(angle + sliceAngle / 2);
-      this.ctx()!.textAlign = 'right';
-      this.ctx()!.fillStyle = 'white';
-      this.ctx()!.font = 'bold 16px sans-serif';
-      this.ctx()!.fillText(name.substring(0, 15), radius - 30, 5);
-      this.ctx()!.restore();
+      ctx.save();
+      ctx.translate(centerX, centerY);
+      ctx.rotate(angle + sliceAngle / 2);
+      ctx.textAlign = 'right';
+      ctx.fillStyle = 'white';
+      ctx.font = 'bold 16px sans-serif';
+      ctx.fillText(name.substring(0, 15), radius - 30, 5);
+      ctx.restore();
     });
   }
 
@@ -289,5 +307,17 @@ export class WheelConfigurator {
 
   setNames(aNames: string[]): void {
     this.names.set(aNames)
+  }
+
+  resetWinnerEffect(): void {
+    this.winner.set(null);
+
+    const id = this.fireAnimationId();
+    if (id) {
+      cancelAnimationFrame(id);
+    }
+    this.fireAnimationId.set(undefined);
+
+    this.drawWheel();
   }
 }

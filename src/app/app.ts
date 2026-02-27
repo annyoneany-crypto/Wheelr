@@ -1,4 +1,4 @@
-import { Component, effect, inject, signal, viewChild } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { WheelConfigurator } from './services/wheel-configurator.service';
 import { Wheel } from './shared/extraction-effect/wheel/wheel';
 import { FireEffect } from './shared/winner-effect/fire-effect/fire-effect';
@@ -11,7 +11,7 @@ import { Router, RouterOutlet } from '@angular/router';
   imports: [
     Header,
     Wheel,
-    // LinearWheel,
+    LinearWheel,
     FireEffect,
     RouterOutlet
 ],
@@ -25,22 +25,8 @@ export class App {
   wheelConfigurator = inject(WheelConfigurator);
   router = inject(Router);
 
-  fireEffectRef = viewChild<IWinnerEffect>('winnerEffect');
-
   showPanelSettings = signal<boolean>(false);
   displyPanel = signal<boolean>(true);
-
-  constructor() {
-    // Avvia animazione fuoco quando c'è un vincitore
-    effect(() => {
-      const winnerName = this.wheelConfigurator.winner();
-      if (winnerName) {
-        setTimeout(() => this.fireEffectRef()!.initAnimation(), 50);
-      } else {
-        if (this.wheelConfigurator.fireAnimationId()) cancelAnimationFrame(this.wheelConfigurator.fireAnimationId()!);
-      }
-    });
-  }
 
   closeModal() {
     this.wheelConfigurator.drawWheel();

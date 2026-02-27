@@ -3,9 +3,7 @@
     Central Logo
   </label>
 
-  <div class="flex items-center justify-between gap-2 mb-2">
-    <span class="text-xs font-semibold uppercase tracking-wider text-neutral-300">Grandezza</span>
-    <div class="flex gap-2">
+  <div class="flex items-center justify-end gap-2 mb-2">
       <button
         type="button"
         (click)="wheelConfigurator.centerLogoSize.set('s')"
@@ -57,7 +55,32 @@
         [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'xl'">
         XL
       </button>
-    </div>
+
+      <button
+        type="button"
+        (click)="wheelConfigurator.centerLogoSize.set('xxl')"
+        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xxl'"
+        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xxl'"
+        [class.text-white]="wheelConfigurator.centerLogoSize() === 'xxl'"
+        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'xxl'"
+        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'xxl'"
+        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'xxl'">
+        XXL
+      </button>
+
+      <button
+        type="button"
+        (click)="wheelConfigurator.centerLogoSize.set('xxxl')"
+        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xxxl'"
+        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xxxl'"
+        [class.text-white]="wheelConfigurator.centerLogoSize() === 'xxxl'"
+        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'xxxl'"
+        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'xxxl'"
+        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'xxxl'">
+        XXXL
+      </button>
   </div>
 
   <button

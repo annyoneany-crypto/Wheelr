@@ -1,4 +1,4 @@
-import { Component, inject, input } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
 
 @Component({
@@ -9,6 +9,4 @@ import { WheelConfigurator } from '../../services/wheel-configurator.service';
 })
 export class Header {
   wheelConfigurator = inject(WheelConfigurator);
-
-  winnerEffect = input.required<IWinnerEffect>();
 }

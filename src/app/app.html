@@ -1,6 +1,6 @@
 
 <!-- Header -->
-<wl-header [winnerEffect]="winnerEffect"></wl-header>
+<wl-header></wl-header>
 
 <!-- Container Principale -->
 <div 
@@ -16,12 +16,15 @@
   }
 
   <!-- Central Wheel -->
-  <wl-wheel>
-    <wl-fire-effect #winnerEffect></wl-fire-effect>
-  </wl-wheel>
-  <!-- <wl-linear-wheel>
-    <wl-fire-effect #winnerEffect></wl-fire-effect>
-  </wl-linear-wheel> -->
+  @if (wheelConfigurator.wheelView() === 'linear') {
+    <wl-linear-wheel>
+      <wl-fire-effect></wl-fire-effect>
+    </wl-linear-wheel>
+  } @else {
+    <wl-wheel>
+      <wl-fire-effect></wl-fire-effect>
+    </wl-wheel>
+  }
 </div>
 
 <div class="fixed right-100 top-28 
@@ -51,6 +54,17 @@
     class="fa-solid fa-swatchbook text-white/80"
     [class.fa-angles-right]="showPanelSettings()"
     [class.fa-user-plus]="!showPanelSettings()"></i>
+</div>
+
+<div class="fixed right-100 top-60 
+  w-12 h-12 rounded-full 
+  border border-white/10 bg-neutral-800/60 
+  flex items-center justify-center hover:cursor-pointer
+  transition-all duration-300 ease-in-out"
+  [class.right-8]="!showPanelSettings()" 
+  [class.right-100]="showPanelSettings()"
+  (click)="togglePaletSettings('effects')">
+   <i class="fa-solid fa-wand-magic-sparkles text-white/80"></i>
 </div>
 
 <div class="fixed top-24 right-0 my-4 p-4  
