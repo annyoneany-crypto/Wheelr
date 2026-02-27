@@ -1,0 +1,30 @@
+<div class="h-full flex flex-col gap-2">
+  <div class="flex gap-2">
+    <button
+      type="button"
+      (click)="shuffleUsers()"
+      class="flex-1 py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 transition-colors">
+      Shuffle
+    </button>
+
+    <button
+      type="button"
+      (click)="cleanAndShuffleUsers()"
+      class="flex-1 py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 transition-colors">
+      Pulisci + shuffle
+    </button>
+
+    <button
+      type="button"
+      (click)="clearUsers()"
+      class="py-2 px-3 rounded-lg text-sm font-semibold bg-red-500/20 text-red-200 border border-red-500/30 hover:bg-red-500/30 transition-colors">
+      Svuota
+    </button>
+  </div>
+
+  <textarea
+    class="w-full flex-1 text-white bg-white/10 p-2 rounded"
+    [(ngModel)]="usersText"
+    (ngModelChange)="userTextChange($event)"
+    rows="5"></textarea>
+</div>

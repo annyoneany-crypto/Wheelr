@@ -1,20 +1,20 @@
-import { Component, effect, inject, viewChild } from '@angular/core';
+import { Component, effect, inject, signal, viewChild } from '@angular/core';
 import { WheelConfigurator } from './services/wheel-configurator.service';
-import { Settings } from "./feature/settings/settings";
 import { Wheel } from './shared/extraction-effect/wheel/wheel';
 import { FireEffect } from './shared/winner-effect/fire-effect/fire-effect';
 import { Header } from './feature/header/header';
 import { LinearWheel } from './shared/extraction-effect/linear-wheel/linear-wheel';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   imports: [
     Header,
-    Settings, 
     Wheel,
-    LinearWheel,
-    FireEffect
-  ],
+    // LinearWheel,
+    FireEffect,
+    RouterOutlet
+],
   templateUrl: './app.html',
   styleUrl: './app.css',
   host: {
@@ -23,8 +23,12 @@ import { LinearWheel } from './shared/extraction-effect/linear-wheel/linear-whee
 })
 export class App {
   wheelConfigurator = inject(WheelConfigurator);
+  router = inject(Router);
 
   fireEffectRef = viewChild<IWinnerEffect>('winnerEffect');
+
+  showPanelSettings = signal<boolean>(false);
+  displyPanel = signal<boolean>(true);
 
   constructor() {
     // Avvia animazione fuoco quando c'è un vincitore
@@ -41,5 +45,18 @@ export class App {
   closeModal() {
     this.wheelConfigurator.drawWheel();
     this.wheelConfigurator.showModal.set(false);
+  }
+
+  togglePaletSettings(path: string): void {
+    this.router.navigate([path]);
+    this.showPanelSettings.set(!this.showPanelSettings());
+  }
+
+  closeUserPaneltransitionEnd(): void {
+    if(this.showPanelSettings()){
+      this.displyPanel.set(false);
+    } else {
+      this.displyPanel.set(true);
+    }
   }
 }

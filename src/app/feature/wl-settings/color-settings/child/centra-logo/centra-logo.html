@@ -1,0 +1,27 @@
+<div class="mb-6 p-4 bg-neutral-900 rounded-xl border border-neutral-700">
+  <label class="block text-sm font-semibold text-purple-400 mb-3 uppercase tracking-wider">
+    Central Logo
+  </label>
+
+  <button
+    type="button"
+    (click)="fileInput.click()"
+    class="w-full mt-3 py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 hover:cursor-pointer transition-colors mb-2">
+    Load Logo
+  </button>
+
+  <input
+    #fileInput
+    type="file"
+    (change)="onFileSelected($event)"
+    accept="image/*"
+    class="hidden">
+
+  <input
+    #urlInput
+    type="text"
+    placeholder="URL Logo..."
+    (keyup.enter)="wheelConfigurator.centerImage.set(urlInput.value)"
+    class="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-500">
+</div>
+

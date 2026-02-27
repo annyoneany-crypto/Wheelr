@@ -1,15 +1,19 @@
+
+<!-- Header -->
+<wl-header [winnerEffect]="winnerEffect"></wl-header>
+
 <!-- Container Principale -->
 <div 
-  class="min-h-screen text-white font-sans flex flex-col items-center justify-center p-4 overflow-hidden bg-cover bg-center bg-no-repeat transition-all duration-500"
+  class="min-h-screen text-white font-sans 
+    flex flex-col items-center justify-center 
+    p-4 overflow-hidden bg-cover bg-center bg-no-repeat 
+    transition-all duration-500"
   [style.backgroundColor]="wheelConfigurator.bgColor()"
   [style.backgroundImage]="wheelConfigurator.bgImage() ? 'url(' + wheelConfigurator.bgImage() + ')' : 'none'">
   
   @if(wheelConfigurator.bgImage()){
     <div class="fixed inset-0 bg-black/40 z-0"></div>
   }
-
-  <!-- Header -->
-  <wl-header [winnerEffect]="winnerEffect"></wl-header>
 
   <!-- Central Wheel -->
   <wl-wheel>
@@ -18,9 +22,47 @@
   <!-- <wl-linear-wheel>
     <wl-fire-effect #winnerEffect></wl-fire-effect>
   </wl-linear-wheel> -->
+</div>
 
-  <!-- Modal settings -->
-  @if (wheelConfigurator.showModal()) {
-    <wl-settings (onClose)="closeModal()"></wl-settings>
-  }
+<div class="fixed right-100 top-28 
+  w-12 h-12 rounded-full 
+  border border-white/10 bg-neutral-800/60 
+  flex items-center justify-center hover:cursor-pointer
+  transition-all duration-300 ease-in-out"
+  [class.right-8]="!showPanelSettings()" 
+  [class.right-100]="showPanelSettings()"
+  (transitionend)="closeUserPaneltransitionEnd()"
+  (click)="togglePaletSettings('users')">
+   <i class="fa-solid fa-user-plus text-white/80"></i>
+</div>
+
+<!-- 
+  (transitionend)="closeUserPaneltransitionEnd()"
+  (click)="toggleUserSettings()" -->
+<div class="fixed right-100 top-44 
+  w-12 h-12 rounded-full 
+  border border-white/10 bg-neutral-800/60 
+  flex items-center justify-center hover:cursor-pointer
+  transition-all duration-300 ease-in-out"
+  [class.right-8]="!showPanelSettings()" 
+  [class.right-100]="showPanelSettings()"
+  (click)="togglePaletSettings('color-settings')">
+   <i 
+    class="fa-solid fa-swatchbook text-white/80"
+    [class.fa-angles-right]="showPanelSettings()"
+    [class.fa-user-plus]="!showPanelSettings()"></i>
+</div>
+
+<div class="fixed top-24 right-0 my-4 p-4  
+  bg-neutral-800/60 h-[calc(100%-130px)] 
+  border-y border-l rounded-l-md border-white/10
+  transition-all duration-300 ease-in-out"
+  [class.w-96]="showPanelSettings()"
+  [class.opacity-100]="showPanelSettings()"
+  [class.w-0]="!showPanelSettings()"
+  [class.opacity-0]="!showPanelSettings()"
+  [class.hidden]="displyPanel()">
+
+  <router-outlet></router-outlet>
+
 </div>

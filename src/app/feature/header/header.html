@@ -2,7 +2,7 @@
     <h1 class="text-2xl font-bold bg-linear-to-r to-[#8f5c05] from-[#F59E0B] bg-clip-text text-transparent">
         Lucky Wheel
     </h1>
-    <i class="fa-solid fa-sun"></i>
+    <!-- <i class="fa-solid fa-sun"></i> -->
     <div class="flex gap-4 items-center justify-center">
         @if(wheelConfigurator.fireAnimationId()){
         <button 
@@ -15,12 +15,6 @@
             (click)="wheelConfigurator.shuffleNames()"
             class="secondaryButton">
             Shuffle Names
-        </button>
-        <button 
-        (click)="wheelConfigurator.showModal.set(true)"
-        class="primaryButton"
-        >
-        Impostazioni ({{ wheelConfigurator.names().length }})
         </button>
     </div>
 </div>

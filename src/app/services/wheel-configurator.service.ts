@@ -1,4 +1,39 @@
-import { computed, ElementRef, Injectable, signal } from '@angular/core';
+import { computed, effect, ElementRef, Injectable, signal } from '@angular/core';
+
+const STORAGE_KEYS = {
+  palettes: 'giveawayWheel.palettes',
+  selectedPaletteName: 'giveawayWheel.selectedPaletteName',
+  names: 'giveawayWheel.names',
+  bgColor: 'giveawayWheel.bgColor',
+  bgImage: 'giveawayWheel.bgImage',
+  centerImage: 'giveawayWheel.centerImage',
+} as const;
+
+const DEFAULT_PALETTES: ColorPalette[] = [
+  { name: 'RED', colors: ['#DC2626', '#B91C1C', '#7F1D1D', '#000000', '#FFFFFF', '#EF4444'] },
+  { name: 'Vibrante', colors: ['#A855F7', '#EC4899', '#3B82F6', '#10B981', '#F59E0B', '#EF4444'] },
+  { name: 'Neon', colors: ['#39FF14', '#FF00FF', '#00FFFF', '#FFFF00', '#FF0000', '#4D4DFF'] },
+  { name: 'Oceano', colors: ['#0891b2', '#0e7490', '#155e75', '#0369a1', '#075985', '#0c4a6e'] },
+  { name: 'Tramonto', colors: ['#f43f5e', '#fb7185', '#fb923c', '#fbbf24', '#f59e0b', '#d97706'] },
+];
+
+function readJson<T>(key: string): T | undefined {
+  try {
+    const raw = localStorage.getItem(key);
+    if (!raw) return undefined;
+    return JSON.parse(raw) as T;
+  } catch {
+    return undefined;
+  }
+}
+
+function writeJson(key: string, value: unknown): void {
+  try {
+    localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // ignore (storage quota, private mode, etc.)
+  }
+}
 
 @Injectable({
   providedIn: 'root',
@@ -6,16 +41,11 @@ import { computed, ElementRef, Injectable, signal } from '@angular/core';
 export class WheelConfigurator {
   showModal = signal(false);
 
-  palettes = signal<ColorPalette[]>([
-    { name: 'Vibrante', colors: ['#A855F7', '#EC4899', '#3B82F6', '#10B981', '#F59E0B', '#EF4444'] },
-    { name: 'Neon', colors: ['#39FF14', '#FF00FF', '#00FFFF', '#FFFF00', '#FF0000', '#4D4DFF'] },
-    { name: 'Oceano', colors: ['#0891b2', '#0e7490', '#155e75', '#0369a1', '#075985', '#0c4a6e'] },
-    { name: 'Tramonto', colors: ['#f43f5e', '#fb7185', '#fb923c', '#fbbf24', '#f59e0b', '#d97706'] }
-  ]);
+  palettes = signal<ColorPalette[]>(DEFAULT_PALETTES);
 
-  names = signal<string[]>(['Marta', 'Marco', 'Sofia', 'Davide', 'Elena', 'Giulio']);
+  names = signal<string[]>([]);
   centerImage = signal<string>('');
-  bgColor = signal<string>('oklch(20.5% 0 0)'); 
+  bgColor = signal<string>('#000'); 
   bgImage = signal<string>('');
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
 
@@ -27,6 +57,88 @@ export class WheelConfigurator {
 
   canvasRef = signal<ElementRef<HTMLCanvasElement> | undefined>(undefined)
   ctx = signal<CanvasRenderingContext2D | undefined>(undefined)
+
+  constructor() {
+    this.hydrateFromStorage();
+    this.setupPersistence();
+  }
+
+  private hydrateFromStorage(): void {
+    const storedPalettes = readJson<ColorPalette[]>(STORAGE_KEYS.palettes);
+    const storedSelectedName = readJson<string>(STORAGE_KEYS.selectedPaletteName);
+    const storedNames = readJson<string[]>(STORAGE_KEYS.names);
+    const storedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
+    const storedBgImage = readJson<string>(STORAGE_KEYS.bgImage);
+    const storedCenterImage = readJson<string>(STORAGE_KEYS.centerImage);
+
+    if (Array.isArray(storedPalettes) && storedPalettes.length) {
+      // Merge defaults (new app versions) with stored palettes (including custom ones)
+      const byName = new Map<string, ColorPalette>();
+      for (const p of storedPalettes) byName.set(p.name, p);
+      for (const p of DEFAULT_PALETTES) if (!byName.has(p.name)) byName.set(p.name, p);
+      this.palettes.set(Array.from(byName.values()));
+    }
+
+    if (Array.isArray(storedNames)) {
+      this.names.set(storedNames);
+    }
+
+    if (typeof storedBgColor === 'string' && storedBgColor.length) {
+      this.bgColor.set(storedBgColor);
+    }
+
+    if (typeof storedBgImage === 'string') {
+      this.bgImage.set(storedBgImage);
+    }
+
+    if (typeof storedCenterImage === 'string') {
+      this.centerImage.set(storedCenterImage);
+    }
+
+    const palettes = this.palettes();
+    const selected =
+      (storedSelectedName && palettes.find(p => p.name === storedSelectedName)) ||
+      palettes[0];
+
+    if (selected) {
+      this.selectedPalette.set(selected);
+    }
+  }
+
+  private setupPersistence(): void {
+    effect(() => {
+      writeJson(STORAGE_KEYS.palettes, this.palettes());
+    });
+
+    effect(() => {
+      writeJson(STORAGE_KEYS.selectedPaletteName, this.selectedPalette().name);
+    });
+
+    effect(() => {
+      writeJson(STORAGE_KEYS.names, this.names());
+    });
+
+    effect(() => {
+      writeJson(STORAGE_KEYS.bgColor, this.bgColor());
+    });
+
+    effect(() => {
+      writeJson(STORAGE_KEYS.bgImage, this.bgImage());
+    });
+
+    effect(() => {
+      writeJson(STORAGE_KEYS.centerImage, this.centerImage());
+    });
+
+    effect(() => {
+      const palettes = this.palettes();
+      const selectedName = this.selectedPalette().name;
+      const stillExists = palettes.some(p => p.name === selectedName);
+      if (!stillExists && palettes.length) {
+        this.selectedPalette.set(palettes[0]);
+      }
+    });
+  }
 
   drawWheel() {
     const canvas = this.canvasRef()!.nativeElement;
@@ -89,4 +201,8 @@ export class WheelConfigurator {
 
     this.names.set(shuffled);
   };
+
+  setNames(aNames: string[]): void {
+    this.names.set(aNames)
+  }
 }

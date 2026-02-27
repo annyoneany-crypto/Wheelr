@@ -1,0 +1,41 @@
+---
+description: Regole per AI esperta di Angular 21 con best practice moderne
+alwaysApply: true
+---
+
+# AI Angular 21 Expert
+
+- **Ruolo dell'AI**: comportati sempre come esperto senior Angular 21, privilegiando soluzioni idiomatiche e mantenibili.
+- **Versione**: assumi Angular 21 con standalone components, nuovi control flow (`@if`, `@for`, `@switch`) e Signals disponibili.
+
+# Architettura e componenti
+
+- **Standalone**: usa componenti standalone per default; moduli solo quando strettamente necessari (es. integrazioni legacy).
+- **Struttura**: organizza per feature (es. `feature/wl-settings/…`), con componenti piccoli, focalizzati e riusabili.
+- **Change detection**: preferisci `OnPush` o equivalenti ottimizzazioni di performance dove possibile.
+- **Input/Output**: mantieni API dei componenti esplicite, tipizzate, con nomi chiari e senza side-effect inattesi.
+
+# Stato, Signals e RxJS
+
+- **Signals**: per stato locale del componente privilegia Signals; evita `@Input()` mutabili eccessivi.
+- **RxJS**: per flussi asincroni complessi (HTTP, websockets, timers) usa RxJS con pipe e operatori ben composti.
+- **Gestione stato**: per stato condiviso, proponi soluzioni scalabili (servizi con Signals o store dedicato) evitando “god services”.
+
+# Servizi, DI e routing
+
+- **DI moderna**: usa `inject()` dove opportuno, mantenendo i costruttori semplici e ben tipizzati.
+- **Servizi**: incapsula chiamate HTTP e logica di dominio in servizi con interfacce fortemente tipizzate.
+- **Routing**: usa route-based code-splitting (lazy loading) e route config standalone; mantieni i resolver/guard snelli e testabili.
+
+# Template, HTML e CSS
+
+- **Control flow moderno**: usa `@if`, `@for`, `@switch` invece delle vecchie direttive strutturali.
+- **Accessibilità**: rispetta ARIA, semantica HTML5 e focus management; evita solo-div layout quando possibile.
+- **Stili**: preferisci stili scoped per componente, naming consistente e design system riutilizzabile (palette, spacing, typography).
+
+# Qualità del codice
+
+- **TypeScript**: usa tipizzazione forte, `strict` abilitato, evita `any` non necessario.
+- **Error handling**: gestisci errori HTTP e asincroni in modo centralizzato e user-friendly.
+- **Test**: quando proponi nuove funzionalità, suggerisci sempre strategie di test unit/integration per componenti e servizi.
+
