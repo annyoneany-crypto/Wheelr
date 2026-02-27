@@ -36,6 +36,26 @@ function writeJson(key: string, value: unknown): void {
   }
 }
 
+function clampDeg(deg: number): number {
+  const m = deg % 360;
+  return (m + 360) % 360;
+}
+
+function contrastForHex(hex: string): '#000000' | '#FFFFFF' {
+  // Expect #RRGGBB
+  const m = /^#?([0-9a-fA-F]{6})$/.exec(hex);
+  if (!m) return '#FFFFFF';
+
+  const int = Number.parseInt(m[1], 16);
+  const r = (int >> 16) & 0xff;
+  const g = (int >> 8) & 0xff;
+  const b = int & 0xff;
+
+  // Perceived luminance (sRGB-ish). Threshold tuned for UI contrast.
+  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+  return luminance > 140 ? '#000000' : '#FFFFFF';
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -52,6 +72,7 @@ export class WheelConfigurator {
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
 
   isSpinning = signal(false);
+  spinDurationMs = signal(3000);
   currentRotation = signal(0);
   winner = signal<string | null>(null);
 
@@ -60,9 +81,54 @@ export class WheelConfigurator {
   canvasRef = signal<ElementRef<HTMLCanvasElement> | undefined>(undefined)
   ctx = signal<CanvasRenderingContext2D | undefined>(undefined)
 
+  pointerSliceIndex = computed(() => {
+    const n = this.names().length;
+    if (!n) return 0;
+
+    const rotation = this.currentRotation();
+    const normalizedRotation = clampDeg(360 - clampDeg(rotation));
+    const adjustedRotation = clampDeg(normalizedRotation - 90);
+    return Math.floor(adjustedRotation / (360 / n));
+  });
+
+  pointerSliceColor = computed(() => {
+    const n = this.names().length;
+    if (!n) return '#ffffff';
+
+    const colors = this.selectedPalette().colors;
+    if (!colors.length) return '#ffffff';
+
+    const idx = this.pointerSliceIndex();
+    return colors[idx % colors.length] ?? '#ffffff';
+  });
+
+  pointerContrastColor = computed(() => {
+    return contrastForHex(this.pointerSliceColor());
+  });
+
   constructor() {
     this.hydrateFromStorage();
     this.setupPersistence();
+    this.startIdleRotation();
+  }
+
+  private startIdleRotation(): void {
+    // Slow continuous rotation when not spinning
+    const degPerSecond = 6; // "piano" (~1 giro/minuto)
+    let lastTs = performance.now();
+
+    const tick = (ts: number) => {
+      const dt = (ts - lastTs) / 1000;
+      lastTs = ts;
+
+      if (!this.isSpinning()) {
+        this.currentRotation.update(r => r + degPerSecond * dt);
+      }
+
+      requestAnimationFrame(tick);
+    };
+
+    requestAnimationFrame(tick);
   }
 
   private hydrateFromStorage(): void {
@@ -195,6 +261,9 @@ export class WheelConfigurator {
     this.winner.set(null);
     if (this.fireAnimationId()) cancelAnimationFrame(this.fireAnimationId()!);
 
+    const durationMs = Math.floor(2000 + Math.random() * 2000); // 2000..4000
+    this.spinDurationMs.set(durationMs);
+
     const extraDegrees = Math.floor(Math.random() * 360);
     const totalRotation = this.currentRotation() + (360 * 6) + extraDegrees;
     this.currentRotation.set(totalRotation);
@@ -205,7 +274,7 @@ export class WheelConfigurator {
       let adjustedRotation = (normalizedRotation - 90 + 360) % 360;
       const winningIndex = Math.floor(adjustedRotation / (360 / this.names().length));
       this.winner.set(this.names()[winningIndex]);
-    }, 4000);
+    }, durationMs);
   }
 
   shuffleNames(): void {
