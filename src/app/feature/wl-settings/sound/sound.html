@@ -22,7 +22,7 @@
     @if (wheelConfigurator.soundEnabled()) {
       <div class="pt-3 border-t border-neutral-700 space-y-3">
         <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
-          Custom Audio
+          Spin Audio
         </label>
 
         <div class="flex gap-2">
@@ -37,7 +37,7 @@
         @if (wheelConfigurator.customAudio()) {
           <div class="flex items-center justify-between bg-neutral-800 rounded-lg p-2">
             <span class="text-xs text-white">
-              <i class="fa-solid fa-music mr-2"></i>Custom audio loaded
+              <i class="fa-solid fa-music mr-2"></i>Spin audio loaded
             </span>
             <button
               type="button"
@@ -48,6 +48,37 @@
             </button>
           </div>
         }
+
+        <!-- Winner audio upload section -->
+        <div class="pt-3 border-t border-neutral-700 space-y-3">
+          <label class="block text-xs font-semibold text-gray-300 uppercase tracking-wider">
+            Winner Audio
+          </label>
+
+          <div class="flex gap-2">
+            <input
+              type="file"
+              accept="audio/*"
+              class="flex-1 text-xs text-white file:bg-neutral-800 file:border file:border-neutral-600 file:rounded-lg file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white file:cursor-pointer file:hover:bg-neutral-700 file:transition-colors"
+              (change)="onWinnerAudioFileSelected($event)"
+            />
+          </div>
+
+          @if (wheelConfigurator.winnerAudio()) {
+            <div class="flex items-center justify-between bg-neutral-800 rounded-lg p-2">
+              <span class="text-xs text-white">
+                <i class="fa-solid fa-trophy mr-2"></i>Winner audio loaded
+              </span>
+              <button
+                type="button"
+                (click)="clearWinnerAudio()"
+                class="py-1 px-2 text-xs font-semibold bg-red-500/20 text-red-200 border border-red-500/30 rounded hover:bg-red-500/30 transition-colors"
+              >
+                Remove
+              </button>
+            </div>
+          }
+        </div>
       </div>
     }
   </div>

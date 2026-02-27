@@ -12,6 +12,7 @@ const STORAGE_KEYS = {
   wheelView: 'giveawayWheel.wheelView',
   soundEnabled: 'giveawayWheel.soundEnabled',
   customAudio: 'giveawayWheel.customAudio',
+  winnerAudio: 'giveawayWheel.winnerAudio',
 } as const;
 
 const DEFAULT_PALETTES: ColorPalette[] = [
@@ -142,11 +143,18 @@ export class WheelConfigurator {
 
   soundEnabled = signal<boolean>(true);
   customAudio = signal<string>('');
+  winnerAudio = signal<string>('');
   private audioElement: HTMLAudioElement | undefined;
+  private winnerAudioElement: HTMLAudioElement | undefined;
 
   setCustomAudio(audioData: string) {
     this.customAudio.set(audioData);
     writeImage(STORAGE_KEYS.customAudio, audioData).catch(() => {});
+  }
+
+  setWinnerAudio(audioData: string) {
+    this.winnerAudio.set(audioData);
+    writeImage(STORAGE_KEYS.winnerAudio, audioData).catch(() => {});
   }
 
   pointerSliceIndex = computed(() => {
@@ -283,6 +291,11 @@ export class WheelConfigurator {
     if (storedCustomAudio) {
       this.customAudio.set(storedCustomAudio);
     }
+
+    const storedWinnerAudio = await readImage(STORAGE_KEYS.winnerAudio);
+    if (storedWinnerAudio) {
+      this.winnerAudio.set(storedWinnerAudio);
+    }
   }
 
   private setupPersistence(): void {
@@ -344,6 +357,13 @@ export class WheelConfigurator {
       const audio = this.customAudio();
       if (audio && audio.length) {
         writeImage(STORAGE_KEYS.customAudio, audio).catch(() => {});
+      }
+    });
+
+    effect(() => {
+      const audio = this.winnerAudio();
+      if (audio && audio.length) {
+        writeImage(STORAGE_KEYS.winnerAudio, audio).catch(() => {});
       }
     });
   }
@@ -412,6 +432,11 @@ export class WheelConfigurator {
       let adjustedRotation = (normalizedRotation - 90 + 360) % 360;
       const winningIndex = Math.floor(adjustedRotation / (360 / this.names().length));
       this.winner.set(this.names()[winningIndex]);
+
+      // Play winner audio if enabled
+      if (this.soundEnabled() && this.winnerAudio()) {
+        this.playWinnerAudio();
+      }
     }, this.spinDurationMs());
   }
 
@@ -430,6 +455,24 @@ export class WheelConfigurator {
       });
     } catch (e) {
       console.warn('Failed to play spin audio', e);
+    }
+  }
+
+  private playWinnerAudio(): void {
+    try {
+      // If audio element already exists, stop it
+      if (this.winnerAudioElement) {
+        this.winnerAudioElement.pause();
+        this.winnerAudioElement.currentTime = 0;
+      }
+
+      // Create and play new audio element
+      this.winnerAudioElement = new Audio(this.winnerAudio());
+      this.winnerAudioElement.play().catch(() => {
+        // Ignore errors (e.g., autoplay policy)
+      });
+    } catch (e) {
+      console.warn('Failed to play winner audio', e);
     }
   }
 

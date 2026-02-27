@@ -36,4 +36,13 @@ describe('Sound', () => {
     component.clearCustomAudio();
     expect(config.customAudio()).toBe('');
   });
+
+  it('should set and clear winner audio', () => {
+    const config = component.wheelConfigurator;
+    config.setWinnerAudio('data:audio/mp3;base64,winner');
+    expect(config.winnerAudio()).toBeTruthy();
+
+    component.clearWinnerAudio();
+    expect(config.winnerAudio()).toBe('');
+  });
 });

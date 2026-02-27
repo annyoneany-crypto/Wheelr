@@ -42,4 +42,36 @@ export class Sound {
   clearCustomAudio(): void {
     this.wheelConfigurator.setCustomAudio('');
   }
+
+  /**
+   * Handle winner audio file selection.
+   * Reads the file as data URL and stores in IndexDB via the service.
+   */
+  onWinnerAudioFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement | null;
+    const file = input?.files?.[0];
+    if (!file) return;
+
+    // Validate file is audio
+    if (!file.type.startsWith('audio/')) {
+      console.warn('Selected file is not audio', file.type);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      const result = e.target?.result;
+      if (typeof result === 'string') {
+        this.wheelConfigurator.setWinnerAudio(result);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  /**
+   * Clear the stored winner audio.
+   */
+  clearWinnerAudio(): void {
+    this.wheelConfigurator.setWinnerAudio('');
+  }
 }
