@@ -13,6 +13,8 @@ const STORAGE_KEYS = {
   soundEnabled: 'giveawayWheel.soundEnabled',
   customAudio: 'giveawayWheel.customAudio',
   winnerAudio: 'giveawayWheel.winnerAudio',
+  fontFamily: 'giveawayWheel.fontFamily',
+  fontLink: 'giveawayWheel.fontLink',
 } as const;
 
 const DEFAULT_PALETTES: ColorPalette[] = [
@@ -127,6 +129,37 @@ export class WheelConfigurator {
     this.centerLogoSize.set(size);
     writeJson(STORAGE_KEYS.centerLogoSize, size);
   }
+
+  // font configuration for wheel text
+  fontFamily = signal<string>('"Inter", sans-serif');
+  // store the Google Fonts link URL so that we can reload it on startup
+  fontLink = signal<string>('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+  /**
+   * Update the active font family and optionally install a Google Fonts link
+   */
+  setFontFamily(family: string, linkHref?: string): void {
+    this.fontFamily.set(family);
+    writeJson(STORAGE_KEYS.fontFamily, family);
+
+    if (linkHref) {
+      this.fontLink.set(linkHref);
+      writeJson(STORAGE_KEYS.fontLink, linkHref);
+      this.loadGoogleFont(linkHref);
+    }
+  }
+
+  private loadGoogleFont(href: string): void {
+    let linkEl = document.getElementById('google-font-link') as HTMLLinkElement | null;
+    if (!linkEl) {
+      linkEl = document.createElement('link');
+      linkEl.id = 'google-font-link';
+      linkEl.rel = 'stylesheet';
+      document.head.appendChild(linkEl);
+    }
+    linkEl.href = href;
+  }
+
   bgColor = signal<string>('#000'); 
   bgImage = signal<string>('');
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
@@ -222,6 +255,8 @@ export class WheelConfigurator {
 
     const storedCenterLogoSize = readJson<string>(STORAGE_KEYS.centerLogoSize);
     const storedWheelView = readJson<string>(STORAGE_KEYS.wheelView);
+    const storedFontFamily = readJson<string>(STORAGE_KEYS.fontFamily);
+    const storedFontLink = readJson<string>(STORAGE_KEYS.fontLink);
 
     if (Array.isArray(storedPalettes) && storedPalettes.length) {
       // Merge defaults (new app versions) with stored palettes (including custom ones)
@@ -296,6 +331,18 @@ export class WheelConfigurator {
     if (storedWinnerAudio) {
       this.winnerAudio.set(storedWinnerAudio);
     }
+
+    // Hydrate font preferences
+    if (typeof storedFontFamily === 'string' && storedFontFamily.length) {
+      this.fontFamily.set(storedFontFamily);
+    }
+    if (typeof storedFontLink === 'string' && storedFontLink.length) {
+      this.fontLink.set(storedFontLink);
+      this.loadGoogleFont(storedFontLink);
+    } else if (this.fontLink()) {
+      // no stored link but we have a default; make sure it gets injected
+      this.loadGoogleFont(this.fontLink());
+    }
   }
 
   private setupPersistence(): void {
@@ -353,6 +400,18 @@ export class WheelConfigurator {
       writeJson(STORAGE_KEYS.soundEnabled, this.soundEnabled());
     });
 
+    // Persist font settings and redraw wheel when the font changes
+    effect(() => {
+      writeJson(STORAGE_KEYS.fontFamily, this.fontFamily());
+      this.drawWheel();
+    });
+    effect(() => {
+      const link = this.fontLink();
+      if (link && link.length) {
+        writeJson(STORAGE_KEYS.fontLink, link);
+      }
+    });
+
     effect(() => {
       const audio = this.customAudio();
       if (audio && audio.length) {
@@ -405,7 +464,8 @@ export class WheelConfigurator {
       // Apply contrast color based on slice background color
       const sliceColor = colors[i % colors.length];
       ctx.fillStyle = contrastForHex(sliceColor);
-      ctx.font = 'bold 16px sans-serif';
+      // use the current font family from configuration
+      ctx.font = `bold 26px ${this.fontFamily()}`;
       ctx.fillText(name.substring(0, 15), radius - 30, 5);
       ctx.restore();
     });

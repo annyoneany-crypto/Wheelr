@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, inject, model, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, model, signal, viewChild, effect } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 
 @Component({
@@ -30,6 +30,12 @@ export class LinearWheel {
 
   ngAfterViewInit() {
     this.initCanvas();
+    // respond to font changes after canvas is ready
+    effect(() => {
+      // reading the signal makes this effect re-run
+      this.wheelConfigurator.fontFamily();
+      this.updateFont();
+    });
     // Draw the first frame
     requestAnimationFrame(() => this.draw());
   }
@@ -56,10 +62,17 @@ export class LinearWheel {
    
     this.ctx.scale(dpr, dpr);
    
-    // Base font settings
-    this.ctx.font = 'bold 24px "Inter", sans-serif';
+    // Base font settings (initial)
+    this.updateFont();
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
+  }
+
+  // update the canvas context font to match configuration
+  private updateFont() {
+    if (!this.ctx) return;
+    const ff = this.wheelConfigurator.fontFamily() || '"Inter", sans-serif';
+    this.ctx.font = `bold 24px ${ff}`;
   }
 
 
