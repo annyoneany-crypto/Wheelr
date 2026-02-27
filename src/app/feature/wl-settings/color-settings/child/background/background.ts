@@ -36,6 +36,7 @@ export class Background {
   resetBackground(): void {
     this.wheelConfigurator.bgColor.set('#0f172a');
     this.wheelConfigurator.bgImage.set('');
+    this.wheelConfigurator.clearImagesStorage();
   }
 }
 

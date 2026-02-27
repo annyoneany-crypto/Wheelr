@@ -303,6 +303,10 @@ export class WheelConfigurator {
     });
   }
 
+  clearImagesStorage(): void {
+    writeImage(STORAGE_KEYS.bgImage, '').catch(() => {});
+  }
+
   drawWheel() {
     const canvasRef = this.canvasRef();
     const ctx = this.ctx();
