@@ -44,19 +44,23 @@ export class FireEffect implements IWinnerEffect {
     }
   }
 
-  // Animazione Fuoco (Particle System)
+  // Fire Animation (Particle System)
   initAnimation(): void {
     if (!this.fireCanvasRef()) return;
     const canvas = this.fireCanvasRef()!.nativeElement;
     const fctx = canvas.getContext('2d')!;
-    canvas.width = 600;
-    canvas.height = 600;
+    
+    // Set canvas dimensions to match parent container
+    const rect = canvas.parentElement?.getBoundingClientRect();
+    canvas.width = rect?.width ?? 800;
+    canvas.height = rect?.height ?? 800;
+    
     this.fireParticles = [];
 
     const animateFire = () => {
       fctx.clearRect(0, 0, canvas.width, canvas.height);
       
-      // Crea nuove particelle
+      // Create new particles
       if (this.fireParticles.length < 150) {
         for(let i=0; i<5; i++) {
           this.fireParticles.push({
@@ -71,7 +75,7 @@ export class FireEffect implements IWinnerEffect {
         }
       }
 
-      // Aggiorna e disegna
+      // Update and draw
       for (let i = this.fireParticles.length - 1; i >= 0; i--) {
         const p = this.fireParticles[i];
         p.x += p.vx;

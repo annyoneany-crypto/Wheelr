@@ -42,6 +42,7 @@
         [style.transform]="'rotate(' + wheelConfigurator.currentRotation() + 'deg)'"
         [style.transitionDuration]="wheelConfigurator.isSpinning() ? (wheelConfigurator.spinDurationMs() + 'ms') : '100ms'"
         [style.transitionTimingFunction]="wheelConfigurator.isSpinning() ? 'cubic-bezier(0.15, 0, 0.15, 1)' : 'linear'"
+        [style.backgroundColor]="wheelConfigurator.names().length === 0 ? '#5e5e5e' : 'transparent'"
       ></canvas>
       
       <!-- Center -->

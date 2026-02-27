@@ -32,7 +32,8 @@ function readJson<T>(key: string): T | undefined {
 function writeJson(key: string, value: unknown): void {
   try {
     localStorage.setItem(key, JSON.stringify(value));
-  } catch {
+  } catch (e) {
+    console.warn('Failed to write to localStorage', { key, value, error: e });
     // ignore (storage quota, private mode, etc.)
   }
 }
@@ -266,7 +267,9 @@ export class WheelConfigurator {
       ctx.translate(centerX, centerY);
       ctx.rotate(angle + sliceAngle / 2);
       ctx.textAlign = 'right';
-      ctx.fillStyle = 'white';
+      // Apply contrast color based on slice background color
+      const sliceColor = colors[i % colors.length];
+      ctx.fillStyle = contrastForHex(sliceColor);
       ctx.font = 'bold 16px sans-serif';
       ctx.fillText(name.substring(0, 15), radius - 30, 5);
       ctx.restore();

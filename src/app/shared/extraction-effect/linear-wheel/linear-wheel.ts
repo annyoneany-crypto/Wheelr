@@ -13,24 +13,24 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 export class LinearWheel {
   wheelConfigurator = inject(WheelConfigurator);
 
-  // Riferimento al canvas HTML
+  // Reference to the canvas HTML
   canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
 
-  // Variabili per il Canvas e l'animazione
+  // Variables for Canvas and animation
   private ctx!: CanvasRenderingContext2D;
   private animationId: number | null = null;
-  private itemWidth = 200; // Larghezza di ogni "box" nome
-  private offset = 0; // Posizione attuale dello scroll (pixel)
-  private velocity = 0; // Velocità corrente
-  private isDecelerating = false; // Se stiamo frenando
+  private itemWidth = 200; // Width of each name "box"
+  private offset = 0; // Current scroll position (pixels)
+  private velocity = 0; // Current velocity
+  private isDecelerating = false; // Whether we are braking
  
-  // Colori per i box (ciclici)
+  // Colors for boxes (cyclic)
   private colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#f97316', '#10b981'];
 
 
   ngAfterViewInit() {
     this.initCanvas();
-    // Disegna il primo frame
+    // Draw the first frame
     requestAnimationFrame(() => this.draw());
   }
 
@@ -42,12 +42,12 @@ export class LinearWheel {
   }
 
 
-  // Aggiusta il canvas per schermi ad alta densità e inizializza il contesto
+  // Adjust canvas for high-density screens and initialize context
   private initCanvas() {
     const canvas = this.canvasRef()!.nativeElement;
     this.ctx = canvas.getContext('2d')!;
    
-    // Gestione High DPI (Retina displays)
+    // High DPI (Retina displays) handling
     const dpr = window.devicePixelRatio || 1;
     const rect = canvas.getBoundingClientRect();
    
@@ -56,23 +56,23 @@ export class LinearWheel {
    
     this.ctx.scale(dpr, dpr);
    
-    // Impostazioni font base
+    // Base font settings
     this.ctx.font = 'bold 24px "Inter", sans-serif';
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
   }
 
 
-  // Logica principale del loop di disegno
+  // Main drawing loop logic
   private draw() {
     if (!this.ctx) return;
    
     const canvas = this.canvasRef()!.nativeElement;
-    // Usiamo le dimensioni CSS effettive per i calcoli logici
+    // Use actual CSS dimensions for logical calculations
     const width = canvas.width / (window.devicePixelRatio || 1);
     const height = canvas.height / (window.devicePixelRatio || 1);
    
-    // 1. Pulisci il canvas
+    // 1. Clear the canvas
     this.ctx.clearRect(0, 0, width, height);
 
 
@@ -80,57 +80,57 @@ export class LinearWheel {
     if (list.length === 0) return;
 
 
-    // 2. Aggiorna la fisica se in movimento
+    // 2. Update physics if moving
     if (this.wheelConfigurator.isSpinning()) {
       this.offset += this.velocity;
      
-      // Logica di decelerazione
+      // Deceleration logic
       if (this.isDecelerating) {
-        this.velocity *= 0.985; // Attrito (più basso = frena più lento)
+        this.velocity *= 0.985; // Friction (lower = slower braking)
        
-        // Stop quando è molto lento
+        // Stop when very slow
         if (this.velocity < 0.1) {
           this.velocity = 0;
           this.wheelConfigurator.isSpinning.set(false);
           this.isDecelerating = false;
-          this.snapToNearest(); // Allinea perfettamente al centro
+          this.snapToNearest(); // Align perfectly to center
         }
       }
     }
 
 
-    // 3. Logica "Infinite Scroll" usando il modulo
+    // 3. "Infinite Scroll" logic using modulo
    
-    // Il centro del canvas (dove sta la freccia)
+    // The center of the canvas (where the arrow is)
     const centerX = width / 2;
 
 
-    // Troviamo l'indice "virtuale" centrale basato sull'offset assoluto
-    // (offset / itemWidth) ci dice esattamente quale numero di item (es. il 50esimo) dovrebbe essere al centro
+    // Find the central "virtual" index based on absolute offset
+    // (offset / itemWidth) tells us exactly which item number (e.g., the 50th) should be at the center
     const currentVirtualIndex = Math.floor(this.offset / this.itemWidth);
    
-    // Calcoliamo quanti elementi disegnare a destra e sinistra per coprire lo schermo
-    // Aggiungiamo +2 di buffer per sicurezza
+    // Calculate how many elements to draw left and right to cover the screen
+    // Add +2 buffer for safety
     const halfVisible = Math.ceil((width / this.itemWidth) / 2) + 2;
 
 
-    // Disegniamo solo gli elementi visibili
+    // Draw only visible elements
     for (let i = currentVirtualIndex - halfVisible; i <= currentVirtualIndex + halfVisible; i++) {
-      // Indice circolare per recuperare il nome dall'array (gestisce il loop infinito)
+      // Circular index to retrieve the name from array (handles infinite loop)
       let index = ((i % list.length) + list.length) % list.length;
      
-      // Calcolo posizione X
-      // (i * itemWidth): posizione assoluta teorica dell'elemento nella striscia infinita
-      // - this.offset: quanto abbiamo scollato
-      // + centerX: sposta l'origine al centro dello schermo
-      // - (this.itemWidth / 2): centra il box rispetto al proprio punto centrale
+      // Calculate X position
+      // (i * itemWidth): absolute theoretical position of element in infinite strip
+      // - this.offset: how much we have scrolled
+      // + centerX: shift origin to center of screen
+      // - (this.itemWidth / 2): center the box relative to its own center point
       let renderX = (i * this.itemWidth) - this.offset + centerX - (this.itemWidth / 2);
 
 
-      // Disegna il Box
+      // Draw the box
       this.ctx.fillStyle = this.colors[index % this.colors.length];
      
-      // Effetto visivo: Evidenzia leggermente quello che passa sotto il centro
+      // Visual effect: Slightly highlight the one that passes under the center
       const distFromCenter = Math.abs((renderX + this.itemWidth/2) - centerX);
       const isCenter = distFromCenter < (this.itemWidth / 2);
      
@@ -142,22 +142,22 @@ export class LinearWheel {
       }
 
 
-      // Disegna rettangolo arrotondato (simulato)
+      // Draw rounded rectangle (simulated)
       const padding = 5;
       this.ctx.fillRect(renderX + padding, 10, this.itemWidth - (padding*2), height - 20);
      
-      // Disegna il bordo
+      // Draw the border
       this.ctx.strokeStyle = 'white';
       this.ctx.lineWidth = 2;
       this.ctx.strokeRect(renderX + padding, 10, this.itemWidth - (padding*2), height - 20);
 
 
-      // Disegna il Testo
+      // Draw the text
       this.ctx.fillStyle = 'white';
       this.ctx.shadowBlur = 4;
       this.ctx.shadowColor = 'black';
      
-      // Troncamento testo se troppo lungo
+      // Truncate text if too long
       const text = list[index];
       const maxTextWidth = this.itemWidth - 20;
       let textToDraw = text;
@@ -172,12 +172,12 @@ export class LinearWheel {
     }
 
 
-    // Richiedi il prossimo frame
+    // Request next frame
     this.animationId = requestAnimationFrame(() => this.draw());
   }
 
 
-  // Funzione per avviare la rotazione
+  // Function to start spinning
   spin() {
     if (this.wheelConfigurator.isSpinning() || this.wheelConfigurator.names().length < 2) return;
    
@@ -185,45 +185,45 @@ export class LinearWheel {
     this.wheelConfigurator.isSpinning.set(true);
     this.isDecelerating = false;
    
-    // Velocità iniziale molto alta
+    // Very high initial velocity
     this.velocity = 50 + Math.random() * 20;
    
-    // Inizia a frenare dopo un tempo casuale (es. 2 secondi)
+    // Start braking after random time (e.g. 2 seconds)
     setTimeout(() => {
       this.isDecelerating = true;
     }, 1000 + Math.random() * 1000);
   }
 
 
-  // Allinea l'elemento più vicino al centro quando la ruota si ferma
+  // Align nearest element to center when wheel stops
   private snapToNearest() {
-    // Calcoliamo quale indice è al centro
+    // Calculate which index is at the center
     const totalWidth = this.wheelConfigurator.names().length * this.itemWidth;
    
-    // Offset normalizzato positivo
+    // Normalized positive offset
     let currentPos = this.offset % totalWidth;
     if (currentPos < 0) currentPos += totalWidth;
    
-    // L'indice vincente è quello che "copre" il punto di offset corrente
-    // (Arrotondiamo per trovare il "box" più vicino)
+    // The winning index is the one that "covers" the current offset point
+    // (Round to find the "nearest box")
     const winningIndex = Math.round(currentPos / this.itemWidth) % this.wheelConfigurator.names().length;
    
-    // Calcoliamo l'offset esatto per centrare quel box
+    // Calculate exact offset to center that box
     const targetOffset = winningIndex * this.itemWidth;
    
-    // Piccolo scatto visivo per allineare perfettamente (opzionale, ma pulito)
-    // Qui aggiorniamo this.offset per far sì che il rendering successivo sia centrato
-    // Nota: manteniamo i "giri" totali fatti finora per non saltare visivamente
+    // Small visual snap to align perfectly (optional but clean)
+    // Here we update this.offset so the next render is centered
+    // Note: we maintain the total "rotations" done so far to not jump visually
     const rounds = Math.floor(this.offset / totalWidth);
     this.offset = (rounds * totalWidth) + targetOffset;
 
 
-    // Determina il vincitore
+    // Determine the winner
     const winnerName = this.wheelConfigurator.names()[winningIndex];
     this.wheelConfigurator.winner.set(winnerName);
   }
 
-  // Listener per ridimensionamento finestra
+  // Listener for window resize
   @HostListener('window:resize')
   onResize() {
     this.initCanvas();
