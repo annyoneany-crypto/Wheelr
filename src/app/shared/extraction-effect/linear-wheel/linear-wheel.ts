@@ -6,6 +6,9 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
   imports: [],
   templateUrl: './linear-wheel.html',
   styleUrl: './linear-wheel.css',
+  host: {
+    class: 'w-full',
+  }
 })
 export class LinearWheel {
   wheelConfigurator = inject(WheelConfigurator);

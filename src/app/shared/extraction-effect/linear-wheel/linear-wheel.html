@@ -1,26 +1,25 @@
-<div class="min-h-full bg-transparent flex flex-col items-center justify-center p-4 font-sans text-slate-200">
+<div class="min-h-full w-full bg-transparent flex flex-col items-center justify-center p-4 font-sans text-slate-200">
 
 
     <!-- Contenitore Canvas con indicatore di selezione -->
-    <div class="relative mb-8 shadow-2xl rounded-lg overflow-hidden border-4 border-slate-700">
-    <!-- Il Canvas -->
-    <canvas #canvas
-        class="bg-slate-800 cursor-pointer block"
-        (click)="spin()"
-        width="800"
-        height="150">
-    </canvas>
+    <div class="relative w-full mb-8 shadow-2xl rounded-lg overflow-hidden border-4 border-slate-700">
+        <!-- Il Canvas -->
+        <canvas #canvas
+            class="bg-slate-800 w-full h-40 cursor-pointer block"
+            (click)="spin()"
+            height="150">
+        </canvas>
 
 
-    <!-- Triangolo indicatore centrale (CSS puro sopra il canvas) -->
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0
-                border-l-[15px] border-l-transparent
-                border-r-[15px] border-r-transparent
-                border-t-[20px] border-t-red-500 z-10 drop-shadow-md">
-    </div>
-    
-    <!-- Linea verticale centrale per precisione -->
-    <div class="absolute top-0 bottom-0 left-1/2 w-0.5 bg-red-500/30 -translate-x-1/2 pointer-events-none"></div>
+        <!-- Triangolo indicatore centrale (CSS puro sopra il canvas) -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-0 h-0
+                    border-l-[15px] border-l-transparent
+                    border-r-[15px] border-r-transparent
+                    border-t-[20px] border-t-red-500 z-10 drop-shadow-md">
+        </div>
+        
+        <!-- Linea verticale centrale per precisione -->
+        <div class="absolute top-0 bottom-0 left-1/2 w-0.5 bg-red-500/30 -translate-x-1/2 pointer-events-none"></div>
     </div>
 
 
