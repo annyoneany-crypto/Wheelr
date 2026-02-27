@@ -1,4 +1,4 @@
-import { Component, inject, signal, effect } from '@angular/core';
+import { Component, inject, signal, effect, computed } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WheelConfigurator } from '../../../../../services/wheel-configurator.service';
 
@@ -45,14 +45,17 @@ export class FontSettings {
     }
   ];
 
-  selectedFamily = signal(this.wheelConfigurator.fontFamily());
+  selectedFamily = computed(() => this.wheelConfigurator.fontFamily());
+  internalSelected = signal<string>('');
 
   constructor() {
-    // keep local selection in sync with service
+    // initialize from service (async safe)
     effect(() => {
-      this.selectedFamily.set(this.wheelConfigurator.fontFamily());
+      const current = this.wheelConfigurator.fontFamily();
+      this.internalSelected.set(current);
     });
   }
+
 
   onSelect(family: string) {
     const opt = this.availableFonts.find(f => f.family === family);
