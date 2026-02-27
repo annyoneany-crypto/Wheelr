@@ -352,9 +352,6 @@ export class WheelConfigurator {
     this.winner.set(null);
     if (this.fireAnimationId()) cancelAnimationFrame(this.fireAnimationId()!);
 
-    const durationMs = Math.floor(2000 + Math.random() * 2000); // 2000..4000
-    this.spinDurationMs.set(durationMs);
-
     const extraDegrees = Math.floor(Math.random() * 360);
     const totalRotation = this.currentRotation() + (360 * 6) + extraDegrees;
     this.currentRotation.set(totalRotation);
@@ -365,7 +362,7 @@ export class WheelConfigurator {
       let adjustedRotation = (normalizedRotation - 90 + 360) % 360;
       const winningIndex = Math.floor(adjustedRotation / (360 / this.names().length));
       this.winner.set(this.names()[winningIndex]);
-    }, durationMs);
+    }, this.spinDurationMs());
   }
 
   shuffleNames(): void {
