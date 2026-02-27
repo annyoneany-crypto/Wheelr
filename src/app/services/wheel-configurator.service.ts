@@ -7,6 +7,7 @@ const STORAGE_KEYS = {
   bgColor: 'giveawayWheel.bgColor',
   bgImage: 'giveawayWheel.bgImage',
   centerImage: 'giveawayWheel.centerImage',
+  centerLogoSize: 'giveawayWheel.centerLogoSize',
 } as const;
 
 const DEFAULT_PALETTES: ColorPalette[] = [
@@ -45,6 +46,7 @@ export class WheelConfigurator {
 
   names = signal<string[]>([]);
   centerImage = signal<string>('');
+  centerLogoSize = signal<'s' | 'm' | 'l' | 'xl'>('m');
   bgColor = signal<string>('#000'); 
   bgImage = signal<string>('');
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
@@ -70,6 +72,7 @@ export class WheelConfigurator {
     const storedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
     const storedBgImage = readJson<string>(STORAGE_KEYS.bgImage);
     const storedCenterImage = readJson<string>(STORAGE_KEYS.centerImage);
+    const storedCenterLogoSize = readJson<string>(STORAGE_KEYS.centerLogoSize);
 
     if (Array.isArray(storedPalettes) && storedPalettes.length) {
       // Merge defaults (new app versions) with stored palettes (including custom ones)
@@ -93,6 +96,15 @@ export class WheelConfigurator {
 
     if (typeof storedCenterImage === 'string') {
       this.centerImage.set(storedCenterImage);
+    }
+
+    if (
+      storedCenterLogoSize === 's' ||
+      storedCenterLogoSize === 'm' ||
+      storedCenterLogoSize === 'l' ||
+      storedCenterLogoSize === 'xl'
+    ) {
+      this.centerLogoSize.set(storedCenterLogoSize);
     }
 
     const palettes = this.palettes();
@@ -128,6 +140,10 @@ export class WheelConfigurator {
 
     effect(() => {
       writeJson(STORAGE_KEYS.centerImage, this.centerImage());
+    });
+
+    effect(() => {
+      writeJson(STORAGE_KEYS.centerLogoSize, this.centerLogoSize());
     });
 
     effect(() => {

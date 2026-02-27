@@ -3,6 +3,63 @@
     Central Logo
   </label>
 
+  <div class="flex items-center justify-between gap-2 mb-2">
+    <span class="text-xs font-semibold uppercase tracking-wider text-neutral-300">Grandezza</span>
+    <div class="flex gap-2">
+      <button
+        type="button"
+        (click)="wheelConfigurator.centerLogoSize.set('s')"
+        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 's'"
+        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 's'"
+        [class.text-white]="wheelConfigurator.centerLogoSize() === 's'"
+        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 's'"
+        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 's'"
+        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 's'">
+        S
+      </button>
+
+      <button
+        type="button"
+        (click)="wheelConfigurator.centerLogoSize.set('m')"
+        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'm'"
+        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'm'"
+        [class.text-white]="wheelConfigurator.centerLogoSize() === 'm'"
+        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'm'"
+        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'm'"
+        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'm'">
+        M
+      </button>
+
+      <button
+        type="button"
+        (click)="wheelConfigurator.centerLogoSize.set('l')"
+        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'l'"
+        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'l'"
+        [class.text-white]="wheelConfigurator.centerLogoSize() === 'l'"
+        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'l'"
+        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'l'"
+        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'l'">
+        L
+      </button>
+
+      <button
+        type="button"
+        (click)="wheelConfigurator.centerLogoSize.set('xl')"
+        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xl'"
+        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xl'"
+        [class.text-white]="wheelConfigurator.centerLogoSize() === 'xl'"
+        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'xl'"
+        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'xl'"
+        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'xl'">
+        XL
+      </button>
+    </div>
+  </div>
+
   <button
     type="button"
     (click)="fileInput.click()"
