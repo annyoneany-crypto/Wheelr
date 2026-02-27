@@ -10,6 +10,8 @@ const STORAGE_KEYS = {
   centerLogoSize: 'giveawayWheel.centerLogoSize',
   spinDurationMs: 'giveawayWheel.spinDurationMs',
   wheelView: 'giveawayWheel.wheelView',
+  soundEnabled: 'giveawayWheel.soundEnabled',
+  customAudio: 'giveawayWheel.customAudio',
 } as const;
 
 const DEFAULT_PALETTES: ColorPalette[] = [
@@ -138,6 +140,15 @@ export class WheelConfigurator {
   canvasRef = signal<ElementRef<HTMLCanvasElement> | undefined>(undefined)
   ctx = signal<CanvasRenderingContext2D | undefined>(undefined)
 
+  soundEnabled = signal<boolean>(true);
+  customAudio = signal<string>('');
+  private audioElement: HTMLAudioElement | undefined;
+
+  setCustomAudio(audioData: string) {
+    this.customAudio.set(audioData);
+    writeImage(STORAGE_KEYS.customAudio, audioData).catch(() => {});
+  }
+
   pointerSliceIndex = computed(() => {
     const n = this.names().length;
     if (!n) return 0;
@@ -261,6 +272,17 @@ export class WheelConfigurator {
     if (typeof storedSpinDurationMs === 'number' && storedSpinDurationMs > 0) {
       this.spinDurationMs.set(storedSpinDurationMs);
     }
+
+    // Hydrate sound settings
+    const storedSoundEnabled = readJson<boolean>(STORAGE_KEYS.soundEnabled);
+    if (typeof storedSoundEnabled === 'boolean') {
+      this.soundEnabled.set(storedSoundEnabled);
+    }
+
+    const storedCustomAudio = await readImage(STORAGE_KEYS.customAudio);
+    if (storedCustomAudio) {
+      this.customAudio.set(storedCustomAudio);
+    }
   }
 
   private setupPersistence(): void {
@@ -310,6 +332,18 @@ export class WheelConfigurator {
       const stillExists = palettes.some(p => p.name === selectedName);
       if (!stillExists && palettes.length) {
         this.selectedPalette.set(palettes[0]);
+      }
+    });
+
+    // Persist sound settings
+    effect(() => {
+      writeJson(STORAGE_KEYS.soundEnabled, this.soundEnabled());
+    });
+
+    effect(() => {
+      const audio = this.customAudio();
+      if (audio && audio.length) {
+        writeImage(STORAGE_KEYS.customAudio, audio).catch(() => {});
       }
     });
   }
@@ -363,6 +397,11 @@ export class WheelConfigurator {
     this.winner.set(null);
     if (this.fireAnimationId()) cancelAnimationFrame(this.fireAnimationId()!);
 
+    // Play audio if enabled
+    if (this.soundEnabled() && this.customAudio()) {
+      this.playSpinAudio();
+    }
+
     const extraDegrees = Math.floor(Math.random() * 360);
     const totalRotation = this.currentRotation() + (360 * 6) + extraDegrees;
     this.currentRotation.set(totalRotation);
@@ -374,6 +413,24 @@ export class WheelConfigurator {
       const winningIndex = Math.floor(adjustedRotation / (360 / this.names().length));
       this.winner.set(this.names()[winningIndex]);
     }, this.spinDurationMs());
+  }
+
+  private playSpinAudio(): void {
+    try {
+      // If audio element already exists, stop it
+      if (this.audioElement) {
+        this.audioElement.pause();
+        this.audioElement.currentTime = 0;
+      }
+
+      // Create and play new audio element
+      this.audioElement = new Audio(this.customAudio());
+      this.audioElement.play().catch(() => {
+        // Ignore errors (e.g., autoplay policy)
+      });
+    } catch (e) {
+      console.warn('Failed to play spin audio', e);
+    }
   }
 
   shuffleNames(): void {

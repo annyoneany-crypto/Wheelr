@@ -14,6 +14,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/wl-settings/effects/effects').then((x) => x.Effects)
     },
     {
+        path: 'sound',
+        loadComponent: () => import('./feature/wl-settings/sound/sound').then((x) => x.Sound)
+    },
+    {
         path: '**',
         redirectTo: 'users'
     }
