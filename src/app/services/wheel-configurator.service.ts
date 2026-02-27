@@ -38,6 +38,52 @@ function writeJson(key: string, value: unknown): void {
   }
 }
 
+// Helpers for storing images in IndexedDB instead of localStorage
+function openDb(): Promise<IDBDatabase> {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open('giveawayWheel', 1);
+    request.onupgradeneeded = () => {
+      const db = request.result;
+      if (!db.objectStoreNames.contains('images')) {
+        debugger;
+        db.createObjectStore('images');
+      }
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+async function writeImage(key: string, data: string): Promise<void> {
+  try {
+    const db = await openDb();
+    await new Promise<void>((res, rej) => {
+      const tx = db.transaction('images', 'readwrite');
+      const store = tx.objectStore('images');
+      const req = store.put(data, key);
+      req.onsuccess = () => res();
+      req.onerror = () => rej(req.error);
+    });
+  } catch {
+    // ignore failures
+  }
+}
+
+async function readImage(key: string): Promise<string | undefined> {
+  try {
+    const db = await openDb();
+    return await new Promise<string | undefined>((res, rej) => {
+      const tx = db.transaction('images', 'readonly');
+      const store = tx.objectStore('images');
+      const req = store.get(key);
+      req.onsuccess = () => res(req.result as string | undefined);
+      req.onerror = () => rej(req.error);
+    });
+  } catch {
+    return undefined;
+  }
+}
+
 function clampDeg(deg: number): number {
   const m = deg % 360;
   return (m + 360) % 360;
@@ -71,6 +117,12 @@ export class WheelConfigurator {
   names = signal<string[]>([]);
   centerImage = signal<string>('');
   centerLogoSize = signal<'s' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'>('m');
+
+  // use method to ensure persistence immediately
+  setCenterLogoSize(size: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl') {
+    this.centerLogoSize.set(size);
+    writeJson(STORAGE_KEYS.centerLogoSize, size);
+  }
   bgColor = signal<string>('#000'); 
   bgImage = signal<string>('');
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
@@ -111,9 +163,12 @@ export class WheelConfigurator {
   });
 
   constructor() {
-    this.hydrateFromStorage();
+    // ensure storage hydration completes before other effects start
+    this.hydrateFromStorage().then(() => {
+      this.startIdleRotation();
+    });
+
     this.setupPersistence();
-    this.startIdleRotation();
   }
 
   private startIdleRotation(): void {
@@ -135,13 +190,15 @@ export class WheelConfigurator {
     requestAnimationFrame(tick);
   }
 
-  private hydrateFromStorage(): void {
+  private async hydrateFromStorage(): Promise<void> {
     const storedPalettes = readJson<ColorPalette[]>(STORAGE_KEYS.palettes);
     const storedSelectedName = readJson<string>(STORAGE_KEYS.selectedPaletteName);
     const storedNames = readJson<string[]>(STORAGE_KEYS.names);
     const storedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
-    const storedBgImage = readJson<string>(STORAGE_KEYS.bgImage);
-    const storedCenterImage = readJson<string>(STORAGE_KEYS.centerImage);
+
+    let storedBgImage = await readImage(STORAGE_KEYS.bgImage);
+    let storedCenterImage = await readImage(STORAGE_KEYS.centerImage);
+
     const storedCenterLogoSize = readJson<string>(STORAGE_KEYS.centerLogoSize);
     const storedWheelView = readJson<string>(STORAGE_KEYS.wheelView);
 
@@ -165,7 +222,7 @@ export class WheelConfigurator {
       this.bgImage.set(storedBgImage);
     }
 
-    if (typeof storedCenterImage === 'string') {
+    if (storedCenterImage) {
       this.centerImage.set(storedCenterImage);
     }
 
@@ -177,7 +234,13 @@ export class WheelConfigurator {
       storedCenterLogoSize === 'xxl' ||
       storedCenterLogoSize === 'xxxl'
     ) {
-      this.centerLogoSize.set(storedCenterLogoSize);
+      console.debug('hydrated centerLogoSize', storedCenterLogoSize);
+      // only override if user hasn't already changed size during hydration
+      if (this.centerLogoSize() === 'm') {
+        this.centerLogoSize.set(storedCenterLogoSize);
+      }
+    } else {
+      console.debug('no valid centerLogoSize in storage, defaulting', storedCenterLogoSize);
     }
 
     if (storedWheelView === 'wheel' || storedWheelView === 'linear') {
@@ -211,16 +274,19 @@ export class WheelConfigurator {
       writeJson(STORAGE_KEYS.bgColor, this.bgColor());
     });
 
+    // persist images to IndexedDB rather than localStorage
     effect(() => {
-      writeJson(STORAGE_KEYS.bgImage, this.bgImage());
+      const img = this.bgImage();
+      if (img && img.length) {
+        writeImage(STORAGE_KEYS.bgImage, img).catch(() => {});
+      }
     });
 
     effect(() => {
-      writeJson(STORAGE_KEYS.centerImage, this.centerImage());
-    });
-
-    effect(() => {
-      writeJson(STORAGE_KEYS.centerLogoSize, this.centerLogoSize());
+      const img = this.centerImage();
+      if (img && img.length) {
+        writeImage(STORAGE_KEYS.centerImage, img).catch(() => {});
+      }
     });
 
     effect(() => {

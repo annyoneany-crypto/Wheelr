@@ -16,7 +16,7 @@ export class FireEffect implements IWinnerEffect {
   private fireParticles: any[] = [];
   private starting = false;
 
-  ngAfterViewInit(): void {
+  constructor() {
     effect(() => {
       const winner = this.wheelConfigurator.winner();
       const runningId = this.wheelConfigurator.fireAnimationId();

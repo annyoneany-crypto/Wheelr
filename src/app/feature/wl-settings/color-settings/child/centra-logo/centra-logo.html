@@ -6,7 +6,7 @@
   <div class="flex items-center justify-end gap-2 mb-2">
       <button
         type="button"
-        (click)="wheelConfigurator.centerLogoSize.set('s')"
+        (click)="wheelConfigurator.setCenterLogoSize('s')"
         class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
         [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 's'"
         [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 's'"
@@ -19,7 +19,7 @@
 
       <button
         type="button"
-        (click)="wheelConfigurator.centerLogoSize.set('m')"
+        (click)="wheelConfigurator.setCenterLogoSize('m')"
         class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
         [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'm'"
         [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'm'"
@@ -32,7 +32,7 @@
 
       <button
         type="button"
-        (click)="wheelConfigurator.centerLogoSize.set('l')"
+        (click)="wheelConfigurator.setCenterLogoSize('l')"
         class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
         [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'l'"
         [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'l'"
@@ -45,7 +45,7 @@
 
       <button
         type="button"
-        (click)="wheelConfigurator.centerLogoSize.set('xl')"
+        (click)="wheelConfigurator.setCenterLogoSize('xl')"
         class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
         [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xl'"
         [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xl'"
@@ -58,7 +58,7 @@
 
       <button
         type="button"
-        (click)="wheelConfigurator.centerLogoSize.set('xxl')"
+        (click)="wheelConfigurator.setCenterLogoSize('xxl')"
         class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
         [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xxl'"
         [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xxl'"
@@ -71,8 +71,7 @@
 
       <button
         type="button"
-        (click)="wheelConfigurator.centerLogoSize.set('xxxl')"
-        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        (click)="wheelConfigurator.setCenterLogoSize('xxxl')"        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
         [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xxxl'"
         [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xxxl'"
         [class.text-white]="wheelConfigurator.centerLogoSize() === 'xxxl'"
