@@ -20,4 +20,26 @@ describe('Users', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('addRepeated should append the given name multiple times', () => {
+    component.newName.set('Alice');
+    component.repeatCount.set(3);
+    component.addRepeated();
+
+    const names = component.wheelConfigurator.names();
+    expect(names.length).toBe(3);
+    expect(names).toEqual(['Alice', 'Alice', 'Alice']);
+  });
+
+  it('addRepeated ignores empty name and enforces minimum count', () => {
+    component.newName.set('   ');
+    component.repeatCount.set(5);
+    component.addRepeated();
+    expect(component.wheelConfigurator.names().length).toBe(0);
+
+    component.newName.set('Bob');
+    component.repeatCount.set(0);
+    component.addRepeated();
+    expect(component.wheelConfigurator.names()).toEqual(['Bob']);
+  });
 });
