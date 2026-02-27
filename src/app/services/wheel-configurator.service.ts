@@ -8,6 +8,7 @@ const STORAGE_KEYS = {
   bgImage: 'giveawayWheel.bgImage',
   centerImage: 'giveawayWheel.centerImage',
   centerLogoSize: 'giveawayWheel.centerLogoSize',
+  spinDurationMs: 'giveawayWheel.spinDurationMs',
   wheelView: 'giveawayWheel.wheelView',
 } as const;
 
@@ -193,6 +194,7 @@ export class WheelConfigurator {
   private async hydrateFromStorage(): Promise<void> {
     const storedPalettes = readJson<ColorPalette[]>(STORAGE_KEYS.palettes);
     const storedSelectedName = readJson<string>(STORAGE_KEYS.selectedPaletteName);
+    const storedSpinDurationMs = readJson<number>(STORAGE_KEYS.spinDurationMs);
     const storedNames = readJson<string[]>(STORAGE_KEYS.names);
     const storedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
 
@@ -255,6 +257,10 @@ export class WheelConfigurator {
     if (selected) {
       this.selectedPalette.set(selected);
     }
+
+    if (typeof storedSpinDurationMs === 'number' && storedSpinDurationMs > 0) {
+      this.spinDurationMs.set(storedSpinDurationMs);
+    }
   }
 
   private setupPersistence(): void {
@@ -264,6 +270,11 @@ export class WheelConfigurator {
 
     effect(() => {
       writeJson(STORAGE_KEYS.selectedPaletteName, this.selectedPalette().name);
+      this.spinDurationMs();
+    });
+
+    effect(() => {
+      writeJson(STORAGE_KEYS.spinDurationMs, this.spinDurationMs());
     });
 
     effect(() => {
