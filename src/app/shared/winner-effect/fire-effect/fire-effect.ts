@@ -1,5 +1,7 @@
 import { Component, effect, ElementRef, inject, viewChild } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
+import type { IWinnerEffect } from '../../../modules/interface/IWinnerEffect';
+import type { effectType } from '../../../modules/classes/custom-type';
 
 @Component({
   selector: 'wl-fire-effect',

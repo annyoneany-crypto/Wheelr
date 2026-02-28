@@ -1,1 +1,1 @@
-type effectType = 'fire' | 'bounce';
+export type effectType = 'fire' | 'bounce';

@@ -438,7 +438,9 @@ export class WheelConfigurator {
       return;
     }
 
-    if (this.countdownEnabled() && this.countdownStart() > 0 && this.countdownAudio()) {
+    // countdown audio should be optional – we only play it if configured but
+    // the countdown itself is controlled by the enabled flag & start value.
+    if (this.countdownEnabled() && this.countdownStart() > 0) {
       this.countdownInProgress.set(true);
       // run countdown then perform the actual spin
       this.runCountdown().then(() => {
@@ -484,7 +486,8 @@ export class WheelConfigurator {
   /**
    * Runs a simple numeric countdown from `countdownStart` down to 0. Each
    * step waits one second and updates `currentCountdown` signal so the UI
-   * can render the value. Resolves when complete.
+   * can render the value. Resolves when complete.  Note that audio playback is
+   * entirely optional, the countdown still runs with or without a sound value.
    */
   private runCountdown(): Promise<void> {
     return new Promise(resolve => {
