@@ -59,7 +59,7 @@
       <button
         type="button"
         (click)="wheelConfigurator.setCenterLogoSize('xxl')"
-        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors hidden lg:block"
         [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xxl'"
         [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xxl'"
         [class.text-white]="wheelConfigurator.centerLogoSize() === 'xxl'"
@@ -71,7 +71,8 @@
 
       <button
         type="button"
-        (click)="wheelConfigurator.setCenterLogoSize('xxxl')"        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
+        (click)="wheelConfigurator.setCenterLogoSize('xxxl')"        
+        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors hidden lg:block"
         [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xxxl'"
         [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xxxl'"
         [class.text-white]="wheelConfigurator.centerLogoSize() === 'xxxl'"
