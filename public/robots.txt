@@ -1,0 +1,23 @@
+# Allow search engines to crawl the website
+User-agent: *
+Allow: /
+Disallow: /api/private/
+
+# Sitemap location
+Sitemap: https://giveawaywheel.app/sitemap.xml
+
+# Crawl delay in seconds
+Crawl-delay: 1
+
+# Specific rules for common crawlers
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
