@@ -40,11 +40,15 @@
   }
 </div>
 
+@if(showPanelSettings()){
+  <div class="fixed inset-0 bg-black/60 pointer-events-none z-49"></div>
+}
+
 <div class="fixed top-28 
   w-12 h-12 rounded-full 
   border border-white/10 bg-neutral-800
   flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out"
+  transition-all duration-300 ease-in-out z-50"
   [class.right-8]="!showPanelSettings()" 
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
