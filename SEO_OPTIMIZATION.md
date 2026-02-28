@@ -45,7 +45,43 @@
 
 ## Additional Recommendations
 
-### Configuration for Angular Production Build
+### LCP (Largest Contentful Paint) Optimization
+
+**Current Optimizations Implemented:**
+- ✅ Preload critical resources (Logo, Google Fonts)
+- ✅ Preconnect to external domains (fontawesome, googleapis)
+- ✅ DNS prefetch for CDN
+- ✅ Async/defer Font Awesome script
+- ✅ Angular production build optimizations:
+  - Source map disabled
+  - Code minification enabled
+  - Named chunks disabled
+  - Vendor chunk separation
+  - Build optimizer enabled
+
+**Further LCP Improvements:**
+- Implement image optimization (WEBP format with fallbacks)
+- Use a CDN for static assets
+- Implement service worker caching strategy
+- Consider removing unused CSS/JavaScript
+- Lazy load non-critical components
+- Optimize Google Fonts loading (subset fonts to used characters)
+
+### Build Command for Production
+```bash
+ng build --configuration production
+```
+
+Verify optimization with:
+```bash
+ls -lh dist/giveaway-wheel/browser/
+```
+
+### Core Web Vitals Checklist
+- **LCP** (Largest Contentful Paint) < 2.5s
+- **FID** (First Input Delay) < 100ms  
+- **CLS** (Cumulative Layout Shift) < 0.1
+
 Add to `angular.json` build options:
 ```json
 {
@@ -109,11 +145,18 @@ location ~* \\.html$ {
 ### Google PageSpeed Insights
 Check performance at: https://pagespeed.web.dev/
 
-Recommendations:
-- Minify CSS/JavaScript
-- Optimize images
-- Implement lazy loading for non-critical resources
-- Use CDN for static assets
+Optimized recommendations implemented:
+- ✅ Preload critical resources (Logo.png, Google Fonts)
+- ✅ Preconnect to external domains
+- ✅ Font Awesome script with async/defer
+- ✅ Angular production build optimization
+
+Additional improvements to achieve higher Performance score:
+- Implement image lazy loading for responsive images
+- Use next-gen image formats (WEBP) with fallbacks
+- Remove unused CSS via Tailwind JIT
+- Code split components for faster initial load
+- Implement service worker for offline caching
 
 ### Schema.org Keywords for Easy Search
 The application now includes metadata for:

@@ -29,6 +29,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#1a1a1a">
   <link rel="canonical" href="https://wheelr.vercel.app/">
+  
+  <!-- Performance: Preload critical resources -->
+  <link rel="preload" as="image" href="/Logo.png" type="image/png">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap">
+  
+  <!-- Performance: Preconnect to external domains -->
+  <link rel="preconnect" href="https://kit.fontawesome.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+  
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link rel="apple-touch-icon" href="/Logo.png">
   
@@ -58,7 +68,7 @@
   }
   </script>
   
-  <script src="https://kit.fontawesome.com/5e73418789.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/5e73418789.js" crossorigin="anonymous" async defer></script>
 </head>
 <body>
   <app-root></app-root>
