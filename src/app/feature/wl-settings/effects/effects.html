@@ -34,5 +34,34 @@
       </button>
     </div>
   </div>
+
+  <!-- countdown configuration -->
+  <div class="space-y-2 mt-4">
+    <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+      Countdown
+    </div>
+    <div class="flex items-center gap-2">
+      <input
+        id="countdownToggle"
+        type="checkbox"
+        [checked]="wheelConfigurator.countdownEnabled()"
+        (change)="wheelConfigurator.setCountdownEnabled($any($event.target).checked)"
+        class="h-4 w-4"
+      />
+      <label for="countdownToggle" class="text-sm text-neutral-200">Enable countdown</label>
+    </div>
+    @if (wheelConfigurator.countdownEnabled()) {
+      <div class="flex items-center gap-2">
+        <label class="text-sm text-neutral-200">Start from</label>
+        <input
+          type="number"
+          min="1"
+          [value]="wheelConfigurator.countdownStart()"
+          (input)="wheelConfigurator.setCountdownStart($any($event.target).valueAsNumber)"
+          class="w-16 p-1 rounded bg-neutral-800 text-white text-center"
+        />
+      </div>
+    }
+  </div>
 </div>
 

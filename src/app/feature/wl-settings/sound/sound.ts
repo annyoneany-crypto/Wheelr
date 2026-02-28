@@ -74,4 +74,31 @@ export class Sound {
   clearWinnerAudio(): void {
     this.wheelConfigurator.setWinnerAudio('');
   }
+
+  /**
+   * Handle countdown audio file selection.
+   */
+  onCountdownAudioFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement | null;
+    const file = input?.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith('audio/')) {
+      console.warn('Selected file is not audio', file.type);
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (e: ProgressEvent<FileReader>) => {
+      const result = e.target?.result;
+      if (typeof result === 'string') {
+        this.wheelConfigurator.setCountdownAudio(result);
+      }
+    };
+    reader.readAsDataURL(file);
+  }
+
+  clearCountdownAudio(): void {
+    this.wheelConfigurator.setCountdownAudio('');
+  }
 }

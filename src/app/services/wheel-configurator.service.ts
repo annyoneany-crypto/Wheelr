@@ -13,6 +13,9 @@ const STORAGE_KEYS = {
   soundEnabled: 'giveawayWheel.soundEnabled',
   customAudio: 'giveawayWheel.customAudio',
   winnerAudio: 'giveawayWheel.winnerAudio',
+  countdownAudio: 'giveawayWheel.countdownAudio',
+  countdownEnabled: 'giveawayWheel.countdownEnabled',
+  countdownStart: 'giveawayWheel.countdownStart',
   fontFamily: 'giveawayWheel.fontFamily',
   fontLink: 'giveawayWheel.fontLink',
 } as const;
@@ -177,8 +180,21 @@ export class WheelConfigurator {
   soundEnabled = signal<boolean>(true);
   customAudio = signal<string>('');
   winnerAudio = signal<string>('');
+  countdownAudio = signal<string>('');
   private audioElement: HTMLAudioElement | undefined;
   private winnerAudioElement: HTMLAudioElement | undefined;
+  private countdownAudioElement: HTMLAudioElement | undefined;
+
+  // countdown configuration
+  countdownEnabled = signal<boolean>(false);
+  countdownStart = signal<number>(3);
+  // internal state while running a countdown
+  currentCountdown = signal<number | null>(null);
+  // used to restart animation on each tick
+  countdownToggle = signal<boolean>(false);
+  // prevent overlapping countdowns/spins
+  countdownInProgress = signal<boolean>(false);
+
 
   setCustomAudio(audioData: string) {
     this.customAudio.set(audioData);
@@ -188,6 +204,18 @@ export class WheelConfigurator {
   setWinnerAudio(audioData: string) {
     this.winnerAudio.set(audioData);
     writeImage(STORAGE_KEYS.winnerAudio, audioData).catch(() => {});
+  }
+
+  setCountdownAudio(audioData: string) {
+    this.countdownAudio.set(audioData);
+    if (!audioData) {
+      // clear previously created element
+      if (this.countdownAudioElement) {
+        this.countdownAudioElement.pause();
+        this.countdownAudioElement = undefined;
+      }
+    }
+    writeImage(STORAGE_KEYS.countdownAudio, audioData).catch(() => {});
   }
 
   pointerSliceIndex = computed(() => {
@@ -331,6 +359,10 @@ export class WheelConfigurator {
     if (storedWinnerAudio) {
       this.winnerAudio.set(storedWinnerAudio);
     }
+    const storedCountdownAudio = await readImage(STORAGE_KEYS.countdownAudio);
+    if (storedCountdownAudio) {
+      this.countdownAudio.set(storedCountdownAudio);
+    }
 
     // Hydrate font preferences
     if (typeof storedFontFamily === 'string' && storedFontFamily.length) {
@@ -342,6 +374,16 @@ export class WheelConfigurator {
     } else if (this.fontLink()) {
       // no stored link but we have a default; make sure it gets injected
       this.loadGoogleFont(this.fontLink());
+    }
+
+    // Hydrate countdown settings
+    const storedCountdownEnabled = readJson<boolean>(STORAGE_KEYS.countdownEnabled);
+    if (typeof storedCountdownEnabled === 'boolean') {
+      this.countdownEnabled.set(storedCountdownEnabled);
+    }
+    const storedCountdownStart = readJson<number>(STORAGE_KEYS.countdownStart);
+    if (typeof storedCountdownStart === 'number' && storedCountdownStart >= 0) {
+      this.countdownStart.set(Math.floor(storedCountdownStart));
     }
   }
 
@@ -425,6 +467,13 @@ export class WheelConfigurator {
         writeImage(STORAGE_KEYS.winnerAudio, audio).catch(() => {});
       }
     });
+
+    effect(() => {
+      const audio = this.countdownAudio();
+      if (audio && audio.length) {
+        writeImage(STORAGE_KEYS.countdownAudio, audio).catch(() => {});
+      }
+    });
   }
 
   clearImagesStorage(): void {
@@ -471,8 +520,35 @@ export class WheelConfigurator {
     });
   }
 
+  /**
+   * Public entrypoint invoked from the template when the wheel is clicked.
+   * If countdown is enabled, run it first before performing the spin.
+   */
   spinWheel() {
-    if (this.isSpinning() || this.names().length === 0) return;
+    if (
+      this.isSpinning() ||
+      this.countdownInProgress() ||
+      this.names().length === 0
+    ) {
+      return;
+    }
+
+    if (this.countdownEnabled() && this.countdownStart() > 0) {
+      this.countdownInProgress.set(true);
+      // run countdown then perform the actual spin
+      this.runCountdown().then(() => {
+        this.countdownInProgress.set(false);
+        this.performSpin();
+      });
+    } else {
+      this.performSpin();
+    }
+  }
+
+  /**
+   * Internal helper containing the logic that actually spins the wheel.
+   */
+  private performSpin() {
     this.isSpinning.set(true);
     this.winner.set(null);
     if (this.fireAnimationId()) cancelAnimationFrame(this.fireAnimationId()!);
@@ -498,6 +574,61 @@ export class WheelConfigurator {
         this.playWinnerAudio();
       }
     }, this.spinDurationMs());
+  }
+
+  /**
+   * Runs a simple numeric countdown from `countdownStart` down to 0. Each
+   * step waits one second and updates `currentCountdown` signal so the UI
+   * can render the value. Resolves when complete.
+   */
+  private runCountdown(): Promise<void> {
+    return new Promise(resolve => {
+      let value = this.countdownStart();
+      if (value <= 0) {
+        resolve();
+        return;
+      }
+
+      this.currentCountdown.set(value);
+      this.countdownToggle.update(v => !v);
+
+      // play countdown start sound once (if configured)
+      if (this.soundEnabled() && this.countdownAudio()) {
+        this.playCountdownAudio();
+      }
+
+      const tick = () => {
+        if (value <= 0) {
+          this.currentCountdown.set(null);
+          resolve();
+          return;
+        }
+        setTimeout(() => {
+          value = value - 1;
+          this.currentCountdown.set(value > 0 ? value : null);
+          this.countdownToggle.update(v => !v);
+          tick();
+        }, 1000);
+      };
+      tick();
+    });
+  }
+
+  /**
+   * Update countdown enabled flag and persist it.
+   */
+  setCountdownEnabled(enabled: boolean) {
+    this.countdownEnabled.set(enabled);
+    writeJson(STORAGE_KEYS.countdownEnabled, enabled);
+  }
+
+  /**
+   * Update the start number for countdown and persist it.
+   */
+  setCountdownStart(start: number) {
+    const n = Math.max(0, Math.floor(start));
+    this.countdownStart.set(n);
+    writeJson(STORAGE_KEYS.countdownStart, n);
   }
 
   private playSpinAudio(): void {
@@ -533,6 +664,19 @@ export class WheelConfigurator {
       });
     } catch (e) {
       console.warn('Failed to play winner audio', e);
+    }
+  }
+
+  private playCountdownAudio(): void {
+    try {
+      if (this.countdownAudioElement) {
+        this.countdownAudioElement.pause();
+        this.countdownAudioElement.currentTime = 0;
+      }
+      this.countdownAudioElement = new Audio(this.countdownAudio());
+      this.countdownAudioElement.play().catch(() => {});
+    } catch (e) {
+      console.warn('Failed to play countdown audio', e);
     }
   }
 
