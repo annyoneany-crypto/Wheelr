@@ -2,6 +2,12 @@
 
 @import "tailwindcss";
 
+:root {
+    --bg-color: #1a1a1a;
+    --accent-color: #4a4a4a;
+    --hover-color: #666666;
+}
+
 /* Button */
 .primaryButton {
     @apply px-6 py-2 text-black bg-[#F59E0B] hover:cursor-pointer hover:bg-[#dd900aff] rounded-md font-semibold transition-all active:scale-95;
@@ -28,4 +34,36 @@
 
 .animate-countdown {
   animation: countdownPop 1s ease-out forwards;
+}
+
+/* 1. Standard CSS (Firefox e browser moderni) */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) transparent;
+}
+
+/* 2. Webkit Browsers (Chrome, Safari, Edge, Opera) */
+
+/* Larghezza della scrollbar */
+::-webkit-scrollbar {
+    width: 10px;               /* Per scrollbar verticali */
+    height: 10px;              /* Per scrollbar orizzontali */
+}
+
+/* Sfondo della traccia (Track) */
+::-webkit-scrollbar-track {
+    background: transparent;   /* Mantieni trasparente o usa var(--bg-color) */
+    border-radius: 10px;
+}
+
+/* La parte scorrevole (Thumb) */
+::-webkit-scrollbar-thumb {
+    background-color: var(--accent-color);
+    border-radius: 20px;       /* Rende la scrollbar tonda */
+    border: 2px solid var(--bg-color); /* Crea uno spazio intorno alla thumb */
+}
+
+/* Thumb al passaggio del mouse */
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--hover-color);
 }
