@@ -4,7 +4,7 @@ Allow: /
 Disallow: /api/private/
 
 # Sitemap location
-Sitemap: https://giveawaywheel.app/sitemap.xml
+Sitemap: https://wheelr.vercel.app/sitemap.xml
 
 # Crawl delay in seconds
 Crawl-delay: 1

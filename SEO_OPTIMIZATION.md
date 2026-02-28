@@ -96,9 +96,9 @@ location ~* \\.html$ {
 ```
 
 ### Google Search Console
-1. Add sitemap: https://giveawaywheel.app/sitemap.xml
+1. Add sitemap: https://wheelr.vercel.app/sitemap.xml
 2. Verify domain ownership
-3. Submit robots.txt: https://giveawaywheel.app/robots.txt
+3. Submit robots.txt: https://wheelr.vercel.app/robots.txt
 4. Monitor search performance and indexing
 
 ### Bing Webmaster Tools

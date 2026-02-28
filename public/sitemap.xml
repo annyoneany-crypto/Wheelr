@@ -2,23 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://giveawaywheel.app/</loc>
+    <loc>https://wheelr.vercel.app/</loc>
     <lastmod>2026-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://giveawaywheel.app/Logo.png</image:loc>
+      <image:loc>https://wheelr.vercel.app/Wheelr.png</image:loc>
       <image:title>GiveawayWheel Logo</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://giveawaywheel.app/features</loc>
+    <loc>https://wheelr.vercel.app/features</loc>
     <lastmod>2026-02-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://giveawaywheel.app/giveaways</loc>
+    <loc>https://wheelr.vercel.app/giveaways</loc>
     <lastmod>2026-02-28</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
