@@ -1,9 +1,23 @@
 <div class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-20 bg-neutral-800/60 backdrop-blur-md border-b border-white/10">
     <div class="flex gap-4">
         <img src="/Logo.png" alt="Logo" class="w-8 h-8">
-        <h1 class="text-3xl uppercase font-bold bg-linear-to-r to-[#8f5c05] from-[#F59E0B] bg-clip-text text-transparent">
-            Wheelr
-        </h1>
+        <div class="relative">
+          <!-- Animated glowing orbs container -->
+          <div class="absolute inset-0 animate-spin-slow" style="width: 140px; height: 60px;">
+            <!-- Red orb -->
+            <div class="absolute w-6 h-6 bg-red-500 rounded-full blur-xl" style="top: -10px; left: 10px; box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);"></div>
+            <!-- Yellow orb -->
+            <div class="absolute w-6 h-6 bg-yellow-400 rounded-full blur-xl" style="top: 10px; right: 20px; box-shadow: 0 0 20px rgba(250, 204, 21, 0.8);"></div>
+            <!-- Blue orb -->
+            <div class="absolute w-5 h-5 bg-blue-500 rounded-full blur-xl" style="bottom: 5px; left: 0px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);"></div>
+            <!-- Purple orb -->
+            <div class="absolute w-6 h-6 bg-purple-500 rounded-full blur-xl" style="top: 5px; right: 5px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);"></div>
+          </div>
+          <!-- Text -->
+          <h1 class="relative z-10 text-3xl uppercase font-bold text-white">
+              Wheelr
+          </h1>
+        </div>
     </div>
     <!-- <i class="fa-solid fa-sun"></i> -->
     <div class="flex gap-4 items-center justify-center">
