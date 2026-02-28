@@ -208,14 +208,7 @@ export class WheelConfigurator {
 
   setCountdownAudio(audioData: string) {
     this.countdownAudio.set(audioData);
-    if (!audioData) {
-      // clear previously created element
-      if (this.countdownAudioElement) {
-        this.countdownAudioElement.pause();
-        this.countdownAudioElement = undefined;
-      }
-    }
-    writeImage(STORAGE_KEYS.countdownAudio, audioData).catch(() => {});
+    // Pre-load is handled by effect() in setupPersistence()
   }
 
   pointerSliceIndex = computed(() => {
@@ -472,6 +465,19 @@ export class WheelConfigurator {
       const audio = this.countdownAudio();
       if (audio && audio.length) {
         writeImage(STORAGE_KEYS.countdownAudio, audio).catch(() => {});
+        // Pre-load countdown audio for instant playback
+        try {
+          this.countdownAudioElement = new Audio(audio);
+          this.countdownAudioElement.preload = 'auto';
+        } catch (e) {
+          console.warn('Failed to pre-load countdown audio', e);
+        }
+      } else {
+        // clear audio element if audio is empty
+        if (this.countdownAudioElement) {
+          this.countdownAudioElement.pause();
+          this.countdownAudioElement = undefined;
+        }
       }
     });
   }
@@ -533,7 +539,7 @@ export class WheelConfigurator {
       return;
     }
 
-    if (this.countdownEnabled() && this.countdownStart() > 0) {
+    if (this.countdownEnabled() && this.countdownStart() > 0 && this.countdownAudio()) {
       this.countdownInProgress.set(true);
       // run countdown then perform the actual spin
       this.runCountdown().then(() => {
@@ -670,11 +676,10 @@ export class WheelConfigurator {
   private playCountdownAudio(): void {
     try {
       if (this.countdownAudioElement) {
-        this.countdownAudioElement.pause();
+        // reuse pre-loaded element
         this.countdownAudioElement.currentTime = 0;
+        this.countdownAudioElement.play().catch(() => {});
       }
-      this.countdownAudioElement = new Audio(this.countdownAudio());
-      this.countdownAudioElement.play().catch(() => {});
     } catch (e) {
       console.warn('Failed to play countdown audio', e);
     }
