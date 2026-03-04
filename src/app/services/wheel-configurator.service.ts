@@ -12,10 +12,28 @@ import {
   ColorPalette,
 } from './global_function';
 
+export interface WheelWorkspaceMeta {
+  id: string;
+  name: string;
+  description: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class WheelConfigurator {
+  private readonly wheelListStorageKey = 'giveawayWheel.workspaces';
+  private readonly activeWheelStorageKey = 'giveawayWheel.activeWorkspaceId';
+
+  wheelWorkspaces = signal<WheelWorkspaceMeta[]>([]);
+  activeWheelId = signal<string>('');
+  activeWheel = computed(() => {
+    const id = this.activeWheelId();
+    return this.wheelWorkspaces().find((workspace) => workspace.id === id) ?? null;
+  });
+
   showModal = signal(false);
 
   wheelView = signal<'wheel' | 'linear'>('wheel');
@@ -29,7 +47,7 @@ export class WheelConfigurator {
   // use method to ensure persistence immediately
   setCenterLogoSize(size: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl') {
     this.centerLogoSize.set(size);
-    writeJson(STORAGE_KEYS.centerLogoSize, size);
+    writeJson(this.storageKey(STORAGE_KEYS.centerLogoSize), size);
   }
 
   // font configuration for wheel text
@@ -42,11 +60,11 @@ export class WheelConfigurator {
    */
   setFontFamily(family: string, linkHref?: string): void {
     this.fontFamily.set(family);
-    writeJson(STORAGE_KEYS.fontFamily, family);
+    writeJson(this.storageKey(STORAGE_KEYS.fontFamily), family);
 
     if (linkHref) {
       this.fontLink.set(linkHref);
-      writeJson(STORAGE_KEYS.fontLink, linkHref);
+      writeJson(this.storageKey(STORAGE_KEYS.fontLink), linkHref);
       this.loadGoogleFont(linkHref);
     }
   }
@@ -97,12 +115,12 @@ export class WheelConfigurator {
 
   setCustomAudio(audioData: string) {
     this.customAudio.set(audioData);
-    writeImage(STORAGE_KEYS.customAudio, audioData).catch(() => {});
+    writeImage(this.storageKey(STORAGE_KEYS.customAudio), audioData).catch(() => {});
   }
 
   setWinnerAudio(audioData: string) {
     this.winnerAudio.set(audioData);
-    writeImage(STORAGE_KEYS.winnerAudio, audioData).catch(() => {});
+    writeImage(this.storageKey(STORAGE_KEYS.winnerAudio), audioData).catch(() => {});
   }
 
   setCountdownAudio(audioData: string) {
@@ -136,12 +154,221 @@ export class WheelConfigurator {
   });
 
   constructor() {
-    // ensure storage hydration completes before other effects start
-    this.hydrateFromStorage().then(() => {
+    this.initializeWorkspaces().then(() => {
       this.startIdleRotation();
     });
 
     this.setupPersistence();
+  }
+
+  private storageKey(baseKey: string): string {
+    const workspaceId = this.activeWheelId() || 'default';
+    return `${baseKey}.${workspaceId}`;
+  }
+
+  private persistWorkspaceRegistry(): void {
+    writeJson(this.wheelListStorageKey, this.wheelWorkspaces());
+  }
+
+  private createWorkspaceId(): string {
+    if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+      return crypto.randomUUID();
+    }
+    return `wheel-${Date.now()}-${Math.floor(Math.random() * 100000)}`;
+  }
+
+  private async initializeWorkspaces(): Promise<void> {
+    const storedWorkspaces = readJson<WheelWorkspaceMeta[]>(this.wheelListStorageKey);
+    const validWorkspaces = Array.isArray(storedWorkspaces)
+      ? storedWorkspaces.filter((workspace) => !!workspace.id && !!workspace.name)
+      : [];
+
+    if (validWorkspaces.length === 0) {
+      const now = new Date().toISOString();
+      validWorkspaces.push({
+        id: 'default',
+        name: 'Ruota principale',
+        description: 'Ruota predefinita',
+        createdAt: now,
+        updatedAt: now,
+      });
+    }
+
+    this.wheelWorkspaces.set(validWorkspaces);
+    this.persistWorkspaceRegistry();
+
+    const storedActiveId = readJson<string>(this.activeWheelStorageKey);
+    const fallbackId = validWorkspaces[0]?.id ?? 'default';
+    const activeId =
+      storedActiveId && validWorkspaces.some((workspace) => workspace.id === storedActiveId)
+        ? storedActiveId
+        : fallbackId;
+
+    this.activeWheelId.set(activeId);
+    writeJson(this.activeWheelStorageKey, activeId);
+
+    await this.hydrateFromStorage();
+  }
+
+  async createWheelWorkspace(name: string, description: string): Promise<void> {
+    const normalizedName = name.trim();
+    if (!normalizedName) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+    const newWorkspace: WheelWorkspaceMeta = {
+      id: this.createWorkspaceId(),
+      name: normalizedName,
+      description: description.trim(),
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    this.wheelWorkspaces.update((workspaces) => [...workspaces, newWorkspace]);
+    this.persistWorkspaceRegistry();
+
+    await this.loadWheelWorkspace(newWorkspace.id);
+  }
+
+  async loadWheelWorkspace(workspaceId: string): Promise<void> {
+    if (!workspaceId || !this.wheelWorkspaces().some((workspace) => workspace.id === workspaceId)) {
+      return;
+    }
+
+    this.activeWheelId.set(workspaceId);
+    writeJson(this.activeWheelStorageKey, workspaceId);
+    await this.hydrateFromStorage();
+  }
+
+  renameWheelWorkspace(workspaceId: string, name: string, description: string): boolean {
+    const normalizedName = name.trim();
+    if (!workspaceId || !normalizedName) {
+      return false;
+    }
+
+    let changed = false;
+    const now = new Date().toISOString();
+    this.wheelWorkspaces.update((workspaces) =>
+      workspaces.map((workspace) => {
+        if (workspace.id !== workspaceId) {
+          return workspace;
+        }
+        changed = true;
+        return {
+          ...workspace,
+          name: normalizedName,
+          description: description.trim(),
+          updatedAt: now,
+        };
+      })
+    );
+
+    if (changed) {
+      this.persistWorkspaceRegistry();
+    }
+
+    return changed;
+  }
+
+  async deleteWheelWorkspace(workspaceId: string): Promise<boolean> {
+    const workspaces = this.wheelWorkspaces();
+    if (workspaces.length <= 1 || !workspaces.some((workspace) => workspace.id === workspaceId)) {
+      return false;
+    }
+
+    this.wheelWorkspaces.set(workspaces.filter((workspace) => workspace.id !== workspaceId));
+    this.persistWorkspaceRegistry();
+
+    this.clearWorkspaceStorage(workspaceId);
+    await this.clearWorkspaceIndexedDb(workspaceId);
+
+    if (this.activeWheelId() === workspaceId) {
+      const nextActiveId = this.wheelWorkspaces()[0]?.id ?? 'default';
+      await this.loadWheelWorkspace(nextActiveId);
+      return true;
+    }
+
+    return true;
+  }
+
+  private clearWorkspaceStorage(workspaceId: string): void {
+    const allKeys = Object.values(STORAGE_KEYS);
+    for (const key of allKeys) {
+      localStorage.removeItem(`${key}.${workspaceId}`);
+    }
+  }
+
+  private async clearWorkspaceIndexedDb(workspaceId: string): Promise<void> {
+    const mediaKeys = [
+      STORAGE_KEYS.bgImage,
+      STORAGE_KEYS.centerImage,
+      STORAGE_KEYS.customAudio,
+      STORAGE_KEYS.winnerAudio,
+      STORAGE_KEYS.countdownAudio,
+    ];
+
+    for (const key of mediaKeys) {
+      await this.deleteImage(`${key}.${workspaceId}`);
+    }
+  }
+
+  private async deleteImage(key: string): Promise<void> {
+    try {
+      const db = await openDb();
+      await new Promise<void>((resolve, reject) => {
+        const tx = db.transaction('images', 'readwrite');
+        const store = tx.objectStore('images');
+        const request = store.delete(key);
+        request.onsuccess = () => resolve();
+        request.onerror = () => reject(request.error);
+      });
+    } catch {
+      // ignore failures
+    }
+  }
+
+  private touchActiveWorkspace(): void {
+    const activeId = this.activeWheelId();
+    if (!activeId) return;
+
+    const now = new Date().toISOString();
+    this.wheelWorkspaces.update((workspaces) =>
+      workspaces.map((workspace) =>
+        workspace.id === activeId
+          ? {
+              ...workspace,
+              updatedAt: now,
+            }
+          : workspace
+      )
+    );
+    this.persistWorkspaceRegistry();
+  }
+
+  private resetStateForWorkspaceLoad(): void {
+    this.palettes.set(DEFAULT_PALETTES);
+    this.selectedPalette.set(DEFAULT_PALETTES[0]);
+    this.names.set([]);
+    this.bgColor.set('#000');
+    this.bgImage.set('');
+    this.centerImage.set('');
+    this.centerLogoSize.set('m');
+    this.wheelView.set('wheel');
+    this.spinDurationMs.set(3000);
+    this.soundEnabled.set(true);
+    this.customAudio.set('');
+    this.winnerAudio.set('');
+    this.countdownAudio.set('');
+    this.countdownEnabled.set(false);
+    this.countdownStart.set(3);
+    this.currentCountdown.set(null);
+    this.countdownToggle.set(false);
+    this.countdownInProgress.set(false);
+    this.fontFamily.set('"Inter", sans-serif');
+    this.fontLink.set('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    this.winner.set(null);
+    this.isSpinning.set(false);
   }
 
   private startIdleRotation(): void {
@@ -164,19 +391,21 @@ export class WheelConfigurator {
   }
 
   private async hydrateFromStorage(): Promise<void> {
-    const storedPalettes = readJson<ColorPalette[]>(STORAGE_KEYS.palettes);
-    const storedSelectedName = readJson<string>(STORAGE_KEYS.selectedPaletteName);
-    const storedSpinDurationMs = readJson<number>(STORAGE_KEYS.spinDurationMs);
-    const storedNames = readJson<string[]>(STORAGE_KEYS.names);
-    const storedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
+    this.resetStateForWorkspaceLoad();
 
-    let storedBgImage = await readImage(STORAGE_KEYS.bgImage);
-    let storedCenterImage = await readImage(STORAGE_KEYS.centerImage);
+    const storedPalettes = readJson<ColorPalette[]>(this.storageKey(STORAGE_KEYS.palettes));
+    const storedSelectedName = readJson<string>(this.storageKey(STORAGE_KEYS.selectedPaletteName));
+    const storedSpinDurationMs = readJson<number>(this.storageKey(STORAGE_KEYS.spinDurationMs));
+    const storedNames = readJson<string[]>(this.storageKey(STORAGE_KEYS.names));
+    const storedBgColor = readJson<string>(this.storageKey(STORAGE_KEYS.bgColor));
 
-    const storedCenterLogoSize = readJson<string>(STORAGE_KEYS.centerLogoSize);
-    const storedWheelView = readJson<string>(STORAGE_KEYS.wheelView);
-    const storedFontFamily = readJson<string>(STORAGE_KEYS.fontFamily);
-    const storedFontLink = readJson<string>(STORAGE_KEYS.fontLink);
+    const storedBgImage = await readImage(this.storageKey(STORAGE_KEYS.bgImage));
+    const storedCenterImage = await readImage(this.storageKey(STORAGE_KEYS.centerImage));
+
+    const storedCenterLogoSize = readJson<string>(this.storageKey(STORAGE_KEYS.centerLogoSize));
+    const storedWheelView = readJson<string>(this.storageKey(STORAGE_KEYS.wheelView));
+    const storedFontFamily = readJson<string>(this.storageKey(STORAGE_KEYS.fontFamily));
+    const storedFontLink = readJson<string>(this.storageKey(STORAGE_KEYS.fontLink));
 
     if (Array.isArray(storedPalettes) && storedPalettes.length) {
       // Merge defaults (new app versions) with stored palettes (including custom ones)
@@ -237,21 +466,21 @@ export class WheelConfigurator {
     }
 
     // Hydrate sound settings
-    const storedSoundEnabled = readJson<boolean>(STORAGE_KEYS.soundEnabled);
+    const storedSoundEnabled = readJson<boolean>(this.storageKey(STORAGE_KEYS.soundEnabled));
     if (typeof storedSoundEnabled === 'boolean') {
       this.soundEnabled.set(storedSoundEnabled);
     }
 
-    const storedCustomAudio = await readImage(STORAGE_KEYS.customAudio);
+    const storedCustomAudio = await readImage(this.storageKey(STORAGE_KEYS.customAudio));
     if (storedCustomAudio) {
       this.customAudio.set(storedCustomAudio);
     }
 
-    const storedWinnerAudio = await readImage(STORAGE_KEYS.winnerAudio);
+    const storedWinnerAudio = await readImage(this.storageKey(STORAGE_KEYS.winnerAudio));
     if (storedWinnerAudio) {
       this.winnerAudio.set(storedWinnerAudio);
     }
-    const storedCountdownAudio = await readImage(STORAGE_KEYS.countdownAudio);
+    const storedCountdownAudio = await readImage(this.storageKey(STORAGE_KEYS.countdownAudio));
     if (storedCountdownAudio) {
       this.countdownAudio.set(storedCountdownAudio);
     }
@@ -269,11 +498,11 @@ export class WheelConfigurator {
     }
 
     // Hydrate countdown settings
-    const storedCountdownEnabled = readJson<boolean>(STORAGE_KEYS.countdownEnabled);
+    const storedCountdownEnabled = readJson<boolean>(this.storageKey(STORAGE_KEYS.countdownEnabled));
     if (typeof storedCountdownEnabled === 'boolean') {
       this.countdownEnabled.set(storedCountdownEnabled);
     }
-    const storedCountdownStart = readJson<number>(STORAGE_KEYS.countdownStart);
+    const storedCountdownStart = readJson<number>(this.storageKey(STORAGE_KEYS.countdownStart));
     if (typeof storedCountdownStart === 'number' && storedCountdownStart >= 0) {
       this.countdownStart.set(Math.floor(storedCountdownStart));
     }
@@ -281,43 +510,52 @@ export class WheelConfigurator {
 
   private setupPersistence(): void {
     effect(() => {
-      writeJson(STORAGE_KEYS.palettes, this.palettes());
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.palettes), this.palettes());
+      this.touchActiveWorkspace();
     });
 
     effect(() => {
-      writeJson(STORAGE_KEYS.selectedPaletteName, this.selectedPalette().name);
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.selectedPaletteName), this.selectedPalette().name);
       this.spinDurationMs();
     });
 
     effect(() => {
-      writeJson(STORAGE_KEYS.spinDurationMs, this.spinDurationMs());
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.spinDurationMs), this.spinDurationMs());
     });
 
     effect(() => {
-      writeJson(STORAGE_KEYS.names, this.names());
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.names), this.names());
     });
 
     effect(() => {
-      writeJson(STORAGE_KEYS.bgColor, this.bgColor());
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.bgColor), this.bgColor());
     });
 
     // persist images to IndexedDB rather than localStorage
     effect(() => {
+      if (!this.activeWheelId()) return;
       const img = this.bgImage();
       if (img && img.length) {
-        writeImage(STORAGE_KEYS.bgImage, img).catch(() => {});
+        writeImage(this.storageKey(STORAGE_KEYS.bgImage), img).catch(() => {});
       }
     });
 
     effect(() => {
+      if (!this.activeWheelId()) return;
       const img = this.centerImage();
       if (img && img.length) {
-        writeImage(STORAGE_KEYS.centerImage, img).catch(() => {});
+        writeImage(this.storageKey(STORAGE_KEYS.centerImage), img).catch(() => {});
       }
     });
 
     effect(() => {
-      writeJson(STORAGE_KEYS.wheelView, this.wheelView());
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.wheelView), this.wheelView());
     });
 
     effect(() => {
@@ -331,39 +569,45 @@ export class WheelConfigurator {
 
     // Persist sound settings
     effect(() => {
-      writeJson(STORAGE_KEYS.soundEnabled, this.soundEnabled());
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.soundEnabled), this.soundEnabled());
     });
 
     // Persist font settings and redraw wheel when the font changes
     effect(() => {
-      writeJson(STORAGE_KEYS.fontFamily, this.fontFamily());
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.fontFamily), this.fontFamily());
       this.drawWheel();
     });
     effect(() => {
+      if (!this.activeWheelId()) return;
       const link = this.fontLink();
       if (link && link.length) {
-        writeJson(STORAGE_KEYS.fontLink, link);
+        writeJson(this.storageKey(STORAGE_KEYS.fontLink), link);
       }
     });
 
     effect(() => {
+      if (!this.activeWheelId()) return;
       const audio = this.customAudio();
       if (audio && audio.length) {
-        writeImage(STORAGE_KEYS.customAudio, audio).catch(() => {});
+        writeImage(this.storageKey(STORAGE_KEYS.customAudio), audio).catch(() => {});
       }
     });
 
     effect(() => {
+      if (!this.activeWheelId()) return;
       const audio = this.winnerAudio();
       if (audio && audio.length) {
-        writeImage(STORAGE_KEYS.winnerAudio, audio).catch(() => {});
+        writeImage(this.storageKey(STORAGE_KEYS.winnerAudio), audio).catch(() => {});
       }
     });
 
     effect(() => {
+      if (!this.activeWheelId()) return;
       const audio = this.countdownAudio();
       if (audio && audio.length) {
-        writeImage(STORAGE_KEYS.countdownAudio, audio).catch(() => {});
+        writeImage(this.storageKey(STORAGE_KEYS.countdownAudio), audio).catch(() => {});
         // Pre-load countdown audio for instant playback
         try {
           this.countdownAudioElement = new Audio(audio);
@@ -382,7 +626,7 @@ export class WheelConfigurator {
   }
 
   clearImagesStorage(): void {
-    writeImage(STORAGE_KEYS.bgImage, '').catch(() => {});
+    writeImage(this.storageKey(STORAGE_KEYS.bgImage), '').catch(() => {});
   }
 
   drawWheel() {
@@ -527,7 +771,7 @@ export class WheelConfigurator {
    */
   setCountdownEnabled(enabled: boolean) {
     this.countdownEnabled.set(enabled);
-    writeJson(STORAGE_KEYS.countdownEnabled, enabled);
+    writeJson(this.storageKey(STORAGE_KEYS.countdownEnabled), enabled);
   }
 
   /**
@@ -536,7 +780,7 @@ export class WheelConfigurator {
   setCountdownStart(start: number) {
     const n = Math.max(0, Math.floor(start));
     this.countdownStart.set(n);
-    writeJson(STORAGE_KEYS.countdownStart, n);
+    writeJson(this.storageKey(STORAGE_KEYS.countdownStart), n);
   }
 
   private playSpinAudio(): void {

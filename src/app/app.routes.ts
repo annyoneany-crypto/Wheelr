@@ -24,6 +24,11 @@ export const routes: Routes = [
                 path: 'sound',
                 outlet: 'panel',
                 loadComponent: () => import('./feature/wl-settings/sound/sound').then((x) => x.Sound)
+            },
+            {
+                path: 'wheel-manager',
+                outlet: 'panel',
+                loadComponent: () => import('./feature/wl-settings/wheel-manager/wheel-manager').then((x) => x.WheelManager)
             }
         ]
     },

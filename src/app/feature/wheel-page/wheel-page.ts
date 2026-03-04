@@ -62,6 +62,7 @@ export class WheelPage {
     if (path === 'color-settings') return 'Colors';
     if (path === 'effects') return 'Effects';
     if (path === 'sound') return 'Audio';
+    if (path === 'wheel-manager') return 'Wheels';
     return 'Settings';
   }
 
