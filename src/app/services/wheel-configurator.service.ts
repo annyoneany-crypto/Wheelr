@@ -26,6 +26,7 @@ export interface WheelWorkspaceMeta {
 export class WheelConfigurator {
   private readonly wheelListStorageKey = 'giveawayWheel.workspaces';
   private readonly activeWheelStorageKey = 'giveawayWheel.activeWorkspaceId';
+  private readonly legacyMigrationKey = 'giveawayWheel.legacyMigratedToDefault.v1';
 
   wheelWorkspaces = signal<WheelWorkspaceMeta[]>([]);
   activeWheelId = signal<string>('');
@@ -194,8 +195,21 @@ export class WheelConfigurator {
       });
     }
 
+    if (!validWorkspaces.some((workspace) => workspace.id === 'default')) {
+      const now = new Date().toISOString();
+      validWorkspaces.unshift({
+        id: 'default',
+        name: 'Ruota principale',
+        description: 'Ruota predefinita',
+        createdAt: now,
+        updatedAt: now,
+      });
+    }
+
     this.wheelWorkspaces.set(validWorkspaces);
     this.persistWorkspaceRegistry();
+
+    await this.migrateLegacyDataToDefaultWorkspace();
 
     const storedActiveId = readJson<string>(this.activeWheelStorageKey);
     const fallbackId = validWorkspaces[0]?.id ?? 'default';
@@ -208,6 +222,50 @@ export class WheelConfigurator {
     writeJson(this.activeWheelStorageKey, activeId);
 
     await this.hydrateFromStorage();
+  }
+
+  private async migrateLegacyDataToDefaultWorkspace(): Promise<void> {
+    if (readJson<boolean>(this.legacyMigrationKey)) {
+      return;
+    }
+
+    const defaultWorkspaceId = 'default';
+    const toScopedKey = (key: string): string => `${key}.${defaultWorkspaceId}`;
+
+    for (const key of Object.values(STORAGE_KEYS)) {
+      const legacyValue = localStorage.getItem(key);
+      if (legacyValue === null) {
+        continue;
+      }
+
+      const scopedKey = toScopedKey(key);
+      if (localStorage.getItem(scopedKey) === null) {
+        localStorage.setItem(scopedKey, legacyValue);
+      }
+    }
+
+    const mediaKeys = [
+      STORAGE_KEYS.bgImage,
+      STORAGE_KEYS.centerImage,
+      STORAGE_KEYS.customAudio,
+      STORAGE_KEYS.winnerAudio,
+      STORAGE_KEYS.countdownAudio,
+    ];
+
+    for (const mediaKey of mediaKeys) {
+      const legacyMedia = await readImage(mediaKey);
+      if (!legacyMedia) {
+        continue;
+      }
+
+      const scopedMediaKey = toScopedKey(mediaKey);
+      const currentMedia = await readImage(scopedMediaKey);
+      if (!currentMedia) {
+        await writeImage(scopedMediaKey, legacyMedia);
+      }
+    }
+
+    writeJson(this.legacyMigrationKey, true);
   }
 
   async createWheelWorkspace(name: string, description: string): Promise<void> {
