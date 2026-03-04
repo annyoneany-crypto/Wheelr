@@ -1,0 +1,21 @@
+<svg width="640" height="360" viewBox="0 0 640 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="360" rx="28" fill="#18181B"/>
+  <circle cx="80" cy="64" r="42" fill="#FACC15" fill-opacity="0.3"/>
+  <circle cx="566" cy="84" r="40" fill="#34D399" fill-opacity="0.26"/>
+  <circle cx="522" cy="310" r="60" fill="#60A5FA" fill-opacity="0.24"/>
+
+  <g>
+    <circle cx="210" cy="188" r="96" fill="#27272A"/>
+    <circle cx="210" cy="188" r="76" stroke="#E4E4E7" stroke-opacity="0.65" stroke-width="2"/>
+    <path d="M210 112L228 188L210 264L192 188L210 112Z" fill="#F43F5E" fill-opacity="0.78"/>
+    <path d="M134 188L210 206L286 188L210 170L134 188Z" fill="#38BDF8" fill-opacity="0.75"/>
+    <circle cx="210" cy="188" r="14" fill="#F8FAFC"/>
+  </g>
+
+  <g>
+    <rect x="340" y="118" width="238" height="136" rx="16" fill="#27272A"/>
+    <text x="360" y="162" fill="#F4F4F5" font-family="Arial, sans-serif" font-size="26">🎉 Team Spin</text>
+    <text x="360" y="196" fill="#D4D4D8" font-family="Arial, sans-serif" font-size="16">Chi porta i cornetti?</text>
+    <text x="360" y="224" fill="#D4D4D8" font-family="Arial, sans-serif" font-size="16">La ruota decide. Sempre 😄</text>
+  </g>
+</svg>

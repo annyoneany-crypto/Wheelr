@@ -2,124 +2,18 @@
 <!-- Header -->
 <wl-header></wl-header>
 
-<!-- Container Principale -->
-<div 
-  class="min-h-screen text-white font-sans 
-    flex flex-col items-center justify-center 
-    p-4 overflow-hidden bg-cover bg-center bg-no-repeat 
-    transition-all duration-500"
-  [style.backgroundColor]="wheelConfigurator.bgColor()"
-  [style.backgroundImage]="wheelConfigurator.bgImage() ? 'url(' + wheelConfigurator.bgImage() + ')' : 'none'">
-  
-  @if(wheelConfigurator.bgImage()){
-    <div class="fixed inset-0 bg-black/40 z-0"></div>
-  }
-
-  <!-- Central Wheel -->
-  @if (wheelConfigurator.wheelView() === 'linear') {
-    <wl-linear-wheel>
-      <wl-fire-effect></wl-fire-effect>
-    </wl-linear-wheel>
-  } @else {
-    <wl-wheel>
-      <wl-fire-effect></wl-fire-effect>
-    </wl-wheel>
-  }
-
-  <!-- global countdown overlay -->
-  @if (wheelConfigurator.currentCountdown() !== null) {
-    <!-- dim background while countdown active -->
-    <div class="fixed inset-0 bg-black/60 pointer-events-none z-55"></div>
-    <div class="fixed inset-0 flex items-center justify-center pointer-events-none z-60">
-      <span
-        class="text-white font-bold text-[18rem]"
-        [class.animate-countdown]="wheelConfigurator.countdownToggle()">
-        {{ wheelConfigurator.currentCountdown() }}
-      </span>
-    </div>
-  }
-</div>
-
-@if(showPanelSettings()){
-  <div class="fixed inset-0 bg-black/60 pointer-events-none z-49"></div>
-}
-
-<div class="fixed top-28 
-  w-12 h-12 rounded-full 
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50"
-  [class.right-8]="!showPanelSettings()" 
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  (transitionend)="closeUserPaneltransitionEnd()"
-  (click)="togglePaletSettings('users')">
-   <i class="fa-solid fa-user-plus text-white/80 z-50"></i>
-</div>
-
-<!-- 
-  (transitionend)="closeUserPaneltransitionEnd()"
-  (click)="toggleUserSettings()" -->
-<div class="fixed top-44 
-  w-12 h-12 rounded-full 
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50"
-  [class.right-8]="!showPanelSettings()" 
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  (click)="togglePaletSettings('color-settings')">
-   <i 
-    class="fa-solid fa-swatchbook text-white/80"
-    [class.fa-angles-right]="showPanelSettings()"
-    [class.fa-user-plus]="!showPanelSettings()"></i>
-</div>
-
-
-<div class="fixed top-60 
-  w-12 h-12 rounded-full 
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50"
-  [class.right-8]="!showPanelSettings()" 
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  (click)="togglePaletSettings('effects')">
-  <i class="fa-solid fa-wand-magic-sparkles text-white/80"></i>
-</div>
-
-
-<div class="fixed top-76
-  w-12 h-12 rounded-full 
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50"
-  [class.right-8]="!showPanelSettings()" 
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  (click)="togglePaletSettings('sound')">
-   <i class="fa-solid fa-volume-high text-white/80"></i>
-</div>
-
-<div class="fixed top-24 right-0 my-4 p-4  
-  bg-neutral-800 h-[calc(100%-130px)] 
-  border-y border-l rounded-l-md border-white/10
-  transition-all duration-300 ease-in-out z-50 overflow-y-auto"
-  [class.lg:w-96]="showPanelSettings()"
-  [class.w-80]="showPanelSettings()"
-  [class.opacity-100]="showPanelSettings()"
-  [class.w-0]="!showPanelSettings()"
-  [class.opacity-0]="!showPanelSettings()"
-  [class.hidden]="displyPanel()">
-
-  <router-outlet></router-outlet>
-
-</div>
+<!-- Page Outlet -->
+<router-outlet></router-outlet>
 
 <!-- Creator credit -->
 <div class="fixed bottom-2 left-2 flex flex-col items-center gap-2 text-xs text-white opacity-70 hover:opacity-100 transition-opacity">
   <span>Created by AnnyoneAny</span>
-  <a href="https://x.com/AnnyoneAny" target="_blank" rel="noopener" class="text-white">
-    <i class="fa-brands fa-twitter"></i>
+  <a href="https://x.com/AnnyoneAny" target="_blank" rel="noopener" class="invert">
+    <img
+      src="/twitter-logo.png"
+      width="16"
+      height="16"
+      alt="Twitter"
+      class="h-4 w-4" />
   </a>
 </div>

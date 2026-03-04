@@ -21,17 +21,74 @@
     </div>
     <!-- <i class="fa-solid fa-sun"></i> -->
     <div class="flex gap-4 items-center justify-center">
-        @if(wheelConfigurator.fireAnimationId()){
-        <button 
-            (click)="wheelConfigurator.resetWinnerEffect()"
-            class="secondaryButton">
-            Reset Wheel
-        </button>
-        }
-        <button 
-            (click)="wheelConfigurator.shuffleNames()"
-            class="secondaryButton">
-            Shuffle Names
+        <button
+            type="button"
+                        (click)="toggleMenu()"
+            class="secondaryButton inline-flex items-center gap-2"
+                        [attr.aria-expanded]="isMenuOpen()"
+                        aria-label="Open main menu">
+                        <i class="fa-solid fa-bars" aria-hidden="true"></i>
+                        <span>Menu</span>
         </button>
     </div>
 </div>
+
+@if (isMenuOpen()) {
+    <div
+        class="fixed inset-0 z-80 bg-neutral-900/95 backdrop-blur-md flex items-center justify-center"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Main menu"
+        (click)="closeMenu()">
+        <div
+            class="absolute top-6 right-6">
+            <button
+                type="button"
+                class="secondaryButton inline-flex items-center gap-2"
+                aria-label="Close menu"
+                (click)="closeMenu()">
+                <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                <span>Close</span>
+            </button>
+        </div>
+
+        <nav
+            class="w-full max-w-xl px-6"
+            aria-label="Main pages"
+            (click)="$event.stopPropagation()">
+            <ul class="grid gap-4 text-center">
+                <li>
+                    <a
+                        [routerLink]="['/']"
+                        (click)="closeMenu()"
+                        class="block rounded-2xl border border-white/15 bg-neutral-800/60 px-6 py-5 text-2xl font-bold text-white hover:bg-neutral-700/70 transition-colors">
+                        🎡 Wheelr
+                    </a>
+                </li>
+                <li>
+                    <a
+                        [routerLink]="['/info']"
+                        (click)="closeMenu()"
+                        class="block rounded-2xl border border-white/15 bg-neutral-800/60 px-6 py-5 text-2xl font-bold text-white hover:bg-neutral-700/70 transition-colors">
+                        ℹ️ Info
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <a
+            href="https://x.com/AnnyoneAny"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="AnnyoneAny Twitter profile"
+            class="absolute bottom-8 left-1/2 -translate-x-1/2 transition-transform hover:scale-105 invert"
+            (click)="$event.stopPropagation()">
+            <img
+                ngSrc="/twitter-logo.png"
+                width="60"
+                height="60"
+                alt="Twitter"
+                class="h-14 w-14 md:h-14 md:w-14" />
+        </a>
+    </div>
+}

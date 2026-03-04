@@ -1,0 +1,89 @@
+<section class="min-h-screen pt-28 pb-10 px-4 text-white/90 bg-neutral-600" aria-labelledby="info-title">
+  <div class="max-w-5xl mx-auto space-y-8">
+    <header class="rounded-2xl border border-white/10 bg-neutral-900/70 p-6 md:p-8">
+      <p class="text-xs uppercase tracking-[0.18em] text-cyan-300/80">Wheelr • Spin with style ✨</p>
+      <h2 id="info-title" class="mt-2 text-3xl md:text-4xl font-black text-white">The wheel that makes every pick feel epic 🎡</h2>
+      <p class="mt-3 text-sm md:text-base leading-relaxed text-white/80 max-w-3xl">
+        Wheelr is your co-pilot for random decisions: turn giveaways, team moments, and fast picks into experiences
+        that are clear, quick, and genuinely fun. Customize names, color palettes, effects, and sounds… then let luck do its thing 😄
+      </p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <a
+          [routerLink]="['/']"
+          class="secondaryButton inline-flex items-center gap-2"
+          aria-label="Back to wheel">
+          <i class="fa-solid fa-rotate" aria-hidden="true"></i>
+          <span>Back to Wheel</span>
+        </a>
+        <span class="inline-flex items-center rounded-full border border-white/20 px-3 py-1 text-xs text-white/70">
+          🎯 Random, but with style
+        </span>
+      </div>
+    </header>
+
+    <section class="grid gap-4 md:grid-cols-2" aria-label="Wheelr usage visuals">
+      <article class="rounded-2xl border border-white/10 bg-neutral-900/60 p-4">
+        <img
+          ngSrc="/info-office.svg"
+          width="640"
+          height="360"
+          alt="Professional Wheelr usage in a team meeting"
+          class="w-full rounded-xl border border-white/10" />
+        <h3 class="mt-3 text-lg font-semibold text-white">At work: less indecision, more action 🚀</h3>
+        <p class="mt-1 text-sm text-white/75 leading-relaxed">
+          Standups, workshops, retros, or onboarding: pick speakers, tasks, or prizes quickly and transparently.
+        </p>
+      </article>
+
+      <article class="rounded-2xl border border-white/10 bg-neutral-900/60 p-4">
+        <img
+          ngSrc="/info-fun.svg"
+          width="640"
+          height="360"
+          alt="Fun Wheelr usage with friends"
+          class="w-full rounded-xl border border-white/10" />
+        <h3 class="mt-3 text-lg font-semibold text-white">With friends: good chaos and guaranteed laughs 😂</h3>
+        <p class="mt-1 text-sm text-white/75 leading-relaxed">
+          Movie night, games, challenges, or “who buys coffee?”: when nobody can choose, the wheel decides.
+        </p>
+      </article>
+    </section>
+
+    <section class="rounded-2xl border border-white/10 bg-neutral-900/60 p-6" aria-labelledby="examples-title">
+      <h3 id="examples-title" class="text-xl font-bold text-white">Professional + playful use cases 💼🎉</h3>
+      <ul class="mt-4 grid gap-3 md:grid-cols-2 text-sm leading-relaxed text-white/80">
+        <li class="rounded-xl border border-white/10 bg-black/20 p-3">📊 <strong>Team meetings:</strong> choose speaking order without bias.</li>
+        <li class="rounded-xl border border-white/10 bg-black/20 p-3">🎓 <strong>Training:</strong> select exercises or groups in real time.</li>
+        <li class="rounded-xl border border-white/10 bg-black/20 p-3">🏆 <strong>Events:</strong> run live prize draws with visual impact.</li>
+        <li class="rounded-xl border border-white/10 bg-black/20 p-3">☕ <strong>Team fun:</strong> let the wheel decide who brings breakfast.</li>
+        <li class="rounded-xl border border-white/10 bg-black/20 p-3">🎬 <strong>Creator mode:</strong> pick your next live-stream content idea.</li>
+        <li class="rounded-xl border border-white/10 bg-black/20 p-3">🎲 <strong>Game night:</strong> choose missions, turns, and mini-challenges.</li>
+      </ul>
+    </section>
+
+    <section class="rounded-2xl border border-white/10 bg-neutral-900/60 p-6" aria-labelledby="faq-title">
+      <h3 id="faq-title" class="text-xl font-bold text-white">FAQ</h3>
+      <div class="mt-4 space-y-3 text-sm text-white/80">
+        <details class="group rounded-xl border border-white/10 bg-black/20 p-4">
+          <summary class="cursor-pointer font-semibold text-white">How do I make draws fairer? ⚖️</summary>
+          <p class="mt-2 leading-relaxed">Clean your names list, remove unwanted duplicates, and use <strong>Shuffle Names</strong> before every spin.</p>
+        </details>
+
+        <details class="group rounded-xl border border-white/10 bg-black/20 p-4">
+          <summary class="cursor-pointer font-semibold text-white">Can I use it in livestreams or classrooms? 🎥</summary>
+          <p class="mt-2 leading-relaxed">Absolutely. Wheelr is perfect for public moments: everyone sees the result and engagement spikes instantly.</p>
+        </details>
+
+        <details class="group rounded-xl border border-white/10 bg-black/20 p-4">
+          <summary class="cursor-pointer font-semibold text-white">How can I make it more branded? 🎨</summary>
+          <p class="mt-2 leading-relaxed">Customize colors, background, effects, and audio to match your team's identity or event tone.</p>
+        </details>
+
+        <details class="group rounded-xl border border-white/10 bg-black/20 p-4">
+          <summary class="cursor-pointer font-semibold text-white">Is it also good for light and funny decisions? 😎</summary>
+          <p class="mt-2 leading-relaxed">100%. From “who does the dishes” to “who picks the playlist,” the wheel settles debates in three seconds.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+</section>
