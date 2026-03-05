@@ -30,10 +30,10 @@ export interface ColorPalette {
 
 export const DEFAULT_PALETTES: ColorPalette[] = [
   { name: 'RED', colors: ['#DC2626', '#B91C1C', '#7F1D1D', '#000000', '#FFFFFF', '#EF4444'] },
-  { name: 'Vibrante', colors: ['#A855F7', '#EC4899', '#3B82F6', '#10B981', '#F59E0B', '#EF4444'] },
+  { name: 'Vibrant', colors: ['#A855F7', '#EC4899', '#3B82F6', '#10B981', '#F59E0B', '#EF4444'] },
   { name: 'Neon', colors: ['#39FF14', '#FF00FF', '#00FFFF', '#FFFF00', '#FF0000', '#4D4DFF'] },
-  { name: 'Oceano', colors: ['#0891b2', '#0e7490', '#155e75', '#0369a1', '#075985', '#0c4a6e'] },
-  { name: 'Tramonto', colors: ['#f43f5e', '#fb7185', '#fb923c', '#fbbf24', '#f59e0b', '#d97706'] },
+  { name: 'Ocean', colors: ['#0891b2', '#0e7490', '#155e75', '#0369a1', '#075985', '#0c4a6e'] },
+  { name: 'Sunset', colors: ['#f43f5e', '#fb7185', '#fb923c', '#fbbf24', '#f59e0b', '#d97706'] },
 ];
 
 /**

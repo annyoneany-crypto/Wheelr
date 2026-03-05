@@ -4,69 +4,39 @@ import {
   DEFAULT_PALETTES,
   readJson,
   writeJson,
-  openDb,
   writeImage,
   readImage,
   clampDeg,
   contrastForHex,
   ColorPalette,
 } from './global_function';
+import { WheelAudioManager } from './wheel-audio-manager';
+import {
+  clearWorkspaceIndexedDb,
+  clearWorkspaceStorage,
+  buildSnapshotEntryFromState,
+  loadWorkspaceDisplayConfig,
+  migrateLegacyStorageToUnifiedSnapshot,
+  saveUnifiedLocalStorageSnapshot,
+} from './wheel-configurator-storage';
+import { WheelSettingsSnapshot, WheelWorkspaceMeta } from './wheel-configurator.models';
 
-export interface WheelWorkspaceMeta {
-  id: string;
-  name: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-  parentWheelId?: string;
-}
-
-export interface WheelDisplayConfig {
-  workspaceId: string;
-  workspaceName: string;
-  names: string[];
-  colors: string[];
-  bgColor: string;
-  bgImage: string;
-  centerImage: string;
-  fontFamily: string;
-}
-
-interface WheelSnapshotEntry {
-  wheelID: string;
-  name: string;
-  description: string;
-  palettes: ColorPalette[];
-  selectedPaletteName: string;
-  names: string[];
-  centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
-  wheelView: 'wheel' | 'linear' | 'cards';
-  spinDurationMs: number;
-  soundEnabled: boolean;
-  countdownEnabled: boolean;
-  countdownStart: number;
-  fontFamily: string;
-  fontLink: string;
-  visibleWheelCount: number;
-}
-
-interface WheelSettingsSnapshot {
-  wheelID: string;
-  backgrondcolor: string;
-  Wheels: WheelSnapshotEntry[];
-}
+export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.models';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WheelConfigurator {
   private static readonly MAX_WHEELS_PER_GROUP = 4;
+  private static readonly DEFAULT_FONT_LINK =
+    'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap';
 
   private readonly wheelListStorageKey = 'giveawayWheel.workspaces';
   private readonly activeWheelStorageKey = 'giveawayWheel.activeWorkspaceId';
   private readonly legacyMigrationKey = 'giveawayWheel.legacyMigratedToDefault.v1';
   private readonly wheelSettingsSnapshotKey = 'giveawayWheel.settingsSnapshot.v1';
   private readonly snapshotMigrationKey = 'giveawayWheel.snapshotMigrated.v1';
+  private readonly audioManager = new WheelAudioManager();
 
   wheelWorkspaces = signal<WheelWorkspaceMeta[]>([]);
   managerWheelWorkspaces = computed(() =>
@@ -97,7 +67,7 @@ export class WheelConfigurator {
   // font configuration for wheel text
   fontFamily = signal<string>('"Inter", sans-serif');
   // store the Google Fonts link URL so that we can reload it on startup
-  fontLink = signal<string>('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+  fontLink = signal<string>(WheelConfigurator.DEFAULT_FONT_LINK);
 
   /**
    * Update the active font family and optionally install a Google Fonts link
@@ -142,9 +112,6 @@ export class WheelConfigurator {
   customAudio = signal<string>('');
   winnerAudio = signal<string>('');
   countdownAudio = signal<string>('');
-  private audioElement: HTMLAudioElement | undefined;
-  private winnerAudioElement: HTMLAudioElement | undefined;
-  private countdownAudioElement: HTMLAudioElement | undefined;
 
   // countdown configuration
   countdownEnabled = signal<boolean>(false);
@@ -211,73 +178,14 @@ export class WheelConfigurator {
     return `${baseKey}.${workspaceId}`;
   }
 
-  private storageKeyForWorkspace(baseKey: string, workspaceId: string): string {
-    return `${baseKey}.${workspaceId}`;
-  }
-
-  private readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSnapshotEntry {
-    const workspaceId = meta.id;
-    const palettes =
-      readJson<ColorPalette[]>(this.storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId)) ??
-      DEFAULT_PALETTES;
-    const selectedPaletteName =
-      readJson<string>(this.storageKeyForWorkspace(STORAGE_KEYS.selectedPaletteName, workspaceId)) ??
-      palettes[0]?.name ??
-      DEFAULT_PALETTES[0].name;
-    const names = readJson<string[]>(this.storageKeyForWorkspace(STORAGE_KEYS.names, workspaceId)) ?? [];
-    const centerLogoSize =
-      readJson<'s' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'>(
-        this.storageKeyForWorkspace(STORAGE_KEYS.centerLogoSize, workspaceId)
-      ) ?? 'm';
-    const wheelView =
-      readJson<'wheel' | 'linear' | 'cards'>(this.storageKeyForWorkspace(STORAGE_KEYS.wheelView, workspaceId)) ??
-      'wheel';
-    const spinDurationMs =
-      readJson<number>(this.storageKeyForWorkspace(STORAGE_KEYS.spinDurationMs, workspaceId)) ?? 3000;
-    const soundEnabled =
-      readJson<boolean>(this.storageKeyForWorkspace(STORAGE_KEYS.soundEnabled, workspaceId)) ?? true;
-    const countdownEnabled =
-      readJson<boolean>(this.storageKeyForWorkspace(STORAGE_KEYS.countdownEnabled, workspaceId)) ?? false;
-    const countdownStart =
-      readJson<number>(this.storageKeyForWorkspace(STORAGE_KEYS.countdownStart, workspaceId)) ?? 3;
-    const fontFamily =
-      readJson<string>(this.storageKeyForWorkspace(STORAGE_KEYS.fontFamily, workspaceId)) ??
-      '"Inter", sans-serif';
-    const fontLink =
-      readJson<string>(this.storageKeyForWorkspace(STORAGE_KEYS.fontLink, workspaceId)) ??
-      'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap';
-    const visibleWheelCount =
-      readJson<number>(this.storageKeyForWorkspace(STORAGE_KEYS.visibleWheelCount, workspaceId)) ?? 1;
-
-    return {
-      wheelID: workspaceId,
-      name: meta.name,
-      description: meta.description,
-      palettes,
-      selectedPaletteName,
-      names,
-      centerLogoSize,
-      wheelView,
-      spinDurationMs,
-      soundEnabled,
-      countdownEnabled,
-      countdownStart,
-      fontFamily,
-      fontLink,
-      visibleWheelCount: Math.min(4, Math.max(1, Math.floor(visibleWheelCount))),
-    };
-  }
-
-  private buildActiveSnapshotEntry(): WheelSnapshotEntry | null {
+  private buildActiveSnapshotEntry() {
     const active = this.activeWheel();
     if (!active) {
       return null;
     }
 
-    return {
-      wheelID: active.id,
-      name: active.name,
-      description: active.description,
+    return buildSnapshotEntryFromState({
+      workspace: active,
       palettes: this.palettes(),
       selectedPaletteName: this.selectedPalette().name,
       names: this.names(),
@@ -290,125 +198,44 @@ export class WheelConfigurator {
       fontFamily: this.fontFamily(),
       fontLink: this.fontLink(),
       visibleWheelCount: this.visibleWheelCount(),
-    };
+    });
   }
 
   private saveUnifiedLocalStorageSnapshot(): void {
-    const activeId = this.activeWheelId();
-    if (!activeId) {
-      return;
-    }
-
-    const activeEntry = this.buildActiveSnapshotEntry();
-    const wheels = this.wheelWorkspaces().map((workspace) => {
-      if (activeEntry && workspace.id === activeEntry.wheelID) {
-        return activeEntry;
-      }
-      return this.readSnapshotEntryFromStorage(workspace);
+    saveUnifiedLocalStorageSnapshot({
+      activeId: this.activeWheelId(),
+      bgColor: this.bgColor(),
+      wheelWorkspaces: this.wheelWorkspaces(),
+      activeEntry: this.buildActiveSnapshotEntry(),
+      wheelSettingsSnapshotKey: this.wheelSettingsSnapshotKey,
     });
-
-    const snapshot: WheelSettingsSnapshot = {
-      wheelID: activeId,
-      backgrondcolor: this.bgColor(),
-      Wheels: wheels,
-    };
-
-    writeJson(this.wheelSettingsSnapshotKey, snapshot);
   }
 
   private migrateLegacyStorageToUnifiedSnapshot(
     workspaces: WheelWorkspaceMeta[],
     activeWorkspaceId: string
   ): void {
-    if (readJson<boolean>(this.snapshotMigrationKey)) {
-      return;
-    }
-
-    const existingSnapshot = readJson<WheelSettingsSnapshot>(this.wheelSettingsSnapshotKey);
-    if (existingSnapshot && Array.isArray(existingSnapshot.Wheels) && existingSnapshot.Wheels.length > 0) {
-      writeJson(this.snapshotMigrationKey, true);
-      return;
-    }
-
-    const activeWorkspaceKey =
-      workspaces.some((workspace) => workspace.id === activeWorkspaceId)
-        ? activeWorkspaceId
-        : (workspaces[0]?.id ?? 'default');
-
-    const sharedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
-    const scopedBgColor = readJson<string>(`${STORAGE_KEYS.bgColor}.${activeWorkspaceKey}`);
-
-    const snapshot: WheelSettingsSnapshot = {
-      wheelID: activeWorkspaceKey,
-      backgrondcolor: sharedBgColor ?? scopedBgColor ?? 'transparent',
-      Wheels: workspaces.map((workspace) => this.readSnapshotEntryFromStorage(workspace)),
-    };
-
-    writeJson(this.wheelSettingsSnapshotKey, snapshot);
-    writeJson(this.snapshotMigrationKey, true);
+    migrateLegacyStorageToUnifiedSnapshot({
+      workspaces,
+      activeWorkspaceId,
+      snapshotMigrationKey: this.snapshotMigrationKey,
+      wheelSettingsSnapshotKey: this.wheelSettingsSnapshotKey,
+      fallbackBgColor: 'transparent',
+    });
   }
 
-  async loadWheelDisplayConfig(workspaceId: string): Promise<WheelDisplayConfig | null> {
-    const workspace = this.wheelWorkspaces().find((item) => item.id === workspaceId);
-    if (!workspace) {
-      return null;
-    }
-
-    if (workspaceId === this.activeWheelId()) {
-      const activePalette = this.selectedPalette();
-      return {
-        workspaceId,
-        workspaceName: workspace.name,
-        names: [...this.names()],
-        colors: [...activePalette.colors],
-        bgColor: this.bgColor(),
-        bgImage: this.bgImage(),
-        centerImage: this.centerImage(),
-        fontFamily: this.fontFamily(),
-      };
-    }
-
-    const palettes = readJson<ColorPalette[]>(
-      this.storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId)
-    );
-    const selectedPaletteName = readJson<string>(
-      this.storageKeyForWorkspace(STORAGE_KEYS.selectedPaletteName, workspaceId)
-    );
-    const names = readJson<string[]>(this.storageKeyForWorkspace(STORAGE_KEYS.names, workspaceId));
-    const fontFamily = readJson<string>(
-      this.storageKeyForWorkspace(STORAGE_KEYS.fontFamily, workspaceId)
-    );
-
-    const sharedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
-    const bgColor = sharedBgColor && sharedBgColor.length ? sharedBgColor : this.bgColor();
-
-    const sharedBgImage = await readImage(STORAGE_KEYS.bgImage);
-    const bgImage = sharedBgImage ?? this.bgImage();
-
-    const centerImage =
-      (await readImage(this.storageKeyForWorkspace(STORAGE_KEYS.centerImage, workspaceId))) ?? '';
-
-    const availablePalettes =
-      Array.isArray(palettes) && palettes.length > 0
-        ? palettes
-        : DEFAULT_PALETTES;
-
-    const selectedPalette =
-      (selectedPaletteName &&
-        availablePalettes.find((palette) => palette.name === selectedPaletteName)) ||
-      availablePalettes[0] ||
-      DEFAULT_PALETTES[0];
-
-    return {
+  async loadWheelDisplayConfig(workspaceId: string) {
+    return loadWorkspaceDisplayConfig({
       workspaceId,
-      workspaceName: workspace.name,
-      names: Array.isArray(names) ? names : [],
-      colors: [...selectedPalette.colors],
-      bgColor: bgColor && bgColor.length ? bgColor : 'transparent',
-      bgImage,
-      centerImage,
-      fontFamily: fontFamily && fontFamily.length ? fontFamily : '"Inter", sans-serif',
-    };
+      wheelWorkspaces: this.wheelWorkspaces(),
+      activeWheelId: this.activeWheelId(),
+      activeNames: this.names(),
+      activePalette: this.selectedPalette(),
+      activeBgColor: this.bgColor(),
+      activeBgImage: this.bgImage(),
+      activeCenterImage: this.centerImage(),
+      activeFontFamily: this.fontFamily(),
+    });
   }
 
   private persistWorkspaceRegistry(): void {
@@ -454,8 +281,8 @@ export class WheelConfigurator {
       const now = new Date().toISOString();
       validWorkspaces.push({
         id: 'default',
-        name: 'Ruota principale',
-        description: 'Ruota predefinita',
+        name: 'Main wheel',
+        description: 'Default wheel',
         createdAt: now,
         updatedAt: now,
       });
@@ -465,8 +292,8 @@ export class WheelConfigurator {
       const now = new Date().toISOString();
       validWorkspaces.unshift({
         id: 'default',
-        name: 'Ruota principale',
-        description: 'Ruota predefinita',
+        name: 'Main wheel',
+        description: 'Default wheel',
         createdAt: now,
         updatedAt: now,
       });
@@ -651,8 +478,8 @@ export class WheelConfigurator {
     this.persistWorkspaceRegistry();
 
     for (const id of idsToDelete) {
-      this.clearWorkspaceStorage(id);
-      await this.clearWorkspaceIndexedDb(id);
+      clearWorkspaceStorage(id);
+      await clearWorkspaceIndexedDb(id);
     }
 
     if (idsToDelete.includes(this.activeWheelId())) {
@@ -662,42 +489,6 @@ export class WheelConfigurator {
     }
 
     return true;
-  }
-
-  private clearWorkspaceStorage(workspaceId: string): void {
-    const allKeys = Object.values(STORAGE_KEYS);
-    for (const key of allKeys) {
-      localStorage.removeItem(`${key}.${workspaceId}`);
-    }
-  }
-
-  private async clearWorkspaceIndexedDb(workspaceId: string): Promise<void> {
-    const mediaKeys = [
-      STORAGE_KEYS.bgImage,
-      STORAGE_KEYS.centerImage,
-      STORAGE_KEYS.customAudio,
-      STORAGE_KEYS.winnerAudio,
-      STORAGE_KEYS.countdownAudio,
-    ];
-
-    for (const key of mediaKeys) {
-      await this.deleteImage(`${key}.${workspaceId}`);
-    }
-  }
-
-  private async deleteImage(key: string): Promise<void> {
-    try {
-      const db = await openDb();
-      await new Promise<void>((resolve, reject) => {
-        const tx = db.transaction('images', 'readwrite');
-        const store = tx.objectStore('images');
-        const request = store.delete(key);
-        request.onsuccess = () => resolve();
-        request.onerror = () => reject(request.error);
-      });
-    } catch {
-      // ignore failures
-    }
   }
 
   private touchActiveWorkspace(): void {
@@ -732,19 +523,19 @@ export class WheelConfigurator {
     this.countdownAudio.set('');
     this.countdownEnabled.set(false);
     this.countdownStart.set(3);
-    this.visibleWheelCount.set(1);
+    // Keep current multi-wheel layout during hydration to avoid a one-frame fallback to single view.
     this.currentCountdown.set(null);
     this.countdownToggle.set(false);
     this.countdownInProgress.set(false);
     this.fontFamily.set('"Inter", sans-serif');
-    this.fontLink.set('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+    this.fontLink.set(WheelConfigurator.DEFAULT_FONT_LINK);
     this.winner.set(null);
     this.isSpinning.set(false);
   }
 
   private startIdleRotation(): void {
     // Slow continuous rotation when not spinning
-    const degPerSecond = 6; // "piano" (~1 giro/minuto)
+    const degPerSecond = 6; // slow pace (~1 rotation/minute)
     let lastTs = performance.now();
 
     const tick = (ts: number) => {
@@ -1016,19 +807,9 @@ export class WheelConfigurator {
       const audio = this.countdownAudio();
       if (audio && audio.length) {
         writeImage(this.storageKey(STORAGE_KEYS.countdownAudio), audio).catch(() => {});
-        // Pre-load countdown audio for instant playback
-        try {
-          this.countdownAudioElement = new Audio(audio);
-          this.countdownAudioElement.preload = 'auto';
-        } catch (e) {
-          console.warn('Failed to pre-load countdown audio', e);
-        }
+        this.audioManager.preloadCountdownAudio(audio);
       } else {
-        // clear audio element if audio is empty
-        if (this.countdownAudioElement) {
-          this.countdownAudioElement.pause();
-          this.countdownAudioElement = undefined;
-        }
+        this.audioManager.clearCountdownAudio();
       }
     });
 
@@ -1148,7 +929,7 @@ export class WheelConfigurator {
 
     // Play audio if enabled
     if (this.soundEnabled() && this.customAudio()) {
-      this.playSpinAudio();
+      this.audioManager.playSpinAudio(this.customAudio());
     }
 
     const extraDegrees = Math.floor(Math.random() * 360);
@@ -1164,7 +945,7 @@ export class WheelConfigurator {
 
       // Play winner audio if enabled
       if (this.soundEnabled() && this.winnerAudio()) {
-        this.playWinnerAudio();
+        this.audioManager.playWinnerAudio(this.winnerAudio());
       }
     }, this.spinDurationMs());
   }
@@ -1188,7 +969,7 @@ export class WheelConfigurator {
 
       // play countdown start sound once (if configured)
       if (this.soundEnabled() && this.countdownAudio()) {
-        this.playCountdownAudio();
+        this.audioManager.playCountdownAudio();
       }
 
       const tick = () => {
@@ -1229,54 +1010,6 @@ export class WheelConfigurator {
     const nextCount = Math.min(4, Math.max(1, Math.floor(count)));
     this.visibleWheelCount.set(nextCount);
     writeJson(this.storageKey(STORAGE_KEYS.visibleWheelCount), nextCount);
-  }
-
-  private playSpinAudio(): void {
-    try {
-      // If audio element already exists, stop it
-      if (this.audioElement) {
-        this.audioElement.pause();
-        this.audioElement.currentTime = 0;
-      }
-
-      // Create and play new audio element
-      this.audioElement = new Audio(this.customAudio());
-      this.audioElement.play().catch(() => {
-        // Ignore errors (e.g., autoplay policy)
-      });
-    } catch (e) {
-      console.warn('Failed to play spin audio', e);
-    }
-  }
-
-  private playWinnerAudio(): void {
-    try {
-      // If audio element already exists, stop it
-      if (this.winnerAudioElement) {
-        this.winnerAudioElement.pause();
-        this.winnerAudioElement.currentTime = 0;
-      }
-
-      // Create and play new audio element
-      this.winnerAudioElement = new Audio(this.winnerAudio());
-      this.winnerAudioElement.play().catch(() => {
-        // Ignore errors (e.g., autoplay policy)
-      });
-    } catch (e) {
-      console.warn('Failed to play winner audio', e);
-    }
-  }
-
-  private playCountdownAudio(): void {
-    try {
-      if (this.countdownAudioElement) {
-        // reuse pre-loaded element
-        this.countdownAudioElement.currentTime = 0;
-        this.countdownAudioElement.play().catch(() => {});
-      }
-    } catch (e) {
-      console.warn('Failed to play countdown audio', e);
-    }
   }
 
   shuffleNames(): void {

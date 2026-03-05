@@ -16,7 +16,7 @@
 
   <div class="w-full overflow-hidden rounded-2xl border border-amber-300/20 bg-[radial-gradient(circle_at_30%_20%,#14532d,#052e16_55%,#022c22)] shadow-[inset_0_0_80px_rgba(0,0,0,0.4)]">
     @if (cards().length === 0) {
-      <p class="grid min-h-82.5 place-items-center px-4 text-center text-slate-300 sm:min-h-97.5">Aggiungi almeno un nome per iniziare l'estrazione.</p>
+      <p class="grid min-h-82.5 place-items-center px-4 text-center text-slate-300 sm:min-h-97.5">Add at least one name to start the draw.</p>
     } @else {
       <div class="relative min-h-82.5 cursor-pointer isolate sm:min-h-97.5" (click)="startExtraction()">
         @for (card of cards(); track card.id) {

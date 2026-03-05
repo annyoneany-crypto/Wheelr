@@ -110,7 +110,7 @@ export class WheelManager {
       return;
     }
 
-    const confirmed = window.confirm(`Eliminare la ruota "${workspace.name}"?`);
+    const confirmed = window.confirm(`Delete wheel "${workspace.name}"?`);
     if (!confirmed) {
       return;
     }

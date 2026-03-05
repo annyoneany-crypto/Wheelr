@@ -1,17 +1,17 @@
 <div class="h-full flex flex-col gap-4">
   <section class="rounded-xl border border-white/10 bg-white/5 p-3">
-    <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">Visualizzazione</h3>
-    <p class="mt-1 text-xs text-white/70">Mostra da 1 a 4 wheel affiancate nella pagina.</p>
+    <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">Display</h3>
+    <p class="mt-1 text-xs text-white/70">Show 1 to 4 wheels side by side on the page.</p>
 
     <div class="mt-3 flex items-center justify-between rounded-lg border border-white/10 bg-neutral-800/60 px-3 py-2">
-      <span class="text-sm text-white/90">Wheel visibili</span>
+      <span class="text-sm text-white/90">Visible wheels</span>
       <div class="flex items-center gap-2">
         <button
           type="button"
           class="h-8 w-8 rounded-md border border-neutral-700 bg-neutral-800 text-white hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-45"
           [disabled]="wheelConfigurator.visibleWheelCount() <= 1"
           (click)="decreaseVisibleWheels()"
-          aria-label="Diminuisci ruote visibili">
+          aria-label="Decrease visible wheels">
           -
         </button>
         <span class="w-6 text-center text-sm font-semibold text-white">{{ wheelConfigurator.visibleWheelCount() }}</span>
@@ -20,7 +20,7 @@
           class="h-8 w-8 rounded-md border border-neutral-700 bg-neutral-800 text-white hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-45"
           [disabled]="wheelConfigurator.visibleWheelCount() >= 4"
           (click)="increaseVisibleWheels()"
-          aria-label="Aumenta ruote visibili">
+          aria-label="Increase visible wheels">
           +
         </button>
       </div>
@@ -28,23 +28,23 @@
   </section>
 
   <section class="rounded-xl border border-white/10 bg-white/5 p-3">
-    <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">Nuova ruota</h3>
+    <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">New wheel</h3>
     <div class="mt-2 grid gap-2">
-      <label class="sr-only" for="create-wheel-name">Nome ruota</label>
+      <label class="sr-only" for="create-wheel-name">Wheel name</label>
       <input
         id="create-wheel-name"
         type="text"
         class="w-full rounded bg-white/10 p-2 text-white"
-        placeholder="Nome ruota"
+        placeholder="Wheel name"
         [value]="createName()"
         (input)="updateCreateName($event)" />
 
-      <label class="sr-only" for="create-wheel-description">Descrizione ruota</label>
+      <label class="sr-only" for="create-wheel-description">Wheel description</label>
       <input
         id="create-wheel-description"
         type="text"
         class="w-full rounded bg-white/10 p-2 text-white"
-        placeholder="Descrizione"
+        placeholder="Description"
         [value]="createDescription()"
         (input)="updateCreateDescription($event)" />
 
@@ -52,13 +52,13 @@
         type="button"
         class="rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-700"
         (click)="createWheel()">
-        Crea ruota
+        Create wheel
       </button>
     </div>
   </section>
 
   <section class="flex-1 overflow-y-auto rounded-xl border border-white/10 bg-white/5 p-3">
-    <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">Lista ruote</h3>
+    <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">Wheel list</h3>
 
     <div class="mt-2 grid gap-2">
       @for (workspace of managerWorkspaces(); track workspace.id) {
@@ -71,7 +71,7 @@
 
           @if (editingWheelId() === workspace.id) {
             <div class="grid gap-2">
-              <label class="sr-only" [attr.for]="'edit-name-' + workspace.id">Nome ruota</label>
+              <label class="sr-only" [attr.for]="'edit-name-' + workspace.id">Wheel name</label>
               <input
                 [id]="'edit-name-' + workspace.id"
                 type="text"
@@ -79,7 +79,7 @@
                 [value]="editName()"
                 (input)="updateEditName($event)" />
 
-              <label class="sr-only" [attr.for]="'edit-description-' + workspace.id">Descrizione ruota</label>
+              <label class="sr-only" [attr.for]="'edit-description-' + workspace.id">Wheel description</label>
               <input
                 [id]="'edit-description-' + workspace.id"
                 type="text"
@@ -92,13 +92,13 @@
                   type="button"
                   class="flex-1 rounded-lg border border-neutral-700 bg-neutral-700 py-2 text-xs font-semibold text-white hover:bg-neutral-600"
                   (click)="saveRename()">
-                  Salva
+                  Save
                 </button>
                 <button
                   type="button"
                   class="flex-1 rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-xs font-semibold text-white hover:bg-neutral-700"
                   (click)="cancelRename()">
-                  Annulla
+                  Cancel
                 </button>
               </div>
             </div>
@@ -113,20 +113,20 @@
                 type="button"
                 class="flex-1 rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-xs font-semibold text-white hover:bg-neutral-700"
                 (click)="loadWheel(workspace.id)">
-                Carica
+                Load
               </button>
               <button
                 type="button"
                 class="flex-1 rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-xs font-semibold text-white hover:bg-neutral-700"
                 (click)="startRename(workspace.id)">
-                Rinomina
+                Rename
               </button>
               @if (managerWorkspaces().length > 1) {
                 <button
                   type="button"
                   class="rounded-lg border border-red-500/30 bg-red-500/20 px-3 py-2 text-xs font-semibold text-red-200 hover:bg-red-500/30"
                   (click)="deleteWheel(workspace.id)">
-                  Elimina
+                  Delete
                 </button>
               }
             </div>
