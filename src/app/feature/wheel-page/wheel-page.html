@@ -152,6 +152,17 @@
                 [value]="renameDrafts()[target.workspaceId]"
                 (input)="updateRenameDraft(target.workspaceId, $event)"
                 placeholder="Wheel name" />
+
+              <label class="mb-1 mt-3 block text-xs uppercase tracking-wide text-white/70" [attr.for]="'rename-description-' + target.workspaceId">
+                Description
+              </label>
+              <textarea
+                [id]="'rename-description-' + target.workspaceId"
+                rows="3"
+                class="w-full rounded-lg border border-white/15 bg-neutral-800 px-3 py-2 text-sm text-white"
+                [value]="renameDescriptionDrafts()[target.workspaceId]"
+                (input)="updateRenameDescriptionDraft(target.workspaceId, $event)"
+                placeholder="Wheel description"></textarea>
             </div>
           }
         </div>

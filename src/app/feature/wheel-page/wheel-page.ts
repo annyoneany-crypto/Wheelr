@@ -53,6 +53,7 @@ export class WheelPage {
   selectedWheelName = computed(() => this.wheelConfigurator.activeWheel()?.name ?? 'Wheel');
   renameModalOpen = signal(false);
   renameDrafts = signal<Record<string, string>>({});
+  renameDescriptionDrafts = signal<Record<string, string>>({});
   renameTargets = signal<WheelDisplayConfig[]>([]);
 
   private refreshVisibleWheelRequestId = 0;
@@ -414,9 +415,15 @@ export class WheelPage {
     }
 
     this.renameTargets.set(targets);
-    this.renameDrafts.set(
-      Object.fromEntries(targets.map((target) => [target.workspaceId, target.workspaceName]))
-    );
+    const workspaces = this.wheelConfigurator.wheelWorkspaces();
+    this.renameDrafts.set(Object.fromEntries(targets.map((target) => {
+      const workspace = workspaces.find((item) => item.id === target.workspaceId);
+      return [target.workspaceId, workspace?.name ?? target.workspaceName];
+    })));
+    this.renameDescriptionDrafts.set(Object.fromEntries(targets.map((target) => {
+      const workspace = workspaces.find((item) => item.id === target.workspaceId);
+      return [target.workspaceId, workspace?.description ?? ''];
+    })));
     this.renameModalOpen.set(true);
   }
 
@@ -424,6 +431,7 @@ export class WheelPage {
     this.renameModalOpen.set(false);
     this.renameTargets.set([]);
     this.renameDrafts.set({});
+    this.renameDescriptionDrafts.set({});
   }
 
   updateRenameDraft(workspaceId: string, event: Event): void {
@@ -438,26 +446,41 @@ export class WheelPage {
     }));
   }
 
+  updateRenameDescriptionDraft(workspaceId: string, event: Event): void {
+    const target = event.target;
+    if (!(target instanceof HTMLTextAreaElement)) {
+      return;
+    }
+
+    this.renameDescriptionDrafts.update((current) => ({
+      ...current,
+      [workspaceId]: target.value,
+    }));
+  }
+
   saveRenameModal(): void {
-    const drafts = this.renameDrafts();
+    const nameDrafts = this.renameDrafts();
+    const descriptionDrafts = this.renameDescriptionDrafts();
     const workspaces = this.wheelConfigurator.wheelWorkspaces();
     let hasAtLeastOneRename = false;
 
     for (const target of this.renameTargets()) {
-      const nextName = (drafts[target.workspaceId] ?? '').trim();
-      if (!nextName || nextName === target.workspaceName) {
+      const workspace = workspaces.find((item) => item.id === target.workspaceId);
+      if (!workspace) {
         continue;
       }
 
-      const workspace = workspaces.find((item) => item.id === target.workspaceId);
-      if (!workspace) {
+      const nextName = (nameDrafts[target.workspaceId] ?? workspace.name).trim();
+      const nextDescription = descriptionDrafts[target.workspaceId] ?? workspace.description;
+      const hasChanges = nextName !== workspace.name || nextDescription !== workspace.description;
+      if (!nextName || !hasChanges) {
         continue;
       }
 
       const renamed = this.wheelConfigurator.renameWheelWorkspace(
         target.workspaceId,
         nextName,
-        workspace.description
+        nextDescription
       );
 
       if (renamed) {
