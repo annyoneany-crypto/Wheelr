@@ -10,7 +10,9 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 export class Effects {
   wheelConfigurator = inject(WheelConfigurator);
 
-  setView(view: 'wheel' | 'linear'): void {
+  setView(view: 'wheel' | 'linear' | 'cards'): void {
+    this.wheelConfigurator.resetWinnerEffect();
+    this.wheelConfigurator.isSpinning.set(false);
     this.wheelConfigurator.wheelView.set(view);
   }
 }

@@ -32,6 +32,19 @@
         [class.text-neutral-200]="wheelConfigurator.wheelView() !== 'linear'">
         Linear
       </button>
+
+      <button
+        type="button"
+        (click)="setView('cards')"
+        class="flex-1 py-2 rounded-lg text-sm font-semibold border transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.wheelView() === 'cards'"
+        [class.border-yellow-400]="wheelConfigurator.wheelView() === 'cards'"
+        [class.text-white]="wheelConfigurator.wheelView() === 'cards'"
+        [class.bg-neutral-800]="wheelConfigurator.wheelView() !== 'cards'"
+        [class.border-neutral-700]="wheelConfigurator.wheelView() !== 'cards'"
+        [class.text-neutral-200]="wheelConfigurator.wheelView() !== 'cards'">
+        Cards
+      </button>
     </div>
   </div>
 

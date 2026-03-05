@@ -1,0 +1,44 @@
+<section class="mx-auto flex min-h-[72vh] w-full max-w-5xl 
+    flex-col items-center justify-center gap-5 px-2 sm:px-4">
+  <header class="grid justify-items-center gap-2 p-4 
+    rounded-2xl text-center border 
+    border-white/10 bg-neutral-800/50 ">
+    <p class="text-[0.72rem] uppercase tracking-[0.2em] text-amber-300">Card Extraction</p>
+    <h2 class="text-[clamp(1.1rem,2.3vw,1.8rem)] font-extrabold text-neutral-50">Shuffle and draw the next winner</h2>
+    <!-- <button
+      type="button"
+      (click)="startExtraction()"
+      [disabled]="isAnimating() || wheelConfigurator.names().length === 0"
+      class="rounded-full border border-amber-300 bg-linear-to-b from-amber-300 to-amber-500 px-5 py-2.5 font-bold text-slate-900 transition-all active:scale-95 disabled:cursor-not-allowed disabled:opacity-50">
+      {{ isAnimating() ? 'Mischio...' : 'Estrai una carta' }}
+    </button> -->
+  </header>
+
+  <div class="w-full overflow-hidden rounded-2xl border border-amber-300/20 bg-[radial-gradient(circle_at_30%_20%,#14532d,#052e16_55%,#022c22)] shadow-[inset_0_0_80px_rgba(0,0,0,0.4)]">
+    @if (cards().length === 0) {
+      <p class="grid min-h-82.5 place-items-center px-4 text-center text-slate-300 sm:min-h-97.5">Aggiungi almeno un nome per iniziare l'estrazione.</p>
+    } @else {
+      <div class="relative min-h-82.5 cursor-pointer isolate sm:min-h-97.5" (click)="startExtraction()">
+        @for (card of cards(); track card.id) {
+          <article
+            class="absolute left-1/2 top-1/2 grid aspect-[3/4.25] w-[clamp(108px,16vw,138px)] place-items-center rounded-2xl border border-slate-300 bg-linear-to-b from-white via-slate-50 to-slate-200 text-slate-900 shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-[transform,opacity,filter,box-shadow] duration-300"
+            [class.opacity-20]="wheelConfigurator.winner() !== null && revealedCardId() !== card.id"
+            [class.blur-[1px]]="wheelConfigurator.winner() !== null && revealedCardId() !== card.id"
+            [class.text-red-600]="card.suit === 'hearts' || card.suit === 'diamonds'"
+            [class.border-amber-300]="revealedCardId() === card.id"
+            [style.transform]="cardTransform(card)"
+            [style.zIndex]="revealedCardId() === card.id ? '10' : '1'"
+            [style.boxShadow]="revealedCardId() === card.id ? '0 0 0 3px rgba(250,204,21,0.45), 0 10px 28px rgba(0,0,0,0.45)' : '0 8px 24px rgba(0,0,0,0.35)'">
+            <span class="absolute left-2.5 top-2 text-[clamp(1.05rem,2vw,1.45rem)] font-bold leading-none">{{ card.symbol }}</span>
+            <span class="absolute bottom-2 right-2 rotate-180 text-[clamp(1.05rem,2vw,1.45rem)] font-bold leading-none">{{ card.symbol }}</span>
+            <p class="max-w-[78%] text-center text-[clamp(0.8rem,1.8vw,1.1rem)] font-bold wrap-break-word">{{ card.name }}</p>
+          </article>
+        }
+      </div>
+    }
+  </div>
+
+  @if (wheelConfigurator.winner()) {
+    <ng-content></ng-content>
+  }
+</section>

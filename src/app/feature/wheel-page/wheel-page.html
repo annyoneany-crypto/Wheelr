@@ -6,18 +6,26 @@
   [style.backgroundColor]="wheelConfigurator.bgColor()"
   [style.backgroundImage]="wheelConfigurator.bgImage() ? 'url(' + wheelConfigurator.bgImage() + ')' : 'none'">
 
-  @if(wheelConfigurator.bgImage()){
-    <div class="fixed inset-0 bg-black/40 z-0"></div>
-  }
+  <!-- @if(wheelConfigurator.bgImage()){ -->
+    <!-- <div class="fixed inset-0 bg-black/40 z-0"></div> -->
+  <!-- } -->
 
-  @if (wheelConfigurator.wheelView() === 'linear') {
-    <wl-linear-wheel>
-      <wl-fire-effect></wl-fire-effect>
-    </wl-linear-wheel>
-  } @else {
-    <wl-wheel>
-      <wl-fire-effect></wl-fire-effect>
-    </wl-wheel>
+  @switch (wheelConfigurator.wheelView()) {
+    @case ('linear') {
+      <wl-linear-wheel>
+        <wl-fire-effect></wl-fire-effect>
+      </wl-linear-wheel>
+    }
+    @case ('cards') {
+      <wl-cards-effect>
+        <wl-fire-effect></wl-fire-effect>
+      </wl-cards-effect>
+    }
+    @default {
+      <wl-wheel>
+        <wl-fire-effect></wl-fire-effect>
+      </wl-wheel>
+    }
   }
 
   @if (wheelConfigurator.currentCountdown() !== null) {

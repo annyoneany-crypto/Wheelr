@@ -2,6 +2,7 @@ import { Component, inject, signal } from '@angular/core';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
 import { LinearWheel } from '../../shared/extraction-effect/linear-wheel/linear-wheel';
 import { Wheel } from '../../shared/extraction-effect/wheel/wheel';
+import { CardsEffect } from '../../shared/extraction-effect/cards-draw/cards-draw';
 import { FireEffect } from '../../shared/winner-effect/fire-effect/fire-effect';
 import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
@@ -9,7 +10,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-wheel-page',
-  imports: [LinearWheel, Wheel, FireEffect, RouterModule],
+  imports: [LinearWheel, Wheel, CardsEffect, FireEffect, RouterModule],
   templateUrl: './wheel-page.html',
   styleUrl: './wheel-page.css',
 })

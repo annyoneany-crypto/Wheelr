@@ -37,7 +37,7 @@ export class WheelConfigurator {
 
   showModal = signal(false);
 
-  wheelView = signal<'wheel' | 'linear'>('wheel');
+  wheelView = signal<'wheel' | 'linear' | 'cards'>('wheel');
 
   palettes = signal<ColorPalette[]>(DEFAULT_PALETTES);
 
@@ -506,7 +506,7 @@ export class WheelConfigurator {
       console.debug('no valid centerLogoSize in storage, defaulting', storedCenterLogoSize);
     }
 
-    if (storedWheelView === 'wheel' || storedWheelView === 'linear') {
+    if (storedWheelView === 'wheel' || storedWheelView === 'linear' || storedWheelView === 'cards') {
       this.wheelView.set(storedWheelView);
     }
 
