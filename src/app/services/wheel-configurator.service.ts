@@ -94,7 +94,7 @@ export class WheelConfigurator {
     linkEl.href = href;
   }
 
-  bgColor = signal<string>('transparent'); 
+  bgColor = signal<string>('#262626'); 
   bgImage = signal<string>('');
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
 
@@ -226,7 +226,7 @@ export class WheelConfigurator {
       activeWorkspaceId,
       snapshotMigrationKey: this.snapshotMigrationKey,
       wheelSettingsSnapshotKey: this.wheelSettingsSnapshotKey,
-      fallbackBgColor: 'transparent',
+      fallbackBgColor: '#262626',
     });
   }
 

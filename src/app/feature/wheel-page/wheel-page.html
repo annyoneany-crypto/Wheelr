@@ -33,20 +33,26 @@
           style="background-size: cover; background-position: center; background-repeat: no-repeat;">
 
           <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 drop-shadow-[0_10px_18px_rgba(0,0,0,0.45)]">
-            <svg width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+            <svg width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path
-                d="M32 58L12 34h12V14c0-2.2 1.8-4 4-4h8c2.2 0 4 1.8 4 4v20h12L32 58z"
+                d="M32 58C24 47 18 39 18 29C18 18 24.7 10 32 10C39.3 10 46 18 46 29C46 39 40 47 32 58Z"
                 [attr.fill]="previewPointerContrastColor(wheelConfig)"
                 [attr.stroke]="previewPointerSliceColor(wheelConfig)"
                 stroke-width="2"
                 stroke-linejoin="round" />
               <path
-                d="M32 52L18 34h10V18h8v16h10L32 52z"
+                d="M32 53C26.2 44.9 22.5 38.6 22.5 29.8C22.5 21.5 27.2 15.2 32 15.2C36.8 15.2 41.5 21.5 41.5 29.8C41.5 38.6 37.8 44.9 32 53Z"
                 fill="none"
                 [attr.stroke]="previewPointerSliceColor(wheelConfig)"
-                stroke-width="2"
-                stroke-linejoin="round"
-                opacity="0.75" />
+                stroke-width="1.8"
+                opacity="0.72" />
+              <ellipse
+                cx="28"
+                cy="23"
+                rx="3"
+                ry="5"
+                [attr.fill]="previewPointerSliceColor(wheelConfig)"
+                opacity="0.2" />
             </svg>
           </div>
 
