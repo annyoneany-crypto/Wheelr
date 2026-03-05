@@ -20,15 +20,17 @@
           <span>Back to Wheel</span>
         </a>
 
-        <a
-          [href]="donationUrl"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-xl border border-emerald-300/40 bg-emerald-400 px-4 py-2 text-sm font-bold text-emerald-950 transition-colors hover:bg-emerald-300"
-          aria-label="Open donation page">
-          <i class="fa-solid fa-heart" aria-hidden="true"></i>
-          <span>Donate Ko-fi</span>
-        </a>
+        @if(false) {
+            <a
+            [href]="donationUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 rounded-xl border border-emerald-300/40 bg-emerald-400 px-4 py-2 text-sm font-bold text-emerald-950 transition-colors hover:bg-emerald-300"
+            aria-label="Open donation page">
+            <i class="fa-solid fa-heart" aria-hidden="true"></i>
+            <span>Donate Ko-fi</span>
+            </a>
+        }
 
         <button
           type="button"
