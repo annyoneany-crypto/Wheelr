@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Header } from './feature/header/header';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,8 @@ import { RouterOutlet } from '@angular/router';
   }
 })
 export class App {
-
+  router = inject(Router);
+  
   openCreatorLink() {
     window.open('https://x.com/AnnyoneAny', '_blank', 'noopener');
   }
