@@ -37,6 +37,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/info/info').then((x) => x.Info)
     },
     {
+        path: 'donation',
+        loadComponent: () => import('./feature/donation/donation').then((x) => x.Donation)
+    },
+    {
         path: '**',
         redirectTo: ''
     }
