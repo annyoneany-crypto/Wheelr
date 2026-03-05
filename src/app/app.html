@@ -6,14 +6,20 @@
 <router-outlet></router-outlet>
 
 <!-- Creator credit -->
-<div class="fixed bottom-2 left-2 flex flex-col items-center gap-2 text-xs text-white opacity-70 hover:opacity-100 transition-opacity">
+<div class="fixed bottom-2 left-4 
+  flex flex-col items-center gap-2 p-4
+  border border-white/10 bg-neutral-800/50 
+  backdrop-blur-sm rounded-md
+  text-xs text-white opacity-70 
+  hover:opacity-100 hover:cursor-pointer transition-opacity"
+  (click)="openCreatorLink()">
   <span>Created by AnnyoneAny</span>
-  <a href="https://x.com/AnnyoneAny" target="_blank" rel="noopener" class="invert">
+  <div class="invert">
     <img
       src="/twitter-logo.png"
       width="16"
       height="16"
       alt="Twitter"
       class="h-4 w-4" />
-  </a>
+  </div>
 </div>

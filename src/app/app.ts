@@ -15,4 +15,9 @@ import { RouterOutlet } from '@angular/router';
   }
 })
 export class App {
+
+  openCreatorLink() {
+    window.open('https://x.com/AnnyoneAny', '_blank', 'noopener');
+  }
+  
 }
