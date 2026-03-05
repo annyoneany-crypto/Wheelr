@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 
 @Component({
@@ -8,6 +8,11 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 })
 export class WheelManager {
   wheelConfigurator = inject(WheelConfigurator);
+  managerWorkspaces = computed(() => this.wheelConfigurator.managerWheelWorkspaces());
+
+  isManagerWorkspaceActive(workspaceId: string): boolean {
+    return this.wheelConfigurator.getWorkspaceRootId(this.wheelConfigurator.activeWheelId()) === workspaceId;
+  }
 
   createName = signal('');
   createDescription = signal('');
@@ -65,9 +70,7 @@ export class WheelManager {
   }
 
   startRename(workspaceId: string): void {
-    const workspace = this.wheelConfigurator
-      .wheelWorkspaces()
-      .find((item) => item.id === workspaceId);
+    const workspace = this.managerWorkspaces().find((item) => item.id === workspaceId);
 
     if (!workspace) {
       return;
@@ -102,7 +105,7 @@ export class WheelManager {
   }
 
   async deleteWheel(workspaceId: string): Promise<void> {
-    const workspace = this.wheelConfigurator.wheelWorkspaces().find((item) => item.id === workspaceId);
+    const workspace = this.managerWorkspaces().find((item) => item.id === workspaceId);
     if (!workspace) {
       return;
     }
@@ -117,5 +120,25 @@ export class WheelManager {
     if (this.editingWheelId() === workspaceId) {
       this.cancelRename();
     }
+  }
+
+  decreaseVisibleWheels(): void {
+    this.wheelConfigurator.setVisibleWheelCount(this.wheelConfigurator.visibleWheelCount() - 1);
+  }
+
+  async increaseVisibleWheels(): Promise<void> {
+    const nextVisibleCount = Math.min(4, this.wheelConfigurator.visibleWheelCount() + 1);
+    const currentActiveId = this.wheelConfigurator.activeWheelId();
+    const rootWorkspaceId = this.wheelConfigurator.getWorkspaceRootId(currentActiveId);
+
+    while (this.wheelConfigurator.getWorkspaceGroupIds(rootWorkspaceId, 99).length < nextVisibleCount) {
+      await this.wheelConfigurator.createGroupedWheelWorkspace(rootWorkspaceId);
+    }
+
+    if (currentActiveId) {
+      await this.wheelConfigurator.loadWheelWorkspace(currentActiveId);
+    }
+
+    this.wheelConfigurator.setVisibleWheelCount(nextVisibleCount);
   }
 }

@@ -14,17 +14,35 @@ export class Wheel {
   wheelConfigurator = inject(WheelConfigurator);
 
   canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('wheelCanvas');
-  effCanvasRef = effect(() => {
-    if(this.canvasRef()) {
-      this.wheelConfigurator.ctx.set(this.canvasRef()!.nativeElement.getContext('2d')!);
-      this.wheelConfigurator.canvasRef.set(this.canvasRef()!);
-
-      this.wheelConfigurator.drawWheel();
+  private readonly syncCanvasEffect = effect(() => {
+    const canvasElement = this.canvasRef()?.nativeElement;
+    if (!canvasElement) {
+      return;
     }
+
+    const context = canvasElement.getContext('2d');
+    if (!context) {
+      return;
+    }
+
+    // Trigger redraw on source data changes and draw on this specific instance.
+    this.wheelConfigurator.names();
+    this.wheelConfigurator.selectedPalette();
+    this.wheelConfigurator.fontFamily();
+
+    this.wheelConfigurator.drawWheelForCanvas(canvasElement, context);
+
+    // Keep backward compatibility for service consumers expecting a primary canvas.
+    this.wheelConfigurator.ctx.set(context);
+    this.wheelConfigurator.canvasRef.set(this.canvasRef()!);
   });
 
   width = signal(800);
   height = signal(800);
+  private readonly syncSizeEffect = effect(() => {
+    this.wheelConfigurator.visibleWheelCount();
+    this.calculateSize();
+  });
 
   private resizeTimeout: any;
 
@@ -33,7 +51,9 @@ export class Wheel {
   }
 
   calculateSize() {
-    const size = Math.min(window.innerWidth, window.innerHeight) * 0.7;
+    const visibleWheelCount = this.wheelConfigurator.visibleWheelCount();
+    const scaleByCount = visibleWheelCount === 1 ? 0.7 : visibleWheelCount === 2 ? 0.48 : visibleWheelCount === 3 ? 0.36 : 0.3;
+    const size = Math.min(window.innerWidth, window.innerHeight) * scaleByCount;
     this.width.set(size);
     this.height.set(size);
 
@@ -44,7 +64,11 @@ export class Wheel {
 
     // 2. Fai ripartire il timer da zero
     this.resizeTimeout = setTimeout(() => {
-      this.wheelConfigurator.drawWheel();
+      const canvasElement = this.canvasRef()?.nativeElement;
+      const context = canvasElement?.getContext('2d');
+      if (canvasElement && context) {
+        this.wheelConfigurator.drawWheelForCanvas(canvasElement, context);
+      }
       this.resizeTimeout = null; 
     }, 200);
   }

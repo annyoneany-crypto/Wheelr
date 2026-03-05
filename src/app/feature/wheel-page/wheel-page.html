@@ -6,25 +6,97 @@
   [style.backgroundColor]="wheelConfigurator.bgColor()"
   [style.backgroundImage]="wheelConfigurator.bgImage() ? 'url(' + wheelConfigurator.bgImage() + ')' : 'none'">
 
-  <!-- @if(wheelConfigurator.bgImage()){ -->
-    <!-- <div class="fixed inset-0 bg-black/40 z-0"></div> -->
-  <!-- } -->
+  <div class="absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none hidden md:block">
+    <div class="rounded-full border border-yellow-400/50 bg-black/55 px-5 py-2 text-center shadow-[0_0_18px_rgba(250,204,21,0.25)]">
+      <p class="text-[0.65rem] uppercase tracking-[0.2em] text-yellow-300/90">Selected Wheel</p>
+      <p class="text-sm font-semibold text-white">{{ selectedWheelName() }}</p>
+    </div>
+  </div>
 
-  @switch (wheelConfigurator.wheelView()) {
-    @case ('linear') {
-      <wl-linear-wheel>
-        <wl-fire-effect></wl-fire-effect>
-      </wl-linear-wheel>
-    }
-    @case ('cards') {
-      <wl-cards-effect>
-        <wl-fire-effect></wl-fire-effect>
-      </wl-cards-effect>
-    }
-    @default {
-      <wl-wheel>
-        <wl-fire-effect></wl-fire-effect>
-      </wl-wheel>
+  @if (showIndependentPreview()) {
+    <div class="z-10 w-full grid gap-6" [class]="wheelGridClass()">
+      @for (wheelConfig of visibleWheelConfigs(); track wheelConfig.workspaceId) {
+        <div
+          class="relative flex flex-col items-center gap-4 p-3 transition-colors"
+          
+          [style.backgroundColor]="!showIndependentPreview() ? wheelConfig.bgColor : 'transparent'"
+          [style.backgroundImage]="!showIndependentPreview() ? (wheelConfig.bgImage ? 'url(' + wheelConfig.bgImage + ')' : 'none') : 'none'"
+          style="background-size: cover; background-position: center; background-repeat: no-repeat;">
+
+          <div class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 drop-shadow-[0_10px_18px_rgba(0,0,0,0.45)]">
+            <svg width="60" height="60" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M32 58L12 34h12V14c0-2.2 1.8-4 4-4h8c2.2 0 4 1.8 4 4v20h12L32 58z"
+                [attr.fill]="previewPointerContrastColor(wheelConfig)"
+                [attr.stroke]="previewPointerSliceColor(wheelConfig)"
+                stroke-width="2"
+                stroke-linejoin="round" />
+              <path
+                d="M32 52L18 34h10V18h8v16h10L32 52z"
+                fill="none"
+                [attr.stroke]="previewPointerSliceColor(wheelConfig)"
+                stroke-width="2"
+                stroke-linejoin="round"
+                opacity="0.75" />
+            </svg>
+          </div>
+
+          <div class="relative group">
+            <canvas
+              #previewWheelCanvas
+              [width]="previewWheelSize()"
+              [height]="previewWheelSize()"
+              class="max-w-[90vw] max-h-[90vh] rounded-full border border-transparent shadow-[0_0_50px_rgba(0,0,0,0.5)] transition-transform cursor-pointer"
+              [class.border-yellow-400]="isWorkspaceActive(wheelConfig.workspaceId)"
+              [style.transform]="'rotate(' + previewCanvasRotation(wheelConfig.workspaceId) + 'deg)'"
+              [style.transitionDuration]="previewTransitionDuration(wheelConfig.workspaceId)"
+              [style.transitionTimingFunction]="isPreviewSpinning(wheelConfig.workspaceId) ? 'cubic-bezier(0.15, 0, 0.15, 1)' : 'linear'"
+              [style.backgroundColor]="wheelConfig.names.length === 0 ? '#5e5e5eBB' : 'transparent'"
+              (click)="onPreviewWheelClick(wheelConfig.workspaceId)">
+            </canvas>
+
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-xl border-4 border-neutral-900 z-10 overflow-hidden bg-white transition-transform group-hover:scale-110 cursor-pointer"
+              [class.w-14]="wheelConfigurator.centerLogoSize() === 's'"
+              [class.h-14]="wheelConfigurator.centerLogoSize() === 's'"
+              [class.w-20]="wheelConfigurator.centerLogoSize() === 'm'"
+              [class.h-20]="wheelConfigurator.centerLogoSize() === 'm'"
+              [class.w-24]="wheelConfigurator.centerLogoSize() === 'l'"
+              [class.h-24]="wheelConfigurator.centerLogoSize() === 'l'"
+              [class.w-28]="wheelConfigurator.centerLogoSize() === 'xl'"
+              [class.h-28]="wheelConfigurator.centerLogoSize() === 'xl'"
+              [class.w-36]="wheelConfigurator.centerLogoSize() === 'xxl'"
+              [class.h-36]="wheelConfigurator.centerLogoSize() === 'xxl'"
+              [class.w-48]="wheelConfigurator.centerLogoSize() === 'xxxl'"
+              [class.h-48]="wheelConfigurator.centerLogoSize() === 'xxxl'"
+              (click)="onPreviewWheelClick(wheelConfig.workspaceId)">
+              @if (wheelConfig.centerImage) {
+                <img [src]="wheelConfig.centerImage" class="w-full h-full object-cover" alt="Center">
+              } @else {
+                <span class="text-neutral-900 font-bold text-sm">SPIN</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  } @else {
+    @switch (wheelConfigurator.wheelView()) {
+      @case ('linear') {
+        <wl-linear-wheel>
+          <wl-fire-effect></wl-fire-effect>
+        </wl-linear-wheel>
+      }
+      @case ('cards') {
+        <wl-cards-effect>
+          <wl-fire-effect></wl-fire-effect>
+        </wl-cards-effect>
+      }
+      @default {
+        <wl-wheel>
+          <wl-fire-effect></wl-fire-effect>
+        </wl-wheel>
+      }
     }
   }
 
@@ -37,6 +109,10 @@
         {{ wheelConfigurator.currentCountdown() }}
       </span>
     </div>
+  }
+
+  @if (showIndependentPreview() && wheelConfigurator.winner()) {
+    <wl-fire-effect></wl-fire-effect>
   }
 </div>
 
@@ -78,22 +154,24 @@
     [class.fa-user-plus]="!showPanelSettings()"></i>
 </div>
 
-<div class="fixed top-60
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50"
-  [class.border-yellow-400]="isPanelActive('effects')"
-  [class.ring-2]="isPanelActive('effects')"
-  [class.ring-yellow-400/40]="isPanelActive('effects')"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  (click)="togglePaletSettings('effects')">
-  <i class="fa-solid fa-wand-magic-sparkles text-white/80"></i>
-</div>
+@if(false) {
+  <div class="fixed top-60
+    w-12 h-12 rounded-full
+    border border-white/10 bg-neutral-800
+    flex items-center justify-center hover:cursor-pointer
+    transition-all duration-300 ease-in-out z-50"
+    [class.border-yellow-400]="isPanelActive('effects')"
+    [class.ring-2]="isPanelActive('effects')"
+    [class.ring-yellow-400/40]="isPanelActive('effects')"
+    [class.right-8]="!showPanelSettings()"
+    [class.right-[21rem]]="showPanelSettings()"
+    [class.lg:right-100]="showPanelSettings()"
+    (click)="togglePaletSettings('effects')">
+    <i class="fa-solid fa-wand-magic-sparkles text-white/80"></i>
+  </div>
+}
 
-<div class="fixed top-76
+<div class="fixed top-60
   w-12 h-12 rounded-full
   border border-white/10 bg-neutral-800
   flex items-center justify-center hover:cursor-pointer
@@ -108,7 +186,7 @@
   <i class="fa-solid fa-volume-high text-white/80"></i>
 </div>
 
-<div class="fixed top-92
+<div class="fixed top-76
   w-12 h-12 rounded-full
   border border-white/10 bg-neutral-800
   flex items-center justify-center hover:cursor-pointer

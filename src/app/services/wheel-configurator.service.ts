@@ -18,17 +18,60 @@ export interface WheelWorkspaceMeta {
   description: string;
   createdAt: string;
   updatedAt: string;
+  parentWheelId?: string;
+}
+
+export interface WheelDisplayConfig {
+  workspaceId: string;
+  workspaceName: string;
+  names: string[];
+  colors: string[];
+  bgColor: string;
+  bgImage: string;
+  centerImage: string;
+  fontFamily: string;
+}
+
+interface WheelSnapshotEntry {
+  wheelID: string;
+  name: string;
+  description: string;
+  palettes: ColorPalette[];
+  selectedPaletteName: string;
+  names: string[];
+  centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
+  wheelView: 'wheel' | 'linear' | 'cards';
+  spinDurationMs: number;
+  soundEnabled: boolean;
+  countdownEnabled: boolean;
+  countdownStart: number;
+  fontFamily: string;
+  fontLink: string;
+  visibleWheelCount: number;
+}
+
+interface WheelSettingsSnapshot {
+  wheelID: string;
+  backgrondcolor: string;
+  Wheels: WheelSnapshotEntry[];
 }
 
 @Injectable({
   providedIn: 'root',
 })
 export class WheelConfigurator {
+  private static readonly MAX_WHEELS_PER_GROUP = 4;
+
   private readonly wheelListStorageKey = 'giveawayWheel.workspaces';
   private readonly activeWheelStorageKey = 'giveawayWheel.activeWorkspaceId';
   private readonly legacyMigrationKey = 'giveawayWheel.legacyMigratedToDefault.v1';
+  private readonly wheelSettingsSnapshotKey = 'giveawayWheel.settingsSnapshot.v1';
+  private readonly snapshotMigrationKey = 'giveawayWheel.snapshotMigrated.v1';
 
   wheelWorkspaces = signal<WheelWorkspaceMeta[]>([]);
+  managerWheelWorkspaces = computed(() =>
+    this.wheelWorkspaces().filter((workspace) => !workspace.parentWheelId)
+  );
   activeWheelId = signal<string>('');
   activeWheel = computed(() => {
     const id = this.activeWheelId();
@@ -81,7 +124,7 @@ export class WheelConfigurator {
     linkEl.href = href;
   }
 
-  bgColor = signal<string>('#000'); 
+  bgColor = signal<string>('transparent'); 
   bgImage = signal<string>('');
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
 
@@ -106,6 +149,7 @@ export class WheelConfigurator {
   // countdown configuration
   countdownEnabled = signal<boolean>(false);
   countdownStart = signal<number>(3);
+  visibleWheelCount = signal<number>(1);
   // internal state while running a countdown
   currentCountdown = signal<number | null>(null);
   // used to restart animation on each tick
@@ -167,6 +211,206 @@ export class WheelConfigurator {
     return `${baseKey}.${workspaceId}`;
   }
 
+  private storageKeyForWorkspace(baseKey: string, workspaceId: string): string {
+    return `${baseKey}.${workspaceId}`;
+  }
+
+  private readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSnapshotEntry {
+    const workspaceId = meta.id;
+    const palettes =
+      readJson<ColorPalette[]>(this.storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId)) ??
+      DEFAULT_PALETTES;
+    const selectedPaletteName =
+      readJson<string>(this.storageKeyForWorkspace(STORAGE_KEYS.selectedPaletteName, workspaceId)) ??
+      palettes[0]?.name ??
+      DEFAULT_PALETTES[0].name;
+    const names = readJson<string[]>(this.storageKeyForWorkspace(STORAGE_KEYS.names, workspaceId)) ?? [];
+    const centerLogoSize =
+      readJson<'s' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'>(
+        this.storageKeyForWorkspace(STORAGE_KEYS.centerLogoSize, workspaceId)
+      ) ?? 'm';
+    const wheelView =
+      readJson<'wheel' | 'linear' | 'cards'>(this.storageKeyForWorkspace(STORAGE_KEYS.wheelView, workspaceId)) ??
+      'wheel';
+    const spinDurationMs =
+      readJson<number>(this.storageKeyForWorkspace(STORAGE_KEYS.spinDurationMs, workspaceId)) ?? 3000;
+    const soundEnabled =
+      readJson<boolean>(this.storageKeyForWorkspace(STORAGE_KEYS.soundEnabled, workspaceId)) ?? true;
+    const countdownEnabled =
+      readJson<boolean>(this.storageKeyForWorkspace(STORAGE_KEYS.countdownEnabled, workspaceId)) ?? false;
+    const countdownStart =
+      readJson<number>(this.storageKeyForWorkspace(STORAGE_KEYS.countdownStart, workspaceId)) ?? 3;
+    const fontFamily =
+      readJson<string>(this.storageKeyForWorkspace(STORAGE_KEYS.fontFamily, workspaceId)) ??
+      '"Inter", sans-serif';
+    const fontLink =
+      readJson<string>(this.storageKeyForWorkspace(STORAGE_KEYS.fontLink, workspaceId)) ??
+      'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap';
+    const visibleWheelCount =
+      readJson<number>(this.storageKeyForWorkspace(STORAGE_KEYS.visibleWheelCount, workspaceId)) ?? 1;
+
+    return {
+      wheelID: workspaceId,
+      name: meta.name,
+      description: meta.description,
+      palettes,
+      selectedPaletteName,
+      names,
+      centerLogoSize,
+      wheelView,
+      spinDurationMs,
+      soundEnabled,
+      countdownEnabled,
+      countdownStart,
+      fontFamily,
+      fontLink,
+      visibleWheelCount: Math.min(4, Math.max(1, Math.floor(visibleWheelCount))),
+    };
+  }
+
+  private buildActiveSnapshotEntry(): WheelSnapshotEntry | null {
+    const active = this.activeWheel();
+    if (!active) {
+      return null;
+    }
+
+    return {
+      wheelID: active.id,
+      name: active.name,
+      description: active.description,
+      palettes: this.palettes(),
+      selectedPaletteName: this.selectedPalette().name,
+      names: this.names(),
+      centerLogoSize: this.centerLogoSize(),
+      wheelView: this.wheelView(),
+      spinDurationMs: this.spinDurationMs(),
+      soundEnabled: this.soundEnabled(),
+      countdownEnabled: this.countdownEnabled(),
+      countdownStart: this.countdownStart(),
+      fontFamily: this.fontFamily(),
+      fontLink: this.fontLink(),
+      visibleWheelCount: this.visibleWheelCount(),
+    };
+  }
+
+  private saveUnifiedLocalStorageSnapshot(): void {
+    const activeId = this.activeWheelId();
+    if (!activeId) {
+      return;
+    }
+
+    const activeEntry = this.buildActiveSnapshotEntry();
+    const wheels = this.wheelWorkspaces().map((workspace) => {
+      if (activeEntry && workspace.id === activeEntry.wheelID) {
+        return activeEntry;
+      }
+      return this.readSnapshotEntryFromStorage(workspace);
+    });
+
+    const snapshot: WheelSettingsSnapshot = {
+      wheelID: activeId,
+      backgrondcolor: this.bgColor(),
+      Wheels: wheels,
+    };
+
+    writeJson(this.wheelSettingsSnapshotKey, snapshot);
+  }
+
+  private migrateLegacyStorageToUnifiedSnapshot(
+    workspaces: WheelWorkspaceMeta[],
+    activeWorkspaceId: string
+  ): void {
+    if (readJson<boolean>(this.snapshotMigrationKey)) {
+      return;
+    }
+
+    const existingSnapshot = readJson<WheelSettingsSnapshot>(this.wheelSettingsSnapshotKey);
+    if (existingSnapshot && Array.isArray(existingSnapshot.Wheels) && existingSnapshot.Wheels.length > 0) {
+      writeJson(this.snapshotMigrationKey, true);
+      return;
+    }
+
+    const activeWorkspaceKey =
+      workspaces.some((workspace) => workspace.id === activeWorkspaceId)
+        ? activeWorkspaceId
+        : (workspaces[0]?.id ?? 'default');
+
+    const sharedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
+    const scopedBgColor = readJson<string>(`${STORAGE_KEYS.bgColor}.${activeWorkspaceKey}`);
+
+    const snapshot: WheelSettingsSnapshot = {
+      wheelID: activeWorkspaceKey,
+      backgrondcolor: sharedBgColor ?? scopedBgColor ?? 'transparent',
+      Wheels: workspaces.map((workspace) => this.readSnapshotEntryFromStorage(workspace)),
+    };
+
+    writeJson(this.wheelSettingsSnapshotKey, snapshot);
+    writeJson(this.snapshotMigrationKey, true);
+  }
+
+  async loadWheelDisplayConfig(workspaceId: string): Promise<WheelDisplayConfig | null> {
+    const workspace = this.wheelWorkspaces().find((item) => item.id === workspaceId);
+    if (!workspace) {
+      return null;
+    }
+
+    if (workspaceId === this.activeWheelId()) {
+      const activePalette = this.selectedPalette();
+      return {
+        workspaceId,
+        workspaceName: workspace.name,
+        names: [...this.names()],
+        colors: [...activePalette.colors],
+        bgColor: this.bgColor(),
+        bgImage: this.bgImage(),
+        centerImage: this.centerImage(),
+        fontFamily: this.fontFamily(),
+      };
+    }
+
+    const palettes = readJson<ColorPalette[]>(
+      this.storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId)
+    );
+    const selectedPaletteName = readJson<string>(
+      this.storageKeyForWorkspace(STORAGE_KEYS.selectedPaletteName, workspaceId)
+    );
+    const names = readJson<string[]>(this.storageKeyForWorkspace(STORAGE_KEYS.names, workspaceId));
+    const fontFamily = readJson<string>(
+      this.storageKeyForWorkspace(STORAGE_KEYS.fontFamily, workspaceId)
+    );
+
+    const sharedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
+    const bgColor = sharedBgColor && sharedBgColor.length ? sharedBgColor : this.bgColor();
+
+    const sharedBgImage = await readImage(STORAGE_KEYS.bgImage);
+    const bgImage = sharedBgImage ?? this.bgImage();
+
+    const centerImage =
+      (await readImage(this.storageKeyForWorkspace(STORAGE_KEYS.centerImage, workspaceId))) ?? '';
+
+    const availablePalettes =
+      Array.isArray(palettes) && palettes.length > 0
+        ? palettes
+        : DEFAULT_PALETTES;
+
+    const selectedPalette =
+      (selectedPaletteName &&
+        availablePalettes.find((palette) => palette.name === selectedPaletteName)) ||
+      availablePalettes[0] ||
+      DEFAULT_PALETTES[0];
+
+    return {
+      workspaceId,
+      workspaceName: workspace.name,
+      names: Array.isArray(names) ? names : [],
+      colors: [...selectedPalette.colors],
+      bgColor: bgColor && bgColor.length ? bgColor : 'transparent',
+      bgImage,
+      centerImage,
+      fontFamily: fontFamily && fontFamily.length ? fontFamily : '"Inter", sans-serif',
+    };
+  }
+
   private persistWorkspaceRegistry(): void {
     writeJson(this.wheelListStorageKey, this.wheelWorkspaces());
   }
@@ -176,6 +420,28 @@ export class WheelConfigurator {
       return crypto.randomUUID();
     }
     return `wheel-${Date.now()}-${Math.floor(Math.random() * 100000)}`;
+  }
+
+  getWorkspaceRootId(workspaceId: string): string {
+    const current = this.wheelWorkspaces().find((workspace) => workspace.id === workspaceId);
+    if (!current) {
+      return workspaceId;
+    }
+
+    return current.parentWheelId ?? current.id;
+  }
+
+  getWorkspaceGroupIds(workspaceId: string, limit: number): string[] {
+    const rootId = this.getWorkspaceRootId(workspaceId);
+    const group = this.wheelWorkspaces()
+      .filter((workspace) => workspace.id === rootId || workspace.parentWheelId === rootId)
+      .sort((left, right) => {
+        if (left.id === rootId) return -1;
+        if (right.id === rootId) return 1;
+        return left.createdAt.localeCompare(right.createdAt);
+      });
+
+    return group.slice(0, limit).map((workspace) => workspace.id);
   }
 
   private async initializeWorkspaces(): Promise<void> {
@@ -217,6 +483,9 @@ export class WheelConfigurator {
       storedActiveId && validWorkspaces.some((workspace) => workspace.id === storedActiveId)
         ? storedActiveId
         : fallbackId;
+
+    // Immediately after legacy reorganization, migrate old storage shape into unified snapshot.
+    this.migrateLegacyStorageToUnifiedSnapshot(validWorkspaces, activeId);
 
     this.activeWheelId.set(activeId);
     writeJson(this.activeWheelStorageKey, activeId);
@@ -289,6 +558,36 @@ export class WheelConfigurator {
     await this.loadWheelWorkspace(newWorkspace.id);
   }
 
+  async createGroupedWheelWorkspace(parentWheelId: string, name?: string): Promise<void> {
+    const parent = this.wheelWorkspaces().find((workspace) => workspace.id === parentWheelId);
+    if (!parent) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+    const siblingsCount = this.wheelWorkspaces().filter(
+      (workspace) => workspace.id === parentWheelId || workspace.parentWheelId === parentWheelId
+    ).length;
+
+    if (siblingsCount >= WheelConfigurator.MAX_WHEELS_PER_GROUP) {
+      return;
+    }
+
+    const childWorkspace: WheelWorkspaceMeta = {
+      id: this.createWorkspaceId(),
+      name: name?.trim() || `${parent.name} - ${siblingsCount + 1}`,
+      description: '',
+      createdAt: now,
+      updatedAt: now,
+      parentWheelId,
+    };
+
+    this.wheelWorkspaces.update((workspaces) => [...workspaces, childWorkspace]);
+    this.persistWorkspaceRegistry();
+
+    await this.loadWheelWorkspace(childWorkspace.id);
+  }
+
   async loadWheelWorkspace(workspaceId: string): Promise<void> {
     if (!workspaceId || !this.wheelWorkspaces().some((workspace) => workspace.id === workspaceId)) {
       return;
@@ -331,18 +630,33 @@ export class WheelConfigurator {
 
   async deleteWheelWorkspace(workspaceId: string): Promise<boolean> {
     const workspaces = this.wheelWorkspaces();
-    if (workspaces.length <= 1 || !workspaces.some((workspace) => workspace.id === workspaceId)) {
+    if (!workspaces.some((workspace) => workspace.id === workspaceId)) {
       return false;
     }
 
-    this.wheelWorkspaces.set(workspaces.filter((workspace) => workspace.id !== workspaceId));
+    const rootId = this.getWorkspaceRootId(workspaceId);
+    const idsToDelete = workspaces
+      .filter((workspace) => workspace.id === rootId || workspace.parentWheelId === rootId)
+      .map((workspace) => workspace.id);
+
+    const managerWheelsAfterDelete = workspaces.filter(
+      (workspace) => !workspace.parentWheelId && !idsToDelete.includes(workspace.id)
+    );
+
+    if (managerWheelsAfterDelete.length === 0) {
+      return false;
+    }
+
+    this.wheelWorkspaces.set(workspaces.filter((workspace) => !idsToDelete.includes(workspace.id)));
     this.persistWorkspaceRegistry();
 
-    this.clearWorkspaceStorage(workspaceId);
-    await this.clearWorkspaceIndexedDb(workspaceId);
+    for (const id of idsToDelete) {
+      this.clearWorkspaceStorage(id);
+      await this.clearWorkspaceIndexedDb(id);
+    }
 
-    if (this.activeWheelId() === workspaceId) {
-      const nextActiveId = this.wheelWorkspaces()[0]?.id ?? 'default';
+    if (idsToDelete.includes(this.activeWheelId())) {
+      const nextActiveId = managerWheelsAfterDelete[0]?.id ?? 'default';
       await this.loadWheelWorkspace(nextActiveId);
       return true;
     }
@@ -408,8 +722,6 @@ export class WheelConfigurator {
     this.palettes.set(DEFAULT_PALETTES);
     this.selectedPalette.set(DEFAULT_PALETTES[0]);
     this.names.set([]);
-    this.bgColor.set('#000');
-    this.bgImage.set('');
     this.centerImage.set('');
     this.centerLogoSize.set('m');
     this.wheelView.set('wheel');
@@ -420,6 +732,7 @@ export class WheelConfigurator {
     this.countdownAudio.set('');
     this.countdownEnabled.set(false);
     this.countdownStart.set(3);
+    this.visibleWheelCount.set(1);
     this.currentCountdown.set(null);
     this.countdownToggle.set(false);
     this.countdownInProgress.set(false);
@@ -451,38 +764,69 @@ export class WheelConfigurator {
   private async hydrateFromStorage(): Promise<void> {
     this.resetStateForWorkspaceLoad();
 
+    const unifiedSnapshot = readJson<WheelSettingsSnapshot>(this.wheelSettingsSnapshotKey);
+    const activeUnifiedWheel = unifiedSnapshot?.Wheels.find(
+      (wheel) => wheel.wheelID === this.activeWheelId()
+    );
+
     const storedPalettes = readJson<ColorPalette[]>(this.storageKey(STORAGE_KEYS.palettes));
     const storedSelectedName = readJson<string>(this.storageKey(STORAGE_KEYS.selectedPaletteName));
     const storedSpinDurationMs = readJson<number>(this.storageKey(STORAGE_KEYS.spinDurationMs));
     const storedNames = readJson<string[]>(this.storageKey(STORAGE_KEYS.names));
-    const storedBgColor = readJson<string>(this.storageKey(STORAGE_KEYS.bgColor));
+    const sharedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
+    const scopedBgColor = readJson<string>(this.storageKey(STORAGE_KEYS.bgColor));
+    const storedBgColor = sharedBgColor ?? scopedBgColor;
 
-    const storedBgImage = await readImage(this.storageKey(STORAGE_KEYS.bgImage));
+    const sharedBgImage = await readImage(STORAGE_KEYS.bgImage);
+    const scopedBgImage = await readImage(this.storageKey(STORAGE_KEYS.bgImage));
+    const storedBgImage = sharedBgImage ?? scopedBgImage;
     const storedCenterImage = await readImage(this.storageKey(STORAGE_KEYS.centerImage));
 
     const storedCenterLogoSize = readJson<string>(this.storageKey(STORAGE_KEYS.centerLogoSize));
     const storedWheelView = readJson<string>(this.storageKey(STORAGE_KEYS.wheelView));
     const storedFontFamily = readJson<string>(this.storageKey(STORAGE_KEYS.fontFamily));
     const storedFontLink = readJson<string>(this.storageKey(STORAGE_KEYS.fontLink));
+    const storedVisibleWheelCount = readJson<number>(this.storageKey(STORAGE_KEYS.visibleWheelCount));
 
-    if (Array.isArray(storedPalettes) && storedPalettes.length) {
+    const effectivePalettes = activeUnifiedWheel?.palettes ?? storedPalettes;
+    const effectiveSelectedName = activeUnifiedWheel?.selectedPaletteName ?? storedSelectedName;
+    const effectiveSpinDurationMs = activeUnifiedWheel?.spinDurationMs ?? storedSpinDurationMs;
+    const effectiveNames = activeUnifiedWheel?.names ?? storedNames;
+    const effectiveBgColor = unifiedSnapshot?.backgrondcolor ?? storedBgColor;
+    const effectiveCenterLogoSize = activeUnifiedWheel?.centerLogoSize ?? storedCenterLogoSize;
+    const effectiveWheelView = activeUnifiedWheel?.wheelView ?? storedWheelView;
+    const effectiveFontFamily = activeUnifiedWheel?.fontFamily ?? storedFontFamily;
+    const effectiveFontLink = activeUnifiedWheel?.fontLink ?? storedFontLink;
+    const effectiveVisibleWheelCount = activeUnifiedWheel?.visibleWheelCount ?? storedVisibleWheelCount;
+
+    if (Array.isArray(effectivePalettes) && effectivePalettes.length) {
       // Merge defaults (new app versions) with stored palettes (including custom ones)
       const byName = new Map<string, ColorPalette>();
-      for (const p of storedPalettes) byName.set(p.name, p);
+      for (const p of effectivePalettes) byName.set(p.name, p);
       for (const p of DEFAULT_PALETTES) if (!byName.has(p.name)) byName.set(p.name, p);
       this.palettes.set(Array.from(byName.values()));
     }
 
-    if (Array.isArray(storedNames)) {
-      this.names.set(storedNames);
+    if (Array.isArray(effectiveNames)) {
+      this.names.set(effectiveNames);
     }
 
-    if (typeof storedBgColor === 'string' && storedBgColor.length) {
-      this.bgColor.set(storedBgColor);
+    if (typeof effectiveBgColor === 'string' && effectiveBgColor.length) {
+      this.bgColor.set(effectiveBgColor);
+    }
+
+    // Backward compatibility: migrate old scoped background color to shared key.
+    if (!sharedBgColor && typeof scopedBgColor === 'string' && scopedBgColor.length) {
+      writeJson(STORAGE_KEYS.bgColor, scopedBgColor);
     }
 
     if (typeof storedBgImage === 'string') {
       this.bgImage.set(storedBgImage);
+    }
+
+    // Backward compatibility: migrate old scoped background image to shared key.
+    if (!sharedBgImage && typeof scopedBgImage === 'string' && scopedBgImage.length) {
+      writeImage(STORAGE_KEYS.bgImage, scopedBgImage).catch(() => {});
     }
 
     if (storedCenterImage) {
@@ -490,37 +834,37 @@ export class WheelConfigurator {
     }
 
     if (
-      storedCenterLogoSize === 's' ||
-      storedCenterLogoSize === 'm' ||
-      storedCenterLogoSize === 'l' ||
-      storedCenterLogoSize === 'xl' ||
-      storedCenterLogoSize === 'xxl' ||
-      storedCenterLogoSize === 'xxxl'
+      effectiveCenterLogoSize === 's' ||
+      effectiveCenterLogoSize === 'm' ||
+      effectiveCenterLogoSize === 'l' ||
+      effectiveCenterLogoSize === 'xl' ||
+      effectiveCenterLogoSize === 'xxl' ||
+      effectiveCenterLogoSize === 'xxxl'
     ) {
-      console.debug('hydrated centerLogoSize', storedCenterLogoSize);
+      console.debug('hydrated centerLogoSize', effectiveCenterLogoSize);
       // only override if user hasn't already changed size during hydration
       if (this.centerLogoSize() === 'm') {
-        this.centerLogoSize.set(storedCenterLogoSize);
+        this.centerLogoSize.set(effectiveCenterLogoSize);
       }
     } else {
-      console.debug('no valid centerLogoSize in storage, defaulting', storedCenterLogoSize);
+      console.debug('no valid centerLogoSize in storage, defaulting', effectiveCenterLogoSize);
     }
 
-    if (storedWheelView === 'wheel' || storedWheelView === 'linear' || storedWheelView === 'cards') {
-      this.wheelView.set(storedWheelView);
+    if (effectiveWheelView === 'wheel' || effectiveWheelView === 'linear' || effectiveWheelView === 'cards') {
+      this.wheelView.set(effectiveWheelView);
     }
 
     const palettes = this.palettes();
     const selected =
-      (storedSelectedName && palettes.find(p => p.name === storedSelectedName)) ||
+      (effectiveSelectedName && palettes.find(p => p.name === effectiveSelectedName)) ||
       palettes[0];
 
     if (selected) {
       this.selectedPalette.set(selected);
     }
 
-    if (typeof storedSpinDurationMs === 'number' && storedSpinDurationMs > 0) {
-      this.spinDurationMs.set(storedSpinDurationMs);
+    if (typeof effectiveSpinDurationMs === 'number' && effectiveSpinDurationMs > 0) {
+      this.spinDurationMs.set(effectiveSpinDurationMs);
     }
 
     // Hydrate sound settings
@@ -544,12 +888,12 @@ export class WheelConfigurator {
     }
 
     // Hydrate font preferences
-    if (typeof storedFontFamily === 'string' && storedFontFamily.length) {
-      this.fontFamily.set(storedFontFamily);
+    if (typeof effectiveFontFamily === 'string' && effectiveFontFamily.length) {
+      this.fontFamily.set(effectiveFontFamily);
     }
-    if (typeof storedFontLink === 'string' && storedFontLink.length) {
-      this.fontLink.set(storedFontLink);
-      this.loadGoogleFont(storedFontLink);
+    if (typeof effectiveFontLink === 'string' && effectiveFontLink.length) {
+      this.fontLink.set(effectiveFontLink);
+      this.loadGoogleFont(effectiveFontLink);
     } else if (this.fontLink()) {
       // no stored link but we have a default; make sure it gets injected
       this.loadGoogleFont(this.fontLink());
@@ -563,6 +907,10 @@ export class WheelConfigurator {
     const storedCountdownStart = readJson<number>(this.storageKey(STORAGE_KEYS.countdownStart));
     if (typeof storedCountdownStart === 'number' && storedCountdownStart >= 0) {
       this.countdownStart.set(Math.floor(storedCountdownStart));
+    }
+
+    if (typeof effectiveVisibleWheelCount === 'number') {
+      this.visibleWheelCount.set(Math.min(4, Math.max(1, Math.floor(effectiveVisibleWheelCount))));
     }
   }
 
@@ -591,7 +939,7 @@ export class WheelConfigurator {
 
     effect(() => {
       if (!this.activeWheelId()) return;
-      writeJson(this.storageKey(STORAGE_KEYS.bgColor), this.bgColor());
+      writeJson(STORAGE_KEYS.bgColor, this.bgColor());
     });
 
     // persist images to IndexedDB rather than localStorage
@@ -599,7 +947,9 @@ export class WheelConfigurator {
       if (!this.activeWheelId()) return;
       const img = this.bgImage();
       if (img && img.length) {
-        writeImage(this.storageKey(STORAGE_KEYS.bgImage), img).catch(() => {});
+        writeImage(STORAGE_KEYS.bgImage, img).catch(() => {});
+      } else {
+        writeImage(STORAGE_KEYS.bgImage, '').catch(() => {});
       }
     });
 
@@ -681,10 +1031,35 @@ export class WheelConfigurator {
         }
       }
     });
+
+    // Keep a single localStorage object in sync with wheel settings.
+    effect(() => {
+      if (!this.activeWheelId()) return;
+
+      this.wheelWorkspaces();
+      this.activeWheelId();
+      this.bgColor();
+      this.visibleWheelCount();
+
+      // active wheel settings
+      this.palettes();
+      this.selectedPalette();
+      this.names();
+      this.centerLogoSize();
+      this.wheelView();
+      this.spinDurationMs();
+      this.soundEnabled();
+      this.countdownEnabled();
+      this.countdownStart();
+      this.fontFamily();
+      this.fontLink();
+
+      this.saveUnifiedLocalStorageSnapshot();
+    });
   }
 
   clearImagesStorage(): void {
-    writeImage(this.storageKey(STORAGE_KEYS.bgImage), '').catch(() => {});
+    writeImage(STORAGE_KEYS.bgImage, '').catch(() => {});
   }
 
   drawWheel() {
@@ -692,12 +1067,21 @@ export class WheelConfigurator {
     const ctx = this.ctx();
     if (!canvasRef || !ctx) return;
 
-    const canvas = canvasRef.nativeElement;
+    this.drawWheelForCanvas(canvasRef.nativeElement, ctx);
+  }
+
+  drawWheelForCanvas(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+    if (!canvas || !ctx) {
+      return;
+    }
+
     const n = this.names().length;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const radius = centerX - 10;
     const colors = this.selectedPalette().colors;
+    const fontSize = Math.max(12, Math.min(42, Math.round(radius * 0.09)));
+    const textInset = Math.max(20, Math.round(radius * 0.08));
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (n === 0) return;
@@ -721,8 +1105,8 @@ export class WheelConfigurator {
       const sliceColor = colors[i % colors.length];
       ctx.fillStyle = contrastForHex(sliceColor);
       // use the current font family from configuration
-      ctx.font = `bold 26px ${this.fontFamily()}`;
-      ctx.fillText(name.substring(0, 15), radius - 30, 5);
+      ctx.font = `bold ${fontSize}px ${this.fontFamily()}`;
+      ctx.fillText(name.substring(0, 15), radius - textInset, Math.round(fontSize * 0.18));
       ctx.restore();
     });
   }
@@ -839,6 +1223,12 @@ export class WheelConfigurator {
     const n = Math.max(0, Math.floor(start));
     this.countdownStart.set(n);
     writeJson(this.storageKey(STORAGE_KEYS.countdownStart), n);
+  }
+
+  setVisibleWheelCount(count: number): void {
+    const nextCount = Math.min(4, Math.max(1, Math.floor(count)));
+    this.visibleWheelCount.set(nextCount);
+    writeJson(this.storageKey(STORAGE_KEYS.visibleWheelCount), nextCount);
   }
 
   private playSpinAudio(): void {
