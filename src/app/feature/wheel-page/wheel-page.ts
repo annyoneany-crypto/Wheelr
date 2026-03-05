@@ -51,6 +51,9 @@ export class WheelPage {
   });
   showIndependentPreview = computed(() => this.wheelConfigurator.visibleWheelCount() > 1);
   selectedWheelName = computed(() => this.wheelConfigurator.activeWheel()?.name ?? 'Wheel');
+  renameModalOpen = signal(false);
+  renameDrafts = signal<Record<string, string>>({});
+  renameTargets = signal<WheelDisplayConfig[]>([]);
 
   private refreshVisibleWheelRequestId = 0;
   isSelectingWorkspace = signal(false);
@@ -197,6 +200,10 @@ export class WheelPage {
       return;
     }
 
+    if (this.wheelConfigurator.isSpinning() || this.wheelConfigurator.countdownInProgress()) {
+      return;
+    }
+
     const visibleCount = this.wheelConfigurator.visibleWheelCount();
     let spinDuration = this.wheelConfigurator.spinDurationMs();
     const wasAlreadyActive = workspaceId === this.wheelConfigurator.activeWheelId();
@@ -217,8 +224,29 @@ export class WheelPage {
       return;
     }
 
-    this.startPreviewSpin(workspaceId, spinDuration);
+    const previewSpinDelay = this.getPreviewSpinDelayMs();
+    if (previewSpinDelay > 0) {
+      setTimeout(() => {
+        // Keep preview spin aligned with actual spin start after countdown.
+        if (this.wheelConfigurator.activeWheelId() !== workspaceId) {
+          return;
+        }
+        this.startPreviewSpin(workspaceId, spinDuration);
+      }, previewSpinDelay);
+    } else {
+      this.startPreviewSpin(workspaceId, spinDuration);
+    }
+
     this.wheelConfigurator.spinWheel();
+  }
+
+  private getPreviewSpinDelayMs(): number {
+    if (!this.wheelConfigurator.countdownEnabled()) {
+      return 0;
+    }
+
+    const start = Math.max(0, Math.floor(this.wheelConfigurator.countdownStart()));
+    return start > 0 ? start * 1000 : 0;
   }
 
   previewRotation(workspaceId: string): number {
@@ -377,5 +405,99 @@ export class WheelPage {
     } else {
       this.displyPanel.set(true);
     }
+  }
+
+  openRenameModal(): void {
+    const targets = this.getRenameTargets();
+    if (!targets.length) {
+      return;
+    }
+
+    this.renameTargets.set(targets);
+    this.renameDrafts.set(
+      Object.fromEntries(targets.map((target) => [target.workspaceId, target.workspaceName]))
+    );
+    this.renameModalOpen.set(true);
+  }
+
+  closeRenameModal(): void {
+    this.renameModalOpen.set(false);
+    this.renameTargets.set([]);
+    this.renameDrafts.set({});
+  }
+
+  updateRenameDraft(workspaceId: string, event: Event): void {
+    const target = event.target;
+    if (!(target instanceof HTMLInputElement)) {
+      return;
+    }
+
+    this.renameDrafts.update((current) => ({
+      ...current,
+      [workspaceId]: target.value,
+    }));
+  }
+
+  saveRenameModal(): void {
+    const drafts = this.renameDrafts();
+    const workspaces = this.wheelConfigurator.wheelWorkspaces();
+    let hasAtLeastOneRename = false;
+
+    for (const target of this.renameTargets()) {
+      const nextName = (drafts[target.workspaceId] ?? '').trim();
+      if (!nextName || nextName === target.workspaceName) {
+        continue;
+      }
+
+      const workspace = workspaces.find((item) => item.id === target.workspaceId);
+      if (!workspace) {
+        continue;
+      }
+
+      const renamed = this.wheelConfigurator.renameWheelWorkspace(
+        target.workspaceId,
+        nextName,
+        workspace.description
+      );
+
+      if (renamed) {
+        hasAtLeastOneRename = true;
+      }
+    }
+
+    if (hasAtLeastOneRename) {
+      void this.refreshVisibleWheelConfigs();
+    }
+
+    this.closeRenameModal();
+  }
+
+  renameModalTitle(): string {
+    return this.showIndependentPreview() ? 'Rename visible wheels' : 'Rename selected wheel';
+  }
+
+  private getRenameTargets(): WheelDisplayConfig[] {
+    if (this.showIndependentPreview()) {
+      return this.visibleWheelConfigs();
+    }
+
+    const activeId = this.wheelConfigurator.activeWheelId();
+    if (!activeId) {
+      return [];
+    }
+
+    const activeName = this.wheelConfigurator.activeWheel()?.name ?? 'Wheel';
+    return [
+      {
+        workspaceId: activeId,
+        workspaceName: activeName,
+        names: [],
+        colors: [],
+        bgColor: 'transparent',
+        bgImage: '',
+        centerImage: '',
+        fontFamily: '',
+      },
+    ];
   }
 }

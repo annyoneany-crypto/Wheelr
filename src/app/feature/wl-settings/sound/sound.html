@@ -112,5 +112,37 @@
         </div>
       </div>
     }
+
+    <div class="pt-3 border-t border-neutral-700 space-y-2">
+      <div class="text-xs font-semibold uppercase tracking-wider text-gray-300">
+        Countdown
+      </div>
+      <div class="flex items-center gap-2">
+        <input
+          id="countdown-toggle-audio"
+          type="checkbox"
+          class="h-4 w-4 cursor-pointer"
+          [checked]="wheelConfigurator.countdownEnabled()"
+          (change)="wheelConfigurator.setCountdownEnabled($any($event.target).checked)"
+        />
+        <label for="countdown-toggle-audio" class="text-sm text-white cursor-pointer select-none">
+          Enable countdown
+        </label>
+      </div>
+
+      @if (wheelConfigurator.countdownEnabled()) {
+        <div class="flex items-center gap-2">
+          <label for="countdown-start-audio" class="text-sm text-neutral-200">Start from</label>
+          <input
+            id="countdown-start-audio"
+            type="number"
+            min="1"
+            [value]="wheelConfigurator.countdownStart()"
+            (input)="wheelConfigurator.setCountdownStart($any($event.target).valueAsNumber)"
+            class="w-16 rounded bg-neutral-800 p-1 text-center text-white"
+          />
+        </div>
+      }
+    </div>
   </div>
 </div>

@@ -60,6 +60,7 @@ export class WheelManager {
     }
 
     await this.wheelConfigurator.createWheelWorkspace(name, this.createDescription());
+    this.wheelConfigurator.setVisibleWheelCount(1);
     this.createName.set('');
     this.createDescription.set('');
   }

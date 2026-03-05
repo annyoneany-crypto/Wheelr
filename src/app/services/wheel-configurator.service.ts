@@ -178,6 +178,12 @@ export class WheelConfigurator {
     return `${baseKey}.${workspaceId}`;
   }
 
+  private backgroundStorageKey(): string {
+    const activeId = this.activeWheelId() || 'default';
+    const rootId = this.getWorkspaceRootId(activeId) || 'default';
+    return `${STORAGE_KEYS.bgImage}.${rootId}`;
+  }
+
   private buildActiveSnapshotEntry() {
     const active = this.activeWheel();
     if (!active) {
@@ -568,9 +574,9 @@ export class WheelConfigurator {
     const scopedBgColor = readJson<string>(this.storageKey(STORAGE_KEYS.bgColor));
     const storedBgColor = sharedBgColor ?? scopedBgColor;
 
-    const sharedBgImage = await readImage(STORAGE_KEYS.bgImage);
-    const scopedBgImage = await readImage(this.storageKey(STORAGE_KEYS.bgImage));
-    const storedBgImage = sharedBgImage ?? scopedBgImage;
+    const scopedBgImage = await readImage(this.backgroundStorageKey());
+    const legacySharedBgImage = scopedBgImage ? undefined : await readImage(STORAGE_KEYS.bgImage);
+    const storedBgImage = scopedBgImage ?? legacySharedBgImage;
     const storedCenterImage = await readImage(this.storageKey(STORAGE_KEYS.centerImage));
 
     const storedCenterLogoSize = readJson<string>(this.storageKey(STORAGE_KEYS.centerLogoSize));
@@ -615,9 +621,9 @@ export class WheelConfigurator {
       this.bgImage.set(storedBgImage);
     }
 
-    // Backward compatibility: migrate old scoped background image to shared key.
-    if (!sharedBgImage && typeof scopedBgImage === 'string' && scopedBgImage.length) {
-      writeImage(STORAGE_KEYS.bgImage, scopedBgImage).catch(() => {});
+    // Backward compatibility: migrate legacy shared background image to active workspace key.
+    if (!scopedBgImage && typeof legacySharedBgImage === 'string' && legacySharedBgImage.length) {
+      writeImage(this.backgroundStorageKey(), legacySharedBgImage).catch(() => {});
     }
 
     if (storedCenterImage) {
@@ -738,9 +744,9 @@ export class WheelConfigurator {
       if (!this.activeWheelId()) return;
       const img = this.bgImage();
       if (img && img.length) {
-        writeImage(STORAGE_KEYS.bgImage, img).catch(() => {});
+        writeImage(this.backgroundStorageKey(), img).catch(() => {});
       } else {
-        writeImage(STORAGE_KEYS.bgImage, '').catch(() => {});
+        writeImage(this.backgroundStorageKey(), '').catch(() => {});
       }
     });
 
@@ -840,7 +846,7 @@ export class WheelConfigurator {
   }
 
   clearImagesStorage(): void {
-    writeImage(STORAGE_KEYS.bgImage, '').catch(() => {});
+    writeImage(this.backgroundStorageKey(), '').catch(() => {});
   }
 
   drawWheel() {

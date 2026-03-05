@@ -228,6 +228,14 @@ export async function loadWorkspaceDisplayConfig(params: {
     return null;
   }
 
+  const getWorkspaceRootId = (id: string): string => {
+    const current = wheelWorkspaces.find((item) => item.id === id);
+    if (!current) {
+      return id;
+    }
+    return current.parentWheelId ?? current.id;
+  };
+
   if (workspaceId === activeWheelId) {
     return {
       workspaceId,
@@ -251,8 +259,10 @@ export async function loadWorkspaceDisplayConfig(params: {
   const sharedBgColor = readJson<string>(STORAGE_KEYS.bgColor);
   const bgColor = sharedBgColor && sharedBgColor.length ? sharedBgColor : activeBgColor;
 
-  const sharedBgImage = await readImage(STORAGE_KEYS.bgImage);
-  const bgImage = sharedBgImage ?? activeBgImage;
+  const bgWorkspaceId = getWorkspaceRootId(workspaceId);
+  const scopedBgImage = await readImage(storageKeyForWorkspace(STORAGE_KEYS.bgImage, bgWorkspaceId));
+  const legacySharedBgImage = scopedBgImage ? undefined : await readImage(STORAGE_KEYS.bgImage);
+  const bgImage = scopedBgImage ?? legacySharedBgImage ?? '';
 
   const centerImage = (await readImage(storageKeyForWorkspace(STORAGE_KEYS.centerImage, workspaceId))) ?? '';
 

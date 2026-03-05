@@ -9,7 +9,16 @@
   <div class="absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none hidden md:block">
     <div class="rounded-full border border-yellow-400/50 bg-black/55 px-5 py-2 text-center shadow-[0_0_18px_rgba(250,204,21,0.25)]">
       <p class="text-[0.65rem] uppercase tracking-[0.2em] text-yellow-300/90">Selected Wheel</p>
-      <p class="text-sm font-semibold text-white">{{ selectedWheelName() }}</p>
+      <div class="mt-0.5 flex items-center justify-center gap-2 pointer-events-auto">
+        <p class="text-sm font-semibold text-white">{{ selectedWheelName() }}</p>
+        <button
+          type="button"
+          class="inline-flex h-6 w-6 items-center justify-center text-white/90 hover:cursor-pointer transition-colors"
+          (click)="openRenameModal()"
+          [attr.aria-label]="showIndependentPreview() ? 'Rename visible wheels' : 'Rename selected wheel'">
+          <i class="fa-solid fa-pen" aria-hidden="true"></i>
+        </button>
+      </div>
     </div>
   </div>
 
@@ -113,6 +122,56 @@
 
   @if (showIndependentPreview() && wheelConfigurator.winner()) {
     <wl-fire-effect></wl-fire-effect>
+  }
+
+  @if (renameModalOpen()) {
+    <div class="fixed inset-0 z-70 bg-black/70" (click)="closeRenameModal()"></div>
+    <div class="fixed inset-0 z-75 flex items-center justify-center p-4">
+      <div class="w-full max-w-lg rounded-xl border border-white/20 bg-neutral-900/95 p-4 shadow-2xl" (click)="$event.stopPropagation()">
+        <div class="mb-4 flex items-center justify-between">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-white/90">{{ renameModalTitle() }}</h2>
+          <button
+            type="button"
+            class="h-8 w-8 rounded-full border border-white/20 bg-neutral-800 text-white hover:bg-neutral-700"
+            aria-label="Close rename modal"
+            (click)="closeRenameModal()">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="space-y-3 max-h-[55vh] overflow-auto pr-1">
+          @for (target of renameTargets(); track target.workspaceId) {
+            <div class="rounded-lg border border-white/10 bg-black/20 p-3">
+              <label class="mb-1 block text-xs uppercase tracking-wide text-white/70" [attr.for]="'rename-' + target.workspaceId">
+                {{ target.workspaceName }}
+              </label>
+              <input
+                [id]="'rename-' + target.workspaceId"
+                type="text"
+                class="w-full rounded-lg border border-white/15 bg-neutral-800 px-3 py-2 text-sm text-white"
+                [value]="renameDrafts()[target.workspaceId]"
+                (input)="updateRenameDraft(target.workspaceId, $event)"
+                placeholder="Wheel name" />
+            </div>
+          }
+        </div>
+
+        <div class="mt-4 flex gap-2">
+          <button
+            type="button"
+            class="flex-1 rounded-lg border border-white/15 bg-neutral-800 py-2 text-sm font-semibold text-white hover:bg-neutral-700"
+            (click)="closeRenameModal()">
+            Cancel
+          </button>
+          <button
+            type="button"
+            class="flex-1 rounded-lg border border-yellow-400/50 bg-yellow-400 py-2 text-sm font-semibold text-neutral-900 hover:bg-yellow-300"
+            (click)="saveRenameModal()">
+            Save
+          </button>
+        </div>
+      </div>
+    </div>
   }
 </div>
 
