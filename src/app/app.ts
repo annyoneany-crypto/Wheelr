@@ -1,6 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Header } from './feature/header/header';
 import { Router, RouterOutlet } from '@angular/router';
+import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +15,14 @@ import { Router, RouterOutlet } from '@angular/router';
     'display': 'block'
   }
 })
-export class App {
+export class App implements OnInit {
   router = inject(Router);
   
+  ngOnInit() {
+    // Inizializza il monitoraggio
+    injectSpeedInsights();
+  }
+
   openCreatorLink() {
     window.open('https://x.com/AnnyoneAny', '_blank', 'noopener');
   }
