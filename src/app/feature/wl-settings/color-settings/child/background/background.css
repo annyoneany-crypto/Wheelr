@@ -1,1 +1,15 @@
+.preview-wrapper {
+	border: 1px solid rgb(64 64 64);
+	border-radius: 0.75rem;
+	background: rgb(23 23 23);
+	padding: 0.5rem;
+}
+
+.preview-image {
+	display: block;
+	width: 100%;
+	max-height: 10rem;
+	object-fit: cover;
+	border-radius: 0.5rem;
+}
 

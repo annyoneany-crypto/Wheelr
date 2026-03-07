@@ -1,27 +1,84 @@
 <div class="mb-6 p-4 bg-neutral-900 rounded-xl border border-neutral-700">
-  <label class="block text-sm font-semibold text-pink-400 mb-3 uppercase tracking-wider">
+  <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider">
     Background
   </label>
-  <div class="space-y-3">
-    <input
-      type="color"
-      [value]="wheelConfigurator.bgColor()"
-      (input)="onBgColorChange($event)"
-      class="w-full h-8 rounded cursor-pointer">
+
+  <div class="flex gap-2 mb-4" role="tablist" aria-label="Background type">
+    <button
+      type="button"
+      role="tab"
+      id="bg-tab-color"
+      [attr.aria-selected]="selectedTab() === 'color'"
+      aria-controls="bg-panel-color"
+      (click)="selectTab('color')"
+      class="flex-1 py-2 rounded-lg border text-sm font-semibold transition-colors hover:cursor-pointer"
+      [class.bg-yellow-500]="selectedTab() === 'color'"
+      [class.text-neutral-900]="selectedTab() === 'color'"
+      [class.border-yellow-500]="selectedTab() === 'color'"
+      [class.bg-neutral-800]="selectedTab() !== 'color'"
+      [class.text-white]="selectedTab() !== 'color'"
+      [class.border-neutral-700]="selectedTab() !== 'color'">
+      Colore
+    </button>
 
     <button
       type="button"
-      (click)="bgFileInput.click()"
-      class="w-full mt-3 py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 hover:cursor-pointer transition-colors">
-      Upload Background Image
+      role="tab"
+      id="bg-tab-image"
+      [attr.aria-selected]="selectedTab() === 'image'"
+      aria-controls="bg-panel-image"
+      (click)="selectTab('image')"
+      class="flex-1 py-2 rounded-lg border text-sm font-semibold transition-colors hover:cursor-pointer"
+      [class.bg-yellow-500]="selectedTab() === 'image'"
+      [class.text-neutral-900]="selectedTab() === 'image'"
+      [class.border-yellow-500]="selectedTab() === 'image'"
+      [class.bg-neutral-800]="selectedTab() !== 'image'"
+      [class.text-white]="selectedTab() !== 'image'"
+      [class.border-neutral-700]="selectedTab() !== 'image'">
+      Immagine
     </button>
+  </div>
 
-    <input
-      #bgFileInput
-      type="file"
-      (change)="onBgFileSelected($event)"
-      accept="image/*"
-      class="hidden">
+  <div class="space-y-3">
+    @if (selectedTab() === 'color') {
+      <div id="bg-panel-color" role="tabpanel" aria-labelledby="bg-tab-color" class="space-y-2">
+        <input
+          type="color"
+          [value]="wheelConfigurator.bgColor()"
+          (input)="onBgColorChange($event)"
+          class="w-full h-10 rounded cursor-pointer">
+        <p class="text-xs text-neutral-400">Scegli un colore pieno per lo sfondo.</p>
+      </div>
+    }
+
+    @if (selectedTab() === 'image') {
+      <div id="bg-panel-image" role="tabpanel" aria-labelledby="bg-tab-image" class="space-y-3">
+        <button
+          type="button"
+          (click)="bgFileInput.click()"
+          class="w-full py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 hover:cursor-pointer transition-colors">
+          Carica immagine sfondo
+        </button>
+
+        <input
+          #bgFileInput
+          type="file"
+          (change)="onBgFileSelected($event)"
+          accept="image/*"
+          class="hidden">
+
+        @if (hasBgImage()) {
+          <div class="preview-wrapper">
+            <img
+              [src]="wheelConfigurator.bgImage()"
+              alt="Anteprima sfondo selezionato"
+              class="preview-image">
+          </div>
+        } @else {
+          <p class="text-xs text-neutral-400">Nessuna immagine caricata.</p>
+        }
+      </div>
+    }
 
     <button
       type="button"
@@ -29,6 +86,7 @@
       class="w-full text-xs text-red-400 underline hover:cursor-pointer">
       Reset Background
     </button>
+
   </div>
 </div>
 
