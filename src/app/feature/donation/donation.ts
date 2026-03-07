@@ -1,5 +1,4 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 
 interface EthereumProvider {
   request(args: { method: string; params?: unknown }): Promise<unknown>;
@@ -11,7 +10,7 @@ interface WalletRpcError {
 
 @Component({
   selector: 'app-donation',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './donation.html',
   styleUrl: './donation.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
