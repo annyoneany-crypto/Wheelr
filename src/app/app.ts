@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Header } from './feature/header/header';
 import { Router, RouterOutlet } from '@angular/router';
-import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
+import { injectSpeedInsights } from '@vercel/speed-insights';
 
 @Component({
   selector: 'app-root',
