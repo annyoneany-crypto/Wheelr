@@ -29,6 +29,7 @@ export class Wheel {
     this.wheelConfigurator.names();
     this.wheelConfigurator.selectedPalette();
     this.wheelConfigurator.fontFamily();
+    this.wheelConfigurator.fontRenderVersion();
 
     this.wheelConfigurator.drawWheelForCanvas(canvasElement, context);
 

@@ -1,7 +1,46 @@
 <div class="mb-6 p-4 bg-neutral-900 rounded-xl border border-neutral-700">
-  <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider">
-    Central Logo
-  </label>
+  <div class="flex items-center justify-between">
+    <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider">
+      Central Logo
+    </label>
+    <i class="fa-solid fa-eraser text-white hover:cursor-pointer" title="Reset Central Logo" (click)="resetCenterLogo()"></i>
+  </div>
+
+  <div class="flex mb-4" role="tablist" aria-label="Central logo type">
+    <button
+      type="button"
+      role="tab"
+      id="center-tab-color"
+      [attr.aria-selected]="selectedTab() === 'color'"
+      aria-controls="center-panel-color"
+      (click)="selectTab('color')"
+      class="flex-1 py-0.5 border rounded-l-md text-sm font-semibold transition-colors hover:cursor-pointer"
+      [class.bg-yellow-500]="selectedTab() === 'color'"
+      [class.text-neutral-900]="selectedTab() === 'color'"
+      [class.border-yellow-500]="selectedTab() === 'color'"
+      [class.bg-neutral-800]="selectedTab() !== 'color'"
+      [class.text-white]="selectedTab() !== 'color'"
+      [class.border-neutral-700]="selectedTab() !== 'color'">
+      Colore
+    </button>
+
+    <button
+      type="button"
+      role="tab"
+      id="center-tab-image"
+      [attr.aria-selected]="selectedTab() === 'image'"
+      aria-controls="center-panel-image"
+      (click)="selectTab('image')"
+      class="flex-1 py-0.5 border rounded-r-md text-sm font-semibold transition-colors hover:cursor-pointer"
+      [class.bg-yellow-500]="selectedTab() === 'image'"
+      [class.text-neutral-900]="selectedTab() === 'image'"
+      [class.border-yellow-500]="selectedTab() === 'image'"
+      [class.bg-neutral-800]="selectedTab() !== 'image'"
+      [class.text-white]="selectedTab() !== 'image'"
+      [class.border-neutral-700]="selectedTab() !== 'image'">
+      Immagine
+    </button>
+  </div>
 
   <div class="flex items-center justify-end gap-2 mb-2">
       <button
@@ -83,25 +122,51 @@
       </button>
   </div>
 
-  <button
-    type="button"
-    (click)="fileInput.click()"
-    class="w-full mt-3 py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 hover:cursor-pointer transition-colors mb-2">
-    Load Logo
-  </button>
+  @if (selectedTab() === 'color') {
+    <div id="center-panel-color" role="tabpanel" aria-labelledby="center-tab-color" class="space-y-2">
+      <input
+        type="color"
+        [value]="wheelConfigurator.centerColor()"
+        (input)="onCenterColorChange($event)"
+        class="w-full h-10 rounded cursor-pointer">
+      <p class="text-xs text-neutral-400">Colore del cerchio centrale.</p>
+    </div>
+  }
 
-  <input
-    #fileInput
-    type="file"
-    (change)="onFileSelected($event)"
-    accept="image/*"
-    class="hidden">
+  @if (selectedTab() === 'image') {
+    <div id="center-panel-image" role="tabpanel" aria-labelledby="center-tab-image" class="space-y-3">
+      <button
+        type="button"
+        (click)="fileInput.click()"
+        class="w-full py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 hover:cursor-pointer transition-colors">
+        Carica logo
+      </button>
 
-  <input
-    #urlInput
-    type="text"
-    placeholder="URL Logo..."
-    (keyup.enter)="wheelConfigurator.centerImage.set(urlInput.value)"
-    class="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-500">
+      <input
+        #fileInput
+        type="file"
+        (change)="onFileSelected($event)"
+        accept="image/*"
+        class="hidden">
+
+      <!-- <input
+        #urlInput
+        type="text"
+        placeholder="URL Logo..."
+        (keyup.enter)="onCenterImageUrlEnter(urlInput.value)"
+        class="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-500"> -->
+
+      @if (hasCenterImage()) {
+        <div class="preview-wrapper">
+          <img
+            [src]="wheelConfigurator.centerImage()"
+            alt="Anteprima logo centrale"
+            class="preview-image">
+        </div>
+      } @else {
+        <p class="text-xs text-neutral-400">Nessun logo caricato.</p>
+      }
+    </div>
+  }
 </div>
 

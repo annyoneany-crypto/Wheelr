@@ -75,6 +75,8 @@ export class WheelPage {
     this.wheelConfigurator.bgColor();
     this.wheelConfigurator.bgImage();
     this.wheelConfigurator.centerImage();
+    this.wheelConfigurator.centerColor();
+    this.wheelConfigurator.centerLogoSize();
     this.wheelConfigurator.fontFamily();
 
     void this.refreshVisibleWheelConfigs();
@@ -84,6 +86,7 @@ export class WheelPage {
     const configs = this.visibleWheelConfigs();
     const canvases = this.previewCanvasRefs();
     this.previewWheelSize();
+    this.wheelConfigurator.fontRenderVersion();
 
     canvases.forEach((canvasRef, index) => {
       const config = configs[index];
@@ -128,6 +131,10 @@ export class WheelPage {
 
   previewPointerContrastColor(config: WheelDisplayConfig): string {
     return contrastForHex(this.previewPointerSliceColor(config));
+  }
+
+  previewCenterContrastColor(color: string): string {
+    return contrastForHex(color);
   }
 
   calculatePreviewWheelSize(): void {
@@ -321,7 +328,6 @@ export class WheelPage {
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const radius = centerX - 10;
-    const fontSize = Math.max(12, Math.min(42, Math.round(radius * 0.09)));
     const textInset = Math.max(20, Math.round(radius * 0.08));
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -350,10 +356,68 @@ export class WheelPage {
       ctx.rotate(angle + sliceAngle / 2);
       ctx.textAlign = 'right';
       ctx.fillStyle = contrastForHex(sliceColor);
-      ctx.font = `bold ${fontSize}px ${config.fontFamily}`;
-      ctx.fillText(name.substring(0, 15), radius - textInset, Math.round(fontSize * 0.18));
+
+      const fittedText = this.fitPreviewSliceLabel(
+        ctx,
+        name,
+        config.fontFamily,
+        radius,
+        textInset,
+        sliceAngle,
+        n
+      );
+
+      ctx.font = `bold ${fittedText.fontSize}px ${config.fontFamily}`;
+      ctx.fillText(fittedText.text, radius - textInset, Math.round(fittedText.fontSize * 0.18));
       ctx.restore();
     });
+  }
+
+  private fitPreviewSliceLabel(
+    ctx: CanvasRenderingContext2D,
+    rawText: string,
+    fontFamily: string,
+    radius: number,
+    textInset: number,
+    sliceAngle: number,
+    sliceCount: number
+  ): { text: string; fontSize: number } {
+    const text = rawText.trim() || '---';
+    const textRadius = Math.max(8, radius - textInset);
+    const maxWidth = Math.max(20, radius - textInset - 6);
+
+    const maxFontByRadius = Math.max(8, Math.round(radius * 0.1));
+    const maxFontByArc = Math.max(8, Math.floor(textRadius * sliceAngle * 0.58));
+    const countScale = Math.min(1, Math.sqrt(8 / Math.max(1, sliceCount)));
+    const maxFontByCount = Math.max(8, Math.floor(34 * countScale));
+    const preferredFontSize = Math.min(42, maxFontByRadius, maxFontByArc, maxFontByCount);
+    const minFontSize = 8;
+
+    let chosenSize = preferredFontSize;
+    for (let size = preferredFontSize; size >= minFontSize; size--) {
+      ctx.font = `bold ${size}px ${fontFamily}`;
+      if (ctx.measureText(text).width <= maxWidth) {
+        chosenSize = size;
+        return { text, fontSize: chosenSize };
+      }
+      chosenSize = size;
+    }
+
+    ctx.font = `bold ${chosenSize}px ${fontFamily}`;
+    if (ctx.measureText(text).width <= maxWidth) {
+      return { text, fontSize: chosenSize };
+    }
+
+    let clipped = text;
+    while (clipped.length > 1) {
+      clipped = clipped.slice(0, -1);
+      const candidate = `${clipped}...`;
+      if (ctx.measureText(candidate).width <= maxWidth) {
+        return { text: candidate, fontSize: chosenSize };
+      }
+    }
+
+    return { text: '...', fontSize: chosenSize };
   }
 
   togglePaletSettings(path: string): void {
@@ -519,6 +583,8 @@ export class WheelPage {
         bgColor: 'transparent',
         bgImage: '',
         centerImage: '',
+        centerColor: '#ffffff',
+        centerLogoSize: this.wheelConfigurator.centerLogoSize(),
         fontFamily: '',
       },
     ];

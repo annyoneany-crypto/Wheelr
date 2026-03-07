@@ -44,6 +44,7 @@
       <!-- Center -->
       <div
         class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-xl border-4 border-neutral-900 z-10 group-hover:scale-110 transition-transform overflow-hidden bg-white"
+        [style.backgroundColor]="wheelConfigurator.centerColor()"
         [class.w-14]="wheelConfigurator.centerLogoSize() === 's'"
         [class.h-14]="wheelConfigurator.centerLogoSize() === 's'"
         [class.w-20]="wheelConfigurator.centerLogoSize() === 'm'"
@@ -59,7 +60,7 @@
         @if (wheelConfigurator.centerImage()) {
           <img [src]="wheelConfigurator.centerImage()" class="w-full h-full object-cover" alt="Center">
         } @else {
-          <span class="text-neutral-900 font-bold text-sm">SPIN</span>
+          <span class="font-bold text-sm" [style.color]="wheelConfigurator.centerContrastColor()">SPIN</span>
         }
       </div>
 

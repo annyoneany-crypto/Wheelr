@@ -209,12 +209,16 @@ export async function loadWorkspaceDisplayConfig(params: {
   activeBgColor: string;
   activeBgImage: string;
   activeCenterImage: string;
+  activeCenterColor: string;
+  activeCenterLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   activeFontFamily: string;
 }): Promise<WheelDisplayConfig | null> {
   const {
     activeBgColor,
     activeBgImage,
     activeCenterImage,
+    activeCenterColor,
+    activeCenterLogoSize,
     activeFontFamily,
     activeNames,
     activePalette,
@@ -245,6 +249,8 @@ export async function loadWorkspaceDisplayConfig(params: {
       bgColor: activeBgColor,
       bgImage: activeBgImage,
       centerImage: activeCenterImage,
+      centerColor: activeCenterColor,
+      centerLogoSize: activeCenterLogoSize,
       fontFamily: activeFontFamily,
     };
   }
@@ -265,6 +271,10 @@ export async function loadWorkspaceDisplayConfig(params: {
   const bgImage = scopedBgImage ?? legacySharedBgImage ?? '';
 
   const centerImage = (await readImage(storageKeyForWorkspace(STORAGE_KEYS.centerImage, workspaceId))) ?? '';
+  const centerColor = readJson<string>(storageKeyForWorkspace(STORAGE_KEYS.centerColor, workspaceId));
+  const centerLogoSize = readJson<'s' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'>(
+    storageKeyForWorkspace(STORAGE_KEYS.centerLogoSize, workspaceId)
+  );
 
   const availablePalettes = Array.isArray(palettes) && palettes.length > 0 ? palettes : DEFAULT_PALETTES;
 
@@ -281,6 +291,8 @@ export async function loadWorkspaceDisplayConfig(params: {
     bgColor: bgColor && bgColor.length ? bgColor : 'transparent',
     bgImage,
     centerImage,
+    centerColor: centerColor && centerColor.length ? centerColor : '#ffffff',
+    centerLogoSize: centerLogoSize ?? 'm',
     fontFamily: fontFamily && fontFamily.length ? fontFamily : '"Inter", sans-serif',
   };
 }

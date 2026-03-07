@@ -37,6 +37,8 @@ export class WheelConfigurator {
   private readonly wheelSettingsSnapshotKey = 'giveawayWheel.settingsSnapshot.v1';
   private readonly snapshotMigrationKey = 'giveawayWheel.snapshotMigrated.v1';
   private readonly audioManager = new WheelAudioManager();
+  private readonly fontLoadTimeoutMs = 2000;
+  private isHydratingWorkspace = false;
 
   wheelWorkspaces = signal<WheelWorkspaceMeta[]>([]);
   managerWheelWorkspaces = computed(() =>
@@ -56,6 +58,7 @@ export class WheelConfigurator {
 
   names = signal<string[]>([]);
   centerImage = signal<string>('');
+  centerColor = signal<string>('#ffffff');
   centerLogoSize = signal<'s' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'>('m');
 
   // use method to ensure persistence immediately
@@ -68,6 +71,7 @@ export class WheelConfigurator {
   fontFamily = signal<string>('"Inter", sans-serif');
   // store the Google Fonts link URL so that we can reload it on startup
   fontLink = signal<string>(WheelConfigurator.DEFAULT_FONT_LINK);
+  fontRenderVersion = signal(0);
 
   /**
    * Update the active font family and optionally install a Google Fonts link
@@ -79,19 +83,82 @@ export class WheelConfigurator {
     if (linkHref) {
       this.fontLink.set(linkHref);
       writeJson(this.storageKey(STORAGE_KEYS.fontLink), linkHref);
-      this.loadGoogleFont(linkHref);
     }
+
+    void this.ensureFontReady(family, linkHref);
   }
 
-  private loadGoogleFont(href: string): void {
-    let linkEl = document.getElementById('google-font-link') as HTMLLinkElement | null;
+  private loadGoogleFont(href: string): Promise<void> {
+    const selector = `link[rel="stylesheet"][data-google-font="true"][href="${href}"]`;
+    let linkEl = document.head.querySelector(selector) as HTMLLinkElement | null;
     if (!linkEl) {
       linkEl = document.createElement('link');
-      linkEl.id = 'google-font-link';
       linkEl.rel = 'stylesheet';
+      linkEl.href = href;
+      linkEl.setAttribute('data-google-font', 'true');
+      linkEl.setAttribute('data-loaded', 'false');
       document.head.appendChild(linkEl);
     }
-    linkEl.href = href;
+
+    if (linkEl.getAttribute('data-loaded') === 'true' || !!linkEl.sheet) {
+      linkEl.setAttribute('data-loaded', 'true');
+      return Promise.resolve();
+    }
+
+    return new Promise((resolve) => {
+      const complete = () => {
+        linkEl?.setAttribute('data-loaded', 'true');
+        resolve();
+      };
+
+      linkEl!.onload = () => complete();
+      linkEl!.onerror = () => resolve();
+
+      // If the browser has already cached and applied the stylesheet,
+      // onload may not fire reliably in all cases.
+      setTimeout(() => {
+        if (linkEl?.sheet) {
+          complete();
+        }
+      }, 250);
+    });
+  }
+
+  private async ensureFontReady(family: string, linkHref?: string): Promise<void> {
+    if (linkHref) {
+      await this.loadGoogleFont(linkHref);
+    }
+
+    const fontsApi = (document as Document & { fonts?: FontFaceSet }).fonts;
+    const primaryFamily = this.primaryFontFamily(family);
+
+    if (fontsApi && primaryFamily.length > 0) {
+      const faceDescriptor = `700 16px ${primaryFamily}`;
+      await Promise.race([
+        fontsApi.load(faceDescriptor).then(() => undefined),
+        new Promise<void>((resolve) => setTimeout(resolve, this.fontLoadTimeoutMs)),
+      ]);
+    }
+
+    this.fontRenderVersion.update((value) => value + 1);
+    this.drawWheel();
+  }
+
+  private primaryFontFamily(fontFamily: string): string {
+    const firstFamily = fontFamily.split(',')[0]?.trim() ?? '';
+    if (!firstFamily) {
+      return '';
+    }
+
+    if (firstFamily.startsWith('"') || firstFamily.startsWith("'")) {
+      return firstFamily;
+    }
+
+    if (/\s/.test(firstFamily)) {
+      return `"${firstFamily}"`;
+    }
+
+    return firstFamily;
   }
 
   bgColor = signal<string>('#262626'); 
@@ -163,6 +230,10 @@ export class WheelConfigurator {
 
   pointerContrastColor = computed(() => {
     return contrastForHex(this.pointerSliceColor());
+  });
+
+  centerContrastColor = computed(() => {
+    return contrastForHex(this.centerColor());
   });
 
   constructor() {
@@ -240,6 +311,8 @@ export class WheelConfigurator {
       activeBgColor: this.bgColor(),
       activeBgImage: this.bgImage(),
       activeCenterImage: this.centerImage(),
+      activeCenterColor: this.centerColor(),
+      activeCenterLogoSize: this.centerLogoSize(),
       activeFontFamily: this.fontFamily(),
     });
   }
@@ -520,6 +593,7 @@ export class WheelConfigurator {
     this.selectedPalette.set(DEFAULT_PALETTES[0]);
     this.names.set([]);
     this.centerImage.set('');
+    this.centerColor.set('#ffffff');
     this.centerLogoSize.set('m');
     this.wheelView.set('wheel');
     this.spinDurationMs.set(3000);
@@ -559,7 +633,9 @@ export class WheelConfigurator {
   }
 
   private async hydrateFromStorage(): Promise<void> {
-    this.resetStateForWorkspaceLoad();
+    this.isHydratingWorkspace = true;
+    try {
+      this.resetStateForWorkspaceLoad();
 
     const unifiedSnapshot = readJson<WheelSettingsSnapshot>(this.wheelSettingsSnapshotKey);
     const activeUnifiedWheel = unifiedSnapshot?.Wheels.find(
@@ -578,6 +654,7 @@ export class WheelConfigurator {
     const legacySharedBgImage = scopedBgImage ? undefined : await readImage(STORAGE_KEYS.bgImage);
     const storedBgImage = scopedBgImage ?? legacySharedBgImage;
     const storedCenterImage = await readImage(this.storageKey(STORAGE_KEYS.centerImage));
+    const storedCenterColor = readJson<string>(this.storageKey(STORAGE_KEYS.centerColor));
 
     const storedCenterLogoSize = readJson<string>(this.storageKey(STORAGE_KEYS.centerLogoSize));
     const storedWheelView = readJson<string>(this.storageKey(STORAGE_KEYS.wheelView));
@@ -628,6 +705,10 @@ export class WheelConfigurator {
 
     if (storedCenterImage) {
       this.centerImage.set(storedCenterImage);
+    }
+
+    if (typeof storedCenterColor === 'string' && storedCenterColor.length) {
+      this.centerColor.set(storedCenterColor);
     }
 
     if (
@@ -690,10 +771,10 @@ export class WheelConfigurator {
     }
     if (typeof effectiveFontLink === 'string' && effectiveFontLink.length) {
       this.fontLink.set(effectiveFontLink);
-      this.loadGoogleFont(effectiveFontLink);
+      void this.ensureFontReady(this.fontFamily(), effectiveFontLink);
     } else if (this.fontLink()) {
       // no stored link but we have a default; make sure it gets injected
-      this.loadGoogleFont(this.fontLink());
+      void this.ensureFontReady(this.fontFamily(), this.fontLink());
     }
 
     // Hydrate countdown settings
@@ -706,8 +787,11 @@ export class WheelConfigurator {
       this.countdownStart.set(Math.floor(storedCountdownStart));
     }
 
-    if (typeof effectiveVisibleWheelCount === 'number') {
-      this.visibleWheelCount.set(Math.min(4, Math.max(1, Math.floor(effectiveVisibleWheelCount))));
+      if (typeof effectiveVisibleWheelCount === 'number') {
+        this.visibleWheelCount.set(Math.min(4, Math.max(1, Math.floor(effectiveVisibleWheelCount))));
+      }
+    } finally {
+      this.isHydratingWorkspace = false;
     }
   }
 
@@ -760,6 +844,11 @@ export class WheelConfigurator {
 
     effect(() => {
       if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.centerColor), this.centerColor());
+    });
+
+    effect(() => {
+      if (!this.activeWheelId()) return;
       writeJson(this.storageKey(STORAGE_KEYS.wheelView), this.wheelView());
     });
 
@@ -781,13 +870,17 @@ export class WheelConfigurator {
     // Persist font settings and redraw wheel when the font changes
     effect(() => {
       if (!this.activeWheelId()) return;
-      writeJson(this.storageKey(STORAGE_KEYS.fontFamily), this.fontFamily());
+      const family = this.fontFamily();
+      if (!this.isHydratingWorkspace) {
+        writeJson(this.storageKey(STORAGE_KEYS.fontFamily), family);
+      }
       this.drawWheel();
     });
+
     effect(() => {
       if (!this.activeWheelId()) return;
       const link = this.fontLink();
-      if (link && link.length) {
+      if (!this.isHydratingWorkspace && link && link.length) {
         writeJson(this.storageKey(STORAGE_KEYS.fontLink), link);
       }
     });
@@ -841,6 +934,8 @@ export class WheelConfigurator {
       this.fontFamily();
       this.fontLink();
 
+      if (this.isHydratingWorkspace) return;
+
       this.saveUnifiedLocalStorageSnapshot();
     });
   }
@@ -867,7 +962,6 @@ export class WheelConfigurator {
     const centerY = canvas.height / 2;
     const radius = centerX - 10;
     const colors = this.selectedPalette().colors;
-    const fontSize = Math.max(12, Math.min(42, Math.round(radius * 0.09)));
     const textInset = Math.max(20, Math.round(radius * 0.08));
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -891,11 +985,69 @@ export class WheelConfigurator {
       // Apply contrast color based on slice background color
       const sliceColor = colors[i % colors.length];
       ctx.fillStyle = contrastForHex(sliceColor);
-      // use the current font family from configuration
-      ctx.font = `bold ${fontSize}px ${this.fontFamily()}`;
-      ctx.fillText(name.substring(0, 15), radius - textInset, Math.round(fontSize * 0.18));
+
+      const fittedText = this.fitSliceLabel(
+        ctx,
+        name,
+        this.fontFamily(),
+        radius,
+        textInset,
+        sliceAngle,
+        n
+      );
+
+      // Use geometry-aware font sizing so labels do not overflow narrow slices.
+      ctx.font = `bold ${fittedText.fontSize}px ${this.fontFamily()}`;
+      ctx.fillText(fittedText.text, radius - textInset, Math.round(fittedText.fontSize * 0.18));
       ctx.restore();
     });
+  }
+
+  private fitSliceLabel(
+    ctx: CanvasRenderingContext2D,
+    rawText: string,
+    fontFamily: string,
+    radius: number,
+    textInset: number,
+    sliceAngle: number,
+    sliceCount: number
+  ): { text: string; fontSize: number } {
+    const text = rawText.trim() || '---';
+    const textRadius = Math.max(8, radius - textInset);
+    const maxWidth = Math.max(20, radius - textInset - 6);
+
+    const maxFontByRadius = Math.max(8, Math.round(radius * 0.1));
+    const maxFontByArc = Math.max(8, Math.floor(textRadius * sliceAngle * 0.58));
+    const countScale = Math.min(1, Math.sqrt(8 / Math.max(1, sliceCount)));
+    const maxFontByCount = Math.max(8, Math.floor(34 * countScale));
+    const preferredFontSize = Math.min(42, maxFontByRadius, maxFontByArc, maxFontByCount);
+    const minFontSize = 8;
+
+    let chosenSize = preferredFontSize;
+    for (let size = preferredFontSize; size >= minFontSize; size--) {
+      ctx.font = `bold ${size}px ${fontFamily}`;
+      if (ctx.measureText(text).width <= maxWidth) {
+        chosenSize = size;
+        return { text, fontSize: chosenSize };
+      }
+      chosenSize = size;
+    }
+
+    ctx.font = `bold ${chosenSize}px ${fontFamily}`;
+    if (ctx.measureText(text).width <= maxWidth) {
+      return { text, fontSize: chosenSize };
+    }
+
+    let clipped = text;
+    while (clipped.length > 1) {
+      clipped = clipped.slice(0, -1);
+      const candidate = `${clipped}...`;
+      if (ctx.measureText(candidate).width <= maxWidth) {
+        return { text: candidate, fontSize: chosenSize };
+      }
+    }
+
+    return { text: '...', fontSize: chosenSize };
   }
 
   /**
