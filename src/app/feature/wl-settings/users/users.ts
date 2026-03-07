@@ -15,6 +15,7 @@ export class Users {
   
   // fields for the "add name N times" feature
   newName = signal('');
+  nameToRemove = signal('');
   repeatCount = signal(1);
 
   usersText = linkedSignal<string>(() => {
@@ -67,5 +68,18 @@ export class Users {
 
   clearUsers(): void {
     this.wheelConfigurator.setNames([]);
+  }
+
+  removeNameFromUsers(): void {
+    const name = this.nameToRemove();
+    if (!name) {
+      return;
+    }
+
+    const filteredNames = this.wheelConfigurator
+      .names()
+      .filter((n) => n !== name);
+
+    this.wheelConfigurator.setNames(filteredNames);
   }
 }

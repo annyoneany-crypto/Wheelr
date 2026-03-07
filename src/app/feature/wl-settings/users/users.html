@@ -1,19 +1,11 @@
-<div class="h-full flex flex-col gap-2">
+<div class="h-[calc(100%-4rem)] flex flex-col gap-2">
   
-
   <div class="flex gap-2">
-    <button
-      type="button"
-      (click)="shuffleUsers()"
-      class="flex-1 py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 transition-colors">
-      Shuffle
-    </button>
-
     <button
       type="button"
       (click)="cleanAndShuffleUsers()"
       class="flex-1 py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 transition-colors">
-      Clean + Shuffle
+      Shuffle
     </button>
 
     <button
@@ -61,5 +53,27 @@
     class="w-full flex-1 text-white bg-white/10 p-2 rounded"
     [(ngModel)]="usersText"
     (ngModelChange)="userTextChange($event)"
-    rows="5"></textarea>
+    rows="5">
+  </textarea>
+
+  <div class="flex gap-2 items-end">
+    <div class="flex-1">
+      <label class="sr-only" for="delete-name">Name to remove</label>
+      <input
+        id="delete-name"
+        type="text"
+        class="w-full p-2 rounded bg-white/10 text-white"
+        placeholder="Name to remove"
+        [ngModel]="nameToRemove()"
+        (ngModelChange)="nameToRemove.set($event)"
+      />
+    </div>
+    <button
+      type="button"
+      (click)="removeNameFromUsers()"
+      class="py-2 px-3 rounded-lg text-sm font-semibold bg-red-500/20 text-red-200 border border-red-500/30 hover:bg-red-500/30 transition-colors"
+    >
+      Remove
+    </button>
+  </div>
 </div>
