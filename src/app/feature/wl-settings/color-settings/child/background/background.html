@@ -1,9 +1,13 @@
 <div class="mb-6 p-4 bg-neutral-900 rounded-xl border border-neutral-700">
-  <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider">
-    Background
-  </label>
+  <div class="flex items-center justify-between">
+    <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider">
+      Background
+    </label>
+    <i class="fa-solid fa-eraser text-white hover:cursor-pointer" title="Reset Background" (click)="resetBackground()"></i>
+  </div>
 
-  <div class="flex gap-2 mb-4" role="tablist" aria-label="Background type">
+  <!-- Background type tabs -->
+  <div class="flex mb-4" role="tablist" aria-label="Background type">
     <button
       type="button"
       role="tab"
@@ -11,7 +15,7 @@
       [attr.aria-selected]="selectedTab() === 'color'"
       aria-controls="bg-panel-color"
       (click)="selectTab('color')"
-      class="flex-1 py-2 rounded-lg border text-sm font-semibold transition-colors hover:cursor-pointer"
+      class="flex-1 py-0.5 border rounded-l-md text-sm font-semibold transition-colors hover:cursor-pointer"
       [class.bg-yellow-500]="selectedTab() === 'color'"
       [class.text-neutral-900]="selectedTab() === 'color'"
       [class.border-yellow-500]="selectedTab() === 'color'"
@@ -28,7 +32,7 @@
       [attr.aria-selected]="selectedTab() === 'image'"
       aria-controls="bg-panel-image"
       (click)="selectTab('image')"
-      class="flex-1 py-2 rounded-lg border text-sm font-semibold transition-colors hover:cursor-pointer"
+      class="flex-1 py-0.5 border rounded-r-md text-sm font-semibold transition-colors hover:cursor-pointer"
       [class.bg-yellow-500]="selectedTab() === 'image'"
       [class.text-neutral-900]="selectedTab() === 'image'"
       [class.border-yellow-500]="selectedTab() === 'image'"
@@ -79,13 +83,6 @@
         }
       </div>
     }
-
-    <button
-      type="button"
-      (click)="resetBackground()"
-      class="w-full text-xs text-red-400 underline hover:cursor-pointer">
-      Reset Background
-    </button>
 
   </div>
 </div>
