@@ -22,7 +22,7 @@
       [class.bg-neutral-800]="selectedTab() !== 'color'"
       [class.text-white]="selectedTab() !== 'color'"
       [class.border-neutral-700]="selectedTab() !== 'color'">
-      Colore
+      Color
     </button>
 
     <button
@@ -39,7 +39,7 @@
       [class.bg-neutral-800]="selectedTab() !== 'image'"
       [class.text-white]="selectedTab() !== 'image'"
       [class.border-neutral-700]="selectedTab() !== 'image'">
-      Immagine
+      Image
     </button>
   </div>
 
@@ -51,7 +51,7 @@
           [value]="wheelConfigurator.bgColor()"
           (input)="onBgColorChange($event)"
           class="w-full h-10 rounded cursor-pointer">
-        <p class="text-xs text-neutral-400">Scegli un colore pieno per lo sfondo.</p>
+        <p class="text-xs text-neutral-400">Choose a solid color for the background.</p>
       </div>
     }
 
@@ -61,7 +61,7 @@
           type="button"
           (click)="bgFileInput.click()"
           class="w-full py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 hover:cursor-pointer transition-colors">
-          Carica immagine sfondo
+          Upload background image
         </button>
 
         <input
@@ -75,11 +75,11 @@
           <div class="preview-wrapper">
             <img
               [src]="wheelConfigurator.bgImage()"
-              alt="Anteprima sfondo selezionato"
+              alt="Preview of the selected background"
               class="preview-image">
           </div>
         } @else {
-          <p class="text-xs text-neutral-400">Nessuna immagine caricata.</p>
+          <p class="text-xs text-neutral-400">No image uploaded.</p>
         }
       </div>
     }

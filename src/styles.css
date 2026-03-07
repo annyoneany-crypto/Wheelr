@@ -36,7 +36,7 @@
   animation: countdownPop 1s ease-out forwards;
 }
 
-/* 1. Standard CSS (Firefox e browser moderni) */
+/* 1. Standard CSS (Firefox and modern browsers) */
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--accent-color) transparent;
@@ -44,26 +44,26 @@
 
 /* 2. Webkit Browsers (Chrome, Safari, Edge, Opera) */
 
-/* Larghezza della scrollbar */
+/* Scrollbar width */
 ::-webkit-scrollbar {
-    width: 10px;               /* Per scrollbar verticali */
-    height: 10px;              /* Per scrollbar orizzontali */
+    width: 10px;               /* For vertical scrollbars */
+    height: 10px;              /* For horizontal scrollbars */
 }
 
-/* Sfondo della traccia (Track) */
+/* Track background */
 ::-webkit-scrollbar-track {
-    background: transparent;   /* Mantieni trasparente o usa var(--bg-color) */
+    background: transparent;   /* Keep transparent or use var(--bg-color) */
     border-radius: 10px;
 }
 
-/* La parte scorrevole (Thumb) */
+/* Scrollbar thumb */
 ::-webkit-scrollbar-thumb {
     background-color: var(--accent-color);
-    border-radius: 20px;       /* Rende la scrollbar tonda */
-    border: 2px solid var(--bg-color); /* Crea uno spazio intorno alla thumb */
+    border-radius: 20px;       /* Makes the scrollbar rounded */
+    border: 2px solid var(--bg-color); /* Creates space around the thumb */
 }
 
-/* Thumb al passaggio del mouse */
+/* Thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
     background-color: var(--hover-color);
 }
