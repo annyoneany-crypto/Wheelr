@@ -210,6 +210,7 @@ export async function loadWorkspaceDisplayConfig(params: {
   activeBgImage: string;
   activeCenterImage: string;
   activeCenterColor: string;
+  activeCenterText: string;
   activeCenterLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   activeFontFamily: string;
 }): Promise<WheelDisplayConfig | null> {
@@ -218,6 +219,7 @@ export async function loadWorkspaceDisplayConfig(params: {
     activeBgImage,
     activeCenterImage,
     activeCenterColor,
+    activeCenterText,
     activeCenterLogoSize,
     activeFontFamily,
     activeNames,
@@ -250,6 +252,7 @@ export async function loadWorkspaceDisplayConfig(params: {
       bgImage: activeBgImage,
       centerImage: activeCenterImage,
       centerColor: activeCenterColor,
+      centerText: activeCenterText,
       centerLogoSize: activeCenterLogoSize,
       fontFamily: activeFontFamily,
     };
@@ -272,6 +275,7 @@ export async function loadWorkspaceDisplayConfig(params: {
 
   const centerImage = (await readImage(storageKeyForWorkspace(STORAGE_KEYS.centerImage, workspaceId))) ?? '';
   const centerColor = readJson<string>(storageKeyForWorkspace(STORAGE_KEYS.centerColor, workspaceId));
+  const centerText = readJson<string>(storageKeyForWorkspace(STORAGE_KEYS.centerText, workspaceId));
   const centerLogoSize = readJson<'s' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'>(
     storageKeyForWorkspace(STORAGE_KEYS.centerLogoSize, workspaceId)
   );
@@ -292,6 +296,7 @@ export async function loadWorkspaceDisplayConfig(params: {
     bgImage,
     centerImage,
     centerColor: centerColor && centerColor.length ? centerColor : '#ffffff',
+    centerText: centerText && centerText.length ? centerText : 'SPIN',
     centerLogoSize: centerLogoSize ?? 'm',
     fontFamily: fontFamily && fontFamily.length ? fontFamily : '"Inter", sans-serif',
   };

@@ -10,6 +10,7 @@ export const STORAGE_KEYS = {
   bgImage: 'giveawayWheel.bgImage',
   centerImage: 'giveawayWheel.centerImage',
   centerColor: 'giveawayWheel.centerColor',
+  centerText: 'giveawayWheel.centerText',
   centerLogoSize: 'giveawayWheel.centerLogoSize',
   spinDurationMs: 'giveawayWheel.spinDurationMs',
   wheelView: 'giveawayWheel.wheelView',

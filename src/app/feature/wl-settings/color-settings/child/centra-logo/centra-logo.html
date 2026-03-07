@@ -123,6 +123,20 @@
   </div>
 
   @if (selectedTab() === 'color') {
+    <div class="mb-3 space-y-1">
+      <label for="center-text-input" class="block text-xs text-neutral-400 uppercase tracking-wide">
+        Testo centrale
+      </label>
+      <input
+        id="center-text-input"
+        type="text"
+        [value]="wheelConfigurator.centerText()"
+        (input)="onCenterTextChange($event)"
+        maxlength="24"
+        placeholder="SPIN"
+        class="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-500">
+    </div>
+
     <div id="center-panel-color" role="tabpanel" aria-labelledby="center-tab-color" class="space-y-2">
       <input
         type="color"

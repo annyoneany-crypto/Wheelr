@@ -47,6 +47,14 @@ export class CentraLogo {
     this.selectTab('color');
   }
 
+  onCenterTextChange(event: Event): void {
+    const target = event.target as HTMLInputElement | null;
+    if (!target) return;
+
+    const nextValue = target.value.slice(0, 24);
+    this.wheelConfigurator.centerText.set(nextValue);
+  }
+
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement | null;
     const file = input?.files?.[0];
@@ -73,6 +81,7 @@ export class CentraLogo {
 
   resetCenterLogo(): void {
     this.wheelConfigurator.centerColor.set('#ffffff');
+    this.wheelConfigurator.centerText.set('SPIN');
     this.wheelConfigurator.centerImage.set('');
     this.selectTab('color');
   }

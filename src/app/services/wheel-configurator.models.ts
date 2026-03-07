@@ -18,6 +18,7 @@ export interface WheelDisplayConfig {
   bgImage: string;
   centerImage: string;
   centerColor: string;
+  centerText: string;
   centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   fontFamily: string;
 }

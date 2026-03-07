@@ -76,6 +76,7 @@ export class WheelPage {
     this.wheelConfigurator.bgImage();
     this.wheelConfigurator.centerImage();
     this.wheelConfigurator.centerColor();
+    this.wheelConfigurator.centerText();
     this.wheelConfigurator.centerLogoSize();
     this.wheelConfigurator.fontFamily();
 
@@ -584,6 +585,7 @@ export class WheelPage {
         bgImage: '',
         centerImage: '',
         centerColor: '#ffffff',
+        centerText: 'SPIN',
         centerLogoSize: this.wheelConfigurator.centerLogoSize(),
         fontFamily: '',
       },

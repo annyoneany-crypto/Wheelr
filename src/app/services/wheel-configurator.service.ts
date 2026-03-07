@@ -59,6 +59,7 @@ export class WheelConfigurator {
   names = signal<string[]>([]);
   centerImage = signal<string>('');
   centerColor = signal<string>('#ffffff');
+  centerText = signal<string>('SPIN');
   centerLogoSize = signal<'s' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl'>('m');
 
   // use method to ensure persistence immediately
@@ -312,6 +313,7 @@ export class WheelConfigurator {
       activeBgImage: this.bgImage(),
       activeCenterImage: this.centerImage(),
       activeCenterColor: this.centerColor(),
+      activeCenterText: this.centerText(),
       activeCenterLogoSize: this.centerLogoSize(),
       activeFontFamily: this.fontFamily(),
     });
@@ -594,6 +596,7 @@ export class WheelConfigurator {
     this.names.set([]);
     this.centerImage.set('');
     this.centerColor.set('#ffffff');
+    this.centerText.set('SPIN');
     this.centerLogoSize.set('m');
     this.wheelView.set('wheel');
     this.spinDurationMs.set(3000);
@@ -655,6 +658,7 @@ export class WheelConfigurator {
     const storedBgImage = scopedBgImage ?? legacySharedBgImage;
     const storedCenterImage = await readImage(this.storageKey(STORAGE_KEYS.centerImage));
     const storedCenterColor = readJson<string>(this.storageKey(STORAGE_KEYS.centerColor));
+    const storedCenterText = readJson<string>(this.storageKey(STORAGE_KEYS.centerText));
 
     const storedCenterLogoSize = readJson<string>(this.storageKey(STORAGE_KEYS.centerLogoSize));
     const storedWheelView = readJson<string>(this.storageKey(STORAGE_KEYS.wheelView));
@@ -709,6 +713,10 @@ export class WheelConfigurator {
 
     if (typeof storedCenterColor === 'string' && storedCenterColor.length) {
       this.centerColor.set(storedCenterColor);
+    }
+
+    if (typeof storedCenterText === 'string' && storedCenterText.trim().length) {
+      this.centerText.set(storedCenterText.trim());
     }
 
     if (
@@ -837,14 +845,25 @@ export class WheelConfigurator {
     effect(() => {
       if (!this.activeWheelId()) return;
       const img = this.centerImage();
-      if (img && img.length) {
-        writeImage(this.storageKey(STORAGE_KEYS.centerImage), img).catch(() => {});
+      if (!this.isHydratingWorkspace) {
+        writeImage(this.storageKey(STORAGE_KEYS.centerImage), img && img.length ? img : '').catch(() => {});
       }
     });
 
     effect(() => {
       if (!this.activeWheelId()) return;
-      writeJson(this.storageKey(STORAGE_KEYS.centerColor), this.centerColor());
+      const centerColor = this.centerColor();
+      if (!this.isHydratingWorkspace) {
+        writeJson(this.storageKey(STORAGE_KEYS.centerColor), centerColor);
+      }
+    });
+
+    effect(() => {
+      if (!this.activeWheelId()) return;
+      const centerText = this.centerText().trim();
+      if (!this.isHydratingWorkspace) {
+        writeJson(this.storageKey(STORAGE_KEYS.centerText), centerText.length ? centerText : 'SPIN');
+      }
     });
 
     effect(() => {

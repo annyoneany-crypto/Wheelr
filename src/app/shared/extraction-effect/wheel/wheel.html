@@ -60,7 +60,9 @@
         @if (wheelConfigurator.centerImage()) {
           <img [src]="wheelConfigurator.centerImage()" class="w-full h-full object-cover" alt="Center">
         } @else {
-          <span class="font-bold text-sm" [style.color]="wheelConfigurator.centerContrastColor()">SPIN</span>
+          <span class="font-bold text-sm" [style.color]="wheelConfigurator.centerContrastColor()">
+            {{ wheelConfigurator.centerText() }}
+          </span>
         }
       </div>
 
