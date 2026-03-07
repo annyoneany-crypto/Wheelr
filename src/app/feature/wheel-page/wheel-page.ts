@@ -59,6 +59,7 @@ export class WheelPage {
   private refreshVisibleWheelRequestId = 0;
   isSelectingWorkspace = signal(false);
   private idleAnimationFrameId: number | null = null;
+  private previewDrawAnimationFrameId: number | null = null;
 
   private readonly visibleConfigsEffect = effect(() => {
     if (this.isSelectingWorkspace()) {
@@ -89,20 +90,36 @@ export class WheelPage {
     this.previewWheelSize();
     this.wheelConfigurator.fontRenderVersion();
 
-    canvases.forEach((canvasRef, index) => {
-      const config = configs[index];
-      if (!config) {
-        return;
-      }
+    if (this.previewDrawAnimationFrameId !== null) {
+      cancelAnimationFrame(this.previewDrawAnimationFrameId);
+      this.previewDrawAnimationFrameId = null;
+    }
 
-      const canvas = canvasRef.nativeElement;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) {
-        return;
-      }
+    // Draw after template updates to avoid canvas reset from width/height bindings.
+    this.previewDrawAnimationFrameId = requestAnimationFrame(() => {
+      canvases.forEach((canvasRef, index) => {
+        const config = configs[index];
+        if (!config) {
+          return;
+        }
 
-      this.drawPreviewWheel(canvas, ctx, config);
+        const canvas = canvasRef.nativeElement;
+        const ctx = canvas.getContext('2d');
+        if (!ctx) {
+          return;
+        }
+
+        this.drawPreviewWheel(canvas, ctx, config);
+      });
+
+      this.previewDrawAnimationFrameId = null;
     });
+  });
+
+  private readonly previewSizeEffect = effect(() => {
+    this.showPanelSettings();
+    this.wheelConfigurator.visibleWheelCount();
+    this.calculatePreviewWheelSize();
   });
 
   constructor() {
@@ -124,6 +141,11 @@ export class WheelPage {
       cancelAnimationFrame(this.idleAnimationFrameId);
       this.idleAnimationFrameId = null;
     }
+
+    if (this.previewDrawAnimationFrameId !== null) {
+      cancelAnimationFrame(this.previewDrawAnimationFrameId);
+      this.previewDrawAnimationFrameId = null;
+    }
   }
 
   previewPointerSliceColor(config: WheelDisplayConfig): string {
@@ -139,9 +161,29 @@ export class WheelPage {
   }
 
   calculatePreviewWheelSize(): void {
-    const visibleWheelCount = this.wheelConfigurator.visibleWheelCount();
-    const scaleByCount = visibleWheelCount === 1 ? 0.7 : visibleWheelCount === 2 ? 0.48 : visibleWheelCount === 3 ? 0.36 : 0.3;
-    this.previewWheelSize.set(Math.min(window.innerWidth, window.innerHeight) * scaleByCount);
+    const visibleWheelCount = Math.max(1, this.wheelConfigurator.visibleWheelCount());
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    // Keep a safe margin for floating controls and optional settings panel.
+    const horizontalUiReserve = this.showPanelSettings() ? 500 : 180;
+    const verticalUiReserve = visibleWheelCount > 1 ? 170 : 140;
+
+    const usableWidth = Math.max(220, viewportWidth - horizontalUiReserve);
+    const usableHeight = Math.max(220, viewportHeight - verticalUiReserve);
+
+    const columns = visibleWheelCount > 1 && viewportWidth >= 768 ? 2 : 1;
+    const rows = Math.max(1, Math.ceil(visibleWheelCount / columns));
+    const gap = 24;
+
+    const perCellWidth = (usableWidth - gap * (columns - 1)) / columns;
+    const perCellHeight = (usableHeight - gap * (rows - 1)) / rows;
+
+    // Cap to a practical max so the pointer/text area still fits cleanly.
+    const bestFitSize = Math.min(perCellWidth, perCellHeight, 760);
+    const minimumSize = visibleWheelCount > 1 ? 88 : 140;
+    const nextSize = Number.isFinite(bestFitSize) ? Math.floor(bestFitSize) : minimumSize;
+    this.previewWheelSize.set(Math.max(minimumSize, nextSize));
   }
 
   private async refreshVisibleWheelConfigs(): Promise<void> {

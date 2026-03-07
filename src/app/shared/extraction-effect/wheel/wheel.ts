@@ -52,9 +52,25 @@ export class Wheel {
   }
 
   calculateSize() {
-    const visibleWheelCount = this.wheelConfigurator.visibleWheelCount();
-    const scaleByCount = visibleWheelCount === 1 ? 0.7 : visibleWheelCount === 2 ? 0.48 : visibleWheelCount === 3 ? 0.36 : 0.3;
-    const size = Math.min(window.innerWidth, window.innerHeight) * scaleByCount;
+    const visibleWheelCount = Math.max(1, this.wheelConfigurator.visibleWheelCount());
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    const horizontalUiReserve = visibleWheelCount > 1 ? 420 : 160;
+    const verticalUiReserve = visibleWheelCount > 1 ? 180 : 220;
+    const usableWidth = Math.max(220, viewportWidth - horizontalUiReserve);
+    const usableHeight = Math.max(220, viewportHeight - verticalUiReserve);
+
+    const columns = visibleWheelCount > 1 && viewportWidth >= 768 ? 2 : 1;
+    const rows = Math.max(1, Math.ceil(visibleWheelCount / columns));
+    const gap = 24;
+
+    const perCellWidth = (usableWidth - gap * (columns - 1)) / columns;
+    const perCellHeight = (usableHeight - gap * (rows - 1)) / rows;
+    const bestFitSize = Math.min(perCellWidth, perCellHeight, 760);
+    const minimumSize = visibleWheelCount > 1 ? 88 : 140;
+    const size = Math.max(minimumSize, Number.isFinite(bestFitSize) ? Math.floor(bestFitSize) : minimumSize);
+
     this.width.set(size);
     this.height.set(size);
 
