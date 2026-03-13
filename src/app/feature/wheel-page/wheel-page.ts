@@ -266,7 +266,7 @@ export class WheelPage {
     // Keep winner math aligned with the exact visual angle of the clicked preview wheel.
     this.wheelConfigurator.currentRotation.set(this.previewCanvasRotation(workspaceId));
 
-    const extraDegrees = Math.floor(Math.random() * 360);
+    const extraDegrees = this.wheelConfigurator.generateSpinExtraDegrees();
     const previewSpinDelay = this.getPreviewSpinDelayMs();
     if (previewSpinDelay > 0) {
       setTimeout(() => {
@@ -339,7 +339,7 @@ export class WheelPage {
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
 
-      if (!this.previewSpinningWorkspaceId()) {
+      if (!this.previewSpinningWorkspaceId() && !this.wheelConfigurator.winner()) {
         this.previewIdleRotation.update((rotation) => rotation + degPerSecond * dt);
       }
 

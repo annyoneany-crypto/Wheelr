@@ -40,6 +40,35 @@ export class WheelConfigurator {
   private readonly fontLoadTimeoutMs = 2000;
   private isHydratingWorkspace = false;
 
+  // Returns an unbiased integer in [0, maxExclusive) using crypto when available.
+  private secureRandomInt(maxExclusive: number): number {
+    const max = Math.floor(maxExclusive);
+    if (!Number.isFinite(max) || max <= 0) {
+      return 0;
+    }
+
+    const cryptoApi = globalThis.crypto;
+    if (cryptoApi?.getRandomValues) {
+      const array = new Uint32Array(1);
+      const maxUint32 = 0x100000000;
+      const limit = maxUint32 - (maxUint32 % max);
+
+      let value = 0;
+      do {
+        cryptoApi.getRandomValues(array);
+        value = array[0] ?? 0;
+      } while (value >= limit);
+
+      return value % max;
+    }
+
+    return Math.floor(Math.random() * max);
+  }
+
+  generateSpinExtraDegrees(): number {
+    return this.secureRandomInt(360);
+  }
+
   wheelWorkspaces = signal<WheelWorkspaceMeta[]>([]);
   managerWheelWorkspaces = computed(() =>
     this.wheelWorkspaces().filter((workspace) => !workspace.parentWheelId)
@@ -630,7 +659,7 @@ export class WheelConfigurator {
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
 
-      if (!this.isSpinning()) {
+      if (!this.isSpinning() && !this.winner()) {
         this.currentRotation.update(r => r + degPerSecond * dt);
       }
 
@@ -1117,7 +1146,7 @@ export class WheelConfigurator {
     const resolvedExtraDegrees =
       typeof extraDegrees === 'number' && Number.isFinite(extraDegrees)
         ? ((Math.floor(extraDegrees) % 360) + 360) % 360
-        : Math.floor(Math.random() * 360);
+        : this.generateSpinExtraDegrees();
     const totalRotation = this.currentRotation() + (360 * 6) + resolvedExtraDegrees;
     this.currentRotation.set(totalRotation);
 
