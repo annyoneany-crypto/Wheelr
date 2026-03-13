@@ -117,6 +117,13 @@ export class WheelPage {
     });
   });
 
+  ShareOnX(): void {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent('Check out my giveaway wheel!\r\nCustomize your own and spin to win prizes! 🎉🎁 #GiveawayWheel\r\n\r\n');
+    const xUrl = `https://x.com/intent/tweet?url=${url}&text=${text}`;
+    window.open(xUrl, '_blank');
+  }
+
   private readonly previewSizeEffect = effect(() => {
     this.showPanelSettings();
     this.wheelConfigurator.visibleWheelCount();
