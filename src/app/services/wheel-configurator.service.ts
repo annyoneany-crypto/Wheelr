@@ -51,6 +51,7 @@ export class WheelConfigurator {
   });
 
   showModal = signal(false);
+  renameModalRequestToken = signal(0);
 
   wheelView = signal<'wheel' | 'linear' | 'cards'>('wheel');
 
@@ -243,6 +244,10 @@ export class WheelConfigurator {
     });
 
     this.setupPersistence();
+  }
+
+  requestRenameModalOpen(): void {
+    this.renameModalRequestToken.update((value) => value + 1);
   }
 
   private storageKey(baseKey: string): string {

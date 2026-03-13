@@ -55,6 +55,7 @@ export class WheelPage {
   renameDrafts = signal<Record<string, string>>({});
   renameDescriptionDrafts = signal<Record<string, string>>({});
   renameTargets = signal<WheelDisplayConfig[]>([]);
+  private handledRenameModalRequestToken = this.wheelConfigurator.renameModalRequestToken();
 
   private refreshVisibleWheelRequestId = 0;
   isSelectingWorkspace = signal(false);
@@ -120,6 +121,16 @@ export class WheelPage {
     this.showPanelSettings();
     this.wheelConfigurator.visibleWheelCount();
     this.calculatePreviewWheelSize();
+  });
+
+  private readonly renameModalRequestEffect = effect(() => {
+    const token = this.wheelConfigurator.renameModalRequestToken();
+    if (token === this.handledRenameModalRequestToken) {
+      return;
+    }
+
+    this.handledRenameModalRequestToken = token;
+    this.openRenameModal();
   });
 
   constructor() {

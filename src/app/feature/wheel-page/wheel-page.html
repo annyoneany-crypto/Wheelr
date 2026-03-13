@@ -6,22 +6,6 @@
   [style.backgroundColor]="wheelConfigurator.bgColor()"
   [style.backgroundImage]="wheelConfigurator.bgImage() ? 'url(' + wheelConfigurator.bgImage() + ')' : 'none'">
 
-  <div class="absolute top-4 left-1/2 -translate-x-1/2 z-30 pointer-events-none hidden md:block">
-    <div class="rounded-full border border-yellow-400/50 bg-black/55 px-5 py-2 text-center shadow-[0_0_18px_rgba(250,204,21,0.25)]">
-      <p class="text-[0.65rem] uppercase tracking-[0.2em] text-yellow-300/90">Selected Wheel</p>
-      <div class="mt-0.5 flex items-center justify-center gap-2 pointer-events-auto">
-        <p class="text-sm font-semibold text-white">{{ selectedWheelName() }}</p>
-        <button
-          type="button"
-          class="inline-flex h-6 w-6 items-center justify-center text-white/90 hover:cursor-pointer transition-colors"
-          (click)="openRenameModal()"
-          [attr.aria-label]="showIndependentPreview() ? 'Rename visible wheels' : 'Rename selected wheel'">
-          <i class="fa-solid fa-pen" aria-hidden="true"></i>
-        </button>
-      </div>
-    </div>
-  </div>
-
   @if (showIndependentPreview()) {
     <div class="z-10 w-full grid gap-6" [class]="wheelGridClass()">
       @for (wheelConfig of visibleWheelConfigs(); track wheelConfig.workspaceId) {

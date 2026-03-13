@@ -14,11 +14,31 @@
             <div class="absolute w-6 h-6 bg-purple-500 rounded-full blur-xl" style="top: 5px; right: 5px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);"></div>
           </div>
           <!-- Text -->
-          <h1 class="relative z-10 text-3xl uppercase font-bold text-white">
+           <!-- fai in modo che questo testo ha elipsis enable  -->
+          <h1 class="relative z-10 text-3xl uppercase font-bold text-white truncate">
               Wheelr
           </h1>
         </div>
     </div>
+
+        @if (showSelectedWheelBadge()) {
+            <div class="absolute left-1/2 -translate-x-1/2 z-30 pointer-events-none hidden md:block">
+                <div class="rounded-full border border-yellow-400/50 bg-black/55 px-5 py-2 text-center shadow-[0_0_18px_rgba(250,204,21,0.25)]">
+                    <p class="text-[0.65rem] uppercase tracking-[0.2em] text-yellow-300/90">Selected Wheel</p>
+                    <div class="mt-0.5 flex items-center justify-center gap-2 pointer-events-auto">
+                        <p class="text-sm font-semibold text-white">{{ selectedWheelName() }}</p>
+                        <button
+                            type="button"
+                            class="inline-flex h-6 w-6 items-center justify-center text-white/90 hover:cursor-pointer transition-colors"
+                            (click)="requestRenameModal()"
+                            [attr.aria-label]="showIndependentPreview() ? 'Rename visible wheels' : 'Rename selected wheel'">
+                            <i class="fa-solid fa-pen" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+
     <!-- <i class="fa-solid fa-sun"></i> -->
     <div class="flex gap-4 items-center justify-center">
         <button
