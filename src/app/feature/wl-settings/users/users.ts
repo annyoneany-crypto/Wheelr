@@ -27,10 +27,6 @@ export class Users {
     this.wheelConfigurator.setNames(e.split(/\r?\n/));
   }
 
-  shuffleUsers(): void {
-    this.wheelConfigurator.shuffleNames();
-  }
-
   /**
    * Add the current value of `newName` repeating it `repeatCount` times
    * to the list managed by the configurator.  Empty strings are ignored

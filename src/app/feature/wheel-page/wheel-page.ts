@@ -39,18 +39,9 @@ export class WheelPage {
       return 'grid-cols-1';
     }
 
-    // if (count === 2) {
-    //   return 'grid-cols-1 xl:grid-cols-2';
-    // }
-
-    // if (count === 3) {
-    //   return 'grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3';
-    // }
-
     return 'grid-col-1 md:grid-cols-2';
   });
   showIndependentPreview = computed(() => this.wheelConfigurator.visibleWheelCount() > 1);
-  selectedWheelName = computed(() => this.wheelConfigurator.activeWheel()?.name ?? 'Wheel');
   renameModalOpen = signal(false);
   renameDrafts = signal<Record<string, string>>({});
   renameDescriptionDrafts = signal<Record<string, string>>({});
@@ -243,27 +234,6 @@ export class WheelPage {
     return this.wheelConfigurator.activeWheelId() === workspaceId;
   }
 
-  async selectWorkspaceForEditing(workspaceId: string): Promise<void> {
-    if (!workspaceId || this.isSelectingWorkspace()) {
-      return;
-    }
-
-    if (workspaceId === this.wheelConfigurator.activeWheelId()) {
-      return;
-    }
-
-    this.isSelectingWorkspace.set(true);
-    const visibleCount = this.wheelConfigurator.visibleWheelCount();
-
-    try {
-      await this.wheelConfigurator.loadWheelWorkspace(workspaceId);
-      // Keep multi-wheel mode active while switching the editable workspace.
-      this.wheelConfigurator.setVisibleWheelCount(visibleCount);
-    } finally {
-      this.isSelectingWorkspace.set(false);
-    }
-  }
-
   async onPreviewWheelClick(workspaceId: string): Promise<void> {
     if (!workspaceId || this.isSelectingWorkspace()) {
       return;
@@ -318,12 +288,8 @@ export class WheelPage {
     return start > 0 ? start * 1000 : 0;
   }
 
-  previewRotation(workspaceId: string): number {
-    return this.previewRotations()[workspaceId] ?? 0;
-  }
-
   previewCanvasRotation(workspaceId: string): number {
-    return this.previewRotation(workspaceId) + this.previewIdleRotation();
+    return (this.previewRotations()[workspaceId] ?? 0) + this.previewIdleRotation();
   }
 
   isPreviewSpinning(workspaceId: string): boolean {
@@ -458,15 +424,9 @@ export class WheelPage {
     for (let size = preferredFontSize; size >= minFontSize; size--) {
       ctx.font = `bold ${size}px ${fontFamily}`;
       if (ctx.measureText(text).width <= maxWidth) {
-        chosenSize = size;
-        return { text, fontSize: chosenSize };
+        return { text, fontSize: size };
       }
       chosenSize = size;
-    }
-
-    ctx.font = `bold ${chosenSize}px ${fontFamily}`;
-    if (ctx.measureText(text).width <= maxWidth) {
-      return { text, fontSize: chosenSize };
     }
 
     let clipped = text;
