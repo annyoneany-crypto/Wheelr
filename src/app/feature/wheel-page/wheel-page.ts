@@ -263,6 +263,10 @@ export class WheelPage {
       return;
     }
 
+    // Keep winner math aligned with the exact visual angle of the clicked preview wheel.
+    this.wheelConfigurator.currentRotation.set(this.previewCanvasRotation(workspaceId));
+
+    const extraDegrees = Math.floor(Math.random() * 360);
     const previewSpinDelay = this.getPreviewSpinDelayMs();
     if (previewSpinDelay > 0) {
       setTimeout(() => {
@@ -270,13 +274,13 @@ export class WheelPage {
         if (this.wheelConfigurator.activeWheelId() !== workspaceId) {
           return;
         }
-        this.startPreviewSpin(workspaceId, spinDuration);
+        this.startPreviewSpin(workspaceId, spinDuration, extraDegrees);
       }, previewSpinDelay);
     } else {
-      this.startPreviewSpin(workspaceId, spinDuration);
+      this.startPreviewSpin(workspaceId, spinDuration, extraDegrees);
     }
 
-    this.wheelConfigurator.spinWheel();
+    this.wheelConfigurator.spinWheel(extraDegrees);
   }
 
   private getPreviewSpinDelayMs(): number {
@@ -305,8 +309,7 @@ export class WheelPage {
     return `${duration}ms`;
   }
 
-  private startPreviewSpin(workspaceId: string, durationMs: number): void {
-    const extraDegrees = Math.floor(Math.random() * 360);
+  private startPreviewSpin(workspaceId: string, durationMs: number, extraDegrees: number): void {
     const spinDelta = 360 * 6 + extraDegrees;
 
     this.previewSpinDurations.update((current) => ({

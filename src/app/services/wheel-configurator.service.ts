@@ -1078,7 +1078,7 @@ export class WheelConfigurator {
    * Public entrypoint invoked from the template when the wheel is clicked.
    * If countdown is enabled, run it first before performing the spin.
    */
-  spinWheel() {
+  spinWheel(extraDegrees?: number) {
     if (
       this.isSpinning() ||
       this.countdownInProgress() ||
@@ -1094,17 +1094,17 @@ export class WheelConfigurator {
       // run countdown then perform the actual spin
       this.runCountdown().then(() => {
         this.countdownInProgress.set(false);
-        this.performSpin();
+        this.performSpin(extraDegrees);
       });
     } else {
-      this.performSpin();
+      this.performSpin(extraDegrees);
     }
   }
 
   /**
    * Internal helper containing the logic that actually spins the wheel.
    */
-  private performSpin() {
+  private performSpin(extraDegrees?: number) {
     this.isSpinning.set(true);
     this.winner.set(null);
     if (this.fireAnimationId()) cancelAnimationFrame(this.fireAnimationId()!);
@@ -1114,8 +1114,11 @@ export class WheelConfigurator {
       this.audioManager.playSpinAudio(this.customAudio());
     }
 
-    const extraDegrees = Math.floor(Math.random() * 360);
-    const totalRotation = this.currentRotation() + (360 * 6) + extraDegrees;
+    const resolvedExtraDegrees =
+      typeof extraDegrees === 'number' && Number.isFinite(extraDegrees)
+        ? ((Math.floor(extraDegrees) % 360) + 360) % 360
+        : Math.floor(Math.random() * 360);
+    const totalRotation = this.currentRotation() + (360 * 6) + resolvedExtraDegrees;
     this.currentRotation.set(totalRotation);
 
     setTimeout(() => {
