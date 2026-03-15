@@ -12,12 +12,20 @@
                 class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200 shadow-lg">
                 Close
             </button>
-            <button
-                type="button"
-                (click)="removeWinnerFromUsers(); $event.stopPropagation()"
-                class="border border-red-800 bg-neutral-800/60 hover:bg-red-800/30 hover:cursor-pointer text-white font-bold py-2 px-6 rounded-lg transition-colors duration-200 shadow-lg">
-                Remove winner
-            </button>
+            <div class="flex gap-2">
+                <button
+                    type="button"
+                    (click)="removeSingleWinnerEntryFromUsers(); $event.stopPropagation()"
+                    class="border border-amber-700 bg-neutral-800/60 hover:bg-amber-800/80 hover:cursor-pointer text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 shadow-lg">
+                    Remove 1 entry
+                </button>
+                <button
+                    type="button"
+                    (click)="removeWinnerFromUsers(); $event.stopPropagation()"
+                    class="border border-red-800 bg-neutral-800/60 hover:bg-red-800/80 hover:cursor-pointer text-white font-bold py-2 px-4 rounded-lg transition-colors duration-200 shadow-lg">
+                    Remove all entries
+                </button>
+            </div>
         </div>
     </div>
 </div>

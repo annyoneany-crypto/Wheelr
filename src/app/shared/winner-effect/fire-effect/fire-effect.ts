@@ -124,4 +124,21 @@ export class FireEffect implements IWinnerEffect {
 
     this.wheelConfigurator.setNames(filteredNames);
   }
+
+  removeSingleWinnerEntryFromUsers(): void {
+    const winner = this.wheelConfigurator.winner();
+    if (!winner) {
+      return;
+    }
+
+    const names = this.wheelConfigurator.names();
+    const winnerIndex = names.indexOf(winner);
+    if (winnerIndex < 0) {
+      return;
+    }
+
+    const updatedNames = [...names];
+    updatedNames.splice(winnerIndex, 1);
+    this.wheelConfigurator.setNames(updatedNames);
+  }
 }
