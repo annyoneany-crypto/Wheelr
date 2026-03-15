@@ -1,21 +1,21 @@
-  <a href="/info" target="_self" rel="noopener noreferrer">
+  <a href="/info" target="_self" rel="noopener noreferrer" aria-label="Open Info page" title="Info">
     <div class="fixed top-28 left-8
       w-12 h-12 rounded-full
       border border-white/10 bg-neutral-800
       flex items-center justify-center hover:cursor-pointer
       transition-all duration-300 ease-in-out z-50
       hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40">
-      <i class="fa-solid fa-info text-white/80 z-50"></i>
+      <i class="fa-solid fa-info text-white/80 z-50" aria-hidden="true"></i>
     </div>
   </a>
-  <a href="/donation" target="_self" rel="noopener noreferrer">
+  <a href="/donation" target="_self" rel="noopener noreferrer" aria-label="Open Donation page" title="Donation">
     <div class="fixed top-44 left-8
       w-12 h-12 rounded-full
       border border-white/10 bg-neutral-800
       flex items-center justify-center hover:cursor-pointer
       transition-all duration-300 ease-in-out z-50 
       hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40">
-      <i class="fa-solid fa-heart text-white/80 z-50"></i>
+      <i class="fa-solid fa-heart text-white/80 z-50" aria-hidden="true"></i>
     </div>
   </a>
   <div class="fixed top-60 left-8
@@ -24,8 +24,13 @@
     flex items-center justify-center hover:cursor-pointer
     transition-all duration-300 ease-in-out z-50
     hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
-    (click)="ShareOnX()">
-    <i class="fa-solid fa-share-nodes text-white/80 z-50"></i>
+    role="button"
+    tabindex="0"
+    aria-label="Share on X"
+    (click)="ShareOnX()"
+    (keydown.enter)="ShareOnX()"
+    (keydown.space)="ShareOnX(); $event.preventDefault()">
+    <i class="fa-solid fa-share-nodes text-white/80 z-50" aria-hidden="true"></i>
   </div>
 
 
@@ -78,7 +83,12 @@
               [style.transitionDuration]="previewTransitionDuration(wheelConfig.workspaceId)"
               [style.transitionTimingFunction]="isPreviewSpinning(wheelConfig.workspaceId) ? 'cubic-bezier(0.15, 0, 0.15, 1)' : 'linear'"
               [style.backgroundColor]="wheelConfig.names.length === 0 ? '#5e5e5eBB' : 'transparent'"
-              (click)="onPreviewWheelClick(wheelConfig.workspaceId)">
+              role="button"
+              tabindex="0"
+              [attr.aria-label]="'Select wheel ' + wheelConfig.workspaceName"
+              (click)="onPreviewWheelClick(wheelConfig.workspaceId)"
+              (keydown.enter)="onPreviewWheelClick(wheelConfig.workspaceId)"
+              (keydown.space)="onPreviewWheelClick(wheelConfig.workspaceId); $event.preventDefault()">
             </canvas>
 
             <div
@@ -96,7 +106,12 @@
               [class.h-36]="wheelConfig.centerLogoSize === 'xxl'"
               [class.w-48]="wheelConfig.centerLogoSize === 'xxxl'"
               [class.h-48]="wheelConfig.centerLogoSize === 'xxxl'"
-              (click)="onPreviewWheelClick(wheelConfig.workspaceId)">
+              role="button"
+              tabindex="0"
+              [attr.aria-label]="'Open wheel ' + wheelConfig.workspaceName"
+              (click)="onPreviewWheelClick(wheelConfig.workspaceId)"
+              (keydown.enter)="onPreviewWheelClick(wheelConfig.workspaceId)"
+              (keydown.space)="onPreviewWheelClick(wheelConfig.workspaceId); $event.preventDefault()">
               @if (wheelConfig.centerImage) {
                 <img [src]="wheelConfig.centerImage" class="w-full h-full object-cover" alt="Center">
               } @else {
@@ -225,9 +240,14 @@
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
+  role="button"
+  tabindex="0"
+  aria-label="Open users panel"
   (transitionend)="closeUserPaneltransitionEnd()"
-  (click)="togglePaletSettings('users')">
-  <i class="fa-solid fa-user-plus text-white/80 z-50"></i>
+  (click)="togglePaletSettings('users')"
+  (keydown.enter)="togglePaletSettings('users')"
+  (keydown.space)="togglePaletSettings('users'); $event.preventDefault()">
+  <i class="fa-solid fa-user-plus text-white/80 z-50" aria-hidden="true"></i>
 </div>
 
 <div class="fixed top-44
@@ -242,9 +262,15 @@
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
-  (click)="togglePaletSettings('color-settings')">
+  role="button"
+  tabindex="0"
+  aria-label="Open color settings panel"
+  (click)="togglePaletSettings('color-settings')"
+  (keydown.enter)="togglePaletSettings('color-settings')"
+  (keydown.space)="togglePaletSettings('color-settings'); $event.preventDefault()">
   <i
     class="fa-solid fa-swatchbook text-white/80"
+    aria-hidden="true"
     [class.fa-angles-right]="showPanelSettings()"
     [class.fa-user-plus]="!showPanelSettings()"></i>
 </div>
@@ -261,8 +287,13 @@
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
-  (click)="togglePaletSettings('sound')">
-  <i class="fa-solid fa-volume-high text-white/80"></i>
+  role="button"
+  tabindex="0"
+  aria-label="Open sound panel"
+  (click)="togglePaletSettings('sound')"
+  (keydown.enter)="togglePaletSettings('sound')"
+  (keydown.space)="togglePaletSettings('sound'); $event.preventDefault()">
+  <i class="fa-solid fa-volume-high text-white/80" aria-hidden="true"></i>
 </div>
 
 <div class="fixed top-76
@@ -277,8 +308,13 @@
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
-  (click)="togglePaletSettings('wheel-manager')">
-  <i class="fa-solid fa-layer-group text-white/80"></i>
+  role="button"
+  tabindex="0"
+  aria-label="Open wheel manager panel"
+  (click)="togglePaletSettings('wheel-manager')"
+  (keydown.enter)="togglePaletSettings('wheel-manager')"
+  (keydown.space)="togglePaletSettings('wheel-manager'); $event.preventDefault()">
+  <i class="fa-solid fa-layer-group text-white/80" aria-hidden="true"></i>
 </div>
 
 <div class="fixed top-24 right-0 my-4 p-4

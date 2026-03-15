@@ -1,6 +1,6 @@
-<div class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-20 bg-neutral-800/60 backdrop-blur-md border-b border-white/10">
-    <div class="flex gap-4 hover:cursor-pointer" [routerLink]="['/']" aria-label="Go to homepage">
-        <img src="/Logo.webp" alt="Logo" class="w-8 h-8">
+<header class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-20 bg-neutral-800/60 backdrop-blur-md border-b border-white/10" role="banner" aria-label="Main header">
+    <a class="flex gap-4 hover:cursor-pointer" [routerLink]="['/']" aria-label="Go to homepage">
+        <img src="/Logo.webp" alt="GiveawayWheel logo" class="w-8 h-8">
         <div class="relative">
           <!-- Animated glowing orbs container -->
           <div class="absolute inset-0 animate-spin-slow" style="width: 140px; height: 60px;">
@@ -19,7 +19,7 @@
               Wheelr
           </h1>
         </div>
-    </div>
+    </a>
 
         @if (showSelectedWheelBadge()) {
             <div class="absolute left-1/2 -translate-x-1/2 z-30 pointer-events-none hidden md:block">
@@ -40,7 +40,7 @@
         }
 
     <!-- <i class="fa-solid fa-sun"></i> -->
-    <div class="flex gap-4 items-center justify-center">
+    <div class="flex gap-4 items-center justify-center" role="navigation" aria-label="Header actions">
         <button
             type="button"
             (click)="toggleMenu()"
@@ -51,7 +51,7 @@
                 <span>Menu</span>
         </button>
     </div>
-</div>
+</header>
 
 @if (isMenuOpen()) {
     <div
@@ -81,6 +81,7 @@
                     <a
                         [routerLink]="['/']"
                         (click)="closeMenu()"
+                        aria-label="Go to Wheelr page"
                         class="block rounded-2xl border border-white/15 bg-neutral-800/60 px-6 py-5 text-2xl font-bold text-white hover:bg-neutral-700/70 transition-colors">
                         🎡 Wheelr
                     </a>
@@ -89,6 +90,7 @@
                     <a
                         [routerLink]="['/info']"
                         (click)="closeMenu()"
+                        aria-label="Go to Info page"
                         class="block rounded-2xl border border-white/15 bg-neutral-800/60 px-6 py-5 text-2xl font-bold text-white hover:bg-neutral-700/70 transition-colors">
                         ℹ️ Info
                     </a>
@@ -97,6 +99,7 @@
                     <a
                         [routerLink]="['/donation']"
                         (click)="closeMenu()"
+                        aria-label="Go to Donation page"
                         class="block rounded-2xl border border-white/15 bg-neutral-800/60 px-6 py-5 text-2xl font-bold text-white hover:bg-neutral-700/70 transition-colors">
                         💝 Donation
                     </a>

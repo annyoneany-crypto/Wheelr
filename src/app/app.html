@@ -3,7 +3,9 @@
 <wl-header></wl-header>
 
 <!-- Page Outlet -->
-<router-outlet></router-outlet>
+<main id="main-content" role="main" aria-label="Main content">
+  <router-outlet></router-outlet>
+</main>
 
 <!-- Creator credit -->
 <div class="fixed bottom-2 left-4 
@@ -12,7 +14,12 @@
   backdrop-blur-sm rounded-md
   text-xs text-white  opacity-70
   hover:opacity-100 hover:cursor-pointer transition-opacity"
-  (click)="openCreatorLink()">
+  role="link"
+  tabindex="0"
+  aria-label="Open creator profile on X"
+  (click)="openCreatorLink()"
+  (keydown.enter)="openCreatorLink()"
+  (keydown.space)="openCreatorLink(); $event.preventDefault()">
   <span>Created by AnnyoneAny</span>
   <div class="invert">
     <img
