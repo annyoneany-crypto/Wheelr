@@ -115,22 +115,171 @@
   
   <script src="https://kit.fontawesome.com/5e73418789.js" crossorigin="anonymous" async defer></script>
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
 
-  <app-root></app-root>
+  <app-root class="block flex-1"></app-root>
 
-  <footer class="fixed bottom-0 left-0 w-full 
-      hidden lg:flex z-50 
-      border-t border-white/10 bg-neutral-800/60 backdrop-blur-md 
-      text-white justify-between text-sm tracking-wide px-4 py-2" 
-      aria-label="Desktop footer">
-      <span class="hover:underline hover:text-yellow-600">
-        <a href="https://x.com/AnnyoneAny" target="_blank" rel="noopener noreferrer">
-          Copyright © 2026 AnnyoneAny. All rights reserved
-        </a>
-      </span>
-      <span>A free tool for Raffle events with a customizable wheel.</span>
+  <footer class="hidden lg:block fixed inset-x-0 bottom-0 z-50" aria-label="Desktop footer">
+    <div id="desktop-footer-panel" class="h-12 overflow-hidden border-t border-white/10 text-white transition-all duration-300 ease-out">
+      <div class="h-12 px-6 flex items-center justify-between gap-6 bg-neutral-800/60 backdrop-blur-md">
+        <span class="hover:underline hover:text-yellow-600">
+          <a href="https://x.com/AnnyoneAny" target="_blank" rel="noopener noreferrer">
+            Copyright © 2026 AnnyoneAny. All rights reserved
+          </a>
+        </span>
+        <div class="flex items-center gap-4 min-w-0">
+          <span class="text-sm tracking-wide text-white/85 truncate">A free tool for Raffle events with a customizable wheel.</span>
+          <button id="desktop-footer-toggle" type="button" class="h-8 w-8 rounded-full border border-white/20 bg-black/25 text-white/90 hover:bg-black/40 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300" aria-expanded="false" aria-controls="desktop-footer-summary" aria-label="Expand footer summary">
+            <i id="desktop-footer-icon" class="fa-solid fa-up-right-and-down-left-from-center" aria-hidden="true"></i>
+          </button>
+        </div>
+      </div>
+
+      <div id="desktop-footer-summary" class="h-[calc(80vh-3rem)] overflow-y-auto px-6 pb-6 bg-neutral-800/90 backdrop-blur-md" hidden>
+        <section class="max-w-6xl mx-auto py-6 space-y-4">
+          <header class="rounded-2xl border border-white/10 bg-neutral-900/70 p-6">
+            <p class="text-xs uppercase tracking-[0.18em] text-cyan-300/80">Wheelr • Quick Info Recap</p>
+            <h2 class="mt-2 text-2xl font-black text-white">What you can do in Wheelr 🎡</h2>
+            <p class="mt-3 text-sm leading-relaxed text-white/80 max-w-4xl">
+              Wheelr turns random picks into clear and fun experiences for giveaways, classrooms, teams, livestreams, and events.
+              You can run single or multi-wheel sessions, style every visual element, and keep each extraction transparent.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs text-white/75">
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">Free tool</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">Raffle ready</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">Spin the wheel</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">Up to 4 wheels</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">Custom audio and effects</span>
+            </div>
+          </header>
+
+          <div class="grid gap-4 xl:grid-cols-3">
+            <section class="xl:col-span-2 grid gap-3 md:grid-cols-2 text-sm leading-relaxed text-white/80">
+              <article class="rounded-xl border border-white/10 bg-black/20 p-4">
+                <h3 class="font-semibold text-white">Usage scenarios</h3>
+                <p class="mt-2">Use it for raffle draws, prize assignments, speaking order, classroom turns, team decisions, and fun challenges.</p>
+              </article>
+              <article class="rounded-xl border border-white/10 bg-black/20 p-4">
+                <h3 class="font-semibold text-white">Multi-wheel management</h3>
+                <p class="mt-2">Manage up to 4 wheels together, keep events flowing, and switch wheel presets in seconds.</p>
+              </article>
+              <article class="rounded-xl border border-white/10 bg-black/20 p-4">
+                <h3 class="font-semibold text-white">Visual customization</h3>
+                <p class="mt-2">Configure palette, background, center logo/text, and font style to match your brand identity.</p>
+              </article>
+              <article class="rounded-xl border border-white/10 bg-black/20 p-4">
+                <h3 class="font-semibold text-white">Audio and suspense</h3>
+                <p class="mt-2">Set rotation, countdown, and victory sounds to make every extraction more engaging.</p>
+              </article>
+              <article class="rounded-xl border border-white/10 bg-black/20 p-4 md:col-span-2">
+                <h3 class="font-semibold text-white">Quick step-by-step flow</h3>
+                <p class="mt-2">
+                  1) Choose single or multi-wheel mode. 2) Add names/options. 3) Save presets.
+                  4) Customize visuals. 5) Configure sounds and countdown. 6) Spin and announce the winner.
+                </p>
+              </article>
+            </section>
+
+            <aside class="space-y-3 text-sm leading-relaxed text-white/80">
+              <div class="rounded-xl border border-white/10 bg-black/20 p-4">
+                <h3 class="font-semibold text-white">Why it works</h3>
+                <ul class="mt-2 space-y-1 list-disc list-inside">
+                  <li>Transparent and fair extraction</li>
+                  <li>Fast setup for live events</li>
+                  <li>No registration required</li>
+                  <li>Clear visuals for large audiences</li>
+                </ul>
+              </div>
+
+              <div class="rounded-xl border border-white/10 bg-black/20 p-4">
+                <h3 class="font-semibold text-white">Best practices</h3>
+                <ul class="mt-2 space-y-1 list-disc list-inside">
+                  <li>Shuffle names before each draw</li>
+                  <li>Keep labels short and readable</li>
+                  <li>Use countdown for suspense moments</li>
+                  <li>Prepare presets before going live</li>
+                </ul>
+              </div>
+
+              <div class="rounded-xl border border-white/10 bg-black/20 p-4">
+                <h3 class="font-semibold text-white">Support the project</h3>
+                <p class="mt-2">If Wheelr helps your events, you can support development from the donations page and keep the tool free for everyone.</p>
+              </div>
+            </aside>
+          </div>
+
+          <section class="rounded-2xl border border-white/10 bg-neutral-900/70 p-6 text-sm leading-relaxed text-white/80" aria-label="SEO keyword summary">
+            <h3 class="text-lg font-bold text-white">Popular searches and use cases</h3>
+            <p class="mt-3">
+              Wheelr is a free online wheel tool for creators, teachers, streamers, and event hosts who need a fast raffle picker.
+              It works as a giveaway wheel, prize wheel, random name picker, spin the wheel game, and free wheel app for live sessions.
+              If users search for raffle free solutions, spin for prizes free tools, or a customizable wheel of fortune online, this platform
+              is designed to cover those scenarios with transparent results and quick setup.
+            </p>
+            <div class="mt-4 flex flex-wrap gap-2 text-xs">
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">free wheel</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">raffle free</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">spin for prizes free</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">spin the wheel</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">giveaway wheel</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">random picker wheel</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">raffle tool</span>
+              <span class="rounded-full border border-white/15 bg-black/25 px-3 py-1">wheel of fortune online</span>
+            </div>
+          </section>
+
+          <section class="rounded-2xl border border-white/10 bg-neutral-900/70 p-6" aria-label="Quick navigation links">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+              <div>
+                <h3 class="text-lg font-bold text-white">Explore more pages</h3>
+                <p class="mt-2 text-sm leading-relaxed text-white/80">
+                  Open the Info page for full feature details, examples, and step-by-step usage, or visit Donation to support the project.
+                </p>
+              </div>
+              <nav class="flex flex-wrap gap-3" aria-label="Footer quick navigation">
+                <a href="/info" class="inline-flex items-center rounded-full border border-cyan-300/40 bg-cyan-400/15 px-4 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-400/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300">
+                  Go to Info
+                </a>
+                <a href="/donation" class="inline-flex items-center rounded-full border border-emerald-300/40 bg-emerald-400/15 px-4 py-2 text-sm font-semibold text-emerald-200 hover:bg-emerald-400/25 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-300">
+                  Go to Donation
+                </a>
+              </nav>
+            </div>
+          </section>
+        </section>
+      </div>
+    </div>
   </footer>
-  
+
+  <script>
+    (function () {
+      var panel = document.getElementById('desktop-footer-panel');
+      var toggle = document.getElementById('desktop-footer-toggle');
+      var summary = document.getElementById('desktop-footer-summary');
+      var icon = document.getElementById('desktop-footer-icon');
+
+      if (!panel || !toggle || !summary || !icon) {
+        return;
+      }
+
+      var expanded = false;
+
+      function syncState() {
+        panel.style.height = expanded ? '80vh' : '3rem';
+        summary.hidden = !expanded;
+        toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        toggle.setAttribute('aria-label', expanded ? 'Collapse footer summary' : 'Expand footer summary');
+        icon.className = expanded ? 'fa-solid fa-compress' : 'fa-solid fa-up-right-and-down-left-from-center';
+      }
+
+      toggle.addEventListener('click', function () {
+        expanded = !expanded;
+        syncState();
+      });
+
+      syncState();
+    })();
+  </script>
+
 </body>
 </html>
