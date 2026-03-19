@@ -30,6 +30,16 @@ export class WheelConfigurator {
   private static readonly MAX_WHEELS_PER_GROUP = 4;
   private static readonly DEFAULT_FONT_LINK =
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap';
+  private static readonly DEFAULT_WHEEL_NAMES = [
+    'Wheelr',
+    'Spin',
+    'Raffle',
+    'Winner',
+    'Prize',
+    'Luck',
+    'Fun',
+    'Game',
+  ];
 
   private readonly wheelListStorageKey = 'giveawayWheel.workspaces';
   private readonly activeWheelStorageKey = 'giveawayWheel.activeWorkspaceId';
@@ -426,6 +436,13 @@ export class WheelConfigurator {
         ? storedActiveId
         : fallbackId;
 
+    const activeNamesStorageKey = `${STORAGE_KEYS.names}.${activeId}`;
+    const storedActiveNames = readJson<string[]>(activeNamesStorageKey);
+    const hasActiveNamesConfig = Array.isArray(storedActiveNames) && storedActiveNames.length > 0;
+    if (!hasActiveNamesConfig) {
+      this.names.set([...WheelConfigurator.DEFAULT_WHEEL_NAMES]);
+    }
+
     // Immediately after legacy reorganization, migrate old storage shape into unified snapshot.
     this.migrateLegacyStorageToUnifiedSnapshot(validWorkspaces, activeId);
 
@@ -703,7 +720,9 @@ export class WheelConfigurator {
     const effectivePalettes = activeUnifiedWheel?.palettes ?? storedPalettes;
     const effectiveSelectedName = activeUnifiedWheel?.selectedPaletteName ?? storedSelectedName;
     const effectiveSpinDurationMs = activeUnifiedWheel?.spinDurationMs ?? storedSpinDurationMs;
-    const effectiveNames = activeUnifiedWheel?.names ?? storedNames;
+    const snapshotNames = activeUnifiedWheel?.names;
+    const effectiveNames =
+      Array.isArray(snapshotNames) && snapshotNames.length > 0 ? snapshotNames : storedNames;
     const effectiveBgColor = unifiedSnapshot?.backgrondcolor ?? storedBgColor;
     const effectiveCenterLogoSize = activeUnifiedWheel?.centerLogoSize ?? storedCenterLogoSize;
     const effectiveWheelView = activeUnifiedWheel?.wheelView ?? storedWheelView;
@@ -719,8 +738,17 @@ export class WheelConfigurator {
       this.palettes.set(Array.from(byName.values()));
     }
 
-    if (Array.isArray(effectiveNames)) {
+    if (Array.isArray(effectiveNames) && effectiveNames.length > 0) {
       this.names.set(effectiveNames);
+    } else {
+      const hasStoredNames =
+        Array.isArray(storedNames) && storedNames.length > 0;
+      const hasSnapshotNames =
+        Array.isArray(activeUnifiedWheel?.names) && activeUnifiedWheel.names.length > 0;
+
+      if (!hasStoredNames && !hasSnapshotNames) {
+        this.names.set([...WheelConfigurator.DEFAULT_WHEEL_NAMES]);
+      }
     }
 
     if (typeof effectiveBgColor === 'string' && effectiveBgColor.length) {
