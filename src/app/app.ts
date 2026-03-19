@@ -22,9 +22,5 @@ export class App implements OnInit {
     // Inizializza il monitoraggio
     injectSpeedInsights();
   }
-
-  openCreatorLink() {
-    window.open('https://x.com/AnnyoneAny', '_blank', 'noopener');
-  }
   
 }

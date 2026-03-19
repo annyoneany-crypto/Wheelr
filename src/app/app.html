@@ -6,27 +6,3 @@
 <main id="main-content" role="main" aria-label="Main content">
   <router-outlet></router-outlet>
 </main>
-
-<!-- Creator credit -->
-<div class="fixed bottom-2 left-4 
-  flex flex-col items-center gap-2 p-4
-  border border-white/10 bg-neutral-800/50 
-  backdrop-blur-sm rounded-md
-  text-xs text-white  opacity-70
-  hover:opacity-100 hover:cursor-pointer transition-opacity"
-  role="link"
-  tabindex="0"
-  aria-label="Open creator profile on X"
-  (click)="openCreatorLink()"
-  (keydown.enter)="openCreatorLink()"
-  (keydown.space)="openCreatorLink(); $event.preventDefault()">
-  <span>Created by AnnyoneAny</span>
-  <div class="invert">
-    <img
-      src="/twitter-logo.webp"
-      width="16"
-      height="16"
-      alt="Twitter"
-      class="h-4 w-4" />
-  </div>
-</div>
