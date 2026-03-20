@@ -18,8 +18,10 @@ import {
   loadWorkspaceDisplayConfig,
   migrateLegacyStorageToUnifiedSnapshot,
   saveUnifiedLocalStorageSnapshot,
+  storageKeyForWorkspace,
 } from './wheel-configurator-storage';
-import { WheelSettingsSnapshot, WheelWorkspaceMeta } from './wheel-configurator.models';
+import { WheelDisplayConfig, WheelSettingsSnapshot, WheelWorkspaceMeta } from './wheel-configurator.models';
+import { CloudWheelSyncItem } from './wheel-cloud-repository.service';
 
 export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.models';
 
@@ -363,6 +365,31 @@ export class WheelConfigurator {
     });
   }
 
+  async loadWheelGroupDisplayConfigs(rootWorkspaceId: string): Promise<WheelDisplayConfig[]> {
+    const rootId = this.getWorkspaceRootId(rootWorkspaceId);
+    const visibleCount = this.getGroupVisibleWheelCount(rootId);
+    const groupIds = this.getWorkspaceGroupIds(rootId, visibleCount);
+    const resolvedConfigs = await Promise.all(groupIds.map((workspaceId) => this.loadWheelDisplayConfig(workspaceId)));
+    return resolvedConfigs.filter((config): config is WheelDisplayConfig => !!config);
+  }
+
+  private getGroupVisibleWheelCount(rootWorkspaceId: string): number {
+    if (!rootWorkspaceId) {
+      return 1;
+    }
+
+    if (this.getWorkspaceRootId(this.activeWheelId()) === rootWorkspaceId) {
+      return Math.min(4, Math.max(1, Math.floor(this.visibleWheelCount())));
+    }
+
+    const storedVisibleCount = readJson<number>(`${STORAGE_KEYS.visibleWheelCount}.${rootWorkspaceId}`);
+    if (typeof storedVisibleCount === 'number' && Number.isFinite(storedVisibleCount)) {
+      return Math.min(4, Math.max(1, Math.floor(storedVisibleCount)));
+    }
+
+    return 1;
+  }
+
   private persistWorkspaceRegistry(): void {
     writeJson(this.wheelListStorageKey, this.wheelWorkspaces());
   }
@@ -585,6 +612,199 @@ export class WheelConfigurator {
     }
 
     return changed;
+  }
+
+  setWheelCloudConfigId(workspaceId: string, cloudConfigId: string): void {
+    if (!workspaceId || !cloudConfigId) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+    let changed = false;
+
+    this.wheelWorkspaces.update((workspaces) =>
+      workspaces.map((workspace) => {
+        if (workspace.id !== workspaceId) {
+          return workspace;
+        }
+
+        changed = true;
+        return {
+          ...workspace,
+          cloudConfigId,
+          cloudSyncedAt: now,
+          updatedAt: now,
+        };
+      })
+    );
+
+    if (changed) {
+      this.persistWorkspaceRegistry();
+    }
+  }
+
+  setGroupCloudConfigId(rootWorkspaceId: string, cloudConfigId: string): void {
+    if (!rootWorkspaceId || !cloudConfigId) {
+      return;
+    }
+
+    const rootId = this.getWorkspaceRootId(rootWorkspaceId);
+    const groupIds = new Set(this.getWorkspaceGroupIds(rootId, 99));
+    if (!groupIds.size) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+    let changed = false;
+
+    this.wheelWorkspaces.update((workspaces) =>
+      workspaces.map((workspace) => {
+        if (!groupIds.has(workspace.id)) {
+          return workspace;
+        }
+
+        changed = true;
+        return {
+          ...workspace,
+          cloudConfigId,
+          cloudSyncedAt: now,
+          updatedAt: now,
+        };
+      })
+    );
+
+    if (changed) {
+      this.persistWorkspaceRegistry();
+    }
+  }
+
+  async mergeCloudWheelsToLocal(cloudWheels: CloudWheelSyncItem[]): Promise<number> {
+    if (!cloudWheels.length) {
+      return 0;
+    }
+
+    let workspaces = [...this.wheelWorkspaces()];
+    let importedCount = 0;
+
+    for (const cloudWheel of cloudWheels) {
+      const configs = cloudWheel.displayConfigs.slice(0, WheelConfigurator.MAX_WHEELS_PER_GROUP);
+      if (!configs.length) {
+        continue;
+      }
+
+      const existingRoot = workspaces.find(
+        (workspace) =>
+          !workspace.parentWheelId &&
+          workspace.cloudConfigId === cloudWheel.cloudConfigId
+      );
+
+      const rootId = existingRoot?.id ?? this.createWorkspaceId();
+      const now = new Date().toISOString();
+
+      if (existingRoot) {
+        workspaces = workspaces.map((workspace) =>
+          workspace.id === existingRoot.id
+            ? {
+                ...workspace,
+                name: cloudWheel.title || workspace.name,
+                description: cloudWheel.description,
+                cloudConfigId: cloudWheel.cloudConfigId,
+                cloudSyncedAt: now,
+                updatedAt: now,
+              }
+            : workspace
+        );
+      } else {
+        workspaces.push({
+          id: rootId,
+          name: cloudWheel.title || 'Imported wheel',
+          description: cloudWheel.description,
+          createdAt: now,
+          updatedAt: now,
+          cloudConfigId: cloudWheel.cloudConfigId,
+          cloudSyncedAt: now,
+        });
+      }
+
+      const groupWorkspaces = workspaces
+        .filter((workspace) => workspace.id === rootId || workspace.parentWheelId === rootId)
+        .sort((left, right) => {
+          if (left.id === rootId) return -1;
+          if (right.id === rootId) return 1;
+          return left.createdAt.localeCompare(right.createdAt);
+        });
+
+      while (groupWorkspaces.length < configs.length) {
+        const childId = this.createWorkspaceId();
+        const childMeta: WheelWorkspaceMeta = {
+          id: childId,
+          name: `${cloudWheel.title || 'Imported wheel'} - ${groupWorkspaces.length + 1}`,
+          description: '',
+          createdAt: now,
+          updatedAt: now,
+          parentWheelId: rootId,
+          cloudConfigId: cloudWheel.cloudConfigId,
+          cloudSyncedAt: now,
+        };
+        groupWorkspaces.push(childMeta);
+        workspaces.push(childMeta);
+      }
+
+      const targetGroup = groupWorkspaces.slice(0, configs.length);
+      for (let i = 0; i < targetGroup.length; i += 1) {
+        const targetWorkspace = targetGroup[i];
+        const sourceConfig = configs[i];
+        if (!targetWorkspace || !sourceConfig) {
+          continue;
+        }
+
+        workspaces = workspaces.map((workspace) =>
+          workspace.id === targetWorkspace.id
+            ? {
+                ...workspace,
+                name: sourceConfig.workspaceName || workspace.name,
+                cloudConfigId: cloudWheel.cloudConfigId,
+                cloudSyncedAt: now,
+                updatedAt: now,
+              }
+            : workspace
+        );
+
+        await this.writeDisplayConfigToWorkspaceStorage(rootId, targetWorkspace.id, sourceConfig);
+      }
+
+      writeJson(storageKeyForWorkspace(STORAGE_KEYS.visibleWheelCount, rootId), targetGroup.length);
+      importedCount += 1;
+    }
+
+    this.wheelWorkspaces.set(workspaces);
+    this.persistWorkspaceRegistry();
+    return importedCount;
+  }
+
+  private async writeDisplayConfigToWorkspaceStorage(
+    rootWorkspaceId: string,
+    workspaceId: string,
+    config: WheelDisplayConfig
+  ): Promise<void> {
+    const paletteName = 'Cloud Import';
+    const paletteColors = config.colors.length ? [...config.colors] : ['#f59e0b'];
+
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId), [
+      { name: paletteName, colors: paletteColors },
+    ]);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.selectedPaletteName, workspaceId), paletteName);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.names, workspaceId), Array.isArray(config.names) ? config.names : []);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.centerColor, workspaceId), config.centerColor || '#ffffff');
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.centerText, workspaceId), config.centerText || 'SPIN');
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.centerLogoSize, workspaceId), config.centerLogoSize || 'm');
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.fontFamily, workspaceId), config.fontFamily || '"Inter", sans-serif');
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.wheelView, workspaceId), 'wheel');
+
+    writeJson(STORAGE_KEYS.bgColor, config.bgColor || '#262626');
+
+    await writeImage(storageKeyForWorkspace(STORAGE_KEYS.bgImage, rootWorkspaceId), config.bgImage || '');
+    await writeImage(storageKeyForWorkspace(STORAGE_KEYS.centerImage, workspaceId), config.centerImage || '');
   }
 
   async deleteWheelWorkspace(workspaceId: string): Promise<boolean> {

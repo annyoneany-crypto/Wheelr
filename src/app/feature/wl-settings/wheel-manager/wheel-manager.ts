@@ -1,5 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
+import { WheelCloudRepository } from '../../../services/wheel-cloud-repository.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-wheel-manager',
@@ -8,6 +10,8 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 })
 export class WheelManager {
   wheelConfigurator = inject(WheelConfigurator);
+  private readonly wheelCloudRepository = inject(WheelCloudRepository);
+  protected readonly authService = inject(AuthService);
   managerWorkspaces = computed(() => this.wheelConfigurator.managerWheelWorkspaces());
 
   isManagerWorkspaceActive(workspaceId: string): boolean {
@@ -20,6 +24,11 @@ export class WheelManager {
   editingWheelId = signal<string | null>(null);
   editName = signal('');
   editDescription = signal('');
+  savingWorkspaceId = signal<string | null>(null);
+  syncedWorkspaceId = signal<string | null>(null);
+  importingFromCloud = signal(false);
+  importedFromCloudCount = signal<number | null>(null);
+  cloudError = signal('');
 
   updateCreateName(event: Event): void {
     const target = event.target;
@@ -63,6 +72,70 @@ export class WheelManager {
     this.wheelConfigurator.setVisibleWheelCount(1);
     this.createName.set('');
     this.createDescription.set('');
+  }
+
+  async saveWheelToCloud(workspaceId: string): Promise<void> {
+    if (this.savingWorkspaceId() === workspaceId) {
+      return;
+    }
+
+    const workspace = this.managerWorkspaces().find((item) => item.id === workspaceId);
+    if (!workspace) {
+      return;
+    }
+
+    this.cloudError.set('');
+    this.syncedWorkspaceId.set(null);
+    this.savingWorkspaceId.set(workspaceId);
+
+    try {
+      const rootWorkspaceId = this.wheelConfigurator.getWorkspaceRootId(workspace.id);
+      const displayConfigs = await this.wheelConfigurator.loadWheelGroupDisplayConfigs(rootWorkspaceId);
+      if (!displayConfigs.length) {
+        this.cloudError.set('Configurazione wheel non trovata. Carica la wheel e riprova.');
+        return;
+      }
+
+      const cloudConfigId = await this.wheelCloudRepository.upsertWheel({
+        workspace,
+        displayConfigs,
+        cloudConfigId: workspace.cloudConfigId,
+      });
+
+      this.wheelConfigurator.setGroupCloudConfigId(rootWorkspaceId, cloudConfigId);
+
+      this.syncedWorkspaceId.set(workspaceId);
+    } catch (error) {
+      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
+        ? 'Effettua il login per salvare la wheel sul cloud.'
+        : 'Salvataggio cloud non riuscito. Riprova.';
+      this.cloudError.set(message);
+    } finally {
+      this.savingWorkspaceId.set(null);
+    }
+  }
+
+  async importWheelsFromCloud(): Promise<void> {
+    if (this.importingFromCloud()) {
+      return;
+    }
+
+    this.cloudError.set('');
+    this.importedFromCloudCount.set(null);
+    this.importingFromCloud.set(true);
+
+    try {
+      const cloudWheels = await this.wheelCloudRepository.listCurrentUserWheels();
+      const mergedCount = await this.wheelConfigurator.mergeCloudWheelsToLocal(cloudWheels);
+      this.importedFromCloudCount.set(mergedCount);
+    } catch (error) {
+      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
+        ? 'Effettua il login per importare le wheel dal cloud.'
+        : 'Importazione dal cloud non riuscita. Riprova.';
+      this.cloudError.set(message);
+    } finally {
+      this.importingFromCloud.set(false);
+    }
   }
 
   async loadWheel(workspaceId: string): Promise<void> {
@@ -113,6 +186,21 @@ export class WheelManager {
 
     const confirmed = window.confirm(`Delete wheel "${workspace.name}"?`);
     if (!confirmed) {
+      return;
+    }
+
+    this.cloudError.set('');
+
+    try {
+      if (workspace.cloudConfigId) {
+        await this.wheelCloudRepository.deleteWheelByCloudConfigId(workspace.cloudConfigId);
+      }
+    } catch (error) {
+      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
+        ? 'Effettua il login per eliminare anche la wheel dal cloud.'
+        : 'Eliminazione cloud non riuscita. Riprova.';
+      this.cloudError.set(message);
+      console.error('Error deleting wheel from cloud:', error);
       return;
     }
 

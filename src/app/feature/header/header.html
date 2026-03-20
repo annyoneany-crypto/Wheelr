@@ -43,6 +43,20 @@
     <div class="flex gap-4 items-center justify-center" role="navigation" aria-label="Header actions">
         <button
             type="button"
+            (click)="onAuthButtonClick()"
+            class="secondaryButton max-w-52 h-11 inline-flex items-center border-yellow-400/50!"
+            [disabled]="authService.loading()"
+            [attr.aria-label]="authButtonAriaLabel()"
+            [title]="authButtonAriaLabel()">
+            @if (!authService.isLoggedIn()) {
+                <i class="fa-solid fa-user" aria-hidden="true"></i>
+            } @else {
+                <span class="truncate">{{ authService.email() }}</span>
+            }
+        </button>
+
+        <button
+            type="button"
             (click)="toggleMenu()"
             class="secondaryButton inline-flex items-center gap-2 border-yellow-400/50!"
             [attr.aria-expanded]="isMenuOpen()"
@@ -124,3 +138,11 @@
         </a>
     </div>
 }
+
+<wl-auth [isOpen]="isAuthModalOpen()" (closeRequested)="closeAuthModal()"></wl-auth>
+
+<wl-info-utente
+    [isOpen]="isUserPanelOpen()"
+    [email]="authService.email()"
+    (closeRequested)="closeUserPanel()"
+    (logoutRequested)="logoutFromUserPanel()"></wl-info-utente>
