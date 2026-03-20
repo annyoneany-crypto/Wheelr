@@ -115,6 +115,20 @@
                 (click)="loadWheel(workspace.id)">
                 Load
               </button>
+              @if (authService.isLoggedIn()) {
+                <button
+                  type="button"
+                  class="rounded-lg border border-sky-400/30 bg-sky-500/20 px-3 py-2 text-xs font-semibold text-sky-100 hover:bg-sky-500/30 disabled:opacity-50"
+                  [disabled]="savingWorkspaceId() === workspace.id"
+                  [attr.aria-label]="'Save wheel ' + workspace.name + ' to cloud'"
+                  (click)="saveWheelToCloud(workspace.id)">
+                  @if (savingWorkspaceId() === workspace.id) {
+                    <span>...</span>
+                  } @else {
+                    <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                  }
+                </button>
+              }
               <button
                 type="button"
                 class="flex-1 rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-xs font-semibold text-white hover:bg-neutral-700"
@@ -130,8 +144,20 @@
                 </button>
               }
             </div>
+
+            @if (syncedWorkspaceId() === workspace.id) {
+              <p class="mt-2 text-[0.65rem] text-sky-200">Salvata sul cloud.</p>
+            }
+
+            @if (workspace.cloudConfigId) {
+              <p class="mt-1 text-[0.65rem] text-white/60 break-all">Cloud ID: {{ workspace.cloudConfigId }}</p>
+            }
           }
         </article>
+      }
+
+      @if (cloudError()) {
+        <p class="mt-2 rounded-md border border-red-400/30 bg-red-500/10 px-3 py-2 text-xs text-red-200">{{ cloudError() }}</p>
       }
     </div>
   </section>

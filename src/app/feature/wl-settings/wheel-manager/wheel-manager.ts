@@ -1,5 +1,7 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
+import { WheelCloudRepository } from '../../../services/wheel-cloud-repository.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-wheel-manager',
@@ -8,6 +10,8 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 })
 export class WheelManager {
   wheelConfigurator = inject(WheelConfigurator);
+  private readonly wheelCloudRepository = inject(WheelCloudRepository);
+  protected readonly authService = inject(AuthService);
   managerWorkspaces = computed(() => this.wheelConfigurator.managerWheelWorkspaces());
 
   isManagerWorkspaceActive(workspaceId: string): boolean {
@@ -20,6 +24,9 @@ export class WheelManager {
   editingWheelId = signal<string | null>(null);
   editName = signal('');
   editDescription = signal('');
+  savingWorkspaceId = signal<string | null>(null);
+  syncedWorkspaceId = signal<string | null>(null);
+  cloudError = signal('');
 
   updateCreateName(event: Event): void {
     const target = event.target;
@@ -63,6 +70,45 @@ export class WheelManager {
     this.wheelConfigurator.setVisibleWheelCount(1);
     this.createName.set('');
     this.createDescription.set('');
+  }
+
+  async saveWheelToCloud(workspaceId: string): Promise<void> {
+    if (this.savingWorkspaceId() === workspaceId) {
+      return;
+    }
+
+    const workspace = this.managerWorkspaces().find((item) => item.id === workspaceId);
+    if (!workspace) {
+      return;
+    }
+
+    this.cloudError.set('');
+    this.syncedWorkspaceId.set(null);
+    this.savingWorkspaceId.set(workspaceId);
+
+    try {
+      const displayConfig = await this.wheelConfigurator.loadWheelDisplayConfig(workspaceId);
+      if (!displayConfig) {
+        this.cloudError.set('Configurazione wheel non trovata. Carica la wheel e riprova.');
+        return;
+      }
+
+      const cloudConfigId = await this.wheelCloudRepository.upsertWheel({
+        workspace,
+        displayConfig,
+      });
+
+      this.wheelConfigurator.setWheelCloudConfigId(workspace.id, cloudConfigId);
+
+      this.syncedWorkspaceId.set(workspaceId);
+    } catch (error) {
+      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
+        ? 'Effettua il login per salvare la wheel sul cloud.'
+        : 'Salvataggio cloud non riuscito. Riprova.';
+      this.cloudError.set(message);
+    } finally {
+      this.savingWorkspaceId.set(null);
+    }
   }
 
   async loadWheel(workspaceId: string): Promise<void> {

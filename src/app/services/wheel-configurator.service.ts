@@ -587,6 +587,35 @@ export class WheelConfigurator {
     return changed;
   }
 
+  setWheelCloudConfigId(workspaceId: string, cloudConfigId: string): void {
+    if (!workspaceId || !cloudConfigId) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+    let changed = false;
+
+    this.wheelWorkspaces.update((workspaces) =>
+      workspaces.map((workspace) => {
+        if (workspace.id !== workspaceId) {
+          return workspace;
+        }
+
+        changed = true;
+        return {
+          ...workspace,
+          cloudConfigId,
+          cloudSyncedAt: now,
+          updatedAt: now,
+        };
+      })
+    );
+
+    if (changed) {
+      this.persistWorkspaceRegistry();
+    }
+  }
+
   async deleteWheelWorkspace(workspaceId: string): Promise<boolean> {
     const workspaces = this.wheelWorkspaces();
     if (!workspaces.some((workspace) => workspace.id === workspaceId)) {

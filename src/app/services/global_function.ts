@@ -128,16 +128,47 @@ export function clampDeg(deg: number): number {
  * Calculate contrast color (#000000 or #FFFFFF) for given hex color
  */
 export function contrastForHex(hex: string): '#000000' | '#FFFFFF' {
-  // Expect #RRGGBB
-  const m = /^#?([0-9a-fA-F]{6})$/.exec(hex);
-  if (!m) return '#FFFFFF';
+  const rgb = parseColorToRgb(hex);
+  if (!rgb) return '#000000';
 
-  const int = Number.parseInt(m[1], 16);
-  const r = (int >> 16) & 0xff;
-  const g = (int >> 8) & 0xff;
-  const b = int & 0xff;
+  const { r, g, b } = rgb;
 
   // Perceived luminance (sRGB-ish). Threshold tuned for UI contrast.
   const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
   return luminance > 140 ? '#000000' : '#FFFFFF';
+}
+
+function parseColorToRgb(input: string): { r: number; g: number; b: number } | null {
+  const value = input.trim();
+
+  const hex3 = /^#?([0-9a-fA-F]{3})$/.exec(value);
+  if (hex3) {
+    const [r, g, b] = hex3[1].split('').map((ch) => Number.parseInt(ch + ch, 16));
+    return { r, g, b };
+  }
+
+  const hex6 = /^#?([0-9a-fA-F]{6})(?:[0-9a-fA-F]{2})?$/.exec(value);
+  if (hex6) {
+    const int = Number.parseInt(hex6[1], 16);
+    return {
+      r: (int >> 16) & 0xff,
+      g: (int >> 8) & 0xff,
+      b: int & 0xff,
+    };
+  }
+
+  const rgb = /^rgba?\((\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})(?:\s*,\s*(?:\d*\.?\d+))?\)$/.exec(value);
+  if (rgb) {
+    return {
+      r: clampColorChannel(Number.parseInt(rgb[1], 10)),
+      g: clampColorChannel(Number.parseInt(rgb[2], 10)),
+      b: clampColorChannel(Number.parseInt(rgb[3], 10)),
+    };
+  }
+
+  return null;
+}
+
+function clampColorChannel(channel: number): number {
+  return Math.max(0, Math.min(255, channel));
 }

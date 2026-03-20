@@ -7,6 +7,8 @@ export interface WheelWorkspaceMeta {
   createdAt: string;
   updatedAt: string;
   parentWheelId?: string;
+  cloudConfigId?: string;
+  cloudSyncedAt?: string;
 }
 
 export interface WheelDisplayConfig {
