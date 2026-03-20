@@ -51,18 +51,19 @@
             @if (!authService.isLoggedIn()) {
                 <i class="fa-solid fa-user" aria-hidden="true"></i>
             } @else {
-                <span class="truncate">{{ authService.email() }}</span>
+                <i class="fa-solid fa-user-check" aria-hidden="true"></i>
+                <!-- <span class="truncate">{{ authService.email() }}</span> -->
             }
         </button>
 
         <button
             type="button"
             (click)="toggleMenu()"
-            class="secondaryButton inline-flex items-center gap-2 border-yellow-400/50!"
+            class="secondaryButton inline-flex h-11 items-center gap-2 border-yellow-400/50!"
             [attr.aria-expanded]="isMenuOpen()"
             aria-label="Open main menu">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
-                <span>Menu</span>
+                <!-- <span>Menu</span> -->
         </button>
     </div>
 </header>
