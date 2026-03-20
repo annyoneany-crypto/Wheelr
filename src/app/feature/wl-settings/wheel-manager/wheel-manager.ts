@@ -26,6 +26,8 @@ export class WheelManager {
   editDescription = signal('');
   savingWorkspaceId = signal<string | null>(null);
   syncedWorkspaceId = signal<string | null>(null);
+  importingFromCloud = signal(false);
+  importedFromCloudCount = signal<number | null>(null);
   cloudError = signal('');
 
   updateCreateName(event: Event): void {
@@ -110,6 +112,29 @@ export class WheelManager {
       this.cloudError.set(message);
     } finally {
       this.savingWorkspaceId.set(null);
+    }
+  }
+
+  async importWheelsFromCloud(): Promise<void> {
+    if (this.importingFromCloud()) {
+      return;
+    }
+
+    this.cloudError.set('');
+    this.importedFromCloudCount.set(null);
+    this.importingFromCloud.set(true);
+
+    try {
+      const cloudWheels = await this.wheelCloudRepository.listCurrentUserWheels();
+      const mergedCount = await this.wheelConfigurator.mergeCloudWheelsToLocal(cloudWheels);
+      this.importedFromCloudCount.set(mergedCount);
+    } catch (error) {
+      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
+        ? 'Effettua il login per importare le wheel dal cloud.'
+        : 'Importazione dal cloud non riuscita. Riprova.';
+      this.cloudError.set(message);
+    } finally {
+      this.importingFromCloud.set(false);
     }
   }
 

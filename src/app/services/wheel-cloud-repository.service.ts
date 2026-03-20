@@ -29,6 +29,16 @@ export interface WheelPublicData {
   displayConfigs: WheelDisplayConfig[];
 }
 
+export interface CloudWheelSyncItem {
+  cloudConfigId: string;
+  workspaceId: string;
+  title: string;
+  description: string;
+  displayConfigs: WheelDisplayConfig[];
+  createdAt: string;
+  updatedAt: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -110,6 +120,20 @@ export class WheelCloudRepository {
     );
 
     return resolvedCloudId;
+  }
+
+  async listCurrentUserWheels(): Promise<CloudWheelSyncItem[]> {
+    const user = this.authService.user();
+    if (!user) {
+      throw new Error('AUTH_REQUIRED');
+    }
+
+    const wheelsCollection = collection(this.firestore, 'users', user.uid, 'wheels');
+    const snapshot = await getDocs(wheelsCollection);
+
+    return snapshot.docs
+      .map((entry) => this.extractCloudSyncItem(entry.data()))
+      .filter((item): item is CloudWheelSyncItem => !!item);
   }
 
   async deleteWheelByCloudConfigId(cloudConfigId: string): Promise<void> {
@@ -268,6 +292,41 @@ export class WheelCloudRepository {
       title: typeof name === 'string' && name.trim() ? name.trim() : 'Giveaway Wheel',
       description: typeof description === 'string' ? description.trim() : '',
       displayConfigs: normalizedDisplayConfigs,
+    };
+  }
+
+  private extractCloudSyncItem(data: unknown): CloudWheelSyncItem | null {
+    const publicData = this.extractPublicData(data);
+    if (!publicData || !data || typeof data !== 'object') {
+      return null;
+    }
+
+    const source = data as {
+      cloudConfigId?: unknown;
+      workspaceId?: unknown;
+      name?: unknown;
+      description?: unknown;
+      createdAt?: unknown;
+      updatedAt?: unknown;
+    };
+
+    const cloudConfigId = typeof source.cloudConfigId === 'string' ? source.cloudConfigId.trim() : '';
+    if (!cloudConfigId) {
+      return null;
+    }
+
+    const workspaceId = typeof source.workspaceId === 'string' && source.workspaceId.trim()
+      ? source.workspaceId.trim()
+      : cloudConfigId;
+
+    return {
+      cloudConfigId,
+      workspaceId,
+      title: typeof source.name === 'string' && source.name.trim() ? source.name.trim() : publicData.title,
+      description: typeof source.description === 'string' ? source.description.trim() : publicData.description,
+      displayConfigs: publicData.displayConfigs,
+      createdAt: typeof source.createdAt === 'string' ? source.createdAt : new Date().toISOString(),
+      updatedAt: typeof source.updatedAt === 'string' ? source.updatedAt : new Date().toISOString(),
     };
   }
 }
