@@ -54,7 +54,7 @@ export class WlAuth {
     }
 
     if (!this.authService.isConfigured()) {
-      this.authError.set('Configura Firebase in firebase-auth.config.ts per abilitare il login.');
+      this.authError.set('Configura le variabili NG_APP_FIREBASE_* nel file .env per abilitare il login.');
       return;
     }
 

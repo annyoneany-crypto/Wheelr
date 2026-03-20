@@ -6,10 +6,11 @@ import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../services/auth.service';
 import { WlAuth } from '../auth/auth';
+import { WlInfoUtente } from '../info-utente/info-utente';
 
 @Component({
   selector: 'wl-header',
-  imports: [RouterLink, NgOptimizedImage, WlAuth],
+  imports: [RouterLink, NgOptimizedImage, WlAuth, WlInfoUtente],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -28,6 +29,7 @@ export class Header {
   selectedWheelName = computed(() => this.wheelConfigurator.activeWheel()?.name ?? 'Wheel');
   showSelectedWheelBadge = computed(() => this.isWheelRoute() && !!this.wheelConfigurator.activeWheelId());
   isAuthModalOpen = signal(false);
+  isUserPanelOpen = signal(false);
 
   constructor() {
     this.router.events
@@ -53,16 +55,29 @@ export class Header {
   }
 
   authButtonAriaLabel(): string {
-    return this.authService.isLoggedIn() ? 'Logout from account' : 'Open login modal';
+    return this.authService.isLoggedIn() ? 'Open account panel' : 'Open login modal';
   }
 
   onAuthButtonClick(): void {
     if (this.authService.isLoggedIn()) {
-      void this.authService.logout();
+      this.openUserPanel();
       return;
     }
 
     this.openAuthModal();
+  }
+
+  openUserPanel(): void {
+    this.isUserPanelOpen.set(true);
+  }
+
+  closeUserPanel(): void {
+    this.isUserPanelOpen.set(false);
+  }
+
+  async logoutFromUserPanel(): Promise<void> {
+    await this.authService.logout();
+    this.closeUserPanel();
   }
 
   openAuthModal(): void {

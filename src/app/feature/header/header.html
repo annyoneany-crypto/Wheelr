@@ -140,3 +140,9 @@
 }
 
 <wl-auth [isOpen]="isAuthModalOpen()" (closeRequested)="closeAuthModal()"></wl-auth>
+
+<wl-info-utente
+    [isOpen]="isUserPanelOpen()"
+    [email]="authService.email()"
+    (closeRequested)="closeUserPanel()"
+    (logoutRequested)="logoutFromUserPanel()"></wl-info-utente>

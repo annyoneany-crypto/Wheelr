@@ -1,5 +1,5 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { FirebaseApp, getApp, getApps, initializeApp } from 'firebase/app';
+import { FirebaseApp, FirebaseOptions, getApp, getApps, initializeApp } from 'firebase/app';
 import {
   Auth,
   createUserWithEmailAndPassword,
@@ -19,6 +19,7 @@ import { firebaseAuthConfig } from './firebase-auth.config';
 export class AuthService {
   private auth: Auth | null = null;
   private readonly provider = new GoogleAuthProvider();
+  private readonly firebaseConfig: FirebaseOptions = firebaseAuthConfig;
 
   private readonly userSignal = signal<User | null>(null);
   private readonly loadingSignal = signal(true);
@@ -107,15 +108,15 @@ export class AuthService {
   }
 
   private resolveApp(): FirebaseApp {
-    return getApps().length ? getApp() : initializeApp(firebaseAuthConfig);
+    return getApps().length ? getApp() : initializeApp(this.firebaseConfig);
   }
 
   private hasValidConfig(): boolean {
     return Boolean(
-      firebaseAuthConfig.apiKey &&
-      firebaseAuthConfig.authDomain &&
-      firebaseAuthConfig.projectId &&
-      firebaseAuthConfig.appId
+      this.firebaseConfig.apiKey &&
+      this.firebaseConfig.authDomain &&
+      this.firebaseConfig.projectId &&
+      this.firebaseConfig.appId
     );
   }
 }
