@@ -164,6 +164,21 @@ export class WheelManager {
       return;
     }
 
+    this.cloudError.set('');
+
+    try {
+      if (workspace.cloudConfigId) {
+        await this.wheelCloudRepository.deleteWheelByCloudConfigId(workspace.cloudConfigId);
+      }
+    } catch (error) {
+      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
+        ? 'Effettua il login per eliminare anche la wheel dal cloud.'
+        : 'Eliminazione cloud non riuscita. Riprova.';
+      this.cloudError.set(message);
+      console.error('Error deleting wheel from cloud:', error);
+      return;
+    }
+
     await this.wheelConfigurator.deleteWheelWorkspace(workspaceId);
 
     if (this.editingWheelId() === workspaceId) {

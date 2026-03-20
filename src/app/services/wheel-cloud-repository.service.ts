@@ -3,6 +3,7 @@ import { FirebaseApp, getApp, getApps, initializeApp } from 'firebase/app';
 import {
   collection,
   collectionGroup,
+  deleteDoc,
   doc,
   getDocs,
   getFirestore,
@@ -75,10 +76,12 @@ export class WheelCloudRepository {
     }
 
     const requestedCloudId = payload.cloudConfigId?.trim() ?? '';
-    const wheelDocRef = requestedCloudId
-      ? doc(this.firestore, 'users', user.uid, 'wheels', requestedCloudId)
-      : doc(collection(this.firestore, 'users', user.uid, 'wheels'));
-    const resolvedCloudId = wheelDocRef.id;
+    const resolvedCloudId = await this.resolveUniqueCloudConfigId(
+      user.uid,
+      payload.workspace.id,
+      requestedCloudId
+    );
+    const wheelDocRef = doc(this.firestore, 'users', user.uid, 'wheels', resolvedCloudId);
 
     const displayConfigs = payload.displayConfigs.length
       ? payload.displayConfigs
@@ -107,6 +110,74 @@ export class WheelCloudRepository {
     );
 
     return resolvedCloudId;
+  }
+
+  async deleteWheelByCloudConfigId(cloudConfigId: string): Promise<void> {
+    const user = this.authService.user();
+    if (!user) {
+      throw new Error('AUTH_REQUIRED');
+    }
+
+    const normalizedCloudId = cloudConfigId?.trim() ?? '';
+    if (!normalizedCloudId) {
+      return;
+    }
+
+    const existing = query(
+      collectionGroup(this.firestore, 'wheels'),
+      where('cloudConfigId', '==', normalizedCloudId),
+      where('ownerUid', '==', user.uid)
+    );
+    const snapshot = await getDocs(existing);
+
+    if (snapshot.empty) {
+      return;
+    }
+
+    await Promise.all(snapshot.docs.map((item) => deleteDoc(item.ref)));
+  }
+
+  private async resolveUniqueCloudConfigId(
+    userUid: string,
+    workspaceId: string,
+    requestedCloudId: string
+  ): Promise<string> {
+    if (requestedCloudId) {
+      const duplicate = await this.findByCloudConfigId(requestedCloudId);
+      if (!duplicate) {
+        return requestedCloudId;
+      }
+
+      const duplicateData = duplicate.data() as { ownerUid?: unknown; workspaceId?: unknown };
+      const duplicateOwnerUid = typeof duplicateData.ownerUid === 'string' ? duplicateData.ownerUid : '';
+      const duplicateWorkspaceId =
+        typeof duplicateData.workspaceId === 'string' ? duplicateData.workspaceId : '';
+
+      // Allow reuse only when updating the same wheel group for the same user.
+      if (duplicateOwnerUid === userUid && duplicateWorkspaceId === workspaceId) {
+        return requestedCloudId;
+      }
+    }
+
+    for (let attempt = 0; attempt < 5; attempt += 1) {
+      const candidate = doc(collection(this.firestore, 'users', userUid, 'wheels')).id;
+      const duplicate = await this.findByCloudConfigId(candidate);
+      if (!duplicate) {
+        return candidate;
+      }
+    }
+
+    throw new Error('UNIQUE_KEY_GENERATION_FAILED');
+  }
+
+  private async findByCloudConfigId(cloudConfigId: string) {
+    const check = query(
+      collectionGroup(this.firestore, 'wheels'),
+      where('cloudConfigId', '==', cloudConfigId),
+      limit(1)
+    );
+    const snapshot = await getDocs(check);
+    return snapshot.docs[0] ?? null;
   }
 
   private async compressDisplayConfig(displayConfig: WheelDisplayConfig): Promise<WheelDisplayConfig> {
