@@ -28,7 +28,7 @@
                 </button>
             </div>
 
-            <form class="space-y-4" [formGroup]="authForm" (ngSubmit)="submitWithEmailAndPassword()">
+            <!-- <form class="space-y-4" [formGroup]="authForm" (ngSubmit)="submitWithEmailAndPassword()">
                 <label class="block text-sm text-white/90" for="auth-email">Email</label>
                 <input
                     id="auth-email"
@@ -80,12 +80,12 @@
                 } @else {
                     Non hai un account? Crea profilo
                 }
-            </button>
+            </button> -->
 
             <div class="my-4 flex items-center gap-3">
                 <div class="h-px flex-1 bg-white/15"></div>
-                <span class="text-xs uppercase tracking-widest text-white/50">Oppure</span>
-                <div class="h-px flex-1 bg-white/15"></div>
+                <!-- <span class="text-xs uppercase tracking-widest text-white/50">Oppure</span> -->
+                <!-- <div class="h-px flex-1 bg-white/15"></div> -->
             </div>
 
             <button
@@ -97,11 +97,11 @@
                 Accedi con Google
             </button>
 
-            <div class="mt-4 min-h-6" aria-live="polite">
-                @if (authError()) {
+            @if (authError()) {
+                <div class="mt-4 min-h-6" aria-live="polite">
                     <p class="rounded-lg border border-red-400/30 bg-red-500/10 px-3 py-2 text-sm text-red-200">{{ authError() }}</p>
-                }
-            </div>
+                </div>
+            }
         </section>
     </div>
 }
