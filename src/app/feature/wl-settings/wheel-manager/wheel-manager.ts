@@ -87,18 +87,20 @@ export class WheelManager {
     this.savingWorkspaceId.set(workspaceId);
 
     try {
-      const displayConfig = await this.wheelConfigurator.loadWheelDisplayConfig(workspaceId);
-      if (!displayConfig) {
+      const rootWorkspaceId = this.wheelConfigurator.getWorkspaceRootId(workspace.id);
+      const displayConfigs = await this.wheelConfigurator.loadWheelGroupDisplayConfigs(rootWorkspaceId);
+      if (!displayConfigs.length) {
         this.cloudError.set('Configurazione wheel non trovata. Carica la wheel e riprova.');
         return;
       }
 
       const cloudConfigId = await this.wheelCloudRepository.upsertWheel({
         workspace,
-        displayConfig,
+        displayConfigs,
+        cloudConfigId: workspace.cloudConfigId,
       });
 
-      this.wheelConfigurator.setWheelCloudConfigId(workspace.id, cloudConfigId);
+      this.wheelConfigurator.setGroupCloudConfigId(rootWorkspaceId, cloudConfigId);
 
       this.syncedWorkspaceId.set(workspaceId);
     } catch (error) {

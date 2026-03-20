@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, computed, inject, signal, viewChild } from '@angular/core';
+import { Component, ElementRef, OnDestroy, computed, effect, inject, signal, viewChildren } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WheelCloudRepository } from '../../services/wheel-cloud-repository.service';
@@ -14,9 +14,9 @@ export class PublicWheel implements OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly cloudRepository = inject(WheelCloudRepository);
 
-  readonly wheelCanvasRef = viewChild<ElementRef<HTMLCanvasElement>>('wheelCanvas');
+  readonly wheelCanvasRefs = viewChildren<ElementRef<HTMLCanvasElement>>('wheelCanvas');
 
-  readonly wheelConfig = signal<WheelDisplayConfig | null>(null);
+  readonly wheelConfigs = signal<WheelDisplayConfig[]>([]);
   readonly loading = signal(true);
   readonly error = signal('');
   readonly wheelId = signal('');
@@ -27,19 +27,11 @@ export class PublicWheel implements OnDestroy {
   private idleRafId: number | null = null;
   private idleLastTs = 0;
 
-  readonly centerSizeClass = computed(() => {
-    const size = this.wheelConfig()?.centerLogoSize ?? 'm';
-
-    if (size === 's') return 'w-14 h-14';
-    if (size === 'l') return 'w-24 h-24';
-    if (size === 'xl') return 'w-28 h-28';
-    if (size === 'xxl') return 'w-36 h-36';
-    if (size === 'xxxl') return 'w-48 h-48';
-    return 'w-20 h-20';
-  });
+  readonly pageBgColor = computed(() => this.wheelConfigs()[0]?.bgColor || '#18181b');
+  readonly pageBgImage = computed(() => this.wheelConfigs()[0]?.bgImage || '');
 
   readonly headingColor = computed(() => {
-    const bgColor = this.wheelConfig()?.bgColor || '#18181b';
+    const bgColor = this.pageBgColor();
     return contrastForHex(bgColor);
   });
 
@@ -49,6 +41,12 @@ export class PublicWheel implements OnDestroy {
   });
 
   constructor() {
+    effect(() => {
+      this.wheelConfigs();
+      this.wheelCanvasRefs();
+      requestAnimationFrame(() => this.drawAllWheels());
+    });
+
     this.route.paramMap.pipe(takeUntilDestroyed()).subscribe((params) => {
       const id = params.get('id')?.trim() ?? '';
       this.wheelId.set(id);
@@ -63,7 +61,7 @@ export class PublicWheel implements OnDestroy {
   private async loadWheel(id: string): Promise<void> {
     this.loading.set(true);
     this.error.set('');
-    this.wheelConfig.set(null);
+    this.wheelConfigs.set([]);
     this.wheelTitle.set('');
     this.wheelSubtitle.set('');
     this.stopIdleRotation();
@@ -84,9 +82,9 @@ export class PublicWheel implements OnDestroy {
 
       this.wheelTitle.set(publicData.title);
       this.wheelSubtitle.set(publicData.description);
-      this.wheelConfig.set(publicData.displayConfig);
+      this.wheelConfigs.set(publicData.displayConfigs);
       this.startIdleRotation();
-      requestAnimationFrame(() => this.drawWheel());
+      requestAnimationFrame(() => this.drawAllWheels());
     } catch (error) {
       console.error('Errore nel caricamento della wheel dal cloud:', error);
       this.error.set('Errore nel caricamento della wheel dal cloud.');
@@ -119,10 +117,43 @@ export class PublicWheel implements OnDestroy {
     }
   }
 
-  private drawWheel(): void {
-    const config = this.wheelConfig();
-    const canvas = this.wheelCanvasRef()?.nativeElement;
-    if (!config || !canvas) {
+  centerSizeClass(config: WheelDisplayConfig): string {
+    const size = config.centerLogoSize ?? 'm';
+
+    if (size === 's') return 'w-14 h-14';
+    if (size === 'l') return 'w-24 h-24';
+    if (size === 'xl') return 'w-28 h-28';
+    if (size === 'xxl') return 'w-36 h-36';
+    if (size === 'xxxl') return 'w-48 h-48';
+    return 'w-20 h-20';
+  }
+
+  centerTextColor(config: WheelDisplayConfig): '#000000' | '#FFFFFF' {
+    return contrastForHex(config.centerColor || '#ffffff');
+  }
+
+  private drawAllWheels(): void {
+    const configs = this.wheelConfigs();
+    const canvases = this.wheelCanvasRefs();
+
+    if (!configs.length || !canvases.length) {
+      return;
+    }
+
+    const count = Math.min(configs.length, canvases.length);
+    for (let i = 0; i < count; i += 1) {
+      const canvas = canvases[i]?.nativeElement;
+      const config = configs[i];
+      if (!canvas || !config) {
+        continue;
+      }
+
+      this.drawWheel(canvas, config);
+    }
+  }
+
+  private drawWheel(canvas: HTMLCanvasElement, config: WheelDisplayConfig): void {
+    if (!canvas) {
       return;
     }
 

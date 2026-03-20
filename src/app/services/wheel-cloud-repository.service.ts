@@ -18,13 +18,14 @@ import { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.mod
 
 interface WheelCloudPayload {
   workspace: WheelWorkspaceMeta;
-  displayConfig: WheelDisplayConfig;
+  displayConfigs: WheelDisplayConfig[];
+  cloudConfigId?: string;
 }
 
 export interface WheelPublicData {
   title: string;
   description: string;
-  displayConfig: WheelDisplayConfig;
+  displayConfigs: WheelDisplayConfig[];
 }
 
 @Injectable({
@@ -38,6 +39,17 @@ export class WheelCloudRepository {
     const normalizedId = configId?.trim() ?? '';
     if (!normalizedId) {
       return null;
+    }
+
+    const byCloudConfigId = query(
+      collectionGroup(this.firestore, 'wheels'),
+      where('cloudConfigId', '==', normalizedId),
+      limit(1)
+    );
+    const byCloudConfigIdSnapshot = await getDocs(byCloudConfigId);
+    const byCloudConfigDoc = byCloudConfigIdSnapshot.docs[0];
+    if (byCloudConfigDoc) {
+      return this.extractPublicData(byCloudConfigDoc.data());
     }
 
     const byWorkspaceId = query(
@@ -62,13 +74,24 @@ export class WheelCloudRepository {
       throw new Error('AUTH_REQUIRED');
     }
 
-    const wheelDocRef = doc(collection(this.firestore, 'users', user.uid, 'wheels'), payload.workspace.id);
+    const requestedCloudId = payload.cloudConfigId?.trim() ?? '';
+    const wheelDocRef = requestedCloudId
+      ? doc(this.firestore, 'users', user.uid, 'wheels', requestedCloudId)
+      : doc(collection(this.firestore, 'users', user.uid, 'wheels'));
+    const resolvedCloudId = wheelDocRef.id;
 
-    const compressedDisplayConfig = await this.compressDisplayConfig(payload.displayConfig);
+    const displayConfigs = payload.displayConfigs.length
+      ? payload.displayConfigs
+      : [];
+    const compressedDisplayConfigs = await Promise.all(
+      displayConfigs.map((config) => this.compressDisplayConfig(config))
+    );
+    const primaryDisplayConfig = compressedDisplayConfigs[0] ?? null;
 
     await setDoc(
       wheelDocRef,
       {
+        cloudConfigId: resolvedCloudId,
         workspaceId: payload.workspace.id,
         name: payload.workspace.name,
         description: payload.workspace.description,
@@ -76,13 +99,14 @@ export class WheelCloudRepository {
         updatedAt: payload.workspace.updatedAt,
         ownerUid: user.uid,
         ownerEmail: user.email ?? '',
-        displayConfig: compressedDisplayConfig,
+        displayConfig: primaryDisplayConfig,
+        displayConfigs: compressedDisplayConfigs,
         syncedAt: serverTimestamp(),
       },
       { merge: true }
     );
 
-    return wheelDocRef.id;
+    return resolvedCloudId;
   }
 
   private async compressDisplayConfig(displayConfig: WheelDisplayConfig): Promise<WheelDisplayConfig> {
@@ -146,17 +170,33 @@ export class WheelCloudRepository {
       return null;
     }
 
-    const maybeDisplayConfig = (data as { displayConfig?: unknown }).displayConfig;
-    if (!maybeDisplayConfig || typeof maybeDisplayConfig !== 'object') {
+    const source = data as {
+      displayConfigs?: unknown;
+      displayConfig?: unknown;
+      name?: unknown;
+      description?: unknown;
+    };
+
+    const listFromPayload = Array.isArray(source.displayConfigs)
+      ? source.displayConfigs.filter((item) => !!item && typeof item === 'object')
+      : [];
+
+    const legacySingle = source.displayConfig && typeof source.displayConfig === 'object'
+      ? [source.displayConfig]
+      : [];
+
+    const normalizedDisplayConfigs = (listFromPayload.length ? listFromPayload : legacySingle) as WheelDisplayConfig[];
+
+    if (!normalizedDisplayConfigs.length) {
       return null;
     }
 
-    const { name, description } = data as { name?: unknown; description?: unknown };
+    const { name, description } = source;
 
     return {
       title: typeof name === 'string' && name.trim() ? name.trim() : 'Giveaway Wheel',
       description: typeof description === 'string' ? description.trim() : '',
-      displayConfig: maybeDisplayConfig as WheelDisplayConfig,
+      displayConfigs: normalizedDisplayConfigs,
     };
   }
 }

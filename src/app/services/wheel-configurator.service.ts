@@ -19,7 +19,7 @@ import {
   migrateLegacyStorageToUnifiedSnapshot,
   saveUnifiedLocalStorageSnapshot,
 } from './wheel-configurator-storage';
-import { WheelSettingsSnapshot, WheelWorkspaceMeta } from './wheel-configurator.models';
+import { WheelDisplayConfig, WheelSettingsSnapshot, WheelWorkspaceMeta } from './wheel-configurator.models';
 
 export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.models';
 
@@ -363,6 +363,31 @@ export class WheelConfigurator {
     });
   }
 
+  async loadWheelGroupDisplayConfigs(rootWorkspaceId: string): Promise<WheelDisplayConfig[]> {
+    const rootId = this.getWorkspaceRootId(rootWorkspaceId);
+    const visibleCount = this.getGroupVisibleWheelCount(rootId);
+    const groupIds = this.getWorkspaceGroupIds(rootId, visibleCount);
+    const resolvedConfigs = await Promise.all(groupIds.map((workspaceId) => this.loadWheelDisplayConfig(workspaceId)));
+    return resolvedConfigs.filter((config): config is WheelDisplayConfig => !!config);
+  }
+
+  private getGroupVisibleWheelCount(rootWorkspaceId: string): number {
+    if (!rootWorkspaceId) {
+      return 1;
+    }
+
+    if (this.getWorkspaceRootId(this.activeWheelId()) === rootWorkspaceId) {
+      return Math.min(4, Math.max(1, Math.floor(this.visibleWheelCount())));
+    }
+
+    const storedVisibleCount = readJson<number>(`${STORAGE_KEYS.visibleWheelCount}.${rootWorkspaceId}`);
+    if (typeof storedVisibleCount === 'number' && Number.isFinite(storedVisibleCount)) {
+      return Math.min(4, Math.max(1, Math.floor(storedVisibleCount)));
+    }
+
+    return 1;
+  }
+
   private persistWorkspaceRegistry(): void {
     writeJson(this.wheelListStorageKey, this.wheelWorkspaces());
   }
@@ -598,6 +623,41 @@ export class WheelConfigurator {
     this.wheelWorkspaces.update((workspaces) =>
       workspaces.map((workspace) => {
         if (workspace.id !== workspaceId) {
+          return workspace;
+        }
+
+        changed = true;
+        return {
+          ...workspace,
+          cloudConfigId,
+          cloudSyncedAt: now,
+          updatedAt: now,
+        };
+      })
+    );
+
+    if (changed) {
+      this.persistWorkspaceRegistry();
+    }
+  }
+
+  setGroupCloudConfigId(rootWorkspaceId: string, cloudConfigId: string): void {
+    if (!rootWorkspaceId || !cloudConfigId) {
+      return;
+    }
+
+    const rootId = this.getWorkspaceRootId(rootWorkspaceId);
+    const groupIds = new Set(this.getWorkspaceGroupIds(rootId, 99));
+    if (!groupIds.size) {
+      return;
+    }
+
+    const now = new Date().toISOString();
+    let changed = false;
+
+    this.wheelWorkspaces.update((workspaces) =>
+      workspaces.map((workspace) => {
+        if (!groupIds.has(workspace.id)) {
           return workspace;
         }
 
