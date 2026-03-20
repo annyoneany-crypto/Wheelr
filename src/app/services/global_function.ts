@@ -72,7 +72,6 @@ export function openDb(): Promise<IDBDatabase> {
     request.onupgradeneeded = () => {
       const db = request.result;
       if (!db.objectStoreNames.contains('images')) {
-        debugger;
         db.createObjectStore('images');
       }
     };
