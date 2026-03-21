@@ -92,7 +92,7 @@ export class WheelManager {
       const rootWorkspaceId = this.wheelConfigurator.getWorkspaceRootId(workspace.id);
       const displayConfigs = await this.wheelConfigurator.loadWheelGroupDisplayConfigs(rootWorkspaceId);
       if (!displayConfigs.length) {
-        this.cloudError.set('Configurazione wheel non trovata. Carica la wheel e riprova.');
+        this.cloudError.set('Wheel configuration not found. Load the wheel and try again.');
         return;
       }
 
@@ -107,8 +107,8 @@ export class WheelManager {
       this.syncedWorkspaceId.set(workspaceId);
     } catch (error) {
       const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
-        ? 'Effettua il login per salvare la wheel sul cloud.'
-        : 'Salvataggio cloud non riuscito. Riprova.';
+        ? 'Sign in to save the wheel to cloud.'
+        : 'Cloud save failed. Try again.';
       this.cloudError.set(message);
     } finally {
       this.savingWorkspaceId.set(null);
@@ -130,8 +130,8 @@ export class WheelManager {
       this.importedFromCloudCount.set(mergedCount);
     } catch (error) {
       const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
-        ? 'Effettua il login per importare le wheel dal cloud.'
-        : 'Importazione dal cloud non riuscita. Riprova.';
+        ? 'Sign in to import wheels from cloud.'
+        : 'Cloud import failed. Try again.';
       this.cloudError.set(message);
     } finally {
       this.importingFromCloud.set(false);
@@ -197,8 +197,8 @@ export class WheelManager {
       }
     } catch (error) {
       const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
-        ? 'Effettua il login per eliminare anche la wheel dal cloud.'
-        : 'Eliminazione cloud non riuscita. Riprova.';
+        ? 'Sign in to also delete the wheel from cloud.'
+        : 'Cloud deletion failed. Try again.';
       this.cloudError.set(message);
       console.error('Error deleting wheel from cloud:', error);
       return;

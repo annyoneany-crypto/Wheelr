@@ -6,7 +6,7 @@
   [style.backgroundPosition]="'center'">
 
   @if (loading()) {
-    <p class="text-white/90 text-lg">Caricamento wheel...</p>
+    <p class="text-white/90 text-lg">Loading wheel...</p>
   } @else if (error()) {
     <div class="max-w-xl rounded-xl border border-red-400/30 bg-red-500/10 p-4 text-red-100">
       {{ error() }}
@@ -64,7 +64,7 @@
         <a
           href="/"
           class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-neutral-800/60 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black/40">
-          Crea la tua wheel
+          Create your wheel
         </a>
 
         <p class="rounded-md border border-white/15 bg-neutral-800/60 px-3 py-2 text-xs text-white/80">ID: {{ wheelId() }}</p>

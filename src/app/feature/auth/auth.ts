@@ -46,15 +46,15 @@ export class WlAuth {
       if (!this.isAuthSubmitLoading()) {
         this.authError.set(
           this.isRegisterMode()
-            ? 'Compila email, password e conferma password per registrarti.'
-            : 'Compila email e password per accedere.'
+            ? 'Fill in email, password, and confirm password to sign up.'
+            : 'Fill in email and password to sign in.'
         );
       }
       return;
     }
 
     if (!this.authService.isConfigured()) {
-      this.authError.set('Configura le variabili NG_APP_FIREBASE_* nel file .env per abilitare il login.');
+      this.authError.set('Configure NG_APP_FIREBASE_* variables in the .env file to enable sign-in.');
       return;
     }
 
@@ -66,13 +66,13 @@ export class WlAuth {
 
       if (this.isRegisterMode()) {
         if (!confirmPassword) {
-          this.authError.set('Conferma la password per creare il profilo.');
+          this.authError.set('Confirm your password to create your profile.');
           this.isAuthSubmitLoading.set(false);
           return;
         }
 
         if (password !== confirmPassword) {
-          this.authError.set('Le password non coincidono.');
+          this.authError.set('Passwords do not match.');
           this.isAuthSubmitLoading.set(false);
           return;
         }
@@ -96,7 +96,7 @@ export class WlAuth {
     }
 
     if (!this.authService.isConfigured()) {
-      this.authError.set('Configura Firebase in firebase-auth.config.ts per abilitare il login.');
+      this.authError.set('Configure Firebase in firebase-auth.config.ts to enable sign-in.');
       return;
     }
 
@@ -115,33 +115,33 @@ export class WlAuth {
   private mapAuthErrorToMessage(error: unknown): string {
     if (!(error instanceof FirebaseError)) {
       return this.isRegisterMode()
-        ? 'Registrazione non riuscita. Riprova tra poco.'
-        : 'Autenticazione non riuscita. Riprova tra poco.';
+        ? 'Registration failed. Please try again shortly.'
+        : 'Authentication failed. Please try again shortly.';
     }
 
     switch (error.code) {
       case 'auth/email-already-in-use':
-        return 'Questa email e gia registrata.';
+        return 'This email is already registered.';
       case 'auth/invalid-email':
-        return 'Email non valida.';
+        return 'Invalid email.';
       case 'auth/weak-password':
-        return 'Password troppo debole. Usa almeno 6 caratteri.';
+        return 'Password is too weak. Use at least 6 characters.';
       case 'auth/user-not-found':
       case 'auth/wrong-password':
       case 'auth/invalid-credential':
-        return 'Email o password non corrette.';
+        return 'Incorrect email or password.';
       case 'auth/popup-closed-by-user':
-        return 'Login Google annullato.';
+        return 'Google sign-in was canceled.';
       case 'auth/popup-blocked':
-        return 'Popup bloccato dal browser. Abilita i popup e riprova.';
+        return 'Popup blocked by browser. Enable popups and try again.';
       case 'auth/too-many-requests':
-        return 'Troppi tentativi. Riprova tra qualche minuto.';
+        return 'Too many attempts. Try again in a few minutes.';
       case 'auth/network-request-failed':
-        return 'Errore di rete. Controlla la connessione e riprova.';
+        return 'Network error. Check your connection and try again.';
       default:
         return this.isRegisterMode()
-          ? 'Registrazione non riuscita. Verifica i dati e riprova.'
-          : 'Autenticazione non riuscita. Verifica i dati e riprova.';
+          ? 'Registration failed. Check your details and try again.'
+          : 'Authentication failed. Check your details and try again.';
     }
   }
 }

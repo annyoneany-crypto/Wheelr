@@ -67,7 +67,7 @@ export class PublicWheel implements OnDestroy {
     this.stopIdleRotation();
 
     if (!id) {
-      this.error.set('ID wheel non valido.');
+      this.error.set('Invalid wheel ID.');
       this.loading.set(false);
       return;
     }
@@ -75,7 +75,7 @@ export class PublicWheel implements OnDestroy {
     try {
       const publicData = await this.cloudRepository.getWheelDisplayConfigById(id);
       if (!publicData) {
-        this.error.set('Wheel non trovata nel cloud.');
+        this.error.set('Wheel not found in cloud.');
         this.loading.set(false);
         return;
       }
@@ -86,8 +86,8 @@ export class PublicWheel implements OnDestroy {
       this.startIdleRotation();
       requestAnimationFrame(() => this.drawAllWheels());
     } catch (error) {
-      console.error('Errore nel caricamento della wheel dal cloud:', error);
-      this.error.set('Errore nel caricamento della wheel dal cloud.');
+      console.error('Error loading wheel from cloud:', error);
+      this.error.set('Error loading wheel from cloud.');
     } finally {
       this.loading.set(false);
     }

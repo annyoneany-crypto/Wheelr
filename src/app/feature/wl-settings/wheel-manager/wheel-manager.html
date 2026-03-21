@@ -69,7 +69,7 @@
           @if (importingFromCloud()) {
             <span>Import...</span>
           } @else {
-            <span>Importa da cloud</span>
+            <span>Import from cloud</span>
           }
         </button>
       }
@@ -161,7 +161,7 @@
             </div>
 
             @if (syncedWorkspaceId() === workspace.id) {
-              <p class="mt-2 text-[0.65rem] text-sky-200">Salvata sul cloud.</p>
+              <p class="mt-2 text-[0.65rem] text-sky-200">Saved to cloud.</p>
             }
 
             @if (workspace.cloudConfigId) {
@@ -177,7 +177,7 @@
 
       @if (importedFromCloudCount() !== null && !cloudError()) {
         <p class="mt-2 rounded-md border border-emerald-400/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-100">
-          Import completato: {{ importedFromCloudCount() }} wheel cloud unite in locale.
+          Import completed: {{ importedFromCloudCount() }} cloud wheels merged locally.
         </p>
       }
     </div>

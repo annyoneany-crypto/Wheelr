@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
-  selector: 'wl-info-utente',
+  selector: 'wl-user-info',
   templateUrl: './info-utente.html',
   styleUrl: './info-utente.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

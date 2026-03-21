@@ -12,12 +12,12 @@
                 <div>
                     <h2 class="text-xl font-bold text-white">
                         @if (isRegisterMode()) {
-                            Crea profilo
+                            Create account
                         } @else {
-                            Accedi
+                            Sign in
                         }
                     </h2>
-                    <p class="mt-1 text-sm text-white/70">Scegli come vuoi autenticarti</p>
+                    <p class="mt-1 text-sm text-white/70">Choose how you want to authenticate</p>
                 </div>
                 <button
                     type="button"
@@ -48,7 +48,7 @@
                     placeholder="********" />
 
                 @if (isRegisterMode()) {
-                    <label class="block text-sm text-white/90" for="auth-confirm-password">Conferma password</label>
+                    <label class="block text-sm text-white/90" for="auth-confirm-password">Confirm password</label>
                     <input
                         id="auth-confirm-password"
                         type="password"
@@ -63,9 +63,9 @@
                     class="secondaryButton w-full inline-flex justify-center border-yellow-400/50!"
                     [disabled]="isAuthSubmitLoading()">
                     @if (isRegisterMode()) {
-                        Crea profilo con email e password
+                        Create account with email and password
                     } @else {
-                        Accedi con email e password
+                        Sign in with email and password
                     }
                 </button>
             </form>
@@ -76,15 +76,15 @@
                 [disabled]="isAuthSubmitLoading()"
                 (click)="toggleAuthMode()">
                 @if (isRegisterMode()) {
-                    Hai gia un account? Accedi
+                    Already have an account? Sign in
                 } @else {
-                    Non hai un account? Crea profilo
+                    Don't have an account? Create one
                 }
             </button> -->
 
             <div class="my-4 flex items-center gap-3">
                 <div class="h-px flex-1 bg-white/15"></div>
-                <!-- <span class="text-xs uppercase tracking-widest text-white/50">Oppure</span> -->
+                <!-- <span class="text-xs uppercase tracking-widest text-white/50">Or</span> -->
                 <!-- <div class="h-px flex-1 bg-white/15"></div> -->
             </div>
 
@@ -94,7 +94,7 @@
                 [disabled]="isAuthSubmitLoading()"
                 (click)="loginWithGoogle()">
                 <i class="fa-brands fa-google" aria-hidden="true"></i>
-                Accedi con Google
+                Sign in with Google
             </button>
 
             @if (authError()) {
