@@ -88,7 +88,6 @@ export class WheelCloudRepository {
     const requestedCloudId = payload.cloudConfigId?.trim() ?? '';
     const resolvedCloudId = await this.resolveUniqueCloudConfigId(
       user.uid,
-      payload.workspace.id,
       requestedCloudId
     );
     const wheelDocRef = doc(this.firestore, 'users', user.uid, 'wheels', resolvedCloudId);
@@ -163,7 +162,6 @@ export class WheelCloudRepository {
 
   private async resolveUniqueCloudConfigId(
     userUid: string,
-    workspaceId: string,
     requestedCloudId: string
   ): Promise<string> {
     if (requestedCloudId) {
@@ -172,13 +170,11 @@ export class WheelCloudRepository {
         return requestedCloudId;
       }
 
-      const duplicateData = duplicate.data() as { ownerUid?: unknown; workspaceId?: unknown };
+      const duplicateData = duplicate.data() as { ownerUid?: unknown };
       const duplicateOwnerUid = typeof duplicateData.ownerUid === 'string' ? duplicateData.ownerUid : '';
-      const duplicateWorkspaceId =
-        typeof duplicateData.workspaceId === 'string' ? duplicateData.workspaceId : '';
 
-      // Allow reuse only when updating the same wheel group for the same user.
-      if (duplicateOwnerUid === userUid && duplicateWorkspaceId === workspaceId) {
+      // If the id already belongs to the same user, keep it stable across local workspace changes.
+      if (duplicateOwnerUid === userUid) {
         return requestedCloudId;
       }
     }
