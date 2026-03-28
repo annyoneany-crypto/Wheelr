@@ -361,10 +361,15 @@ export class WheelPage {
     const visibleWheelCount = Math.max(1, this.wheelConfigurator.visibleWheelCount());
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
+    const isMobile = viewportWidth < 1024;
 
     // Keep a safe margin for floating controls and optional settings panel.
-    const horizontalUiReserve = this.showPanelSettings() ? 500 : 180;
-    const verticalUiReserve = visibleWheelCount > 1 ? 170 : 140;
+    const horizontalUiReserve = this.showPanelSettings()
+      ? (isMobile ? 36 : 500)
+      : (isMobile ? 20 : 180);
+    const verticalUiReserve = visibleWheelCount > 1
+      ? (isMobile ? 120 : 170)
+      : (isMobile ? 130 : 140);
 
     const usableWidth = Math.max(220, viewportWidth - horizontalUiReserve);
     const usableHeight = Math.max(220, viewportHeight - verticalUiReserve);

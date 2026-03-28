@@ -55,9 +55,14 @@ export class Wheel {
     const visibleWheelCount = Math.max(1, this.wheelConfigurator.visibleWheelCount());
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;
+    const isMobile = viewportWidth < 1024;
 
-    const horizontalUiReserve = visibleWheelCount > 1 ? 420 : 160;
-    const verticalUiReserve = visibleWheelCount > 1 ? 180 : 220;
+    const horizontalUiReserve = visibleWheelCount > 1
+      ? (isMobile ? 20 : 420)
+      : (isMobile ? 20 : 160);
+    const verticalUiReserve = visibleWheelCount > 1
+      ? (isMobile ? 120 : 180)
+      : (isMobile ? 150 : 220);
     const usableWidth = Math.max(220, viewportWidth - horizontalUiReserve);
     const usableHeight = Math.max(220, viewportHeight - verticalUiReserve);
 
