@@ -18,7 +18,7 @@
 ## 🚀 Quick Start
 
 ### Online
-Simply visit [Wheelr.app](https://wheelr.vercel.app/) and start creating your giveaway wheel immediately.
+Simply visit [Wheelr.app](https://wheelr.xyz/) and start creating your giveaway wheel immediately.
 
 ### Development server
 
@@ -104,4 +104,4 @@ Created by **AnnyoneAny** - [Twitter/X](https://x.com/AnnyoneAny)
 
 ---
 
-**Ready to create your giveaway wheel?** Start at [Wheelr.app](https://wheelr.vercel.app) today!
+**Ready to create your giveaway wheel?** Start at [Wheelr.app](https://wheelr.xyz) today!
