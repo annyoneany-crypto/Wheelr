@@ -11,6 +11,7 @@ import { contrastForHex } from '../../services/global_function';
 import { WinnerPanel } from './child/winner-panel/winner-panel';
 import type { WinnerPanelEntry } from './child/winner-panel/winner-panel';
 import { WheelButton } from './child/wheel-button/wheel-button';
+import * as QRCode from 'qrcode';
 
 @Component({
   selector: 'app-wheel-page',
@@ -302,8 +303,7 @@ export class WheelPage {
     this.qrCodeError.set('');
 
     try {
-      const qrcode = await import('qrcode');
-      const dataUrl = await qrcode.toDataURL(url, {
+      const dataUrl = await QRCode.toDataURL(url, {
         width: 320,
         margin: 1,
         errorCorrectionLevel: 'M',
