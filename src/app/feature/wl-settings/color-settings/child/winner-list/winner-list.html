@@ -1,0 +1,18 @@
+<div class="mb-6 p-4 bg-neutral-900 rounded-xl border border-neutral-700">
+  <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider" for="toggle-winners-list">
+    Winners List
+  </label>
+
+  <div class="flex items-center gap-3">
+    <input
+      id="toggle-winners-list"
+      type="checkbox"
+      class="h-4 w-4 cursor-pointer"
+      [checked]="wheelConfigurator.showWinnersList()"
+      (change)="wheelConfigurator.setShowWinnersList($any($event.target).checked)"
+    />
+    <label for="toggle-winners-list" class="text-sm text-white cursor-pointer select-none">
+      {{ wheelConfigurator.showWinnersList() ? 'Show winners list' : 'Hide winners list' }}
+    </label>
+  </div>
+</div>

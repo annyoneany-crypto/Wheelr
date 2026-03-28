@@ -8,17 +8,12 @@ import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/ro
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { contrastForHex } from '../../services/global_function';
-
-type WinnerHistoryEntry = {
-  id: string;
-  name: string;
-  wheelName: string;
-  timestamp: string;
-};
+import { WinnerPanel } from './child/winner-panel/winner-panel';
+import type { WinnerPanelEntry } from './child/winner-panel/winner-panel';
 
 @Component({
   selector: 'app-wheel-page',
-  imports: [LinearWheel, Wheel, CardsEffect, FireEffect, RouterModule],
+  imports: [LinearWheel, Wheel, CardsEffect, FireEffect, RouterModule, WinnerPanel],
   templateUrl: './wheel-page.html',
   styleUrl: './wheel-page.css',
   host: {
@@ -54,7 +49,7 @@ export class WheelPage {
   renameDrafts = signal<Record<string, string>>({});
   renameDescriptionDrafts = signal<Record<string, string>>({});
   renameTargets = signal<WheelDisplayConfig[]>([]);
-  winnerHistory = signal<WinnerHistoryEntry[]>([]);
+  winnerHistory = signal<WinnerPanelEntry[]>([]);
   winnerHistoryCount = computed(() => this.winnerHistory().length);
   private handledRenameModalRequestToken = this.wheelConfigurator.renameModalRequestToken();
   private lastWinnerCaptureKey = '';
@@ -159,7 +154,7 @@ export class WheelPage {
     const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 
     this.winnerHistory.update((current) => {
-      const nextItem: WinnerHistoryEntry = {
+      const nextItem: WinnerPanelEntry = {
         id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
         name: winner,
         wheelName,

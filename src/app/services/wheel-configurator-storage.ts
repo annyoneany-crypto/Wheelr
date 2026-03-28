@@ -88,6 +88,8 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap';
   const visibleWheelCount =
     readJson<number>(storageKeyForWorkspace(STORAGE_KEYS.visibleWheelCount, workspaceId)) ?? 1;
+  const showWinnersList =
+    readJson<boolean>(storageKeyForWorkspace(STORAGE_KEYS.showWinnersList, workspaceId)) ?? true;
 
   return {
     wheelID: workspaceId,
@@ -105,6 +107,7 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     fontFamily,
     fontLink,
     visibleWheelCount: Math.min(4, Math.max(1, Math.floor(visibleWheelCount))),
+    showWinnersList,
   };
 }
 
@@ -125,6 +128,7 @@ export function buildSnapshotEntryFromState(state: ActiveWheelSnapshotState): Wh
     fontFamily: state.fontFamily,
     fontLink: state.fontLink,
     visibleWheelCount: state.visibleWheelCount,
+    showWinnersList: state.showWinnersList,
   };
 }
 

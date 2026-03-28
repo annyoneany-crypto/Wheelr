@@ -41,6 +41,7 @@ export interface WheelSnapshotEntry {
   fontFamily: string;
   fontLink: string;
   visibleWheelCount: number;
+  showWinnersList: boolean;
 }
 
 export interface WheelSettingsSnapshot {
@@ -63,4 +64,5 @@ export interface ActiveWheelSnapshotState {
   fontFamily: string;
   fontLink: string;
   visibleWheelCount: number;
+  showWinnersList: boolean;
 }

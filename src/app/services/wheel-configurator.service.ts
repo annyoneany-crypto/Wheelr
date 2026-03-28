@@ -227,6 +227,7 @@ export class WheelConfigurator {
   countdownEnabled = signal<boolean>(false);
   countdownStart = signal<number>(3);
   visibleWheelCount = signal<number>(1);
+  showWinnersList = signal<boolean>(true);
   // internal state while running a countdown
   currentCountdown = signal<number | null>(null);
   // used to restart animation on each tick
@@ -322,6 +323,7 @@ export class WheelConfigurator {
       fontFamily: this.fontFamily(),
       fontLink: this.fontLink(),
       visibleWheelCount: this.visibleWheelCount(),
+      showWinnersList: this.showWinnersList(),
     });
   }
 
@@ -877,6 +879,7 @@ export class WheelConfigurator {
     this.countdownAudio.set('');
     this.countdownEnabled.set(false);
     this.countdownStart.set(3);
+    this.showWinnersList.set(true);
     // Keep current multi-wheel layout during hydration to avoid a one-frame fallback to single view.
     this.currentCountdown.set(null);
     this.countdownToggle.set(false);
@@ -936,6 +939,7 @@ export class WheelConfigurator {
     const storedFontFamily = readJson<string>(this.storageKey(STORAGE_KEYS.fontFamily));
     const storedFontLink = readJson<string>(this.storageKey(STORAGE_KEYS.fontLink));
     const storedVisibleWheelCount = readJson<number>(this.storageKey(STORAGE_KEYS.visibleWheelCount));
+    const storedShowWinnersList = readJson<boolean>(this.storageKey(STORAGE_KEYS.showWinnersList));
 
     const effectivePalettes = activeUnifiedWheel?.palettes ?? storedPalettes;
     const effectiveSelectedName = activeUnifiedWheel?.selectedPaletteName ?? storedSelectedName;
@@ -949,6 +953,7 @@ export class WheelConfigurator {
     const effectiveFontFamily = activeUnifiedWheel?.fontFamily ?? storedFontFamily;
     const effectiveFontLink = activeUnifiedWheel?.fontLink ?? storedFontLink;
     const effectiveVisibleWheelCount = activeUnifiedWheel?.visibleWheelCount ?? storedVisibleWheelCount;
+    const effectiveShowWinnersList = activeUnifiedWheel?.showWinnersList ?? storedShowWinnersList;
 
     if (Array.isArray(effectivePalettes) && effectivePalettes.length) {
       // Merge defaults (new app versions) with stored palettes (including custom ones)
@@ -1080,6 +1085,10 @@ export class WheelConfigurator {
       if (typeof effectiveVisibleWheelCount === 'number') {
         this.visibleWheelCount.set(Math.min(4, Math.max(1, Math.floor(effectiveVisibleWheelCount))));
       }
+
+      if (typeof effectiveShowWinnersList === 'boolean') {
+        this.showWinnersList.set(effectiveShowWinnersList);
+      }
     } finally {
       this.isHydratingWorkspace = false;
     }
@@ -1168,6 +1177,11 @@ export class WheelConfigurator {
       writeJson(this.storageKey(STORAGE_KEYS.soundEnabled), this.soundEnabled());
     });
 
+    effect(() => {
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.showWinnersList), this.showWinnersList());
+    });
+
     // Persist font settings and redraw wheel when the font changes
     effect(() => {
       if (!this.activeWheelId()) return;
@@ -1232,6 +1246,7 @@ export class WheelConfigurator {
       this.soundEnabled();
       this.countdownEnabled();
       this.countdownStart();
+      this.showWinnersList();
       this.fontFamily();
       this.fontLink();
 
@@ -1472,6 +1487,11 @@ export class WheelConfigurator {
     const nextCount = Math.min(4, Math.max(1, Math.floor(count)));
     this.visibleWheelCount.set(nextCount);
     writeJson(this.storageKey(STORAGE_KEYS.visibleWheelCount), nextCount);
+  }
+
+  setShowWinnersList(visible: boolean): void {
+    this.showWinnersList.set(visible);
+    writeJson(this.storageKey(STORAGE_KEYS.showWinnersList), visible);
   }
 
   shuffleNames(): void {

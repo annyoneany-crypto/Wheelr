@@ -21,6 +21,7 @@ export const STORAGE_KEYS = {
   countdownEnabled: 'giveawayWheel.countdownEnabled',
   countdownStart: 'giveawayWheel.countdownStart',
   visibleWheelCount: 'giveawayWheel.visibleWheelCount',
+  showWinnersList: 'giveawayWheel.showWinnersList',
   fontFamily: 'giveawayWheel.fontFamily',
   fontLink: 'giveawayWheel.fontLink',
 } as const;
