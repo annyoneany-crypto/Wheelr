@@ -227,12 +227,14 @@
 
 </div>
 
-<wl-winner-panel
-  [entries]="winnerHistory()"
-  [uiHidden]="uiChromeHidden()"
-  [class.hidden]="!wheelConfigurator.showWinnersList()"
-  (removeRequested)="removeWinnerHistoryEntry($event)">
-</wl-winner-panel>
+@if(!uiChromeHidden()){
+  <wl-winner-panel
+    [entries]="winnerHistory()"
+    [uiHidden]="uiChromeHidden()"
+    [class.hidden]="!wheelConfigurator.showWinnersList()"
+    (removeRequested)="removeWinnerHistoryEntry($event)">
+  </wl-winner-panel>
+}
 
 @if(showPanelSettings()){
   <div class="fixed inset-0 bg-black/60 pointer-events-none z-49" [class.wl-ui-hidden]="uiChromeHidden()"></div>
