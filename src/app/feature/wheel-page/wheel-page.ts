@@ -9,6 +9,13 @@ import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { contrastForHex } from '../../services/global_function';
 
+type WinnerHistoryEntry = {
+  id: string;
+  name: string;
+  wheelName: string;
+  timestamp: string;
+};
+
 @Component({
   selector: 'app-wheel-page',
   imports: [LinearWheel, Wheel, CardsEffect, FireEffect, RouterModule],
@@ -47,7 +54,10 @@ export class WheelPage {
   renameDrafts = signal<Record<string, string>>({});
   renameDescriptionDrafts = signal<Record<string, string>>({});
   renameTargets = signal<WheelDisplayConfig[]>([]);
+  winnerHistory = signal<WinnerHistoryEntry[]>([]);
+  winnerHistoryCount = computed(() => this.winnerHistory().length);
   private handledRenameModalRequestToken = this.wheelConfigurator.renameModalRequestToken();
+  private lastWinnerCaptureKey = '';
 
   private refreshVisibleWheelRequestId = 0;
   isSelectingWorkspace = signal(false);
@@ -132,6 +142,34 @@ export class WheelPage {
     this.openRenameModal();
   });
 
+  private readonly winnerHistoryEffect = effect(() => {
+    const winner = this.wheelConfigurator.winner();
+    if (!winner) {
+      return;
+    }
+
+    const wheelName = this.wheelConfigurator.activeWheel()?.name ?? 'Wheel';
+    const rotation = Math.floor(this.wheelConfigurator.currentRotation());
+    const key = `${wheelName}|${winner}|${rotation}`;
+    if (key === this.lastWinnerCaptureKey) {
+      return;
+    }
+
+    this.lastWinnerCaptureKey = key;
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+
+    this.winnerHistory.update((current) => {
+      const nextItem: WinnerHistoryEntry = {
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
+        name: winner,
+        wheelName,
+        timestamp,
+      };
+
+      return [nextItem, ...current].slice(0, 60);
+    });
+  });
+
   constructor() {
     this.syncPanelStateFromRoute();
     this.router.events
@@ -173,6 +211,14 @@ export class WheelPage {
 
   uiChromeToggleAriaLabel(): string {
     return this.uiChromeHidden() ? 'Show header, footer and controls' : 'Hide header, footer and controls';
+  }
+
+  removeWinnerHistoryEntry(entryId: string): void {
+    if (!entryId) {
+      return;
+    }
+
+    this.winnerHistory.update((current) => current.filter((entry) => entry.id !== entryId));
   }
 
   private syncGlobalUiChromeClass(isHidden: boolean): void {
