@@ -1,0 +1,5 @@
+.wl-ui-hidden {
+	opacity: 0;
+	transform: translateY(10px) scale(0.94);
+	pointer-events: none;
+}

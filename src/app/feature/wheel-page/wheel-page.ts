@@ -10,10 +10,11 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { contrastForHex } from '../../services/global_function';
 import { WinnerPanel } from './child/winner-panel/winner-panel';
 import type { WinnerPanelEntry } from './child/winner-panel/winner-panel';
+import { WheelButton } from './child/wheel-button/wheel-button';
 
 @Component({
   selector: 'app-wheel-page',
-  imports: [LinearWheel, Wheel, CardsEffect, FireEffect, RouterModule, WinnerPanel],
+  imports: [LinearWheel, Wheel, CardsEffect, FireEffect, RouterModule, WinnerPanel, WheelButton],
   templateUrl: './wheel-page.html',
   styleUrl: './wheel-page.css',
   host: {
@@ -49,10 +50,64 @@ export class WheelPage {
   renameDrafts = signal<Record<string, string>>({});
   renameDescriptionDrafts = signal<Record<string, string>>({});
   renameTargets = signal<WheelDisplayConfig[]>([]);
+  qrModalOpen = signal(false);
+  qrCodeDataUrl = signal('');
+  qrCodeLoading = signal(false);
+  qrCodeError = signal('');
   winnerHistory = signal<WinnerPanelEntry[]>([]);
   winnerHistoryCount = computed(() => this.winnerHistory().length);
+  cloudWheelId = computed(() => {
+    const activeId = this.wheelConfigurator.activeWheelId();
+    if (!activeId) {
+      return '';
+    }
+
+    const workspaces = this.wheelConfigurator.wheelWorkspaces();
+    const activeWorkspace = workspaces.find((workspace) => workspace.id === activeId);
+    const activeCloudId = activeWorkspace?.cloudConfigId?.trim() ?? '';
+    if (activeCloudId) {
+      return activeCloudId;
+    }
+
+    const rootId = this.wheelConfigurator.getWorkspaceRootId(activeId);
+    const rootWorkspace = workspaces.find((workspace) => workspace.id === rootId);
+    const rootCloudId = rootWorkspace?.cloudConfigId?.trim() ?? '';
+    if (rootCloudId) {
+      return rootCloudId;
+    }
+
+    const groupWorkspace = workspaces.find((workspace) =>
+      (workspace.id === rootId || workspace.parentWheelId === rootId) &&
+      !!workspace.cloudConfigId?.trim()
+    );
+
+    return groupWorkspace?.cloudConfigId?.trim() ?? '';
+  });
+  canShowQrButton = computed(() => this.cloudWheelId().length > 0);
+  publicWheelPath = computed(() => {
+    const wheelId = this.cloudWheelId();
+    if (!wheelId) {
+      return '';
+    }
+
+    return this.router.serializeUrl(this.router.createUrlTree(['/', wheelId]));
+  });
+  publicWheelUrl = computed(() => {
+    const path = this.publicWheelPath();
+    if (!path) {
+      return '';
+    }
+
+    if (typeof window === 'undefined') {
+      return path;
+    }
+
+    return new URL(path, window.location.origin).toString();
+  });
   private handledRenameModalRequestToken = this.wheelConfigurator.renameModalRequestToken();
   private lastWinnerCaptureKey = '';
+  private qrRenderRequestId = 0;
+  private lastRenderedQrUrl = '';
 
   private refreshVisibleWheelRequestId = 0;
   isSelectingWorkspace = signal(false);
@@ -165,6 +220,27 @@ export class WheelPage {
     });
   });
 
+  private readonly qrModalEffect = effect(() => {
+    if (!this.qrModalOpen()) {
+      return;
+    }
+
+    const url = this.publicWheelUrl();
+    if (!url) {
+      this.qrCodeError.set('This wheel is not synced to cloud yet.');
+      this.qrCodeDataUrl.set('');
+      this.qrCodeLoading.set(false);
+      return;
+    }
+
+    if (this.lastRenderedQrUrl === url && this.qrCodeDataUrl()) {
+      return;
+    }
+
+    this.lastRenderedQrUrl = url;
+    void this.generateQrCode(url);
+  });
+
   constructor() {
     this.syncPanelStateFromRoute();
     this.router.events
@@ -206,6 +282,51 @@ export class WheelPage {
 
   uiChromeToggleAriaLabel(): string {
     return this.uiChromeHidden() ? 'Show header, footer and controls' : 'Hide header, footer and controls';
+  }
+
+  openQrModal(): void {
+    if (!this.canShowQrButton()) {
+      return;
+    }
+
+    this.qrModalOpen.set(true);
+  }
+
+  closeQrModal(): void {
+    this.qrModalOpen.set(false);
+  }
+
+  private async generateQrCode(url: string): Promise<void> {
+    const requestId = ++this.qrRenderRequestId;
+    this.qrCodeLoading.set(true);
+    this.qrCodeError.set('');
+
+    try {
+      const qrcode = await import('qrcode');
+      const dataUrl = await qrcode.toDataURL(url, {
+        width: 320,
+        margin: 1,
+        errorCorrectionLevel: 'M',
+        color: {
+          dark: '#111111',
+          light: '#FFFFFFFF',
+        },
+      });
+
+      if (requestId !== this.qrRenderRequestId) {
+        return;
+      }
+
+      this.qrCodeDataUrl.set(dataUrl);
+    } catch (error) {
+      console.error('Error generating QR code:', error);
+      this.qrCodeError.set('Unable to generate QR code.');
+      this.qrCodeDataUrl.set('');
+    } finally {
+      if (requestId === this.qrRenderRequestId) {
+        this.qrCodeLoading.set(false);
+      }
+    }
   }
 
   removeWinnerHistoryEntry(entryId: string): void {

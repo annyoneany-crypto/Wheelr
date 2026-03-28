@@ -223,6 +223,38 @@
     </div>
   }
 
+  @if (qrModalOpen()) {
+    <div class="fixed inset-0 z-70 bg-black/70" (click)="closeQrModal()"></div>
+    <div class="fixed inset-0 z-75 flex items-center justify-center p-4">
+      <div class="w-full max-w-md rounded-xl border border-white/20 bg-neutral-900/95 p-4 shadow-2xl" (click)="$event.stopPropagation()">
+        <div class="mb-4 flex items-center justify-between">
+          <h2 class="text-sm font-semibold uppercase tracking-wide text-white/90">Public Wheel QR</h2>
+          <button
+            type="button"
+            class="h-8 w-8 rounded-full border border-white/20 bg-neutral-800 text-white hover:bg-neutral-700"
+            aria-label="Close QR modal"
+            (click)="closeQrModal()">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="rounded-lg border border-white/15 bg-white p-4">
+          @if (qrCodeLoading()) {
+            <div class="flex h-72 items-center justify-center text-sm font-semibold text-neutral-700">Generating QR code...</div>
+          } @else if (qrCodeError()) {
+            <div class="flex h-72 items-center justify-center text-center text-sm font-semibold text-red-700">{{ qrCodeError() }}</div>
+          } @else if (qrCodeDataUrl()) {
+            <img [src]="qrCodeDataUrl()" alt="Public wheel QR code" class="mx-auto h-72 w-72 object-contain" />
+          }
+        </div>
+
+        <div class="mt-3 rounded-lg border border-white/10 bg-black/30 p-2 text-center text-xs text-white/85 break-all">
+          {{ publicWheelUrl() }}
+        </div>
+      </div>
+    </div>
+  }
+
 
 
 </div>
@@ -242,146 +274,18 @@
   <div class="fixed inset-0 bg-black/60 pointer-events-none z-49" [class.wl-ui-hidden]="uiChromeHidden()"></div>
 }
 
-<div class="fixed top-28
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('users')"
-  [class.ring-2]="isPanelActive('users')"
-  [class.ring-yellow-400/40]="isPanelActive('users')"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open users panel"
-  (transitionend)="closeUserPaneltransitionEnd()"
-  (click)="togglePaletSettings('users')"
-  (keydown.enter)="togglePaletSettings('users')"
-  (keydown.space)="togglePaletSettings('users'); $event.preventDefault()">
-  <i class="fa-solid fa-user-plus text-white/80 z-50" aria-hidden="true"></i>
-</div>
-
-<div class="fixed top-44
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('color-settings')"
-  [class.ring-2]="isPanelActive('color-settings')"
-  [class.ring-yellow-400/40]="isPanelActive('color-settings')"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open color settings panel"
-  (click)="togglePaletSettings('color-settings')"
-  (keydown.enter)="togglePaletSettings('color-settings')"
-  (keydown.space)="togglePaletSettings('color-settings'); $event.preventDefault()">
-  <i
-    class="fa-solid fa-swatchbook text-white/80"
-    aria-hidden="true"
-    [class.fa-angles-right]="showPanelSettings()"
-    [class.fa-user-plus]="!showPanelSettings()"></i>
-</div>
-
-<div class="fixed top-60
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('sound')"
-  [class.ring-2]="isPanelActive('sound')"
-  [class.ring-yellow-400/40]="isPanelActive('sound')"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open sound panel"
-  (click)="togglePaletSettings('sound')"
-  (keydown.enter)="togglePaletSettings('sound')"
-  (keydown.space)="togglePaletSettings('sound'); $event.preventDefault()">
-  <i class="fa-solid fa-volume-high text-white/80" aria-hidden="true"></i>
-</div>
-
-<div class="fixed top-76
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('wheel-manager')"
-  [class.ring-2]="isPanelActive('wheel-manager')"
-  [class.ring-yellow-400/40]="isPanelActive('wheel-manager')"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open wheel manager panel"
-  (click)="togglePaletSettings('wheel-manager')"
-  (keydown.enter)="togglePaletSettings('wheel-manager')"
-  (keydown.space)="togglePaletSettings('wheel-manager'); $event.preventDefault()">
-  <i class="fa-solid fa-layer-group text-white/80" aria-hidden="true"></i>
-</div>
-
-<div class="fixed
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
-  [class.top-92]="!uiChromeHidden()"
-  [class.top-4]="uiChromeHidden()"
-  [class.border-yellow-400]="uiChromeHidden()"
-  [class.ring-2]="uiChromeHidden()"
-  [class.ring-yellow-400/40]="uiChromeHidden()"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  [attr.aria-label]="uiChromeToggleAriaLabel()"
-  [attr.aria-pressed]="uiChromeHidden()"
-  (click)="toggleUiChrome()"
-  (keydown.enter)="toggleUiChrome()"
-  (keydown.space)="toggleUiChrome(); $event.preventDefault()">
-  <i class="fa-solid text-white/80" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
-</div>
-
-<div class="fixed top-24 right-0 my-4 p-4
-  bg-neutral-800 h-[calc(100%-130px)]
-  border-y border-l rounded-l-md border-white/10
-  transition-all duration-300 ease-in-out z-50 overflow-y-auto"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.lg:w-96]="showPanelSettings()"
-  [class.w-80]="showPanelSettings()"
-  [class.opacity-100]="showPanelSettings()"
-  [class.w-0]="!showPanelSettings()"
-  [class.opacity-0]="!showPanelSettings()"
-  [class.hidden]="displyPanel()">
-
-  <div class="mb-4 flex items-center justify-between border-b border-white/10 pb-3">
-    <h2 class="text-sm font-semibold uppercase tracking-wide text-white/85">{{ panelTitle() }}</h2>
-    <button
-      type="button"
-      aria-label="Close panel"
-      class="h-8 w-8 rounded-full border border-white/15 bg-neutral-700/70 text-white/90 hover:bg-neutral-600 transition-colors"
-      (click)="closePanel()">
-      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-    </button>
-  </div>
-
-  <router-outlet name="panel"></router-outlet>
-
-</div>
+<wl-wheel-button
+  [uiChromeHidden]="uiChromeHidden()"
+  [showPanelSettings]="showPanelSettings()"
+  [activePanel]="currentPanelPath()"
+  [displyPanel]="displyPanel()"
+  [panelTitle]="panelTitle()"
+  [uiChromeToggleAriaLabel]="uiChromeToggleAriaLabel()"
+  [canShowQrButton]="canShowQrButton()"
+  [qrModalOpen]="qrModalOpen()"
+  (togglePanelRequested)="togglePaletSettings($event)"
+  (closePanelRequested)="closePanel()"
+  (usersButtonTransitionEnd)="closeUserPaneltransitionEnd()"
+  (uiChromeToggleRequested)="toggleUiChrome()"
+  (openQrRequested)="openQrModal()">
+</wl-wheel-button>
