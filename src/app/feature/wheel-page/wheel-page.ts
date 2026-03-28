@@ -26,6 +26,7 @@ export class WheelPage {
 
   showPanelSettings = signal<boolean>(false);
   displyPanel = signal<boolean>(true);
+  uiChromeHidden = signal<boolean>(false);
   currentPanelPath = signal<string>('');
   visibleWheelConfigs = signal<WheelDisplayConfig[]>([]);
   previewWheelSize = signal(420);
@@ -146,6 +147,8 @@ export class WheelPage {
   }
 
   ngOnDestroy(): void {
+    this.syncGlobalUiChromeClass(false);
+
     if (this.idleAnimationFrameId !== null) {
       cancelAnimationFrame(this.idleAnimationFrameId);
       this.idleAnimationFrameId = null;
@@ -155,6 +158,29 @@ export class WheelPage {
       cancelAnimationFrame(this.previewDrawAnimationFrameId);
       this.previewDrawAnimationFrameId = null;
     }
+  }
+
+  toggleUiChrome(): void {
+    const nextValue = !this.uiChromeHidden();
+    this.uiChromeHidden.set(nextValue);
+
+    if (nextValue && this.showPanelSettings()) {
+      this.closePanel();
+    }
+
+    this.syncGlobalUiChromeClass(nextValue);
+  }
+
+  uiChromeToggleAriaLabel(): string {
+    return this.uiChromeHidden() ? 'Show header, footer and controls' : 'Hide header, footer and controls';
+  }
+
+  private syncGlobalUiChromeClass(isHidden: boolean): void {
+    if (typeof document === 'undefined') {
+      return;
+    }
+
+    document.body.classList.toggle('immersive-ui-hidden', isHidden);
   }
 
   previewPointerSliceColor(config: WheelDisplayConfig): string {
