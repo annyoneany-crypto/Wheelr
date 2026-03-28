@@ -578,7 +578,10 @@ export class WheelPage {
       ctx.translate(centerX, centerY);
       ctx.rotate(angle + sliceAngle / 2);
       ctx.textAlign = 'right';
-      ctx.fillStyle = contrastForHex(sliceColor);
+      ctx.textBaseline = 'middle';
+      const labelColor = contrastForHex(sliceColor);
+      const outlineColor = labelColor === '#FFFFFF' ? '#000000' : '#FFFFFF';
+      ctx.fillStyle = labelColor;
 
       const fittedText = this.fitPreviewSliceLabel(
         ctx,
@@ -591,7 +594,11 @@ export class WheelPage {
       );
 
       ctx.font = `bold ${fittedText.fontSize}px ${config.fontFamily}`;
-      ctx.fillText(fittedText.text, radius - textInset, Math.round(fittedText.fontSize * 0.18));
+      ctx.strokeStyle = `${outlineColor}AA`;
+      ctx.lineWidth = Math.max(2, Math.round(fittedText.fontSize * 0.18));
+      ctx.lineJoin = 'round';
+      ctx.strokeText(fittedText.text, radius - textInset, 0);
+      ctx.fillText(fittedText.text, radius - textInset, 0);
       ctx.restore();
     });
   }

@@ -1333,9 +1333,12 @@ export class WheelConfigurator {
       ctx.translate(centerX, centerY);
       ctx.rotate(angle + sliceAngle / 2);
       ctx.textAlign = 'right';
+      ctx.textBaseline = 'middle';
       // Apply contrast color based on slice background color
       const sliceColor = colors[i % colors.length];
-      ctx.fillStyle = contrastForHex(sliceColor);
+      const labelColor = contrastForHex(sliceColor);
+      const outlineColor = labelColor === '#FFFFFF' ? '#000000' : '#FFFFFF';
+      ctx.fillStyle = labelColor;
 
       const fittedText = this.fitSliceLabel(
         ctx,
@@ -1349,7 +1352,11 @@ export class WheelConfigurator {
 
       // Use geometry-aware font sizing so labels do not overflow narrow slices.
       ctx.font = `bold ${fittedText.fontSize}px ${this.fontFamily()}`;
-      ctx.fillText(fittedText.text, radius - textInset, Math.round(fittedText.fontSize * 0.18));
+      ctx.strokeStyle = `${outlineColor}AA`;
+      ctx.lineWidth = Math.max(2, Math.round(fittedText.fontSize * 0.18));
+      ctx.lineJoin = 'round';
+      ctx.strokeText(fittedText.text, radius - textInset, 0);
+      ctx.fillText(fittedText.text, radius - textInset, 0);
       ctx.restore();
     });
   }
