@@ -1,4 +1,4 @@
-  <a href="/info" target="_self" rel="noopener noreferrer" aria-label="Open Info page" title="Info">
+  <a href="/info" target="_self" rel="noopener noreferrer" aria-label="Open Info page" title="Info" class="hidden lg:block">
     <div class="fixed top-28 left-8
       w-12 h-12 rounded-full
       border border-white/10 bg-neutral-800
@@ -9,7 +9,7 @@
       <i class="fa-solid fa-info text-white/80 z-50" aria-hidden="true"></i>
     </div>
   </a>
-  <a href="/donation" target="_self" rel="noopener noreferrer" aria-label="Open Donation page" title="Donation">
+  <a href="/donation" target="_self" rel="noopener noreferrer" aria-label="Open Donation page" title="Donation" class="hidden lg:block">
     <div class="fixed top-44 left-8
       w-12 h-12 rounded-full
       border border-white/10 bg-neutral-800
@@ -23,7 +23,7 @@
   <div class="fixed top-60 left-8
     w-12 h-12 rounded-full
     border border-white/10 bg-neutral-800
-    flex items-center justify-center hover:cursor-pointer
+    hidden lg:flex items-center justify-center hover:cursor-pointer
     transition-all duration-300 ease-in-out z-50
     hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
     [class.wl-ui-hidden]="uiChromeHidden()"

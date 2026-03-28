@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 export type WheelPanelPath = 'users' | 'color-settings' | 'sound' | 'wheel-manager';
@@ -8,9 +8,14 @@ export type WheelPanelPath = 'users' | 'color-settings' | 'sound' | 'wheel-manag
   imports: [RouterModule],
   templateUrl: './wheel-button.html',
   styleUrl: './wheel-button.css',
+  host: {
+    '(window:resize)': 'onWindowResize()',
+  },
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WheelButton {
+  private readonly mobileBreakpoint = 1024;
+
   uiChromeHidden = input(false);
   showPanelSettings = input(false);
   activePanel = input('');
@@ -19,6 +24,10 @@ export class WheelButton {
   uiChromeToggleAriaLabel = input('Hide header, footer and controls');
   canShowQrButton = input(false);
   qrModalOpen = input(false);
+  readonly mobileActionsExpanded = signal(false);
+  readonly isMobileViewport = signal(this.readIsMobileViewport());
+  readonly isMobileActionMenuCollapsed = computed(() => this.isMobileViewport() && !this.mobileActionsExpanded());
+  readonly mobileMenuAriaLabel = computed(() => this.mobileActionsExpanded() ? 'Close quick actions menu' : 'Open quick actions menu');
 
   togglePanelRequested = output<WheelPanelPath>();
   closePanelRequested = output<void>();
@@ -46,7 +55,26 @@ export class WheelButton {
     this.openQrRequested.emit();
   }
 
+  toggleMobileActions(): void {
+    if (!this.isMobileViewport()) {
+      return;
+    }
+    this.mobileActionsExpanded.update((expanded) => !expanded);
+  }
+
+  onWindowResize(): void {
+    const isMobileViewport = this.readIsMobileViewport();
+    this.isMobileViewport.set(isMobileViewport);
+    if (!isMobileViewport) {
+      this.mobileActionsExpanded.set(false);
+    }
+  }
+
   isPanelActive(path: WheelPanelPath): boolean {
     return this.showPanelSettings() && this.activePanel() === path;
+  }
+
+  private readIsMobileViewport(): boolean {
+    return typeof window !== 'undefined' && window.innerWidth < this.mobileBreakpoint;
   }
 }

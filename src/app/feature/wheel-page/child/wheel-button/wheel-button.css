@@ -3,3 +3,12 @@
 	transform: translateY(10px) scale(0.94);
 	pointer-events: none;
 }
+
+@media (max-width: 1023.98px) {
+	.wl-mobile-action-hidden {
+		opacity: 0;
+		transform: translateY(-10px) scale(0.92);
+		pointer-events: none;
+		visibility: hidden;
+	}
+}
