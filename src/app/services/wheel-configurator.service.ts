@@ -696,11 +696,7 @@ export class WheelConfigurator {
         continue;
       }
 
-      const existingRoot = workspaces.find(
-        (workspace) =>
-          !workspace.parentWheelId &&
-          workspace.cloudConfigId === cloudWheel.cloudConfigId
-      );
+      const existingRoot = this.findRootWorkspaceForCloudImport(workspaces, cloudWheel);
 
       const rootId = existingRoot?.id ?? this.createWorkspaceId();
       const now = new Date().toISOString();
@@ -784,6 +780,23 @@ export class WheelConfigurator {
     this.wheelWorkspaces.set(workspaces);
     this.persistWorkspaceRegistry();
     return importedCount;
+  }
+
+  private findRootWorkspaceForCloudImport(
+    workspaces: WheelWorkspaceMeta[],
+    cloudWheel: CloudWheelSyncItem
+  ): WheelWorkspaceMeta | undefined {
+    const byCloudConfigId = workspaces.find(
+      (workspace) => !workspace.parentWheelId && workspace.cloudConfigId === cloudWheel.cloudConfigId
+    );
+    if (byCloudConfigId) {
+      return byCloudConfigId;
+    }
+
+    // Backward compatibility: some local wheels may still miss cloudConfigId.
+    return workspaces.find(
+      (workspace) => !workspace.parentWheelId && workspace.id === cloudWheel.workspaceId
+    );
   }
 
   private async writeDisplayConfigToWorkspaceStorage(
