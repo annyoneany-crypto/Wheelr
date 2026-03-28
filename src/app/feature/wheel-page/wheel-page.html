@@ -231,6 +231,8 @@
   <wl-winner-panel
     [entries]="winnerHistory()"
     [uiHidden]="uiChromeHidden()"
+    [position]="wheelConfigurator.winnerPanelPosition()"
+    [settingsPanelOpen]="showPanelSettings()"
     [class.hidden]="!wheelConfigurator.showWinnersList()"
     (removeRequested)="removeWinnerHistoryEntry($event)">
   </wl-winner-panel>

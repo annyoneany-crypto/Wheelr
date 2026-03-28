@@ -90,6 +90,10 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     readJson<number>(storageKeyForWorkspace(STORAGE_KEYS.visibleWheelCount, workspaceId)) ?? 1;
   const showWinnersList =
     readJson<boolean>(storageKeyForWorkspace(STORAGE_KEYS.showWinnersList, workspaceId)) ?? true;
+  const winnerPanelPosition =
+    readJson<'left' | 'top' | 'right' | 'bottom'>(
+      storageKeyForWorkspace(STORAGE_KEYS.winnerPanelPosition, workspaceId)
+    ) ?? 'left';
 
   return {
     wheelID: workspaceId,
@@ -108,6 +112,7 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     fontLink,
     visibleWheelCount: Math.min(4, Math.max(1, Math.floor(visibleWheelCount))),
     showWinnersList,
+    winnerPanelPosition,
   };
 }
 
@@ -129,6 +134,7 @@ export function buildSnapshotEntryFromState(state: ActiveWheelSnapshotState): Wh
     fontLink: state.fontLink,
     visibleWheelCount: state.visibleWheelCount,
     showWinnersList: state.showWinnersList,
+    winnerPanelPosition: state.winnerPanelPosition,
   };
 }
 

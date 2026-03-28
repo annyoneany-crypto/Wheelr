@@ -1,5 +1,7 @@
 import { ColorPalette } from './global_function';
 
+export type WinnerPanelPosition = 'left' | 'top' | 'right' | 'bottom';
+
 export interface WheelWorkspaceMeta {
   id: string;
   name: string;
@@ -42,6 +44,7 @@ export interface WheelSnapshotEntry {
   fontLink: string;
   visibleWheelCount: number;
   showWinnersList: boolean;
+  winnerPanelPosition: WinnerPanelPosition;
 }
 
 export interface WheelSettingsSnapshot {
@@ -65,4 +68,5 @@ export interface ActiveWheelSnapshotState {
   fontLink: string;
   visibleWheelCount: number;
   showWinnersList: boolean;
+  winnerPanelPosition: WinnerPanelPosition;
 }

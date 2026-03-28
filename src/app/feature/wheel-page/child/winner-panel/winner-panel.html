@@ -1,6 +1,20 @@
 <aside
-  class="fixed left-24 top-1/2 -translate-y-1/2 z-40 hidden h-[50vh] lg:flex w-72 flex-col rounded-2xl border border-white/10 bg-neutral-900/70 backdrop-blur-md p-4 shadow-[0_0_30px_rgba(0,0,0,0.35)] transition-all duration-300"
+  class="fixed z-40 hidden lg:flex flex-col rounded-2xl border border-white/10 bg-neutral-900/70 backdrop-blur-md p-4 shadow-[0_0_30px_rgba(0,0,0,0.35)] transition-all duration-300"
   [class.wl-ui-hidden]="uiHidden()"
+  [class.left-24]="isLeft()"
+  [class.right-24]="isRight() && !settingsPanelOpen()"
+  [class.right-[21rem]]="isRight() && settingsPanelOpen()"
+  [class.top-1/2]="isSide()"
+  [class.-translate-y-1/2]="isSide()"
+  [class.left-1/2]="isHorizontal()"
+  [class.-translate-x-1/2]="isHorizontal()"
+  [class.top-24]="isTop()"
+  [class.bottom-20]="isBottom()"
+  [class.w-72]="isSide()"
+  [class.h-[50vh]]="isSide()"
+  [class.w-[54rem]]="isHorizontal()"
+  [class.max-w-[80vw]]="isHorizontal()"
+  [class.h-[34vh]]="isHorizontal()"
   aria-label="Winners list">
   <div class="flex items-center justify-between border-b border-white/10 pb-3">
     <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-white/80">Winners</h2>
