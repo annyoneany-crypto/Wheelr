@@ -14,6 +14,7 @@ export const STORAGE_KEYS = {
   centerLogoSize: 'giveawayWheel.centerLogoSize',
   spinDurationMs: 'giveawayWheel.spinDurationMs',
   wheelView: 'giveawayWheel.wheelView',
+  winnerEffect: 'giveawayWheel.winnerEffect',
   soundEnabled: 'giveawayWheel.soundEnabled',
   customAudio: 'giveawayWheel.customAudio',
   winnerAudio: 'giveawayWheel.winnerAudio',

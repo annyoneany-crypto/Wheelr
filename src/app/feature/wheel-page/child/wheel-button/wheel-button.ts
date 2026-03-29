@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, input, output, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-export type WheelPanelPath = 'users' | 'color-settings' | 'sound' | 'wheel-manager';
+export type WheelPanelPath = 'users' | 'color-settings' | 'effects' | 'sound' | 'wheel-manager';
 
 @Component({
   selector: 'wl-wheel-button',

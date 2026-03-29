@@ -20,7 +20,7 @@
         Wheel
       </button>
 
-      <button
+      <!-- <button
         type="button"
         (click)="setView('linear')"
         class="flex-1 py-2 rounded-lg text-sm font-semibold border transition-colors"
@@ -31,7 +31,7 @@
         [class.border-neutral-700]="wheelConfigurator.wheelView() !== 'linear'"
         [class.text-neutral-200]="wheelConfigurator.wheelView() !== 'linear'">
         Linear
-      </button>
+      </button> -->
 
       <button
         type="button"
@@ -44,6 +44,53 @@
         [class.border-neutral-700]="wheelConfigurator.wheelView() !== 'cards'"
         [class.text-neutral-200]="wheelConfigurator.wheelView() !== 'cards'">
         Cards
+      </button>
+    </div>
+  </div>
+
+  <div class="space-y-2">
+    <div class="text-xs font-semibold uppercase tracking-wider text-neutral-400">
+      Winner Effect
+    </div>
+
+    <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+      <button
+        type="button"
+        (click)="setWinnerEffect('fire')"
+        class="rounded-lg border px-3 py-2 text-left text-sm font-semibold transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.winnerEffect() === 'fire'"
+        [class.border-orange-400]="wheelConfigurator.winnerEffect() === 'fire'"
+        [class.text-white]="wheelConfigurator.winnerEffect() === 'fire'"
+        [class.bg-neutral-800]="wheelConfigurator.winnerEffect() !== 'fire'"
+        [class.border-neutral-700]="wheelConfigurator.winnerEffect() !== 'fire'"
+        [class.text-neutral-200]="wheelConfigurator.winnerEffect() !== 'fire'">
+        Fire
+      </button>
+
+      <button
+        type="button"
+        (click)="setWinnerEffect('confetti')"
+        class="rounded-lg border px-3 py-2 text-left text-sm font-semibold transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.winnerEffect() === 'confetti'"
+        [class.border-cyan-400]="wheelConfigurator.winnerEffect() === 'confetti'"
+        [class.text-white]="wheelConfigurator.winnerEffect() === 'confetti'"
+        [class.bg-neutral-800]="wheelConfigurator.winnerEffect() !== 'confetti'"
+        [class.border-neutral-700]="wheelConfigurator.winnerEffect() !== 'confetti'"
+        [class.text-neutral-200]="wheelConfigurator.winnerEffect() !== 'confetti'">
+        Confetti
+      </button>
+
+      <button
+        type="button"
+        (click)="setWinnerEffect('fireworks')"
+        class="rounded-lg border px-3 py-2 text-left text-sm font-semibold transition-colors"
+        [class.bg-neutral-700]="wheelConfigurator.winnerEffect() === 'fireworks'"
+        [class.border-fuchsia-400]="wheelConfigurator.winnerEffect() === 'fireworks'"
+        [class.text-white]="wheelConfigurator.winnerEffect() === 'fireworks'"
+        [class.bg-neutral-800]="wheelConfigurator.winnerEffect() !== 'fireworks'"
+        [class.border-neutral-700]="wheelConfigurator.winnerEffect() !== 'fireworks'"
+        [class.text-neutral-200]="wheelConfigurator.winnerEffect() !== 'fireworks'">
+        Fireworks
       </button>
     </div>
   </div>

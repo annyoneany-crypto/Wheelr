@@ -1,4 +1,5 @@
 import { ColorPalette } from './global_function';
+import type { effectType } from '../modules/classes/custom-type';
 
 export type WinnerPanelPosition = 'left' | 'top' | 'right' | 'bottom';
 
@@ -36,6 +37,7 @@ export interface WheelSnapshotEntry {
   names: string[];
   centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   wheelView: 'wheel' | 'linear' | 'cards';
+  winnerEffect: effectType;
   spinDurationMs: number;
   soundEnabled: boolean;
   countdownEnabled: boolean;
@@ -60,6 +62,7 @@ export interface ActiveWheelSnapshotState {
   names: string[];
   centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   wheelView: 'wheel' | 'linear' | 'cards';
+  winnerEffect: effectType;
   spinDurationMs: number;
   soundEnabled: boolean;
   countdownEnabled: boolean;

@@ -14,6 +14,7 @@ import {
   WheelSnapshotEntry,
   WheelWorkspaceMeta,
 } from './wheel-configurator.models';
+import type { effectType } from '../modules/classes/custom-type';
 
 export function storageKeyForWorkspace(baseKey: string, workspaceId: string): string {
   return `${baseKey}.${workspaceId}`;
@@ -72,6 +73,8 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
   const wheelView =
     readJson<'wheel' | 'linear' | 'cards'>(storageKeyForWorkspace(STORAGE_KEYS.wheelView, workspaceId)) ??
     'wheel';
+  const winnerEffect =
+    readJson<effectType>(storageKeyForWorkspace(STORAGE_KEYS.winnerEffect, workspaceId)) ?? 'fire';
   const spinDurationMs =
     readJson<number>(storageKeyForWorkspace(STORAGE_KEYS.spinDurationMs, workspaceId)) ?? 3000;
   const soundEnabled =
@@ -104,6 +107,7 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     names,
     centerLogoSize,
     wheelView,
+    winnerEffect,
     spinDurationMs,
     soundEnabled,
     countdownEnabled,
@@ -126,6 +130,7 @@ export function buildSnapshotEntryFromState(state: ActiveWheelSnapshotState): Wh
     names: state.names,
     centerLogoSize: state.centerLogoSize,
     wheelView: state.wheelView,
+    winnerEffect: state.winnerEffect,
     spinDurationMs: state.spinDurationMs,
     soundEnabled: state.soundEnabled,
     countdownEnabled: state.countdownEnabled,

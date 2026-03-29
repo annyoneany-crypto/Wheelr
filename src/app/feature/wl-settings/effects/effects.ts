@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
+import type { effectType } from '../../../modules/classes/custom-type';
 
 @Component({
   selector: 'app-effects',
@@ -14,6 +15,11 @@ export class Effects {
     this.wheelConfigurator.resetWinnerEffect();
     this.wheelConfigurator.isSpinning.set(false);
     this.wheelConfigurator.wheelView.set(view);
+  }
+
+  setWinnerEffect(effect: effectType): void {
+    this.wheelConfigurator.resetWinnerEffect();
+    this.wheelConfigurator.winnerEffect.set(effect);
   }
 }
 

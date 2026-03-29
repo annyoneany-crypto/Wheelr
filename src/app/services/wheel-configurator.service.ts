@@ -22,6 +22,7 @@ import {
 } from './wheel-configurator-storage';
 import { WheelDisplayConfig, WheelSettingsSnapshot, WheelWorkspaceMeta } from './wheel-configurator.models';
 import { CloudWheelSyncItem } from './wheel-cloud-repository.service';
+import type { effectType } from '../modules/classes/custom-type';
 
 export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.models';
 
@@ -95,6 +96,7 @@ export class WheelConfigurator {
   renameModalRequestToken = signal(0);
 
   wheelView = signal<'wheel' | 'linear' | 'cards'>('wheel');
+  winnerEffect = signal<effectType>('fire');
 
   palettes = signal<ColorPalette[]>(DEFAULT_PALETTES);
 
@@ -213,7 +215,7 @@ export class WheelConfigurator {
   currentRotation = signal(0);
   winner = signal<string | null>(null);
 
-  fireAnimationId = signal<number | undefined>(undefined);
+  winnerAnimationId = signal<number | undefined>(undefined);
 
   canvasRef = signal<ElementRef<HTMLCanvasElement> | undefined>(undefined)
   ctx = signal<CanvasRenderingContext2D | undefined>(undefined)
@@ -317,6 +319,7 @@ export class WheelConfigurator {
       names: this.names(),
       centerLogoSize: this.centerLogoSize(),
       wheelView: this.wheelView(),
+      winnerEffect: this.winnerEffect(),
       spinDurationMs: this.spinDurationMs(),
       soundEnabled: this.soundEnabled(),
       countdownEnabled: this.countdownEnabled(),
@@ -887,6 +890,7 @@ export class WheelConfigurator {
     this.centerText.set('SPIN');
     this.centerLogoSize.set('m');
     this.wheelView.set('wheel');
+    this.winnerEffect.set('fire');
     this.spinDurationMs.set(3000);
     this.soundEnabled.set(true);
     this.customAudio.set('');
@@ -903,6 +907,7 @@ export class WheelConfigurator {
     this.fontFamily.set('"Inter", sans-serif');
     this.fontLink.set(WheelConfigurator.DEFAULT_FONT_LINK);
     this.winner.set(null);
+    this.winnerAnimationId.set(undefined);
     this.isSpinning.set(false);
   }
 
@@ -952,6 +957,7 @@ export class WheelConfigurator {
 
     const storedCenterLogoSize = readJson<string>(this.storageKey(STORAGE_KEYS.centerLogoSize));
     const storedWheelView = readJson<string>(this.storageKey(STORAGE_KEYS.wheelView));
+    const storedWinnerEffect = readJson<effectType>(this.storageKey(STORAGE_KEYS.winnerEffect));
     const storedFontFamily = readJson<string>(this.storageKey(STORAGE_KEYS.fontFamily));
     const storedFontLink = readJson<string>(this.storageKey(STORAGE_KEYS.fontLink));
     const storedVisibleWheelCount = readJson<number>(this.storageKey(STORAGE_KEYS.visibleWheelCount));
@@ -968,6 +974,7 @@ export class WheelConfigurator {
     const effectiveBgColor = unifiedSnapshot?.backgrondcolor ?? storedBgColor;
     const effectiveCenterLogoSize = activeUnifiedWheel?.centerLogoSize ?? storedCenterLogoSize;
     const effectiveWheelView = activeUnifiedWheel?.wheelView ?? storedWheelView;
+    const effectiveWinnerEffect = activeUnifiedWheel?.winnerEffect ?? storedWinnerEffect;
     const effectiveFontFamily = activeUnifiedWheel?.fontFamily ?? storedFontFamily;
     const effectiveFontLink = activeUnifiedWheel?.fontLink ?? storedFontLink;
     const effectiveVisibleWheelCount = activeUnifiedWheel?.visibleWheelCount ?? storedVisibleWheelCount;
@@ -1045,6 +1052,15 @@ export class WheelConfigurator {
 
     if (effectiveWheelView === 'wheel' || effectiveWheelView === 'linear' || effectiveWheelView === 'cards') {
       this.wheelView.set(effectiveWheelView);
+    }
+
+    if (
+      effectiveWinnerEffect === 'fire' ||
+      effectiveWinnerEffect === 'confetti' ||
+      effectiveWinnerEffect === 'fireworks' ||
+      effectiveWinnerEffect === 'applause'
+    ) {
+      this.winnerEffect.set(effectiveWinnerEffect);
     }
 
     const palettes = this.palettes();
@@ -1192,6 +1208,11 @@ export class WheelConfigurator {
     });
 
     effect(() => {
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.winnerEffect), this.winnerEffect());
+    });
+
+    effect(() => {
       const palettes = this.palettes();
       const selectedName = this.selectedPalette().name;
       const stillExists = palettes.some(p => p.name === selectedName);
@@ -1276,6 +1297,7 @@ export class WheelConfigurator {
       this.names();
       this.centerLogoSize();
       this.wheelView();
+      this.winnerEffect();
       this.spinDurationMs();
       this.soundEnabled();
       this.countdownEnabled();
@@ -1441,7 +1463,7 @@ export class WheelConfigurator {
   private performSpin(extraDegrees?: number) {
     this.isSpinning.set(true);
     this.winner.set(null);
-    if (this.fireAnimationId()) cancelAnimationFrame(this.fireAnimationId()!);
+    if (this.winnerAnimationId()) cancelAnimationFrame(this.winnerAnimationId()!);
 
     // Play audio if enabled
     if (this.soundEnabled() && this.customAudio()) {
@@ -1558,11 +1580,11 @@ export class WheelConfigurator {
   resetWinnerEffect(): void {
     this.winner.set(null);
 
-    const id = this.fireAnimationId();
+    const id = this.winnerAnimationId();
     if (id) {
       cancelAnimationFrame(id);
     }
-    this.fireAnimationId.set(undefined);
+    this.winnerAnimationId.set(undefined);
 
     this.drawWheel();
   }

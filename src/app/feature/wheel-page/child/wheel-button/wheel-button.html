@@ -106,6 +106,29 @@
   hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
   [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
   [class.wl-ui-hidden]="uiChromeHidden()"
+  [class.border-yellow-400]="isPanelActive('effects')"
+  [class.ring-2]="isPanelActive('effects')"
+  [class.ring-yellow-400/40]="isPanelActive('effects')"
+  [class.right-8]="!showPanelSettings()"
+  [class.right-[21rem]]="showPanelSettings()"
+  [class.lg:right-100]="showPanelSettings()"
+  role="button"
+  tabindex="0"
+  aria-label="Open effects panel"
+  (click)="requestTogglePanel('effects')"
+  (keydown.enter)="requestTogglePanel('effects')"
+  (keydown.space)="requestTogglePanel('effects'); $event.preventDefault()">
+  <i class="fa-solid fa-wand-magic-sparkles text-white/80" aria-hidden="true"></i>
+</div>
+
+<div class="fixed top-106 lg:top-92 wl-mobile-action
+  w-12 h-12 rounded-full
+  border border-white/10 bg-neutral-800
+  flex items-center justify-center hover:cursor-pointer
+  transition-all duration-300 ease-in-out z-50
+  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+  [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
+  [class.wl-ui-hidden]="uiChromeHidden()"
   [class.border-yellow-400]="isPanelActive('wheel-manager')"
   [class.ring-2]="isPanelActive('wheel-manager')"
   [class.ring-yellow-400/40]="isPanelActive('wheel-manager')"
@@ -128,8 +151,8 @@
   transition-all duration-300 ease-in-out z-50
   hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
   [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
-  [class.top-[27rem]]="!uiChromeHidden()"
-  [class.lg:top-92]="!uiChromeHidden()"
+  [class.top-[31rem]]="!uiChromeHidden()"
+  [class.lg:top-108]="!uiChromeHidden()"
   [class.top-10]="uiChromeHidden()"
   [class.border-yellow-400]="uiChromeHidden()"
   [class.ring-2]="uiChromeHidden()"
@@ -159,8 +182,8 @@
     [class.border-yellow-400]="qrModalOpen()"
     [class.ring-2]="qrModalOpen()"
     [class.ring-yellow-400/40]="qrModalOpen()"
-    [class.top-[31rem]]="!uiChromeHidden()"
-    [class.lg:top-108]="!uiChromeHidden()"
+    [class.top-[35rem]]="!uiChromeHidden()"
+    [class.lg:top-124]="!uiChromeHidden()"
     [class.top-20]="uiChromeHidden()"
     [class.right-8]="!showPanelSettings()"
     [class.right-[21rem]]="showPanelSettings()"
