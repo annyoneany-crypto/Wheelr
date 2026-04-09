@@ -1,5 +1,16 @@
 # Robots configuration for Wheelr
 User-agent: *
 Allow: /
+Allow: /info
+Allow: /donation
+Disallow: /api/
+Disallow: /*.json$
 
+# Crawl rate
+Crawl-delay: 1
+
+# Sitemaps
 Sitemap: https://wheelr.xyz/sitemap.xml
+
+# Host
+Host: https://wheelr.xyz
