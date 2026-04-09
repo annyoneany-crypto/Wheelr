@@ -1,14 +1,14 @@
 <div class="fixed
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
+  w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
   flex lg:hidden items-center justify-center hover:cursor-pointer
   transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
   [class.top-26]="!uiChromeHidden()"
   [class.top-12]="uiChromeHidden()"
-  [class.border-yellow-400]="mobileActionsExpanded()"
-  [class.ring-2]="mobileActionsExpanded()"
-  [class.ring-yellow-400/40]="mobileActionsExpanded()"
+  [class.border-amber-400/50]="mobileActionsExpanded()"
+  [class.ring-0]="mobileActionsExpanded()"
+  [class.bg-amber-400/10]="mobileActionsExpanded()"
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
@@ -20,21 +20,21 @@
   (click)="toggleMobileActions()"
   (keydown.enter)="toggleMobileActions()"
   (keydown.space)="toggleMobileActions(); $event.preventDefault()">
-  <i class="fa-solid fa-chevron-down text-white/80" aria-hidden="true"></i>
+  <i class="fa-solid fa-chevron-down text-white/70" aria-hidden="true"></i>
 </div>
 
 <div class="fixed top-42 lg:top-28 wl-mobile-action
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
+  w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
   flex items-center justify-center hover:cursor-pointer
   transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
   id="mobile-action-buttons"
   [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
   [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('users')"
-  [class.ring-2]="isPanelActive('users')"
-  [class.ring-yellow-400/40]="isPanelActive('users')"
+  [class.border-amber-400/50]="isPanelActive('users')"
+  [class.ring-0]="isPanelActive('users')"
+  [class.bg-amber-400/10]="isPanelActive('users')"
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
@@ -45,20 +45,20 @@
   (click)="requestTogglePanel('users')"
   (keydown.enter)="requestTogglePanel('users')"
   (keydown.space)="requestTogglePanel('users'); $event.preventDefault()">
-  <i class="fa-solid fa-user-plus text-white/80 z-50" aria-hidden="true"></i>
+  <i class="fa-solid fa-user-plus text-white/70 z-50" aria-hidden="true"></i>
 </div>
 
 <div class="fixed top-58 lg:top-44 wl-mobile-action
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
+  w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
   flex items-center justify-center hover:cursor-pointer
   transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
   [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
   [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('color-settings')"
-  [class.ring-2]="isPanelActive('color-settings')"
-  [class.ring-yellow-400/40]="isPanelActive('color-settings')"
+  [class.border-amber-400/50]="isPanelActive('color-settings')"
+  [class.ring-0]="isPanelActive('color-settings')"
+  [class.bg-amber-400/10]="isPanelActive('color-settings')"
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
@@ -69,23 +69,23 @@
   (keydown.enter)="requestTogglePanel('color-settings')"
   (keydown.space)="requestTogglePanel('color-settings'); $event.preventDefault()">
   <i
-    class="fa-solid fa-swatchbook text-white/80"
+    class="fa-solid fa-swatchbook text-white/70"
     aria-hidden="true"
     [class.fa-angles-right]="showPanelSettings()"
     [class.fa-user-plus]="!showPanelSettings()"></i>
 </div>
 
 <div class="fixed top-74 lg:top-60 wl-mobile-action
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
+  w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
   flex items-center justify-center hover:cursor-pointer
   transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
   [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
   [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('sound')"
-  [class.ring-2]="isPanelActive('sound')"
-  [class.ring-yellow-400/40]="isPanelActive('sound')"
+  [class.border-amber-400/50]="isPanelActive('sound')"
+  [class.ring-0]="isPanelActive('sound')"
+  [class.bg-amber-400/10]="isPanelActive('sound')"
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
@@ -95,20 +95,20 @@
   (click)="requestTogglePanel('sound')"
   (keydown.enter)="requestTogglePanel('sound')"
   (keydown.space)="requestTogglePanel('sound'); $event.preventDefault()">
-  <i class="fa-solid fa-volume-high text-white/80" aria-hidden="true"></i>
+  <i class="fa-solid fa-volume-high text-white/70" aria-hidden="true"></i>
 </div>
 
 <div class="fixed top-90 lg:top-76 wl-mobile-action
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
+  w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
   flex items-center justify-center hover:cursor-pointer
   transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
   [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
   [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('effects')"
-  [class.ring-2]="isPanelActive('effects')"
-  [class.ring-yellow-400/40]="isPanelActive('effects')"
+  [class.border-amber-400/50]="isPanelActive('effects')"
+  [class.ring-0]="isPanelActive('effects')"
+  [class.bg-amber-400/10]="isPanelActive('effects')"
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
@@ -118,20 +118,20 @@
   (click)="requestTogglePanel('effects')"
   (keydown.enter)="requestTogglePanel('effects')"
   (keydown.space)="requestTogglePanel('effects'); $event.preventDefault()">
-  <i class="fa-solid fa-wand-magic-sparkles text-white/80" aria-hidden="true"></i>
+  <i class="fa-solid fa-wand-magic-sparkles text-white/70" aria-hidden="true"></i>
 </div>
 
 <div class="fixed top-106 lg:top-92 wl-mobile-action
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
+  w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
   flex items-center justify-center hover:cursor-pointer
   transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
   [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
   [class.wl-ui-hidden]="uiChromeHidden()"
-  [class.border-yellow-400]="isPanelActive('wheel-manager')"
-  [class.ring-2]="isPanelActive('wheel-manager')"
-  [class.ring-yellow-400/40]="isPanelActive('wheel-manager')"
+  [class.border-amber-400/50]="isPanelActive('wheel-manager')"
+  [class.ring-0]="isPanelActive('wheel-manager')"
+  [class.bg-amber-400/10]="isPanelActive('wheel-manager')"
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
@@ -141,22 +141,22 @@
   (click)="requestTogglePanel('wheel-manager')"
   (keydown.enter)="requestTogglePanel('wheel-manager')"
   (keydown.space)="requestTogglePanel('wheel-manager'); $event.preventDefault()">
-  <i class="fa-solid fa-layer-group text-white/80" aria-hidden="true"></i>
+  <i class="fa-solid fa-layer-group text-white/70" aria-hidden="true"></i>
 </div>
 
 <div class="fixed wl-mobile-action
-  w-12 h-12 rounded-full
-  border border-white/10 bg-neutral-800
+  w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
   flex items-center justify-center hover:cursor-pointer
   transition-all duration-300 ease-in-out z-50
-  hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
   [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
   [class.top-[31rem]]="!uiChromeHidden()"
   [class.lg:top-108]="!uiChromeHidden()"
   [class.top-10]="uiChromeHidden()"
-  [class.border-yellow-400]="uiChromeHidden()"
-  [class.ring-2]="uiChromeHidden()"
-  [class.ring-yellow-400/40]="uiChromeHidden()"
+  [class.border-amber-400/50]="uiChromeHidden()"
+  [class.ring-0]="uiChromeHidden()"
+  [class.bg-amber-400/10]="uiChromeHidden()"
   [class.right-8]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
@@ -167,21 +167,21 @@
   (click)="requestUiChromeToggle()"
   (keydown.enter)="requestUiChromeToggle()"
   (keydown.space)="requestUiChromeToggle(); $event.preventDefault()">
-  <i class="fa-solid text-white/80" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
+  <i class="fa-solid text-white/70" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
 </div>
 
 @if (canShowQrButton()) {
   <div class="fixed wl-mobile-action
-    w-12 h-12 rounded-full
-    border border-white/10 bg-neutral-800
+    w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
     flex items-center justify-center hover:cursor-pointer
     transition-all duration-300 ease-in-out z-50
-    hover:border-yellow-400 hover:ring-2 hover:ring-yellow-400/40"
+    hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
     [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
     [class.wl-ui-hidden]="uiChromeHidden()"
-    [class.border-yellow-400]="qrModalOpen()"
-    [class.ring-2]="qrModalOpen()"
-    [class.ring-yellow-400/40]="qrModalOpen()"
+    [class.border-amber-400/50]="qrModalOpen()"
+    [class.ring-0]="qrModalOpen()"
+    [class.bg-amber-400/10]="qrModalOpen()"
     [class.top-[35rem]]="!uiChromeHidden()"
     [class.lg:top-124]="!uiChromeHidden()"
     [class.top-20]="uiChromeHidden()"
@@ -194,7 +194,7 @@
     (click)="requestOpenQr()"
     (keydown.enter)="requestOpenQr()"
     (keydown.space)="requestOpenQr(); $event.preventDefault()">
-    <i class="fa-solid fa-qrcode text-white/80" aria-hidden="true"></i>
+    <i class="fa-solid fa-qrcode text-white/70" aria-hidden="true"></i>
   </div>
 }
 

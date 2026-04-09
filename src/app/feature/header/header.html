@@ -1,21 +1,15 @@
-<header class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-20 bg-neutral-800/60 backdrop-blur-md border-b border-white/10" role="banner" aria-label="Main header">
-    <a class="flex gap-4 hover:cursor-pointer" [routerLink]="['/']" aria-label="Go to homepage">
-        <img src="/Logo.webp" alt="GiveawayWheel logo" class="w-8 h-8">
+<header class="fixed top-0 left-0 w-full px-6 py-4 flex justify-between items-center z-20 bg-neutral-950/70 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.4)]" role="banner" aria-label="Main header">
+    <a class="flex gap-4 items-center hover:cursor-pointer group" [routerLink]="['/']" aria-label="Go to homepage">
+        <img src="/Logo.webp" alt="GiveawayWheel logo" class="w-9 h-9 transition-transform duration-300 group-hover:scale-110">
         <div class="relative">
           <!-- Animated glowing orbs container -->
-          <div class="absolute inset-0 animate-spin-slow" style="width: 140px; height: 60px;">
-            <!-- Red orb -->
+          <div class="absolute inset-0 animate-spin-slow opacity-70" style="width: 140px; height: 60px;">
             <div class="absolute w-6 h-6 bg-red-500 rounded-full blur-xl" style="top: -10px; left: 10px; box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);"></div>
-            <!-- Yellow orb -->
             <div class="absolute w-6 h-6 bg-yellow-400 rounded-full blur-xl" style="top: 10px; right: 20px; box-shadow: 0 0 20px rgba(250, 204, 21, 0.8);"></div>
-            <!-- Blue orb -->
             <div class="absolute w-5 h-5 bg-blue-500 rounded-full blur-xl" style="bottom: 5px; left: 0px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);"></div>
-            <!-- Purple orb -->
             <div class="absolute w-6 h-6 bg-purple-500 rounded-full blur-xl" style="top: 5px; right: 5px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);"></div>
           </div>
-          <!-- Text -->
-           <!-- fai in modo che questo testo ha elipsis enable  -->
-          <h1 class="relative z-10 text-3xl uppercase font-bold text-white truncate">
+          <h1 class="relative z-10 text-3xl uppercase font-black text-white truncate tracking-wide drop-shadow-[0_0_12px_rgba(245,158,11,0.3)]">
               Wheelr
           </h1>
         </div>
@@ -23,10 +17,10 @@
 
         @if (showSelectedWheelBadge()) {
             <div class="absolute left-1/2 -translate-x-1/2 z-30 pointer-events-none hidden md:block">
-                <div class="rounded-full border border-yellow-400/50 bg-black/55 px-5 py-2 text-center shadow-[0_0_18px_rgba(250,204,21,0.25)]">
-                    <p class="text-[0.65rem] uppercase tracking-[0.2em] text-yellow-300/90">Selected Wheel</p>
+                <div class="rounded-full border border-amber-400/40 bg-neutral-950/70 backdrop-blur-sm px-5 py-2 text-center shadow-[0_0_24px_rgba(245,158,11,0.15)]">
+                    <p class="text-[0.6rem] uppercase tracking-[0.22em] text-amber-300/80 font-medium">Selected Wheel</p>
                     <div class="mt-0.5 flex items-center justify-center gap-2 pointer-events-auto">
-                        <p class="text-sm font-semibold text-white">{{ selectedWheelName() }}</p>
+                        <p class="text-sm font-bold text-white">{{ selectedWheelName() }}</p>
                         <button
                             type="button"
                             class="inline-flex h-6 w-6 items-center justify-center text-white/90 hover:cursor-pointer transition-colors"
@@ -70,13 +64,13 @@
 
 @if (isMenuOpen()) {
     <div
-        class="fixed inset-0 z-80 bg-neutral-900/95 backdrop-blur-md flex items-center justify-center"
+        class="fixed inset-0 z-80 bg-neutral-950/95 backdrop-blur-2xl flex items-center justify-center"
         role="dialog"
         aria-modal="true"
         aria-label="Main menu"
         (click)="closeMenu()">
         <div
-            class="absolute top-6 right-6">
+            class="absolute top-5 right-6">
             <button
                 type="button"
                 class="secondaryButton inline-flex items-center gap-2"
@@ -91,14 +85,14 @@
             class="w-full max-w-xl px-6"
             aria-label="Main pages"
             (click)="$event.stopPropagation()">
-            <ul class="grid gap-4 text-center">
+            <ul class="grid gap-5 text-center">
                 <li>
                     <a
                         [routerLink]="['/']"
                         (click)="closeMenu()"
                         aria-label="Go to Wheelr page"
-                        class="block rounded-2xl border border-white/15 bg-neutral-800/60 px-6 py-5 text-2xl font-bold text-white hover:bg-neutral-700/70 transition-colors">
-                        🎡 Wheelr
+                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.12)] transition-all duration-300">
+                        <span class="group-hover:text-amber-300 transition-colors">🎡 Wheelr</span>
                     </a>
                 </li>
                 <li>
@@ -106,8 +100,8 @@
                         [routerLink]="['/info']"
                         (click)="closeMenu()"
                         aria-label="Go to Info page"
-                        class="block rounded-2xl border border-white/15 bg-neutral-800/60 px-6 py-5 text-2xl font-bold text-white hover:bg-neutral-700/70 transition-colors">
-                        ℹ️ Info
+                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.12)] transition-all duration-300">
+                        <span class="group-hover:text-amber-300 transition-colors">ℹ️ Info</span>
                     </a>
                 </li>
                 <li>
@@ -115,8 +109,8 @@
                         [routerLink]="['/donation']"
                         (click)="closeMenu()"
                         aria-label="Go to Donation page"
-                        class="block rounded-2xl border border-white/15 bg-neutral-800/60 px-6 py-5 text-2xl font-bold text-white hover:bg-neutral-700/70 transition-colors">
-                        💝 Donation
+                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.12)] transition-all duration-300">
+                        <span class="group-hover:text-amber-300 transition-colors">💝 Donation</span>
                     </a>
                 </li>
             </ul>

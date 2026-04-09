@@ -1,5 +1,5 @@
 <aside
-  class="fixed z-40 hidden lg:flex flex-col rounded-2xl border border-white/10 bg-neutral-900/70 backdrop-blur-md p-4 shadow-[0_0_30px_rgba(0,0,0,0.35)] transition-all duration-300"
+  class="fixed z-40 hidden lg:flex flex-col rounded-2xl border border-white/[0.08] bg-neutral-950/75 backdrop-blur-xl p-4 shadow-[0_8px_40px_rgba(0,0,0,0.4)] transition-all duration-300"
   [class.wl-ui-hidden]="uiHidden()"
   [class.left-24]="isLeft()"
   [class.right-24]="isRight() && !settingsPanelOpen()"
@@ -16,31 +16,31 @@
   [class.max-w-[80vw]]="isHorizontal()"
   [class.h-[34vh]]="isHorizontal()"
   aria-label="Winners list">
-  <div class="flex items-center justify-between border-b border-white/10 pb-3">
-    <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-white/80">Winners</h2>
-    <span class="rounded-full border border-yellow-400/40 bg-yellow-400/15 px-2 py-0.5 text-xs font-semibold text-yellow-200">
+  <div class="flex items-center justify-between border-b border-white/[0.08] pb-3">
+    <h2 class="text-xs font-bold uppercase tracking-[0.2em] text-white/60"><i class="fa-solid fa-trophy mr-2 text-amber-400/70" aria-hidden="true"></i>Winners</h2>
+    <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 text-xs font-bold text-amber-300">
       {{ entriesCount() }}
     </span>
   </div>
 
   <div class="mt-3 flex-1 overflow-y-auto pr-1">
     @if (entriesCount() === 0) {
-      <p class="rounded-lg border border-white/10 bg-black/20 p-3 text-sm text-white/60">
+      <p class="rounded-xl border border-white/[0.08] bg-white/[0.03] p-4 text-sm text-white/40">
         No winners yet. Start spinning to fill this list.
       </p>
     } @else {
       <div class="space-y-2">
         @for (entry of entries(); track entry.id) {
-          <article class="rounded-lg border border-white/10 bg-black/25 p-3">
+          <article class="group rounded-xl border border-white/[0.08] bg-white/[0.03] p-3 hover:border-white/15 transition-all duration-200">
             <div class="flex items-start justify-between gap-3">
               <div class="min-w-0">
-                <p class="text-base font-semibold text-white leading-tight truncate">{{ entry.name }}</p>
-                <p class="mt-1 text-xs text-white/70 truncate">{{ entry.wheelName }}</p>
-                <p class="mt-1 text-[0.7rem] uppercase tracking-[0.14em] text-yellow-300/85">{{ entry.timestamp }}</p>
+                <p class="text-base font-bold text-white leading-tight truncate">{{ entry.name }}</p>
+                <p class="mt-1 text-xs text-white/40 truncate">{{ entry.wheelName }}</p>
+                <p class="mt-1 text-[0.65rem] uppercase tracking-[0.16em] text-amber-300/60 font-medium">{{ entry.timestamp }}</p>
               </div>
               <button
                 type="button"
-                class="h-7 w-7 shrink-0 rounded-full border border-white/20 bg-neutral-800/80 text-white/85 transition-colors hover:bg-red-500/20 hover:text-red-200 hover:cursor-pointer"
+                class="h-7 w-7 shrink-0 rounded-lg border border-white/10 bg-white/[0.04] text-white/50 transition-all duration-200 hover:bg-red-500/15 hover:border-red-400/30 hover:text-red-300 hover:cursor-pointer opacity-0 group-hover:opacity-100"
                 [attr.aria-label]="'Remove winner ' + entry.name"
                 (click)="requestRemove(entry.id)">
                 <i class="fa-solid fa-trash text-xs" aria-hidden="true"></i>

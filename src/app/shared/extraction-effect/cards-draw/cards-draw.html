@@ -1,9 +1,11 @@
 <section class="mx-auto flex min-h-[72vh] w-full max-w-5xl 
     flex-col items-center justify-center gap-5 px-2 sm:px-4">
-  <header class="grid justify-items-center gap-2 p-4 
+  <header class="grid justify-items-center gap-3 p-5 
     rounded-2xl text-center border 
-    border-white/10 bg-neutral-800/50 ">
-    <p class="text-[0.72rem] uppercase tracking-[0.2em] text-amber-300">Card Extraction</p>
+    border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
+    <p class="text-[0.72rem] uppercase tracking-[0.25em] text-amber-300/90 font-semibold">
+      <i class="fa-solid fa-clone mr-1.5 text-amber-400/70" aria-hidden="true"></i>Card Extraction
+    </p>
     <h2 class="text-[clamp(1.1rem,2.3vw,1.8rem)] font-extrabold text-neutral-50">Shuffle and draw the next winner</h2>
     <!-- <button
       type="button"
@@ -14,9 +16,14 @@
     </button> -->
   </header>
 
-  <div class="w-full overflow-hidden rounded-2xl border border-amber-300/20 bg-[radial-gradient(circle_at_30%_20%,#14532d,#052e16_55%,#022c22)] shadow-[inset_0_0_80px_rgba(0,0,0,0.4)]">
+  <div class="w-full overflow-hidden rounded-2xl border border-amber-300/20 bg-[radial-gradient(circle_at_30%_20%,#14532d,#052e16_55%,#022c22)] shadow-[inset_0_0_80px_rgba(0,0,0,0.4),0_8px_32px_rgba(0,0,0,0.4)]">
     @if (cards().length === 0) {
-      <p class="grid min-h-82.5 place-items-center px-4 text-center text-slate-300 sm:min-h-97.5">Add at least one name to start the draw.</p>
+      <p class="grid min-h-82.5 place-items-center px-4 text-center text-slate-300/80 sm:min-h-97.5">
+        <span class="flex flex-col items-center gap-2">
+          <i class="fa-solid fa-layer-group text-2xl text-slate-400/50" aria-hidden="true"></i>
+          Add at least one name to start the draw.
+        </span>
+      </p>
     } @else {
       <div class="relative min-h-82.5 cursor-pointer isolate sm:min-h-97.5" (click)="startExtraction()">
         @for (card of cards(); track card.id) {

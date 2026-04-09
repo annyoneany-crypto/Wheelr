@@ -1,23 +1,23 @@
 <div class="h-full flex flex-col gap-4">
-  <section class="rounded-xl border border-white/10 bg-white/5 p-3">
-    <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">Display</h3>
-    <p class="mt-1 text-xs text-white/70">Show 1 to 4 wheels side by side on the page.</p>
+  <section class="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-4">
+    <h3 class="text-sm font-semibold uppercase tracking-wide text-amber-400"><i class="fa-solid fa-table-columns mr-2" aria-hidden="true"></i>Display</h3>
+    <p class="mt-1 text-xs text-white/50">Show 1 to 4 wheels side by side on the page.</p>
 
-    <div class="mt-3 flex items-center justify-between rounded-lg border border-white/10 bg-neutral-800/60 px-3 py-2">
-      <span class="text-sm text-white/90">Visible wheels</span>
+    <div class="mt-3 flex items-center justify-between rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5">
+      <span class="text-sm text-white/80">Visible wheels</span>
       <div class="flex items-center gap-2">
         <button
           type="button"
-          class="h-8 w-8 rounded-md border border-neutral-700 bg-neutral-800 text-white hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-45"
+          class="h-8 w-8 rounded-lg border border-white/10 bg-white/[0.06] text-white hover:bg-white/10 hover:border-white/20 disabled:cursor-not-allowed disabled:opacity-30 transition-all duration-200"
           [disabled]="wheelConfigurator.visibleWheelCount() <= 1"
           (click)="decreaseVisibleWheels()"
           aria-label="Decrease visible wheels">
           -
         </button>
-        <span class="w-6 text-center text-sm font-semibold text-white">{{ wheelConfigurator.visibleWheelCount() }}</span>
+        <span class="w-8 text-center text-sm font-bold text-amber-300">{{ wheelConfigurator.visibleWheelCount() }}</span>
         <button
           type="button"
-          class="h-8 w-8 rounded-md border border-neutral-700 bg-neutral-800 text-white hover:bg-neutral-700 disabled:cursor-not-allowed disabled:opacity-45"
+          class="h-8 w-8 rounded-lg border border-white/10 bg-white/[0.06] text-white hover:bg-white/10 hover:border-white/20 disabled:cursor-not-allowed disabled:opacity-30 transition-all duration-200"
           [disabled]="wheelConfigurator.visibleWheelCount() >= 4"
           (click)="increaseVisibleWheels()"
           aria-label="Increase visible wheels">
@@ -27,14 +27,14 @@
     </div>
   </section>
 
-  <section class="rounded-xl border border-white/10 bg-white/5 p-3">
-    <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">New wheel</h3>
-    <div class="mt-2 grid gap-2">
+  <section class="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-4">
+    <h3 class="text-sm font-semibold uppercase tracking-wide text-amber-400"><i class="fa-solid fa-plus-circle mr-2" aria-hidden="true"></i>New wheel</h3>
+    <div class="mt-3 grid gap-2">
       <label class="sr-only" for="create-wheel-name">Wheel name</label>
       <input
         id="create-wheel-name"
         type="text"
-        class="w-full rounded bg-white/10 p-2 text-white"
+        class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2.5 text-white text-sm placeholder:text-white/40"
         placeholder="Wheel name"
         [value]="createName()"
         (input)="updateCreateName($event)" />
@@ -43,27 +43,27 @@
       <input
         id="create-wheel-description"
         type="text"
-        class="w-full rounded bg-white/10 p-2 text-white"
+        class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2.5 text-white text-sm placeholder:text-white/40"
         placeholder="Description"
         [value]="createDescription()"
         (input)="updateCreateDescription($event)" />
 
       <button
         type="button"
-        class="rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-700"
+        class="rounded-xl border border-white/10 bg-gradient-to-b from-white/[0.08] to-white/[0.03] py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:border-amber-400/40 hover:bg-amber-400/10"
         (click)="createWheel()">
-        Create wheel
+        <i class="fa-solid fa-plus mr-1.5" aria-hidden="true"></i>Create wheel
       </button>
     </div>
   </section>
 
-  <section class="flex-1 overflow-y-auto rounded-xl border border-white/10 bg-white/5 p-3">
+  <section class="flex-1 overflow-y-auto rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-4">
     <div class="flex items-center justify-between gap-2">
-      <h3 class="text-sm font-semibold uppercase tracking-wide text-white/85">Wheel list</h3>
+      <h3 class="text-sm font-semibold uppercase tracking-wide text-amber-400"><i class="fa-solid fa-layer-group mr-2" aria-hidden="true"></i>Wheel list</h3>
       @if (authService.isLoggedIn()) {
         <button
           type="button"
-          class="rounded-lg border border-emerald-400/30 bg-emerald-500/20 px-3 py-1.5 text-[0.7rem] font-semibold text-emerald-100 hover:bg-emerald-500/30 disabled:opacity-50"
+          class="rounded-xl border border-emerald-400/30 bg-emerald-500/15 px-3 py-1.5 text-[0.7rem] font-semibold text-emerald-200 hover:bg-emerald-500/25 hover:border-emerald-400/50 disabled:opacity-50 transition-all duration-200"
           [disabled]="importingFromCloud()"
           (click)="importWheelsFromCloud()">
           @if (importingFromCloud()) {
@@ -78,11 +78,13 @@
     <div class="mt-2 grid gap-2">
       @for (workspace of managerWorkspaces(); track workspace.id) {
         <article
-          class="rounded-lg border p-3"
-          [class.border-yellow-400]="isManagerWorkspaceActive(workspace.id)"
-          [class.bg-yellow-500/10]="isManagerWorkspaceActive(workspace.id)"
+          class="rounded-xl border p-3.5 transition-all duration-200"
+          [class.border-amber-400/50]="isManagerWorkspaceActive(workspace.id)"
+          [class.bg-amber-400/10]="isManagerWorkspaceActive(workspace.id)"
+          [class.shadow-[0_0_16px_rgba(245,158,11,0.1)]]="isManagerWorkspaceActive(workspace.id)"
           [class.border-white/10]="!isManagerWorkspaceActive(workspace.id)"
-          [class.bg-neutral-800/50]="!isManagerWorkspaceActive(workspace.id)">
+          [class.bg-white/[0.03]]="!isManagerWorkspaceActive(workspace.id)"
+          [class.hover:border-white/20]="!isManagerWorkspaceActive(workspace.id)">
 
           @if (editingWheelId() === workspace.id) {
             <div class="grid gap-2">
@@ -90,7 +92,7 @@
               <input
                 [id]="'edit-name-' + workspace.id"
                 type="text"
-                class="w-full rounded bg-white/10 p-2 text-white"
+                class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2 text-white text-sm"
                 [value]="editName()"
                 (input)="updateEditName($event)" />
 
@@ -98,42 +100,42 @@
               <input
                 [id]="'edit-description-' + workspace.id"
                 type="text"
-                class="w-full rounded bg-white/10 p-2 text-white"
+                class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2 text-white text-sm"
                 [value]="editDescription()"
                 (input)="updateEditDescription($event)" />
 
               <div class="flex gap-2">
                 <button
                   type="button"
-                  class="flex-1 rounded-lg border border-neutral-700 bg-neutral-700 py-2 text-xs font-semibold text-white hover:bg-neutral-600"
+                  class="flex-1 rounded-xl border border-amber-400/40 bg-amber-400/15 py-2 text-xs font-semibold text-amber-200 hover:bg-amber-400/25 transition-all duration-200"
                   (click)="saveRename()">
                   Save
                 </button>
                 <button
                   type="button"
-                  class="flex-1 rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-xs font-semibold text-white hover:bg-neutral-700"
+                  class="flex-1 rounded-xl border border-white/10 bg-white/[0.04] py-2 text-xs font-semibold text-white/70 hover:bg-white/[0.08] transition-all duration-200"
                   (click)="cancelRename()">
                   Cancel
                 </button>
               </div>
             </div>
           } @else {
-            <div class="text-sm font-semibold text-white">{{ workspace.name }}</div>
+            <div class="text-sm font-bold text-white">{{ workspace.name }}</div>
             @if (workspace.description) {
-              <div class="mt-1 text-xs text-white/70">{{ workspace.description }}</div>
+              <div class="mt-1 text-xs text-white/50">{{ workspace.description }}</div>
             }
 
             <div class="mt-3 flex gap-2">
               <button
                 type="button"
-                class="flex-1 rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-xs font-semibold text-white hover:bg-neutral-700"
+                class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] py-2 text-xs font-semibold text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
                 (click)="loadWheel(workspace.id)">
                 Load
               </button>
               @if (authService.isLoggedIn()) {
                 <button
                   type="button"
-                  class="rounded-lg border border-sky-400/30 bg-sky-500/20 px-3 py-2 text-xs font-semibold text-sky-100 hover:bg-sky-500/30 disabled:opacity-50"
+                  class="rounded-xl border border-sky-400/30 bg-sky-500/15 px-3 py-2 text-xs font-semibold text-sky-200 hover:bg-sky-500/25 hover:border-sky-400/50 disabled:opacity-50 transition-all duration-200"
                   [disabled]="savingWorkspaceId() === workspace.id"
                   [attr.aria-label]="'Save wheel ' + workspace.name + ' to cloud'"
                   (click)="saveWheelToCloud(workspace.id)">
@@ -146,14 +148,14 @@
               }
               <button
                 type="button"
-                class="flex-1 rounded-lg border border-neutral-700 bg-neutral-800 py-2 text-xs font-semibold text-white hover:bg-neutral-700"
+                class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] py-2 text-xs font-semibold text-white hover:bg-white/10 hover:border-white/20 transition-all duration-200"
                 (click)="startRename(workspace.id)">
                 Rename
               </button>
               @if (managerWorkspaces().length > 1) {
                 <button
                   type="button"
-                  class="rounded-lg border border-red-500/30 bg-red-500/20 px-3 py-2 text-xs font-semibold text-red-200 hover:bg-red-500/30"
+                  class="rounded-xl border border-red-500/20 bg-red-500/10 px-3 py-2 text-xs font-semibold text-red-300 hover:bg-red-500/20 hover:border-red-400/40 transition-all duration-200"
                   (click)="deleteWheel(workspace.id)">
                   Delete
                 </button>
@@ -172,11 +174,11 @@
       }
 
       @if (cloudError()) {
-        <p class="mt-2 rounded-md border border-red-400/30 bg-red-500/10 px-3 py-2 text-xs text-red-200">{{ cloudError() }}</p>
+        <p class="mt-2 rounded-xl border border-red-400/20 bg-red-500/10 px-3 py-2.5 text-xs text-red-300">{{ cloudError() }}</p>
       }
 
       @if (importedFromCloudCount() !== null && !cloudError()) {
-        <p class="mt-2 rounded-md border border-emerald-400/30 bg-emerald-500/10 px-3 py-2 text-xs text-emerald-100">
+        <p class="mt-2 rounded-xl border border-emerald-400/20 bg-emerald-500/10 px-3 py-2.5 text-xs text-emerald-200">
           Import completed: {{ importedFromCloudCount() }} cloud wheels merged locally.
         </p>
       }

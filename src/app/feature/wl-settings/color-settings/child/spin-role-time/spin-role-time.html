@@ -1,15 +1,15 @@
-<div class="mb-6 p-4 bg-neutral-900 rounded-xl border border-neutral-700">
-  <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider">
-    Spin duration
+<div class="wl-settings-card">
+  <label class="wl-settings-label">
+    <i class="fa-solid fa-stopwatch mr-2" aria-hidden="true"></i>Spin duration
   </label>
 
-  <div class="flex items-center gap-2">
+  <div class="flex items-center gap-3">
     <input
       type="number"
       min="1"
-      class="w-24 bg-neutral-800 border border-neutral-600 rounded-lg px-3 py-2 text-sm text-white"
+      class="w-24 bg-white/[0.06] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white text-center"
       [(ngModel)]="durationSec"
     />
-    <span class="text-sm text-white">seconds</span>
+    <span class="text-sm text-white/60">seconds</span>
   </div>
 </div>

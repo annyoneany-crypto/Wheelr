@@ -76,9 +76,13 @@
     <!-- Text -->
     <div class="h-16 flex items-center justify-center text-center">
       @if (wheelConfigurator.isSpinning()) {
-        <p class="text-white drop-shadow-lg animate-pulse uppercase tracking-widest font-semibold">Destiny is choosing...</p>
+        <p class="text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] animate-pulse uppercase tracking-[0.2em] font-semibold text-sm">
+          <i class="fa-solid fa-star-of-life mr-2 text-amber-400/80 animate-spin" aria-hidden="true"></i>Destiny is choosing...
+        </p>
       } @else if (!wheelConfigurator.winner()) {
-        <p class="text-white drop-shadow-lg uppercase tracking-widest font-semibold">Click the wheel to spin</p>
+        <p class="text-white/70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] uppercase tracking-[0.2em] font-medium text-sm transition-opacity duration-300 hover:text-white/90">
+          <i class="fa-solid fa-hand-pointer mr-2 text-amber-400/60" aria-hidden="true"></i>Click the wheel to spin
+        </p>
       }
     </div>
   </div>

@@ -1,12 +1,12 @@
-<div class="mb-6 p-4 bg-neutral-900 rounded-xl border border-neutral-700">
+<div class="wl-settings-card">
   <div class="flex items-center justify-between">
-    <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider">
-      Central Logo
+    <label class="wl-settings-label">
+      <i class="fa-solid fa-bullseye mr-2" aria-hidden="true"></i>Central Logo
     </label>
-    <i class="fa-solid fa-eraser text-white hover:cursor-pointer" title="Reset Central Logo" (click)="resetCenterLogo()"></i>
+    <i class="fa-solid fa-eraser text-white/50 hover:text-white hover:cursor-pointer transition-colors" title="Reset Central Logo" (click)="resetCenterLogo()"></i>
   </div>
 
-  <div class="flex mb-4" role="tablist" aria-label="Central logo type">
+  <div class="flex mb-4 gap-1" role="tablist" aria-label="Central logo type">
     <button
       type="button"
       role="tab"
@@ -14,13 +14,13 @@
       [attr.aria-selected]="selectedTab() === 'color'"
       aria-controls="center-panel-color"
       (click)="selectTab('color')"
-      class="flex-1 py-0.5 border rounded-l-md text-sm font-semibold transition-colors hover:cursor-pointer"
-      [class.bg-yellow-500]="selectedTab() === 'color'"
-      [class.text-neutral-900]="selectedTab() === 'color'"
-      [class.border-yellow-500]="selectedTab() === 'color'"
-      [class.bg-neutral-800]="selectedTab() !== 'color'"
-      [class.text-white]="selectedTab() !== 'color'"
-      [class.border-neutral-700]="selectedTab() !== 'color'">
+      class="flex-1 py-2 border rounded-xl text-sm font-semibold transition-all duration-200 hover:cursor-pointer"
+      [class.bg-amber-400/15]="selectedTab() === 'color'"
+      [class.text-amber-300]="selectedTab() === 'color'"
+      [class.border-amber-400/50]="selectedTab() === 'color'"
+      [class.bg-white/[0.04]]="selectedTab() !== 'color'"
+      [class.text-white/70]="selectedTab() !== 'color'"
+      [class.border-white/10]="selectedTab() !== 'color'">
       Color
     </button>
 
@@ -31,13 +31,13 @@
       [attr.aria-selected]="selectedTab() === 'image'"
       aria-controls="center-panel-image"
       (click)="selectTab('image')"
-      class="flex-1 py-0.5 border rounded-r-md text-sm font-semibold transition-colors hover:cursor-pointer"
-      [class.bg-yellow-500]="selectedTab() === 'image'"
-      [class.text-neutral-900]="selectedTab() === 'image'"
-      [class.border-yellow-500]="selectedTab() === 'image'"
-      [class.bg-neutral-800]="selectedTab() !== 'image'"
-      [class.text-white]="selectedTab() !== 'image'"
-      [class.border-neutral-700]="selectedTab() !== 'image'">
+      class="flex-1 py-2 border rounded-xl text-sm font-semibold transition-all duration-200 hover:cursor-pointer"
+      [class.bg-amber-400/15]="selectedTab() === 'image'"
+      [class.text-amber-300]="selectedTab() === 'image'"
+      [class.border-amber-400/50]="selectedTab() === 'image'"
+      [class.bg-white/[0.04]]="selectedTab() !== 'image'"
+      [class.text-white/70]="selectedTab() !== 'image'"
+      [class.border-white/10]="selectedTab() !== 'image'">
       Image
     </button>
   </div>
@@ -46,85 +46,85 @@
       <button
         type="button"
         (click)="wheelConfigurator.setCenterLogoSize('s')"
-        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
-        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 's'"
-        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 's'"
-        [class.text-white]="wheelConfigurator.centerLogoSize() === 's'"
-        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 's'"
-        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 's'"
-        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 's'">
+        class="px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.centerLogoSize() === 's'"
+        [class.border-amber-400/50]="wheelConfigurator.centerLogoSize() === 's'"
+        [class.text-amber-300]="wheelConfigurator.centerLogoSize() === 's'"
+        [class.bg-white/[0.04]]="wheelConfigurator.centerLogoSize() !== 's'"
+        [class.border-white/10]="wheelConfigurator.centerLogoSize() !== 's'"
+        [class.text-white/60]="wheelConfigurator.centerLogoSize() !== 's'">
         S
       </button>
 
       <button
         type="button"
         (click)="wheelConfigurator.setCenterLogoSize('m')"
-        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
-        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'm'"
-        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'm'"
-        [class.text-white]="wheelConfigurator.centerLogoSize() === 'm'"
-        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'm'"
-        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'm'"
-        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'm'">
+        class="px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.centerLogoSize() === 'm'"
+        [class.border-amber-400/50]="wheelConfigurator.centerLogoSize() === 'm'"
+        [class.text-amber-300]="wheelConfigurator.centerLogoSize() === 'm'"
+        [class.bg-white/[0.04]]="wheelConfigurator.centerLogoSize() !== 'm'"
+        [class.border-white/10]="wheelConfigurator.centerLogoSize() !== 'm'"
+        [class.text-white/60]="wheelConfigurator.centerLogoSize() !== 'm'">
         M
       </button>
 
       <button
         type="button"
         (click)="wheelConfigurator.setCenterLogoSize('l')"
-        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
-        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'l'"
-        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'l'"
-        [class.text-white]="wheelConfigurator.centerLogoSize() === 'l'"
-        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'l'"
-        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'l'"
-        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'l'">
+        class="px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.centerLogoSize() === 'l'"
+        [class.border-amber-400/50]="wheelConfigurator.centerLogoSize() === 'l'"
+        [class.text-amber-300]="wheelConfigurator.centerLogoSize() === 'l'"
+        [class.bg-white/[0.04]]="wheelConfigurator.centerLogoSize() !== 'l'"
+        [class.border-white/10]="wheelConfigurator.centerLogoSize() !== 'l'"
+        [class.text-white/60]="wheelConfigurator.centerLogoSize() !== 'l'">
         L
       </button>
 
       <button
         type="button"
         (click)="wheelConfigurator.setCenterLogoSize('xl')"
-        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors"
-        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xl'"
-        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xl'"
-        [class.text-white]="wheelConfigurator.centerLogoSize() === 'xl'"
-        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'xl'"
-        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'xl'"
-        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'xl'">
+        class="px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.centerLogoSize() === 'xl'"
+        [class.border-amber-400/50]="wheelConfigurator.centerLogoSize() === 'xl'"
+        [class.text-amber-300]="wheelConfigurator.centerLogoSize() === 'xl'"
+        [class.bg-white/[0.04]]="wheelConfigurator.centerLogoSize() !== 'xl'"
+        [class.border-white/10]="wheelConfigurator.centerLogoSize() !== 'xl'"
+        [class.text-white/60]="wheelConfigurator.centerLogoSize() !== 'xl'">
         XL
       </button>
 
       <button
         type="button"
         (click)="wheelConfigurator.setCenterLogoSize('xxl')"
-        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors hidden lg:block"
-        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xxl'"
-        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xxl'"
-        [class.text-white]="wheelConfigurator.centerLogoSize() === 'xxl'"
-        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'xxl'"
-        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'xxl'"
-        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'xxl'">
+        class="px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 hidden lg:block"
+        [class.bg-amber-400/15]="wheelConfigurator.centerLogoSize() === 'xxl'"
+        [class.border-amber-400/50]="wheelConfigurator.centerLogoSize() === 'xxl'"
+        [class.text-amber-300]="wheelConfigurator.centerLogoSize() === 'xxl'"
+        [class.bg-white/[0.04]]="wheelConfigurator.centerLogoSize() !== 'xxl'"
+        [class.border-white/10]="wheelConfigurator.centerLogoSize() !== 'xxl'"
+        [class.text-white/60]="wheelConfigurator.centerLogoSize() !== 'xxl'">
         XXL
       </button>
 
       <button
         type="button"
         (click)="wheelConfigurator.setCenterLogoSize('xxxl')"        
-        class="px-3 py-1 rounded-lg text-xs font-semibold border transition-colors hidden lg:block"
-        [class.bg-neutral-700]="wheelConfigurator.centerLogoSize() === 'xxxl'"
-        [class.border-yellow-400]="wheelConfigurator.centerLogoSize() === 'xxxl'"
-        [class.text-white]="wheelConfigurator.centerLogoSize() === 'xxxl'"
-        [class.bg-neutral-800]="wheelConfigurator.centerLogoSize() !== 'xxxl'"
-        [class.border-neutral-700]="wheelConfigurator.centerLogoSize() !== 'xxxl'"
-        [class.text-neutral-200]="wheelConfigurator.centerLogoSize() !== 'xxxl'">
+        class="px-3 py-1.5 rounded-xl text-xs font-semibold border transition-all duration-200 hidden lg:block"
+        [class.bg-amber-400/15]="wheelConfigurator.centerLogoSize() === 'xxxl'"
+        [class.border-amber-400/50]="wheelConfigurator.centerLogoSize() === 'xxxl'"
+        [class.text-amber-300]="wheelConfigurator.centerLogoSize() === 'xxxl'"
+        [class.bg-white/[0.04]]="wheelConfigurator.centerLogoSize() !== 'xxxl'"
+        [class.border-white/10]="wheelConfigurator.centerLogoSize() !== 'xxxl'"
+        [class.text-white/60]="wheelConfigurator.centerLogoSize() !== 'xxxl'">
         XXXL
       </button>
   </div>
 
   @if (selectedTab() === 'color') {
     <div class="mb-3 space-y-1">
-      <label for="center-text-input" class="block text-xs text-neutral-400 uppercase tracking-wide">
+      <label for="center-text-input" class="block text-xs text-white/40 uppercase tracking-wide">
         Center text
       </label>
       <input
@@ -134,7 +134,7 @@
         (input)="onCenterTextChange($event)"
         maxlength="24"
         placeholder="SPIN"
-        class="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-500">
+        class="w-full bg-neutral-950 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder:text-white/40">
     </div>
 
     <div id="center-panel-color" role="tabpanel" aria-labelledby="center-tab-color" class="space-y-2">
@@ -142,8 +142,8 @@
         type="color"
         [value]="wheelConfigurator.centerColor()"
         (input)="onCenterColorChange($event)"
-        class="w-full h-10 rounded cursor-pointer">
-      <p class="text-xs text-neutral-400">Color of the center circle.</p>
+        class="w-full h-10 rounded-xl cursor-pointer border border-white/10">
+      <p class="text-xs text-white/40">Color of the center circle.</p>
     </div>
   }
 
@@ -152,8 +152,8 @@
       <button
         type="button"
         (click)="fileInput.click()"
-        class="w-full py-2 rounded-lg text-sm font-semibold bg-neutral-800 text-white border border-neutral-700 hover:bg-neutral-700 hover:cursor-pointer transition-colors">
-        Upload logo
+        class="w-full py-2.5 rounded-xl text-sm font-semibold bg-white/[0.06] text-white border border-white/10 hover:bg-white/10 hover:border-white/20 hover:cursor-pointer transition-all duration-200">
+        <i class="fa-solid fa-upload mr-1.5" aria-hidden="true"></i>Upload logo
       </button>
 
       <input
@@ -178,7 +178,7 @@
             class="preview-image">
         </div>
       } @else {
-        <p class="text-xs text-neutral-400">No logo uploaded.</p>
+        <p class="text-xs text-white/40">No logo uploaded.</p>
       }
     </div>
   }

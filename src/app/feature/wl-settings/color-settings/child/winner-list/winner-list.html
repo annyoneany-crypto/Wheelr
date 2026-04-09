@@ -1,13 +1,13 @@
-<div class="mb-6 p-4 bg-neutral-900 rounded-xl border border-neutral-700">
-  <label class="block text-sm font-semibold text-yellow-400 mb-3 uppercase tracking-wider" for="toggle-winners-list">
-    Winners List
+<div class="wl-settings-card">
+  <label class="wl-settings-label" for="toggle-winners-list">
+    <i class="fa-solid fa-trophy mr-2" aria-hidden="true"></i>Winners List
   </label>
 
   <div class="flex items-center gap-3">
     <input
       id="toggle-winners-list"
       type="checkbox"
-      class="h-4 w-4 cursor-pointer"
+      class="wl-toggle"
       [checked]="wheelConfigurator.showWinnersList()"
       (change)="wheelConfigurator.setShowWinnersList($any($event.target).checked)"
     />
@@ -17,57 +17,57 @@
   </div>
 
   @if (wheelConfigurator.showWinnersList()) {
-    <div class="mt-4 border-t border-neutral-700 pt-3">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-gray-300">Panel position</p>
+    <div class="mt-4 border-t border-white/10 pt-3">
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-white/50">Panel position</p>
       <div class="grid grid-cols-2 gap-2">
         <button
           type="button"
-          class="rounded-md border px-3 py-1.5 text-sm font-semibold transition-colors hover:cursor-pointer"
-          [class.border-yellow-500]="wheelConfigurator.winnerPanelPosition() === 'left'"
-          [class.bg-yellow-500]="wheelConfigurator.winnerPanelPosition() === 'left'"
-          [class.text-neutral-900]="wheelConfigurator.winnerPanelPosition() === 'left'"
-          [class.border-neutral-700]="wheelConfigurator.winnerPanelPosition() !== 'left'"
-          [class.bg-neutral-800]="wheelConfigurator.winnerPanelPosition() !== 'left'"
-          [class.text-white]="wheelConfigurator.winnerPanelPosition() !== 'left'"
+          class="rounded-xl border px-3 py-2 text-sm font-semibold transition-all duration-200 hover:cursor-pointer"
+          [class.border-amber-400/50]="wheelConfigurator.winnerPanelPosition() === 'left'"
+          [class.bg-amber-400/15]="wheelConfigurator.winnerPanelPosition() === 'left'"
+          [class.text-amber-300]="wheelConfigurator.winnerPanelPosition() === 'left'"
+          [class.border-white/10]="wheelConfigurator.winnerPanelPosition() !== 'left'"
+          [class.bg-white/[0.04]]="wheelConfigurator.winnerPanelPosition() !== 'left'"
+          [class.text-white/70]="wheelConfigurator.winnerPanelPosition() !== 'left'"
           (click)="wheelConfigurator.setWinnerPanelPosition('left')">
           Left
         </button>
 
         <button
           type="button"
-          class="rounded-md border px-3 py-1.5 text-sm font-semibold transition-colors hover:cursor-pointer"
-          [class.border-yellow-500]="wheelConfigurator.winnerPanelPosition() === 'top'"
-          [class.bg-yellow-500]="wheelConfigurator.winnerPanelPosition() === 'top'"
-          [class.text-neutral-900]="wheelConfigurator.winnerPanelPosition() === 'top'"
-          [class.border-neutral-700]="wheelConfigurator.winnerPanelPosition() !== 'top'"
-          [class.bg-neutral-800]="wheelConfigurator.winnerPanelPosition() !== 'top'"
-          [class.text-white]="wheelConfigurator.winnerPanelPosition() !== 'top'"
+          class="rounded-xl border px-3 py-2 text-sm font-semibold transition-all duration-200 hover:cursor-pointer"
+          [class.border-amber-400/50]="wheelConfigurator.winnerPanelPosition() === 'top'"
+          [class.bg-amber-400/15]="wheelConfigurator.winnerPanelPosition() === 'top'"
+          [class.text-amber-300]="wheelConfigurator.winnerPanelPosition() === 'top'"
+          [class.border-white/10]="wheelConfigurator.winnerPanelPosition() !== 'top'"
+          [class.bg-white/[0.04]]="wheelConfigurator.winnerPanelPosition() !== 'top'"
+          [class.text-white/70]="wheelConfigurator.winnerPanelPosition() !== 'top'"
           (click)="wheelConfigurator.setWinnerPanelPosition('top')">
           Top
         </button>
 
         <button
           type="button"
-          class="rounded-md border px-3 py-1.5 text-sm font-semibold transition-colors hover:cursor-pointer"
-          [class.border-yellow-500]="wheelConfigurator.winnerPanelPosition() === 'right'"
-          [class.bg-yellow-500]="wheelConfigurator.winnerPanelPosition() === 'right'"
-          [class.text-neutral-900]="wheelConfigurator.winnerPanelPosition() === 'right'"
-          [class.border-neutral-700]="wheelConfigurator.winnerPanelPosition() !== 'right'"
-          [class.bg-neutral-800]="wheelConfigurator.winnerPanelPosition() !== 'right'"
-          [class.text-white]="wheelConfigurator.winnerPanelPosition() !== 'right'"
+          class="rounded-xl border px-3 py-2 text-sm font-semibold transition-all duration-200 hover:cursor-pointer"
+          [class.border-amber-400/50]="wheelConfigurator.winnerPanelPosition() === 'right'"
+          [class.bg-amber-400/15]="wheelConfigurator.winnerPanelPosition() === 'right'"
+          [class.text-amber-300]="wheelConfigurator.winnerPanelPosition() === 'right'"
+          [class.border-white/10]="wheelConfigurator.winnerPanelPosition() !== 'right'"
+          [class.bg-white/[0.04]]="wheelConfigurator.winnerPanelPosition() !== 'right'"
+          [class.text-white/70]="wheelConfigurator.winnerPanelPosition() !== 'right'"
           (click)="wheelConfigurator.setWinnerPanelPosition('right')">
           Right
         </button>
 
         <button
           type="button"
-          class="rounded-md border px-3 py-1.5 text-sm font-semibold transition-colors hover:cursor-pointer"
-          [class.border-yellow-500]="wheelConfigurator.winnerPanelPosition() === 'bottom'"
-          [class.bg-yellow-500]="wheelConfigurator.winnerPanelPosition() === 'bottom'"
-          [class.text-neutral-900]="wheelConfigurator.winnerPanelPosition() === 'bottom'"
-          [class.border-neutral-700]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
-          [class.bg-neutral-800]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
-          [class.text-white]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
+          class="rounded-xl border px-3 py-2 text-sm font-semibold transition-all duration-200 hover:cursor-pointer"
+          [class.border-amber-400/50]="wheelConfigurator.winnerPanelPosition() === 'bottom'"
+          [class.bg-amber-400/15]="wheelConfigurator.winnerPanelPosition() === 'bottom'"
+          [class.text-amber-300]="wheelConfigurator.winnerPanelPosition() === 'bottom'"
+          [class.border-white/10]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
+          [class.bg-white/[0.04]]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
+          [class.text-white/70]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
           (click)="wheelConfigurator.setWinnerPanelPosition('bottom')">
           Bottom
         </button>
