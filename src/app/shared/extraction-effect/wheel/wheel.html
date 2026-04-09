@@ -2,30 +2,135 @@
     
     <!-- Win pointer -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 drop-shadow-[0_10px_18px_rgba(0,0,0,0.45)]">
-      <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path
-          d="M32 58C24 47 18 39 18 29C18 18 24.7 10 32 10C39.3 10 46 18 46 29C46 39 40 47 32 58Z"
-          [attr.fill]="wheelConfigurator.pointerContrastColor()"
-          [attr.stroke]="wheelConfigurator.pointerSliceColor()"
-          stroke-width="2"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M32 53C26.2 44.9 22.5 38.6 22.5 29.8C22.5 21.5 27.2 15.2 32 15.2C36.8 15.2 41.5 21.5 41.5 29.8C41.5 38.6 37.8 44.9 32 53Z"
-          fill="none"
-          [attr.stroke]="wheelConfigurator.pointerSliceColor()"
-          stroke-width="1.8"
-          opacity="0.72"
-        />
-        <ellipse
-          cx="28"
-          cy="23"
-          rx="3"
-          ry="5"
-          [attr.fill]="wheelConfigurator.pointerSliceColor()"
-          opacity="0.2"
-        />
-      </svg>
+      @switch (wheelConfigurator.pointerType()) {
+        @case ('arrow') {
+          <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rotate-180" aria-hidden="true">
+            <path
+              d="M32 8L18 52H28L32 40L36 52H46L32 8Z"
+              [attr.fill]="wheelConfigurator.pointerContrastColor()"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M32 16L22 46H28.5L32 36L35.5 46H42L32 16Z"
+              fill="none"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="1.5"
+              opacity="0.72"
+            />
+          </svg>
+        }
+        @case ('finger') {
+          <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rotate-180" aria-hidden="true">
+            <path
+              d="M32 6C29 6 27 8 27 11V34L21 28C19 26 16 26 14 28C12 30 12 33 14 35L28 54C29 56 31 57 33 57H44C48 57 51 54 51 50V30C51 27 49 25 46 25C45 25 44 25.5 43 26V23C43 20 41 18 38 18C37.5 18 37 18.1 36.5 18.3V11C36.5 8 34.5 6 32 6Z"
+              [attr.fill]="wheelConfigurator.pointerContrastColor()"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M30 11C30 9.5 31 8.5 32 8.5C33 8.5 34.5 9.5 34.5 11V22"
+              fill="none"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="1.5"
+              opacity="0.5"
+              stroke-linecap="round"
+            />
+          </svg>
+        }
+        @case ('star') {
+          <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rotate-180" aria-hidden="true">
+            <path
+              d="M32 4L39 24L60 24L43 37L49 58L32 45L15 58L21 37L4 24L25 24Z"
+              [attr.fill]="wheelConfigurator.pointerContrastColor()"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M32 12L37 26L52 26L40 35L44 50L32 42L20 50L24 35L12 26L27 26Z"
+              fill="none"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="1.5"
+              opacity="0.5"
+            />
+          </svg>
+        }
+        @case ('diamond') {
+          <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M32 4L56 32L32 60L8 32Z"
+              [attr.fill]="wheelConfigurator.pointerContrastColor()"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M32 12L50 32L32 52L14 32Z"
+              fill="none"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="1.5"
+              opacity="0.5"
+            />
+            <ellipse
+              cx="26"
+              cy="26"
+              rx="3"
+              ry="4"
+              [attr.fill]="wheelConfigurator.pointerSliceColor()"
+              opacity="0.2"
+              transform="rotate(-45 26 26)"
+            />
+          </svg>
+        }
+        @case ('bolt') {
+          <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M38 4L14 36H28L24 60L50 26H36Z"
+              [attr.fill]="wheelConfigurator.pointerContrastColor()"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M36.5 10L18 34H28.5L25.5 54L46 28.5H35.5Z"
+              fill="none"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="1.5"
+              opacity="0.5"
+            />
+          </svg>
+        }
+        @default {
+          <!-- Drop (default) -->
+          <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path
+              d="M32 58C24 47 18 39 18 29C18 18 24.7 10 32 10C39.3 10 46 18 46 29C46 39 40 47 32 58Z"
+              [attr.fill]="wheelConfigurator.pointerContrastColor()"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="2"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M32 53C26.2 44.9 22.5 38.6 22.5 29.8C22.5 21.5 27.2 15.2 32 15.2C36.8 15.2 41.5 21.5 41.5 29.8C41.5 38.6 37.8 44.9 32 53Z"
+              fill="none"
+              [attr.stroke]="wheelConfigurator.pointerSliceColor()"
+              stroke-width="1.8"
+              opacity="0.72"
+            />
+            <ellipse
+              cx="28"
+              cy="23"
+              rx="3"
+              ry="5"
+              [attr.fill]="wheelConfigurator.pointerSliceColor()"
+              opacity="0.2"
+            />
+          </svg>
+        }
+      }
     </div>
 
     <!-- Canvas Wheel -->

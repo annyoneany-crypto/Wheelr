@@ -93,5 +93,120 @@
       </button>
     </div>
   </div>
-</div>
 
+  <div class="space-y-2">
+    <div class="text-xs font-semibold uppercase tracking-wider text-white/50">
+      Wheel Pointer
+    </div>
+
+    <div class="grid grid-cols-3 gap-2">
+      <button
+        type="button"
+        (click)="setPointerType('drop')"
+        class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'drop'"
+        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'drop'"
+        [class.text-amber-300]="wheelConfigurator.pointerType() === 'drop'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'drop'"
+        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'drop'"
+        [class.border-white/10]="wheelConfigurator.pointerType() !== 'drop'"
+        [class.text-white/70]="wheelConfigurator.pointerType() !== 'drop'"
+        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'drop'">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 58C24 47 18 39 18 29C18 18 24.7 10 32 10C39.3 10 46 18 46 29C46 39 40 47 32 58Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
+        </svg>
+        Drop
+      </button>
+
+      <button
+        type="button"
+        (click)="setPointerType('arrow')"
+        class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'arrow'"
+        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'arrow'"
+        [class.text-amber-300]="wheelConfigurator.pointerType() === 'arrow'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'arrow'"
+        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'arrow'"
+        [class.border-white/10]="wheelConfigurator.pointerType() !== 'arrow'"
+        [class.text-white/70]="wheelConfigurator.pointerType() !== 'arrow'"
+        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'arrow'">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 8L18 52H28L32 40L36 52H46L32 8Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        Arrow
+      </button>
+
+      <button
+        type="button"
+        (click)="setPointerType('finger')"
+        class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'finger'"
+        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'finger'"
+        [class.text-amber-300]="wheelConfigurator.pointerType() === 'finger'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'finger'"
+        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'finger'"
+        [class.border-white/10]="wheelConfigurator.pointerType() !== 'finger'"
+        [class.text-white/70]="wheelConfigurator.pointerType() !== 'finger'"
+        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'finger'">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 6C29 6 27 8 27 11V34L21 28C19 26 16 26 14 28C12 30 12 33 14 35L28 54C29 56 31 57 33 57H44C48 57 51 54 51 50V30C51 27 49 25 46 25C45 25 44 25.5 43 26V23C43 20 41 18 38 18C37.5 18 37 18.1 36.5 18.3V11C36.5 8 34.5 6 32 6Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        Finger
+      </button>
+
+      <button
+        type="button"
+        (click)="setPointerType('star')"
+        class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'star'"
+        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'star'"
+        [class.text-amber-300]="wheelConfigurator.pointerType() === 'star'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'star'"
+        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'star'"
+        [class.border-white/10]="wheelConfigurator.pointerType() !== 'star'"
+        [class.text-white/70]="wheelConfigurator.pointerType() !== 'star'"
+        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'star'">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 4L39 24L60 24L43 37L49 58L32 45L15 58L21 37L4 24L25 24Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+        Star
+      </button>
+
+      <button
+        type="button"
+        (click)="setPointerType('diamond')"
+        class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'diamond'"
+        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'diamond'"
+        [class.text-amber-300]="wheelConfigurator.pointerType() === 'diamond'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'diamond'"
+        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'diamond'"
+        [class.border-white/10]="wheelConfigurator.pointerType() !== 'diamond'"
+        [class.text-white/70]="wheelConfigurator.pointerType() !== 'diamond'"
+        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'diamond'">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M32 4L56 32L32 60L8 32Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        Diamond
+      </button>
+
+      <button
+        type="button"
+        (click)="setPointerType('bolt')"
+        class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
+        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'bolt'"
+        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'bolt'"
+        [class.text-amber-300]="wheelConfigurator.pointerType() === 'bolt'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'bolt'"
+        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'bolt'"
+        [class.border-white/10]="wheelConfigurator.pointerType() !== 'bolt'"
+        [class.text-white/70]="wheelConfigurator.pointerType() !== 'bolt'"
+        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'bolt'">
+        <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M38 4L14 36H28L24 60L50 26H36Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>
+        Bolt
+      </button>
+    </div>
+  </div>
+</div>

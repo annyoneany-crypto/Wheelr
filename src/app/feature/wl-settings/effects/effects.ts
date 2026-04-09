@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
-import type { effectType } from '../../../modules/classes/custom-type';
+import type { effectType, pointerType } from '../../../modules/classes/custom-type';
 
 @Component({
   selector: 'app-effects',
@@ -21,5 +21,8 @@ export class Effects {
     this.wheelConfigurator.resetWinnerEffect();
     this.wheelConfigurator.winnerEffect.set(effect);
   }
-}
 
+  setPointerType(pointer: pointerType): void {
+    this.wheelConfigurator.pointerType.set(pointer);
+  }
+}

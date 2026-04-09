@@ -1,5 +1,5 @@
 import { ColorPalette } from './global_function';
-import type { effectType } from '../modules/classes/custom-type';
+import type { effectType, pointerType } from '../modules/classes/custom-type';
 
 export type WinnerPanelPosition = 'left' | 'top' | 'right' | 'bottom';
 
@@ -47,6 +47,7 @@ export interface WheelSnapshotEntry {
   visibleWheelCount: number;
   showWinnersList: boolean;
   winnerPanelPosition: WinnerPanelPosition;
+  pointerType: pointerType;
 }
 
 export interface WheelSettingsSnapshot {
@@ -72,4 +73,5 @@ export interface ActiveWheelSnapshotState {
   visibleWheelCount: number;
   showWinnersList: boolean;
   winnerPanelPosition: WinnerPanelPosition;
+  pointerType: pointerType;
 }

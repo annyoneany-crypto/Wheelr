@@ -22,7 +22,7 @@ import {
 } from './wheel-configurator-storage';
 import { WheelDisplayConfig, WheelSettingsSnapshot, WheelWorkspaceMeta } from './wheel-configurator.models';
 import { CloudWheelSyncItem } from './wheel-cloud-repository.service';
-import type { effectType } from '../modules/classes/custom-type';
+import type { effectType, pointerType } from '../modules/classes/custom-type';
 
 export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.models';
 
@@ -97,6 +97,7 @@ export class WheelConfigurator {
 
   wheelView = signal<'wheel' | 'linear' | 'cards'>('wheel');
   winnerEffect = signal<effectType>('fire');
+  pointerType = signal<pointerType>('drop');
 
   palettes = signal<ColorPalette[]>(DEFAULT_PALETTES);
 
@@ -329,6 +330,7 @@ export class WheelConfigurator {
       visibleWheelCount: this.visibleWheelCount(),
       showWinnersList: this.showWinnersList(),
       winnerPanelPosition: this.winnerPanelPosition(),
+      pointerType: this.pointerType(),
     });
   }
 
@@ -891,6 +893,7 @@ export class WheelConfigurator {
     this.centerLogoSize.set('m');
     this.wheelView.set('wheel');
     this.winnerEffect.set('fire');
+    this.pointerType.set('drop');
     this.spinDurationMs.set(3000);
     this.soundEnabled.set(true);
     this.customAudio.set('');
@@ -964,6 +967,7 @@ export class WheelConfigurator {
     const storedShowWinnersList = readJson<boolean>(this.storageKey(STORAGE_KEYS.showWinnersList));
     const storedWinnerPanelPosition =
       readJson<'left' | 'top' | 'right' | 'bottom'>(this.storageKey(STORAGE_KEYS.winnerPanelPosition));
+    const storedPointerType = readJson<pointerType>(this.storageKey(STORAGE_KEYS.pointerType));
 
     const effectivePalettes = activeUnifiedWheel?.palettes ?? storedPalettes;
     const effectiveSelectedName = activeUnifiedWheel?.selectedPaletteName ?? storedSelectedName;
@@ -981,6 +985,7 @@ export class WheelConfigurator {
     const effectiveShowWinnersList = activeUnifiedWheel?.showWinnersList ?? storedShowWinnersList;
     const effectiveWinnerPanelPosition =
       activeUnifiedWheel?.winnerPanelPosition ?? storedWinnerPanelPosition;
+    const effectivePointerType = activeUnifiedWheel?.pointerType ?? storedPointerType;
 
     if (Array.isArray(effectivePalettes) && effectivePalettes.length) {
       // Merge defaults (new app versions) with stored palettes (including custom ones)
@@ -1061,6 +1066,17 @@ export class WheelConfigurator {
       effectiveWinnerEffect === 'applause'
     ) {
       this.winnerEffect.set(effectiveWinnerEffect);
+    }
+
+    if (
+      effectivePointerType === 'drop' ||
+      effectivePointerType === 'arrow' ||
+      effectivePointerType === 'finger' ||
+      effectivePointerType === 'star' ||
+      effectivePointerType === 'diamond' ||
+      effectivePointerType === 'bolt'
+    ) {
+      this.pointerType.set(effectivePointerType);
     }
 
     const palettes = this.palettes();
@@ -1213,6 +1229,11 @@ export class WheelConfigurator {
     });
 
     effect(() => {
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.pointerType), this.pointerType());
+    });
+
+    effect(() => {
       const palettes = this.palettes();
       const selectedName = this.selectedPalette().name;
       const stillExists = palettes.some(p => p.name === selectedName);
@@ -1298,6 +1319,7 @@ export class WheelConfigurator {
       this.centerLogoSize();
       this.wheelView();
       this.winnerEffect();
+      this.pointerType();
       this.spinDurationMs();
       this.soundEnabled();
       this.countdownEnabled();

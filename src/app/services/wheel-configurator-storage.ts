@@ -14,7 +14,7 @@ import {
   WheelSnapshotEntry,
   WheelWorkspaceMeta,
 } from './wheel-configurator.models';
-import type { effectType } from '../modules/classes/custom-type';
+import type { effectType, pointerType } from '../modules/classes/custom-type';
 
 export function storageKeyForWorkspace(baseKey: string, workspaceId: string): string {
   return `${baseKey}.${workspaceId}`;
@@ -97,6 +97,8 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     readJson<'left' | 'top' | 'right' | 'bottom'>(
       storageKeyForWorkspace(STORAGE_KEYS.winnerPanelPosition, workspaceId)
     ) ?? 'left';
+  const pointerType =
+    readJson<pointerType>(storageKeyForWorkspace(STORAGE_KEYS.pointerType, workspaceId)) ?? 'drop';
 
   return {
     wheelID: workspaceId,
@@ -117,6 +119,7 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     visibleWheelCount: Math.min(4, Math.max(1, Math.floor(visibleWheelCount))),
     showWinnersList,
     winnerPanelPosition,
+    pointerType,
   };
 }
 
@@ -140,6 +143,7 @@ export function buildSnapshotEntryFromState(state: ActiveWheelSnapshotState): Wh
     visibleWheelCount: state.visibleWheelCount,
     showWinnersList: state.showWinnersList,
     winnerPanelPosition: state.winnerPanelPosition,
+    pointerType: state.pointerType,
   };
 }
 
