@@ -1,6 +1,6 @@
-# GiveawayWheel - Free Online Giveaway & Prize Wheel Spinner
+# Wheelr - Free Online Giveaway & Prize Wheel Spinner
 
-**GiveawayWheel** is a free, feature-rich web application for creating and spinning customizable giveaway wheels. Perfect for raffles, contests, online giveaways, and promotional events. Built with modern web technologies including Angular and TypeScript.
+**Wheelr** is a free, feature-rich web application for creating and spinning customizable giveaway wheels. Perfect for raffles, contests, online giveaways, and promotional events. Built with modern web technologies including Angular and TypeScript.
 
 ## 🎡 Features
 
