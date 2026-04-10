@@ -18,7 +18,7 @@
 ## 🚀 Quick Start
 
 ### Online
-Simply visit [Wheelr.app](https://wheelr.xyz/) and start creating your giveaway wheel immediately.
+Simply visit [Wheelr](https://wheelr.xyz/) and start creating your giveaway wheel immediately.
 
 ### Development server
 
@@ -53,20 +53,6 @@ To build the project for production, run:
 
 ```bash
 ng build --configuration production
-```
-
-### Running Tests
-
-**Unit tests** with [Vitest](https://vitest.dev/):
-
-```bash
-ng test
-```
-
-**End-to-end tests**:
-
-```bash
-ng e2e
 ```
 
 ## 📋 Project Structure
@@ -104,4 +90,4 @@ Created by **AnnyoneAny** - [Twitter/X](https://x.com/AnnyoneAny)
 
 ---
 
-**Ready to create your giveaway wheel?** Start at [Wheelr.app](https://wheelr.xyz) today!
+**Ready to create your giveaway wheel?** Start at [Wheelr](https://wheelr.xyz) today!
