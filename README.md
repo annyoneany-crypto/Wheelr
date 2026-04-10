@@ -5,7 +5,7 @@
 
 **Wheelr** is a free, feature-rich web application for creating and spinning customizable giveaway wheels. Perfect for raffles, contests, online giveaways, and promotional events. Built with modern web technologies including Angular and TypeScript.
 
-🌐 **[Go to the Web Application](https://wheelr.xyz)** | 📖 **[Documentation](https://github.com/annyoneany-crypto/Wheelr/wiki)**
+🌐 **[Go to the Web Application](https://wheelr.xyz)** | 📖 **[Documentation](https://annyoneany-crypto.github.io/Wheelr)**
 
 # Wheelr - Free Online Giveaway & Prize Wheel Spinner
 
