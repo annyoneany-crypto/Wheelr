@@ -4,7 +4,7 @@ import { LinearWheel } from '../../shared/extraction-effect/linear-wheel/linear-
 import { Wheel } from '../../shared/extraction-effect/wheel/wheel';
 import { CardsEffect } from '../../shared/extraction-effect/cards-draw/cards-draw';
 import { FireEffect } from '../../shared/winner-effect/fire-effect/fire-effect';
-import { ActivatedRoute, NavigationEnd, Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, RouterModule } from '@angular/router';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { contrastForHex } from '../../services/global_function';
@@ -679,13 +679,28 @@ export class WheelPage {
   }
 
   private syncPanelStateFromRoute(): void {
-    const panelSnapshot = this.route.snapshot.children.find((child) => child.outlet === 'panel');
+    const panelSnapshot = this.findOutletSnapshot(this.router.routerState.snapshot.root, 'panel');
     const panelPath = panelSnapshot?.url[0]?.path ?? '';
     const isOpen = panelPath.length > 0;
 
     this.currentPanelPath.set(panelPath);
     this.showPanelSettings.set(isOpen);
     this.displyPanel.set(!isOpen);
+  }
+
+  private findOutletSnapshot(snapshot: ActivatedRouteSnapshot, outletName: string): ActivatedRouteSnapshot | null {
+    if (snapshot.outlet === outletName) {
+      return snapshot;
+    }
+
+    for (const child of snapshot.children) {
+      const match = this.findOutletSnapshot(child, outletName);
+      if (match) {
+        return match;
+      }
+    }
+
+    return null;
   }
 
   closeUserPaneltransitionEnd(): void {
