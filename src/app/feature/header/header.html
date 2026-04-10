@@ -62,7 +62,7 @@
     </div>
 </header>
 
-@if (isMenuOpen()) {
+<div [class.hidden]="!isMenuOpen()">
     <div
         class="fixed inset-0 z-80 bg-neutral-950/95 backdrop-blur-2xl flex items-center justify-center"
         role="dialog"
@@ -113,6 +113,16 @@
                         <span class="group-hover:text-amber-300 transition-colors">💝 Donation</span>
                     </a>
                 </li>
+                <li>
+                    <a
+                        href="https://annyoneany-crypto.github.io/Wheelr/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Open Wheelr wiki (opens in a new tab)"
+                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.12)] transition-all duration-300">
+                        <span class="group-hover:text-amber-300 transition-colors">📖 Wiki</span>
+                    </a>
+                </li>
             </ul>
 
         </nav>
@@ -132,7 +142,7 @@
                 class="h-14 w-14 md:h-14 md:w-14" />
         </a>
     </div>
-}
+</div>
 
 <wl-auth [isOpen]="isAuthModalOpen()" (closeRequested)="closeAuthModal()"></wl-auth>
 
