@@ -1,4 +1,4 @@
-# GiveawayWheel - SEO Optimization Configuration Guide
+# Wheelr - SEO Optimization Configuration Guide
 
 ## Implemented SEO Improvements
 

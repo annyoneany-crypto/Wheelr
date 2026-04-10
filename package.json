@@ -1,6 +1,8 @@
 {
-  "name": "giveaway-wheel",
-  "version": "0.0.0",
+  "name": "wheelr",
+  "version": "1.0.0",
+  "description": "Wheelr is a free, feature-rich web application for creating and spinning customizable giveaway wheels. Perfect for raffles, contests, online giveaways, and promotional events. Built with modern web technologies including Angular and TypeScript.",
+  "keywords": ["wheelr", "giveaway", "raffle", "contest", "online giveaway", "promotional event", "angular", "typescript"],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

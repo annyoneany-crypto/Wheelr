@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "GiveawayWheel": {
+    "wheelr": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -61,10 +61,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "GiveawayWheel:build:production"
+              "buildTarget": "wheelr:build:production"
             },
             "development": {
-              "buildTarget": "GiveawayWheel:build:development"
+              "buildTarget": "wheelr:build:development"
             }
           },
           "defaultConfiguration": "development"
