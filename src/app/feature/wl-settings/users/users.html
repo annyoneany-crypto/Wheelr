@@ -4,14 +4,14 @@
     <button
       type="button"
       (click)="cleanAndShuffleUsers()"
-      class="flex-1 py-2.5 rounded-xl text-sm font-semibold bg-gradient-to-b from-white/[0.08] to-white/[0.03] text-white border border-white/10 hover:border-amber-400/40 hover:bg-amber-400/10 transition-all duration-200">
-      <i class="fa-solid fa-shuffle mr-1.5" aria-hidden="true"></i>Shuffle
+      class="flex-1 py-2.5 rounded-xl text-sm font-semibold bg-white/[0.06] hover:cursor-pointer text-white border border-white/10 hover:border-amber-400/40 hover:bg-amber-400/10 transition-all duration-200">
+      <i class="fa-solid fa-shuffle mr-1.5" aria-hidden="true"></i>Shuffle Names
     </button>
 
     <button
       type="button"
       (click)="clearUsers()"
-      class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-red-500/10 text-red-300 border border-red-500/20 hover:bg-red-500/20 hover:border-red-400/40 transition-all duration-200">
+      class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-red-500/10 text-white border border-red-500/20 hover:bg-red-500/20 hover:border-red-400/40 transition-all duration-200 hover:cursor-pointer">
       <i class="fa-solid fa-trash-can mr-1.5" aria-hidden="true"></i>Clear
     </button>
   </div>
@@ -43,7 +43,7 @@
     <button
       type="button"
       (click)="addRepeated()"
-      class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-gradient-to-b from-amber-400 to-amber-500 text-neutral-950 hover:from-amber-300 hover:to-amber-400 shadow-[0_2px_10px_rgba(245,158,11,0.25)] transition-all duration-200 active:scale-95"
+      class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-blue-500/30 text-white hover:border-blue-600/40 hover:bg-blue-600/60 transition-all duration-200 active:scale-95 hover:cursor-pointer"
     >
       <i class="fa-solid fa-plus mr-1" aria-hidden="true"></i>Add
     </button>
@@ -72,7 +72,7 @@
     <button
       type="button"
       (click)="removeNameFromUsers()"
-      class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-red-500/10 text-red-300 border border-red-500/20 hover:bg-red-500/20 hover:border-red-400/40 transition-all duration-200"
+      class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-red-500/10 text-white border border-red-500/20 hover:bg-red-500/20 hover:border-red-400/40 transition-all duration-200 hover:cursor-pointer"
     >
       <i class="fa-solid fa-minus mr-1" aria-hidden="true"></i>Remove
     </button>
