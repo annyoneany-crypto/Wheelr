@@ -4,13 +4,13 @@
 
 ### The Best Free Online Spinning Wheel — Here's the Proof
 
-[![Try Wheelr](https://img.shields.io/badge/🚀_Try_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://wheelr.xyz)
+[![Try Wheelr](https://img.shields.io/badge/🚀_Try_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz)
 
 </div>
 
 ---
 
-Choosing the right **random spinner wheel** can make or break your giveaway, raffle, or classroom activity. Here's why thousands of users trust [Wheelr](https://wheelr.xyz) as their go-to **online wheel spinner**.
+Choosing the right **random spinner wheel** can make or break your giveaway, raffle, or classroom activity. Here's why thousands of users trust [Wheelr](https://www.wheelr.xyz) as their go-to **online wheel spinner**.
 
 ---
 
@@ -19,7 +19,7 @@ Choosing the right **random spinner wheel** can make or break your giveaway, raf
 ![Free](https://img.shields.io/badge/Price-$0_Forever-00C853?style=flat-square)
 ![No Signup](https://img.shields.io/badge/Signup-Not_Required-2196F3?style=flat-square)
 
-Unlike many spinning wheel tools that lock features behind a paywall, **Wheelr is completely free**. You don't need to create an account to start spinning. Just open [wheelr.xyz](https://wheelr.xyz), add your entries, and go.
+Unlike many spinning wheel tools that lock features behind a paywall, **Wheelr is completely free**. You don't need to create an account to start spinning. Just open [wheelr.xyz](https://www.wheelr.xyz), add your entries, and go.
 
 > 🚫 No ads · 🚫 No trials · 🚫 No feature gates
 >
@@ -170,7 +170,7 @@ Your data stays on your device by default. Names and settings are stored in your
 
 ### Ready to spin?
 
-[![Open Wheelr](https://img.shields.io/badge/🎡_Create_Your_Wheel-wheelr.xyz-6C3CE1?style=for-the-badge)](https://wheelr.xyz)
+[![Open Wheelr](https://img.shields.io/badge/🎡_Create_Your_Wheel-wheelr.xyz-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz)
 
 </div>
 

@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://wheelr.xyz/</loc>
+    <loc>https://www.wheelr.xyz/</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
-      <image:loc>https://wheelr.xyz/Wheelr.webp</image:loc>
+      <image:loc>https://www.wheelr.xyz/Wheelr.webp</image:loc>
       <image:title>Wheelr - Free Online Giveaway Wheel Spinner</image:title>
       <image:caption>Wheelr is a free giveaway wheel for raffles, classrooms, live streams and events</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://wheelr.xyz/Logo.webp</image:loc>
+      <image:loc>https://www.wheelr.xyz/Logo.webp</image:loc>
       <image:title>Wheelr Logo</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://wheelr.xyz/info</loc>
+    <loc>https://www.wheelr.xyz/info</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://wheelr.xyz/donation</loc>
+    <loc>https://www.wheelr.xyz/donation</loc>
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>

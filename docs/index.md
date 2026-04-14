@@ -4,7 +4,7 @@
 
 ### Giveaways · Raffles · Random Picks · Classroom Tools
 
-[![Try Wheelr](https://img.shields.io/badge/🚀_Try_Wheelr_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://wheelr.xyz)
+[![Try Wheelr](https://img.shields.io/badge/🚀_Try_Wheelr_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz)
 [![100% Free](https://img.shields.io/badge/💰_Price-FREE_Forever-00C853?style=for-the-badge)](#)
 [![No Ads](https://img.shields.io/badge/🚫_Ads-ZERO-FF6D00?style=for-the-badge)](#)
 
@@ -43,7 +43,7 @@ No download. No signup. No paywall.
 
 <div align="center">
 
-[![Open Wheelr](https://img.shields.io/badge/Open_Wheelr-wheelr.xyz-6C3CE1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThjLTQuNDEgMC04LTMuNTktOC04czMuNTktOCA4LTggOCAzLjU5IDggOC0zLjU5IDgtOCA4eiIvPjwvc3ZnPg==)](https://wheelr.xyz)
+[![Open Wheelr](https://img.shields.io/badge/Open_Wheelr-wheelr.xyz-6C3CE1?style=flat-square&logo=data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTEyIDJDNi40OCAyIDIgNi40OCAyIDEyczQuNDggMTAgMTAgMTAgMTAtNC40OCAxMC0xMFMxNy41MiAyIDEyIDJ6bTAgMThjLTQuNDEgMC04LTMuNTktOC04czMuNTktOCA4LTggOCAzLjU5IDggOC0zLjU5IDgtOCA4eiIvPjwvc3ZnPg==)](https://www.wheelr.xyz)
 
 </div>
 

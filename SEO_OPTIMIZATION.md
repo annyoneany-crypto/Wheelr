@@ -133,9 +133,9 @@ location ~* \\.html$ {
 ```
 
 ### Google Search Console
-1. Add sitemap: https://wheelr.xyz/sitemap.xml
+1. Add sitemap: https://www.wheelr.xyz/sitemap.xml
 2. Verify domain ownership
-3. Submit robots.txt: https://wheelr.xyz/robots.txt
+3. Submit robots.txt: https://www.wheelr.xyz/robots.txt
 4. Monitor search performance and indexing
 
 ### Bing Webmaster Tools

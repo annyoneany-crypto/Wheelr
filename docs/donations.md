@@ -4,14 +4,14 @@
 
 ### Help Keep Wheelr Free Forever
 
-[![Donate](https://img.shields.io/badge/💜_Donate_Now-wheelr.xyz/donation-6C3CE1?style=for-the-badge)](https://wheelr.xyz/donation)
+[![Donate](https://img.shields.io/badge/💜_Donate_Now-wheelr.xyz/donation-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz/donation)
 [![Free Forever](https://img.shields.io/badge/Price-FREE_Forever-00C853?style=for-the-badge)](#)
 
 </div>
 
 ---
 
-[Wheelr](https://wheelr.xyz) is a **free, ad-free spinning wheel tool** built and maintained by a single independent developer. There are no premium tiers, no paywalls, no hidden fees. **Every feature is available to everyone.**
+[Wheelr](https://www.wheelr.xyz) is a **free, ad-free spinning wheel tool** built and maintained by a single independent developer. There are no premium tiers, no paywalls, no hidden fees. **Every feature is available to everyone.**
 
 > 💜 If Wheelr has been useful to you — for streaming giveaways, classroom activities, events, or just fun — consider making a small donation to support ongoing development.
 
@@ -23,7 +23,7 @@ Running a web application costs real money:
 
 | | Cost | What It Covers |
 |:---:|---|---|
-| 🌐 | **Hosting & domain** | Keeping [wheelr.xyz](https://wheelr.xyz) online 24/7 |
+| 🌐 | **Hosting & domain** | Keeping [wheelr.xyz](https://www.wheelr.xyz) online 24/7 |
 | 🔥 | **Firebase services** | Cloud storage, authentication, and database |
 | 💻 | **Development time** | Building new features, fixing bugs, maintaining code |
 | 🔒 | **SSL certificate** | Keeping your data secure with HTTPS |
@@ -51,7 +51,7 @@ The easiest way to support Wheelr. **One-time or recurring** — any amount help
 
 > 💳 Supports **credit cards**, **debit cards**, **Apple Pay**, and **Google Pay**.
 
-➡️ **[Donate via Buy Me a Coffee](https://wheelr.xyz/donation)**
+➡️ **[Donate via Buy Me a Coffee](https://www.wheelr.xyz/donation)**
 
 ---
 
@@ -79,7 +79,7 @@ If you prefer cryptocurrency, Wheelr accepts **AVAX** on the **Avalanche C-Chain
 
 > 💡 **Don't have AVAX?** Buy it on exchanges like Coinbase, Binance, or KuCoin and send it to your MetaMask wallet.
 
-➡️ **[Donate via AVAX](https://wheelr.xyz/donation)**
+➡️ **[Donate via AVAX](https://www.wheelr.xyz/donation)**
 
 ---
 
@@ -104,7 +104,7 @@ Not in a position to donate? **No problem** — there are free ways to help:
 |:---:|---|---|
 | ⭐ | **[Leave a review](./feedback.md)** | Trustpilot, Product Hunt, IndieHackers |
 | 📣 | **Share Wheelr** | Social media, Discord, Reddit |
-| 🔗 | **Link to [wheelr.xyz](https://wheelr.xyz)** | Blog, stream description, resource list |
+| 🔗 | **Link to [wheelr.xyz](https://www.wheelr.xyz)** | Blog, stream description, resource list |
 | 🐛 | **Report bugs** | User feedback drives development |
 
 ---
@@ -146,7 +146,7 @@ Not in a position to donate? **No problem** — there are free ways to help:
 
 ### 💜 Keep the Wheel Spinning
 
-[![Donate Now](https://img.shields.io/badge/💜_Donate_Now-wheelr.xyz/donation-6C3CE1?style=for-the-badge)](https://wheelr.xyz/donation)
+[![Donate Now](https://img.shields.io/badge/💜_Donate_Now-wheelr.xyz/donation-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz/donation)
 
 *Thank you for supporting independent development.* 🎡
 

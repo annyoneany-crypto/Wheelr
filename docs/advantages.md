@@ -4,13 +4,13 @@
 
 ### Benefits for Streamers, Teachers & Event Hosts
 
-[![Try Wheelr](https://img.shields.io/badge/🚀_Try_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://wheelr.xyz)
+[![Try Wheelr](https://img.shields.io/badge/🚀_Try_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz)
 
 </div>
 
 ---
 
-[Wheelr](https://wheelr.xyz) isn't just another **random name picker**. It's a full-featured **giveaway wheel platform** designed to save you time, impress your audience, and make random selection genuinely fun.
+[Wheelr](https://www.wheelr.xyz) isn't just another **random name picker**. It's a full-featured **giveaway wheel platform** designed to save you time, impress your audience, and make random selection genuinely fun.
 
 ---
 
@@ -23,7 +23,7 @@
 
 ### Instant Setup, Zero Installation
 
-Open [wheelr.xyz](https://wheelr.xyz) in any browser and you're ready. **No software to download**, no extensions to install, no signup forms to fill out. Paste your list of names, hit spin — done.
+Open [wheelr.xyz](https://www.wheelr.xyz) in any browser and you're ready. **No software to download**, no extensions to install, no signup forms to fill out. Paste your list of names, hit spin — done.
 
 </td>
 </tr>
@@ -210,7 +210,7 @@ Wheelr gives you a **professional-grade random picker** with the customization d
 
 <div align="center">
 
-[![Start Spinning](https://img.shields.io/badge/🎡_Start_Spinning_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://wheelr.xyz)
+[![Start Spinning](https://img.shields.io/badge/🎡_Start_Spinning_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz)
 
 </div>
 

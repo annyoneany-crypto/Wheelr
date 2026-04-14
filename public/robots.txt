@@ -10,7 +10,7 @@ Disallow: /*.json$
 Crawl-delay: 1
 
 # Sitemaps
-Sitemap: https://wheelr.xyz/sitemap.xml
+Sitemap: https://www.wheelr.xyz/sitemap.xml
 
 # Host
-Host: https://wheelr.xyz
+Host: https://www.wheelr.xyz

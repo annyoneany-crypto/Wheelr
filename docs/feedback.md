@@ -4,13 +4,13 @@
 
 ### Help Others Discover the Best Free Spinning Wheel
 
-[![Wheelr](https://img.shields.io/badge/🎡_Wheelr-wheelr.xyz-6C3CE1?style=for-the-badge)](https://wheelr.xyz)
+[![Wheelr](https://img.shields.io/badge/🎡_Wheelr-wheelr.xyz-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz)
 
 </div>
 
 ---
 
-[Wheelr](https://wheelr.xyz) is built and maintained by a **solo developer**. Your honest review helps other people discover this free tool and **motivates continued development**.
+[Wheelr](https://www.wheelr.xyz) is built and maintained by a **solo developer**. Your honest review helps other people discover this free tool and **motivates continued development**.
 
 > 💜 If Wheelr has saved you time, added fun to your streams, or made your events more engaging — **please take 2 minutes to leave a review** on one (or all!) of these platforms.
 
@@ -143,7 +143,7 @@ Beyond reviews, here are **free ways to help**:
 | 🐦 | **Share on social media** | Post about Wheelr on Twitter/X, Reddit, or Discord |
 | 📝 | **Write a blog post** | A "how I use Wheelr" post helps with SEO |
 | 🗣️ | **Tell a friend** | Word of mouth is the most powerful marketing |
-| 🔗 | **Link to Wheelr** | Add [wheelr.xyz](https://wheelr.xyz) in your stream description or website |
+| 🔗 | **Link to Wheelr** | Add [wheelr.xyz](https://www.wheelr.xyz) in your stream description or website |
 
 ---
 
@@ -154,7 +154,7 @@ Beyond reviews, here are **free ways to help**:
 Every review, upvote, and share makes a **real difference**.
 Wheelr exists because of the community around it.
 
-**Spin responsibly at [wheelr.xyz](https://wheelr.xyz)** 🎡
+**Spin responsibly at [wheelr.xyz](https://www.wheelr.xyz)** 🎡
 
 </div>
 

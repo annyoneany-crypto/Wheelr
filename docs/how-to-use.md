@@ -4,13 +4,13 @@
 
 ### Complete Guide to the Free Online Spinning Wheel
 
-[![Open Wheelr](https://img.shields.io/badge/🚀_Open_Wheelr-wheelr.xyz-6C3CE1?style=for-the-badge)](https://wheelr.xyz)
+[![Open Wheelr](https://img.shields.io/badge/🚀_Open_Wheelr-wheelr.xyz-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz)
 
 </div>
 
 ---
 
-This guide walks you through **every feature and configuration option** in [Wheelr](https://wheelr.xyz), the free **customizable giveaway wheel** for streamers, teachers, and event organizers.
+This guide walks you through **every feature and configuration option** in [Wheelr](https://www.wheelr.xyz), the free **customizable giveaway wheel** for streamers, teachers, and event organizers.
 
 ---
 
@@ -373,7 +373,7 @@ Share your wheel for **interactive live events**.
 
 If you have questions, [⭐ leave feedback](./feedback.md) and the developer will respond.
 
-[![Start Customizing](https://img.shields.io/badge/🎡_Start_Customizing_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://wheelr.xyz)
+[![Start Customizing](https://img.shields.io/badge/🎡_Start_Customizing_Now-wheelr.xyz-6C3CE1?style=for-the-badge)](https://www.wheelr.xyz)
 
 </div>
 
