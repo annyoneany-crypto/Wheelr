@@ -1,0 +1,11 @@
+{
+  "name": "Wheelr Agent Discovery Profile",
+  "site": "https://www.wheelr.xyz/",
+  "relations": [
+    "api-catalog",
+    "service-desc",
+    "service-doc",
+    "describedby"
+  ],
+  "generatedAt": "2026-04-19"
+}

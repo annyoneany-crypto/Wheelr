@@ -1,0 +1,11 @@
+/
+  Link: </.well-known/api-catalog>; rel="api-catalog"
+  Link: </.well-known/service-desc.json>; rel="service-desc"
+  Link: </.well-known/service-doc.json>; rel="service-doc"
+  Link: </.well-known/agent-profile.json>; rel="describedby"
+
+/index.html
+  Link: </.well-known/api-catalog>; rel="api-catalog"
+  Link: </.well-known/service-desc.json>; rel="service-desc"
+  Link: </.well-known/service-doc.json>; rel="service-doc"
+  Link: </.well-known/agent-profile.json>; rel="describedby"

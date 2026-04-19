@@ -1,0 +1,8 @@
+<IfModule mod_headers.c>
+  <FilesMatch "^(index\.html)?$">
+    Header add Link "</.well-known/api-catalog>; rel=\"api-catalog\""
+    Header add Link "</.well-known/service-desc.json>; rel=\"service-desc\""
+    Header add Link "</.well-known/service-doc.json>; rel=\"service-doc\""
+    Header add Link "</.well-known/agent-profile.json>; rel=\"describedby\""
+  </FilesMatch>
+</IfModule>

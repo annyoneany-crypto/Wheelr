@@ -1,0 +1,18 @@
+{
+  "title": "Wheelr Service Documentation",
+  "documentation": [
+    {
+      "href": "/",
+      "title": "Homepage"
+    },
+    {
+      "href": "/sitemap.xml",
+      "title": "Sitemap"
+    },
+    {
+      "href": "/robots.txt",
+      "title": "Robots policy"
+    }
+  ],
+  "notes": "This deployment is a static Angular application."
+}

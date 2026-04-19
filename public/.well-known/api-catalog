@@ -1,0 +1,21 @@
+{
+  "version": "1.0",
+  "name": "Wheelr Agent API Catalog",
+  "resources": [
+    {
+      "href": "/.well-known/service-desc.json",
+      "rel": "service-desc",
+      "type": "application/json"
+    },
+    {
+      "href": "/.well-known/service-doc.json",
+      "rel": "service-doc",
+      "type": "application/json"
+    },
+    {
+      "href": "/sitemap.xml",
+      "rel": "describedby",
+      "type": "application/xml"
+    }
+  ]
+}

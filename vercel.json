@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "headers": [
+    {
+      "source": "/",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/service-desc.json>; rel=\"service-desc\", </.well-known/service-doc.json>; rel=\"service-doc\", </.well-known/agent-profile.json>; rel=\"describedby\""
+        }
+      ]
+    },
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "Link",
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/service-desc.json>; rel=\"service-desc\", </.well-known/service-doc.json>; rel=\"service-doc\", </.well-known/agent-profile.json>; rel=\"describedby\""
+        }
+      ]
+    }
+  ]
+}
