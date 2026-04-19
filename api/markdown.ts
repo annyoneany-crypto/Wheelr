@@ -1,3 +1,17 @@
+type QueryValue = string | string[] | undefined;
+
+type VercelLikeRequest = {
+  url?: string;
+  headers: Record<string, string | string[] | undefined>;
+  query?: Record<string, QueryValue>;
+};
+
+type VercelLikeResponse = {
+  status: (code: number) => VercelLikeResponse;
+  setHeader: (name: string, value: string) => void;
+  send: (body: string) => void;
+};
+
 const TITLE_REGEX = /<title>([\s\S]*?)<\/title>/i;
 const META_DESCRIPTION_REGEX =
   /<meta\s+name=["']description["']\s+content=["']([\s\S]*?)["']\s*\/?>(?:<\/meta>)?/i;
@@ -44,8 +58,21 @@ function tokenEstimate(markdown: string): number {
   return Math.max(1, Math.ceil(words * 1.33));
 }
 
-function readPathFromRequest(url: URL): string {
-  const negotiatedPath = url.searchParams.get('path')?.trim();
+function firstQueryValue(value: QueryValue): string {
+  if (typeof value === 'string') {
+    return value;
+  }
+
+  if (Array.isArray(value) && value.length > 0) {
+    const first = value[0];
+    return typeof first === 'string' ? first : '';
+  }
+
+  return '';
+}
+
+function readPathFromRequest(query: Record<string, QueryValue> | undefined): string {
+  const negotiatedPath = firstQueryValue(query?.path)?.trim();
   if (!negotiatedPath) {
     return '/';
   }
@@ -87,26 +114,29 @@ function buildMarkdownPage(options: {
   return lines.join('\n').trimEnd() + '\n';
 }
 
-export default async function handler(request: Request): Promise<Response> {
-  const requestUrl = new URL(request.url);
-  const originalPath = readPathFromRequest(requestUrl);
+export default async function handler(req: VercelLikeRequest, res: VercelLikeResponse): Promise<void> {
+  const host = typeof req.headers.host === 'string' ? req.headers.host : 'localhost';
+  const protocol = host.includes('localhost') ? 'http' : 'https';
+  const requestUrl = new URL(req.url ?? '/', `${protocol}://${host}`);
+  const originalPath = readPathFromRequest(req.query);
 
   if (originalPath.startsWith('/api/')) {
     const markdown = '# Wheelr Markdown Endpoint\n\nThis endpoint serves negotiated markdown responses.\n';
 
-    return new Response(markdown, {
-      status: 200,
-      headers: {
-        'content-type': 'text/markdown; charset=utf-8',
-        vary: 'Accept',
-        'x-markdown-tokens': String(tokenEstimate(markdown)),
-        'x-markdown-source': 'vercel-function'
-      }
-    });
+    res.status(200);
+    res.setHeader('content-type', 'text/markdown; charset=utf-8');
+    res.setHeader('vary', 'Accept');
+    res.setHeader('x-markdown-tokens', String(tokenEstimate(markdown)));
+    res.setHeader('x-markdown-source', 'vercel-function');
+    res.send(markdown);
+    return;
   }
 
   const targetUrl = new URL(originalPath, requestUrl.origin);
-  targetUrl.search = requestUrl.searchParams.get('query') ?? '';
+  const originalQuery = firstQueryValue(req.query?.query);
+  if (originalQuery) {
+    targetUrl.search = originalQuery.startsWith('?') ? originalQuery : `?${originalQuery}`;
+  }
 
   const upstreamResponse = await fetch(targetUrl.toString(), {
     headers: {
@@ -129,13 +159,10 @@ export default async function handler(request: Request): Promise<Response> {
     content
   });
 
-  return new Response(markdown, {
-    status: upstreamResponse.status,
-    headers: {
-      'content-type': 'text/markdown; charset=utf-8',
-      vary: 'Accept',
-      'x-markdown-tokens': String(tokenEstimate(markdown)),
-      'x-markdown-source': 'vercel-function'
-    }
-  });
+  res.status(upstreamResponse.status);
+  res.setHeader('content-type', 'text/markdown; charset=utf-8');
+  res.setHeader('vary', 'Accept');
+  res.setHeader('x-markdown-tokens', String(tokenEstimate(markdown)));
+  res.setHeader('x-markdown-source', 'vercel-function');
+  res.send(markdown);
 }
