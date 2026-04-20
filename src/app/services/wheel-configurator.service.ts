@@ -914,7 +914,11 @@ export class WheelConfigurator {
     this.isSpinning.set(false);
   }
 
+  private idleRotationId: number | null = null;
+
   private startIdleRotation(): void {
+    if (this.idleRotationId !== null) return; // prevent duplicates
+
     // Slow continuous rotation when not spinning
     const degPerSecond = 6; // slow pace (~1 rotation/minute)
     let lastTs = performance.now();
@@ -927,10 +931,10 @@ export class WheelConfigurator {
         this.currentRotation.update(r => r + degPerSecond * dt);
       }
 
-      requestAnimationFrame(tick);
+      this.idleRotationId = requestAnimationFrame(tick);
     };
 
-    requestAnimationFrame(tick);
+    this.idleRotationId = requestAnimationFrame(tick);
   }
 
   private async hydrateFromStorage(): Promise<void> {

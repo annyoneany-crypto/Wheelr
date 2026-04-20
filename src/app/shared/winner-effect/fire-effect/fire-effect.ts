@@ -367,7 +367,8 @@ export class FireEffect implements IWinnerEffect {
     ctx.save();
     ctx.globalCompositeOperation = 'lighter';
 
-    for (let i = this.fireParticles.length - 1; i >= 0; i -= 1) {
+    let fireWrite = 0;
+    for (let i = 0; i < this.fireParticles.length; i += 1) {
       const particle = this.fireParticles[i];
       const t = particle.life / particle.maxLife;
 
@@ -379,34 +380,22 @@ export class FireEffect implements IWinnerEffect {
       particle.size *= 0.995;
 
       if (particle.life <= 0 || particle.size <= 0.7) {
-        this.fireParticles.splice(i, 1);
         continue;
       }
 
-      const core = `rgba(255,${Math.floor(190 + 55 * particle.temperature)},${Math.floor(90 * t)},${0.95 * t})`;
-      const mid = `rgba(255,${Math.floor(120 + 80 * particle.temperature)},20,${0.42 * t})`;
-      const outer = `rgba(255,60,0,0)`;
+      this.fireParticles[fireWrite] = particle;
+      fireWrite += 1;
 
-      const gradient = ctx.createRadialGradient(
-        particle.x,
-        particle.y,
-        particle.size * 0.1,
-        particle.x,
-        particle.y,
-        particle.size
-      );
-      gradient.addColorStop(0, core);
-      gradient.addColorStop(0.45, mid);
-      gradient.addColorStop(1, outer);
-
-      ctx.globalAlpha = Math.min(1, 0.5 + t * 0.9);
-      ctx.fillStyle = gradient;
+      ctx.globalAlpha = Math.min(1, 0.5 + t * 0.9) * t;
+      ctx.fillStyle = `rgba(255,${Math.floor(160 + 80 * particle.temperature)},${Math.floor(50 * t)},0.85)`;
       ctx.beginPath();
       ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
       ctx.fill();
     }
+    this.fireParticles.length = fireWrite;
 
-    for (let i = this.emberParticles.length - 1; i >= 0; i -= 1) {
+    let emberWrite = 0;
+    for (let i = 0; i < this.emberParticles.length; i += 1) {
       const ember = this.emberParticles[i];
       const t = ember.life / ember.maxLife;
 
@@ -417,22 +406,24 @@ export class FireEffect implements IWinnerEffect {
       ember.life -= 1;
 
       if (ember.life <= 0) {
-        this.emberParticles.splice(i, 1);
         continue;
       }
 
+      this.emberParticles[emberWrite] = ember;
+      emberWrite += 1;
+
       ctx.globalAlpha = t;
-      ctx.shadowBlur = 8;
-      ctx.shadowColor = '#ffd77a';
       ctx.fillStyle = `rgba(255,${Math.floor(140 + 90 * t)},30,0.95)`;
       ctx.beginPath();
       ctx.arc(ember.x, ember.y, ember.size, 0, Math.PI * 2);
       ctx.fill();
     }
+    this.emberParticles.length = emberWrite;
 
     ctx.restore();
 
-    for (let i = this.smokeParticles.length - 1; i >= 0; i -= 1) {
+    let smokeWrite = 0;
+    for (let i = 0; i < this.smokeParticles.length; i += 1) {
       const smoke = this.smokeParticles[i];
       const t = smoke.life / smoke.maxLife;
 
@@ -444,27 +435,19 @@ export class FireEffect implements IWinnerEffect {
       smoke.size *= 1.01;
 
       if (smoke.life <= 0 || smoke.y < -80) {
-        this.smokeParticles.splice(i, 1);
         continue;
       }
 
-      const smokeGradient = ctx.createRadialGradient(
-        smoke.x,
-        smoke.y,
-        smoke.size * 0.2,
-        smoke.x,
-        smoke.y,
-        smoke.size
-      );
-      smokeGradient.addColorStop(0, `rgba(90,90,90,${0.12 * t})`);
-      smokeGradient.addColorStop(1, 'rgba(30,30,30,0)');
+      this.smokeParticles[smokeWrite] = smoke;
+      smokeWrite += 1;
 
-      ctx.globalAlpha = Math.min(1, 0.6 + (1 - t) * 0.2);
-      ctx.fillStyle = smokeGradient;
+      ctx.globalAlpha = 0.1 * t;
+      ctx.fillStyle = `rgba(80,80,80,${0.12 * t})`;
       ctx.beginPath();
       ctx.arc(smoke.x, smoke.y, smoke.size, 0, Math.PI * 2);
       ctx.fill();
     }
+    this.smokeParticles.length = smokeWrite;
 
     const topHeat = ctx.createRadialGradient(
       flameBaseX,
@@ -567,7 +550,8 @@ export class FireEffect implements IWinnerEffect {
       }
     }
 
-    for (let i = this.emberParticles.length - 1; i >= 0; i -= 1) {
+    let cartoonEmberWrite = 0;
+    for (let i = 0; i < this.emberParticles.length; i += 1) {
       const ember = this.emberParticles[i];
       const t = ember.life / ember.maxLife;
       ember.x += ember.vx;
@@ -576,9 +560,11 @@ export class FireEffect implements IWinnerEffect {
       ember.life -= 1;
 
       if (ember.life <= 0) {
-        this.emberParticles.splice(i, 1);
         continue;
       }
+
+      this.emberParticles[cartoonEmberWrite] = ember;
+      cartoonEmberWrite += 1;
 
       ctx.globalAlpha = t;
       ctx.beginPath();
@@ -590,6 +576,7 @@ export class FireEffect implements IWinnerEffect {
       ctx.stroke();
       ctx.globalAlpha = 1;
     }
+    this.emberParticles.length = cartoonEmberWrite;
   }
 
   private randomRange(min: number, max: number): number {
@@ -634,44 +621,46 @@ export class FireEffect implements IWinnerEffect {
 
   private drawFireworks(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement): void {
     const now = performance.now();
-    if (now - this.lastBurstAt > 420) {
+    if (now - this.lastBurstAt > 520) {
       this.lastBurstAt = now;
       this.spawnFireworkBurst(canvas);
-      if (Math.random() > 0.35) {
+      if (Math.random() > 0.5) {
         this.spawnFireworkBurst(canvas);
       }
     }
 
-    if (this.fireworkSparks.length > 1400) {
-      this.fireworkSparks.splice(0, this.fireworkSparks.length - 1400);
+    if (this.fireworkSparks.length > 600) {
+      this.fireworkSparks.length = 600;
     }
 
-    for (let i = this.fireworkSparks.length - 1; i >= 0; i -= 1) {
+    let writeIdx = 0;
+    for (let i = 0; i < this.fireworkSparks.length; i += 1) {
       const spark = this.fireworkSparks[i];
       spark.x += spark.vx;
       spark.y += spark.vy;
       spark.vy += 0.02;
-      spark.life -= 0.012;
+      spark.life -= 0.014;
 
       if (spark.life <= 0) {
-        this.fireworkSparks.splice(i, 1);
         continue;
       }
 
+      this.fireworkSparks[writeIdx] = spark;
+      writeIdx += 1;
+
       ctx.globalAlpha = spark.life;
-      ctx.shadowBlur = 10;
-      ctx.shadowColor = spark.color;
       ctx.beginPath();
       ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
       ctx.fillStyle = spark.color;
       ctx.fill();
     }
+    this.fireworkSparks.length = writeIdx;
   }
 
   private spawnFireworkBurst(canvas: HTMLCanvasElement): void {
     const centerX = Math.random() * canvas.width;
     const centerY = Math.random() * canvas.height * 0.65 + canvas.height * 0.08;
-    const sparks = 90 + Math.floor(Math.random() * 56);
+    const sparks = 40 + Math.floor(Math.random() * 25);
 
     for (let i = 0; i < sparks; i += 1) {
       const angle = (Math.PI * 2 * i) / sparks;

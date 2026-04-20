@@ -48,7 +48,14 @@ export class Wheel {
   private resizeTimeout: any;
 
   constructor() {
-    this.calculateSize();  
+    this.calculateSize();
+  }
+
+  ngOnDestroy(): void {
+    if (this.resizeTimeout) {
+      clearTimeout(this.resizeTimeout);
+      this.resizeTimeout = null;
+    }
   }
 
   calculateSize() {
