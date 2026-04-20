@@ -1,6 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { NavigationEnd, Router, RouterLink, ɵEmptyOutletComponent } from '@angular/router';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -10,7 +10,7 @@ import { WlInfoUtente } from '../info-utente/info-utente';
 
 @Component({
   selector: 'wl-header',
-  imports: [RouterLink, NgOptimizedImage, WlAuth, WlInfoUtente, ɵEmptyOutletComponent],
+  imports: [RouterLink, NgOptimizedImage, WlAuth, WlInfoUtente],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })

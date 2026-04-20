@@ -167,6 +167,8 @@ export class FireEffect implements IWinnerEffect {
         this.drawFireworks(fctx, canvas);
       } else if (this.effectType === 'applause') {
         this.drawApplause(fctx, canvas);
+      } else if (this.effectType === 'cartoon-fire') {
+        this.drawCartoonFire(fctx, canvas);
       } else {
         this.drawFire(fctx, canvas);
       }
@@ -189,6 +191,9 @@ export class FireEffect implements IWinnerEffect {
     if (this.effectType === 'applause') {
       return 'Winner - Applause';
     }
+    if (this.effectType === 'cartoon-fire') {
+      return 'Winner - Cartoon Fire';
+    }
     return 'Winner - Fire';
   }
 
@@ -201,6 +206,9 @@ export class FireEffect implements IWinnerEffect {
     }
     if (this.effectType === 'applause') {
       return '#a3e635';
+    }
+    if (this.effectType === 'cartoon-fire') {
+      return '#fbbf24';
     }
     return '#f97316';
   }
@@ -215,6 +223,9 @@ export class FireEffect implements IWinnerEffect {
     if (this.effectType === 'applause') {
       return '0 0 30px rgba(163,230,53,0.5)';
     }
+    if (this.effectType === 'cartoon-fire') {
+      return '0 0 30px rgba(251,191,36,0.6)';
+    }
     return '0 0 30px rgba(249,115,22,0.6)';
   }
 
@@ -227,6 +238,9 @@ export class FireEffect implements IWinnerEffect {
     }
     if (this.effectType === 'applause') {
       return '#bef264';
+    }
+    if (this.effectType === 'cartoon-fire') {
+      return '#fde68a';
     }
     return '#f97316';
   }
@@ -303,8 +317,8 @@ export class FireEffect implements IWinnerEffect {
     ctx.ellipse(flameBaseX, flameBaseY + 22, flameWidth * 1.25, flameWidth * 0.4, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    if (this.fireParticles.length < 700) {
-      const spawnCount = 22;
+    if (this.fireParticles.length < 300) {
+      const spawnCount = 8;
       for (let i = 0; i < spawnCount; i += 1) {
         const maxLife = this.randomRange(80, 150);
         this.fireParticles.push({
@@ -314,14 +328,14 @@ export class FireEffect implements IWinnerEffect {
           vy: this.randomRange(-10.2, -5.8),
           life: maxLife,
           maxLife,
-          size: this.randomRange(20, 46),
+          size: this.randomRange(16, 36),
           temperature: this.randomRange(0.72, 1),
         });
       }
     }
 
-    if (this.emberParticles.length < 220) {
-      for (let i = 0; i < 5; i += 1) {
+    if (this.emberParticles.length < 80) {
+      for (let i = 0; i < 2; i += 1) {
         const maxLife = this.randomRange(45, 110);
         this.emberParticles.push({
           x: flameBaseX + this.randomRange(-flameWidth * 0.42, flameWidth * 0.42),
@@ -335,8 +349,8 @@ export class FireEffect implements IWinnerEffect {
       }
     }
 
-    if (this.smokeParticles.length < 280) {
-      for (let i = 0; i < 5; i += 1) {
+    if (this.smokeParticles.length < 100) {
+      for (let i = 0; i < 2; i += 1) {
         const maxLife = this.randomRange(90, 170);
         this.smokeParticles.push({
           x: flameBaseX + this.randomRange(-flameWidth * 0.35, flameWidth * 0.35),
@@ -467,6 +481,115 @@ export class FireEffect implements IWinnerEffect {
     ctx.beginPath();
     ctx.ellipse(flameBaseX, flameBaseY - 340, flameWidth * 1.45, flameWidth * 1.7, 0, 0, Math.PI * 2);
     ctx.fill();
+  }
+
+  private drawCartoonFire(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement): void {
+    this.fireFlickerPhase += 0.055;
+
+    const W = canvas.width;
+    const H = canvas.height;
+    const baseY = H;
+
+    const tongueCount = Math.max(10, Math.floor(W / 100));
+    const spacing = W / tongueCount;
+
+    // Helper to draw one cartoon flame tongue
+    const drawTongue = (
+      cx: number,
+      wobble: number,
+      h: number,
+      w: number,
+      fill: string,
+      strokeColor: string,
+      lineWidth: number
+    ) => {
+      ctx.beginPath();
+      ctx.moveTo(cx - w * 0.5, baseY);
+      ctx.bezierCurveTo(
+        cx - w * 0.9, baseY - h * 0.38,
+        cx - w * 0.3 + wobble * 0.3, baseY - h * 0.72,
+        cx + wobble, baseY - h
+      );
+      ctx.bezierCurveTo(
+        cx + w * 0.3 + wobble * 0.3, baseY - h * 0.72,
+        cx + w * 0.9, baseY - h * 0.38,
+        cx + w * 0.5, baseY
+      );
+      ctx.closePath();
+      ctx.fillStyle = fill;
+      ctx.fill();
+      ctx.lineWidth = lineWidth;
+      ctx.strokeStyle = strokeColor;
+      ctx.stroke();
+    };
+
+    for (let i = 0; i < tongueCount; i += 1) {
+      const cx = (i + 0.5) * spacing;
+      const phase = this.fireFlickerPhase + i * 0.65;
+      const wobble = Math.sin(phase) * 20 + Math.cos(phase * 0.55) * 10;
+
+      // Outer — deep red
+      drawTongue(
+        cx, wobble,
+        H * 0.58 + Math.sin(phase * 0.75) * H * 0.1,
+        spacing * 0.82,
+        '#c0390b', '#1a0800', 3.5
+      );
+      // Middle — orange
+      drawTongue(
+        cx, wobble * 0.85,
+        H * 0.42 + Math.sin(phase * 0.9) * H * 0.08,
+        spacing * 0.58,
+        '#f57c00', '#7a2f00', 2.5
+      );
+      // Inner — yellow
+      drawTongue(
+        cx, wobble * 0.6,
+        H * 0.26 + Math.sin(phase * 1.1) * H * 0.06,
+        spacing * 0.36,
+        '#ffe033', '#a06000', 2
+      );
+    }
+
+    // Cartoon embers — small outlined circles floating up
+    if (this.emberParticles.length < 35) {
+      for (let i = 0; i < 2; i += 1) {
+        const maxLife = this.randomRange(55, 115);
+        this.emberParticles.push({
+          x: this.randomRange(0, W),
+          y: baseY - this.randomRange(10, 60),
+          vx: this.randomRange(-1.4, 1.4),
+          vy: this.randomRange(-3.5, -1.2),
+          life: maxLife,
+          maxLife,
+          size: this.randomRange(4, 9),
+        });
+      }
+    }
+
+    for (let i = this.emberParticles.length - 1; i >= 0; i -= 1) {
+      const ember = this.emberParticles[i];
+      const t = ember.life / ember.maxLife;
+      ember.x += ember.vx;
+      ember.y += ember.vy;
+      ember.vy *= 0.98;
+      ember.life -= 1;
+
+      if (ember.life <= 0) {
+        this.emberParticles.splice(i, 1);
+        continue;
+      }
+
+      ctx.globalAlpha = t;
+      ctx.beginPath();
+      ctx.arc(ember.x, ember.y, ember.size, 0, Math.PI * 2);
+      ctx.fillStyle = t > 0.5 ? '#ffe033' : '#f57c00';
+      ctx.fill();
+      ctx.lineWidth = 1.5;
+      ctx.strokeStyle = '#1a0800';
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+    }
   }
 
   private randomRange(min: number, max: number): number {

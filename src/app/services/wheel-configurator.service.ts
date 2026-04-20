@@ -1061,6 +1061,7 @@ export class WheelConfigurator {
 
     if (
       effectiveWinnerEffect === 'fire' ||
+      effectiveWinnerEffect === 'cartoon-fire' ||
       effectiveWinnerEffect === 'confetti' ||
       effectiveWinnerEffect === 'fireworks' ||
       effectiveWinnerEffect === 'applause'

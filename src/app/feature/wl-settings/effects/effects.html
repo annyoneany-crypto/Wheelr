@@ -88,6 +88,21 @@
         [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'fireworks'">
         <i class="fa-solid fa-burst mr-2" aria-hidden="true"></i>Fireworks
       </button>
+
+      <button
+        type="button"
+        (click)="setWinnerEffect('cartoon-fire')"
+        class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
+        [class.bg-amber-500/15]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
+        [class.border-amber-400/50]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
+        [class.text-amber-300]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
+        [class.shadow-[0_0_14px_rgba(251,191,36,0.15)]]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
+        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
+        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
+        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
+        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'">
+        <i class="fa-solid fa-wand-magic-sparkles mr-2" aria-hidden="true"></i>Cartoon Fire
+      </button>
     </div>
   </div>
 
