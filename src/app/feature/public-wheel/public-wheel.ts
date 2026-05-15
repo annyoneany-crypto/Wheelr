@@ -23,12 +23,13 @@ export class PublicWheel implements OnDestroy {
   readonly wheelTitle = signal('');
   readonly wheelSubtitle = signal('');
   readonly idleRotationDeg = signal(0);
+  readonly noBackgroundMode = signal(false);
 
   private idleRafId: number | null = null;
   private idleLastTs = 0;
 
-  readonly pageBgColor = computed(() => this.wheelConfigs()[0]?.bgColor || '#18181b');
-  readonly pageBgImage = computed(() => this.wheelConfigs()[0]?.bgImage || '');
+  readonly pageBgColor = computed(() => this.noBackgroundMode() ? 'transparent' : (this.wheelConfigs()[0]?.bgColor || '#18181b'));
+  readonly pageBgImage = computed(() => this.noBackgroundMode() ? '' : (this.wheelConfigs()[0]?.bgImage || ''));
 
   readonly headingColor = computed(() => {
     const bgColor = this.pageBgColor();
@@ -52,10 +53,27 @@ export class PublicWheel implements OnDestroy {
       this.wheelId.set(id);
       void this.loadWheel(id);
     });
+
+    this.route.queryParamMap.pipe(takeUntilDestroyed()).subscribe((queryParams) => {
+      const noBackground = queryParams.get('nobg') === 'true';
+      this.noBackgroundMode.set(noBackground);
+      this.syncGlobalUiChromeClass(noBackground);
+    });
   }
 
   ngOnDestroy(): void {
     this.stopIdleRotation();
+    this.syncGlobalUiChromeClass(false);
+  }
+
+  wheelCanvasClass(): string {
+    if (this.noBackgroundMode()) {
+      return 'w-[80vw] max-w-[720px]';
+    }
+
+    return this.wheelConfigs().length > 1
+      ? 'w-[80vw] md:w-[38vw] max-w-[720px] rounded-full shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20'
+      : 'w-[80vw] max-w-[720px] rounded-full shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20';
   }
 
   private async loadWheel(id: string): Promise<void> {
@@ -130,6 +148,14 @@ export class PublicWheel implements OnDestroy {
 
   centerTextColor(config: WheelDisplayConfig): '#000000' | '#FFFFFF' {
     return contrastForHex(config.centerColor || '#ffffff');
+  }
+
+  private syncGlobalUiChromeClass(isHidden: boolean): void {
+    if (typeof document === 'undefined') {
+      return;
+    }
+
+    document.body.classList.toggle('immersive-ui-hidden', isHidden);
   }
 
   private drawAllWheels(): void {

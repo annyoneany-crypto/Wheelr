@@ -1,5 +1,11 @@
 <div
-  class="min-h-screen pt-32 px-4 pb-10 flex items-center justify-center"
+  class="flex items-center justify-center"
+  [class.min-h-screen]="!noBackgroundMode()"
+  [class.pt-32]="!noBackgroundMode()"
+  [class.px-4]="!noBackgroundMode()"
+  [class.pb-10]="!noBackgroundMode()"
+  [class.w-screen]="noBackgroundMode()"
+  [class.h-screen]="noBackgroundMode()"
   [style.backgroundColor]="pageBgColor()"
   [style.backgroundImage]="pageBgImage() ? 'url(' + pageBgImage() + ')' : 'none'"
   [style.backgroundSize]="'cover'"
@@ -13,20 +19,22 @@
     </div>
   } @else if (wheelConfigs().length) {
     <div class="relative flex flex-col items-center gap-6">
-      <div class="text-center max-w-2xl px-4 rounded-2xl border border-white/20 bg-black/35 backdrop-blur-sm shadow-[0_12px_30px_rgba(0,0,0,0.35)] py-4 md:py-5">
-        <h1
-          class="text-3xl md:text-4xl font-black tracking-tight drop-shadow-[0_4px_14px_rgba(0,0,0,0.45)]"
-          [style.color]="headingColor()">
-          {{ wheelTitle() || 'Giveaway Wheel' }}
-        </h1>
-        @if (wheelSubtitle()) {
-          <p
-            class="mt-2 text-sm md:text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
-            [style.color]="subtitleColor()">
-            {{ wheelSubtitle() }}
-          </p>
-        }
-      </div>
+      @if (!noBackgroundMode()) {
+        <div class="text-center max-w-2xl px-4 rounded-2xl border border-white/20 bg-black/35 backdrop-blur-sm shadow-[0_12px_30px_rgba(0,0,0,0.35)] py-4 md:py-5">
+          <h1
+            class="text-3xl md:text-4xl font-black tracking-tight drop-shadow-[0_4px_14px_rgba(0,0,0,0.45)]"
+            [style.color]="headingColor()">
+            {{ wheelTitle() || 'Giveaway Wheel' }}
+          </h1>
+          @if (wheelSubtitle()) {
+            <p
+              class="mt-2 text-sm md:text-base drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)]"
+              [style.color]="subtitleColor()">
+              {{ wheelSubtitle() }}
+            </p>
+          }
+        </div>
+      }
 
       <div
         class="grid grid-cols-1 gap-6 lg:gap-8 w-full"
@@ -38,9 +46,7 @@
               #wheelCanvas
               width="720"
               height="720"
-              [class]="wheelConfigs().length > 1
-                ? 'w-[80vw] md:w-[38vw] max-w-[720px] rounded-full shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20'
-                : 'w-[80vw] max-w-[720px] rounded-full shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/20'"
+              [class]="wheelCanvasClass()"
               [style.transform]="'rotate(' + idleRotationDeg() + 'deg)'"
               [style.transformOrigin]="'center center'"
               [style.willChange]="'transform'">
@@ -60,15 +66,17 @@
         }
       </div>
 
-      <div class="flex flex-col items-center gap-3">
-        <a
-          href="/"
-          class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-neutral-800/60 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black/40">
-          Create your wheel
-        </a>
+      @if (!noBackgroundMode()) {
+        <div class="flex flex-col items-center gap-3">
+          <a
+            href="/"
+            class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-neutral-800/60 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black/40">
+            Create your wheel
+          </a>
 
-        <p class="rounded-md border border-white/15 bg-neutral-800/60 px-3 py-2 text-xs text-white/80">ID: {{ wheelId() }}</p>
-      </div>
+          <p class="rounded-md border border-white/15 bg-neutral-800/60 px-3 py-2 text-xs text-white/80">ID: {{ wheelId() }}</p>
+        </div>
+      }
     </div>
   }
 </div>
