@@ -225,6 +225,8 @@ export class WheelConfigurator {
   spinDurationMs = signal(3000);
   currentRotation = signal(0);
   winner = signal<string | null>(null);
+  /** Incremented each time the winner is explicitly dismissed. Used to sync per-workspace winner state. */
+  winnerDismissCount = signal(0);
 
   winnerAnimationId = signal<number | undefined>(undefined);
 
@@ -1504,6 +1506,7 @@ export class WheelConfigurator {
    * Internal helper containing the logic that actually spins the wheel.
    */
   private performSpin(extraDegrees?: number) {
+    const spinWorkspaceId = this.activeWheelId();
     this.isSpinning.set(true);
     this.winner.set(null);
     if (this.winnerAnimationId()) cancelAnimationFrame(this.winnerAnimationId()!);
@@ -1522,6 +1525,11 @@ export class WheelConfigurator {
 
     setTimeout(() => {
       this.isSpinning.set(false);
+      // If the active workspace changed while the wheel was spinning,
+      // don't declare a winner for the wrong workspace.
+      if (this.activeWheelId() !== spinWorkspaceId) {
+        return;
+      }
       const normalizedRotation = (360 - (totalRotation % 360)) % 360;
       let adjustedRotation = (normalizedRotation - 90 + 360) % 360;
       const winningIndex = Math.floor(adjustedRotation / (360 / this.names().length));
@@ -1628,6 +1636,7 @@ export class WheelConfigurator {
       cancelAnimationFrame(id);
     }
     this.winnerAnimationId.set(undefined);
+    this.winnerDismissCount.update(c => c + 1);
 
     // No canvas redraw needed: the wheel is rendered the same way with or
     // without a winner, so clearing it only reverses the CSS scale() zoom.

@@ -135,10 +135,11 @@
 
     <!-- Canvas Wheel -->
     <div class="relative cursor-pointer group" (click)="wheelConfigurator.spinWheel()">
+      <!-- Scaling wrapper: also contains the slice-glow SVG so it zooms together -->
       <div
-        class="transition-transform duration-1000 ease-in-out"
+        class="relative transition-transform duration-1000 ease-in-out"
         style="transform-origin: 50% 0%"
-        [style.transform]="(wheelConfigurator.winner() && wheelConfigurator.names().length > 30) ? 'scale(7)' : 'scale(1)'"
+        [style.transform]="(wheelConfigurator.winner() && wheelConfigurator.names().length > 30 && !forceUnzoom()) ? 'scale(7)' : 'scale(1)'"
       >
         <canvas
           #wheelCanvas
@@ -152,6 +153,22 @@
           [style.transitionTimingFunction]="wheelConfigurator.isSpinning() ? 'cubic-bezier(0.15, 0, 0.15, 1)' : 'linear'"
           [style.backgroundColor]="wheelConfigurator.names().length === 0 ? '#5e5e5eBB' : 'transparent'"
         ></canvas>
+
+        <!-- Glow lives here so CSS scale(7) zooms it together with the canvas -->
+        @if (wheelConfigurator.winner() && !wheelConfigurator.showWinnerEffect()) {
+          <svg
+            class="absolute inset-0 pointer-events-none winner-slice-glow"
+            [attr.width]="width()"
+            [attr.height]="height()"
+            [attr.viewBox]="'0 0 ' + width() + ' ' + height()">
+            <path
+              [attr.d]="winnerSlicePath()"
+              fill="none"
+              stroke="#fbbf24"
+              stroke-width="5"
+              stroke-linejoin="round"/>
+          </svg>
+        }
       </div>
       
       <!-- Center -->
@@ -186,30 +203,23 @@
         <ng-content></ng-content>
       }
 
-      <!-- No-effect winner glow: illuminate only the borders of the winning slice -->
-      @if (wheelConfigurator.winner() && !wheelConfigurator.showWinnerEffect()) {
-        <svg
-          class="absolute pointer-events-none winner-slice-glow"
-          [attr.width]="width()"
-          [attr.height]="height()"
-          [attr.viewBox]="'0 0 ' + width() + ' ' + height()"
-          style="top:0;left:0;">
-          <path
-            [attr.d]="winnerSlicePath()"
-            fill="none"
-            stroke="#fbbf24"
-            stroke-width="5"
-            stroke-linejoin="round"/>
-        </svg>
-      }
     </div>
 
-    <!-- Text -->
+    <!-- Text / zoom-out area — rendered OUTSIDE the canvas click-handler so
+         clicking the button never triggers spinWheel(). -->
     <div class="h-16 flex items-center justify-center text-center">
       @if (wheelConfigurator.isSpinning()) {
         <p class="text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] animate-pulse uppercase tracking-[0.2em] font-semibold text-sm">
           <i class="fa-solid fa-star-of-life mr-2 text-amber-400/80 animate-spin" aria-hidden="true"></i>Destiny is choosing...
         </p>
+      } @else if (wheelConfigurator.winner() && !wheelConfigurator.showWinnerEffect() && wheelConfigurator.names().length > 30 && !forceUnzoom()) {
+        <button
+          type="button"
+          (click)="forceUnzoom.set(true)"
+          class="flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold text-white bg-black/60 backdrop-blur-sm border border-white/25 hover:bg-white/15 hover:border-white/45 transition-all duration-200 hover:cursor-pointer shadow-md">
+          <i class="fa-solid fa-magnifying-glass-minus" aria-hidden="true"></i>
+          Zoom out
+        </button>
       } @else if (!wheelConfigurator.winner()) {
         <p class="text-white/70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] uppercase tracking-[0.2em] font-medium text-sm transition-opacity duration-300 hover:text-white/90">
           <i class="fa-solid fa-hand-pointer mr-2 text-amber-400/60" aria-hidden="true"></i>Click the wheel to spin

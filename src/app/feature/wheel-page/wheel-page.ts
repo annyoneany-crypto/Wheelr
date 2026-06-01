@@ -59,6 +59,8 @@ export class WheelPage {
   winnerHistory = signal<WinnerPanelEntry[]>([]);
   /** Per-workspace cache of loaded HTMLImageElements for preview canvas drawing. */
   previewImageCache = signal<Record<string, { wheelEl: HTMLImageElement | null; sliceEls: (HTMLImageElement | null)[] }>>({});
+  /** Per-workspace winner state — independent of which workspace is currently active. */
+  previewWinners = signal<Record<string, string | null>>({});
   winnerHistoryCount = computed(() => this.winnerHistory().length);
   cloudWheelId = computed(() => {
     const activeId = this.wheelConfigurator.activeWheelId();
@@ -233,6 +235,9 @@ export class WheelPage {
   });
 
   private readonly winnerHistoryEffect = effect(() => {
+    // In multi-wheel preview mode the per-workspace sync effect handles history.
+    if (this.showIndependentPreview()) return;
+
     const winner = this.wheelConfigurator.winner();
     if (!winner) {
       return;
@@ -258,6 +263,52 @@ export class WheelPage {
 
       return [nextItem, ...current].slice(0, 60);
     });
+  });
+
+  /**
+   * Multi-wheel mode: when a spin completes for the active workspace, record the
+   * winner in previewWinners (keyed by workspaceId) and add it to history.
+   * This is separate from winnerHistoryEffect so each canvas has independent state.
+   */
+  private readonly winnerSyncEffect = effect(() => {
+    if (!this.showIndependentPreview()) return;
+    const winner = this.wheelConfigurator.winner();
+    const isSpinning = this.wheelConfigurator.isSpinning();
+    if (isSpinning || winner === null) return;
+
+    const activeId = this.wheelConfigurator.activeWheelId();
+    if (!activeId) return;
+
+    // Only update (and add to history) when the value actually changes.
+    if (this.previewWinners()[activeId] === winner) return;
+
+    this.previewWinners.update(w => ({ ...w, [activeId]: winner }));
+
+    const wheelName = this.wheelConfigurator.activeWheel()?.name ?? 'Wheel';
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    this.winnerHistory.update(current => {
+      const nextItem: WinnerPanelEntry = {
+        id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
+        name: winner,
+        wheelName,
+        timestamp,
+      };
+      return [nextItem, ...current].slice(0, 60);
+    });
+  });
+
+  /**
+   * Multi-wheel mode: when the user explicitly dismisses the winner effect
+   * (via the fire-effect dismiss button), also clear that workspace's entry in
+   * previewWinners so the glow disappears.
+   */
+  private readonly winnerDismissEffect = effect(() => {
+    if (!this.showIndependentPreview()) return;
+    this.wheelConfigurator.winnerDismissCount(); // subscribe to dismiss events
+    const activeId = this.wheelConfigurator.activeWheelId();
+    if (activeId) {
+      this.previewWinners.update(w => ({ ...w, [activeId]: null }));
+    }
   });
 
   private readonly qrModalEffect = effect(() => {
@@ -471,29 +522,33 @@ export class WheelPage {
       return;
     }
 
-    if (this.wheelConfigurator.isSpinning() || this.wheelConfigurator.countdownInProgress()) {
-      return;
-    }
-
     const visibleCount = this.wheelConfigurator.visibleWheelCount();
     let spinDuration = this.wheelConfigurator.spinDurationMs();
     const wasAlreadyActive = workspaceId === this.wheelConfigurator.activeWheelId();
-    if (workspaceId !== this.wheelConfigurator.activeWheelId()) {
+
+    if (!wasAlreadyActive) {
+      // Clicking a different wheel = workspace selection only, each wheel keeps its own winner.
       this.isSelectingWorkspace.set(true);
       try {
         await this.wheelConfigurator.loadWheelWorkspace(workspaceId);
         // Keep multi-wheel mode active while switching to the clicked wheel.
         this.wheelConfigurator.setVisibleWheelCount(visibleCount);
         spinDuration = this.wheelConfigurator.spinDurationMs();
+        // Restore the winner for the newly active workspace (null if it never won).
+        this.wheelConfigurator.winner.set(this.previewWinners()[workspaceId] ?? null);
       } finally {
         this.isSelectingWorkspace.set(false);
       }
-    }
-
-    // First click on a different wheel only changes selection.
-    if (!wasAlreadyActive) {
       return;
     }
+
+    // Re-clicking the already-active wheel = spin it (if not already spinning).
+    if (this.wheelConfigurator.isSpinning() || this.wheelConfigurator.countdownInProgress()) {
+      return;
+    }
+
+    // Clear only this workspace's previous winner before the new spin starts.
+    this.previewWinners.update(w => ({ ...w, [workspaceId]: null }));
 
     // Keep winner math aligned with the exact visual angle of the clicked preview wheel.
     this.wheelConfigurator.currentRotation.set(this.previewCanvasRotation(workspaceId));
@@ -571,7 +626,10 @@ export class WheelPage {
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
 
-      if (!this.previewSpinningWorkspaceId() && !this.wheelConfigurator.winner()) {
+      const anyWinner = this.showIndependentPreview()
+        ? Object.values(this.previewWinners()).some(w => w !== null)
+        : !!this.wheelConfigurator.winner();
+      if (!this.previewSpinningWorkspaceId() && !anyWinner) {
         this.previewIdleRotation.update((rotation) => rotation + degPerSecond * dt);
       }
 
@@ -596,6 +654,10 @@ export class WheelPage {
       wheelImage: wheelImageEl,
       sliceImages: sliceImageEls,
     });
+  }
+
+  showWinnerEffectFor(workspaceId: string): boolean {
+    return this.visibleWheelConfigs().find(c => c.workspaceId === workspaceId)?.showWinnerEffect ?? true;
   }
 
   /** SVG path for the winner-slice glow overlay on a preview wheel. */

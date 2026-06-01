@@ -138,10 +138,9 @@
               }
             </div>
 
-            <!-- Winner-slice glow for no-effect mode -->
-            @if (wheelConfigurator.winner() &&
-                 !wheelConfigurator.showWinnerEffect() &&
-                 isWorkspaceActive(wheelConfig.workspaceId) &&
+            <!-- Winner-slice glow for no-effect mode (independent per canvas) -->
+            @if (previewWinners()[wheelConfig.workspaceId] &&
+                 !showWinnerEffectFor(wheelConfig.workspaceId) &&
                  !isPreviewSpinning(wheelConfig.workspaceId)) {
               <svg
                 class="absolute pointer-events-none preview-winner-slice-glow"

@@ -48,6 +48,15 @@ export class Wheel {
 
   width = signal(800);
   height = signal(800);
+  forceUnzoom = signal(false);
+
+  private readonly resetUnzoomEffect = effect(() => {
+    // Reset manual zoom-out whenever a new spin starts.
+    if (this.wheelConfigurator.isSpinning()) {
+      this.forceUnzoom.set(false);
+    }
+  });
+
 
   /**
    * SVG path tracing the borders of the winner slice in screen space.
