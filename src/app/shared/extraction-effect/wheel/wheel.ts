@@ -1,4 +1,4 @@
-import { Component, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 
 @Component({
@@ -48,6 +48,35 @@ export class Wheel {
 
   width = signal(800);
   height = signal(800);
+
+  /**
+   * SVG path tracing the borders of the winner slice in screen space.
+   * The canvas content is drawn with slice 0 starting at angle 0 (3 o'clock).
+   * The CSS rotation `currentRotation` shifts all slices clockwise by that many degrees.
+   * We account for both so the overlay aligns with the physically rotated canvas.
+   */
+  winnerSlicePath = computed(() => {
+    const n = this.wheelConfigurator.names().length;
+    if (!n) return '';
+    const w = this.width();
+    const h = this.height();
+    const cx = w / 2;
+    const cy = h / 2;
+    const r = cx - 2;
+    const sliceAngle = (Math.PI * 2) / n;
+    const k = this.wheelConfigurator.pointerSliceIndex();
+    const R = this.wheelConfigurator.currentRotation() * (Math.PI / 180);
+    // Winner slice k spans canvas angles [k*sliceAngle, (k+1)*sliceAngle].
+    // After CSS rotation R the visual screen angles are shifted by R.
+    const a1 = k * sliceAngle + R;
+    const a2 = a1 + sliceAngle;
+    const x1 = cx + r * Math.cos(a1);
+    const y1 = cy + r * Math.sin(a1);
+    const x2 = cx + r * Math.cos(a2);
+    const y2 = cy + r * Math.sin(a2);
+    const largeArc = sliceAngle > Math.PI ? 1 : 0;
+    return `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} Z`;
+  });
   private readonly syncSizeEffect = effect(() => {
     this.wheelConfigurator.visibleWheelCount();
     this.calculateSize();

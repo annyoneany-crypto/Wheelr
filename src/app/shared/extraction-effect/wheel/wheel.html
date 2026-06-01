@@ -181,9 +181,26 @@
       </div>
 
 
-      <!-- Flame Animation -->
-      @if (wheelConfigurator.winner()) {
+      <!-- Winner effect (fire / confetti / etc.) -->
+      @if (wheelConfigurator.winner() && wheelConfigurator.showWinnerEffect()) {
         <ng-content></ng-content>
+      }
+
+      <!-- No-effect winner glow: illuminate only the borders of the winning slice -->
+      @if (wheelConfigurator.winner() && !wheelConfigurator.showWinnerEffect()) {
+        <svg
+          class="absolute pointer-events-none winner-slice-glow"
+          [attr.width]="width()"
+          [attr.height]="height()"
+          [attr.viewBox]="'0 0 ' + width() + ' ' + height()"
+          style="top:0;left:0;">
+          <path
+            [attr.d]="winnerSlicePath()"
+            fill="none"
+            stroke="#fbbf24"
+            stroke-width="5"
+            stroke-linejoin="round"/>
+        </svg>
       }
     </div>
 

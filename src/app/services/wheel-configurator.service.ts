@@ -98,6 +98,7 @@ export class WheelConfigurator {
 
   wheelView = signal<'wheel' | 'linear' | 'cards'>('wheel');
   winnerEffect = signal<effectType>('fire');
+  showWinnerEffect = signal<boolean>(true);
   pointerType = signal<pointerType>('drop');
 
   palettes = signal<ColorPalette[]>(DEFAULT_PALETTES);
@@ -958,6 +959,7 @@ export class WheelConfigurator {
     this.centerLogoSize.set('m');
     this.wheelView.set('wheel');
     this.winnerEffect.set('fire');
+    this.showWinnerEffect.set(true);
     this.pointerType.set('drop');
     this.spinDurationMs.set(3000);
     this.soundEnabled.set(true);
@@ -1160,6 +1162,11 @@ export class WheelConfigurator {
       this.winnerEffect.set(effectiveWinnerEffect);
     }
 
+    const storedShowWinnerEffect = readJson<boolean>(this.storageKey(STORAGE_KEYS.showWinnerEffect));
+    if (typeof storedShowWinnerEffect === 'boolean') {
+      this.showWinnerEffect.set(storedShowWinnerEffect);
+    }
+
     if (
       effectivePointerType === 'drop' ||
       effectivePointerType === 'arrow' ||
@@ -1318,6 +1325,11 @@ export class WheelConfigurator {
     effect(() => {
       if (!this.activeWheelId()) return;
       writeJson(this.storageKey(STORAGE_KEYS.winnerEffect), this.winnerEffect());
+    });
+
+    effect(() => {
+      if (!this.activeWheelId()) return;
+      writeJson(this.storageKey(STORAGE_KEYS.showWinnerEffect), this.showWinnerEffect());
     });
 
     effect(() => {
