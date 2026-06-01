@@ -27,6 +27,8 @@ export const STORAGE_KEYS = {
   fontFamily: 'giveawayWheel.fontFamily',
   fontLink: 'giveawayWheel.fontLink',
   pointerType: 'giveawayWheel.pointerType',
+  wheelImage: 'giveawayWheel.wheelImage',
+  sliceImages: 'giveawayWheel.sliceImages',
 } as const;
 
 export interface ColorPalette {

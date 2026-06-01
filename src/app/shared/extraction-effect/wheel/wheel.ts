@@ -31,6 +31,7 @@ export class Wheel {
     this.wheelConfigurator.selectedPalette();
     this.wheelConfigurator.fontFamily();
     this.wheelConfigurator.fontRenderVersion();
+    this.wheelConfigurator.imageRenderVersion();
 
     // Wheels that zoom on win (>30 names) are ALWAYS rendered with the zoomed
     // text inset — note this effect deliberately does not read winner(). That

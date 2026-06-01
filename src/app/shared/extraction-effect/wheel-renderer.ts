@@ -23,6 +23,10 @@ export interface WheelRenderOptions {
   emptyFillStyle?: string | null;
   /** Stroke colour for slice separators; pass null to skip the stroke. */
   sliceStroke?: string | null;
+  /** Image drawn behind the whole wheel disc (replaces solid slice fills). */
+  wheelImage?: HTMLImageElement | null;
+  /** Per-slice images (up to 10, cycling). Each replaces the solid color fill of its slice. */
+  sliceImages?: (HTMLImageElement | null)[];
 }
 
 export function drawWheelCanvas(
@@ -38,6 +42,8 @@ export function drawWheelCanvas(
     radiusInset = 10,
     emptyFillStyle = null,
     sliceStroke = 'rgba(255,255,255,0.2)',
+    wheelImage = null,
+    sliceImages = [],
   } = options;
   const fontFamily = options.fontFamily || DEFAULT_FONT_FAMILY;
 
@@ -64,25 +70,89 @@ export function drawWheelCanvas(
   const textInset = zoomed ? Math.round(baseInset / renderScale) : baseInset;
   const sliceAngle = (Math.PI * 2) / n;
 
+  // Draw the wheel background image once, clipped to the full circle.
+  if (wheelImage) {
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(centerX, centerY, radius, 0, Math.PI * 2);
+    ctx.clip();
+    ctx.drawImage(wheelImage, centerX - radius, centerY - radius, radius * 2, radius * 2);
+    ctx.restore();
+  }
+
   // Slice geometry is identical for every slice, so the font-size bounds and
   // text position only need to be computed once instead of once per label.
   const bounds = computeFontBounds(radius, textInset, sliceAngle, n, renderScale);
   const maxWidth = Math.max(20, radius - textInset - 6);
   const labelX = radius - textInset;
+  const hasSliceImages = sliceImages.length > 0;
 
   for (let i = 0; i < n; i += 1) {
     const angle = i * sliceAngle;
     const sliceColor = colors[i % colorCount] ?? '#ffffff';
+    const sliceImg = hasSliceImages ? (sliceImages[i % sliceImages.length] ?? null) : null;
 
     ctx.beginPath();
     ctx.moveTo(centerX, centerY);
     ctx.arc(centerX, centerY, radius, angle, angle + sliceAngle);
-    ctx.fillStyle = sliceColor;
-    ctx.fill();
-    if (sliceStroke) {
-      ctx.lineWidth = renderScale;
-      ctx.strokeStyle = sliceStroke;
-      ctx.stroke();
+
+    if (sliceImg) {
+      // Draw image fitted (cover) to the slice's own local coordinate frame.
+      ctx.save();
+      ctx.clip();
+
+      // Rotate so the slice mid-angle points along +x.
+      ctx.translate(centerX, centerY);
+      ctx.rotate(angle + sliceAngle / 2);
+
+      // Slot dimensions in local coords: width = radius, height = arc-width at outer edge.
+      const halfArc = radius * Math.sin(sliceAngle / 2);
+      const slotW = radius;
+      const slotH = halfArc * 2;
+      const nw = sliceImg.naturalWidth || 1;
+      const nh = sliceImg.naturalHeight || 1;
+      const imgAspect = nw / nh;
+      const slotAspect = slotW / Math.max(slotH, 0.001);
+
+      // Cover: scale so the image fills the slot on the shorter dimension.
+      let drawW: number, drawH: number;
+      if (imgAspect > slotAspect) {
+        drawH = slotH;
+        drawW = drawH * imgAspect;
+      } else {
+        drawW = slotW;
+        drawH = drawW / imgAspect;
+      }
+
+      // Centre the image within the slot (x: 0…radius, y: ±halfArc).
+      ctx.drawImage(sliceImg, (slotW - drawW) / 2, -drawH / 2, drawW, drawH);
+      ctx.restore();
+
+      // Re-trace path for the stroke (clip consumed the path).
+      if (sliceStroke) {
+        ctx.beginPath();
+        ctx.moveTo(centerX, centerY);
+        ctx.arc(centerX, centerY, radius, angle, angle + sliceAngle);
+        ctx.lineWidth = renderScale;
+        ctx.strokeStyle = sliceStroke;
+        ctx.stroke();
+      }
+    } else if (!wheelImage) {
+      // Default: solid color fill.
+      ctx.fillStyle = sliceColor;
+      ctx.fill();
+      if (sliceStroke) {
+        ctx.lineWidth = renderScale;
+        ctx.strokeStyle = sliceStroke;
+        ctx.stroke();
+      }
+    } else {
+      // Wheel background image is active; just draw the separator line.
+      if (sliceStroke) {
+        ctx.lineWidth = renderScale;
+        ctx.strokeStyle = sliceStroke;
+        ctx.stroke();
+      }
     }
 
     ctx.save();
@@ -91,14 +161,16 @@ export function drawWheelCanvas(
     ctx.textAlign = 'right';
     ctx.textBaseline = 'middle';
 
-    const labelColor = contrastForHex(sliceColor);
-    const outlineColor = labelColor === '#FFFFFF' ? '#000000' : '#FFFFFF';
+    // Over images always use white text with a dark outline for readability.
+    const useImageText = !!(sliceImg || wheelImage);
+    const labelColor = useImageText ? '#FFFFFF' : contrastForHex(sliceColor);
+    const outlineColor = useImageText ? '#000000' : (labelColor === '#FFFFFF' ? '#000000' : '#FFFFFF');
     ctx.fillStyle = labelColor;
 
     const fitted = fitLabel(ctx, names[i] ?? '', fontFamily, bounds, maxWidth);
 
     ctx.font = `bold ${fitted.fontSize}px ${fontFamily}`;
-    ctx.strokeStyle = `${outlineColor}AA`;
+    ctx.strokeStyle = useImageText ? `#000000CC` : `${outlineColor}AA`;
     ctx.lineWidth = Math.max(2, Math.round(fitted.fontSize * 0.18));
     ctx.lineJoin = 'round';
     ctx.strokeText(fitted.text, labelX, 0);

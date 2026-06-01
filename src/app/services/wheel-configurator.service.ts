@@ -210,8 +210,14 @@ export class WheelConfigurator {
     return firstFamily;
   }
 
-  bgColor = signal<string>('#262626'); 
+  bgColor = signal<string>('#262626');
   bgImage = signal<string>('');
+  wheelImage = signal<string>('');
+  sliceImages = signal<string[]>([]);
+  /** Incremented each time wheel/slice image elements finish loading. Used by the wheel component to schedule a redraw at the correct renderScale. */
+  imageRenderVersion = signal(0);
+  private wheelImageEl = signal<HTMLImageElement | null>(null);
+  private sliceImageEls = signal<(HTMLImageElement | null)[]>([]);
   selectedPalette = signal<ColorPalette>(this.palettes()[0]);
 
   isSpinning = signal(false);
@@ -308,6 +314,62 @@ export class WheelConfigurator {
     const activeId = this.activeWheelId() || 'default';
     const rootId = this.getWorkspaceRootId(activeId) || 'default';
     return `${STORAGE_KEYS.bgImage}.${rootId}`;
+  }
+
+  private wheelImageStorageKey(): string {
+    return `${STORAGE_KEYS.wheelImage}.${this.activeWheelId() || 'default'}`;
+  }
+
+  private sliceImagesStorageKey(): string {
+    return `${STORAGE_KEYS.sliceImages}.${this.activeWheelId() || 'default'}`;
+  }
+
+  setWheelImage(dataUrl: string): void {
+    this.wheelImage.set(dataUrl);
+    this.loadWheelImageEl(dataUrl);
+    writeImage(this.wheelImageStorageKey(), dataUrl).catch(() => {});
+  }
+
+  setSliceImages(images: string[]): void {
+    const trimmed = images.slice(0, 10);
+    this.sliceImages.set(trimmed);
+    this.loadSliceImageEls(trimmed);
+    writeImage(this.sliceImagesStorageKey(), JSON.stringify(trimmed)).catch(() => {});
+  }
+
+  private loadWheelImageEl(dataUrl: string): void {
+    if (!dataUrl) {
+      this.wheelImageEl.set(null);
+      this.imageRenderVersion.update(v => v + 1);
+      return;
+    }
+    const img = new Image();
+    img.onload = () => { this.wheelImageEl.set(img); this.imageRenderVersion.update(v => v + 1); };
+    img.onerror = () => { this.wheelImageEl.set(null); this.imageRenderVersion.update(v => v + 1); };
+    img.src = dataUrl;
+  }
+
+  private loadSliceImageEls(dataUrls: string[]): void {
+    if (!dataUrls.length) {
+      this.sliceImageEls.set([]);
+      this.imageRenderVersion.update(v => v + 1);
+      return;
+    }
+    const els: (HTMLImageElement | null)[] = new Array(dataUrls.length).fill(null);
+    let pending = dataUrls.length;
+    const done = () => {
+      if (--pending === 0) {
+        this.sliceImageEls.set([...els]);
+        this.imageRenderVersion.update(v => v + 1);
+      }
+    };
+    dataUrls.forEach((url, i) => {
+      if (!url) { done(); return; }
+      const img = new Image();
+      img.onload = () => { els[i] = img; done(); };
+      img.onerror = () => done();
+      img.src = url;
+    });
   }
 
   private buildActiveSnapshotEntry() {
@@ -915,6 +977,10 @@ export class WheelConfigurator {
     this.winner.set(null);
     this.winnerAnimationId.set(undefined);
     this.isSpinning.set(false);
+    this.wheelImage.set('');
+    this.sliceImages.set([]);
+    this.wheelImageEl.set(null);
+    this.sliceImageEls.set([]);
   }
 
   private idleRotationId: number | null = null;
@@ -1035,6 +1101,24 @@ export class WheelConfigurator {
 
     if (storedCenterImage) {
       this.centerImage.set(storedCenterImage);
+    }
+
+    const storedWheelImage = await readImage(this.wheelImageStorageKey());
+    if (typeof storedWheelImage === 'string' && storedWheelImage.length) {
+      this.wheelImage.set(storedWheelImage);
+      this.loadWheelImageEl(storedWheelImage);
+    }
+
+    const storedSliceImagesJson = await readImage(this.sliceImagesStorageKey());
+    if (typeof storedSliceImagesJson === 'string' && storedSliceImagesJson.length) {
+      try {
+        const parsed = JSON.parse(storedSliceImagesJson) as unknown;
+        if (Array.isArray(parsed)) {
+          const urls = (parsed as unknown[]).filter((v): v is string => typeof v === 'string').slice(0, 10);
+          this.sliceImages.set(urls);
+          this.loadSliceImageEls(urls);
+        }
+      } catch { /* ignore malformed data */ }
     }
 
     if (typeof storedCenterColor === 'string' && storedCenterColor.length) {
@@ -1366,6 +1450,8 @@ export class WheelConfigurator {
       fontFamily: this.fontFamily(),
       renderScale,
       zoomed,
+      wheelImage: this.wheelImageEl(),
+      sliceImages: this.sliceImageEls(),
     });
   }
 
