@@ -93,6 +93,8 @@ export class FireEffect implements IWinnerEffect {
   private applauseHands: ApplauseHand[] = [];
   private lastBurstAt = 0;
   private fireFlickerPhase = 0;
+  // Cached radial gradients for the fire glow; only depend on canvas size.
+  private fireGradients: { key: string; floorGlow: CanvasGradient; topHeat: CanvasGradient } | null = null;
   private starting = false;
   private resizeListener?: () => void;
   private readonly confettiColors = ['#34d399', '#60a5fa', '#f59e0b', '#f472b6', '#f87171', '#fef08a'];
@@ -301,17 +303,7 @@ export class FireEffect implements IWinnerEffect {
     const flameBaseY = canvas.height * 0.9;
     const flameWidth = Math.max(300, canvas.width * 0.3);
 
-    const floorGlow = ctx.createRadialGradient(
-      flameBaseX,
-      flameBaseY + 22,
-      20,
-      flameBaseX,
-      flameBaseY + 22,
-      flameWidth * 1.35
-    );
-    floorGlow.addColorStop(0, 'rgba(255,190,60,0.30)');
-    floorGlow.addColorStop(0.4, 'rgba(255,110,20,0.18)');
-    floorGlow.addColorStop(1, 'rgba(0,0,0,0)');
+    const { floorGlow, topHeat } = this.getFireGradients(ctx, flameBaseX, flameBaseY, flameWidth);
     ctx.fillStyle = floorGlow;
     ctx.beginPath();
     ctx.ellipse(flameBaseX, flameBaseY + 22, flameWidth * 1.25, flameWidth * 0.4, 0, 0, Math.PI * 2);
@@ -449,6 +441,35 @@ export class FireEffect implements IWinnerEffect {
     }
     this.smokeParticles.length = smokeWrite;
 
+    ctx.fillStyle = topHeat;
+    ctx.beginPath();
+    ctx.ellipse(flameBaseX, flameBaseY - 340, flameWidth * 1.45, flameWidth * 1.7, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  private getFireGradients(
+    ctx: CanvasRenderingContext2D,
+    flameBaseX: number,
+    flameBaseY: number,
+    flameWidth: number
+  ): { floorGlow: CanvasGradient; topHeat: CanvasGradient } {
+    const key = `${flameBaseX}|${flameBaseY}|${flameWidth}`;
+    if (this.fireGradients && this.fireGradients.key === key) {
+      return this.fireGradients;
+    }
+
+    const floorGlow = ctx.createRadialGradient(
+      flameBaseX,
+      flameBaseY + 22,
+      20,
+      flameBaseX,
+      flameBaseY + 22,
+      flameWidth * 1.35
+    );
+    floorGlow.addColorStop(0, 'rgba(255,190,60,0.30)');
+    floorGlow.addColorStop(0.4, 'rgba(255,110,20,0.18)');
+    floorGlow.addColorStop(1, 'rgba(0,0,0,0)');
+
     const topHeat = ctx.createRadialGradient(
       flameBaseX,
       flameBaseY - 360,
@@ -460,10 +481,9 @@ export class FireEffect implements IWinnerEffect {
     topHeat.addColorStop(0, 'rgba(255,170,80,0.16)');
     topHeat.addColorStop(0.6, 'rgba(255,90,20,0.06)');
     topHeat.addColorStop(1, 'rgba(0,0,0,0)');
-    ctx.fillStyle = topHeat;
-    ctx.beginPath();
-    ctx.ellipse(flameBaseX, flameBaseY - 340, flameWidth * 1.45, flameWidth * 1.7, 0, 0, Math.PI * 2);
-    ctx.fill();
+
+    this.fireGradients = { key, floorGlow, topHeat };
+    return this.fireGradients;
   }
 
   private drawCartoonFire(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement): void {

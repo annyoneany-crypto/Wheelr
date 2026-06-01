@@ -1,6 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WheelConfigurator } from '../../../../../services/wheel-configurator.service';
+import { ColorPalette } from '../../../../../services/global_function';
 
 @Component({
   selector: 'app-palet',

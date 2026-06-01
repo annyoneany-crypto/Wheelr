@@ -8,6 +8,7 @@ import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, RouterMo
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { contrastForHex } from '../../services/global_function';
+import { drawWheelCanvas } from '../../shared/extraction-effect/wheel-renderer';
 import { WinnerPanel } from './child/winner-panel/winner-panel';
 import type { WinnerPanelEntry } from './child/winner-panel/winner-panel';
 import { WheelButton } from './child/wheel-button/wheel-button';
@@ -547,101 +548,12 @@ export class WheelPage {
     ctx: CanvasRenderingContext2D,
     config: WheelDisplayConfig
   ): void {
-    const n = config.names.length;
-    const centerX = canvas.width / 2;
-    const centerY = canvas.height / 2;
-    const radius = centerX - 10;
-    const textInset = Math.max(20, Math.round(radius * 0.08));
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    if (n === 0) {
-      ctx.fillStyle = '#5e5e5eBB';
-      ctx.beginPath();
-      ctx.arc(centerX, centerY, Math.max(radius, 0), 0, Math.PI * 2);
-      ctx.fill();
-      return;
-    }
-
-    const sliceAngle = (Math.PI * 2) / n;
-    config.names.forEach((name, i) => {
-      const angle = i * sliceAngle;
-      ctx.beginPath();
-      ctx.moveTo(centerX, centerY);
-      ctx.arc(centerX, centerY, radius, angle, angle + sliceAngle);
-      const sliceColor = config.colors[i % config.colors.length] ?? '#ffffff';
-      ctx.fillStyle = sliceColor;
-      ctx.fill();
-      ctx.strokeStyle = 'rgba(255,255,255,0.2)';
-      ctx.stroke();
-
-      ctx.save();
-      ctx.translate(centerX, centerY);
-      ctx.rotate(angle + sliceAngle / 2);
-      ctx.textAlign = 'right';
-      ctx.textBaseline = 'middle';
-      const labelColor = contrastForHex(sliceColor);
-      const outlineColor = labelColor === '#FFFFFF' ? '#000000' : '#FFFFFF';
-      ctx.fillStyle = labelColor;
-
-      const fittedText = this.fitPreviewSliceLabel(
-        ctx,
-        name,
-        config.fontFamily,
-        radius,
-        textInset,
-        sliceAngle,
-        n
-      );
-
-      ctx.font = `bold ${fittedText.fontSize}px ${config.fontFamily}`;
-      ctx.strokeStyle = `${outlineColor}AA`;
-      ctx.lineWidth = Math.max(2, Math.round(fittedText.fontSize * 0.18));
-      ctx.lineJoin = 'round';
-      ctx.strokeText(fittedText.text, radius - textInset, 0);
-      ctx.fillText(fittedText.text, radius - textInset, 0);
-      ctx.restore();
+    drawWheelCanvas(canvas, ctx, {
+      names: config.names,
+      colors: config.colors,
+      fontFamily: config.fontFamily,
+      emptyFillStyle: '#5e5e5eBB',
     });
-  }
-
-  private fitPreviewSliceLabel(
-    ctx: CanvasRenderingContext2D,
-    rawText: string,
-    fontFamily: string,
-    radius: number,
-    textInset: number,
-    sliceAngle: number,
-    sliceCount: number
-  ): { text: string; fontSize: number } {
-    const text = rawText.trim() || '---';
-    const textRadius = Math.max(8, radius - textInset);
-    const maxWidth = Math.max(20, radius - textInset - 6);
-
-    const maxFontByRadius = Math.max(8, Math.round(radius * 0.1));
-    const maxFontByArc = Math.max(8, Math.floor(textRadius * sliceAngle * 0.58));
-    const countScale = Math.min(1, Math.sqrt(8 / Math.max(1, sliceCount)));
-    const maxFontByCount = Math.max(8, Math.floor(34 * countScale));
-    const preferredFontSize = Math.min(42, maxFontByRadius, maxFontByArc, maxFontByCount);
-    const minFontSize = 8;
-
-    let chosenSize = preferredFontSize;
-    for (let size = preferredFontSize; size >= minFontSize; size--) {
-      ctx.font = `bold ${size}px ${fontFamily}`;
-      if (ctx.measureText(text).width <= maxWidth) {
-        return { text, fontSize: size };
-      }
-      chosenSize = size;
-    }
-
-    let clipped = text;
-    while (clipped.length > 1) {
-      clipped = clipped.slice(0, -1);
-      const candidate = `${clipped}...`;
-      if (ctx.measureText(candidate).width <= maxWidth) {
-        return { text: candidate, fontSize: chosenSize };
-      }
-    }
-
-    return { text: '...', fontSize: chosenSize };
   }
 
   togglePaletSettings(path: string): void {

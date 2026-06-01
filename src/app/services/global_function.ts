@@ -128,18 +128,27 @@ export function clampDeg(deg: number): number {
   return (m + 360) % 360;
 }
 
+// Memoize results: contrast is a pure function of the input string and is
+// called once per slice on every wheel redraw, often with a tiny set of colors.
+const contrastCache = new Map<string, '#000000' | '#FFFFFF'>();
+
 /**
  * Calculate contrast color (#000000 or #FFFFFF) for given hex color
  */
 export function contrastForHex(hex: string): '#000000' | '#FFFFFF' {
+  const cached = contrastCache.get(hex);
+  if (cached) return cached;
+
   const rgb = parseColorToRgb(hex);
-  if (!rgb) return '#000000';
+  let result: '#000000' | '#FFFFFF' = '#000000';
+  if (rgb) {
+    // Perceived luminance (sRGB-ish). Threshold tuned for UI contrast.
+    const luminance = 0.2126 * rgb.r + 0.7152 * rgb.g + 0.0722 * rgb.b;
+    result = luminance > 140 ? '#000000' : '#FFFFFF';
+  }
 
-  const { r, g, b } = rgb;
-
-  // Perceived luminance (sRGB-ish). Threshold tuned for UI contrast.
-  const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-  return luminance > 140 ? '#000000' : '#FFFFFF';
+  contrastCache.set(hex, result);
+  return result;
 }
 
 function parseColorToRgb(input: string): { r: number; g: number; b: number } | null {

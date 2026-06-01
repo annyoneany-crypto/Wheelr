@@ -31,10 +31,14 @@ export class Wheel {
     this.wheelConfigurator.selectedPalette();
     this.wheelConfigurator.fontFamily();
     this.wheelConfigurator.fontRenderVersion();
-    const winner = this.wheelConfigurator.winner();
-    const isZoomed = !!winner && this.wheelConfigurator.names().length > 30;
 
-    this.wheelConfigurator.drawWheelForCanvas(canvasElement, context, this.CANVAS_RENDER_SCALE, isZoomed);
+    // Wheels that zoom on win (>30 names) are ALWAYS rendered with the zoomed
+    // text inset — note this effect deliberately does not read winner(). That
+    // way revealing the winner triggers only the CSS scale() transition and not
+    // a canvas redraw, so the zoom stays smooth no matter how many names there
+    // are (a full redraw of hundreds of labels on a 7x canvas is what made it
+    // stutter above ~250 names). The 7x backing store keeps the zoom sharp.
+    this.scheduleDraw(canvasElement, context, this.isLargeWheel());
 
     // Keep backward compatibility for service consumers expecting a primary canvas.
     this.wheelConfigurator.ctx.set(context);
@@ -49,6 +53,7 @@ export class Wheel {
   });
 
   private resizeTimeout: any;
+  private drawFrameId: number | null = null;
 
   constructor() {
     this.calculateSize();
@@ -59,6 +64,34 @@ export class Wheel {
       clearTimeout(this.resizeTimeout);
       this.resizeTimeout = null;
     }
+    if (this.drawFrameId !== null) {
+      cancelAnimationFrame(this.drawFrameId);
+      this.drawFrameId = null;
+    }
+  }
+
+  // Large wheels (>30 names) use the zoomed text inset and zoom in on win.
+  private isLargeWheel(): boolean {
+    return this.wheelConfigurator.names().length > 30;
+  }
+
+  /**
+   * Draws the wheel on the next animation frame instead of synchronously, so a
+   * heavy redraw never blocks the main thread during the winner zoom transition.
+   */
+  private scheduleDraw(
+    canvas: HTMLCanvasElement,
+    context: CanvasRenderingContext2D,
+    isZoomed: boolean
+  ): void {
+    if (this.drawFrameId !== null) {
+      cancelAnimationFrame(this.drawFrameId);
+    }
+
+    this.drawFrameId = requestAnimationFrame(() => {
+      this.drawFrameId = null;
+      this.wheelConfigurator.drawWheelForCanvas(canvas, context, this.CANVAS_RENDER_SCALE, isZoomed);
+    });
   }
 
   calculateSize() {
@@ -99,10 +132,9 @@ export class Wheel {
       const canvasElement = this.canvasRef()?.nativeElement;
       const context = canvasElement?.getContext('2d');
       if (canvasElement && context) {
-        const isZoomed = !!this.wheelConfigurator.winner() && this.wheelConfigurator.names().length > 30;
-        this.wheelConfigurator.drawWheelForCanvas(canvasElement, context, this.CANVAS_RENDER_SCALE, isZoomed);
+        this.scheduleDraw(canvasElement, context, this.isLargeWheel());
       }
-      this.resizeTimeout = null; 
+      this.resizeTimeout = null;
     }, 200);
   }
 }

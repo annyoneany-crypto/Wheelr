@@ -26,12 +26,15 @@ export class LinearWheel {
 
   private colors = ['#3b82f6', '#8b5cf6', '#ec4899', '#f97316', '#10b981'];
 
+  // Created in the injection context; redraws the font when the family changes.
+  // updateFont() is a no-op until the canvas context exists (set in ngAfterViewInit).
+  private readonly fontEffect = effect(() => {
+    this.wheelConfigurator.fontFamily();
+    this.updateFont();
+  });
+
   ngAfterViewInit() {
     this.initCanvas();
-    effect(() => {
-      this.wheelConfigurator.fontFamily();
-      this.updateFont();
-    });
 
     const onResize = () => this.initCanvas();
     window.addEventListener('resize', onResize);

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WheelCloudRepository } from '../../services/wheel-cloud-repository.service';
 import { contrastForHex } from '../../services/global_function';
+import { drawWheelCanvas } from '../../shared/extraction-effect/wheel-renderer';
 import { WheelDisplayConfig } from '../../services/wheel-configurator.models';
 
 @Component({
@@ -188,53 +189,13 @@ export class PublicWheel implements OnDestroy {
       return;
     }
 
-    const names = config.names ?? [];
-    const colors = config.colors ?? [];
-
-    context.clearRect(0, 0, canvas.width, canvas.height);
-
-    if (!names.length) {
-      context.beginPath();
-      context.arc(canvas.width / 2, canvas.height / 2, canvas.width / 2 - 4, 0, Math.PI * 2);
-      context.fillStyle = '#6b7280';
-      context.fill();
-      return;
-    }
-
-    const cx = canvas.width / 2;
-    const cy = canvas.height / 2;
-    const radius = canvas.width / 2 - 4;
-    const sliceAngle = (Math.PI * 2) / names.length;
-
-    for (let i = 0; i < names.length; i += 1) {
-      const start = i * sliceAngle;
-      const end = start + sliceAngle;
-      const sliceColor = colors[i % Math.max(1, colors.length)] ?? '#f59e0b';
-
-      context.beginPath();
-      context.moveTo(cx, cy);
-      context.arc(cx, cy, radius, start, end);
-      context.closePath();
-      context.fillStyle = sliceColor;
-      context.fill();
-
-      const mid = start + sliceAngle / 2;
-      context.save();
-      context.translate(cx, cy);
-      context.rotate(mid);
-      const labelColor = contrastForHex(sliceColor);
-      const outlineColor = labelColor === '#FFFFFF' ? '#000000' : '#FFFFFF';
-
-      context.fillStyle = labelColor;
-      context.strokeStyle = `${outlineColor}AA`;
-      context.lineWidth = 3;
-      context.lineJoin = 'round';
-      context.textAlign = 'right';
-      context.textBaseline = 'middle';
-      context.font = `700 18px ${config.fontFamily || 'Inter, sans-serif'}`;
-      context.strokeText(names[i] ?? '', radius - 20, 0);
-      context.fillText(names[i] ?? '', radius - 20, 0);
-      context.restore();
-    }
+    drawWheelCanvas(canvas, context, {
+      names: config.names ?? [],
+      colors: config.colors ?? [],
+      fontFamily: config.fontFamily,
+      radiusInset: 4,
+      emptyFillStyle: '#6b7280',
+      sliceStroke: null,
+    });
   }
 }
