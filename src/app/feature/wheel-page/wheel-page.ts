@@ -46,7 +46,9 @@ export class WheelPage {
   previewRotations = signal<Record<string, number>>({});
   previewSpinDurations = signal<Record<string, number>>({});
   previewSpinningWorkspaceId = signal<string | null>(null);
-  previewIdleRotation = signal(0);
+  /** Per-workspace slow idle rotation. Each wheel idles independently so that
+   *  spinning one wheel does not freeze the others' idle spin. */
+  previewIdleRotations = signal<Record<string, number>>({});
   wheelGridClass = computed(() => {
     const count = this.wheelConfigurator.visibleWheelCount();
     if (count <= 1) {
@@ -536,8 +538,16 @@ export class WheelPage {
       loadedConfigs.filter((config): config is WheelDisplayConfig => config !== null)
     );
 
-    // Ensure every visible wheel has a local visual rotation state.
+    // Ensure every visible wheel has a local visual rotation state and prune
+    // rotation/idle entries for wheels that are no longer visible.
     this.previewRotations.update((current) => {
+      const next: Record<string, number> = {};
+      for (const config of this.visibleWheelConfigs()) {
+        next[config.workspaceId] = current[config.workspaceId] ?? 0;
+      }
+      return next;
+    });
+    this.previewIdleRotations.update((current) => {
       const next: Record<string, number> = {};
       for (const config of this.visibleWheelConfigs()) {
         next[config.workspaceId] = current[config.workspaceId] ?? 0;
@@ -621,7 +631,7 @@ export class WheelPage {
   }
 
   previewCanvasRotation(workspaceId: string): number {
-    return (this.previewRotations()[workspaceId] ?? 0) + this.previewIdleRotation();
+    return (this.previewRotations()[workspaceId] ?? 0) + (this.previewIdleRotations()[workspaceId] ?? 0);
   }
 
   isPreviewSpinning(workspaceId: string): boolean {
@@ -666,13 +676,29 @@ export class WheelPage {
     const tick = (ts: number) => {
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
+      const delta = degPerSecond * dt;
 
-      const anyWinner = this.showIndependentPreview()
-        ? Object.values(this.previewWinners()).some(w => w !== null)
-        : !!this.wheelConfigurator.winner();
-      if (!this.previewSpinningWorkspaceId() && !anyWinner) {
-        this.previewIdleRotation.update((rotation) => rotation + degPerSecond * dt);
-      }
+      const spinningId = this.previewSpinningWorkspaceId();
+      const winners = this.previewWinners();
+
+      // Advance each visible wheel's idle rotation independently. A wheel pauses
+      // its slow idle spin only while it is itself spinning or after it has
+      // produced a winner — other wheels keep idling.
+      this.previewIdleRotations.update((current) => {
+        let next: Record<string, number> | null = null;
+        for (const config of this.visibleWheelConfigs()) {
+          const id = config.workspaceId;
+          const frozen = spinningId === id || winners[id] != null;
+          if (frozen) {
+            continue;
+          }
+          if (!next) {
+            next = { ...current };
+          }
+          next[id] = (current[id] ?? 0) + delta;
+        }
+        return next ?? current;
+      });
 
       this.idleAnimationFrameId = requestAnimationFrame(tick);
     };
