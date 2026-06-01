@@ -12,6 +12,7 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 })
 export class Wheel {
   wheelConfigurator = inject(WheelConfigurator);
+  readonly CANVAS_RENDER_SCALE = 7;
 
   canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('wheelCanvas');
   private readonly syncCanvasEffect = effect(() => {
@@ -30,8 +31,10 @@ export class Wheel {
     this.wheelConfigurator.selectedPalette();
     this.wheelConfigurator.fontFamily();
     this.wheelConfigurator.fontRenderVersion();
+    const winner = this.wheelConfigurator.winner();
+    const isZoomed = !!winner && this.wheelConfigurator.names().length > 30;
 
-    this.wheelConfigurator.drawWheelForCanvas(canvasElement, context);
+    this.wheelConfigurator.drawWheelForCanvas(canvasElement, context, this.CANVAS_RENDER_SCALE, isZoomed);
 
     // Keep backward compatibility for service consumers expecting a primary canvas.
     this.wheelConfigurator.ctx.set(context);
@@ -96,7 +99,8 @@ export class Wheel {
       const canvasElement = this.canvasRef()?.nativeElement;
       const context = canvasElement?.getContext('2d');
       if (canvasElement && context) {
-        this.wheelConfigurator.drawWheelForCanvas(canvasElement, context);
+        const isZoomed = !!this.wheelConfigurator.winner() && this.wheelConfigurator.names().length > 30;
+        this.wheelConfigurator.drawWheelForCanvas(canvasElement, context, this.CANVAS_RENDER_SCALE, isZoomed);
       }
       this.resizeTimeout = null; 
     }, 200);

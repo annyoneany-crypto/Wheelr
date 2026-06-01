@@ -1352,7 +1352,7 @@ export class WheelConfigurator {
     this.drawWheelForCanvas(canvasRef.nativeElement, ctx);
   }
 
-  drawWheelForCanvas(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D): void {
+  drawWheelForCanvas(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, renderScale: number = 1, zoomed: boolean = false): void {
     if (!canvas || !ctx) {
       return;
     }
@@ -1362,7 +1362,8 @@ export class WheelConfigurator {
     const centerY = canvas.height / 2;
     const radius = centerX - 10;
     const colors = this.selectedPalette().colors;
-    const textInset = Math.max(20, Math.round(radius * 0.08));
+    const baseInset = Math.max(20, Math.round(radius * 0.08));
+    const textInset = zoomed ? Math.round(baseInset / renderScale) : baseInset;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     if (n === 0) return;
@@ -1375,6 +1376,7 @@ export class WheelConfigurator {
       ctx.arc(centerX, centerY, radius, angle, angle + sliceAngle);
       ctx.fillStyle = colors[i % colors.length];
       ctx.fill();
+      ctx.lineWidth = renderScale;
       ctx.strokeStyle = 'rgba(255,255,255,0.2)';
       ctx.stroke();
 
@@ -1396,7 +1398,8 @@ export class WheelConfigurator {
         radius,
         textInset,
         sliceAngle,
-        n
+        n,
+        renderScale
       );
 
       // Use geometry-aware font sizing so labels do not overflow narrow slices.
@@ -1417,7 +1420,8 @@ export class WheelConfigurator {
     radius: number,
     textInset: number,
     sliceAngle: number,
-    sliceCount: number
+    sliceCount: number,
+    renderScale: number = 1
   ): { text: string; fontSize: number } {
     const text = rawText.trim() || '---';
     const textRadius = Math.max(8, radius - textInset);
@@ -1426,8 +1430,8 @@ export class WheelConfigurator {
     const maxFontByRadius = Math.max(8, Math.round(radius * 0.1));
     const maxFontByArc = Math.max(8, Math.floor(textRadius * sliceAngle * 0.58));
     const countScale = Math.min(1, Math.sqrt(8 / Math.max(1, sliceCount)));
-    const maxFontByCount = Math.max(8, Math.floor(34 * countScale));
-    const preferredFontSize = Math.min(42, maxFontByRadius, maxFontByArc, maxFontByCount);
+    const maxFontByCount = Math.max(8, Math.floor(34 * countScale * renderScale));
+    const preferredFontSize = Math.min(42 * renderScale, maxFontByRadius, maxFontByArc, maxFontByCount);
     const minFontSize = 8;
 
     let chosenSize = preferredFontSize;
