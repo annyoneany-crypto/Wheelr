@@ -974,9 +974,10 @@ export class WheelConfigurator {
     this.countdownAudio.set('');
     this.countdownEnabled.set(false);
     this.countdownStart.set(3);
-    this.showWinnersList.set(true);
-    this.winnerPanelPosition.set('left');
-    // Keep current multi-wheel layout during hydration to avoid a one-frame fallback to single view.
+    // Keep the winner-panel layout (visibility, position) and multi-wheel layout
+    // during hydration; resetting them to defaults causes a one-frame flash of the
+    // panel appearing/disappearing when switching between wheels. Hydration sets the
+    // correct stored value right after.
     this.currentCountdown.set(null);
     this.countdownToggle.set(false);
     this.countdownInProgress.set(false);

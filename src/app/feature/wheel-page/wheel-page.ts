@@ -1,4 +1,4 @@
-import { Component, computed, effect, ElementRef, inject, signal, viewChildren } from '@angular/core';
+import { Component, computed, effect, ElementRef, inject, signal, untracked, viewChildren } from '@angular/core';
 import { WheelConfigurator, WheelDisplayConfig } from '../../services/wheel-configurator.service';
 import { LinearWheel } from '../../shared/extraction-effect/linear-wheel/linear-wheel';
 import { Wheel } from '../../shared/extraction-effect/wheel/wheel';
@@ -13,6 +13,14 @@ import { WinnerPanel } from './child/winner-panel/winner-panel';
 import type { WinnerPanelEntry } from './child/winner-panel/winner-panel';
 import { WheelButton } from './child/wheel-button/wheel-button';
 import * as QRCode from 'qrcode';
+
+/** Loaded preview images plus the source URLs they were loaded from. */
+interface PreviewImageEntry {
+  wheelUrl: string;
+  wheelEl: HTMLImageElement | null;
+  sliceUrls: string[];
+  sliceEls: (HTMLImageElement | null)[];
+}
 
 @Component({
   selector: 'app-wheel-page',
@@ -57,8 +65,13 @@ export class WheelPage {
   qrCodeLoading = signal(false);
   qrCodeError = signal('');
   winnerHistory = signal<WinnerPanelEntry[]>([]);
-  /** Per-workspace cache of loaded HTMLImageElements for preview canvas drawing. */
-  previewImageCache = signal<Record<string, { wheelEl: HTMLImageElement | null; sliceEls: (HTMLImageElement | null)[] }>>({});
+  /**
+   * Per-workspace cache of loaded HTMLImageElements for preview canvas drawing.
+   * The source URLs are tracked alongside the elements so that a selection
+   * change (which leaves URLs untouched) reuses the already-loaded images
+   * instead of wiping them — preventing the imageless "flash" on switch.
+   */
+  previewImageCache = signal<Record<string, PreviewImageEntry>>({});
   /** Per-workspace winner state — independent of which workspace is currently active. */
   previewWinners = signal<Record<string, string | null>>({});
   winnerHistoryCount = computed(() => this.winnerHistory().length);
@@ -145,35 +158,63 @@ export class WheelPage {
 
   private readonly loadPreviewImagesEffect = effect(() => {
     const configs = this.visibleWheelConfigs();
-    const next: Record<string, { wheelEl: HTMLImageElement | null; sliceEls: (HTMLImageElement | null)[] }> = {};
-    for (const c of configs) {
-      next[c.workspaceId] = { wheelEl: null, sliceEls: [] };
-    }
-    this.previewImageCache.set(next);
 
+    // Read the current cache without subscribing (this effect writes to it).
+    const prev = untracked(() => this.previewImageCache());
+    const next: Record<string, PreviewImageEntry> = {};
+
+    // Build the next cache, reusing already-loaded elements whose URL is unchanged.
     for (const config of configs) {
       const id = config.workspaceId;
+      const wheelUrl = config.wheelImage ?? '';
+      const sliceUrls = config.sliceImages ?? [];
+      const existing = prev[id];
 
-      if (config.wheelImage) {
+      const wheelReusable = !!existing && existing.wheelUrl === wheelUrl;
+      const slicesReusable =
+        !!existing &&
+        existing.sliceUrls.length === sliceUrls.length &&
+        existing.sliceUrls.every((url, i) => url === sliceUrls[i]);
+
+      next[id] = {
+        wheelUrl,
+        wheelEl: wheelReusable ? existing!.wheelEl : null,
+        sliceUrls: [...sliceUrls],
+        sliceEls: slicesReusable ? existing!.sliceEls : new Array(sliceUrls.length).fill(null),
+      };
+    }
+
+    this.previewImageCache.set(next);
+
+    // Kick off loads only for images that aren't already resolved.
+    for (const config of configs) {
+      const id = config.workspaceId;
+      const wheelUrl = config.wheelImage ?? '';
+      const sliceUrls = config.sliceImages ?? [];
+
+      if (wheelUrl && next[id].wheelEl === null) {
         const img = new Image();
-        img.onload = () => this.previewImageCache.update(p => ({ ...p, [id]: { ...p[id], wheelEl: img } }));
-        img.src = config.wheelImage;
+        img.onload = () => this.previewImageCache.update(p => {
+          const entry = p[id];
+          // Ignore if the workspace went away or the URL changed meanwhile.
+          if (!entry || entry.wheelUrl !== wheelUrl) return p;
+          return { ...p, [id]: { ...entry, wheelEl: img } };
+        });
+        img.src = wheelUrl;
       }
 
-      if (config.sliceImages?.length) {
-        const els: (HTMLImageElement | null)[] = new Array(config.sliceImages.length).fill(null);
-        let pending = config.sliceImages.length;
-        const done = () => {
-          if (--pending === 0) this.previewImageCache.update(p => ({ ...p, [id]: { ...p[id], sliceEls: [...els] } }));
-        };
-        config.sliceImages.forEach((url, i) => {
-          if (!url) { done(); return; }
-          const img = new Image();
-          img.onload = () => { els[i] = img; done(); };
-          img.onerror = () => done();
-          img.src = url;
+      sliceUrls.forEach((url, i) => {
+        if (!url || next[id].sliceEls[i] !== null) return;
+        const img = new Image();
+        img.onload = () => this.previewImageCache.update(p => {
+          const entry = p[id];
+          if (!entry || entry.sliceUrls[i] !== url) return p;
+          const sliceEls = [...entry.sliceEls];
+          sliceEls[i] = img;
+          return { ...p, [id]: { ...entry, sliceEls } };
         });
-      }
+        img.src = url;
+      });
     }
   });
 
