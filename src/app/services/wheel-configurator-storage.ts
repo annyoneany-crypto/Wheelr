@@ -34,6 +34,8 @@ export async function clearWorkspaceIndexedDb(workspaceId: string): Promise<void
     STORAGE_KEYS.customAudio,
     STORAGE_KEYS.winnerAudio,
     STORAGE_KEYS.countdownAudio,
+    STORAGE_KEYS.wheelImage,
+    STORAGE_KEYS.sliceImages,
   ];
 
   for (const key of mediaKeys) {
@@ -75,6 +77,8 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     'wheel';
   const winnerEffect =
     readJson<effectType>(storageKeyForWorkspace(STORAGE_KEYS.winnerEffect, workspaceId)) ?? 'fire';
+  const showWinnerEffect =
+    readJson<boolean>(storageKeyForWorkspace(STORAGE_KEYS.showWinnerEffect, workspaceId)) ?? true;
   const spinDurationMs =
     readJson<number>(storageKeyForWorkspace(STORAGE_KEYS.spinDurationMs, workspaceId)) ?? 3000;
   const soundEnabled =
@@ -110,6 +114,7 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     centerLogoSize,
     wheelView,
     winnerEffect,
+    showWinnerEffect,
     spinDurationMs,
     soundEnabled,
     countdownEnabled,
@@ -134,6 +139,7 @@ export function buildSnapshotEntryFromState(state: ActiveWheelSnapshotState): Wh
     centerLogoSize: state.centerLogoSize,
     wheelView: state.wheelView,
     winnerEffect: state.winnerEffect,
+    showWinnerEffect: state.showWinnerEffect,
     spinDurationMs: state.spinDurationMs,
     soundEnabled: state.soundEnabled,
     countdownEnabled: state.countdownEnabled,
@@ -232,6 +238,9 @@ export async function loadWorkspaceDisplayConfig(params: {
   activeCenterText: string;
   activeCenterLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   activeFontFamily: string;
+  activeWheelImage: string;
+  activeSliceImages: string[];
+  activeShowWinnerEffect: boolean;
 }): Promise<WheelDisplayConfig | null> {
   const {
     activeBgColor,
@@ -244,6 +253,9 @@ export async function loadWorkspaceDisplayConfig(params: {
     activeNames,
     activePalette,
     activeWheelId,
+    activeWheelImage,
+    activeSliceImages,
+    activeShowWinnerEffect,
     wheelWorkspaces,
     workspaceId,
   } = params;
@@ -274,6 +286,9 @@ export async function loadWorkspaceDisplayConfig(params: {
       centerText: activeCenterText,
       centerLogoSize: activeCenterLogoSize,
       fontFamily: activeFontFamily,
+      wheelImage: activeWheelImage,
+      sliceImages: [...activeSliceImages],
+      showWinnerEffect: activeShowWinnerEffect,
     };
   }
 
@@ -306,6 +321,21 @@ export async function loadWorkspaceDisplayConfig(params: {
     availablePalettes[0] ||
     DEFAULT_PALETTES[0];
 
+  const wheelImage = (await readImage(storageKeyForWorkspace(STORAGE_KEYS.wheelImage, workspaceId))) ?? '';
+
+  const sliceImagesJson = (await readImage(storageKeyForWorkspace(STORAGE_KEYS.sliceImages, workspaceId))) ?? '';
+  let sliceImages: string[] = [];
+  if (sliceImagesJson) {
+    try {
+      const parsed = JSON.parse(sliceImagesJson) as unknown;
+      if (Array.isArray(parsed)) {
+        sliceImages = (parsed as unknown[]).filter((v): v is string => typeof v === 'string').slice(0, 10);
+      }
+    } catch { /* ignore */ }
+  }
+
+  const showWinnerEffect = readJson<boolean>(storageKeyForWorkspace(STORAGE_KEYS.showWinnerEffect, workspaceId)) ?? true;
+
   return {
     workspaceId,
     workspaceName: workspace.name,
@@ -318,5 +348,8 @@ export async function loadWorkspaceDisplayConfig(params: {
     centerText: centerText && centerText.length ? centerText : 'SPIN',
     centerLogoSize: centerLogoSize ?? 'm',
     fontFamily: fontFamily && fontFamily.length ? fontFamily : '"Inter", sans-serif',
+    wheelImage,
+    sliceImages,
+    showWinnerEffect,
   };
 }

@@ -89,7 +89,7 @@
             </svg>
           </div>
 
-          <div class="relative group">
+          <div class="relative group" style="line-height:0">
             <canvas
               #previewWheelCanvas
               [width]="previewWheelSize()"
@@ -137,6 +137,26 @@
                 </span>
               }
             </div>
+
+            <!-- Winner-slice glow for no-effect mode -->
+            @if (wheelConfigurator.winner() &&
+                 !wheelConfigurator.showWinnerEffect() &&
+                 isWorkspaceActive(wheelConfig.workspaceId) &&
+                 !isPreviewSpinning(wheelConfig.workspaceId)) {
+              <svg
+                class="absolute pointer-events-none preview-winner-slice-glow"
+                [attr.width]="previewWheelSize()"
+                [attr.height]="previewWheelSize()"
+                [attr.viewBox]="'0 0 ' + previewWheelSize() + ' ' + previewWheelSize()"
+                style="top:0;left:0">
+                <path
+                  [attr.d]="previewWinnerSlicePath(wheelConfig)"
+                  fill="none"
+                  stroke="#fbbf24"
+                  stroke-width="3"
+                  stroke-linejoin="round"/>
+              </svg>
+            }
           </div>
         </div>
       }

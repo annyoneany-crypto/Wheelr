@@ -387,6 +387,7 @@ export class WheelConfigurator {
       centerLogoSize: this.centerLogoSize(),
       wheelView: this.wheelView(),
       winnerEffect: this.winnerEffect(),
+      showWinnerEffect: this.showWinnerEffect(),
       spinDurationMs: this.spinDurationMs(),
       soundEnabled: this.soundEnabled(),
       countdownEnabled: this.countdownEnabled(),
@@ -437,6 +438,9 @@ export class WheelConfigurator {
       activeCenterText: this.centerText(),
       activeCenterLogoSize: this.centerLogoSize(),
       activeFontFamily: this.fontFamily(),
+      activeWheelImage: this.wheelImage(),
+      activeSliceImages: this.sliceImages(),
+      activeShowWinnerEffect: this.showWinnerEffect(),
     });
   }
 
@@ -1163,8 +1167,9 @@ export class WheelConfigurator {
     }
 
     const storedShowWinnerEffect = readJson<boolean>(this.storageKey(STORAGE_KEYS.showWinnerEffect));
-    if (typeof storedShowWinnerEffect === 'boolean') {
-      this.showWinnerEffect.set(storedShowWinnerEffect);
+    const effectiveShowWinnerEffect = activeUnifiedWheel?.showWinnerEffect ?? storedShowWinnerEffect;
+    if (typeof effectiveShowWinnerEffect === 'boolean') {
+      this.showWinnerEffect.set(effectiveShowWinnerEffect);
     }
 
     if (
@@ -1423,6 +1428,7 @@ export class WheelConfigurator {
       this.centerLogoSize();
       this.wheelView();
       this.winnerEffect();
+      this.showWinnerEffect();
       this.pointerType();
       this.spinDurationMs();
       this.soundEnabled();

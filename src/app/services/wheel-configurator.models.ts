@@ -26,6 +26,9 @@ export interface WheelDisplayConfig {
   centerText: string;
   centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   fontFamily: string;
+  wheelImage: string;
+  sliceImages: string[];
+  showWinnerEffect: boolean;
 }
 
 export interface WheelSnapshotEntry {
@@ -38,6 +41,7 @@ export interface WheelSnapshotEntry {
   centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   wheelView: 'wheel' | 'linear' | 'cards';
   winnerEffect: effectType;
+  showWinnerEffect: boolean;
   spinDurationMs: number;
   soundEnabled: boolean;
   countdownEnabled: boolean;
@@ -64,6 +68,7 @@ export interface ActiveWheelSnapshotState {
   centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
   wheelView: 'wheel' | 'linear' | 'cards';
   winnerEffect: effectType;
+  showWinnerEffect: boolean;
   spinDurationMs: number;
   soundEnabled: boolean;
   countdownEnabled: boolean;

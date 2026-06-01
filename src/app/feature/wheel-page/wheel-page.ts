@@ -57,6 +57,8 @@ export class WheelPage {
   qrCodeLoading = signal(false);
   qrCodeError = signal('');
   winnerHistory = signal<WinnerPanelEntry[]>([]);
+  /** Per-workspace cache of loaded HTMLImageElements for preview canvas drawing. */
+  previewImageCache = signal<Record<string, { wheelEl: HTMLImageElement | null; sliceEls: (HTMLImageElement | null)[] }>>({});
   winnerHistoryCount = computed(() => this.winnerHistory().length);
   cloudWheelId = computed(() => {
     const activeId = this.wheelConfigurator.activeWheelId();
@@ -139,11 +141,46 @@ export class WheelPage {
     void this.refreshVisibleWheelConfigs();
   });
 
+  private readonly loadPreviewImagesEffect = effect(() => {
+    const configs = this.visibleWheelConfigs();
+    const next: Record<string, { wheelEl: HTMLImageElement | null; sliceEls: (HTMLImageElement | null)[] }> = {};
+    for (const c of configs) {
+      next[c.workspaceId] = { wheelEl: null, sliceEls: [] };
+    }
+    this.previewImageCache.set(next);
+
+    for (const config of configs) {
+      const id = config.workspaceId;
+
+      if (config.wheelImage) {
+        const img = new Image();
+        img.onload = () => this.previewImageCache.update(p => ({ ...p, [id]: { ...p[id], wheelEl: img } }));
+        img.src = config.wheelImage;
+      }
+
+      if (config.sliceImages?.length) {
+        const els: (HTMLImageElement | null)[] = new Array(config.sliceImages.length).fill(null);
+        let pending = config.sliceImages.length;
+        const done = () => {
+          if (--pending === 0) this.previewImageCache.update(p => ({ ...p, [id]: { ...p[id], sliceEls: [...els] } }));
+        };
+        config.sliceImages.forEach((url, i) => {
+          if (!url) { done(); return; }
+          const img = new Image();
+          img.onload = () => { els[i] = img; done(); };
+          img.onerror = () => done();
+          img.src = url;
+        });
+      }
+    }
+  });
+
   private readonly drawPreviewEffect = effect(() => {
     const configs = this.visibleWheelConfigs();
     const canvases = this.previewCanvasRefs();
     this.previewWheelSize();
     this.wheelConfigurator.fontRenderVersion();
+    this.previewImageCache(); // redraw when images finish loading
 
     if (this.previewDrawAnimationFrameId !== null) {
       cancelAnimationFrame(this.previewDrawAnimationFrameId);
@@ -164,7 +201,8 @@ export class WheelPage {
           return;
         }
 
-        this.drawPreviewWheel(canvas, ctx, config);
+        const imgCache = this.previewImageCache()[config.workspaceId];
+        this.drawPreviewWheel(canvas, ctx, config, imgCache?.wheelEl ?? null, imgCache?.sliceEls ?? []);
       });
 
       this.previewDrawAnimationFrameId = null;
@@ -546,14 +584,41 @@ export class WheelPage {
   private drawPreviewWheel(
     canvas: HTMLCanvasElement,
     ctx: CanvasRenderingContext2D,
-    config: WheelDisplayConfig
+    config: WheelDisplayConfig,
+    wheelImageEl: HTMLImageElement | null = null,
+    sliceImageEls: (HTMLImageElement | null)[] = []
   ): void {
     drawWheelCanvas(canvas, ctx, {
       names: config.names,
       colors: config.colors,
       fontFamily: config.fontFamily,
       emptyFillStyle: '#5e5e5eBB',
+      wheelImage: wheelImageEl,
+      sliceImages: sliceImageEls,
     });
+  }
+
+  /** SVG path for the winner-slice glow overlay on a preview wheel. */
+  previewWinnerSlicePath(config: WheelDisplayConfig): string {
+    const n = config.names.length;
+    if (!n) return '';
+    const size = this.previewWheelSize();
+    const cx = size / 2;
+    const cy = size / 2;
+    const r = cx - 2;
+    const sliceAngle = (Math.PI * 2) / n;
+    const rotation = this.previewCanvasRotation(config.workspaceId);
+    const R = rotation * (Math.PI / 180);
+    const clamp = (d: number) => ((d % 360) + 360) % 360;
+    const k = Math.floor(clamp(clamp(360 - clamp(rotation)) - 90) / (360 / n));
+    const a1 = k * sliceAngle + R;
+    const a2 = a1 + sliceAngle;
+    const x1 = cx + r * Math.cos(a1);
+    const y1 = cy + r * Math.sin(a1);
+    const x2 = cx + r * Math.cos(a2);
+    const y2 = cy + r * Math.sin(a2);
+    const largeArc = sliceAngle > Math.PI ? 1 : 0;
+    return `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} Z`;
   }
 
   togglePaletSettings(path: string): void {
@@ -738,6 +803,9 @@ export class WheelPage {
         centerText: 'SPIN',
         centerLogoSize: this.wheelConfigurator.centerLogoSize(),
         fontFamily: '',
+        wheelImage: '',
+        sliceImages: [],
+        showWinnerEffect: true,
       },
     ];
   }
