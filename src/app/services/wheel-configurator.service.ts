@@ -1460,7 +1460,13 @@ export class WheelConfigurator {
     this.drawWheelForCanvas(canvasRef.nativeElement, ctx);
   }
 
-  drawWheelForCanvas(canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D, renderScale: number = 1, zoomed: boolean = false): void {
+  drawWheelForCanvas(
+    canvas: HTMLCanvasElement,
+    ctx: CanvasRenderingContext2D,
+    renderScale: number = 1,
+    zoomed: boolean = false,
+    labelSliceIndices?: number[]
+  ): void {
     if (!canvas || !ctx) {
       return;
     }
@@ -1473,6 +1479,7 @@ export class WheelConfigurator {
       zoomed,
       wheelImage: this.wheelImageEl(),
       sliceImages: this.sliceImageEls(),
+      labelSliceIndices,
     });
   }
 

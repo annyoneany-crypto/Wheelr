@@ -139,7 +139,7 @@
       <div
         class="relative transition-transform duration-1000 ease-in-out"
         style="transform-origin: 50% 0%"
-        [style.transform]="(wheelConfigurator.winner() && wheelConfigurator.names().length > 30 && !forceUnzoom()) ? 'scale(7)' : 'scale(1)'"
+        [style.transform]="wheelScaleTransform()"
       >
         <canvas
           #wheelCanvas
@@ -174,7 +174,7 @@
       <!-- Center -->
       <div
         class="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full flex items-center justify-center shadow-xl border-4 border-neutral-900 z-10 group-hover:scale-110 transition-[top,transform] duration-1000 ease-in-out overflow-hidden bg-white"
-        [style.top]="(wheelConfigurator.winner() && wheelConfigurator.names().length > 30) ? '350%' : '50%'"
+        [style.top]="centerTopOffset()"
         [style.backgroundColor]="wheelConfigurator.centerColor()"
         [class.w-14]="wheelConfigurator.centerLogoSize() === 's'"
         [class.h-14]="wheelConfigurator.centerLogoSize() === 's'"

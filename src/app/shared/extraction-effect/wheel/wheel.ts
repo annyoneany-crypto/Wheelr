@@ -13,6 +13,14 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 export class Wheel {
   wheelConfigurator = inject(WheelConfigurator);
   readonly CANVAS_RENDER_SCALE = 7;
+  /** Above this entry count the winner zoom uses the aggressive scale so the
+   *  (very thin) winning slice and its label become legible. */
+  private readonly AGGRESSIVE_ZOOM_THRESHOLD = 600;
+  private readonly DEFAULT_WINNER_ZOOM = 7;
+  private readonly AGGRESSIVE_WINNER_ZOOM = 14;
+  /** Number of slices on each side of the winner whose labels are force-drawn
+   *  on large wheels, so the zoomed-in strip shows names. */
+  private readonly WINNER_LABEL_WINDOW = 25;
 
   canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('wheelCanvas');
   private readonly syncCanvasEffect = effect(() => {
@@ -50,11 +58,67 @@ export class Wheel {
   height = signal(800);
   forceUnzoom = signal(false);
 
+  /** Zoom factor used when revealing the winner. Larger lists need a more
+   *  aggressive zoom because their slices are far thinner. */
+  zoomScale = computed(() =>
+    this.wheelConfigurator.names().length > this.AGGRESSIVE_ZOOM_THRESHOLD
+      ? this.AGGRESSIVE_WINNER_ZOOM
+      : this.DEFAULT_WINNER_ZOOM
+  );
+
+  /** True while the wheel is zoomed into the winning slice. */
+  winnerZoomActive = computed(
+    () =>
+      !!this.wheelConfigurator.winner() &&
+      this.wheelConfigurator.names().length > 30 &&
+      !this.forceUnzoom()
+  );
+
+  /** CSS transform for the scaling wrapper around the canvas. */
+  wheelScaleTransform = computed(() =>
+    this.winnerZoomActive() ? `scale(${this.zoomScale()})` : 'scale(1)'
+  );
+
+  /** Vertical offset that keeps the centre logo out of the zoomed-in view.
+   *  The wheel centre sits at 50% of the wheel height; scaling from the top
+   *  pushes it to scale*50%. */
+  centerTopOffset = computed(() =>
+    this.winnerZoomActive() ? `${this.zoomScale() * 50}%` : '50%'
+  );
+
   private readonly resetUnzoomEffect = effect(() => {
     // Reset manual zoom-out whenever a new spin starts.
     if (this.wheelConfigurator.isSpinning()) {
       this.forceUnzoom.set(false);
     }
+  });
+
+  // On large wheels labels are skipped for performance (see wheel-renderer).
+  // When a winner is revealed we redraw once with labels forced on the winner
+  // slice and its neighbours, so the zoomed-in strip shows names. Reads
+  // pointerSliceIndex() only while a winner is present, so the continuous idle
+  // rotation never re-triggers this redraw.
+  private readonly winnerLabelEffect = effect(() => {
+    const hasWinner = !!this.wheelConfigurator.winner();
+    const canvasElement = this.canvasRef()?.nativeElement;
+    const context = canvasElement?.getContext('2d') ?? null;
+    if (!canvasElement || !context) {
+      return;
+    }
+
+    if (!hasWinner) {
+      // Winner dismissed: redraw without the forced labels.
+      this.scheduleDraw(canvasElement, context, this.isLargeWheel());
+      return;
+    }
+
+    const winnerIndex = this.wheelConfigurator.pointerSliceIndex();
+    const labelIndices: number[] = [];
+    for (let offset = -this.WINNER_LABEL_WINDOW; offset <= this.WINNER_LABEL_WINDOW; offset += 1) {
+      labelIndices.push(winnerIndex + offset);
+    }
+
+    this.scheduleDraw(canvasElement, context, this.isLargeWheel(), labelIndices);
   });
 
 
@@ -121,7 +185,8 @@ export class Wheel {
   private scheduleDraw(
     canvas: HTMLCanvasElement,
     context: CanvasRenderingContext2D,
-    isZoomed: boolean
+    isZoomed: boolean,
+    labelSliceIndices?: number[]
   ): void {
     if (this.drawFrameId !== null) {
       cancelAnimationFrame(this.drawFrameId);
@@ -129,7 +194,13 @@ export class Wheel {
 
     this.drawFrameId = requestAnimationFrame(() => {
       this.drawFrameId = null;
-      this.wheelConfigurator.drawWheelForCanvas(canvas, context, this.CANVAS_RENDER_SCALE, isZoomed);
+      this.wheelConfigurator.drawWheelForCanvas(
+        canvas,
+        context,
+        this.CANVAS_RENDER_SCALE,
+        isZoomed,
+        labelSliceIndices
+      );
     });
   }
 

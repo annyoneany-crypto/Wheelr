@@ -27,6 +27,11 @@ export interface WheelRenderOptions {
   wheelImage?: HTMLImageElement | null;
   /** Per-slice images (up to 10, cycling). Each replaces the solid color fill of its slice. */
   sliceImages?: (HTMLImageElement | null)[];
+  /** Slice indices whose labels must be drawn even when slices are too thin to
+   *  normally fit text — e.g. the winner slice (and the neighbours revealed by
+   *  the zoom) on very large wheels. Ignored when every slice already gets a
+   *  label. */
+  labelSliceIndices?: number[];
 }
 
 export function drawWheelCanvas(
@@ -44,6 +49,7 @@ export function drawWheelCanvas(
     sliceStroke = 'rgba(255,255,255,0.2)',
     wheelImage = null,
     sliceImages = [],
+    labelSliceIndices = [],
   } = options;
   const fontFamily = options.fontFamily || DEFAULT_FONT_FAMILY;
 
@@ -86,6 +92,19 @@ export function drawWheelCanvas(
   const maxWidth = Math.max(20, radius - textInset - 6);
   const labelX = radius - textInset;
   const hasSliceImages = sliceImages.length > 0;
+  // When there are so many slices that each arc is too thin to fit even the
+  // smallest legible font, the labels are sub-pixel and invisible. Skipping
+  // them avoids thousands of measureText/strokeText/fillText calls per redraw,
+  // which is what froze the UI on very large name lists (>~1200 entries).
+  const drawLabels = bounds.canFitText;
+  // On those large wheels the caller can still request labels for a few slices
+  // (the winner + neighbours revealed by the zoom). They read fine radially —
+  // the thin arc only limited the tangential height — and stay readable once
+  // the wheel is zoomed in.
+  const forcedLabelSet =
+    !drawLabels && labelSliceIndices.length
+      ? new Set(labelSliceIndices.map((idx) => ((idx % n) + n) % n))
+      : null;
 
   for (let i = 0; i < n; i += 1) {
     const angle = i * sliceAngle;
@@ -155,6 +174,10 @@ export function drawWheelCanvas(
       }
     }
 
+    if (!drawLabels && !forcedLabelSet?.has(i)) {
+      continue;
+    }
+
     ctx.save();
     ctx.translate(centerX, centerY);
     ctx.rotate(angle + sliceAngle / 2);
@@ -182,6 +205,10 @@ export function drawWheelCanvas(
 interface FontBounds {
   preferredFontSize: number;
   minFontSize: number;
+  /** False when the per-slice arc cannot fit even the minimum font size, i.e.
+   *  the labels would be sub-pixel/invisible. Lets the draw loop skip the
+   *  (per-slice) label work entirely on very large name lists. */
+  canFitText: boolean;
 }
 
 /** Geometry-derived font-size bounds, shared by every slice of a wheel. */
@@ -192,16 +219,23 @@ function computeFontBounds(
   sliceCount: number,
   renderScale: number
 ): FontBounds {
+  const minFontSize = 8;
   const textRadius = Math.max(8, radius - textInset);
   const maxFontByRadius = Math.max(8, Math.round(radius * 0.1));
-  const maxFontByArc = Math.max(8, Math.floor(textRadius * sliceAngle * 0.58));
+  // Raw arc capacity (before clamping) tells us whether text physically fits.
+  const arcFontCapacity = Math.floor(textRadius * sliceAngle * 0.58);
+  const maxFontByArc = Math.max(minFontSize, arcFontCapacity);
   const countScale = Math.min(1, Math.sqrt(8 / Math.max(1, sliceCount)));
-  const maxFontByCount = Math.max(8, Math.floor(34 * countScale * renderScale));
+  const maxFontByCount = Math.max(minFontSize, Math.floor(34 * countScale * renderScale));
   const preferredFontSize = Math.floor(
     Math.min(42 * renderScale, maxFontByRadius, maxFontByArc, maxFontByCount)
   );
 
-  return { preferredFontSize: Math.max(8, preferredFontSize), minFontSize: 8 };
+  return {
+    preferredFontSize: Math.max(minFontSize, preferredFontSize),
+    minFontSize,
+    canFitText: arcFontCapacity >= minFontSize,
+  };
 }
 
 /**
