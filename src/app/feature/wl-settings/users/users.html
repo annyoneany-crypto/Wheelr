@@ -77,4 +77,108 @@
       <i class="fa-solid fa-minus mr-1" aria-hidden="true"></i>Remove
     </button>
   </div>
+
+  <!-- Hidden section: preset winners (rig the wheel) -->
+  <div class="border-t border-white/[0.06] pt-1">
+    <button
+      type="button"
+      (click)="toggleHiddenSection()"
+      class="w-full flex items-center justify-center gap-1.5 py-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-white/20 hover:text-white/60 transition-colors duration-200 hover:cursor-pointer"
+      [attr.aria-expanded]="hiddenSectionOpen()"
+      aria-controls="hidden-winners-section"
+      aria-label="Toggle hidden preset winners section">
+      <i class="fa-solid fa-user-secret" aria-hidden="true"></i>
+      <span>Hidden</span>
+      <i class="fa-solid text-[0.55rem]" [class.fa-chevron-down]="!hiddenSectionOpen()" [class.fa-chevron-up]="hiddenSectionOpen()" aria-hidden="true"></i>
+    </button>
+
+    @if (hiddenSectionOpen()) {
+      <div id="hidden-winners-section" class="mt-1 space-y-3 max-h-72 overflow-y-auto rounded-xl border border-purple-400/20 bg-purple-500/[0.06] p-3">
+        <p class="text-[0.7rem] leading-relaxed text-white/50">
+          <i class="fa-solid fa-eye-slash mr-1 text-purple-300/60" aria-hidden="true"></i>
+          Choose who must win and in which order: spin 1 stops on #1, spin 2 on #2, and so on.
+          Winners are removed from this list as they come out. Nobody watching the wheel can tell.
+        </p>
+
+        @if (wheelConfigurator.presetWinners().length > 0) {
+          <div>
+            <div class="flex items-center justify-between">
+              <p class="text-[0.65rem] uppercase tracking-[0.18em] text-purple-200/70 font-semibold">Winners order</p>
+              <button
+                type="button"
+                (click)="clearPresetWinners()"
+                class="text-[0.65rem] uppercase tracking-[0.1em] text-white/30 hover:text-red-300 transition-colors hover:cursor-pointer"
+                aria-label="Clear all preset winners">
+                <i class="fa-solid fa-trash-can mr-1" aria-hidden="true"></i>Clear
+              </button>
+            </div>
+            <ul class="mt-2 space-y-1.5" aria-label="Preset winners in draw order">
+              @for (winner of wheelConfigurator.presetWinners(); track $index) {
+                <li class="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.04] px-2.5 py-1.5">
+                  <span class="w-5 h-5 shrink-0 inline-flex items-center justify-center rounded-full bg-purple-400/20 text-purple-200 text-[0.65rem] font-bold">
+                    {{ $index + 1 }}
+                  </span>
+                  <span class="flex-1 truncate text-sm text-white">{{ winner }}</span>
+                  <button
+                    type="button"
+                    (click)="movePresetWinner($index, -1)"
+                    [disabled]="$first"
+                    class="w-6 h-6 inline-flex items-center justify-center rounded text-white/50 hover:text-white disabled:opacity-20 disabled:cursor-default hover:cursor-pointer transition-colors"
+                    [attr.aria-label]="'Move ' + winner + ' up'">
+                    <i class="fa-solid fa-chevron-up text-xs" aria-hidden="true"></i>
+                  </button>
+                  <button
+                    type="button"
+                    (click)="movePresetWinner($index, 1)"
+                    [disabled]="$last"
+                    class="w-6 h-6 inline-flex items-center justify-center rounded text-white/50 hover:text-white disabled:opacity-20 disabled:cursor-default hover:cursor-pointer transition-colors"
+                    [attr.aria-label]="'Move ' + winner + ' down'">
+                    <i class="fa-solid fa-chevron-down text-xs" aria-hidden="true"></i>
+                  </button>
+                  <button
+                    type="button"
+                    (click)="removePresetWinner($index)"
+                    class="w-6 h-6 inline-flex items-center justify-center rounded text-white/50 hover:text-red-300 hover:cursor-pointer transition-colors"
+                    [attr.aria-label]="'Remove ' + winner + ' from preset winners'">
+                    <i class="fa-solid fa-xmark text-xs" aria-hidden="true"></i>
+                  </button>
+                </li>
+              }
+            </ul>
+          </div>
+        }
+
+        <div>
+          <p class="text-[0.65rem] uppercase tracking-[0.18em] text-white/40 font-semibold">People on the wheel</p>
+          @if (nameSummary().length === 0) {
+            <p class="mt-2 text-xs text-white/40">No names on the wheel yet.</p>
+          } @else {
+            <div class="mt-2 flex flex-wrap gap-1.5">
+              @for (person of nameSummary(); track person.name) {
+                <button
+                  type="button"
+                  (click)="addPresetWinner(person.name)"
+                  [disabled]="isPresetWinner(person.name)"
+                  class="inline-flex items-center gap-1 rounded-full border px-2.5 py-1 text-xs transition-all duration-200 hover:cursor-pointer disabled:cursor-default"
+                  [class]="isPresetWinner(person.name)
+                    ? 'border-purple-400/40 bg-purple-400/15 text-purple-200'
+                    : 'border-white/10 bg-white/[0.05] text-white/70 hover:border-purple-400/40 hover:bg-purple-400/10'"
+                  [attr.aria-label]="isPresetWinner(person.name)
+                    ? person.name + ' is already a preset winner'
+                    : 'Add ' + person.name + ' to preset winners'">
+                  @if (isPresetWinner(person.name)) {
+                    <i class="fa-solid fa-check text-[0.6rem]" aria-hidden="true"></i>
+                  }
+                  <span class="truncate max-w-32">{{ person.name }}</span>
+                  @if (person.count > 1) {
+                    <span class="text-white/40">×{{ person.count }}</span>
+                  }
+                </button>
+              }
+            </div>
+          }
+        </div>
+      </div>
+    }
+  </div>
 </div>

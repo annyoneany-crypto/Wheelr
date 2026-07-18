@@ -85,7 +85,87 @@ export class WheelConfigurator {
   }
 
   generateSpinExtraDegrees(): number {
-    return this.secureRandomInt(360);
+    return this.riggedSpinExtraDegrees() ?? this.secureRandomInt(360);
+  }
+
+  /**
+   * Hidden feature: ordered list of names the wheel must stop on. The first
+   * spin lands on the first entry, the next spin on the second, and so on.
+   * Entries are consumed as they win; entries no longer on the wheel are skipped.
+   */
+  presetWinners = signal<string[]>([]);
+
+  setPresetWinners(winners: string[]): void {
+    const cleaned = winners.filter((winner) => winner.trim().length > 0);
+    this.presetWinners.set(cleaned);
+    writeJson(this.storageKey(STORAGE_KEYS.presetWinners), cleaned);
+  }
+
+  private nextPresetWinner(): string | null {
+    const names = this.names();
+    for (const candidate of this.presetWinners()) {
+      if (names.includes(candidate)) {
+        return candidate;
+      }
+    }
+    return null;
+  }
+
+  /**
+   * Extra degrees that make the spin stop on the next preset winner, or null
+   * when no preset winner applies. Must be computed in the same synchronous
+   * block that reads/sets currentRotation: performSpin adds the returned value
+   * to the rotation captured at that moment.
+   */
+  private riggedSpinExtraDegrees(): number | null {
+    const target = this.nextPresetWinner();
+    if (!target) {
+      return null;
+    }
+
+    const names = this.names();
+    const matchIndices: number[] = [];
+    names.forEach((name, index) => {
+      if (name === target) {
+        matchIndices.push(index);
+      }
+    });
+    if (!matchIndices.length) {
+      return null;
+    }
+
+    const targetIndex = matchIndices[this.secureRandomInt(matchIndices.length)] ?? matchIndices[0];
+    const sliceAngle = 360 / names.length;
+
+    // Random stop point inside the slice, kept ≥1° away from both edges so the
+    // integer flooring applied to extra degrees cannot push the stop across a
+    // slice boundary (flooring shifts the final angle forward by <1°).
+    const jitterWindow = Math.max(0, sliceAngle - 2);
+    const offsetInSlice = jitterWindow > 0 ? 0.5 + Math.random() * jitterWindow : sliceAngle / 2;
+    const adjustedTarget = targetIndex * sliceAngle + offsetInSlice;
+
+    // Invert the winner formula in performSpin:
+    // adjusted = ((360 - total % 360) % 360 - 90 + 360) % 360, total = base + k*360 + extra.
+    const normalized = (adjustedTarget + 90) % 360;
+    const base = this.currentRotation();
+    const extra = ((360 - normalized - base) % 360 + 360) % 360;
+    return Math.floor(extra);
+  }
+
+  /** Remove the queue entry that just won so the next spin targets the next one. */
+  private consumePresetWinner(declaredWinner: string): void {
+    const queue = this.presetWinners();
+    if (!queue.length) {
+      return;
+    }
+
+    const names = this.names();
+    const nextIndex = queue.findIndex((candidate) => names.includes(candidate));
+    if (nextIndex === -1 || queue[nextIndex] !== declaredWinner) {
+      return;
+    }
+
+    this.setPresetWinners(queue.filter((_, index) => index !== nextIndex));
   }
 
   wheelWorkspaces = signal<WheelWorkspaceMeta[]>([]);
@@ -1020,6 +1100,7 @@ export class WheelConfigurator {
     this.countdownAudio.set('');
     this.countdownEnabled.set(false);
     this.countdownStart.set(3);
+    this.presetWinners.set([]);
     // Keep the winner-panel layout (visibility, position) and multi-wheel layout
     // during hydration; resetting them to defaults causes a one-frame flash of the
     // panel appearing/disappearing when switching between wheels. Hydration sets the
@@ -1051,7 +1132,10 @@ export class WheelConfigurator {
       const dt = (ts - lastTs) / 1000;
       lastTs = ts;
 
-      if (!this.isSpinning() && !this.winner()) {
+      // Also freeze during the countdown: the spin's extra degrees may already
+      // be computed (preset winners, preview spins), so the base rotation must
+      // not drift before performSpin consumes it.
+      if (!this.isSpinning() && !this.winner() && !this.countdownInProgress()) {
         this.currentRotation.update(r => r + degPerSecond * dt);
       }
 
@@ -1285,6 +1369,12 @@ export class WheelConfigurator {
     const storedCountdownStart = readJson<number>(this.storageKey(STORAGE_KEYS.countdownStart));
     if (typeof storedCountdownStart === 'number' && storedCountdownStart >= 0) {
       this.countdownStart.set(Math.floor(storedCountdownStart));
+    }
+
+    // Hydrate the hidden preset winners queue (local only, never synced to cloud)
+    const storedPresetWinners = readJson<string[]>(this.storageKey(STORAGE_KEYS.presetWinners));
+    if (Array.isArray(storedPresetWinners)) {
+      this.presetWinners.set(storedPresetWinners.filter((value): value is string => typeof value === 'string'));
     }
 
       if (typeof effectiveVisibleWheelCount === 'number') {
@@ -1587,7 +1677,11 @@ export class WheelConfigurator {
       const normalizedRotation = (360 - (totalRotation % 360)) % 360;
       let adjustedRotation = (normalizedRotation - 90 + 360) % 360;
       const winningIndex = Math.floor(adjustedRotation / (360 / this.names().length));
-      this.winner.set(this.names()[winningIndex]);
+      const winningName = this.names()[winningIndex];
+      this.winner.set(winningName);
+      if (winningName) {
+        this.consumePresetWinner(winningName);
+      }
 
       // Play winner audio if enabled
       if (this.soundEnabled() && this.winnerAudio()) {

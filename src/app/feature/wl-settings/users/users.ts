@@ -1,4 +1,4 @@
-import { Component, inject, linkedSignal, signal } from '@angular/core';
+import { Component, computed, inject, linkedSignal, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 
@@ -77,5 +77,57 @@ export class Users {
       .filter((n) => n !== name);
 
     this.wheelConfigurator.setNames(filteredNames);
+  }
+
+  // ----- Hidden section: preset winners -----
+
+  hiddenSectionOpen = signal(false);
+
+  /** Unique names on the wheel with how many slices each occupies. */
+  nameSummary = computed(() => {
+    const counts = new Map<string, number>();
+    for (const name of this.wheelConfigurator.names()) {
+      if (!name.trim()) {
+        continue;
+      }
+      counts.set(name, (counts.get(name) ?? 0) + 1);
+    }
+    return Array.from(counts.entries()).map(([name, count]) => ({ name, count }));
+  });
+
+  toggleHiddenSection(): void {
+    this.hiddenSectionOpen.update((open) => !open);
+  }
+
+  isPresetWinner(name: string): boolean {
+    return this.wheelConfigurator.presetWinners().includes(name);
+  }
+
+  addPresetWinner(name: string): void {
+    if (this.isPresetWinner(name)) {
+      return;
+    }
+    this.wheelConfigurator.setPresetWinners([...this.wheelConfigurator.presetWinners(), name]);
+  }
+
+  removePresetWinner(index: number): void {
+    this.wheelConfigurator.setPresetWinners(
+      this.wheelConfigurator.presetWinners().filter((_, i) => i !== index)
+    );
+  }
+
+  movePresetWinner(index: number, delta: number): void {
+    const queue = [...this.wheelConfigurator.presetWinners()];
+    const target = index + delta;
+    if (target < 0 || target >= queue.length) {
+      return;
+    }
+    const [moved] = queue.splice(index, 1);
+    queue.splice(target, 0, moved);
+    this.wheelConfigurator.setPresetWinners(queue);
+  }
+
+  clearPresetWinners(): void {
+    this.wheelConfigurator.setPresetWinners([]);
   }
 }

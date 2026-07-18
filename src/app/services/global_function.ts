@@ -30,6 +30,7 @@ export const STORAGE_KEYS = {
   wheelImage: 'giveawayWheel.wheelImage',
   sliceImages: 'giveawayWheel.sliceImages',
   showWinnerEffect: 'giveawayWheel.showWinnerEffect',
+  presetWinners: 'giveawayWheel.presetWinners',
 } as const;
 
 export interface ColorPalette {

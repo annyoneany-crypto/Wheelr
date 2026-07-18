@@ -688,7 +688,14 @@ export class WheelPage {
         let next: Record<string, number> | null = null;
         for (const config of this.visibleWheelConfigs()) {
           const id = config.workspaceId;
-          const frozen = spinningId === id || winners[id] != null;
+          // The active wheel also freezes during a countdown: its spin degrees
+          // are already computed against the current angle, so idling further
+          // would desync the visual stop from the declared winner.
+          const frozen =
+            spinningId === id ||
+            winners[id] != null ||
+            (this.wheelConfigurator.countdownInProgress() &&
+              id === this.wheelConfigurator.activeWheelId());
           if (frozen) {
             continue;
           }
