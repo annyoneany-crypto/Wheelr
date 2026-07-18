@@ -1,21 +1,21 @@
-<header class="fixed top-0 left-0 w-full px-6 py-4 flex justify-between items-center z-20 bg-neutral-950/70 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.4)]" role="banner" aria-label="Main header">
-    <a class="flex gap-4 items-center hover:cursor-pointer group" [routerLink]="['/']" aria-label="Go to homepage">
-        <img src="/Logo.webp" alt="GiveawayWheel logo" class="w-9 h-9 transition-transform duration-300 group-hover:scale-110">
-        <div class="relative">
+<header class="fixed top-0 left-0 w-full px-3 md:px-6 py-3 md:py-4 flex justify-between items-center z-20 bg-neutral-950/70 backdrop-blur-xl border-b border-white/[0.06] shadow-[0_4px_30px_rgba(0,0,0,0.4)]" role="banner" aria-label="Main header">
+    <a class="flex gap-2 md:gap-4 items-center min-w-0 hover:cursor-pointer group" [routerLink]="['/']" aria-label="Go to homepage">
+        <img src="/Logo.webp" alt="GiveawayWheel logo" class="w-8 h-8 md:w-9 md:h-9 shrink-0 transition-transform duration-300 group-hover:scale-110">
+        <div class="relative min-w-0">
           <!-- Animated glowing orbs container -->
-          <div class="absolute inset-0 animate-spin-slow opacity-70" style="width: 140px; height: 60px;">
+          <div class="absolute inset-0 animate-spin-slow opacity-70 w-[100px] h-[44px] md:w-[140px] md:h-[60px]">
             <div class="absolute w-6 h-6 bg-red-500 rounded-full blur-xl" style="top: -10px; left: 10px; box-shadow: 0 0 20px rgba(239, 68, 68, 0.8);"></div>
             <div class="absolute w-6 h-6 bg-yellow-400 rounded-full blur-xl" style="top: 10px; right: 20px; box-shadow: 0 0 20px rgba(250, 204, 21, 0.8);"></div>
             <div class="absolute w-5 h-5 bg-blue-500 rounded-full blur-xl" style="bottom: 5px; left: 0px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);"></div>
             <div class="absolute w-6 h-6 bg-purple-500 rounded-full blur-xl" style="top: 5px; right: 5px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);"></div>
           </div>
-          <h1 class="relative z-10 text-3xl uppercase font-black text-white truncate tracking-wide drop-shadow-[0_0_12px_rgba(245,158,11,0.3)]">
+          <h1 class="relative z-10 text-xl md:text-3xl uppercase font-black text-white truncate tracking-wide drop-shadow-[0_0_12px_rgba(245,158,11,0.3)]">
               Wheelr
           </h1>
         </div>
         @if (isWheelRoute()) {
           <span
-            class="relative z-10 inline-flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-amber-400/10 px-2.5 py-1 text-sm font-bold text-amber-200"
+            class="relative z-10 hidden md:inline-flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-amber-400/10 px-2.5 py-1 text-sm font-bold text-amber-200"
             [title]="wheelConfigurator.namesCount() + ' names on the wheel'"
             aria-label="Number of names on the wheel">
             <i class="fa-solid fa-users text-xs" aria-hidden="true"></i>
@@ -23,6 +23,17 @@
           </span>
         }
     </a>
+
+    @if (isWheelRoute()) {
+      <!-- Mobile-only names counter, moved below the header bar to avoid crowding it -->
+      <span
+        class="md:hidden fixed top-[4.5rem] left-3 z-20 inline-flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-neutral-950/70 backdrop-blur-sm px-2.5 py-1 text-xs font-bold text-amber-200"
+        [title]="wheelConfigurator.namesCount() + ' names on the wheel'"
+        aria-label="Number of names on the wheel">
+        <i class="fa-solid fa-users text-[0.6rem]" aria-hidden="true"></i>
+        {{ wheelConfigurator.namesCount() }}
+      </span>
+    }
 
         @if (showSelectedWheelBadge()) {
             <div class="absolute left-1/2 -translate-x-1/2 z-30 pointer-events-none hidden md:block">
@@ -43,11 +54,11 @@
         }
 
     <!-- <i class="fa-solid fa-sun"></i> -->
-    <div class="flex gap-4 items-center justify-center" role="navigation" aria-label="Header actions">
+    <div class="flex gap-2 md:gap-4 items-center justify-center shrink-0" role="navigation" aria-label="Header actions">
         <button
             type="button"
             (click)="onAuthButtonClick()"
-            class="secondaryButton max-w-52 h-11 inline-flex items-center border-yellow-400/50!"
+            class="secondaryButton h-10 w-10 p-0! md:h-11 md:w-auto md:max-w-52 md:px-6! md:py-2.5! inline-flex items-center justify-center border-yellow-400/50!"
             [disabled]="authService.loading()"
             [attr.aria-label]="authButtonAriaLabel()"
             [title]="authButtonAriaLabel()">
@@ -62,7 +73,7 @@
         <button
             type="button"
             (click)="toggleMenu()"
-            class="secondaryButton inline-flex h-11 items-center gap-2 border-yellow-400/50!"
+            class="secondaryButton h-10 w-10 p-0! md:h-11 md:w-auto md:px-6! md:py-2.5! inline-flex items-center justify-center gap-2 border-yellow-400/50!"
             [attr.aria-expanded]="isMenuOpen()"
             aria-label="Open main menu">
                 <i class="fa-solid fa-bars" aria-hidden="true"></i>
