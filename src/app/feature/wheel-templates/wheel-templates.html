@@ -1,5 +1,5 @@
-<section class="min-h-screen pt-28 pb-20 px-4 text-white/90 bg-neutral-950" aria-labelledby="templates-title">
-  <div class="max-w-6xl mx-auto space-y-8">
+<section class="wl-page-bg min-h-screen pt-28 pb-20 px-4 text-white/90 bg-neutral-950" aria-labelledby="templates-title">
+  <div class="wl-stagger max-w-6xl mx-auto space-y-8">
     <header class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm p-6 shadow-[0_4px_24px_rgba(0,0,0,0.3)] md:p-8">
       <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold">
         <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-amber-400/70" aria-hidden="true"></i>Wheelr &bull; Ready-made wheels
@@ -22,11 +22,11 @@
       </div>
     </header>
 
-    <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-label="Ready-made wheel templates">
+    <ul class="wl-stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-label="Ready-made wheel templates">
       @for (template of templates; track template.id) {
         <li>
           <article
-            class="group h-full flex flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-transparent p-5 transition-all duration-300 hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.1)]">
+            class="group h-full flex flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-transparent p-5 transition-all duration-300 hover:border-amber-400/40 hover:shadow-[0_12px_36px_rgba(245,158,11,0.12)] hover:-translate-y-1">
             <div class="flex items-start justify-between gap-3">
               <div>
                 <p class="text-[0.65rem] uppercase tracking-[0.2em] text-amber-300/70 font-semibold">{{ template.tagline }}</p>
@@ -44,7 +44,7 @@
                 #previewCanvas
                 width="220"
                 height="220"
-                class="w-44 h-44 md:w-52 md:h-52 transition-transform duration-500 group-hover:rotate-12"
+                class="w-44 h-44 md:w-52 md:h-52 transition-all duration-500 group-hover:rotate-12 group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.25)]"
                 [attr.aria-label]="'Preview of the ' + template.name + ' wheel'"
                 role="img"></canvas>
             </div>

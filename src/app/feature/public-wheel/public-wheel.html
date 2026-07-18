@@ -12,7 +12,10 @@
   [style.backgroundPosition]="'center'">
 
   @if (loading()) {
-    <p class="text-white/90 text-lg">Loading wheel...</p>
+    <div class="flex flex-col items-center gap-3 text-white/90">
+      <i class="fa-solid fa-dharmachakra fa-spin text-4xl text-amber-400/80" aria-hidden="true"></i>
+      <p class="text-lg">Loading wheel...</p>
+    </div>
   } @else if (error()) {
     <div class="max-w-xl rounded-xl border border-red-400/30 bg-red-500/10 p-4 text-red-100">
       {{ error() }}
@@ -70,7 +73,8 @@
         <div class="flex flex-col items-center gap-3">
           <a
             href="/"
-            class="inline-flex items-center justify-center rounded-lg border border-white/25 bg-neutral-800/60 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black/40">
+            class="primaryButton inline-flex items-center justify-center gap-2 text-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black/40">
+            <i class="fa-solid fa-wand-magic-sparkles" aria-hidden="true"></i>
             Create your wheel
           </a>
 

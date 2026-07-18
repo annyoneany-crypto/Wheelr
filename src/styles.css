@@ -19,6 +19,27 @@
       transition-all duration-200 active:scale-95;
 }
 
+/* Shine sweep across the primary button on hover */
+.primaryButton {
+    position: relative;
+    overflow: hidden;
+}
+.primaryButton::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -75%;
+    width: 50%;
+    background: linear-gradient(105deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+    transform: skewX(-20deg);
+    pointer-events: none;
+    transition: left 0.5s ease;
+}
+.primaryButton:hover::after {
+    left: 125%;
+}
+
 .secondaryButton {
     @apply px-6 py-2.5 text-white font-semibold rounded-xl
       border border-amber-400/50 bg-white/[0.04]
@@ -112,6 +133,78 @@ select:focus {
 }
 .wl-animate-modal {
   animation: wl-fade-in-up 0.3s ease-out both;
+}
+
+/* ── Ambient aurora background for static pages ──────────── */
+.wl-page-bg {
+  position: relative;
+  isolation: isolate;
+}
+.wl-page-bg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 55% 45% at 12% 0%, rgba(245, 158, 11, 0.10), transparent 60%),
+    radial-gradient(ellipse 50% 40% at 88% 18%, rgba(168, 85, 247, 0.09), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 50% 100%, rgba(59, 130, 246, 0.07), transparent 65%);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wl-page-bg::before {
+    animation: wl-aurora-drift 22s ease-in-out infinite alternate;
+  }
+}
+@keyframes wl-aurora-drift {
+  from { transform: scale(1); opacity: 0.8; }
+  to   { transform: scale(1.08); opacity: 1; }
+}
+
+/* ── Staggered section entrance (children of .wl-stagger) ── */
+@media (prefers-reduced-motion: no-preference) {
+  .wl-stagger > * { animation: wl-fade-in-up 0.55s ease-out both; }
+  .wl-stagger > *:nth-child(1)  { animation-delay: 0.04s; }
+  .wl-stagger > *:nth-child(2)  { animation-delay: 0.1s; }
+  .wl-stagger > *:nth-child(3)  { animation-delay: 0.16s; }
+  .wl-stagger > *:nth-child(4)  { animation-delay: 0.22s; }
+  .wl-stagger > *:nth-child(5)  { animation-delay: 0.28s; }
+  .wl-stagger > *:nth-child(6)  { animation-delay: 0.34s; }
+  .wl-stagger > *:nth-child(7)  { animation-delay: 0.4s; }
+  .wl-stagger > *:nth-child(8)  { animation-delay: 0.46s; }
+  .wl-stagger > *:nth-child(9)  { animation-delay: 0.52s; }
+  .wl-stagger > *:nth-child(10) { animation-delay: 0.58s; }
+  .wl-stagger > *:nth-child(11) { animation-delay: 0.64s; }
+  .wl-stagger > *:nth-child(12) { animation-delay: 0.7s; }
+}
+
+/* ── Fullscreen menu entrance ────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .wl-menu-overlay { animation: wl-menu-fade 0.25s ease-out both; }
+  .wl-menu-overlay nav li { animation: wl-fade-in-up 0.45s ease-out both; }
+  .wl-menu-overlay nav li:nth-child(1) { animation-delay: 0.05s; }
+  .wl-menu-overlay nav li:nth-child(2) { animation-delay: 0.11s; }
+  .wl-menu-overlay nav li:nth-child(3) { animation-delay: 0.17s; }
+  .wl-menu-overlay nav li:nth-child(4) { animation-delay: 0.23s; }
+  .wl-menu-overlay nav li:nth-child(5) { animation-delay: 0.29s; }
+}
+@keyframes wl-menu-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Winner list entry pop-in ────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .wl-winner-entry { animation: wl-fade-in-up 0.4s ease-out both; }
+}
+
+/* ── Countdown number: gradient + glow ───────────────────── */
+.wl-countdown-number {
+  background: linear-gradient(180deg, #ffffff 20%, #fcd34d 60%, #f59e0b 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.45));
 }
 
 /* 1. Standard CSS (Firefox and modern browsers) */
