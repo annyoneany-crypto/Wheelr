@@ -235,7 +235,7 @@ select:focus {
 }
 
 wl-header header,
-footer[aria-label='Desktop footer'] {
+footer[aria-label='Site footer'] {
   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
 }
 
@@ -246,7 +246,7 @@ body.immersive-ui-hidden wl-header header {
   transform: translateY(-16px);
 }
 
-body.immersive-ui-hidden footer[aria-label='Desktop footer'] {
+body.immersive-ui-hidden footer[aria-label='Site footer'] {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

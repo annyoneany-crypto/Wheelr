@@ -252,16 +252,16 @@
 
   <app-root class="block flex-1"></app-root>
 
-  <footer class="hidden lg:block fixed inset-x-0 bottom-0 z-50" aria-label="Desktop footer">
+  <footer class="block fixed inset-x-0 bottom-0 z-50" aria-label="Site footer">
     <div id="desktop-footer-panel" class="h-12 overflow-hidden border-t border-white/[0.08] text-white transition-all duration-300 ease-out">
       <div class="h-12 px-6 flex items-center justify-between gap-6 bg-neutral-950/70 backdrop-blur-xl">
-        <span class="text-white/60 hover:text-amber-400/80 transition-colors">
+        <span class="min-w-0 truncate text-sm md:text-base text-white/60 hover:text-amber-400/80 transition-colors">
           <a href="https://x.com/AnnyoneAny" target="_blank" rel="noopener noreferrer">
             Copyright © 2026 AnnyoneAny. All rights reserved
           </a>
         </span>
-        <div class="flex items-center gap-4 min-w-0">
-          <span class="text-sm tracking-wide text-white/50 truncate">A free tool for Raffle events with a customizable wheel.</span>
+        <div class="flex items-center gap-4 min-w-0 shrink-0">
+          <span class="hidden md:block text-sm tracking-wide text-white/50 truncate">A free tool for Raffle events with a customizable wheel.</span>
           <button id="desktop-footer-toggle" type="button" class="h-8 w-8 rounded-xl border border-white/[0.08] bg-white/[0.06] text-white/70 hover:bg-amber-400/10 hover:border-amber-400/50 hover:text-amber-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400/50 transition-all duration-200" aria-expanded="false" aria-controls="desktop-footer-summary" aria-label="Expand footer summary">
             <i id="desktop-footer-icon" class="fa-solid fa-up-right-and-down-left-from-center" aria-hidden="true"></i>
           </button>
