@@ -31,6 +31,18 @@ export interface WheelDisplayConfig {
   showWinnerEffect: boolean;
 }
 
+export interface WheelTemplateDefinition {
+  name: string;
+  description: string;
+  names: string[];
+  palette: ColorPalette;
+  centerText: string;
+  centerColor: string;
+  winnerEffect: effectType;
+  pointerType: pointerType;
+  spinDurationMs: number;
+}
+
 export interface WheelSnapshotEntry {
   wheelID: string;
   name: string;

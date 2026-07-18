@@ -20,7 +20,12 @@ import {
   saveUnifiedLocalStorageSnapshot,
   storageKeyForWorkspace,
 } from './wheel-configurator-storage';
-import { WheelDisplayConfig, WheelSettingsSnapshot, WheelWorkspaceMeta } from './wheel-configurator.models';
+import {
+  WheelDisplayConfig,
+  WheelSettingsSnapshot,
+  WheelTemplateDefinition,
+  WheelWorkspaceMeta,
+} from './wheel-configurator.models';
 import { CloudWheelSyncItem } from './wheel-cloud-repository.service';
 import { drawWheelCanvas } from '../shared/extraction-effect/wheel-renderer';
 import type { effectType, pointerType } from '../modules/classes/custom-type';
@@ -623,6 +628,47 @@ export class WheelConfigurator {
     this.persistWorkspaceRegistry();
 
     await this.loadWheelWorkspace(newWorkspace.id);
+  }
+
+  async createWheelWorkspaceFromTemplate(template: WheelTemplateDefinition): Promise<void> {
+    const normalizedName = template.name.trim();
+    if (!normalizedName || !template.names.length) {
+      return;
+    }
+
+    const workspaceId = this.createWorkspaceId();
+
+    // Seed the new workspace's scoped storage before loading it, so hydrateFromStorage
+    // picks the template settings up instead of the defaults.
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.names, workspaceId), template.names);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId), [template.palette]);
+    writeJson(
+      storageKeyForWorkspace(STORAGE_KEYS.selectedPaletteName, workspaceId),
+      template.palette.name
+    );
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.centerText, workspaceId), template.centerText);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.centerColor, workspaceId), template.centerColor);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.winnerEffect, workspaceId), template.winnerEffect);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.pointerType, workspaceId), template.pointerType);
+    writeJson(
+      storageKeyForWorkspace(STORAGE_KEYS.spinDurationMs, workspaceId),
+      template.spinDurationMs
+    );
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.wheelView, workspaceId), 'wheel');
+
+    const now = new Date().toISOString();
+    const newWorkspace: WheelWorkspaceMeta = {
+      id: workspaceId,
+      name: normalizedName,
+      description: template.description.trim(),
+      createdAt: now,
+      updatedAt: now,
+    };
+
+    this.wheelWorkspaces.update((workspaces) => [...workspaces, newWorkspace]);
+    this.persistWorkspaceRegistry();
+
+    await this.loadWheelWorkspace(workspaceId);
   }
 
   async createGroupedWheelWorkspace(parentWheelId: string, name?: string): Promise<void> {

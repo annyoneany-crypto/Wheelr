@@ -106,6 +106,15 @@
                 </li>
                 <li>
                     <a
+                        [routerLink]="['/templates']"
+                        (click)="closeMenu()"
+                        aria-label="Go to ready-made wheels page"
+                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.12)] transition-all duration-300">
+                        <span class="group-hover:text-amber-300 transition-colors">✨ Ready-made wheels</span>
+                    </a>
+                </li>
+                <li>
+                    <a
                         [routerLink]="['/info']"
                         (click)="closeMenu()"
                         aria-label="Go to Info page"

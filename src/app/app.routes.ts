@@ -41,6 +41,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/donation/donation').then((x) => x.Donation)
     },
     {
+        path: 'templates',
+        loadComponent: () => import('./feature/wheel-templates/wheel-templates').then((x) => x.WheelTemplates)
+    },
+    {
         path: ':id',
         loadComponent: () => import('./feature/public-wheel/public-wheel').then((x) => x.PublicWheel)
     },

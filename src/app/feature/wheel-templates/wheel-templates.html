@@ -1,0 +1,84 @@
+<section class="min-h-screen pt-28 pb-20 px-4 text-white/90 bg-neutral-950" aria-labelledby="templates-title">
+  <div class="max-w-6xl mx-auto space-y-8">
+    <header class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm p-6 shadow-[0_4px_24px_rgba(0,0,0,0.3)] md:p-8">
+      <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold">
+        <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-amber-400/70" aria-hidden="true"></i>Wheelr &bull; Ready-made wheels
+      </p>
+      <h2 id="templates-title" class="mt-2 text-3xl md:text-4xl font-black text-white">Pick a wheel, copy it, spin it</h2>
+      <p class="mt-3 text-sm md:text-base leading-relaxed text-white/70 max-w-3xl">
+        A collection of ready-to-use giveaway wheels: decisions, prizes, party games, and raffles.
+        Copy any template to your wheels and customize it however you like — names, colors, effects, and sounds.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <span class="inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs text-white/60">
+          <i class="fa-solid fa-copy mr-1.5 text-amber-400/60" aria-hidden="true"></i>One click to copy &amp; use
+        </span>
+        <a
+          routerLink="/"
+          class="inline-flex items-center rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200 transition-colors duration-200 hover:bg-amber-300/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60"
+          aria-label="Go to Wheel page">
+          <i class="fa-solid fa-dharmachakra mr-1.5" aria-hidden="true"></i>Go to Wheel
+        </a>
+      </div>
+    </header>
+
+    <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-label="Ready-made wheel templates">
+      @for (template of templates; track template.id) {
+        <li>
+          <article
+            class="group h-full flex flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-transparent p-5 transition-all duration-300 hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.1)]">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class="text-[0.65rem] uppercase tracking-[0.2em] text-amber-300/70 font-semibold">{{ template.tagline }}</p>
+                <h3 class="mt-1 text-lg font-bold text-white">{{ template.emoji }} {{ template.name }}</h3>
+              </div>
+              <span
+                class="shrink-0 inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-xs text-white/60"
+                [title]="template.names.length + ' entries on this wheel'">
+                <i class="fa-solid fa-users mr-1.5 text-amber-400/60" aria-hidden="true"></i>{{ template.names.length }}
+              </span>
+            </div>
+
+            <div class="mt-4 flex justify-center">
+              <canvas
+                #previewCanvas
+                width="220"
+                height="220"
+                class="w-44 h-44 md:w-52 md:h-52 transition-transform duration-500 group-hover:rotate-12"
+                [attr.aria-label]="'Preview of the ' + template.name + ' wheel'"
+                role="img"></canvas>
+            </div>
+
+            <p class="mt-4 text-sm leading-relaxed text-white/65">{{ template.description }}</p>
+
+            <div class="mt-3 flex flex-wrap gap-1.5" aria-hidden="true">
+              @for (entry of template.names.slice(0, 4); track $index) {
+                <span class="rounded-full bg-white/[0.05] border border-white/[0.06] px-2 py-0.5 text-[0.65rem] text-white/50">
+                  {{ entry }}
+                </span>
+              }
+              @if (template.names.length > 4) {
+                <span class="rounded-full px-2 py-0.5 text-[0.65rem] text-white/40">
+                  +{{ template.names.length - 4 }} more
+                </span>
+              }
+            </div>
+
+            <button
+              type="button"
+              class="mt-5 inline-flex items-center justify-center gap-2 rounded-xl border border-amber-300/40 bg-amber-300/10 px-4 py-2.5 text-sm font-bold uppercase tracking-[0.1em] text-amber-200 transition-colors duration-200 hover:bg-amber-300/20 hover:cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 disabled:opacity-50 disabled:cursor-not-allowed"
+              [disabled]="copyingTemplateId() !== null"
+              (click)="copyTemplate(template)"
+              [attr.aria-label]="'Copy the ' + template.name + ' wheel to your wheels and open it'">
+              @if (copyingTemplateId() === template.id) {
+                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Copying…
+              } @else {
+                <i class="fa-solid fa-copy" aria-hidden="true"></i>Copy &amp; use
+              }
+            </button>
+          </article>
+        </li>
+      }
+    </ul>
+  </div>
+</section>
