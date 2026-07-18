@@ -268,7 +268,9 @@
         </div>
       </div>
 
-      <div id="desktop-footer-summary" class="h-[calc(80vh-3rem)] overflow-y-auto px-6 pb-6 bg-neutral-950/85 backdrop-blur-2xl" hidden>
+      <!-- Kept in the render tree when collapsed (clipped by the panel height, never display:none)
+           so search engines index this content with full weight. -->
+      <div id="desktop-footer-summary" class="h-[calc(80vh-3rem)] overflow-y-auto px-6 pb-6 bg-neutral-950/85 backdrop-blur-2xl" inert aria-hidden="true">
         <section class="max-w-6xl mx-auto py-6 space-y-4">
           <header class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] p-6">
             <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold"><i class="fa-solid fa-star mr-1.5 text-amber-400/70" aria-hidden="true"></i>Wheelr &bull; Free Giveaway Wheel</p>
@@ -406,7 +408,11 @@
 
       function syncState() {
         panel.style.height = expanded ? '80vh' : '3rem';
-        summary.hidden = !expanded;
+        // Never set `hidden`/display:none here: the summary must stay rendered
+        // (only clipped by the panel) so its content is indexable. `inert`
+        // keeps the collapsed content out of tab order and screen readers.
+        summary.inert = !expanded;
+        summary.setAttribute('aria-hidden', expanded ? 'false' : 'true');
         toggle.setAttribute('aria-expanded', expanded ? 'true' : 'false');
         toggle.setAttribute('aria-label', expanded ? 'Collapse footer summary' : 'Expand footer summary');
         icon.className = expanded ? 'fa-solid fa-compress' : 'fa-solid fa-up-right-and-down-left-from-center';
