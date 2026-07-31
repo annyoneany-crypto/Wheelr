@@ -95,8 +95,8 @@ export class WheelManager {
 
     try {
       const cloudWheels = await this.wheelCloudRepository.listCurrentUserWheels();
-      const mergedCount = await this.wheelConfigurator.mergeCloudWheelsToLocal(cloudWheels);
-      this.importedFromCloudCount.set(mergedCount);
+      const { imported } = await this.wheelConfigurator.syncCloudWheelsToLocal(cloudWheels);
+      this.importedFromCloudCount.set(imported);
     } catch (error) {
       const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
         ? 'Sign in to import wheels from cloud.'

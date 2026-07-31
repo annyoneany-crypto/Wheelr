@@ -6,6 +6,7 @@ import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../services/auth.service';
 import { WheelCloudRepository } from '../../services/wheel-cloud-repository.service';
+import { WheelCloudSync } from '../../services/wheel-cloud-sync.service';
 import { WlAuth } from '../auth/auth';
 import { WlCreateWheel } from '../create-wheel/create-wheel';
 import { WlInfoUtente } from '../info-utente/info-utente';
@@ -22,6 +23,8 @@ export class Header {
   private readonly router = inject(Router);
   private readonly destroyRef = inject(DestroyRef);
   private readonly wheelCloudRepository = inject(WheelCloudRepository);
+  // Injected for its side effect: it starts the auto-sync as soon as a session exists.
+  private readonly wheelCloudSync = inject(WheelCloudSync);
   protected readonly wheelConfigurator = inject(WheelConfigurator);
   protected readonly authService = inject(AuthService);
 
@@ -42,6 +45,17 @@ export class Header {
   cloudSaveMessage = signal('');
   canSaveWheel = computed(() => this.isWheelRoute() && !!this.wheelConfigurator.activeWheelId());
 
+  // A manual save takes the toast over the background sync when both have something to say.
+  cloudNotice = computed(() => {
+    const saveMessage = this.cloudSaveMessage();
+    if (saveMessage) {
+      return { text: saveMessage, isError: this.cloudSaveState() === 'error' };
+    }
+
+    const syncMessage = this.wheelCloudSync.message();
+    return syncMessage ? { text: syncMessage, isError: this.wheelCloudSync.state() === 'error' } : null;
+  });
+
   private pendingCloudSave = false;
   private authSucceededInModal = false;
   private feedbackTimeout: ReturnType<typeof setTimeout> | null = null;
@@ -55,7 +69,7 @@ export class Header {
       }
 
       this.pendingCloudSave = false;
-      untracked(() => void this.saveActiveWheelToCloud());
+      untracked(() => void this.saveAfterLoginSync());
     });
 
     this.destroyRef.onDestroy(() => this.clearFeedbackTimeout());
@@ -164,6 +178,22 @@ export class Header {
     }
 
     void this.saveActiveWheelToCloud();
+  }
+
+  /**
+   * Logging in also triggers the cloud download, which rewrites workspace storage.
+   * Waiting for it keeps the upload from racing a merge on the very wheel being saved.
+   */
+  private async saveAfterLoginSync(): Promise<void> {
+    this.cloudSaveState.set('saving');
+
+    try {
+      await this.wheelCloudSync.syncFromCloud();
+    } catch {
+      // A failed download must not block the save the user explicitly asked for.
+    }
+
+    await this.saveActiveWheelToCloud();
   }
 
   private async saveActiveWheelToCloud(): Promise<void> {

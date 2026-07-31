@@ -120,16 +120,16 @@
     </div>
 </header>
 
-@if (cloudSaveMessage()) {
+@if (cloudNotice(); as notice) {
     <div
         class="fixed top-[4.5rem] right-3 z-30 rounded-full border bg-neutral-950/80 backdrop-blur-sm px-4 py-2 text-xs font-bold shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
-        [class.border-emerald-400/50]="cloudSaveState() === 'success'"
-        [class.text-emerald-200]="cloudSaveState() === 'success'"
-        [class.border-red-400/50]="cloudSaveState() === 'error'"
-        [class.text-red-200]="cloudSaveState() === 'error'"
+        [class.border-emerald-400/50]="!notice.isError"
+        [class.text-emerald-200]="!notice.isError"
+        [class.border-red-400/50]="notice.isError"
+        [class.text-red-200]="notice.isError"
         role="status"
         aria-live="polite">
-        {{ cloudSaveMessage() }}
+        {{ notice.text }}
     </div>
 }
 

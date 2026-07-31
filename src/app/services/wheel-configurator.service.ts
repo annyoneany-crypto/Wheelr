@@ -985,6 +985,58 @@ export class WheelConfigurator {
     return importedCount;
   }
 
+  /**
+   * Makes the local wheel list mirror the cloud one: cloud wheels are imported or refreshed,
+   * and wheels that were previously saved to cloud but no longer exist there are dropped.
+   * Wheels that were never saved to cloud have no remote counterpart to compare against,
+   * so they are always kept.
+   */
+  async syncCloudWheelsToLocal(
+    cloudWheels: CloudWheelSyncItem[]
+  ): Promise<{ imported: number; removed: number }> {
+    const activeIdBeforeSync = this.activeWheelId();
+
+    const imported = await this.mergeCloudWheelsToLocal(cloudWheels);
+    const removed = await this.pruneLocalWheelsMissingFromCloud(
+      cloudWheels.map((cloudWheel) => cloudWheel.cloudConfigId)
+    );
+
+    // The merge rewrote workspace storage directly; re-hydrate so the wheel on screen
+    // reflects what was just downloaded instead of the pre-sync signals.
+    const activeStillExists = this.wheelWorkspaces().some(
+      (workspace) => workspace.id === activeIdBeforeSync
+    );
+    if (imported && activeStillExists && !this.isSpinning() && !this.countdownInProgress()) {
+      await this.loadWheelWorkspace(activeIdBeforeSync);
+    }
+
+    return { imported, removed };
+  }
+
+  private async pruneLocalWheelsMissingFromCloud(cloudConfigIds: string[]): Promise<number> {
+    const remainingCloudIds = new Set(cloudConfigIds.filter((id) => !!id));
+
+    const staleRootIds = this.wheelWorkspaces()
+      .filter(
+        (workspace) =>
+          !workspace.parentWheelId &&
+          !!workspace.cloudConfigId &&
+          !remainingCloudIds.has(workspace.cloudConfigId)
+      )
+      .map((workspace) => workspace.id);
+
+    let removed = 0;
+    for (const rootId of staleRootIds) {
+      // deleteWheelWorkspace refuses to remove the last remaining wheel, so the user
+      // can never be left with an empty workspace list.
+      if (await this.deleteWheelWorkspace(rootId)) {
+        removed += 1;
+      }
+    }
+
+    return removed;
+  }
+
   private findRootWorkspaceForCloudImport(
     workspaces: WheelWorkspaceMeta[],
     cloudWheel: CloudWheelSyncItem
