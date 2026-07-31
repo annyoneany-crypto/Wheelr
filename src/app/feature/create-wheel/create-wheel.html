@@ -1,0 +1,88 @@
+@if (isOpen()) {
+    <div
+        class="fixed inset-0 z-90 bg-neutral-950/80 backdrop-blur-md flex items-center justify-center px-4"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Create a new wheel"
+        (click)="closeModal()">
+        <section
+            class="wl-animate-modal w-full max-w-sm rounded-2xl border border-white/15 bg-gradient-to-b from-neutral-900/98 to-neutral-950/98 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.5)]"
+            (click)="$event.stopPropagation()">
+            <div class="mb-5 flex items-start justify-between gap-4">
+                <div>
+                    <h2 class="text-xl font-black text-white">New wheel</h2>
+                    <p class="mt-1 text-sm text-white/50">Give your wheel a name to get started.</p>
+                </div>
+                <button
+                    type="button"
+                    class="h-9 w-9 shrink-0 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 inline-flex items-center justify-center"
+                    aria-label="Close new wheel dialog"
+                    (click)="closeModal()">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <form [formGroup]="createForm" (ngSubmit)="submit()" class="grid gap-3">
+                <div class="grid gap-1.5">
+                    <label class="text-xs font-semibold uppercase tracking-wide text-white/60" for="create-wheel-name">
+                        Wheel name
+                    </label>
+                    <input
+                        #nameInput
+                        id="create-wheel-name"
+                        type="text"
+                        formControlName="name"
+                        autocomplete="off"
+                        maxlength="60"
+                        class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2.5 text-white text-sm placeholder:text-white/40 focus:border-amber-400/50 focus:outline-none transition-colors"
+                        placeholder="Friday giveaway" />
+                </div>
+
+                <div class="grid gap-1.5">
+                    <label
+                        class="text-xs font-semibold uppercase tracking-wide text-white/60"
+                        for="create-wheel-description">
+                        Description
+                        <span class="font-normal normal-case tracking-normal text-white/35">(optional)</span>
+                    </label>
+                    <input
+                        id="create-wheel-description"
+                        type="text"
+                        formControlName="description"
+                        autocomplete="off"
+                        maxlength="160"
+                        class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2.5 text-white text-sm placeholder:text-white/40 focus:border-amber-400/50 focus:outline-none transition-colors"
+                        placeholder="What is this wheel for?" />
+                </div>
+
+                @if (createError()) {
+                    <p class="rounded-xl border border-red-400/20 bg-red-500/10 px-3 py-2.5 text-xs text-red-300" role="alert">
+                        {{ createError() }}
+                    </p>
+                }
+
+                <div class="mt-1 flex gap-2">
+                    <button
+                        type="button"
+                        class="flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/70 hover:bg-white/[0.08] hover:text-white transition-all duration-200"
+                        [disabled]="isCreating()"
+                        (click)="closeModal()">
+                        Cancel
+                    </button>
+                    <button
+                        type="submit"
+                        class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-amber-400/40 bg-amber-400/15 px-4 py-3 text-sm font-semibold text-amber-200 hover:bg-amber-400/25 hover:border-amber-400/60 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                        [disabled]="isCreating()">
+                        @if (isCreating()) {
+                            <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+                            <span>Creating...</span>
+                        } @else {
+                            <i class="fa-solid fa-plus" aria-hidden="true"></i>
+                            <span>Create wheel</span>
+                        }
+                    </button>
+                </div>
+            </form>
+        </section>
+    </div>
+}

@@ -18,9 +18,6 @@ export class WheelManager {
     return this.wheelConfigurator.getWorkspaceRootId(this.wheelConfigurator.activeWheelId()) === workspaceId;
   }
 
-  createName = signal('');
-  createDescription = signal('');
-
   editingWheelId = signal<string | null>(null);
   editName = signal('');
   editDescription = signal('');
@@ -29,22 +26,6 @@ export class WheelManager {
   importingFromCloud = signal(false);
   importedFromCloudCount = signal<number | null>(null);
   cloudError = signal('');
-
-  updateCreateName(event: Event): void {
-    const target = event.target;
-    if (!(target instanceof HTMLInputElement)) {
-      return;
-    }
-    this.createName.set(target.value);
-  }
-
-  updateCreateDescription(event: Event): void {
-    const target = event.target;
-    if (!(target instanceof HTMLInputElement)) {
-      return;
-    }
-    this.createDescription.set(target.value);
-  }
 
   updateEditName(event: Event): void {
     const target = event.target;
@@ -60,18 +41,6 @@ export class WheelManager {
       return;
     }
     this.editDescription.set(target.value);
-  }
-
-  async createWheel(): Promise<void> {
-    const name = this.createName().trim();
-    if (!name) {
-      return;
-    }
-
-    await this.wheelConfigurator.createWheelWorkspace(name, this.createDescription());
-    this.wheelConfigurator.setVisibleWheelCount(1);
-    this.createName.set('');
-    this.createDescription.set('');
   }
 
   async saveWheelToCloud(workspaceId: string): Promise<void> {

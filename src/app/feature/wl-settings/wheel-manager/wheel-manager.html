@@ -28,36 +28,6 @@
   </section>
 
   <section class="border-b border-white/10 pb-4">
-    <h3 class="wl-settings-label"><i class="fa-solid fa-plus-circle mr-2" aria-hidden="true"></i>New wheel</h3>
-    <div class="mt-3 grid gap-2">
-      <label class="sr-only" for="create-wheel-name">Wheel name</label>
-      <input
-        id="create-wheel-name"
-        type="text"
-        class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2.5 text-white text-sm placeholder:text-white/40"
-        placeholder="Wheel name"
-        [value]="createName()"
-        (input)="updateCreateName($event)" />
-
-      <label class="sr-only" for="create-wheel-description">Wheel description</label>
-      <input
-        id="create-wheel-description"
-        type="text"
-        class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2.5 text-white text-sm placeholder:text-white/40"
-        placeholder="Description"
-        [value]="createDescription()"
-        (input)="updateCreateDescription($event)" />
-
-      <button
-        type="button"
-        class="rounded-xl border border-white/10 bg-white/[0.06] py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:border-amber-400/40 hover:bg-amber-400/10 hover:cursor-pointer"
-        (click)="createWheel()">
-        <i class="fa-solid fa-plus mr-1.5" aria-hidden="true"></i>Create wheel
-      </button>
-    </div>
-  </section>
-
-  <section class="border-b border-white/10 pb-4">
     <div class="flex items-center justify-between gap-2">
       <h3 class="wl-settings-label"><i class="fa-solid fa-layer-group mr-2" aria-hidden="true"></i>Wheel list</h3>
       @if (authService.isLoggedIn()) {

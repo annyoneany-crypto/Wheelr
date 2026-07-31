@@ -7,13 +7,14 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../services/auth.service';
 import { WheelCloudRepository } from '../../services/wheel-cloud-repository.service';
 import { WlAuth } from '../auth/auth';
+import { WlCreateWheel } from '../create-wheel/create-wheel';
 import { WlInfoUtente } from '../info-utente/info-utente';
 
 type CloudSaveState = 'idle' | 'saving' | 'success' | 'error';
 
 @Component({
   selector: 'wl-header',
-  imports: [RouterLink, NgOptimizedImage, WlAuth, WlInfoUtente],
+  imports: [RouterLink, NgOptimizedImage, WlAuth, WlCreateWheel, WlInfoUtente],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
@@ -35,6 +36,7 @@ export class Header {
   showSelectedWheelBadge = computed(() => this.isWheelRoute() && !!this.wheelConfigurator.activeWheelId());
   isAuthModalOpen = signal(false);
   isUserPanelOpen = signal(false);
+  isCreateWheelModalOpen = signal(false);
 
   cloudSaveState = signal<CloudSaveState>('idle');
   cloudSaveMessage = signal('');
@@ -125,6 +127,14 @@ export class Header {
 
   onAuthenticated(): void {
     this.authSucceededInModal = true;
+  }
+
+  openCreateWheelModal(): void {
+    this.isCreateWheelModalOpen.set(true);
+  }
+
+  closeCreateWheelModal(): void {
+    this.isCreateWheelModalOpen.set(false);
   }
 
   saveButtonAriaLabel(): string {

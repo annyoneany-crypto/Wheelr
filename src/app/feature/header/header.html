@@ -55,6 +55,17 @@
 
     <!-- <i class="fa-solid fa-sun"></i> -->
     <div class="flex gap-2 md:gap-4 items-center justify-center shrink-0" role="navigation" aria-label="Header actions">
+        @if (isWheelRoute()) {
+            <button
+                type="button"
+                (click)="openCreateWheelModal()"
+                class="secondaryButton h-10 w-10 p-0! md:h-11 md:w-auto md:px-6! md:py-2.5! inline-flex items-center justify-center border-yellow-400/50!"
+                aria-label="Create a new wheel"
+                title="Create a new wheel">
+                <i class="fa-solid fa-plus" aria-hidden="true"></i>
+            </button>
+        }
+
         @if (canSaveWheel()) {
             <button
                 type="button"
@@ -217,6 +228,10 @@
     [isOpen]="isAuthModalOpen()"
     (authenticated)="onAuthenticated()"
     (closeRequested)="closeAuthModal()"></wl-auth>
+
+<wl-create-wheel
+    [isOpen]="isCreateWheelModalOpen()"
+    (closeRequested)="closeCreateWheelModal()"></wl-create-wheel>
 
 <wl-user-info
     [isOpen]="isUserPanelOpen()"
