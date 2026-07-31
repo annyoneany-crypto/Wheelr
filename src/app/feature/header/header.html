@@ -55,6 +55,33 @@
 
     <!-- <i class="fa-solid fa-sun"></i> -->
     <div class="flex gap-2 md:gap-4 items-center justify-center shrink-0" role="navigation" aria-label="Header actions">
+        @if (canSaveWheel()) {
+            <button
+                type="button"
+                (click)="onSaveWheelClick()"
+                class="secondaryButton h-10 w-10 p-0! md:h-11 md:w-auto md:px-6! md:py-2.5! inline-flex items-center justify-center border-yellow-400/50!"
+                [class.border-emerald-400/60!]="cloudSaveState() === 'success'"
+                [class.border-red-400/60!]="cloudSaveState() === 'error'"
+                [disabled]="authService.loading() || cloudSaveState() === 'saving'"
+                [attr.aria-label]="saveButtonAriaLabel()"
+                [title]="saveButtonAriaLabel()">
+                @switch (cloudSaveState()) {
+                    @case ('saving') {
+                        <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
+                    }
+                    @case ('success') {
+                        <i class="fa-solid fa-check text-emerald-300" aria-hidden="true"></i>
+                    }
+                    @case ('error') {
+                        <i class="fa-solid fa-triangle-exclamation text-red-300" aria-hidden="true"></i>
+                    }
+                    @default {
+                        <i class="fa-solid fa-cloud-arrow-up" aria-hidden="true"></i>
+                    }
+                }
+            </button>
+        }
+
         <button
             type="button"
             (click)="onAuthButtonClick()"
@@ -81,6 +108,19 @@
         </button>
     </div>
 </header>
+
+@if (cloudSaveMessage()) {
+    <div
+        class="fixed top-[4.5rem] right-3 z-30 rounded-full border bg-neutral-950/80 backdrop-blur-sm px-4 py-2 text-xs font-bold shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+        [class.border-emerald-400/50]="cloudSaveState() === 'success'"
+        [class.text-emerald-200]="cloudSaveState() === 'success'"
+        [class.border-red-400/50]="cloudSaveState() === 'error'"
+        [class.text-red-200]="cloudSaveState() === 'error'"
+        role="status"
+        aria-live="polite">
+        {{ cloudSaveMessage() }}
+    </div>
+}
 
 <div [class.hidden]="!isMenuOpen()">
     <div
@@ -173,7 +213,10 @@
     </div>
 </div>
 
-<wl-auth [isOpen]="isAuthModalOpen()" (closeRequested)="closeAuthModal()"></wl-auth>
+<wl-auth
+    [isOpen]="isAuthModalOpen()"
+    (authenticated)="onAuthenticated()"
+    (closeRequested)="closeAuthModal()"></wl-auth>
 
 <wl-user-info
     [isOpen]="isUserPanelOpen()"

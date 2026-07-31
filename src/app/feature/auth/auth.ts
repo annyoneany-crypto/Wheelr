@@ -16,6 +16,7 @@ export class WlAuth {
 
   readonly isOpen = input(false);
   readonly closeRequested = output<void>();
+  readonly authenticated = output<void>();
 
   isRegisterMode = signal(false);
   isAuthSubmitLoading = signal(false);
@@ -83,6 +84,7 @@ export class WlAuth {
       } else {
         await this.authService.loginWithEmailAndPassword(email, password);
       }
+      this.authenticated.emit();
       this.closeModal();
     } catch (error) {
       this.authError.set(this.mapAuthErrorToMessage(error));
@@ -105,6 +107,7 @@ export class WlAuth {
 
     try {
       await this.authService.loginWithGoogle();
+      this.authenticated.emit();
       this.closeModal();
     } catch (error) {
       this.authError.set(this.mapAuthErrorToMessage(error));
