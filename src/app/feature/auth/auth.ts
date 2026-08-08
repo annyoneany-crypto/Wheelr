@@ -117,6 +117,11 @@ export class WlAuth {
 
   private mapAuthErrorToMessage(error: unknown): string {
     if (!(error instanceof FirebaseError)) {
+      const nativeMessage = this.mapNativeGoogleErrorToMessage(error);
+      if (nativeMessage) {
+        return nativeMessage;
+      }
+
       return this.isRegisterMode()
         ? 'Registration failed. Please try again shortly.'
         : 'Authentication failed. Please try again shortly.';
@@ -146,5 +151,31 @@ export class WlAuth {
           ? 'Registration failed. Check your details and try again.'
           : 'Authentication failed. Check your details and try again.';
     }
+  }
+
+  /**
+   * The Android sign-in sheet reports through Credential Manager, not Firebase, so
+   * these arrive as plain Errors and used to collapse into a generic "try again"
+   * that hid the two things the user can actually fix.
+   * Returns null when the error is not one of them.
+   */
+  private mapNativeGoogleErrorToMessage(error: unknown): string | null {
+    const message = error instanceof Error ? error.message : '';
+
+    if (message.includes('NoCredentialException') || message.includes('No credentials available')) {
+      return 'No Google account on this device. Add one in Android settings, then try again.';
+    }
+
+    if (message.includes('GetCredentialCancellationException') || message.includes('activity is cancelled')) {
+      return 'Google sign-in was canceled.';
+    }
+
+    // 10 is Play Services' DEVELOPER_ERROR: the app signature is not registered
+    // against the Firebase project, so no ID token is ever issued.
+    if (message.includes('10:') || message.includes('DEVELOPER_ERROR')) {
+      return 'This app build is not authorized for Google sign-in. Register its signing fingerprint in Firebase.';
+    }
+
+    return null;
   }
 }

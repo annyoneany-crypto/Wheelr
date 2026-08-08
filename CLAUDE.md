@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Wheelr — a free web app for creating and spinning customizable giveaway wheels (raffles, contests, promos). Angular 21 (standalone, zoneless, signals) + TypeScript, styled with Tailwind CSS v4, persisted locally (localStorage + IndexedDB) with optional Firebase cloud sync.
+Wheelr — a free web app for creating and spinning customizable wheels (raffles, contests, promos). Angular 21 (standalone, zoneless, signals) + TypeScript, styled with Tailwind CSS v4, persisted locally (localStorage + IndexedDB) with optional Firebase cloud sync.
 
 ## Commands
 
@@ -13,6 +13,13 @@ npm start          # ng serve — dev server (development config) at http://loca
 npm run build      # ng build — production build; THIS IS THE CORRECTNESS GATE (see Testing)
 npm run watch      # ng build --watch (development config)
 npm test           # ng test — vitest + jsdom, zoneless
+
+npm run android:sync    # ng build + cap sync android — run after ANY web change
+npm run android:build   # android:sync + gradlew assembleDebug -> app-debug.apk
+npm run android:run     # android:sync + cap run android (device picker)
+npm run android:open    # open the project in Android Studio
+npm run android:assets  # regenerate launcher icons + splash from public/Logo.webp
+npm run android:bundle  # ng build + cap sync + gradlew bundleRelease -> app-release.aab
 ```
 
 Run a single test file: `npx ng test --include src/app/path/to/file.spec.ts` (or use vitest filtering). Specs live next to the code as `*.spec.ts`.
@@ -51,8 +58,41 @@ Optional Firebase (Firestore + Auth). Config in `firebase-auth.config.ts` (clien
 ### Rendering
 `shared/extraction-effect/wheel-renderer.ts` (`drawWheelCanvas`) is the single canvas drawing implementation shared by: the interactive `Wheel`, the multi-wheel previews on `WheelPage`, and the read-only `PublicWheel`. Three view modes exist: `'wheel'` | `'linear'` | `'cards'`. Winner effects (`fire`, `cartoon-fire`, `confetti`, `fireworks`, `applause`) live under `shared/winner-effect/`. Pointer/effect string unions are in `modules/classes/custom-type.ts`.
 
+### Android app (Capacitor)
+The same Angular bundle ships as a native Android app; `android/` is a checked-in Capacitor project (`appId` `xyz.wheelr.app`, `webDir` `dist/wheelr/browser`). There is **no separate mobile codebase** — the web build *is* the app, so `npm run android:sync` after every web change or the APK keeps serving stale assets.
+
+- `NativePlatformService` (`services/native-platform.service.ts`) holds everything native: status bar styling, splash dismissal, and the Android back button. `isNative` is false on web and `initialize()` no-ops there.
+- **Back button**: modals in this app are signals, not routes, so nothing would stop a back press from exiting. Components with an overlay register a handler via `registerBackHandler(() => boolean)` (returns an unregister fn — pass it to `destroyRef.onDestroy`); handlers are consulted newest-first, then `panel` outlet routes, then history, then exit. **Any new modal must register one.**
+- **Offline**: FontAwesome and Inter are bundled through `src/styles.css` instead of CDNs. Icons must exist in FontAwesome *Free* (the old kit was Pro). The wheel fonts in the font-settings panel are still fetched from Google Fonts at runtime and stay online-only.
+- The SEO footer in `index.html` is removed before first paint when `window.Capacitor.isNativePlatform()` — it exists only for crawlers.
+- Native theming lives in `android/app/src/main/res/values/styles.xml`; `postSplashScreenTheme` must point at the dark `AppTheme.NoActionBar` or the status bar reverts to white.
+- Icons/splash are generated from `public/Logo.webp` by `tools/generate-app-assets.mjs` into `assets/`, then rendered by `capacitor-assets`. Edit the logo, not the generated files.
+- **Google sign-in** cannot use `signInWithPopup` in a WebView. `AuthService.loginWithGoogle()` branches on `isNative` and uses `@capacitor-firebase/authentication` with `skipNativeAuth: true`, feeding the returned ID token to `signInWithCredential` so the JS SDK stays the single session source. It needs `android/app/google-services.json` (Firebase console → Android app for `xyz.wheelr.app` + the signing SHA-1); the Gradle build stays green without it, but the plugin fails to load at runtime and Google login is unavailable.
+
+### Ads (`ads.service.ts`, app only)
+`@capacitor-community/admob` monetises the Android build; `AdsService.isEnabled` is false on web and every method short-circuits there, so the browser app is unchanged.
+
+- **IDs** live in `services/admob.config.ts` and default to Google's *sample* units with `useTestAds: true`. The app ID is duplicated in `android/app/src/main/res/values/strings.xml` (`admob_app_id`) because the SDK reads it from the manifest at process start and **crashes the app if it is missing**. Swap both together before publishing.
+- **Two placements**: a rewarded ad gates each template copy (`wheel-templates.ts`), and an interstitial fires every `SPINS_PER_INTERSTITIAL` (5) completed spins, counted in `performSpin` and delayed by `INTERSTITIAL_DELAY_AFTER_WINNER_MS` so it doesn't cover the winner reveal.
+- **`showRewardVideoAd()` never settles when the user skips** — the plugin resolves it from `OnUserEarnedReward` only. So `showRewardedAd()` drives its result off the `Dismissed` event and treats `Rewarded` as the flag. Never plain-`await` that call.
+- **Fail-open vs fail-closed**: a *skipped* ad keeps the template locked; an ad that could not *load* (`unavailable`) lets the user through, because the app is otherwise fully usable offline.
+- **Consent (UMP) is retried, not latched.** A failed `requestConsentInfo` leaves `consentResolved` false so the next ad request tries again instead of killing ads for the whole session.
+- Google's ad and consent endpoints must be reachable over untampered TLS. Behind an HTTPS-intercepting antivirus (see the truststore note in the build environment) the emulator gets `CertPathValidatorException`, consent fails, and **no ad will ever show** — test ad rendering on a real device off that network.
+
+### Release build (Play Store)
+`npm run android:bundle` produces `android/app/build/outputs/bundle/release/app-release.aab`.
+
+- Signing reads `android/keystore.properties` (gitignored; see `keystore.properties.example`). Without that file the project still configures and debug builds work — only the release variant is left unsigned. Paths in it need **forward slashes**: `.properties` treats `\` as an escape.
+- The keystore and `keystore.properties` must never be committed — `android/.gitignore` covers `*.jks`, `*.keystore` and `keystore.properties`. Losing the upload key means permanently losing the ability to ship updates.
+- **The release build is signed with a different key than debug**, so its SHA-1 differs. Google sign-in silently breaks in production until the release SHA-1 *and* the Play App Signing SHA-1 (Play Console → Setup → App signing) are both added to the Firebase Android app and `google-services.json` is re-downloaded.
+- Bump `versionCode` (integer, must increase every upload) and `versionName` in `android/app/build.gradle` before each release.
+- `minifyEnabled` is deliberately `false`. Turning on R8 needs keep rules for Capacitor plugin reflection and the Firebase/AdMob SDKs — do not flip it without testing the release build end to end.
+- Before publishing, swap the AdMob sample IDs in `admob.config.ts` + `strings.xml` and set `useTestAds: false`, otherwise the store build serves test ads and earns nothing.
+
 ### Routing (`app.routes.ts`)
-All routes lazy-load standalone components. The root `WheelPage` hosts named-outlet child routes (`outlet: 'panel'`) for the settings panels (`users`, `color-settings`, `effects`, `sound`, `wheel-manager`). `/:id` resolves a public shared wheel via `PublicWheel`; `/info` and `/donation` are static pages.
+All routes lazy-load standalone components. The root `WheelPage` hosts named-outlet child routes (`outlet: 'panel'`) for the settings panels (`users`, `color-settings`, `effects`, `sound`, `wheel-manager`). `/:id` resolves a public shared wheel via `PublicWheel`; `/info`, `/donation`, `/templates` and `/privacy` are static pages.
+
+**`:id` swallows any single-segment path**, so every new static route must be declared *above* it in `app.routes.ts` or it will render as a (missing) public wheel. `/privacy` is also the Play Store's required privacy-policy URL — see `docs/play-store-listing.md`.
 
 ### Layout (`src/app/feature/`)
 `wheel-page/` is the main app shell; `wl-settings/` holds the settings panels (each a lazy child route); `header/`, `auth/`, `public-wheel/`, `info/`, `donation/` are top-level features. Shared/presentational pieces are under `shared/`.

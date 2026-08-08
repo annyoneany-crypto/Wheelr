@@ -10,7 +10,7 @@
 
 ---
 
-This guide walks you through **every feature and configuration option** in [Wheelr](https://www.wheelr.xyz), the free **customizable giveaway wheel** for streamers, teachers, and event organizers.
+This guide walks you through **every feature and configuration option** in [Wheelr](https://www.wheelr.xyz), the free **customizable wheel** for streamers, teachers, and event organizers.
 
 ---
 
@@ -196,7 +196,7 @@ The **Effects** panel controls **how** winners are selected and celebrated.
 
 ## 🔊 Sound Settings
 
-The **Sound** panel lets you add custom audio to your **giveaway spinning wheel**.
+The **Sound** panel lets you add custom audio to your **spinning wheel**.
 
 ### 🎵 Audio Channels
 

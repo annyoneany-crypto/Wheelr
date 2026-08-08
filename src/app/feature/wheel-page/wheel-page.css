@@ -16,3 +16,14 @@
   transform: translateY(10px) scale(0.94);
   pointer-events: none;
 }
+
+/* Below lg the wheel controls live in a bottom bar, so anything else anchored to
+   the bottom of the viewport has to sit above it. */
+@media (max-width: 1023.98px) {
+  .wl-above-bottom-bar {
+    bottom: calc(
+      var(--wl-bottom-bar-offset) + var(--wl-bottom-bar-height) +
+      env(safe-area-inset-bottom) + 0.75rem
+    );
+  }
+}

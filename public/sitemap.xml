@@ -8,8 +8,8 @@
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.wheelr.xyz/Wheelr.webp</image:loc>
-      <image:title>Wheelr - Free Online Giveaway Wheel Spinner</image:title>
-      <image:caption>Wheelr is a free giveaway wheel for raffles, classrooms, live streams and events</image:caption>
+      <image:title>Wheelr - Free Online Wheel Spinner</image:title>
+      <image:caption>Wheelr is a free wheel for raffles, classrooms, live streams and events</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://www.wheelr.xyz/Logo.webp</image:loc>
@@ -33,5 +33,11 @@
     <lastmod>2026-04-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.wheelr.xyz/privacy</loc>
+    <lastmod>2026-08-08</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 </urlset>

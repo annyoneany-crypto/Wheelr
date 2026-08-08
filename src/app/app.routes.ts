@@ -45,6 +45,11 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/wheel-templates/wheel-templates').then((x) => x.WheelTemplates)
     },
     {
+        path: 'privacy',
+        loadComponent: () => import('./feature/privacy/privacy').then((x) => x.Privacy)
+    },
+    // Keep every static page above this: ':id' swallows any single-segment path.
+    {
         path: ':id',
         loadComponent: () => import('./feature/public-wheel/public-wheel').then((x) => x.PublicWheel)
     },

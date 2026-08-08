@@ -1,0 +1,56 @@
+:host {
+  display: block;
+}
+
+/* Long-form legal copy: give the prose comfortable rhythm without repeating the
+   same utility classes on every paragraph of the page. */
+.wl-legal h3 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.wl-legal h3:first-child {
+  margin-top: 0;
+}
+
+.wl-legal p,
+.wl-legal ul {
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: rgb(255 255 255 / 0.7);
+}
+
+.wl-legal ul {
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+.wl-legal li + li {
+  margin-top: 0.5rem;
+}
+
+.wl-legal a {
+  color: #fcd34d;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wl-legal a:hover {
+  color: #fde68a;
+}
+
+.wl-legal strong {
+  font-weight: 600;
+  color: rgb(255 255 255 / 0.9);
+}
+
+@media (min-width: 768px) {
+  .wl-legal p,
+  .wl-legal ul {
+    font-size: 1rem;
+  }
+}

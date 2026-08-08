@@ -1,12 +1,12 @@
 {
   "service": "Wheelr",
   "homepage": "https://www.wheelr.xyz/",
-  "description": "Wheelr is a web app for giveaway and random selection wheels.",
+  "description": "Wheelr is a web app for and random selection wheels.",
   "endpoints": [
     {
       "path": "/",
       "method": "GET",
-      "purpose": "Render the main giveaway wheel application"
+      "purpose": "Render the main wheel application"
     }
   ]
 }

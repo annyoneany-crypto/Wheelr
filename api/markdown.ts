@@ -35,7 +35,7 @@ function normalizePath(rawPath: string): string {
 
 function titleForPath(path: string): string {
   if (path === '/' || path === '/index.html') {
-    return 'Wheelr - Free Giveaway Wheel Online';
+    return 'Wheelr - Free Wheel Online';
   }
 
   return `Wheelr Page: ${path}`;
@@ -53,7 +53,7 @@ function markdownForPath(path: string): string {
     '',
     `# ${title}`,
     '',
-    'Wheelr is a free online giveaway wheel and random picker.',
+    'Wheelr is a free online wheel and random picker.',
     'This markdown response is provided for agent-friendly content negotiation.',
     '',
     '## Main Features',

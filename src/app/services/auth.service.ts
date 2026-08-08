@@ -1,4 +1,4 @@
-import { computed, Injectable, signal } from '@angular/core';
+import { computed, Injectable, inject, signal } from '@angular/core';
 import { FirebaseApp, FirebaseOptions, getApp, getApps, initializeApp } from 'firebase/app';
 import {
   Auth,
@@ -7,16 +7,20 @@ import {
   User,
   getAuth,
   onAuthStateChanged,
+  signInWithCredential,
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut
 } from 'firebase/auth';
+import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
 import { firebaseAuthConfig } from './firebase-auth.config';
+import { NativePlatformService } from './native-platform.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private readonly nativePlatform = inject(NativePlatformService);
   private auth: Auth | null = null;
   private readonly provider = new GoogleAuthProvider();
   private readonly firebaseConfig: FirebaseOptions = firebaseAuthConfig;
@@ -44,7 +48,29 @@ export class AuthService {
       return;
     }
 
+    if (this.nativePlatform.isNative) {
+      await this.loginWithGoogleNatively(this.auth);
+      return;
+    }
+
     await signInWithPopup(this.auth, this.provider);
+  }
+
+  /**
+   * signInWithPopup needs a browser popup, which the Android WebView has no way to
+   * open. The Capacitor plugin runs Google's native sign-in sheet instead and hands
+   * back an ID token; feeding that to the JS SDK keeps `user` and every Firestore
+   * call on the same session the web build uses.
+   */
+  private async loginWithGoogleNatively(auth: Auth): Promise<void> {
+    const result = await FirebaseAuthentication.signInWithGoogle();
+    const idToken = result.credential?.idToken;
+
+    if (!idToken) {
+      throw new Error('Google sign-in returned no ID token.');
+    }
+
+    await signInWithCredential(auth, GoogleAuthProvider.credential(idToken));
   }
 
   async loginWithEmailAndPassword(email: string, password: string): Promise<void> {
@@ -74,6 +100,12 @@ export class AuthService {
   }
 
   async logout(): Promise<void> {
+    if (this.nativePlatform.isNative) {
+      // Clears the cached Google account as well, so the next login shows the
+      // account picker instead of silently reusing the previous one.
+      await FirebaseAuthentication.signOut().catch(() => undefined);
+    }
+
     if (!this.auth) {
       return;
     }

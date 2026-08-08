@@ -161,11 +161,11 @@ Additional improvements to achieve higher Performance score:
 
 ### Schema.org Keywords for Easy Search
 The application now includes metadata for:
-- "giveaway wheel"
+- "wheel"
 - "prize wheel spinner"
 - "online raffle tool"
 - "contest spinner"
-- "free giveaway tool"
+- "free tool"
 
 ### Performance SEO
 - Enable HTTP/2
@@ -174,7 +174,7 @@ The application now includes metadata for:
 - Optimize Core Web Vitals (LCP, FID, CLS)
 
 ### Content Optimization
-- Title: "GiveawayWheel - Free Online Giveaway & Prize Wheel Spinner"
+- Title: "GiveawayWheel - Free Online & Prize Wheel Spinner"
 - Meta Description clearly identifies the site as a web app ✅
 - Keywords are relevant and targeted ✅
 - Schema markup is valid JSON-LD ✅

@@ -51,7 +51,7 @@ No download. No signup. No paywall.
 
 ## 🔑 Keywords
 
-`spinning wheel` · `random name picker` · `giveaway wheel` · `prize wheel online` · `random winner generator` · `wheel of names` · `spin the wheel` · `raffle wheel` · `Twitch giveaway tool` · `classroom random picker`
+`spinning wheel` · `random name picker` · `wheel` · `prize wheel online` · `random winner generator` · `wheel of names` · `spin the wheel` · `raffle wheel` · `Twitch tool` · `classroom random picker`
 
 ---
 

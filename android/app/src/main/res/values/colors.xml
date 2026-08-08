@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Same surface colour as the bg-color custom property in src/styles.css and
+         the Capacitor config, so the native window, the splash and the WebView match. -->
+    <color name="brandSurface">#111113</color>
+</resources>

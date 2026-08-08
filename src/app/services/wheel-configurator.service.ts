@@ -1,4 +1,5 @@
-import { computed, effect, ElementRef, Injectable, signal } from '@angular/core';
+import { computed, effect, ElementRef, Injectable, inject, signal } from '@angular/core';
+import { AdsService } from './ads.service';
 import {
   STORAGE_KEYS,
   DEFAULT_PALETTES,
@@ -36,6 +37,15 @@ export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurato
   providedIn: 'root',
 })
 export class WheelConfigurator {
+  private readonly ads = inject(AdsService);
+
+  /**
+   * Breathing room between the winner landing and an interstitial covering the
+   * screen. Without it the ad swallows the reveal the user just waited for; the
+   * winner and its effect are still on screen once the ad is dismissed.
+   */
+  private static readonly INTERSTITIAL_DELAY_AFTER_WINNER_MS = 1500;
+
   private static readonly MAX_WHEELS_PER_GROUP = 4;
   private static readonly DEFAULT_FONT_LINK =
     'https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap';
@@ -182,7 +192,7 @@ export class WheelConfigurator {
   renameModalRequestToken = signal(0);
 
   wheelView = signal<'wheel' | 'linear' | 'cards'>('wheel');
-  winnerEffect = signal<effectType>('fire');
+  winnerEffect = signal<effectType>('confetti');
   showWinnerEffect = signal<boolean>(true);
   pointerType = signal<pointerType>('drop');
 
@@ -1142,7 +1152,7 @@ export class WheelConfigurator {
     this.centerText.set('SPIN');
     this.centerLogoSize.set('m');
     this.wheelView.set('wheel');
-    this.winnerEffect.set('fire');
+    this.winnerEffect.set('confetti');
     this.showWinnerEffect.set(true);
     this.pointerType.set('drop');
     this.spinDurationMs.set(3000);
@@ -1739,6 +1749,12 @@ export class WheelConfigurator {
       if (this.soundEnabled() && this.winnerAudio()) {
         this.audioManager.playWinnerAudio(this.winnerAudio());
       }
+
+      // Every Nth spin this shows an interstitial; on web it only counts.
+      setTimeout(
+        () => void this.ads.registerCompletedSpin(),
+        WheelConfigurator.INTERSTITIAL_DELAY_AFTER_WINNER_MS,
+      );
     }, this.spinDurationMs());
   }
 
