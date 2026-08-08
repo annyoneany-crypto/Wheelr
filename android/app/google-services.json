@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "1061204045318-bspsfjskdn1ck0nfcjb59q3n4ffv34r0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xyz.wheelr.app",
+            "certificate_hash": "97d726e8379b250116796fb6fd8f8a0bddc6ea9b"
+          }
+        },
+        {
           "client_id": "1061204045318-d83fdqq8b1mpmhplromsdahofdl0nj5n.apps.googleusercontent.com",
           "client_type": 3
         }

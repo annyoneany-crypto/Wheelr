@@ -11,7 +11,11 @@
       </p>
       <div class="mt-5 flex flex-wrap gap-3">
         <span class="inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs text-white/60">
-          <i class="fa-solid fa-copy mr-1.5 text-amber-400/60" aria-hidden="true"></i>One click to copy &amp; use
+          @if (adsRequired) {
+            <i class="fa-solid fa-circle-play mr-1.5 text-amber-400/60" aria-hidden="true"></i>Watch a short ad to unlock
+          } @else {
+            <i class="fa-solid fa-copy mr-1.5 text-amber-400/60" aria-hidden="true"></i>One click to copy &amp; use
+          }
         </span>
         <a
           routerLink="/"
@@ -68,10 +72,12 @@
               type="button"
               class="mt-5 inline-flex items-center justify-center gap-2 rounded-xl border border-amber-300/40 bg-amber-300/10 px-4 py-2.5 text-sm font-bold uppercase tracking-[0.1em] text-amber-200 transition-colors duration-200 hover:bg-amber-300/20 hover:cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 disabled:opacity-50 disabled:cursor-not-allowed"
               [disabled]="copyingTemplateId() !== null"
-              (click)="copyTemplate(template)"
+              (click)="requestTemplate(template)"
               [attr.aria-label]="'Copy the ' + template.name + ' wheel to your wheels and open it'">
               @if (copyingTemplateId() === template.id) {
                 <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Copying…
+              } @else if (adsRequired) {
+                <i class="fa-solid fa-circle-play" aria-hidden="true"></i>Watch ad &amp; use
               } @else {
                 <i class="fa-solid fa-copy" aria-hidden="true"></i>Copy &amp; use
               }
@@ -82,3 +88,57 @@
     </ul>
   </div>
 </section>
+
+<!-- Rewarded-ad prompt (app only). AdMob requires the offer to be made up front,
+     so the ad is never started straight from the card button. -->
+@if (pendingTemplate(); as template) {
+  <div
+    class="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="template-ad-title">
+    <div class="wl-animate-modal w-full max-w-sm rounded-2xl border border-white/10 bg-neutral-900 p-6 shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+      <div class="flex items-center gap-3">
+        <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-amber-300/40 bg-amber-300/10 text-amber-300">
+          <i class="fa-solid fa-circle-play text-lg" aria-hidden="true"></i>
+        </span>
+        <div>
+          <h3 id="template-ad-title" class="text-base font-bold text-white">Unlock this template</h3>
+          <p class="text-xs text-white/55">{{ template.emoji }} {{ template.name }}</p>
+        </div>
+      </div>
+
+      <p class="mt-4 text-sm leading-relaxed text-white/70">
+        Watch a short video ad and this wheel gets copied to your wheels, ready to spin.
+        Ads keep Wheelr free.
+      </p>
+
+      @if (lockedNotice(); as notice) {
+        <p class="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-xs text-amber-200" role="alert">
+          {{ notice }}
+        </p>
+      }
+
+      <div class="mt-6 flex gap-3">
+        <button
+          type="button"
+          class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm font-semibold text-white/80 transition-colors duration-200 hover:bg-white/15 hover:text-white hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          [disabled]="adPlaying()"
+          (click)="dismissAdPrompt()">
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-amber-300/40 bg-amber-300/15 px-4 py-2.5 text-sm font-bold text-amber-200 transition-colors duration-200 hover:bg-amber-300/25 hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+          [disabled]="adPlaying()"
+          (click)="confirmWatchAd()">
+          @if (adPlaying()) {
+            <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Loading…
+          } @else {
+            <i class="fa-solid fa-circle-play" aria-hidden="true"></i>Watch ad
+          }
+        </button>
+      </div>
+    </div>
+  </div>
+}

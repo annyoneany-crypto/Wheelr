@@ -22,7 +22,8 @@
     "android:assets": "node tools/generate-app-assets.mjs && capacitor-assets generate --android",
     "android:open": "cap open android",
     "android:build": "npm run android:sync && node tools/gradle.mjs assembleDebug",
-    "android:run": "npm run android:sync && cap run android"
+    "android:run": "npm run android:sync && cap run android",
+    "android:bundle": "npm run android:sync && node tools/gradle.mjs bundleRelease"
   },
   "prettier": {
     "printWidth": 100,
@@ -45,6 +46,7 @@
     "@angular/forms": "^21.1.0",
     "@angular/platform-browser": "^21.1.0",
     "@angular/router": "^21.1.0",
+    "@capacitor-community/admob": "^8.0.0",
     "@capacitor-firebase/authentication": "^8.3.0",
     "@capacitor/android": "^8.5.0",
     "@capacitor/app": "^8.1.1",

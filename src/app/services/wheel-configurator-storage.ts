@@ -76,7 +76,7 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
     readJson<'wheel' | 'linear' | 'cards'>(storageKeyForWorkspace(STORAGE_KEYS.wheelView, workspaceId)) ??
     'wheel';
   const winnerEffect =
-    readJson<effectType>(storageKeyForWorkspace(STORAGE_KEYS.winnerEffect, workspaceId)) ?? 'fire';
+    readJson<effectType>(storageKeyForWorkspace(STORAGE_KEYS.winnerEffect, workspaceId)) ?? 'confetti';
   const showWinnerEffect =
     readJson<boolean>(storageKeyForWorkspace(STORAGE_KEYS.showWinnerEffect, workspaceId)) ?? true;
   const spinDurationMs =

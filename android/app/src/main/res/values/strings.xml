@@ -4,4 +4,8 @@
     <string name="title_activity_main">Wheelr</string>
     <string name="package_name">xyz.wheelr.app</string>
     <string name="custom_url_scheme">xyz.wheelr.app</string>
+    <!-- Live AdMob app ID. The Mobile Ads SDK reads it from the manifest at
+         startup and crashes the app if it is missing or malformed. Must stay in
+         sync with `appId` in src/app/services/admob.config.ts. -->
+    <string name="admob_app_id" translatable="false">ca-app-pub-4183353813239805~8318556834</string>
 </resources>

@@ -1,0 +1,120 @@
+<section class="wl-page-bg min-h-screen pt-28 pb-20 px-4 text-white/90 bg-neutral-950" aria-labelledby="privacy-title">
+  <div class="wl-stagger max-w-4xl mx-auto space-y-8">
+    <header class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm p-6 shadow-[0_4px_24px_rgba(0,0,0,0.3)] md:p-8">
+      <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold">
+        <i class="fa-solid fa-shield-halved mr-1.5 text-amber-400/70" aria-hidden="true"></i>Wheelr &bull; Privacy
+      </p>
+      <h2 id="privacy-title" class="mt-2 text-3xl md:text-4xl font-black text-white">Privacy Policy</h2>
+      <p class="mt-3 text-sm md:text-base leading-relaxed text-white/70 max-w-3xl">
+        This policy explains what Wheelr collects, why, and what you can do about it.
+        It covers both the website at wheelr.xyz and the Wheelr Android app.
+      </p>
+      <div class="mt-5 flex flex-wrap gap-3">
+        <span class="inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs text-white/60">
+          <i class="fa-solid fa-clock-rotate-left mr-1.5 text-amber-400/60" aria-hidden="true"></i>Last updated: {{ lastUpdated }}
+        </span>
+        <a
+          routerLink="/"
+          class="inline-flex items-center rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200 transition-colors duration-200 hover:bg-amber-300/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60"
+          aria-label="Go to Wheel page">
+          <i class="fa-solid fa-dharmachakra mr-1.5" aria-hidden="true"></i>Go to Wheel
+        </a>
+      </div>
+    </header>
+
+    <article class="wl-legal rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6 md:p-8">
+      <h3>Who is responsible</h3>
+      <p>
+        Wheelr ("we", "the app") is an independent project. For any question about this policy,
+        or to request access to or deletion of your data, write to
+        <a [href]="'mailto:' + contactEmail">{{ contactEmail }}</a>.
+      </p>
+
+      <h3>The short version</h3>
+      <ul>
+        <li>You can use Wheelr <strong>without an account</strong>. If you do, your wheels stay on your device and we never receive them.</li>
+        <li>If you <strong>sign in</strong>, your wheels are synced to our cloud so you can reach them from other devices.</li>
+        <li>The <strong>Android app shows ads</strong> through Google AdMob, which collects advertising data.</li>
+        <li>We do not sell your data, and we do not build advertising profiles ourselves.</li>
+      </ul>
+
+      <h3>What we collect</h3>
+      <p><strong>If you never sign in:</strong> nothing is sent to us. Your wheels, names, colors, images and sounds are stored only in your browser's local storage and IndexedDB, or in the app's local storage on your device. Deleting the app or clearing site data erases them permanently.</p>
+
+      <p><strong>If you create an account or sign in:</strong> we process</p>
+      <ul>
+        <li><strong>Your email address</strong>, and — when you use Google Sign-In — the basic profile information your Google account releases. Authentication is handled by Firebase Authentication (Google Ireland Ltd. / Google LLC). We never see or store your password.</li>
+        <li><strong>The content of the wheels you sync</strong>: the entries you type, palettes, images, sounds and settings. These are stored in Google Cloud Firestore under an identifier tied to your account.</li>
+      </ul>
+
+      <p><strong>In the Android app,</strong> Google AdMob collects data to serve and measure ads, including your device's advertising ID, device and network information, and your interactions with ads. AdMob acts as an independent controller for this. See <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">how Google uses data from apps that use its services</a>.</p>
+
+      <p><strong>On the website only,</strong> we use Vercel Analytics and Vercel Speed Insights to count page views and measure loading performance. These are aggregate and cookie-less, and they do not identify you. They are <strong>disabled entirely inside the Android app</strong>.</p>
+
+      <h3>Shared wheels are public</h3>
+      <p>
+        When you share a wheel, it becomes readable by <strong>anyone who has the link or its ID</strong> — no
+        account required. This is the point of the feature, but it means anything you put on a shared wheel,
+        including people's names, stops being private. Do not share wheels containing information you would not
+        publish. You can stop sharing at any time by deleting the wheel from your account.
+      </p>
+
+      <h3>Why we are allowed to process it (GDPR)</h3>
+      <ul>
+        <li><strong>Performing the service you asked for</strong> (Art. 6(1)(b)): your account and the syncing of your wheels.</li>
+        <li><strong>Your consent</strong> (Art. 6(1)(a)): personalized advertising, which you are asked about on first launch and can change at any time.</li>
+        <li><strong>Legitimate interest</strong> (Art. 6(1)(f)): aggregate website measurement and keeping the service secure and working.</li>
+      </ul>
+
+      <h3>Advertising and your choices</h3>
+      <p>
+        In the app, ads appear in two places: an optional video ad you choose to watch in order to unlock a
+        ready-made wheel, and an occasional full-screen ad between spins. On first launch, if you are in a region
+        that requires it, Google's consent form asks whether you accept personalized ads. If you decline, you
+        still see ads, but non-personalized ones. You can reset that choice at any time from your device settings
+        by resetting your advertising ID, or by contacting us.
+      </p>
+
+      <h3>How long we keep it</h3>
+      <p>
+        Synced wheels are kept until you delete them or ask us to delete your account. Account data is kept for as
+        long as the account exists. Ad-related data is retained by Google under its own policies.
+      </p>
+
+      <h3>Your rights</h3>
+      <p>
+        If you are in the EU/EEA or the UK you can ask us to access, correct, export or delete your personal data,
+        object to processing, or withdraw consent. Write to
+        <a [href]="'mailto:' + contactEmail">{{ contactEmail }}</a> and we will respond within 30 days. You also
+        have the right to complain to your national data protection authority.
+      </p>
+
+      <h3>Deleting your data</h3>
+      <p>
+        You can delete any individual wheel from the app, which removes it from our cloud. To delete your entire
+        account together with all synced wheels, send a request from your account's email address to
+        <a [href]="'mailto:' + contactEmail">{{ contactEmail }}</a>; the account and its data are removed within
+        30 days.
+      </p>
+
+      <h3>Children</h3>
+      <p>
+        Wheelr is not directed at children under 13 (or under 16 where local law sets that age) and we do not
+        knowingly collect their personal data. If you believe a child has given us data, contact us and we will
+        delete it.
+      </p>
+
+      <h3>International transfers</h3>
+      <p>
+        Our providers (Google and Vercel) may process data outside the EEA, including in the United States,
+        relying on the European Commission's Standard Contractual Clauses and the EU-US Data Privacy Framework.
+      </p>
+
+      <h3>Changes to this policy</h3>
+      <p>
+        If we change how we handle your data we will update this page and its "last updated" date. Significant
+        changes will be announced in the app.
+      </p>
+    </article>
+  </div>
+</section>
