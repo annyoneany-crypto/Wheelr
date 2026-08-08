@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1061204045318",
+    "project_id": "wheelr-1ff4c",
+    "storage_bucket": "wheelr-1ff4c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1061204045318:android:5bcb2f8c5731da83739d87",
+        "android_client_info": {
+          "package_name": "xyz.wheelr.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1061204045318-8787p6btb5u5lebb3l2aimiq44528ani.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "xyz.wheelr.app",
+            "certificate_hash": "502010b10eb07e51ba4403140dc97d696eb06124"
+          }
+        },
+        {
+          "client_id": "1061204045318-d83fdqq8b1mpmhplromsdahofdl0nj5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlYnTgPWB610wY4BgLg1PW-MMcdABCV20"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1061204045318-d83fdqq8b1mpmhplromsdahofdl0nj5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

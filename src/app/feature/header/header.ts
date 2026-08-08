@@ -7,6 +7,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AuthService } from '../../services/auth.service';
 import { WheelCloudRepository } from '../../services/wheel-cloud-repository.service';
 import { WheelCloudSync } from '../../services/wheel-cloud-sync.service';
+import { NativePlatformService } from '../../services/native-platform.service';
 import { WlAuth } from '../auth/auth';
 import { WlCreateWheel } from '../create-wheel/create-wheel';
 import { WlInfoUtente } from '../info-utente/info-utente';
@@ -25,6 +26,7 @@ export class Header {
   private readonly wheelCloudRepository = inject(WheelCloudRepository);
   // Injected for its side effect: it starts the auto-sync as soon as a session exists.
   private readonly wheelCloudSync = inject(WheelCloudSync);
+  private readonly nativePlatform = inject(NativePlatformService);
   protected readonly wheelConfigurator = inject(WheelConfigurator);
   protected readonly authService = inject(AuthService);
 
@@ -73,6 +75,9 @@ export class Header {
     });
 
     this.destroyRef.onDestroy(() => this.clearFeedbackTimeout());
+    this.destroyRef.onDestroy(
+      this.nativePlatform.registerBackHandler(() => this.dismissTopOverlay())
+    );
 
     this.router.events
       .pipe(
@@ -82,6 +87,34 @@ export class Header {
       .subscribe(() => {
         this.currentUrl.set(this.router.url);
       });
+  }
+
+  /**
+   * Android back closes whatever the header has open, innermost first: the modals
+   * are stacked over the nav menu, so they have to be checked before it.
+   */
+  private dismissTopOverlay(): boolean {
+    if (this.isCreateWheelModalOpen()) {
+      this.closeCreateWheelModal();
+      return true;
+    }
+
+    if (this.isAuthModalOpen()) {
+      this.closeAuthModal();
+      return true;
+    }
+
+    if (this.isUserPanelOpen()) {
+      this.closeUserPanel();
+      return true;
+    }
+
+    if (this.isMenuOpen()) {
+      this.closeMenu();
+      return true;
+    }
+
+    return false;
   }
 
   toggleMenu(): void {

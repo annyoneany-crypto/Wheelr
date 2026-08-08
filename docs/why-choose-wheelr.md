@@ -49,7 +49,7 @@ Wheelr isn't just a generic **spin the wheel** tool. You can personalize **almos
 
 ![Modes](https://img.shields.io/badge/Extraction_Modes-3_Types-9C27B0?style=flat-square)
 
-Not every giveaway looks the same. Wheelr offers **three different ways** to pick a winner:
+Not every looks the same. Wheelr offers **three different ways** to pick a winner:
 
 | Mode | Description | Best For |
 |:---:|---|---|
@@ -158,7 +158,7 @@ Your data stays on your device by default. Names and settings are stored in your
 
 | | Audience | Use Case |
 |:---:|---|---|
-| 🎮 | **Twitch / YouTube streamers** | Giveaway wheel, subscriber raffle, spin-to-win games |
+| 🎮 | **Twitch / YouTube streamers** | wheel, subscriber raffle, spin-to-win games |
 | 🎓 | **Teachers & educators** | Random student picker, classroom activities, quiz games |
 | 🎪 | **Event organizers** | Prize wheel at conferences, trade shows, parties |
 | 📣 | **Marketing teams** | Spin-to-win promotions, social media giveaways |

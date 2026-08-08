@@ -2,6 +2,29 @@
 
 @import "tailwindcss";
 
+/* Bundled locally rather than pulled from the FontAwesome kit / Google Fonts CDNs:
+   inside the Android WebView there is no guarantee of connectivity, and the whole
+   UI is icon-driven. Only the icon styles actually used are imported. */
+@import "@fortawesome/fontawesome-free/css/fontawesome.css";
+@import "@fortawesome/fontawesome-free/css/solid.css";
+@import "@fortawesome/fontawesome-free/css/brands.css";
+/* Latin subsets only — the full package also ships cyrillic/greek/vietnamese,
+   which would add ~20 extra font files to the APK for no benefit here. */
+@import "@fontsource/inter/latin-400.css";
+@import "@fontsource/inter/latin-700.css";
+
+/* Geometry of the mobile bottom bar (see wheel-button.css). It has to clear the
+   SEO footer, which the web build pins to the bottom of the viewport — the
+   Android build strips that footer, so there the bar sits flush. */
+:root {
+  --wl-bottom-bar-height: 3.5rem;
+  --wl-bottom-bar-offset: 3rem;
+}
+
+:root.capacitor-native {
+  --wl-bottom-bar-offset: 0rem;
+}
+
 :root {
     --bg-color: #111113;
     --accent-color: #3d3d42;

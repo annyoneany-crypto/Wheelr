@@ -10,7 +10,7 @@
 
 ---
 
-[Wheelr](https://www.wheelr.xyz) isn't just another **random name picker**. It's a full-featured **giveaway wheel platform** designed to save you time, impress your audience, and make random selection genuinely fun.
+[Wheelr](https://www.wheelr.xyz) isn't just another **random name picker**. It's a full-featured **wheel platform** designed to save you time, impress your audience, and make random selection genuinely fun.
 
 ---
 

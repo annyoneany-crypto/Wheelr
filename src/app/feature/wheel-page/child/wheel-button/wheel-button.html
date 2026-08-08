@@ -1,146 +1,114 @@
-<div class="fixed
-  w-12 h-12 rounded-xl
+<!-- ── Mobile: bottom navigation bar ──────────────────────────────────────────
+     Below lg the rail would crowd the wheel on a phone, so the same actions
+     become a thumb-reachable bar. Home closes whatever panel is open. -->
+<nav class="wl-bottom-bar lg:hidden fixed inset-x-0 z-50
+  flex items-stretch
+  border-t border-white/[0.08] bg-neutral-950/85 backdrop-blur-xl
+  transition-all duration-300 ease-in-out"
+  [class.wl-ui-hidden]="uiChromeHidden()"
+  aria-label="Wheel controls">
+
+  <button type="button"
+    class="wl-bottom-bar-item"
+    [class.wl-bottom-bar-item-active]="isHomeActive()"
+    aria-label="Close settings panel and show the wheel"
+    [attr.aria-current]="isHomeActive() ? 'true' : null"
+    (click)="requestClosePanel()">
+    <i class="fa-solid fa-house" aria-hidden="true"></i>
+    <span>Home</span>
+  </button>
+
+  @for (action of panelActions; track action.path) {
+    <button type="button"
+      class="wl-bottom-bar-item"
+      [class.wl-bottom-bar-item-active]="isPanelActive(action.path)"
+      [attr.aria-label]="action.ariaLabel"
+      [attr.aria-current]="isPanelActive(action.path) ? 'true' : null"
+      (transitionend)="onActionTransitionEnd(action)"
+      (click)="requestTogglePanel(action.path)">
+      <i class="fa-solid" [class]="action.icon" aria-hidden="true"></i>
+      <span>{{ action.caption }}</span>
+    </button>
+  }
+</nav>
+
+<!-- ── Mobile: floating utilities ─────────────────────────────────────────────
+     Deliberately kept off the bar: these are toggles, not destinations. The
+     chrome toggle stays reachable while the chrome is hidden — it is the only
+     way back. -->
+<div class="lg:hidden fixed w-12 h-12 rounded-xl
   border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  flex lg:hidden items-center justify-center hover:cursor-pointer
+  flex items-center justify-center hover:cursor-pointer
   transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
+  hover:border-amber-400/50 hover:bg-amber-400/10"
   [class.top-26]="!uiChromeHidden()"
-  [class.top-12]="uiChromeHidden()"
-  [class]="mobileActionsExpanded() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  [attr.aria-label]="mobileMenuAriaLabel()"
-  [attr.aria-expanded]="mobileActionsExpanded()"
-  aria-controls="mobile-action-buttons"
-  (click)="toggleMobileActions()"
-  (keydown.enter)="toggleMobileActions()"
-  (keydown.space)="toggleMobileActions(); $event.preventDefault()">
-  <i class="fa-solid fa-chevron-down text-white/70" aria-hidden="true"></i>
-</div>
-
-<div class="fixed top-42 lg:top-28 wl-mobile-action
-  w-12 h-12 rounded-xl
-  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
-  id="mobile-action-buttons"
-  [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class]="isPanelActive('users') ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open users panel"
-  (transitionend)="requestUsersButtonTransitionEnd()"
-  (click)="requestTogglePanel('users')"
-  (keydown.enter)="requestTogglePanel('users')"
-  (keydown.space)="requestTogglePanel('users'); $event.preventDefault()">
-  <i class="fa-solid fa-user-plus text-white/70 z-50" aria-hidden="true"></i>
-</div>
-
-<div class="fixed top-58 lg:top-44 wl-mobile-action
-  w-12 h-12 rounded-xl
-  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
-  [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class]="isPanelActive('color-settings') ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open color settings panel"
-  (click)="requestTogglePanel('color-settings')"
-  (keydown.enter)="requestTogglePanel('color-settings')"
-  (keydown.space)="requestTogglePanel('color-settings'); $event.preventDefault()">
-  <i class="fa-solid fa-swatchbook text-white/70" aria-hidden="true"></i>
-</div>
-
-<div class="fixed top-74 lg:top-60 wl-mobile-action
-  w-12 h-12 rounded-xl
-  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
-  [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class]="isPanelActive('sound') ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open sound panel"
-  (click)="requestTogglePanel('sound')"
-  (keydown.enter)="requestTogglePanel('sound')"
-  (keydown.space)="requestTogglePanel('sound'); $event.preventDefault()">
-  <i class="fa-solid fa-volume-high text-white/70" aria-hidden="true"></i>
-</div>
-
-<div class="fixed top-90 lg:top-76 wl-mobile-action
-  w-12 h-12 rounded-xl
-  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
-  [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class]="isPanelActive('effects') ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open effects panel"
-  (click)="requestTogglePanel('effects')"
-  (keydown.enter)="requestTogglePanel('effects')"
-  (keydown.space)="requestTogglePanel('effects'); $event.preventDefault()">
-  <i class="fa-solid fa-wand-magic-sparkles text-white/70" aria-hidden="true"></i>
-</div>
-
-<div class="fixed top-106 lg:top-92 wl-mobile-action
-  w-12 h-12 rounded-xl
-  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
-  [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
-  [class.wl-ui-hidden]="uiChromeHidden()"
-  [class]="isPanelActive('wheel-manager') ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
-  [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class.lg:right-100]="showPanelSettings()"
-  role="button"
-  tabindex="0"
-  aria-label="Open wheel manager panel"
-  (click)="requestTogglePanel('wheel-manager')"
-  (keydown.enter)="requestTogglePanel('wheel-manager')"
-  (keydown.space)="requestTogglePanel('wheel-manager'); $event.preventDefault()">
-  <i class="fa-solid fa-layer-group text-white/70" aria-hidden="true"></i>
-</div>
-
-<div class="fixed wl-mobile-action
-  w-12 h-12 rounded-xl
-  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
-  [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
-  [class.top-[31rem]]="!uiChromeHidden()"
-  [class.lg:top-108]="!uiChromeHidden()"
   [class.top-10]="uiChromeHidden()"
+  [class.right-4]="!showPanelSettings()"
+  [class.right-[21rem]]="showPanelSettings()"
+  [class]="uiChromeHidden() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="uiChromeToggleAriaLabel()"
+  [attr.aria-pressed]="uiChromeHidden()"
+  (click)="requestUiChromeToggle()"
+  (keydown.enter)="requestUiChromeToggle()"
+  (keydown.space)="requestUiChromeToggle(); $event.preventDefault()">
+  <i class="fa-solid text-white/70" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
+</div>
+
+@if (canShowQrButton()) {
+  <div class="lg:hidden fixed top-42 w-12 h-12 rounded-xl
+    border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
+    flex items-center justify-center hover:cursor-pointer
+    transition-all duration-300 ease-in-out z-50
+    hover:border-amber-400/50 hover:bg-amber-400/10"
+    [class.wl-ui-hidden]="uiChromeHidden()"
+    [class.right-4]="!showPanelSettings()"
+    [class.right-[21rem]]="showPanelSettings()"
+    [class]="qrModalOpen() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
+    role="button"
+    tabindex="0"
+    aria-label="Open wheel QR code"
+    (click)="requestOpenQr()"
+    (keydown.enter)="requestOpenQr()"
+    (keydown.space)="requestOpenQr(); $event.preventDefault()">
+    <i class="fa-solid fa-qrcode text-white/70" aria-hidden="true"></i>
+  </div>
+}
+
+<!-- ── Desktop: right-hand rail (unchanged behaviour) ─────────────────────── -->
+@for (action of panelActions; track action.path; let i = $index) {
+  <div class="hidden lg:flex fixed
+    w-12 h-12 rounded-xl
+    border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
+    items-center justify-center hover:cursor-pointer
+    transition-all duration-300 ease-in-out z-50
+    hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
+    [style.top.rem]="desktopTopRem(i)"
+    [class.wl-ui-hidden]="uiChromeHidden()"
+    [class]="isPanelActive(action.path) ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
+    [class.right-8]="!showPanelSettings()"
+    [class.lg:right-100]="showPanelSettings()"
+    role="button"
+    tabindex="0"
+    [attr.aria-label]="action.ariaLabel"
+    (transitionend)="onActionTransitionEnd(action)"
+    (click)="requestTogglePanel(action.path)"
+    (keydown.enter)="requestTogglePanel(action.path)"
+    (keydown.space)="requestTogglePanel(action.path); $event.preventDefault()">
+    <i class="fa-solid text-white/70" [class]="action.icon" aria-hidden="true"></i>
+  </div>
+}
+
+<div class="hidden lg:flex fixed
+  w-12 h-12 rounded-xl
+  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
+  items-center justify-center hover:cursor-pointer
+  transition-all duration-300 ease-in-out z-50
+  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
+  [style.top.rem]="uiChromeHidden() ? 2.5 : uiChromeToggleTopRem"
   [class]="uiChromeHidden() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
   [class.right-8]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
   role="button"
   tabindex="0"
@@ -153,20 +121,16 @@
 </div>
 
 @if (canShowQrButton()) {
-  <div class="fixed wl-mobile-action
+  <div class="hidden lg:flex fixed
     w-12 h-12 rounded-xl
     border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-    flex items-center justify-center hover:cursor-pointer
+    items-center justify-center hover:cursor-pointer
     transition-all duration-300 ease-in-out z-50
     hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
-    [class.wl-mobile-action-hidden]="isMobileActionMenuCollapsed()"
+    [style.top.rem]="qrButtonTopRem"
     [class.wl-ui-hidden]="uiChromeHidden()"
     [class]="qrModalOpen() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
-    [class.top-[35rem]]="!uiChromeHidden()"
-    [class.lg:top-124]="!uiChromeHidden()"
-    [class.top-20]="uiChromeHidden()"
     [class.right-8]="!showPanelSettings()"
-    [class.right-[21rem]]="showPanelSettings()"
     [class.lg:right-100]="showPanelSettings()"
     role="button"
     tabindex="0"
@@ -178,8 +142,11 @@
   </div>
 }
 
+<!-- ── Settings drawer (shared by both layouts) ───────────────────────────── -->
 <div class="fixed top-24 right-0 my-4 px-4 pb-4
-  bg-neutral-900 h-[calc(100%-180px)]
+  bg-neutral-900
+  h-[calc(100%-180px-var(--wl-bottom-bar-offset)-var(--wl-bottom-bar-height))]
+  lg:h-[calc(100%-180px)]
   border-y border-l rounded-l-2xl border-white/10
   shadow-[-12px_0_40px_rgba(0,0,0,0.45)]
   transition-all duration-300 ease-in-out z-50 overflow-y-auto"

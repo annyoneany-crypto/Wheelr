@@ -285,7 +285,7 @@ export class WheelCloudRepository {
     const { name, description } = source;
 
     return {
-      title: typeof name === 'string' && name.trim() ? name.trim() : 'Giveaway Wheel',
+      title: typeof name === 'string' && name.trim() ? name.trim() : 'Wheel',
       description: typeof description === 'string' ? description.trim() : '',
       displayConfigs: normalizedDisplayConfigs,
     };

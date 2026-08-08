@@ -1,4 +1,4 @@
-import { Component, computed, effect, ElementRef, inject, signal, untracked, viewChildren } from '@angular/core';
+import { Component, DestroyRef, computed, effect, ElementRef, inject, signal, untracked, viewChildren } from '@angular/core';
 import { WheelConfigurator, WheelDisplayConfig } from '../../services/wheel-configurator.service';
 import { LinearWheel } from '../../shared/extraction-effect/linear-wheel/linear-wheel';
 import { Wheel } from '../../shared/extraction-effect/wheel/wheel';
@@ -12,6 +12,7 @@ import { drawWheelCanvas } from '../../shared/extraction-effect/wheel-renderer';
 import { WinnerPanel } from './child/winner-panel/winner-panel';
 import type { WinnerPanelEntry } from './child/winner-panel/winner-panel';
 import { WheelButton } from './child/wheel-button/wheel-button';
+import { NativePlatformService } from '../../services/native-platform.service';
 import * as QRCode from 'qrcode';
 
 /** Loaded preview images plus the source URLs they were loaded from. */
@@ -35,6 +36,8 @@ export class WheelPage {
   wheelConfigurator = inject(WheelConfigurator);
   router = inject(Router);
   route = inject(ActivatedRoute);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly nativePlatform = inject(NativePlatformService);
   previewCanvasRefs = viewChildren<ElementRef<HTMLCanvasElement>>('previewWheelCanvas');
 
   showPanelSettings = signal<boolean>(false);
@@ -256,7 +259,7 @@ export class WheelPage {
 
   ShareOnX(): void {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent('Check out my giveaway wheel!\r\nCustomize your own and spin to win prizes! 🎉🎁 #GiveawayWheel\r\n\r\n');
+    const text = encodeURIComponent('Check out my wheel!\r\nCustomize your own and spin to win prizes! 🎉🎁 #GiveawayWheel\r\n\r\n');
     const xUrl = `https://x.com/intent/tweet?url=${url}&text=${text}`;
     window.open(xUrl, '_blank');
   }
@@ -387,6 +390,32 @@ export class WheelPage {
     this.calculatePreviewWheelSize();
     this.startPreviewIdleRotation();
     void this.refreshVisibleWheelConfigs();
+
+    this.destroyRef.onDestroy(
+      this.nativePlatform.registerBackHandler(() => this.dismissTopOverlay())
+    );
+  }
+
+  /** Android back closes the page's own modals before the router or the app exit. */
+  private dismissTopOverlay(): boolean {
+    if (this.qrModalOpen()) {
+      this.closeQrModal();
+      return true;
+    }
+
+    if (this.renameModalOpen()) {
+      this.closeRenameModal();
+      return true;
+    }
+
+    // The winner dialog covers the wheel and has to be dismissed before anything
+    // underneath it can react to back.
+    if (this.wheelConfigurator.winner()) {
+      this.wheelConfigurator.resetWinnerEffect();
+      return true;
+    }
+
+    return false;
   }
 
   ngOnDestroy(): void {

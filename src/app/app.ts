@@ -3,6 +3,7 @@ import { Header } from './feature/header/header';
 import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { injectSpeedInsights } from '@vercel/speed-insights';
 import { CanonicalService } from './services/canonical.service';
+import { NativePlatformService } from './services/native-platform.service';
 import { filter } from 'rxjs';
 
 @Component({
@@ -20,6 +21,7 @@ import { filter } from 'rxjs';
 export class App implements OnInit {
   router = inject(Router);
   canonical = inject(CanonicalService);
+  nativePlatform = inject(NativePlatformService);
 
 constructor() {
   this.router.events.pipe(
@@ -31,8 +33,13 @@ constructor() {
 }
 
   ngOnInit() {
-    // Inizializza il monitoraggio
-    injectSpeedInsights();
+    // Status bar, tasto indietro Android e chiusura dello splash: no-op sul web.
+    void this.nativePlatform.initialize();
+
+    if (!this.nativePlatform.isNative) {
+      // Inizializza il monitoraggio
+      injectSpeedInsights();
+    }
   }
   
 }

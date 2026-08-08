@@ -5,12 +5,49 @@
 	transition: all 0.35s ease;
 }
 
-@media (max-width: 1023.98px) {
-	.wl-mobile-action-hidden {
-		opacity: 0;
-		transform: translateY(-10px) scale(0.92);
-		pointer-events: none;
-		visibility: hidden;
-		transition: all 0.3s ease;
-	}
+/* Mobile bottom bar.
+   `--wl-bottom-bar-offset` leaves room for the SEO footer that the web build
+   pins to the bottom of every page; the Android build removes that footer and
+   sets the offset to 0 (see src/styles.css). */
+.wl-bottom-bar {
+	bottom: var(--wl-bottom-bar-offset);
+	height: var(--wl-bottom-bar-height);
+	/* Gesture-navigation devices reserve a strip at the bottom of the screen. */
+	padding-bottom: env(safe-area-inset-bottom);
+}
+
+.wl-bottom-bar-item {
+	flex: 1 1 0;
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.2rem;
+	padding: 0.25rem 0.125rem;
+	color: rgb(255 255 255 / 0.55);
+	transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+.wl-bottom-bar-item i {
+	font-size: 1.05rem;
+	line-height: 1;
+}
+
+.wl-bottom-bar-item span {
+	font-size: 0.625rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	max-width: 100%;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.wl-bottom-bar-item:active {
+	background-color: rgb(255 255 255 / 0.06);
+}
+
+.wl-bottom-bar-item-active {
+	color: rgb(251 191 36);
 }

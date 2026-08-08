@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project
 
-Wheelr — a free web app for creating and spinning customizable giveaway wheels (raffles, contests, promos). Angular 21 (standalone, zoneless, signals) + TypeScript, styled with Tailwind CSS v4, persisted locally (localStorage + IndexedDB) with optional Firebase cloud sync.
+Wheelr — a free web app for creating and spinning customizable wheels (raffles, contests, promos). Angular 21 (standalone, zoneless, signals) + TypeScript, styled with Tailwind CSS v4, persisted locally (localStorage + IndexedDB) with optional Firebase cloud sync.
 
 ## Commands
 
@@ -13,6 +13,12 @@ npm start          # ng serve — dev server (development config) at http://loca
 npm run build      # ng build — production build; THIS IS THE CORRECTNESS GATE (see Testing)
 npm run watch      # ng build --watch (development config)
 npm test           # ng test — vitest + jsdom, zoneless
+
+npm run android:sync    # ng build + cap sync android — run after ANY web change
+npm run android:build   # android:sync + gradlew assembleDebug -> app-debug.apk
+npm run android:run     # android:sync + cap run android (device picker)
+npm run android:open    # open the project in Android Studio
+npm run android:assets  # regenerate launcher icons + splash from public/Logo.webp
 ```
 
 Run a single test file: `npx ng test --include src/app/path/to/file.spec.ts` (or use vitest filtering). Specs live next to the code as `*.spec.ts`.
@@ -50,6 +56,17 @@ Optional Firebase (Firestore + Auth). Config in `firebase-auth.config.ts` (clien
 
 ### Rendering
 `shared/extraction-effect/wheel-renderer.ts` (`drawWheelCanvas`) is the single canvas drawing implementation shared by: the interactive `Wheel`, the multi-wheel previews on `WheelPage`, and the read-only `PublicWheel`. Three view modes exist: `'wheel'` | `'linear'` | `'cards'`. Winner effects (`fire`, `cartoon-fire`, `confetti`, `fireworks`, `applause`) live under `shared/winner-effect/`. Pointer/effect string unions are in `modules/classes/custom-type.ts`.
+
+### Android app (Capacitor)
+The same Angular bundle ships as a native Android app; `android/` is a checked-in Capacitor project (`appId` `xyz.wheelr.app`, `webDir` `dist/wheelr/browser`). There is **no separate mobile codebase** — the web build *is* the app, so `npm run android:sync` after every web change or the APK keeps serving stale assets.
+
+- `NativePlatformService` (`services/native-platform.service.ts`) holds everything native: status bar styling, splash dismissal, and the Android back button. `isNative` is false on web and `initialize()` no-ops there.
+- **Back button**: modals in this app are signals, not routes, so nothing would stop a back press from exiting. Components with an overlay register a handler via `registerBackHandler(() => boolean)` (returns an unregister fn — pass it to `destroyRef.onDestroy`); handlers are consulted newest-first, then `panel` outlet routes, then history, then exit. **Any new modal must register one.**
+- **Offline**: FontAwesome and Inter are bundled through `src/styles.css` instead of CDNs. Icons must exist in FontAwesome *Free* (the old kit was Pro). The wheel fonts in the font-settings panel are still fetched from Google Fonts at runtime and stay online-only.
+- The SEO footer in `index.html` is removed before first paint when `window.Capacitor.isNativePlatform()` — it exists only for crawlers.
+- Native theming lives in `android/app/src/main/res/values/styles.xml`; `postSplashScreenTheme` must point at the dark `AppTheme.NoActionBar` or the status bar reverts to white.
+- Icons/splash are generated from `public/Logo.webp` by `tools/generate-app-assets.mjs` into `assets/`, then rendered by `capacitor-assets`. Edit the logo, not the generated files.
+- **Google sign-in** cannot use `signInWithPopup` in a WebView. `AuthService.loginWithGoogle()` branches on `isNative` and uses `@capacitor-firebase/authentication` with `skipNativeAuth: true`, feeding the returned ID token to `signInWithCredential` so the JS SDK stays the single session source. It needs `android/app/google-services.json` (Firebase console → Android app for `xyz.wheelr.app` + the signing SHA-1); the Gradle build stays green without it, but the plugin fails to load at runtime and Google login is unavailable.
 
 ### Routing (`app.routes.ts`)
 All routes lazy-load standalone components. The root `WheelPage` hosts named-outlet child routes (`outlet: 'panel'`) for the settings panels (`users`, `color-settings`, `effects`, `sound`, `wheel-manager`). `/:id` resolves a public shared wheel via `PublicWheel`; `/info` and `/donation` are static pages.
