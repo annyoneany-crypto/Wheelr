@@ -55,6 +55,11 @@ A user can have multiple named wheels (workspaces), each with independent settin
 ### Cloud sync (`wheel-cloud-repository.service.ts` + `auth.service.ts`)
 Optional Firebase (Firestore + Auth). Config in `firebase-auth.config.ts` (client-side keys, intentionally public). Wheels are stored under `users/{uid}/wheels/{cloudConfigId}` with a `WheelDisplayConfig[]` (one per group member). `getWheelDisplayConfigById` uses a `collectionGroup` query so public wheels are resolvable by `cloudConfigId` (or legacy `workspaceId`). Images are compressed to WebP before upload (`compressDisplayConfig`). `AuthService` exposes `user`/`isLoggedIn`/`email` signals.
 
+### Account deletion (`info-utente`)
+Play requires apps with sign-up to offer in-app account deletion, so the account panel owns that flow rather than the header.
+
+Order is load-bearing: `reauthenticate()` → `deleteAllCurrentUserWheels()` → `deleteAccount()`. Firebase rejects `deleteUser` on a credential more than a few minutes old, so re-verification happens **up front** — doing it as error recovery would wipe the Firestore data and then fail, leaving an account with nothing in it. Deleting the auth user first is equally wrong: the security rules key off the caller's uid, so the wheels would be orphaned and unreachable. Re-auth branches per provider (`AuthService.signInProvider`) and, on native, uses the Capacitor plugin because the WebView cannot open Firebase's popup.
+
 ### Rendering
 `shared/extraction-effect/wheel-renderer.ts` (`drawWheelCanvas`) is the single canvas drawing implementation shared by: the interactive `Wheel`, the multi-wheel previews on `WheelPage`, and the read-only `PublicWheel`. Three view modes exist: `'wheel'` | `'linear'` | `'cards'`. Winner effects (`fire`, `cartoon-fire`, `confetti`, `fireworks`, `applause`) live under `shared/winner-effect/`. Pointer/effect string unions are in `modules/classes/custom-type.ts`.
 

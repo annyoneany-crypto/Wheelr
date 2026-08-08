@@ -155,6 +155,14 @@ export class Header {
     this.closeUserPanel();
   }
 
+  /**
+   * The panel has already deleted the account and its cloud wheels; deleteUser
+   * ends the session on its own, so there is nothing left to sign out of.
+   */
+  onAccountDeleted(): void {
+    this.closeUserPanel();
+  }
+
   openAuthModal(): void {
     this.authSucceededInModal = false;
     this.isAuthModalOpen.set(true);

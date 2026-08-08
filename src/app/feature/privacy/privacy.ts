@@ -12,5 +12,5 @@ export class Privacy {
   /** Shown in the header and in the "last updated" line. */
   protected readonly lastUpdated = '8 August 2026';
   /** Where privacy and data-deletion requests are handled. */
-  protected readonly contactEmail = 'privacy@wheelr.xyz';
+  protected readonly contactEmail = 'annyone.any@gmail.com';
 }

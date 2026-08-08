@@ -102,7 +102,9 @@ Answer it to match the privacy policy — a mismatch is a common rejection reaso
 
 **Does your app collect or share any of the required user data types?** Yes.
 **Is all user data encrypted in transit?** Yes.
-**Do you provide a way for users to request data deletion?** Yes — see the blocker below.
+**Do you provide a way for users to request data deletion?** Yes — in-app, via
+Account panel → *Delete account*. Give `https://www.wheelr.xyz/privacy` as the
+deletion URL; that page documents both the in-app path and the email fallback.
 
 | Data type | Collected | Shared | Optional? | Purpose |
 | --- | --- | --- | --- | --- |

@@ -160,6 +160,23 @@ export class WheelCloudRepository {
     await Promise.all(snapshot.docs.map((item) => deleteDoc(item.ref)));
   }
 
+  /**
+   * Wipes every wheel the signed-in user has in the cloud. Used by account
+   * deletion, which must run this *before* the auth user goes away — the
+   * security rules key off the caller's uid.
+   */
+  async deleteAllCurrentUserWheels(): Promise<void> {
+    const user = this.authService.user();
+    if (!user) {
+      throw new Error('AUTH_REQUIRED');
+    }
+
+    const wheelsCollection = collection(this.firestore, 'users', user.uid, 'wheels');
+    const snapshot = await getDocs(wheelsCollection);
+
+    await Promise.all(snapshot.docs.map((entry) => deleteDoc(entry.ref)));
+  }
+
   private async resolveUniqueCloudConfigId(
     userUid: string,
     requestedCloudId: string

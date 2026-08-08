@@ -26,13 +26,85 @@
                 {{ email() }}
             </p>
 
-            <button
-                type="button"
-                class="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-300 hover:bg-red-500/20 hover:border-red-400/50 transition-all duration-200"
-                (click)="requestLogout()">
-                <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
-                Sign out
-            </button>
+            @if (mode() === 'idle') {
+                <button
+                    type="button"
+                    class="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-300 hover:bg-red-500/20 hover:border-red-400/50 hover:cursor-pointer transition-all duration-200"
+                    (click)="requestLogout()">
+                    <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
+                    Sign out
+                </button>
+
+                <div class="mt-5 border-t border-white/10 pt-5">
+                    <button
+                        type="button"
+                        class="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-4 py-3 text-sm font-semibold text-white/50 hover:text-red-300 hover:border-red-400/40 hover:bg-red-500/[0.06] hover:cursor-pointer transition-all duration-200"
+                        (click)="startDelete()">
+                        <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
+                        Delete account
+                    </button>
+                </div>
+            } @else {
+                <div class="rounded-xl border border-red-400/30 bg-red-500/[0.07] p-4">
+                    <h3 class="flex items-center gap-2 text-sm font-bold text-red-300">
+                        <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
+                        Delete your account?
+                    </h3>
+                    <p class="mt-2 text-xs leading-relaxed text-white/70">
+                        This permanently deletes your account and every wheel you have synced to the cloud,
+                        including any you have shared — their links will stop working. <strong class="text-white/90">This cannot be undone.</strong>
+                    </p>
+                    <p class="mt-2 text-xs leading-relaxed text-white/50">
+                        The wheels saved on this device stay where they are.
+                    </p>
+
+                    @if (signInProvider() === 'password') {
+                        <label class="mt-4 block text-xs font-semibold uppercase tracking-wider text-white/60" for="delete-password">
+                            Confirm your password
+                        </label>
+                        <input
+                            id="delete-password"
+                            type="password"
+                            autocomplete="current-password"
+                            class="mt-2 w-full rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 text-sm text-white placeholder:text-white/30"
+                            placeholder="Your password"
+                            [value]="password()"
+                            [disabled]="mode() === 'deleting'"
+                            (input)="onPasswordInput($event)" />
+                    } @else {
+                        <p class="mt-4 text-xs leading-relaxed text-white/60">
+                            You will be asked to confirm with Google first.
+                        </p>
+                    }
+
+                    @if (errorMessage(); as message) {
+                        <p class="mt-3 rounded-lg border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-xs text-amber-200" role="alert">
+                            {{ message }}
+                        </p>
+                    }
+
+                    <div class="mt-4 flex gap-2">
+                        <button
+                            type="button"
+                            class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm font-semibold text-white/80 hover:bg-white/15 hover:text-white hover:cursor-pointer transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                            [disabled]="mode() === 'deleting'"
+                            (click)="cancelDelete()">
+                            Cancel
+                        </button>
+                        <button
+                            type="button"
+                            class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-red-400/50 bg-red-500/20 px-3 py-2.5 text-sm font-bold text-red-200 hover:bg-red-500/30 hover:cursor-pointer transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                            [disabled]="mode() === 'deleting'"
+                            (click)="confirmDelete()">
+                            @if (mode() === 'deleting') {
+                                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Deleting…
+                            } @else {
+                                Delete forever
+                            }
+                        </button>
+                    </div>
+                </div>
+            }
         </section>
     </div>
 }
