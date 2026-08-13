@@ -1,11 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Header } from './feature/header/header';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { injectSpeedInsights } from '@vercel/speed-insights';
 import { AdsService } from './services/ads.service';
-import { CanonicalService } from './services/canonical.service';
+import { SeoService } from './services/seo.service';
 import { NativePlatformService } from './services/native-platform.service';
-import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -20,19 +19,14 @@ import { filter } from 'rxjs';
   }
 })
 export class App implements OnInit {
-  router = inject(Router);
-  canonical = inject(CanonicalService);
+  private readonly seo = inject(SeoService);
   nativePlatform = inject(NativePlatformService);
   ads = inject(AdsService);
 
-constructor() {
-  this.router.events.pipe(
-    filter(event => event instanceof NavigationEnd)
-  ).subscribe(() => {
-    // Questo prenderà l'URL corrente automaticamente ad ogni cambio pagina
-    this.canonical.setCanonicalURL(); 
-  }); 
-}
+  constructor() {
+    // Subscribed in the constructor so the very first NavigationEnd is caught.
+    this.seo.watchNavigation();
+  }
 
   ngOnInit() {
     // Status bar, tasto indietro Android e chiusura dello splash: no-op sul web.
