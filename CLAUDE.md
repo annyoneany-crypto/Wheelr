@@ -87,11 +87,14 @@ The same Angular bundle ships as a native Android app; `android/` is a checked-i
 ### Release build (Play Store)
 `npm run android:bundle` produces `android/app/build/outputs/bundle/release/app-release.aab`.
 
-- Signing reads `android/keystore.properties` (gitignored; see `keystore.properties.example`). Without that file the project still configures and debug builds work — only the release variant is left unsigned. Paths in it need **forward slashes**: `.properties` treats `\` as an escape.
+- Signing reads `android/keystore.properties` (gitignored; see `keystore.properties.example`). Paths in it need **forward slashes**: `.properties` treats `\` as an escape.
+- If that file is missing, `bundleRelease`/`assembleRelease` **fail at configuration time** with an explanatory message. Without that guard Gradle silently emits a valid but *unsigned* bundle, and the only feedback is Play rejecting the upload ("Tutti i bundle caricati devono essere firmati"). Debug builds are unaffected.
+- Generate the upload keystore with `keytool -genkeypair -v -keystore <path>.jks -keyalg RSA -keysize 2048 -validity 10000 -alias wheelr-upload` (keytool ships in Android Studio's JBR).
 - The keystore and `keystore.properties` must never be committed — `android/.gitignore` covers `*.jks`, `*.keystore` and `keystore.properties`. Losing the upload key means permanently losing the ability to ship updates.
 - **The release build is signed with a different key than debug**, so its SHA-1 differs. Google sign-in silently breaks in production until the release SHA-1 *and* the Play App Signing SHA-1 (Play Console → Setup → App signing) are both added to the Firebase Android app and `google-services.json` is re-downloaded.
 - Bump `versionCode` (integer, must increase every upload) and `versionName` in `android/app/build.gradle` before each release.
-- `minifyEnabled` is deliberately `false`. Turning on R8 needs keep rules for Capacitor plugin reflection and the Firebase/AdMob SDKs — do not flip it without testing the release build end to end.
+- **R8 is on** (`minifyEnabled` + `shrinkResources`, with `proguard-android-optimize.txt`); it cuts the build by roughly a quarter. The keep rules the Capacitor bridge needs ship as *consumer* rules inside `@capacitor/android`, so `android/app/proguard-rules.pro` only carries the app-specific remainder — read its header before changing anything there. `@capacitor-firebase/authentication` references the Facebook SDK for a provider we don't enable, hence the `-dontwarn com.facebook.**` block.
+- A plugin stripped by R8 fails **at runtime, not at build time**. After touching R8 config or adding a plugin, smoke-test on a device and confirm logcat still shows `Registering plugin instance:` for all of them. Quickest way without a release keystore: temporarily copy the release `minifyEnabled`/`proguardFiles` lines into a `debug { }` block, `assembleDebug`, test, then remove them again.
 - Before publishing, swap the AdMob sample IDs in `admob.config.ts` + `strings.xml` and set `useTestAds: false`, otherwise the store build serves test ads and earns nothing.
 
 ### Routing (`app.routes.ts`)
