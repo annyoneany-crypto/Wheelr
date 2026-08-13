@@ -102,6 +102,17 @@ All routes lazy-load standalone components. The root `WheelPage` hosts named-out
 
 **`:id` swallows any single-segment path**, so every new static route must be declared *above* it in `app.routes.ts` or it will render as a (missing) public wheel. `/privacy` is also the Play Store's required privacy-policy URL — see `docs/play-store-listing.md`.
 
+### AI / agent discoverability (`public/`, `vercel.json`)
+AI crawlers do not run JavaScript, so the SPA shell is all they would see. The site therefore ships a plain-text mirror:
+
+- `public/md/<page>.md` — one markdown file per public route. `vercel.json` rewrites `/`, `/info`, `/templates`, `/donation` and `/privacy` to the matching file **when the request carries `Accept: text/markdown`**; browsers are unaffected. The rewrite must live in the legacy `routes` array, not `rewrites`: modern rewrites run *after* the filesystem check, so a path that exists as a static file would never reach them.
+- `public/llms.txt` (index) and `public/llms-full.txt` (everything in one fetch). **`llms-full.txt` is generated** — run `npm run llms` after editing anything under `public/md/`.
+- `public/.well-known/*` advertise all of the above and are linked from `Link:` response headers set in `vercel.json`.
+
+This replaced an `api/markdown.ts` serverless function that returned **500 for every URL** on the site whenever a client asked for markdown: `tsconfig.json` sets `"module": "preserve"`, so Vercel emitted ESM that Node loaded as CJS. Don't reintroduce a TS function under `api/` without pinning `"module": "commonjs"` for it.
+
+`public/_headers` and `public/.htaccess` are leftovers from other hosts — Vercel ignores both, so `vercel.json` is the only file that matters.
+
 ### Layout (`src/app/feature/`)
 `wheel-page/` is the main app shell; `wl-settings/` holds the settings panels (each a lazy child route); `header/`, `auth/`, `public-wheel/`, `info/`, `donation/` are top-level features. Shared/presentational pieces are under `shared/`.
 

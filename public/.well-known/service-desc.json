@@ -1,12 +1,34 @@
 {
   "service": "Wheelr",
   "homepage": "https://www.wheelr.xyz/",
-  "description": "Wheelr is a web app for and random selection wheels.",
+  "description": "Wheelr is a free web app for giveaways, raffles and random selection: you add entries to a customizable wheel, spin it, and it picks one at random. No account required; a free Android app is also available.",
+  "pricing": "free",
+  "documentation": "https://www.wheelr.xyz/info",
+  "agentContent": {
+    "index": "https://www.wheelr.xyz/llms.txt",
+    "full": "https://www.wheelr.xyz/llms-full.txt",
+    "contentNegotiation": "Send `Accept: text/markdown` to any page URL to receive markdown instead of the HTML app shell."
+  },
   "endpoints": [
     {
       "path": "/",
       "method": "GET",
       "purpose": "Render the main wheel application"
+    },
+    {
+      "path": "/llms.txt",
+      "method": "GET",
+      "purpose": "Machine-readable index of the site for AI agents"
+    },
+    {
+      "path": "/llms-full.txt",
+      "method": "GET",
+      "purpose": "Full text of every page in a single response"
+    },
+    {
+      "path": "/md/{page}.md",
+      "method": "GET",
+      "purpose": "Markdown version of a page (index, info, templates, privacy, donation)"
     }
   ]
 }

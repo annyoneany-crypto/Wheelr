@@ -1,16 +1,73 @@
-# Robots configuration for Wheelr
+# Robots configuration for Wheelr — https://www.wheelr.xyz
+#
+# AI agents: /llms.txt is the site index, /llms-full.txt is every page in one file.
+# Any page also returns markdown when requested with `Accept: text/markdown`.
+
 User-agent: *
 Allow: /
-Allow: /info
-Allow: /donation
 Disallow: /api/
-Disallow: /*.json$
 
-# Crawl rate
-Crawl-delay: 1
+# Search and AI assistants are explicitly welcome. Google-Extended and
+# Applebot-Extended are opt-out tokens (their absence already means "allowed"),
+# listed here so the intent is unambiguous rather than inferred.
+User-agent: Googlebot
+Allow: /
 
-# Sitemaps
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: MistralAI-User
+Allow: /
+
+User-agent: cohere-ai
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://www.wheelr.xyz/sitemap.xml
-
-# Host
-Host: https://www.wheelr.xyz

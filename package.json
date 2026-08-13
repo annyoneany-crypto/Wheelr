@@ -16,6 +16,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "llms": "node tools/generate-llms-full.mjs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "android:sync": "ng build && cap sync android",

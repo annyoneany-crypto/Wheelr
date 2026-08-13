@@ -13,6 +13,16 @@
       "type": "application/json"
     },
     {
+      "href": "/llms.txt",
+      "rel": "describedby",
+      "type": "text/plain"
+    },
+    {
+      "href": "/llms-full.txt",
+      "rel": "describedby",
+      "type": "text/plain"
+    },
+    {
       "href": "/sitemap.xml",
       "rel": "describedby",
       "type": "application/xml"

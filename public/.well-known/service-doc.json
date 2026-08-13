@@ -1,18 +1,15 @@
 {
   "title": "Wheelr Service Documentation",
   "documentation": [
-    {
-      "href": "/",
-      "title": "Homepage"
-    },
-    {
-      "href": "/sitemap.xml",
-      "title": "Sitemap"
-    },
-    {
-      "href": "/robots.txt",
-      "title": "Robots policy"
-    }
+    { "href": "/", "title": "Homepage — the wheel app" },
+    { "href": "/info", "title": "Guide, use cases and FAQ" },
+    { "href": "/templates", "title": "Ready-made wheel templates" },
+    { "href": "/privacy", "title": "Privacy policy" },
+    { "href": "/donation", "title": "Support the project" },
+    { "href": "/llms.txt", "title": "Agent index (llms.txt)" },
+    { "href": "/llms-full.txt", "title": "Full site content in one file" },
+    { "href": "/sitemap.xml", "title": "Sitemap" },
+    { "href": "/robots.txt", "title": "Robots policy" }
   ],
-  "notes": "This deployment is a static Angular application."
+  "notes": "This deployment is a static Angular single-page application, so HTML pages are rendered client-side. Agents that do not execute JavaScript should read /llms-full.txt, or request any page with `Accept: text/markdown`."
 }

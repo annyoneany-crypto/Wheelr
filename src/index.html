@@ -47,6 +47,14 @@
   <link rel="canonical" href="https://www.wheelr.xyz/">
   <link rel="alternate" href="https://www.wheelr.xyz/" hreflang="en">
   <link rel="alternate" href="https://www.wheelr.xyz/" hreflang="x-default">
+
+  <!-- Plain-text copies for AI agents and assistants, which cannot run the SPA:
+       /llms.txt indexes the site, /llms-full.txt is everything in one fetch, and
+       every route also answers `Accept: text/markdown` with the matching file
+       under /md/ (see vercel.json). -->
+  <link rel="alternate" type="text/markdown" href="https://www.wheelr.xyz/md/index.md" title="Wheelr in markdown">
+  <link rel="alternate" type="text/plain" href="https://www.wheelr.xyz/llms.txt" title="llms.txt">
+  <link rel="alternate" type="text/plain" href="https://www.wheelr.xyz/llms-full.txt" title="llms-full.txt">
   
   <!-- Performance: Preload critical resources -->
   <link rel="preload" as="image" href="/Logo.webp" type="image/webp">
@@ -97,7 +105,12 @@
         "inLanguage": "en",
         "isAccessibleForFree": true,
         "datePublished": "2026-03-03",
-        "dateModified": "2026-04-09",
+        "dateModified": "2026-08-13",
+        "sameAs": [
+          "https://play.google.com/store/apps/details?id=xyz.wheelr.app",
+          "https://github.com/annyoneany-crypto/Wheelr",
+          "https://www.producthunt.com/products/wheelr"
+        ],
         "featureList": [
           "Customizable wheel colors and themes",
           "Sound effects and winner animations",
@@ -117,6 +130,27 @@
           "@type": "UseAction",
           "target": "https://www.wheelr.xyz/"
         },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "AnnyoneAny",
+          "sameAs": ["https://x.com/AnnyoneAny"]
+        }
+      },
+      {
+        "@type": "MobileApplication",
+        "name": "Wheelr",
+        "description": "The Wheelr wheel spinner as a free Android app: the same customizable wheel, usable offline.",
+        "operatingSystem": "Android",
+        "applicationCategory": "GameApplication",
+        "installUrl": "https://play.google.com/store/apps/details?id=xyz.wheelr.app",
+        "downloadUrl": "https://play.google.com/store/apps/details?id=xyz.wheelr.app",
+        "url": "https://www.wheelr.xyz/",
+        "isAccessibleForFree": true,
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -183,8 +217,8 @@
       },
       {
         "@type": "HowTo",
-        "name": "How to run a with Wheelr",
-        "description": "A step-by-step guide to running a fair and fun using the Wheelr spin wheel.",
+        "name": "How to run a giveaway with Wheelr",
+        "description": "A step-by-step guide to running a fair and fun giveaway using the Wheelr spin wheel.",
         "totalTime": "PT2M",
         "step": [
           {
@@ -291,7 +325,7 @@
           <div class="grid gap-4 xl:grid-cols-3">
             <section class="xl:col-span-2 grid gap-3 md:grid-cols-2 text-sm leading-relaxed text-white/70">
               <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4">
-                <h3 class="font-semibold text-white">and raffle scenarios</h3>
+                <h3 class="font-semibold text-white">Giveaway and raffle scenarios</h3>
                 <p class="mt-2">Use Wheelr for <strong>raffle draws</strong>, <strong>prize giveaways</strong>, speaking order, classroom turns, team decisions, and fun challenges. A fair <strong>random picker</strong> for any occasion.</p>
               </article>
               <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4">

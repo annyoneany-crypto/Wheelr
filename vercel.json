@@ -2,15 +2,34 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "routes": [
     {
-      "src": "/((?!api/).*)",
-      "has": [
-        {
-          "type": "header",
-          "key": "accept",
-          "value": ".*text/markdown.*"
-        }
-      ],
-      "dest": "/api/markdown?path=$1"
+      "src": "/(?:index\\.html)?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/md/index.md",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8", "Vary": "Accept" }
+    },
+    {
+      "src": "/info/?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/md/info.md",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8", "Vary": "Accept" }
+    },
+    {
+      "src": "/templates/?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/md/templates.md",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8", "Vary": "Accept" }
+    },
+    {
+      "src": "/donation/?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/md/donation.md",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8", "Vary": "Accept" }
+    },
+    {
+      "src": "/privacy/?",
+      "has": [{ "type": "header", "key": "accept", "value": ".*text/markdown.*" }],
+      "dest": "/md/privacy.md",
+      "headers": { "Content-Type": "text/markdown; charset=utf-8", "Vary": "Accept" }
     }
   ],
   "headers": [
@@ -19,8 +38,9 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/service-desc.json>; rel=\"service-desc\", </.well-known/service-doc.json>; rel=\"service-doc\", </.well-known/agent-profile.json>; rel=\"describedby\""
-        }
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/service-desc.json>; rel=\"service-desc\", </.well-known/service-doc.json>; rel=\"service-doc\", </.well-known/agent-profile.json>; rel=\"describedby\", </md/index.md>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"llms.txt\""
+        },
+        { "key": "Vary", "value": "Accept" }
       ]
     },
     {
@@ -28,9 +48,50 @@
       "headers": [
         {
           "key": "Link",
-          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/service-desc.json>; rel=\"service-desc\", </.well-known/service-doc.json>; rel=\"service-doc\", </.well-known/agent-profile.json>; rel=\"describedby\""
-        }
+          "value": "</.well-known/api-catalog>; rel=\"api-catalog\", </.well-known/service-desc.json>; rel=\"service-desc\", </.well-known/service-doc.json>; rel=\"service-doc\", </.well-known/agent-profile.json>; rel=\"describedby\", </md/index.md>; rel=\"alternate\"; type=\"text/markdown\", </llms.txt>; rel=\"alternate\"; type=\"text/plain\"; title=\"llms.txt\""
+        },
+        { "key": "Vary", "value": "Accept" }
       ]
+    },
+    {
+      "source": "/info",
+      "headers": [
+        { "key": "Link", "value": "</md/info.md>; rel=\"alternate\"; type=\"text/markdown\"" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/templates",
+      "headers": [
+        { "key": "Link", "value": "</md/templates.md>; rel=\"alternate\"; type=\"text/markdown\"" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/donation",
+      "headers": [
+        { "key": "Link", "value": "</md/donation.md>; rel=\"alternate\"; type=\"text/markdown\"" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/privacy",
+      "headers": [
+        { "key": "Link", "value": "</md/privacy.md>; rel=\"alternate\"; type=\"text/markdown\"" },
+        { "key": "Vary", "value": "Accept" }
+      ]
+    },
+    {
+      "source": "/md/(.*)",
+      "headers": [{ "key": "Content-Type", "value": "text/markdown; charset=utf-8" }]
+    },
+    {
+      "source": "/llms.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
+    },
+    {
+      "source": "/llms-full.txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
     }
   ]
 }

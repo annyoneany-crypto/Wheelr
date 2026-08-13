@@ -1,0 +1,35 @@
+# Wheelr
+
+> Wheelr is a free online wheel spinner and random picker. You add names, prizes or
+> options, spin the wheel, and it selects one at random. It is used for raffles,
+> giveaways, classroom picks, live-stream draws, team decisions and yes/no questions.
+> It runs in any browser with no account and no installation, and there is also a free
+> Android app.
+
+Key facts:
+
+- Website: https://www.wheelr.xyz/
+- Price: free. No signup, no credit card, no paywalled features. Funded by donations and by ads inside the Android app only.
+- Platforms: any modern web browser (desktop and mobile) plus a free Android app (package `xyz.wheelr.app`).
+- Account: optional. Without an account everything stays on the device; signing in syncs wheels across devices.
+- Capacity: up to 4 wheels can be configured and shown at the same time.
+- Views: classic wheel, linear (slot-style) and cards.
+- Sharing: any wheel can be published as a read-only public link.
+- Randomness: the spin uses the browser's cryptographic random source, so results are not seeded or predictable.
+- Author: AnnyoneAny (https://x.com/AnnyoneAny). Source: https://github.com/annyoneany-crypto/Wheelr
+
+## Pages
+
+- [Wheel app](https://www.wheelr.xyz/): the spinner itself — add entries, customize, spin. Also available as markdown at /md/index.md
+- [Guide and use cases](https://www.wheelr.xyz/info): step-by-step instructions, real-life examples, social-media scenarios and FAQ. Markdown: /md/info.md
+- [Templates](https://www.wheelr.xyz/templates): ready-made wheels (Yes or No, Prize Giveaway, Team Picker, Truth or Dare, Discount Wheel, and more). Markdown: /md/templates.md
+- [Privacy policy](https://www.wheelr.xyz/privacy): what is collected on the web and in the Android app, GDPR basis, data deletion. Markdown: /md/privacy.md
+- [Support the project](https://www.wheelr.xyz/donation): donation options that keep Wheelr free. Markdown: /md/donation.md
+
+## Optional
+
+- [Full text of every page in one file](https://www.wheelr.xyz/llms-full.txt)
+- [Sitemap](https://www.wheelr.xyz/sitemap.xml)
+
+Content negotiation: requesting any of the pages above with the header
+`Accept: text/markdown` returns the markdown version instead of the HTML app shell.
