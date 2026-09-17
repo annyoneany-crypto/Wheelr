@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { INFO_FAQ_JSON_LD } from './services/seo-structured-data';
+import { INFO_FAQ_JSON_LD, STREAM_FAQ_JSON_LD } from './services/seo-structured-data';
 
 // `data.seo` feeds SeoService: title, description, canonical, robots, the social
 // tags and the page-level JSON-LD are re-applied on every navigation. A route
@@ -92,6 +92,19 @@ export const routes: Routes = [
                 title: 'Ready-Made Spin Wheel - Wheelr',
                 description:
                     'A ready-made wheel you can spin straight away and copy to your own wheels. Free, no signup.'
+            }
+        }
+    },
+    {
+        path: 'stream',
+        loadComponent: () => import('./feature/stream/stream').then((x) => x.Stream),
+        data: {
+            seo: {
+                title: 'Spin Wheel for Streams | OBS Giveaway Wheel Overlay',
+                description:
+                    'Put a spin wheel on your stream: hide the interface, capture the window in OBS or Streamlabs, and draw a winner live. Free, no plugin, no signup for viewers.',
+                breadcrumb: 'For streamers',
+                jsonLd: [STREAM_FAQ_JSON_LD]
             }
         }
     },

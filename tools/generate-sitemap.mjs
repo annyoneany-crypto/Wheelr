@@ -37,6 +37,7 @@ const PAGES = [
   },
   { loc: '/templates', changefreq: 'monthly', priority: '0.9', sources: ['src/app/feature/wheel-templates'] },
   { loc: '/info', changefreq: 'monthly', priority: '0.8', sources: ['src/app/feature/info'] },
+  { loc: '/stream', changefreq: 'monthly', priority: '0.8', sources: ['src/app/feature/stream'] },
   { loc: '/donation', changefreq: 'monthly', priority: '0.5', sources: ['src/app/feature/donation'] },
   { loc: '/privacy', changefreq: 'yearly', priority: '0.3', sources: ['src/app/feature/privacy'] },
 ];

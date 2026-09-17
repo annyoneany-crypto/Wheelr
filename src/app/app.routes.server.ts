@@ -20,6 +20,7 @@ export const serverRoutes: ServerRoute[] = [
   { path: 'donation', renderMode: RenderMode.Prerender },
   { path: 'privacy', renderMode: RenderMode.Prerender },
   { path: 'templates', renderMode: RenderMode.Prerender },
+  { path: 'stream', renderMode: RenderMode.Prerender },
   {
     // One file per ready-made wheel, from the same list that feeds the sitemap
     // and the markdown mirror — add a template with landing copy and its page

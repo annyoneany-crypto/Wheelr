@@ -78,6 +78,21 @@
       }
     },
     {
+      "src": "/stream/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "dest": "/md/stream.md",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept"
+      }
+    },
+    {
       "src": "/templates/([a-z0-9-]+)/?",
       "has": [
         {

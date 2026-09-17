@@ -15,7 +15,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const mdDir = join(root, 'public', 'md');
 
 /** Reading order matters: agents summarise from the top down. */
-const ORDER = ['index.md', 'info.md', 'templates.md', 'privacy.md', 'donation.md'];
+const ORDER = ['index.md', 'info.md', 'stream.md', 'templates.md', 'privacy.md', 'donation.md'];
 
 const files = await readdir(mdDir);
 const ordered = [

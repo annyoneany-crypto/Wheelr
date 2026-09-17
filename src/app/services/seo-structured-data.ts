@@ -50,3 +50,45 @@ export const INFO_FAQ_JSON_LD = {
     },
   ],
 } as const;
+
+/**
+ * The FAQ of `/stream`, kept **verbatim** from `stream.html` — same rule as
+ * [INFO_FAQ_JSON_LD]: edit the two together or the markup stops matching the page.
+ */
+export const STREAM_FAQ_JSON_LD = {
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'Does it work with Streamlabs, Twitch and YouTube?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Yes. Wheelr is a web page, so anything that can capture a browser window can put it on stream — OBS Studio, Streamlabs Desktop, XSplit. The platform you broadcast to makes no difference.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Do my viewers need an account?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'No. A shared wheel opens in any browser with no signup. An account is only needed on your side, to publish the link and to reach your wheels from another device.',
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I match the wheel to my channel branding?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: "Colours, background, fonts, the centre logo and every sound are replaceable, so the wheel can carry your channel's look instead of a stock one. The setup is saved, so it is a one-off job.",
+      },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I add hundreds of viewer names quickly?',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: 'Paste the whole list in one go rather than typing entries one by one, then shuffle before the first spin. On very long lists the labels get thin, so the winner is zoomed in on when the wheel stops.',
+      },
+    },
+  ],
+} as const;
