@@ -122,7 +122,15 @@ All routes lazy-load standalone components. The root `WheelPage` hosts named-out
 - `TemplateLanding` re-applies its tags on `NavigationEnd`: `paramMap` emits while the navigation is still in flight, and `SeoService` would otherwise overwrite them with the route's static fallback right afterwards.
 - `public/sitemap.xml` is **generated** — run `npm run sitemap`; `lastmod` comes from the git history of each page's sources.
 
-The remaining gap is that Vercel serves the same `index.html` for every route, so a crawler that does not execute JavaScript reads the homepage tags on all of them. Fixing that needs prerendering, which the app cannot do as-is (`WheelConfigurator` touches `localStorage`/IndexedDB during construction).
+### Prerendering (`app.routes.server.ts`, `outputMode: static`)
+`ng build` renders every public route to its own `index.html` at build time — 25 of them, including one per template landing page. There is **no server**: `outputMode` is `static`, so the output is still a pile of files Vercel serves directly. `app.routes.server.ts` decides what gets prerendered; `templates/:slug` gets its list from `getPrerenderParams`, reading the same `TEMPLATE_LANDING_PAGES` that feeds the sitemap.
+
+- **`/:id` is `RenderMode.Client`**: shared wheels come from Firestore at runtime and there is no finite list to prerender. Those URLs fall back to `index.csr.html`, which `vercel.json` serves after the filesystem handler.
+- **Prerendering runs the app in Node**, where `localStorage`, `IndexedDB`, `window`, `requestAnimationFrame` and a real canvas do not exist. Anything touching them is behind `isPlatformBrowser(inject(PLATFORM_ID))`: the `WheelConfigurator` constructor (storage + idle rotation), `WheelPage`'s sizing/preview effects, `Wheel`'s canvas effects, and Speed Insights in `App.ngOnInit`. `afterNextRender` is the other way to say it — it never runs on the server, which is why `AuthService` and `WheelTemplates` needed no changes.
+- **The prerendered HTML is the *default* state**, not any user's: the browser boots and re-renders with what is in storage.
+- **Hydration is deliberately off** (no `provideClientHydration()`). Almost everything on screen is derived from localStorage and painted into a canvas, so the server markup and the client's first render legitimately differ; destructive re-rendering avoids a class of hydration mismatch for a flash nobody is likely to notice. Turning it on would need the mismatches worked through first.
+- **Draw from an effect on the `viewChild` signal, not a one-shot `requestAnimationFrame`.** On a prerendered page the server's markup is replaced during bootstrap, so a deferred draw can land on a canvas that is already detached — this is what made the landing-page wheel come up blank.
+- When a prerender fails, the production build only prints the error *code*; `ng build --configuration development` prints the message and the stack.
 
 ### AI / agent discoverability (`public/`, `vercel.json`)
 AI crawlers do not run JavaScript, so the SPA shell is all they would see. The site therefore ships a plain-text mirror:

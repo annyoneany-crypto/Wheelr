@@ -3,11 +3,14 @@ import {
   Component,
   DestroyRef,
   ElementRef,
+  PLATFORM_ID,
   computed,
+  effect,
   inject,
   signal,
   viewChild,
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
@@ -53,6 +56,8 @@ export class TemplateLanding {
   private readonly wheelConfigurator = inject(WheelConfigurator);
   private readonly ads = inject(AdsService);
   private readonly destroyRef = inject(DestroyRef);
+  /** False while prerendering, where there is no canvas and no animation frame. */
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   private readonly canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('wheelCanvas');
 
@@ -88,7 +93,6 @@ export class TemplateLanding {
       this.page.set(page);
       this.resetSpin();
       this.applySeo(page);
-      requestAnimationFrame(() => this.drawWheel());
     });
 
     // paramMap emits while the navigation is still in flight, and SeoService
@@ -182,12 +186,24 @@ export class TemplateLanding {
     this.spinning.set(false);
   }
 
-  private drawWheel(): void {
+  /**
+   * Draws from an effect rather than a one-shot animation frame. The slug
+   * arrives while the component is still being constructed — before the canvas
+   * exists — and on a prerendered page the server's markup is replaced on boot,
+   * so a single deferred draw can land on an element that is already gone.
+   * Reading the viewChild signal here re-runs the draw once the real canvas is
+   * in place, and again whenever the slug changes.
+   */
+  private readonly drawEffect = effect(() => {
     const template = this.template();
     const canvas = this.canvasRef()?.nativeElement;
-    const ctx = canvas?.getContext('2d');
 
-    if (!template || !canvas || !ctx) {
+    if (!this.isBrowser || !template || !canvas) {
+      return;
+    }
+
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
       return;
     }
 
@@ -197,7 +213,7 @@ export class TemplateLanding {
       fontFamily: '"Inter", sans-serif',
       radiusInset: 8,
     });
-  }
+  });
 
   /** Same geometry as the real wheel: the pointer sits at the top. */
   private winnerAt(totalRotation: number, names: string[]): string {

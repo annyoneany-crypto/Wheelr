@@ -1,4 +1,16 @@
-import { Component, DestroyRef, computed, effect, ElementRef, inject, signal, untracked, viewChildren } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  computed,
+  effect,
+  ElementRef,
+  inject,
+  PLATFORM_ID,
+  signal,
+  untracked,
+  viewChildren,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { WheelConfigurator, WheelDisplayConfig } from '../../services/wheel-configurator.service';
 import { LinearWheel } from '../../shared/extraction-effect/linear-wheel/linear-wheel';
 import { Wheel } from '../../shared/extraction-effect/wheel/wheel';
@@ -37,6 +49,8 @@ export class WheelPage {
   route = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
   private readonly nativePlatform = inject(NativePlatformService);
+  /** False while prerendering: no window to measure, no frame to animate. */
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   previewCanvasRefs = viewChildren<ElementRef<HTMLCanvasElement>>('previewWheelCanvas');
 
   showPanelSettings = signal<boolean>(false);
@@ -138,7 +152,7 @@ export class WheelPage {
   private previewDrawAnimationFrameId: number | null = null;
 
   private readonly visibleConfigsEffect = effect(() => {
-    if (this.isSelectingWorkspace()) {
+    if (!this.isBrowser || this.isSelectingWorkspace()) {
       return;
     }
 
@@ -161,6 +175,11 @@ export class WheelPage {
   });
 
   private readonly loadPreviewImagesEffect = effect(() => {
+    // `new Image()` does not exist while prerendering.
+    if (!this.isBrowser) {
+      return;
+    }
+
     const configs = this.visibleWheelConfigs();
 
     // Read the current cache without subscribing (this effect writes to it).
@@ -223,6 +242,12 @@ export class WheelPage {
   });
 
   private readonly drawPreviewEffect = effect(() => {
+    // Canvas drawing is scheduled on an animation frame, which prerendering
+    // has none of; the browser draws the previews as soon as it boots.
+    if (!this.isBrowser) {
+      return;
+    }
+
     const configs = this.visibleWheelConfigs();
     const canvases = this.previewCanvasRefs();
     this.previewWheelSize();
@@ -386,9 +411,14 @@ export class WheelPage {
       )
       .subscribe(() => this.syncPanelStateFromRoute());
 
-    this.calculatePreviewWheelSize();
-    this.startPreviewIdleRotation();
-    void this.refreshVisibleWheelConfigs();
+    // Sizing reads window, the idle rotation needs an animation frame and the
+    // previews need a canvas — none of which exist while prerendering. The
+    // browser runs all three as soon as the app boots.
+    if (this.isBrowser) {
+      this.calculatePreviewWheelSize();
+      this.startPreviewIdleRotation();
+      void this.refreshVisibleWheelConfigs();
+    }
 
     this.destroyRef.onDestroy(
       this.nativePlatform.registerBackHandler(() => this.dismissTopOverlay())
@@ -525,6 +555,13 @@ export class WheelPage {
   }
 
   calculatePreviewWheelSize(): void {
+    // Reached from the constructor, an effect and the window:resize binding —
+    // guarding here covers all three while prerendering, where there is no
+    // viewport to measure and the default size is what gets rendered.
+    if (!this.isBrowser) {
+      return;
+    }
+
     const visibleWheelCount = Math.max(1, this.wheelConfigurator.visibleWheelCount());
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;

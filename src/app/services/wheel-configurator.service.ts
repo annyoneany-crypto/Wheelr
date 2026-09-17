@@ -1,4 +1,5 @@
-import { computed, effect, ElementRef, Injectable, inject, signal } from '@angular/core';
+import { computed, effect, ElementRef, Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { AdsService } from './ads.service';
 import {
   STORAGE_KEYS,
@@ -38,6 +39,12 @@ export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurato
 })
 export class WheelConfigurator {
   private readonly ads = inject(AdsService);
+
+  /**
+   * False while the app is being prerendered in Node, where localStorage,
+   * IndexedDB and requestAnimationFrame do not exist.
+   */
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   /**
    * Breathing room between the winner landing and an interstitial covering the
@@ -392,6 +399,14 @@ export class WheelConfigurator {
   });
 
   constructor() {
+    // Prerendering renders one frame and throws the app away: there is no
+    // storage to read, nothing to persist, and no animation frame to schedule.
+    // The prerendered HTML is therefore the default wheel, and the browser
+    // hydrates the user's real state when the app boots for real.
+    if (!this.isBrowser) {
+      return;
+    }
+
     this.initializeWorkspaces().then(() => {
       this.startIdleRotation();
     });

@@ -1,4 +1,14 @@
-import { Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
+import {
+  Component,
+  computed,
+  effect,
+  ElementRef,
+  inject,
+  PLATFORM_ID,
+  signal,
+  viewChild,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 
 @Component({
@@ -12,6 +22,8 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 })
 export class Wheel {
   wheelConfigurator = inject(WheelConfigurator);
+  /** False while prerendering: there is no viewport and no canvas context. */
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   readonly CANVAS_RENDER_SCALE = 7;
   /** Above this entry count the winner zoom uses the aggressive scale so the
    *  (very thin) winning slice and its label become legible. */
@@ -24,6 +36,12 @@ export class Wheel {
 
   canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('wheelCanvas');
   private readonly syncCanvasEffect = effect(() => {
+    // The server's stand-in canvas throws on getContext, and there would be
+    // nothing to paint into anyway: the wheel is drawn once the browser boots.
+    if (!this.isBrowser) {
+      return;
+    }
+
     const canvasElement = this.canvasRef()?.nativeElement;
     if (!canvasElement) {
       return;
@@ -87,6 +105,10 @@ export class Wheel {
   );
 
   private readonly resetUnzoomEffect = effect(() => {
+    if (!this.isBrowser) {
+      return;
+    }
+
     // Reset manual zoom-out whenever a new spin starts.
     if (this.wheelConfigurator.isSpinning()) {
       this.forceUnzoom.set(false);
@@ -99,6 +121,10 @@ export class Wheel {
   // pointerSliceIndex() only while a winner is present, so the continuous idle
   // rotation never re-triggers this redraw.
   private readonly winnerLabelEffect = effect(() => {
+    if (!this.isBrowser) {
+      return;
+    }
+
     const hasWinner = !!this.wheelConfigurator.winner();
     const canvasElement = this.canvasRef()?.nativeElement;
     const context = canvasElement?.getContext('2d') ?? null;
@@ -151,6 +177,10 @@ export class Wheel {
     return `M ${cx} ${cy} L ${x1} ${y1} A ${r} ${r} 0 ${largeArc} 1 ${x2} ${y2} Z`;
   });
   private readonly syncSizeEffect = effect(() => {
+    if (!this.isBrowser) {
+      return;
+    }
+
     this.wheelConfigurator.visibleWheelCount();
     this.calculateSize();
   });
@@ -205,6 +235,11 @@ export class Wheel {
   }
 
   calculateSize() {
+    // Called from the constructor, an effect and the window:resize binding.
+    if (!this.isBrowser) {
+      return;
+    }
+
     const visibleWheelCount = Math.max(1, this.wheelConfigurator.visibleWheelCount());
     const viewportWidth = window.innerWidth;
     const viewportHeight = window.innerHeight;

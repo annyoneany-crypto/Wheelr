@@ -1,4 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, PLATFORM_ID, inject, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Header } from './feature/header/header';
 import { RouterOutlet } from '@angular/router';
 import { injectSpeedInsights } from '@vercel/speed-insights';
@@ -23,6 +24,7 @@ import { WlAppDownloadBanner } from './shared/app-download-banner/app-download-b
 export class App implements OnInit {
   private readonly seo = inject(SeoService);
   nativePlatform = inject(NativePlatformService);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   ads = inject(AdsService);
 
   constructor() {
@@ -37,7 +39,9 @@ export class App implements OnInit {
     // Consenso GDPR + preload del primo interstitial: anche questo no-op sul web.
     void this.ads.initialize();
 
-    if (!this.nativePlatform.isNative) {
+    // ngOnInit also runs while prerendering, where Speed Insights has no
+    // window to attach to — and a build-time pageview would be meaningless.
+    if (this.isBrowser && !this.nativePlatform.isNative) {
       // Inizializza il monitoraggio
       injectSpeedInsights();
     }
