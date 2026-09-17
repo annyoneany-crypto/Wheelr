@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WheelConfigurator } from '../../../../../services/wheel-configurator.service';
 
@@ -6,6 +6,7 @@ import { WheelConfigurator } from '../../../../../services/wheel-configurator.se
   selector: 'app-spin-role-time',
   imports: [FormsModule],
   templateUrl: './spin-role-time.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './spin-role-time.css',
 })
 export class SpinRoleTime {

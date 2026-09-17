@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 import type { effectType, pointerType } from '../../../modules/classes/custom-type';
 
@@ -6,6 +6,7 @@ import type { effectType, pointerType } from '../../../modules/classes/custom-ty
   selector: 'app-effects',
   imports: [],
   templateUrl: './effects.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './effects.css',
 })
 export class Effects {

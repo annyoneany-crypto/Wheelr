@@ -7,6 +7,7 @@ import {
   PLATFORM_ID,
   signal,
   viewChild,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
@@ -16,9 +17,10 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
   imports: [],
   templateUrl: './wheel.html',
   styleUrl: './wheel.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
-    '(window:resize)': 'calculateSize()'
-  }
+    '(window:resize)': 'calculateSize()',
+  },
 })
 export class Wheel {
   wheelConfigurator = inject(WheelConfigurator);
@@ -100,9 +102,7 @@ export class Wheel {
   /** Vertical offset that keeps the centre logo out of the zoomed-in view.
    *  The wheel centre sits at 50% of the wheel height; scaling from the top
    *  pushes it to scale*50%. */
-  centerTopOffset = computed(() =>
-    this.winnerZoomActive() ? `${this.zoomScale() * 50}%` : '50%'
-  );
+  centerTopOffset = computed(() => (this.winnerZoomActive() ? `${this.zoomScale() * 50}%` : '50%'));
 
   private readonly resetUnzoomEffect = effect(() => {
     if (!this.isBrowser) {
@@ -146,7 +146,6 @@ export class Wheel {
 
     this.scheduleDraw(canvasElement, context, this.isLargeWheel(), labelIndices);
   });
-
 
   /**
    * SVG path tracing the borders of the winner slice in screen space.
@@ -245,12 +244,8 @@ export class Wheel {
     const viewportHeight = window.innerHeight;
     const isMobile = viewportWidth < 1024;
 
-    const horizontalUiReserve = visibleWheelCount > 1
-      ? (isMobile ? 20 : 420)
-      : (isMobile ? 20 : 160);
-    const verticalUiReserve = visibleWheelCount > 1
-      ? (isMobile ? 120 : 180)
-      : (isMobile ? 150 : 220);
+    const horizontalUiReserve = visibleWheelCount > 1 ? (isMobile ? 20 : 420) : isMobile ? 20 : 160;
+    const verticalUiReserve = visibleWheelCount > 1 ? (isMobile ? 120 : 180) : isMobile ? 150 : 220;
     const usableWidth = Math.max(220, viewportWidth - horizontalUiReserve);
     const usableHeight = Math.max(220, viewportHeight - verticalUiReserve);
 
@@ -262,7 +257,10 @@ export class Wheel {
     const perCellHeight = (usableHeight - gap * (rows - 1)) / rows;
     const bestFitSize = Math.min(perCellWidth, perCellHeight, 760);
     const minimumSize = visibleWheelCount > 1 ? 88 : 140;
-    const size = Math.max(minimumSize, Number.isFinite(bestFitSize) ? Math.floor(bestFitSize) : minimumSize);
+    const size = Math.max(
+      minimumSize,
+      Number.isFinite(bestFitSize) ? Math.floor(bestFitSize) : minimumSize
+    );
 
     this.width.set(size);
     this.height.set(size);

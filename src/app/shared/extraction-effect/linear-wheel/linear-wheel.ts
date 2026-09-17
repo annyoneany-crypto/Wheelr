@@ -1,4 +1,11 @@
-import { Component, ElementRef, inject, viewChild, effect } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  inject,
+  viewChild,
+  effect,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 
 @Component({
@@ -6,9 +13,10 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
   imports: [],
   templateUrl: './linear-wheel.html',
   styleUrl: './linear-wheel.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
     class: 'w-full',
-  }
+  },
 })
 export class LinearWheel {
   wheelConfigurator = inject(WheelConfigurator);
@@ -107,32 +115,33 @@ export class LinearWheel {
 
     const centerX = width / 2;
     const currentVirtualIndex = Math.floor(this.offset / this.itemWidth);
-    const halfVisible = Math.ceil((width / this.itemWidth) / 2) + 2;
+    const halfVisible = Math.ceil(width / this.itemWidth / 2) + 2;
     const padding = 5;
 
     for (let i = currentVirtualIndex - halfVisible; i <= currentVirtualIndex + halfVisible; i++) {
       const index = ((i % list.length) + list.length) % list.length;
-      const renderX = (i * this.itemWidth) - this.offset + centerX - (this.itemWidth / 2);
+      const renderX = i * this.itemWidth - this.offset + centerX - this.itemWidth / 2;
 
       this.ctx.fillStyle = this.colors[index % this.colors.length];
-      this.ctx.fillRect(renderX + padding, 10, this.itemWidth - (padding * 2), height - 20);
+      this.ctx.fillRect(renderX + padding, 10, this.itemWidth - padding * 2, height - 20);
 
       this.ctx.strokeStyle = 'white';
       this.ctx.lineWidth = 2;
-      this.ctx.strokeRect(renderX + padding, 10, this.itemWidth - (padding * 2), height - 20);
+      this.ctx.strokeRect(renderX + padding, 10, this.itemWidth - padding * 2, height - 20);
 
-      const distFromCenter = Math.abs((renderX + this.itemWidth / 2) - centerX);
-      if (distFromCenter < (this.itemWidth / 2)) {
+      const distFromCenter = Math.abs(renderX + this.itemWidth / 2 - centerX);
+      if (distFromCenter < this.itemWidth / 2) {
         this.ctx.fillStyle = 'rgba(255,255,255,0.18)';
-        this.ctx.fillRect(renderX + padding, 10, this.itemWidth - (padding * 2), height - 20);
+        this.ctx.fillRect(renderX + padding, 10, this.itemWidth - padding * 2, height - 20);
       }
 
       this.ctx.fillStyle = 'white';
       const text = list[index];
-      const textToDraw = this.ctx.measureText(text).width > (this.itemWidth - 20)
-        ? text.substring(0, 10) + '..'
-        : text;
-      this.ctx.fillText(textToDraw, renderX + (this.itemWidth / 2), height / 2);
+      const textToDraw =
+        this.ctx.measureText(text).width > this.itemWidth - 20
+          ? text.substring(0, 10) + '..'
+          : text;
+      this.ctx.fillText(textToDraw, renderX + this.itemWidth / 2, height / 2);
     }
 
     if (this.wheelConfigurator.isSpinning()) {
@@ -172,10 +181,11 @@ export class LinearWheel {
     let currentPos = this.offset % totalWidth;
     if (currentPos < 0) currentPos += totalWidth;
 
-    const winningIndex = Math.round(currentPos / this.itemWidth) % this.wheelConfigurator.names().length;
+    const winningIndex =
+      Math.round(currentPos / this.itemWidth) % this.wheelConfigurator.names().length;
     const targetOffset = winningIndex * this.itemWidth;
     const rounds = Math.floor(this.offset / totalWidth);
-    this.offset = (rounds * totalWidth) + targetOffset;
+    this.offset = rounds * totalWidth + targetOffset;
 
     const winnerName = this.wheelConfigurator.names()[winningIndex];
     this.wheelConfigurator.winner.set(winnerName);

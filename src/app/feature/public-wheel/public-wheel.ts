@@ -1,4 +1,14 @@
-import { Component, ElementRef, OnDestroy, computed, effect, inject, signal, viewChildren } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  computed,
+  effect,
+  inject,
+  signal,
+  viewChildren,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WheelCloudRepository } from '../../services/wheel-cloud-repository.service';
@@ -10,6 +20,7 @@ import { SeoService } from '../../services/seo.service';
 @Component({
   selector: 'app-public-wheel',
   templateUrl: './public-wheel.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './public-wheel.css',
 })
 export class PublicWheel implements OnDestroy {
@@ -31,8 +42,12 @@ export class PublicWheel implements OnDestroy {
   private idleRafId: number | null = null;
   private idleLastTs = 0;
 
-  readonly pageBgColor = computed(() => this.noBackgroundMode() ? 'transparent' : (this.wheelConfigs()[0]?.bgColor || '#18181b'));
-  readonly pageBgImage = computed(() => this.noBackgroundMode() ? '' : (this.wheelConfigs()[0]?.bgImage || ''));
+  readonly pageBgColor = computed(() =>
+    this.noBackgroundMode() ? 'transparent' : this.wheelConfigs()[0]?.bgColor || '#18181b'
+  );
+  readonly pageBgImage = computed(() =>
+    this.noBackgroundMode() ? '' : this.wheelConfigs()[0]?.bgImage || ''
+  );
 
   readonly headingColor = computed(() => {
     const bgColor = this.pageBgColor();

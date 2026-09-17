@@ -27,6 +27,9 @@
     "android:run": "npm run android:sync && cap run android",
     "android:bundle": "npm run android:sync && node tools/gradle.mjs bundleRelease"
   },
+  "engines": {
+    "node": ">=22.22.3"
+  },
   "prettier": {
     "printWidth": 100,
     "singleQuote": true,
@@ -42,14 +45,14 @@
   "private": true,
   "packageManager": "npm@11.7.0",
   "dependencies": {
-    "@angular/common": "^21.1.0",
-    "@angular/compiler": "^21.1.0",
-    "@angular/core": "^21.1.0",
-    "@angular/forms": "^21.1.0",
-    "@angular/platform-browser": "^21.1.0",
-    "@angular/platform-server": "^21.1.0",
-    "@angular/router": "^21.1.0",
-    "@angular/ssr": "^21.1.0",
+    "@angular/common": "^22.1.7",
+    "@angular/compiler": "^22.1.7",
+    "@angular/core": "^22.1.7",
+    "@angular/forms": "^22.1.7",
+    "@angular/platform-browser": "^22.1.7",
+    "@angular/platform-server": "^22.1.7",
+    "@angular/router": "^22.1.7",
+    "@angular/ssr": "^22.1.8",
     "@capacitor-community/admob": "^8.0.0",
     "@capacitor-firebase/authentication": "^8.3.0",
     "@capacitor/android": "^8.5.0",
@@ -70,9 +73,9 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "^21.1.0",
-    "@angular/cli": "^21.1.0",
-    "@angular/compiler-cli": "^21.1.0",
+    "@angular/build": "^22.1.8",
+    "@angular/cli": "^22.1.8",
+    "@angular/compiler-cli": "^22.1.7",
     "@capacitor/assets": "^3.0.5",
     "@capacitor/cli": "^8.5.0",
     "@tailwindcss/postcss": "^4.1.12",
@@ -80,7 +83,7 @@
     "jsdom": "^27.1.0",
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.12",
-    "typescript": "~5.9.2",
+    "typescript": "~6.0.3",
     "vitest": "^4.0.8"
   }
 }

@@ -1,18 +1,24 @@
-import { Component, computed, inject, linkedSignal, signal } from '@angular/core';
+import {
+  Component,
+  computed,
+  inject,
+  linkedSignal,
+  signal,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 
 @Component({
   selector: 'app-users',
-  imports: [
-    FormsModule,
-  ],
+  imports: [FormsModule],
   templateUrl: './users.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './users.css',
 })
 export class Users {
   wheelConfigurator = inject(WheelConfigurator);
-  
+
   // fields for the "add name N times" feature
   newName = signal('');
   nameToRemove = signal('');
@@ -21,7 +27,6 @@ export class Users {
   usersText = linkedSignal<string>(() => {
     return this.wheelConfigurator.names().join('\r\n');
   });
-
 
   userTextChange(e: string): void {
     this.wheelConfigurator.setNames(e.split(/\r?\n/));
@@ -55,7 +60,7 @@ export class Users {
   cleanAndShuffleUsers(): void {
     const cleaned = this.wheelConfigurator
       .names()
-      .map(n => n.trim())
+      .map((n) => n.trim())
       .filter(Boolean);
 
     this.wheelConfigurator.setNames(cleaned);
@@ -72,9 +77,7 @@ export class Users {
       return;
     }
 
-    const filteredNames = this.wheelConfigurator
-      .names()
-      .filter((n) => n !== name);
+    const filteredNames = this.wheelConfigurator.names().filter((n) => n !== name);
 
     this.wheelConfigurator.setNames(filteredNames);
   }

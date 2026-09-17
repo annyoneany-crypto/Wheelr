@@ -1,4 +1,13 @@
-import { Component, DestroyRef, computed, effect, inject, signal, untracked } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  computed,
+  effect,
+  inject,
+  signal,
+  untracked,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
 import { NavigationEnd, Router, RouterLink } from '@angular/router';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
@@ -18,6 +27,7 @@ type CloudSaveState = 'idle' | 'saving' | 'success' | 'error';
   selector: 'wl-header',
   imports: [RouterLink, NgOptimizedImage, WlAuth, WlCreateWheel, WlInfoUtente],
   templateUrl: './header.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header.css',
 })
 export class Header {
@@ -38,7 +48,9 @@ export class Header {
   });
   showIndependentPreview = computed(() => this.wheelConfigurator.visibleWheelCount() > 1);
   selectedWheelName = computed(() => this.wheelConfigurator.activeWheel()?.name ?? 'Wheel');
-  showSelectedWheelBadge = computed(() => this.isWheelRoute() && !!this.wheelConfigurator.activeWheelId());
+  showSelectedWheelBadge = computed(
+    () => this.isWheelRoute() && !!this.wheelConfigurator.activeWheelId()
+  );
   isAuthModalOpen = signal(false);
   isUserPanelOpen = signal(false);
   isCreateWheelModalOpen = signal(false);
@@ -55,7 +67,9 @@ export class Header {
     }
 
     const syncMessage = this.wheelCloudSync.message();
-    return syncMessage ? { text: syncMessage, isError: this.wheelCloudSync.state() === 'error' } : null;
+    return syncMessage
+      ? { text: syncMessage, isError: this.wheelCloudSync.state() === 'error' }
+      : null;
   });
 
   private pendingCloudSave = false;
@@ -250,7 +264,9 @@ export class Header {
 
     try {
       const rootWorkspaceId = this.wheelConfigurator.getWorkspaceRootId(workspace.id);
-      const displayConfigs = await this.wheelConfigurator.loadWheelGroupDisplayConfigs(rootWorkspaceId);
+      const displayConfigs = await this.wheelConfigurator.loadWheelGroupDisplayConfigs(
+        rootWorkspaceId
+      );
       if (!displayConfigs.length) {
         this.setSaveFeedback('error', 'Wheel configuration not found. Try again.');
         return;
@@ -264,7 +280,10 @@ export class Header {
       });
 
       this.wheelConfigurator.setGroupCloudConfigId(rootWorkspaceId, cloudConfigId);
-      this.setSaveFeedback('success', isUpdate ? 'Wheel updated in cloud.' : 'Wheel saved to cloud.');
+      this.setSaveFeedback(
+        'success',
+        isUpdate ? 'Wheel updated in cloud.' : 'Wheel saved to cloud.'
+      );
     } catch (error) {
       const message =
         error instanceof Error && error.message === 'AUTH_REQUIRED'

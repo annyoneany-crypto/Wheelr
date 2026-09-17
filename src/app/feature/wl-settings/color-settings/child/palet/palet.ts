@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WheelConfigurator } from '../../../../../services/wheel-configurator.service';
 import { ColorPalette } from '../../../../../services/global_function';
@@ -10,6 +10,7 @@ type ImageTab = 'wheel' | 'slices';
   selector: 'app-palet',
   imports: [FormsModule],
   templateUrl: './palet.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './palet.css',
 })
 export class Palet {
@@ -24,19 +25,19 @@ export class Palet {
   colorIndexes = [0, 1, 2, 3, 4, 5];
 
   toggleCustomPalette(): void {
-    this.showCustomPalette.update(v => !v);
+    this.showCustomPalette.update((v) => !v);
   }
 
   saveCustomPalette(): void {
     const name = this.customName.trim() || 'Custom';
-    const colors = this.customColors.filter(c => !!c);
+    const colors = this.customColors.filter((c) => !!c);
     if (!colors.length) {
       return;
     }
 
     const newPalette: ColorPalette = { name, colors };
     const palettes = [...this.wheelConfigurator.palettes()];
-    const existingIndex = palettes.findIndex(p => p.name === name);
+    const existingIndex = palettes.findIndex((p) => p.name === name);
 
     if (existingIndex > -1) {
       palettes[existingIndex] = newPalette;

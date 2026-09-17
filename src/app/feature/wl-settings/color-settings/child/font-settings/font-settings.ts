@@ -1,4 +1,11 @@
-import { Component, inject, signal, effect, computed } from '@angular/core';
+import {
+  Component,
+  inject,
+  signal,
+  effect,
+  computed,
+  ChangeDetectionStrategy,
+} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { WheelConfigurator } from '../../../../../services/wheel-configurator.service';
 
@@ -12,6 +19,7 @@ interface FontOption {
   selector: 'app-font-settings',
   imports: [FormsModule],
   templateUrl: './font-settings.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './font-settings.css',
 })
 export class FontSettings {
@@ -29,20 +37,20 @@ export class FontSettings {
       url: 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap',
     },
     {
-        label: 'Pixels',
-        family: '"Press Start 2P", system-ui',
-        url: 'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap',
+      label: 'Pixels',
+      family: '"Press Start 2P", system-ui',
+      url: 'https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap',
     },
     {
-        label: 'Rock Salt',
-        family: '"Rock Salt", cursive',
-        url: 'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap',
+      label: 'Rock Salt',
+      family: '"Rock Salt", cursive',
+      url: 'https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap',
     },
     {
-        label: 'Cinzel Decorative',
-        family: '"Cinzel Decorative", serif',
-        url: 'https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap',
-    }
+      label: 'Cinzel Decorative',
+      family: '"Cinzel Decorative", serif',
+      url: 'https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap',
+    },
   ];
 
   selectedFamily = computed(() => this.wheelConfigurator.fontFamily());
@@ -56,9 +64,8 @@ export class FontSettings {
     });
   }
 
-
   onSelect(family: string) {
-    const opt = this.availableFonts.find(f => f.family === family);
+    const opt = this.availableFonts.find((f) => f.family === family);
     if (opt) {
       this.wheelConfigurator.setFontFamily(opt.family, opt.url);
     } else {

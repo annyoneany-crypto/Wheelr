@@ -9,6 +9,7 @@ import {
   signal,
   untracked,
   viewChildren,
+  ChangeDetectionStrategy,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { WheelConfigurator, WheelDisplayConfig } from '../../services/wheel-configurator.service';
@@ -16,7 +17,13 @@ import { LinearWheel } from '../../shared/extraction-effect/linear-wheel/linear-
 import { Wheel } from '../../shared/extraction-effect/wheel/wheel';
 import { CardsEffect } from '../../shared/extraction-effect/cards-draw/cards-draw';
 import { FireEffect } from '../../shared/winner-effect/fire-effect/fire-effect';
-import { ActivatedRoute, ActivatedRouteSnapshot, NavigationEnd, Router, RouterModule } from '@angular/router';
+import {
+  ActivatedRoute,
+  ActivatedRouteSnapshot,
+  NavigationEnd,
+  Router,
+  RouterModule,
+} from '@angular/router';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { contrastForHex } from '../../services/global_function';
@@ -39,9 +46,10 @@ interface PreviewImageEntry {
   imports: [LinearWheel, Wheel, CardsEffect, FireEffect, RouterModule, WinnerPanel, WheelButton],
   templateUrl: './wheel-page.html',
   styleUrl: './wheel-page.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
-    '(window:resize)': 'calculatePreviewWheelSize()'
-  }
+    '(window:resize)': 'calculatePreviewWheelSize()',
+  },
 })
 export class WheelPage {
   wheelConfigurator = inject(WheelConfigurator);
@@ -113,9 +121,10 @@ export class WheelPage {
       return rootCloudId;
     }
 
-    const groupWorkspace = workspaces.find((workspace) =>
-      (workspace.id === rootId || workspace.parentWheelId === rootId) &&
-      !!workspace.cloudConfigId?.trim()
+    const groupWorkspace = workspaces.find(
+      (workspace) =>
+        (workspace.id === rootId || workspace.parentWheelId === rootId) &&
+        !!workspace.cloudConfigId?.trim()
     );
 
     return groupWorkspace?.cloudConfigId?.trim() ?? '';
@@ -217,25 +226,27 @@ export class WheelPage {
 
       if (wheelUrl && next[id].wheelEl === null) {
         const img = new Image();
-        img.onload = () => this.previewImageCache.update(p => {
-          const entry = p[id];
-          // Ignore if the workspace went away or the URL changed meanwhile.
-          if (!entry || entry.wheelUrl !== wheelUrl) return p;
-          return { ...p, [id]: { ...entry, wheelEl: img } };
-        });
+        img.onload = () =>
+          this.previewImageCache.update((p) => {
+            const entry = p[id];
+            // Ignore if the workspace went away or the URL changed meanwhile.
+            if (!entry || entry.wheelUrl !== wheelUrl) return p;
+            return { ...p, [id]: { ...entry, wheelEl: img } };
+          });
         img.src = wheelUrl;
       }
 
       sliceUrls.forEach((url, i) => {
         if (!url || next[id].sliceEls[i] !== null) return;
         const img = new Image();
-        img.onload = () => this.previewImageCache.update(p => {
-          const entry = p[id];
-          if (!entry || entry.sliceUrls[i] !== url) return p;
-          const sliceEls = [...entry.sliceEls];
-          sliceEls[i] = img;
-          return { ...p, [id]: { ...entry, sliceEls } };
-        });
+        img.onload = () =>
+          this.previewImageCache.update((p) => {
+            const entry = p[id];
+            if (!entry || entry.sliceUrls[i] !== url) return p;
+            const sliceEls = [...entry.sliceEls];
+            sliceEls[i] = img;
+            return { ...p, [id]: { ...entry, sliceEls } };
+          });
         img.src = url;
       });
     }
@@ -274,7 +285,13 @@ export class WheelPage {
         }
 
         const imgCache = this.previewImageCache()[config.workspaceId];
-        this.drawPreviewWheel(canvas, ctx, config, imgCache?.wheelEl ?? null, imgCache?.sliceEls ?? []);
+        this.drawPreviewWheel(
+          canvas,
+          ctx,
+          config,
+          imgCache?.wheelEl ?? null,
+          imgCache?.sliceEls ?? []
+        );
       });
 
       this.previewDrawAnimationFrameId = null;
@@ -283,7 +300,9 @@ export class WheelPage {
 
   ShareOnX(): void {
     const url = encodeURIComponent(window.location.href);
-    const text = encodeURIComponent('Check out my wheel!\r\nCustomize your own and spin to win prizes! 🎉🎁 #GiveawayWheel\r\n\r\n');
+    const text = encodeURIComponent(
+      'Check out my wheel!\r\nCustomize your own and spin to win prizes! 🎉🎁 #GiveawayWheel\r\n\r\n'
+    );
     const xUrl = `https://x.com/intent/tweet?url=${url}&text=${text}`;
     window.open(xUrl, '_blank');
   }
@@ -352,11 +371,11 @@ export class WheelPage {
     // Only update (and add to history) when the value actually changes.
     if (this.previewWinners()[activeId] === winner) return;
 
-    this.previewWinners.update(w => ({ ...w, [activeId]: winner }));
+    this.previewWinners.update((w) => ({ ...w, [activeId]: winner }));
 
     const wheelName = this.wheelConfigurator.activeWheel()?.name ?? 'Wheel';
     const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-    this.winnerHistory.update(current => {
+    this.winnerHistory.update((current) => {
       const nextItem: WinnerPanelEntry = {
         id: `${Date.now()}-${Math.random().toString(36).slice(2, 9)}`,
         name: winner,
@@ -377,7 +396,7 @@ export class WheelPage {
     this.wheelConfigurator.winnerDismissCount(); // subscribe to dismiss events
     const activeId = this.wheelConfigurator.activeWheelId();
     if (activeId) {
-      this.previewWinners.update(w => ({ ...w, [activeId]: null }));
+      this.previewWinners.update((w) => ({ ...w, [activeId]: null }));
     }
   });
 
@@ -473,7 +492,9 @@ export class WheelPage {
   }
 
   uiChromeToggleAriaLabel(): string {
-    return this.uiChromeHidden() ? 'Show header, footer and controls' : 'Hide header, footer and controls';
+    return this.uiChromeHidden()
+      ? 'Show header, footer and controls'
+      : 'Hide header, footer and controls';
   }
 
   openQrModal(): void {
@@ -569,11 +590,13 @@ export class WheelPage {
 
     // Keep a safe margin for floating controls and optional settings panel.
     const horizontalUiReserve = this.showPanelSettings()
-      ? (isMobile ? 36 : 500)
-      : (isMobile ? 20 : 180);
-    const verticalUiReserve = visibleWheelCount > 1
-      ? (isMobile ? 120 : 170)
-      : (isMobile ? 130 : 140);
+      ? isMobile
+        ? 36
+        : 500
+      : isMobile
+      ? 20
+      : 180;
+    const verticalUiReserve = visibleWheelCount > 1 ? (isMobile ? 120 : 170) : isMobile ? 130 : 140;
 
     const usableWidth = Math.max(220, viewportWidth - horizontalUiReserve);
     const usableHeight = Math.max(220, viewportHeight - verticalUiReserve);
@@ -598,7 +621,9 @@ export class WheelPage {
     const orderedWorkspaceIds = this.getVisibleWorkspaceIds(maxVisible);
 
     const loadedConfigs = await Promise.all(
-      orderedWorkspaceIds.map((workspaceId) => this.wheelConfigurator.loadWheelDisplayConfig(workspaceId))
+      orderedWorkspaceIds.map((workspaceId) =>
+        this.wheelConfigurator.loadWheelDisplayConfig(workspaceId)
+      )
     );
 
     if (requestId !== this.refreshVisibleWheelRequestId) {
@@ -670,7 +695,7 @@ export class WheelPage {
     }
 
     // Clear only this workspace's previous winner before the new spin starts.
-    this.previewWinners.update(w => ({ ...w, [workspaceId]: null }));
+    this.previewWinners.update((w) => ({ ...w, [workspaceId]: null }));
 
     // Keep winner math aligned with the exact visual angle of the clicked preview wheel.
     this.wheelConfigurator.currentRotation.set(this.previewCanvasRotation(workspaceId));
@@ -702,7 +727,9 @@ export class WheelPage {
   }
 
   previewCanvasRotation(workspaceId: string): number {
-    return (this.previewRotations()[workspaceId] ?? 0) + (this.previewIdleRotations()[workspaceId] ?? 0);
+    return (
+      (this.previewRotations()[workspaceId] ?? 0) + (this.previewIdleRotations()[workspaceId] ?? 0)
+    );
   }
 
   isPreviewSpinning(workspaceId: string): boolean {
@@ -802,7 +829,10 @@ export class WheelPage {
   }
 
   showWinnerEffectFor(workspaceId: string): boolean {
-    return this.visibleWheelConfigs().find(c => c.workspaceId === workspaceId)?.showWinnerEffect ?? true;
+    return (
+      this.visibleWheelConfigs().find((c) => c.workspaceId === workspaceId)?.showWinnerEffect ??
+      true
+    );
   }
 
   /** SVG path for the winner-slice glow overlay on a preview wheel. */
@@ -872,7 +902,10 @@ export class WheelPage {
     this.displyPanel.set(!isOpen);
   }
 
-  private findOutletSnapshot(snapshot: ActivatedRouteSnapshot, outletName: string): ActivatedRouteSnapshot | null {
+  private findOutletSnapshot(
+    snapshot: ActivatedRouteSnapshot,
+    outletName: string
+  ): ActivatedRouteSnapshot | null {
     if (snapshot.outlet === outletName) {
       return snapshot;
     }
@@ -903,14 +936,22 @@ export class WheelPage {
 
     this.renameTargets.set(targets);
     const workspaces = this.wheelConfigurator.wheelWorkspaces();
-    this.renameDrafts.set(Object.fromEntries(targets.map((target) => {
-      const workspace = workspaces.find((item) => item.id === target.workspaceId);
-      return [target.workspaceId, workspace?.name ?? target.workspaceName];
-    })));
-    this.renameDescriptionDrafts.set(Object.fromEntries(targets.map((target) => {
-      const workspace = workspaces.find((item) => item.id === target.workspaceId);
-      return [target.workspaceId, workspace?.description ?? ''];
-    })));
+    this.renameDrafts.set(
+      Object.fromEntries(
+        targets.map((target) => {
+          const workspace = workspaces.find((item) => item.id === target.workspaceId);
+          return [target.workspaceId, workspace?.name ?? target.workspaceName];
+        })
+      )
+    );
+    this.renameDescriptionDrafts.set(
+      Object.fromEntries(
+        targets.map((target) => {
+          const workspace = workspaces.find((item) => item.id === target.workspaceId);
+          return [target.workspaceId, workspace?.description ?? ''];
+        })
+      )
+    );
     this.renameModalOpen.set(true);
   }
 

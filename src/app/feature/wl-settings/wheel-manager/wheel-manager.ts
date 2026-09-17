@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, signal, ChangeDetectionStrategy } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 import { WheelCloudRepository } from '../../../services/wheel-cloud-repository.service';
 import { AuthService } from '../../../services/auth.service';
@@ -6,6 +6,7 @@ import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-wheel-manager',
   templateUrl: './wheel-manager.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './wheel-manager.css',
 })
 export class WheelManager {
@@ -15,7 +16,10 @@ export class WheelManager {
   managerWorkspaces = computed(() => this.wheelConfigurator.managerWheelWorkspaces());
 
   isManagerWorkspaceActive(workspaceId: string): boolean {
-    return this.wheelConfigurator.getWorkspaceRootId(this.wheelConfigurator.activeWheelId()) === workspaceId;
+    return (
+      this.wheelConfigurator.getWorkspaceRootId(this.wheelConfigurator.activeWheelId()) ===
+      workspaceId
+    );
   }
 
   editingWheelId = signal<string | null>(null);
@@ -59,7 +63,9 @@ export class WheelManager {
 
     try {
       const rootWorkspaceId = this.wheelConfigurator.getWorkspaceRootId(workspace.id);
-      const displayConfigs = await this.wheelConfigurator.loadWheelGroupDisplayConfigs(rootWorkspaceId);
+      const displayConfigs = await this.wheelConfigurator.loadWheelGroupDisplayConfigs(
+        rootWorkspaceId
+      );
       if (!displayConfigs.length) {
         this.cloudError.set('Wheel configuration not found. Load the wheel and try again.');
         return;
@@ -75,9 +81,10 @@ export class WheelManager {
 
       this.syncedWorkspaceId.set(workspaceId);
     } catch (error) {
-      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
-        ? 'Sign in to save the wheel to cloud.'
-        : 'Cloud save failed. Try again.';
+      const message =
+        error instanceof Error && error.message === 'AUTH_REQUIRED'
+          ? 'Sign in to save the wheel to cloud.'
+          : 'Cloud save failed. Try again.';
       this.cloudError.set(message);
     } finally {
       this.savingWorkspaceId.set(null);
@@ -98,9 +105,10 @@ export class WheelManager {
       const { imported } = await this.wheelConfigurator.syncCloudWheelsToLocal(cloudWheels);
       this.importedFromCloudCount.set(imported);
     } catch (error) {
-      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
-        ? 'Sign in to import wheels from cloud.'
-        : 'Cloud import failed. Try again.';
+      const message =
+        error instanceof Error && error.message === 'AUTH_REQUIRED'
+          ? 'Sign in to import wheels from cloud.'
+          : 'Cloud import failed. Try again.';
       this.cloudError.set(message);
     } finally {
       this.importingFromCloud.set(false);
@@ -165,9 +173,10 @@ export class WheelManager {
         await this.wheelCloudRepository.deleteWheelByCloudConfigId(workspace.cloudConfigId);
       }
     } catch (error) {
-      const message = error instanceof Error && error.message === 'AUTH_REQUIRED'
-        ? 'Sign in to also delete the wheel from cloud.'
-        : 'Cloud deletion failed. Try again.';
+      const message =
+        error instanceof Error && error.message === 'AUTH_REQUIRED'
+          ? 'Sign in to also delete the wheel from cloud.'
+          : 'Cloud deletion failed. Try again.';
       this.cloudError.set(message);
       console.error('Error deleting wheel from cloud:', error);
       return;
@@ -189,7 +198,9 @@ export class WheelManager {
     const currentActiveId = this.wheelConfigurator.activeWheelId();
     const rootWorkspaceId = this.wheelConfigurator.getWorkspaceRootId(currentActiveId);
 
-    while (this.wheelConfigurator.getWorkspaceGroupIds(rootWorkspaceId, 99).length < nextVisibleCount) {
+    while (
+      this.wheelConfigurator.getWorkspaceGroupIds(rootWorkspaceId, 99).length < nextVisibleCount
+    ) {
       await this.wheelConfigurator.createGroupedWheelWorkspace(rootWorkspaceId);
     }
 

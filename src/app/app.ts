@@ -1,4 +1,4 @@
-import { Component, PLATFORM_ID, inject, OnInit } from '@angular/core';
+import { Component, PLATFORM_ID, inject, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Header } from './feature/header/header';
 import { RouterOutlet } from '@angular/router';
@@ -10,16 +10,13 @@ import { WlAppDownloadBanner } from './shared/app-download-banner/app-download-b
 
 @Component({
   selector: 'app-root',
-  imports: [
-    Header,
-    RouterOutlet,
-    WlAppDownloadBanner
-],
+  imports: [Header, RouterOutlet, WlAppDownloadBanner],
   templateUrl: './app.html',
   styleUrl: './app.css',
+  changeDetection: ChangeDetectionStrategy.Eager,
   host: {
-    'display': 'block'
-  }
+    display: 'block',
+  },
 })
 export class App implements OnInit {
   private readonly seo = inject(SeoService);
@@ -46,5 +43,4 @@ export class App implements OnInit {
       injectSpeedInsights();
     }
   }
-  
 }
