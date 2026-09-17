@@ -10,7 +10,7 @@ Key facts:
 
 - Website: https://www.wheelr.xyz/
 - Price: free. No signup, no credit card, no paywalled features. Funded by donations and by ads inside the Android app only.
-- Platforms: any modern web browser (desktop and mobile) plus a free Android app (package `xyz.wheelr.app`).
+- Platforms: any modern web browser (desktop and mobile) plus a free Android app (package `xyz.wheelr.app`), installable from https://play.google.com/store/apps/details?id=xyz.wheelr.app
 - Account: optional. Without an account everything stays on the device; signing in syncs wheels across devices.
 - Capacity: up to 4 wheels can be configured and shown at the same time.
 - Views: classic wheel, linear (slot-style) and cards.

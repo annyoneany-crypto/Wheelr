@@ -2,7 +2,7 @@
 title: Wheelr — free online wheel spinner and random picker
 path: /
 canonical: https://www.wheelr.xyz/
-updated: 2026-08-13
+updated: 2026-09-17
 ---
 
 # Wheelr — free online wheel spinner
@@ -11,8 +11,9 @@ Wheelr is a free web app that spins a customizable wheel and picks one entry at
 random. Type in names, prizes or options, press spin, and the wheel stops on a
 winner in front of everyone watching.
 
-It requires no account, no installation and no payment. A free Android app ships
-the same application.
+It requires no account, no installation and no payment. The same application also
+ships as a free Android app on Google Play:
+https://play.google.com/store/apps/details?id=xyz.wheelr.app
 
 ## What people use it for
 
@@ -64,5 +65,6 @@ Donations are optional and are what keep the project running.
 - Templates: https://www.wheelr.xyz/templates
 - Privacy policy: https://www.wheelr.xyz/privacy
 - Support the project: https://www.wheelr.xyz/donation
+- Android app: https://play.google.com/store/apps/details?id=xyz.wheelr.app
 - Source code: https://github.com/annyoneany-crypto/Wheelr
 - Author: AnnyoneAny — https://x.com/AnnyoneAny

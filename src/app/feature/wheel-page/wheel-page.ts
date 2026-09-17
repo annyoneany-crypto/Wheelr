@@ -13,7 +13,6 @@ import { WinnerPanel } from './child/winner-panel/winner-panel';
 import type { WinnerPanelEntry } from './child/winner-panel/winner-panel';
 import { WheelButton } from './child/wheel-button/wheel-button';
 import { NativePlatformService } from '../../services/native-platform.service';
-import * as QRCode from 'qrcode';
 
 /** Loaded preview images plus the source URLs they were loaded from. */
 interface PreviewImageEntry {
@@ -465,6 +464,12 @@ export class WheelPage {
     this.qrCodeError.set('');
 
     try {
+      // Pulled in only when the share modal is actually opened, which keeps it
+      // out of the page chunk. `qrcode` is CommonJS, so the emitted chunk has a
+      // single default export — destructuring a named one off it yields
+      // undefined at runtime.
+      const QRCode = (await import('qrcode')).default;
+
       const dataUrl = await QRCode.toDataURL(url, {
         width: 320,
         margin: 1,
