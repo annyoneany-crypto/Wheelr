@@ -1,23 +1,12 @@
-import { computed, Injectable, inject, signal } from '@angular/core';
-import { FirebaseApp, FirebaseOptions, getApp, getApps, initializeApp } from 'firebase/app';
-import {
-  Auth,
-  EmailAuthProvider,
-  createUserWithEmailAndPassword,
-  deleteUser,
-  GoogleAuthProvider,
-  User,
-  getAuth,
-  onAuthStateChanged,
-  reauthenticateWithCredential,
-  reauthenticateWithPopup,
-  signInWithCredential,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut
-} from 'firebase/auth';
+import { afterNextRender, computed, Injectable, inject, signal } from '@angular/core';
+import type { Auth, User } from 'firebase/auth';
 import { FirebaseAuthentication } from '@capacitor-firebase/authentication';
-import { firebaseAuthConfig } from './firebase-auth.config';
+import {
+  FirebaseAuthBundle,
+  hasPersistedFirebaseSession,
+  isFirebaseConfigured,
+  loadFirebaseAuth,
+} from './firebase-lazy';
 import { NativePlatformService } from './native-platform.service';
 
 export type SignInProvider = 'google' | 'password' | 'unknown';
@@ -27,9 +16,11 @@ export type SignInProvider = 'google' | 'password' | 'unknown';
 })
 export class AuthService {
   private readonly nativePlatform = inject(NativePlatformService);
-  private auth: Auth | null = null;
-  private readonly provider = new GoogleAuthProvider();
-  private readonly firebaseConfig: FirebaseOptions = firebaseAuthConfig;
+
+  /** Set once the SDK has been downloaded; null until then. */
+  private bundle: FirebaseAuthBundle | null = null;
+  private bundleLoad: Promise<FirebaseAuthBundle | null> | null = null;
+  private watchingAuthState = false;
 
   private readonly userSignal = signal<User | null>(null);
   private readonly loadingSignal = signal(true);
@@ -38,7 +29,7 @@ export class AuthService {
   readonly loading = this.loadingSignal.asReadonly();
   readonly isLoggedIn = computed(() => this.userSignal() !== null);
   readonly email = computed(() => this.userSignal()?.email ?? '');
-  readonly isConfigured = computed(() => this.hasValidConfig());
+  readonly isConfigured = computed(() => isFirebaseConfigured());
 
   /**
    * Which credential the current session was created with. Account deletion has
@@ -55,25 +46,38 @@ export class AuthService {
   });
 
   constructor() {
-    this.initializeAuth();
+    // Restoring the session needs the SDK, but nothing on screen does — so the
+    // download waits until after the first paint instead of competing with it,
+    // and is skipped entirely for the visitors who have no session to restore.
+    afterNextRender(() => void this.restoreSession());
+  }
+
+  /**
+   * Startup path: only reaches for the SDK when this browser might actually hold
+   * a session. `loading` is what the header disables its button on, so it has to
+   * be cleared on every branch that decides not to load.
+   */
+  private async restoreSession(): Promise<void> {
+    if (!isFirebaseConfigured() || !(await hasPersistedFirebaseSession())) {
+      this.loadingSignal.set(false);
+      return;
+    }
+
+    await this.ensureAuth();
   }
 
   async loginWithGoogle(): Promise<void> {
-    if (!this.auth) {
-      this.initializeAuth();
-    }
-
-    if (!this.auth) {
-      console.warn('Firebase Auth is not configured. Fill firebase-auth.config.ts first.');
+    const firebase = await this.ensureAuth();
+    if (!firebase) {
       return;
     }
 
     if (this.nativePlatform.isNative) {
-      await this.loginWithGoogleNatively(this.auth);
+      await this.loginWithGoogleNatively(firebase);
       return;
     }
 
-    await signInWithPopup(this.auth, this.provider);
+    await firebase.api.signInWithPopup(firebase.auth, new firebase.api.GoogleAuthProvider());
   }
 
   /**
@@ -82,7 +86,7 @@ export class AuthService {
    * back an ID token; feeding that to the JS SDK keeps `user` and every Firestore
    * call on the same session the web build uses.
    */
-  private async loginWithGoogleNatively(auth: Auth): Promise<void> {
+  private async loginWithGoogleNatively({ auth, api }: FirebaseAuthBundle): Promise<void> {
     const result = await FirebaseAuthentication.signInWithGoogle();
     const idToken = result.credential?.idToken;
 
@@ -90,33 +94,25 @@ export class AuthService {
       throw new Error('Google sign-in returned no ID token.');
     }
 
-    await signInWithCredential(auth, GoogleAuthProvider.credential(idToken));
+    await api.signInWithCredential(auth, api.GoogleAuthProvider.credential(idToken));
   }
 
   async loginWithEmailAndPassword(email: string, password: string): Promise<void> {
-    if (!this.auth) {
-      this.initializeAuth();
-    }
-
-    if (!this.auth) {
-      console.warn('Firebase Auth is not configured. Fill firebase-auth.config.ts first.');
+    const firebase = await this.ensureAuth();
+    if (!firebase) {
       return;
     }
 
-    await signInWithEmailAndPassword(this.auth, email, password);
+    await firebase.api.signInWithEmailAndPassword(firebase.auth, email, password);
   }
 
   async registerWithEmailAndPassword(email: string, password: string): Promise<void> {
-    if (!this.auth) {
-      this.initializeAuth();
-    }
-
-    if (!this.auth) {
-      console.warn('Firebase Auth is not configured. Fill firebase-auth.config.ts first.');
+    const firebase = await this.ensureAuth();
+    if (!firebase) {
       return;
     }
 
-    await createUserWithEmailAndPassword(this.auth, email, password);
+    await firebase.api.createUserWithEmailAndPassword(firebase.auth, email, password);
   }
 
   async logout(): Promise<void> {
@@ -126,11 +122,12 @@ export class AuthService {
       await FirebaseAuthentication.signOut().catch(() => undefined);
     }
 
-    if (!this.auth) {
+    // Never loaded means never signed in: there is no session to end.
+    if (!this.bundle) {
       return;
     }
 
-    await signOut(this.auth);
+    await this.bundle.api.signOut(this.bundle.auth);
   }
 
   /**
@@ -143,11 +140,14 @@ export class AuthService {
    * `password` is only required for email/password accounts.
    */
   async reauthenticate(password?: string): Promise<void> {
+    const firebase = this.bundle;
     const user = this.userSignal();
 
-    if (!this.auth || !user) {
+    if (!firebase || !user) {
       throw new Error('AUTH_REQUIRED');
     }
+
+    const { api } = firebase;
 
     if (this.signInProvider() === 'password') {
       const email = user.email ?? '';
@@ -155,7 +155,7 @@ export class AuthService {
         throw new Error('PASSWORD_REQUIRED');
       }
 
-      await reauthenticateWithCredential(user, EmailAuthProvider.credential(email, password));
+      await api.reauthenticateWithCredential(user, api.EmailAuthProvider.credential(email, password));
       return;
     }
 
@@ -168,11 +168,11 @@ export class AuthService {
         throw new Error('Google re-authentication returned no ID token.');
       }
 
-      await reauthenticateWithCredential(user, GoogleAuthProvider.credential(idToken));
+      await api.reauthenticateWithCredential(user, api.GoogleAuthProvider.credential(idToken));
       return;
     }
 
-    await reauthenticateWithPopup(user, this.provider);
+    await api.reauthenticateWithPopup(user, new api.GoogleAuthProvider());
   }
 
   /**
@@ -180,13 +180,14 @@ export class AuthService {
    * account is deleted the security rules reject any further write.
    */
   async deleteAccount(): Promise<void> {
+    const firebase = this.bundle;
     const user = this.userSignal();
 
-    if (!this.auth || !user) {
+    if (!firebase || !user) {
       throw new Error('AUTH_REQUIRED');
     }
 
-    await deleteUser(user);
+    await firebase.api.deleteUser(user);
 
     if (this.nativePlatform.isNative) {
       // Drops the cached Google account so a later sign-in shows the picker.
@@ -194,22 +195,49 @@ export class AuthService {
     }
   }
 
-  private initializeAuth(): void {
-    if (!this.hasValidConfig()) {
+  /**
+   * Downloads and initialises Auth on first use, then hands back the same bundle.
+   * Resolves to null when Firebase is not configured or the chunk failed to load,
+   * which every caller treats as "cloud features unavailable" rather than an error.
+   */
+  private ensureAuth(): Promise<FirebaseAuthBundle | null> {
+    if (this.bundle) {
+      return Promise.resolve(this.bundle);
+    }
+
+    if (!isFirebaseConfigured()) {
+      console.warn('Firebase Auth is not configured. Fill firebase-auth.config.ts first.');
       this.loadingSignal.set(false);
+      return Promise.resolve(null);
+    }
+
+    this.bundleLoad ??= loadFirebaseAuth()
+      .then((bundle) => {
+        this.bundle = bundle;
+        this.watchAuthState(bundle);
+        return bundle;
+      })
+      .catch((error: unknown) => {
+        console.error('Could not load Firebase Auth:', error);
+        this.loadingSignal.set(false);
+        // Dropped so a later sign-in attempt retries instead of failing forever.
+        this.bundleLoad = null;
+        return null;
+      });
+
+    return this.bundleLoad;
+  }
+
+  private watchAuthState({ auth, api }: FirebaseAuthBundle): void {
+    if (this.watchingAuthState) {
       return;
     }
 
-    if (this.auth) {
-      return;
-    }
+    this.watchingAuthState = true;
 
-    const app = this.resolveApp();
-    this.auth = getAuth(app);
-
-    onAuthStateChanged(
-      this.auth,
-      (user) => {
+    api.onAuthStateChanged(
+      auth,
+      (user: User | null) => {
         this.userSignal.set(user);
         this.loadingSignal.set(false);
       },
@@ -219,17 +247,7 @@ export class AuthService {
       }
     );
   }
-
-  private resolveApp(): FirebaseApp {
-    return getApps().length ? getApp() : initializeApp(this.firebaseConfig);
-  }
-
-  private hasValidConfig(): boolean {
-    return Boolean(
-      this.firebaseConfig.apiKey &&
-      this.firebaseConfig.authDomain &&
-      this.firebaseConfig.projectId &&
-      this.firebaseConfig.appId
-    );
-  }
 }
+
+/** Re-exported so callers can keep typing against the SDK without importing it. */
+export type { Auth, User };

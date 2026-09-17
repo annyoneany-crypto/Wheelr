@@ -58,6 +58,12 @@ A user can have multiple named wheels (workspaces), each with independent settin
 ### Cloud sync (`wheel-cloud-repository.service.ts` + `auth.service.ts`)
 Optional Firebase (Firestore + Auth). Config in `firebase-auth.config.ts` (client-side keys, intentionally public). Wheels are stored under `users/{uid}/wheels/{cloudConfigId}` with a `WheelDisplayConfig[]` (one per group member). `getWheelDisplayConfigById` uses a `collectionGroup` query so public wheels are resolvable by `cloudConfigId` (or legacy `workspaceId`). Images are compressed to WebP before upload (`compressDisplayConfig`). `AuthService` exposes `user`/`isLoggedIn`/`email` signals.
 
+**The SDK is never imported statically — `firebase-lazy.ts` is the only door.** Auth and Firestore are ~365 kB raw / ~94 kB transfer, and `Header` injects both services on every page, so importing `firebase/*` anywhere puts the whole SDK back in the initial bundle for visitors who never sign in. Consequences to respect:
+
+- Import **types** with `import type`; values come from the bundle a loader hands back (`loadFirebaseAuth()` / `loadFirestore()` return `{ auth | db, api }`, the SDK namespace travelling with the instance). `auth.ts` duck-types `auth/*` error codes for the same reason, rather than `instanceof FirebaseError`.
+- `AuthService` loads Auth from `afterNextRender`, and **only if `hasPersistedFirebaseSession()` finds the SDK's persistence** (the `firebaseLocalStorageDb` IndexedDB database, or a `firebase:authUser:` localStorage key). Every uncertain case answers true: a wasted download beats showing a signed-in user as signed out. Sign-in itself always loads it.
+- `loading` gates the header's auth button, so any branch that decides *not* to load has to clear it.
+
 ### Account deletion (`info-utente`)
 Play requires apps with sign-up to offer in-app account deletion, so the account panel owns that flow rather than the header.
 

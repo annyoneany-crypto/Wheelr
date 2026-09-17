@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, input, output, signal } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
-import { FirebaseError } from 'firebase/app';
 
 @Component({
   selector: 'wl-auth',
@@ -115,8 +114,23 @@ export class WlAuth {
     }
   }
 
+  /**
+   * Duck-typed instead of `instanceof FirebaseError`: importing that class would
+   * pull firebase/app back into the initial bundle, which is exactly what the
+   * lazy loading in firebase-lazy.ts avoids. Auth errors are the only ones that
+   * reach here carrying an `auth/*` code.
+   */
+  private isFirebaseAuthError(error: unknown): error is { code: string } {
+    return (
+      !!error &&
+      typeof error === 'object' &&
+      typeof (error as { code?: unknown }).code === 'string' &&
+      (error as { code: string }).code.startsWith('auth/')
+    );
+  }
+
   private mapAuthErrorToMessage(error: unknown): string {
-    if (!(error instanceof FirebaseError)) {
+    if (!this.isFirebaseAuthError(error)) {
       const nativeMessage = this.mapNativeGoogleErrorToMessage(error);
       if (nativeMessage) {
         return nativeMessage;

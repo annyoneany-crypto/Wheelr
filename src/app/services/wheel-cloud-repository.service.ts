@@ -1,19 +1,5 @@
 import { Injectable, inject } from '@angular/core';
-import { FirebaseApp, getApp, getApps, initializeApp } from 'firebase/app';
-import {
-  collection,
-  collectionGroup,
-  deleteDoc,
-  doc,
-  getDocs,
-  getFirestore,
-  limit,
-  query,
-  serverTimestamp,
-  setDoc,
-  where,
-} from 'firebase/firestore';
-import { firebaseAuthConfig } from './firebase-auth.config';
+import { FirestoreBundle, loadFirestore } from './firebase-lazy';
 import { AuthService } from './auth.service';
 import { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.models';
 
@@ -44,31 +30,35 @@ export interface CloudWheelSyncItem {
 })
 export class WheelCloudRepository {
   private readonly authService = inject(AuthService);
-  private firestore = getFirestore(this.resolveApp());
 
+  // Every method below loads Firestore on demand (see firebase-lazy.ts) rather
+  // than holding an instance created at construction: this service is injected
+  // by the header on every page, and the SDK is 240 kB most visitors never need.
   async getWheelDisplayConfigById(configId: string): Promise<WheelPublicData | null> {
     const normalizedId = configId?.trim() ?? '';
     if (!normalizedId) {
       return null;
     }
 
-    const byCloudConfigId = query(
-      collectionGroup(this.firestore, 'wheels'),
-      where('cloudConfigId', '==', normalizedId),
-      limit(1)
+    const { db, api } = await loadFirestore();
+
+    const byCloudConfigId = api.query(
+      api.collectionGroup(db, 'wheels'),
+      api.where('cloudConfigId', '==', normalizedId),
+      api.limit(1)
     );
-    const byCloudConfigIdSnapshot = await getDocs(byCloudConfigId);
+    const byCloudConfigIdSnapshot = await api.getDocs(byCloudConfigId);
     const byCloudConfigDoc = byCloudConfigIdSnapshot.docs[0];
     if (byCloudConfigDoc) {
       return this.extractPublicData(byCloudConfigDoc.data());
     }
 
-    const byWorkspaceId = query(
-      collectionGroup(this.firestore, 'wheels'),
-      where('workspaceId', '==', normalizedId),
-      limit(1)
+    const byWorkspaceId = api.query(
+      api.collectionGroup(db, 'wheels'),
+      api.where('workspaceId', '==', normalizedId),
+      api.limit(1)
     );
-    const byWorkspaceSnapshot = await getDocs(byWorkspaceId);
+    const byWorkspaceSnapshot = await api.getDocs(byWorkspaceId);
     const fallbackDoc = byWorkspaceSnapshot.docs[0];
 
     if (!fallbackDoc) {
@@ -85,12 +75,16 @@ export class WheelCloudRepository {
       throw new Error('AUTH_REQUIRED');
     }
 
+    const firestore = await loadFirestore();
+    const { db, api } = firestore;
+
     const requestedCloudId = payload.cloudConfigId?.trim() ?? '';
     const resolvedCloudId = await this.resolveUniqueCloudConfigId(
+      firestore,
       user.uid,
       requestedCloudId
     );
-    const wheelDocRef = doc(this.firestore, 'users', user.uid, 'wheels', resolvedCloudId);
+    const wheelDocRef = api.doc(db, 'users', user.uid, 'wheels', resolvedCloudId);
 
     const displayConfigs = payload.displayConfigs.length
       ? payload.displayConfigs
@@ -100,7 +94,7 @@ export class WheelCloudRepository {
     );
     const primaryDisplayConfig = compressedDisplayConfigs[0] ?? null;
 
-    await setDoc(
+    await api.setDoc(
       wheelDocRef,
       {
         cloudConfigId: resolvedCloudId,
@@ -113,7 +107,7 @@ export class WheelCloudRepository {
         ownerEmail: user.email ?? '',
         displayConfig: primaryDisplayConfig,
         displayConfigs: compressedDisplayConfigs,
-        syncedAt: serverTimestamp(),
+        syncedAt: api.serverTimestamp(),
       },
       { merge: true }
     );
@@ -127,8 +121,9 @@ export class WheelCloudRepository {
       throw new Error('AUTH_REQUIRED');
     }
 
-    const wheelsCollection = collection(this.firestore, 'users', user.uid, 'wheels');
-    const snapshot = await getDocs(wheelsCollection);
+    const { db, api } = await loadFirestore();
+    const wheelsCollection = api.collection(db, 'users', user.uid, 'wheels');
+    const snapshot = await api.getDocs(wheelsCollection);
 
     return snapshot.docs
       .map((entry) => this.extractCloudSyncItem(entry.data()))
@@ -146,18 +141,20 @@ export class WheelCloudRepository {
       return;
     }
 
-    const existing = query(
-      collectionGroup(this.firestore, 'wheels'),
-      where('cloudConfigId', '==', normalizedCloudId),
-      where('ownerUid', '==', user.uid)
+    const { db, api } = await loadFirestore();
+
+    const existing = api.query(
+      api.collectionGroup(db, 'wheels'),
+      api.where('cloudConfigId', '==', normalizedCloudId),
+      api.where('ownerUid', '==', user.uid)
     );
-    const snapshot = await getDocs(existing);
+    const snapshot = await api.getDocs(existing);
 
     if (snapshot.empty) {
       return;
     }
 
-    await Promise.all(snapshot.docs.map((item) => deleteDoc(item.ref)));
+    await Promise.all(snapshot.docs.map((item) => api.deleteDoc(item.ref)));
   }
 
   /**
@@ -171,18 +168,20 @@ export class WheelCloudRepository {
       throw new Error('AUTH_REQUIRED');
     }
 
-    const wheelsCollection = collection(this.firestore, 'users', user.uid, 'wheels');
-    const snapshot = await getDocs(wheelsCollection);
+    const { db, api } = await loadFirestore();
+    const wheelsCollection = api.collection(db, 'users', user.uid, 'wheels');
+    const snapshot = await api.getDocs(wheelsCollection);
 
-    await Promise.all(snapshot.docs.map((entry) => deleteDoc(entry.ref)));
+    await Promise.all(snapshot.docs.map((entry) => api.deleteDoc(entry.ref)));
   }
 
   private async resolveUniqueCloudConfigId(
+    firestore: FirestoreBundle,
     userUid: string,
     requestedCloudId: string
   ): Promise<string> {
     if (requestedCloudId) {
-      const duplicate = await this.findByCloudConfigId(requestedCloudId);
+      const duplicate = await this.findByCloudConfigId(firestore, requestedCloudId);
       if (!duplicate) {
         return requestedCloudId;
       }
@@ -196,9 +195,11 @@ export class WheelCloudRepository {
       }
     }
 
+    const { db, api } = firestore;
+
     for (let attempt = 0; attempt < 5; attempt += 1) {
-      const candidate = doc(collection(this.firestore, 'users', userUid, 'wheels')).id;
-      const duplicate = await this.findByCloudConfigId(candidate);
+      const candidate = api.doc(api.collection(db, 'users', userUid, 'wheels')).id;
+      const duplicate = await this.findByCloudConfigId(firestore, candidate);
       if (!duplicate) {
         return candidate;
       }
@@ -207,13 +208,13 @@ export class WheelCloudRepository {
     throw new Error('UNIQUE_KEY_GENERATION_FAILED');
   }
 
-  private async findByCloudConfigId(cloudConfigId: string) {
-    const check = query(
-      collectionGroup(this.firestore, 'wheels'),
-      where('cloudConfigId', '==', cloudConfigId),
-      limit(1)
+  private async findByCloudConfigId({ db, api }: FirestoreBundle, cloudConfigId: string) {
+    const check = api.query(
+      api.collectionGroup(db, 'wheels'),
+      api.where('cloudConfigId', '==', cloudConfigId),
+      api.limit(1)
     );
-    const snapshot = await getDocs(check);
+    const snapshot = await api.getDocs(check);
     return snapshot.docs[0] ?? null;
   }
 
@@ -267,10 +268,6 @@ export class WheelCloudRepository {
       image.onerror = () => resolve(null);
       image.src = dataUrl;
     });
-  }
-
-  private resolveApp(): FirebaseApp {
-    return getApps().length ? getApp() : initializeApp(firebaseAuthConfig);
   }
 
   private extractPublicData(data: unknown): WheelPublicData | null {
