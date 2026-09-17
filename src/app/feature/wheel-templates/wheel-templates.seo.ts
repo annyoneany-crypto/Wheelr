@@ -345,6 +345,325 @@ export const TEMPLATE_SEO: Readonly<Record<string, WheelTemplateSeo>> = {
       },
     ],
   },
+  'random-name-picker': {
+    slug: 'random-name-picker',
+    title: 'Random Name Picker | Free Name Wheel Spinner',
+    description:
+      'A free random name picker for classrooms, meetings and calls. Paste your list, spin the wheel, and the name is chosen in front of everyone.',
+    heading: 'Random Name Picker',
+    intro:
+      'Calling on someone is the moment a room decides whether you are fair. A wheel takes the choice out of your hands: the name is drawn in front of everybody, so nobody is picked on and nobody is skipped.',
+    sections: [
+      {
+        heading: 'Paste the register and go',
+        body: 'Add the whole list in one go rather than typing names one at a time, shuffle it, and start spinning. A teacher can set this up between two lessons, and the same wheel stays saved for the rest of the term.',
+      },
+      {
+        heading: 'Nobody twice, or everybody eventually',
+        body: 'Remove each name after it is drawn and the wheel works through the class without repeats — which is how you make sure the quiet students get their turn too. Leave the names in and it stays a lottery, better for handing out a single prize.',
+      },
+    ],
+    faq: [
+      {
+        question: 'How many names can the picker hold?',
+        answer:
+          'A full class fits comfortably. Past roughly thirty entries the labels on the wheel get thin, so very long lists are easier to read split across a few wheels.',
+      },
+      {
+        question: 'Can I stop a name from being picked twice?',
+        answer:
+          'Yes. Turn on removing the winner after each spin and each name is drawn at most once, so consecutive spins work through the whole list.',
+      },
+    ],
+  },
+
+  'would-you-rather': {
+    slug: 'would-you-rather-wheel',
+    title: 'Would You Rather Wheel | Free Question Spinner',
+    description:
+      'A free would you rather wheel: spin for an impossible choice and make everyone defend their answer. Add your own questions in seconds.',
+    heading: 'Would You Rather Wheel',
+    intro:
+      'The hard part of would you rather is thinking of a question that nobody has heard before. Let the wheel hold the questions, and the game runs itself — spin, read it out, go round the group.',
+    sections: [
+      {
+        heading: 'Good for a queue, a car or a classroom',
+        body: 'It needs no setup and no props, which is why it works in the places where a game normally cannot start: waiting somewhere, a long drive, the last ten minutes of a lesson. One phone passed around is enough.',
+      },
+      {
+        heading: 'Write the questions for your group',
+        body: 'Copy the wheel and replace the entries with dilemmas aimed at the people playing — in-jokes, work scenarios, questions only your friends would find funny. A wheel written by the group is always better than a generic list.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I add my own would you rather questions?',
+        answer:
+          'Yes. Copy the wheel, replace the entries with your own, and your version is saved on your device for the next time you play.',
+      },
+      {
+        question: 'How do I keep it suitable for kids?',
+        answer:
+          'Write the wheel in advance with the questions you are happy with. Because the wheel only ever offers what is written on it, there are no surprises mid-game.',
+      },
+    ],
+  },
+
+  'never-have-i-ever': {
+    slug: 'never-have-i-ever-wheel',
+    title: 'Never Have I Ever Wheel | Free Party Game Spinner',
+    description:
+      'A free never have I ever wheel for game nights. Spin for the prompt, see who owns up, and add your own statements whenever you like.',
+    heading: 'Never Have I Ever Wheel',
+    intro:
+      'Never have I ever stalls the moment somebody has to invent the next statement. Put them on a wheel and the game keeps its rhythm: spin, read it out, watch who gives themselves away.',
+    sections: [
+      {
+        heading: 'The wheel is the host',
+        body: 'Nobody has to run the game, which also means nobody can aim a statement at one person in particular. The wheel picking at random is what keeps it light — everyone is exposed by chance rather than by the person whose turn it was.',
+      },
+      {
+        heading: 'Build your own set',
+        body: 'The default statements are mild on purpose. Copy the wheel and write your own for the group you are playing with, and keep more than one version — a work-party wheel and a close-friends wheel are not the same list.',
+      },
+    ],
+    faq: [
+      {
+        question: 'How many players does it work with?',
+        answer:
+          'Any number. The wheel only picks the statement; how you score it — fingers down, points, forfeits — is up to the group.',
+      },
+      {
+        question: 'Can everyone see the wheel at once?',
+        answer:
+          'Share it as a read-only public link and everyone opens the same wheel in their own browser, or put one screen in the middle of the table.',
+      },
+    ],
+  },
+
+  'chore-wheel': {
+    slug: 'chore-wheel',
+    title: 'Chore Wheel | Free Chore Chart Spinner',
+    description:
+      'A free chore wheel for housemates and families. Spin to assign the washing up, the bins and everything nobody volunteers for — without the argument.',
+    heading: 'Chore Wheel',
+    intro:
+      'Every shared house has the same argument, and it is never really about the dishes. A wheel settles it without anyone having to be the one who decided: spin, read the result, it is done.',
+    sections: [
+      {
+        heading: 'Chores or people — pick a side',
+        body: 'Put the chores on the wheel and spin once per person, or put the housemates on it and spin once per chore. The second version is better when one job is far worse than the others, because everybody watches that particular spin.',
+      },
+      {
+        heading: 'Make it weekly',
+        body: 'Add a "day off" slice so there is something to hope for, and remove each chore once it is assigned so the wheel shares out the whole list. Keep the wheel saved and re-spin it every Sunday — the routine is what stops the argument coming back.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I add or remove chores?',
+        answer:
+          'Yes. Copy the wheel and edit the entries to match your household — the version you make is saved on your device.',
+      },
+      {
+        question: 'Can I make one chore rarer than the others?',
+        answer:
+          'The odds are just the slices. Repeat the chores you want to come up more often and leave the worst one as a single slice.',
+      },
+    ],
+  },
+
+  'secret-santa': {
+    slug: 'secret-santa-wheel',
+    title: 'Secret Santa Wheel | Free Gift Exchange Name Draw',
+    description:
+      'Draw Secret Santa names with a wheel instead of a hat. Free, works for an office or a family, and everyone sees the draw happen.',
+    heading: 'Secret Santa Wheel',
+    intro:
+      'A hat full of folded paper only works when everyone is in the same room. A wheel draws the names in front of whoever is watching — in the office, on a call, or in a group chat with the screen shared.',
+    sections: [
+      {
+        heading: 'How to run the draw',
+        body: 'Put every participant on the wheel and spin once for each giver, removing each name as it comes out so nobody is assigned twice. The winners list keeps the order the names were drawn in, which is the record you check when somebody forgets who they had.',
+      },
+      {
+        heading: 'Keeping it secret',
+        body: 'The catch with a public draw is that it is public. For a genuinely secret exchange, spin privately for each person and tell them their name individually — the wheel is doing the randomising, not the announcing.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can the wheel avoid pairing someone with themselves?',
+        answer:
+          'Remove the giver’s own name from the wheel before their spin, and remove each drawn name afterwards. That is the whole trick, and it takes a second per person.',
+      },
+      {
+        question: 'Does everyone need an account?',
+        answer:
+          'No. The wheel runs in any browser with no signup, and a read-only public link lets everyone watch the same one without signing in.',
+      },
+    ],
+  },
+
+  'random-letter': {
+    slug: 'random-letter-generator',
+    title: 'Random Letter Generator | Free A–Z Wheel',
+    description:
+      'A free random letter generator: spin the A to Z wheel for word games, categories, spelling practice and writing prompts.',
+    heading: 'Random Letter Generator',
+    intro:
+      'Twenty-six letters, one spin. It is the starting gun for half the word games ever invented — categories, Scattergories-style rounds, spelling practice, a writing prompt when the page is blank.',
+    sections: [
+      {
+        heading: 'For the games that need a letter',
+        body: 'Name a country, an animal and a food starting with the letter it lands on; give a class a letter to spell words from; start a story with it. The wheel is doing something a generator also does, with the difference that everyone playing watched it land.',
+      },
+      {
+        heading: 'Drop the awkward letters',
+        body: 'Copy the wheel and remove Q, X and Z if the game keeps grinding to a halt on them — or keep them and make them worth double. Vowels only, consonants only and a shortened alphabet for younger children are all a few edits away.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Are all 26 letters equally likely?',
+        answer:
+          'Yes, every letter is one slice of the same size, and the spin uses a cryptographic random source. No letter is weighted unless you add it twice.',
+      },
+      {
+        question: 'The letters look small — can I make them bigger?',
+        answer:
+          'Twenty-six slices is a lot for one wheel. Removing letters you do not need makes the rest larger, and the linear and card views show the same wheel with more room for each label.',
+      },
+    ],
+  },
+
+  'random-country': {
+    slug: 'random-country-wheel',
+    title: 'Random Country Wheel | Free Country Picker',
+    description:
+      'A free random country picker: spin the wheel for geography lessons, quiz rounds, travel ideas and language practice.',
+    heading: 'Random Country Wheel',
+    intro:
+      'A random country is a lesson plan, a quiz round and a travel daydream in one spin. Put the ones you want on the wheel and let it choose where the conversation goes.',
+    sections: [
+      {
+        heading: 'In a classroom or a pub quiz',
+        body: 'Spin for the country a student has to present, the flag the table has to name, or the capital city nobody can remember. Narrow the wheel to one continent when the topic is narrower — a wheel of twelve African countries teaches more than a wheel of the whole world.',
+      },
+      {
+        heading: 'Or for deciding where to go',
+        body: 'The same wheel works as a travel shortlist when a group cannot agree. Put the countries you would actually visit on it, spin, and the discussion moves on from "where" to "when".',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I choose which countries are on the wheel?',
+        answer:
+          'Yes. Copy the wheel and replace the entries with any list you like — a continent, the countries in a syllabus, or the five places on your shortlist.',
+      },
+      {
+        question: 'Can I show flags instead of names?',
+        answer:
+          'Flag emoji work as entries, and each slice can also take its own image if you want the wheel to be pictures rather than words.',
+      },
+    ],
+  },
+
+  'random-animal': {
+    slug: 'random-animal-wheel',
+    title: 'Random Animal Wheel | Free Animal Picker Spinner',
+    description:
+      'A free random animal generator for charades, drawing games and classrooms. Spin the wheel and act out, draw or describe whatever it lands on.',
+    heading: 'Random Animal Wheel',
+    intro:
+      'Give a child a random animal and you have a game: act it out, draw it, make its noise, say three facts about it. The wheel is the part that keeps it fair and stops anyone choosing the easy one.',
+    sections: [
+      {
+        heading: 'Charades, drawing and guessing games',
+        body: 'The wheel hands out the animal so the person whose turn it is does not get to pick something easy. It works the same for a class of thirty and for two children at a kitchen table, and needs nothing but a screen.',
+      },
+      {
+        heading: 'Match it to what you are teaching',
+        body: 'Copy the wheel and swap in the animals from the topic you are on — habitats, farm animals, minibeasts, the ones in the book you are reading. A wheel built around a lesson is worth more than a generic one.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I use pictures instead of names?',
+        answer:
+          'Yes. Each slice can carry its own image, which is what you want for children who are not reading yet.',
+      },
+      {
+        question: 'Can I make the wheel easier for younger children?',
+        answer:
+          'Fewer entries means bigger slices and simpler choices. A six-animal wheel is easier to play with than a twenty-animal one.',
+      },
+    ],
+  },
+
+  'date-night': {
+    slug: 'date-night-ideas-wheel',
+    title: 'Date Night Ideas Wheel | Free Date Night Spinner',
+    description:
+      'Out of date night ideas? Spin the wheel and let it plan the evening. Free, no signup, and you can fill it with the things you both actually want to do.',
+    heading: 'Date Night Ideas Wheel',
+    intro:
+      '"What do you want to do?" "I don’t mind." Two people who both do not mind will get to the end of the evening having done nothing. A wheel picks, and the evening starts on time.',
+    sections: [
+      {
+        heading: 'Put your own ideas on it',
+        body: 'The stock ideas are a starting point; the wheel becomes useful when it holds the things you keep saying you should do and never book. Add the restaurant you walked past, the film neither of you has watched, the walk you meant to take.',
+      },
+      {
+        heading: 'Keep a cheap wheel and an expensive one',
+        body: 'One wheel for a free Tuesday and one for a proper night out is the split most couples land on. Both stay saved, so the choice is which wheel to spin rather than what to do.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can we both see the same wheel?',
+        answer:
+          'Publish it as a read-only public link and it opens in any browser, on either phone, with no account needed.',
+      },
+      {
+        question: 'Can I add ideas over time?',
+        answer:
+          'Yes — the wheel is editable whenever you like, so it grows as you think of things. It stays on your device, and signing in syncs it across your devices.',
+      },
+    ],
+  },
+
+  'where-to-travel': {
+    slug: 'where-to-travel-wheel',
+    title: 'Where to Travel Wheel | Random Destination Picker',
+    description:
+      'A free random destination picker: put your travel shortlist on the wheel, spin, and stop rereading the same three tabs.',
+    heading: 'Where to Travel Wheel',
+    intro:
+      'A travel shortlist that never gets shorter is not a shortlist. Put the places on a wheel, agree in advance that the spin decides, and the trip stops being a discussion and becomes a date in a calendar.',
+    sections: [
+      {
+        heading: 'Shortlist first, spin second',
+        body: 'The wheel is not there to pick from every city on earth — it is there to close a list you have already agreed on. Six to ten places everyone would genuinely be happy with is the version that works; anything longer and somebody will want to re-spin.',
+      },
+      {
+        heading: 'For groups who never decide',
+        body: 'Group trips die in the planning. Spinning in front of everybody makes the decision collective without a vote, and nobody ends up responsible for the choice — which is usually the real reason nobody wants to make it.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Can I weight the wheel towards cheaper destinations?',
+        answer:
+          'Add a place more than once and it takes more slices, so it comes up more often. That is all weighting is here.',
+      },
+      {
+        question: 'Can I share the wheel with the people I am travelling with?',
+        answer:
+          'Yes. A read-only public link opens in any browser with no account, so everyone can see the shortlist and the spin.',
+      },
+    ],
+  },
 };
 
 export interface TemplateLandingPage {
