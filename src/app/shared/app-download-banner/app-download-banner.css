@@ -1,0 +1,33 @@
+:host {
+  /* Purely an anchor for a fixed child: it must not take part in the layout. */
+  display: contents;
+}
+
+/* `--wl-bottom-bar-offset` clears the SEO footer the web build pins to the
+   bottom of every page (see src/styles.css). */
+.wl-app-banner {
+  bottom: calc(var(--wl-bottom-bar-offset) + 0.75rem);
+  animation: wl-app-banner-in 0.35s ease-out both;
+}
+
+/* Below lg the wheel controls live in a bottom bar, so the banner has to sit
+   above it — same offset the wheel page uses for its own bottom-anchored UI. */
+@media (max-width: 1023.98px) {
+  .wl-app-banner {
+    bottom: calc(
+      var(--wl-bottom-bar-offset) + var(--wl-bottom-bar-height) +
+      env(safe-area-inset-bottom) + 0.75rem
+    );
+  }
+}
+
+@keyframes wl-app-banner-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-app-banner {
+    animation: none;
+  }
+}

@@ -1,0 +1,43 @@
+@if (isVisible()) {
+  <aside
+    class="wl-app-banner fixed right-3 lg:right-8 z-40 max-w-[calc(100vw-1.5rem)]
+      flex items-center gap-2 rounded-2xl
+      border border-amber-400/40 bg-neutral-950/85 backdrop-blur-xl
+      pl-3 pr-2 py-2
+      shadow-[0_8px_30px_rgba(0,0,0,0.5)]"
+    aria-label="Wheelr for Android">
+    <a
+      [href]="storeUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="group flex min-w-0 items-center gap-3 rounded-xl px-1 py-0.5
+        transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98]"
+      aria-label="Download Wheelr for Android on Google Play (opens in a new tab)">
+      <span
+        class="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl
+          border border-amber-400/40 bg-amber-400/10
+          text-amber-300 transition-colors group-hover:bg-amber-400/20">
+        <i class="fa-brands fa-google-play text-base" aria-hidden="true"></i>
+      </span>
+      <span class="min-w-0">
+        <span class="block text-[0.6rem] font-medium uppercase tracking-[0.2em] text-amber-300/80">
+          Wheelr for Android
+        </span>
+        <span class="block truncate text-sm font-bold text-white group-hover:text-amber-200 transition-colors">
+          Get it on Google Play
+        </span>
+      </span>
+    </a>
+
+    <button
+      type="button"
+      (click)="dismiss()"
+      class="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-xl
+        text-white/50 hover:cursor-pointer hover:bg-white/[0.08] hover:text-white
+        transition-colors duration-200"
+      aria-label="Dismiss the app download banner"
+      title="Dismiss">
+      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+    </button>
+  </aside>
+}

@@ -5,12 +5,14 @@ import { injectSpeedInsights } from '@vercel/speed-insights';
 import { AdsService } from './services/ads.service';
 import { SeoService } from './services/seo.service';
 import { NativePlatformService } from './services/native-platform.service';
+import { WlAppDownloadBanner } from './shared/app-download-banner/app-download-banner';
 
 @Component({
   selector: 'app-root',
   imports: [
     Header,
-    RouterOutlet
+    RouterOutlet,
+    WlAppDownloadBanner
 ],
   templateUrl: './app.html',
   styleUrl: './app.css',
