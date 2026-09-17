@@ -1,8 +1,9 @@
 import { Routes } from '@angular/router';
+import { INFO_FAQ_JSON_LD } from './services/seo-structured-data';
 
-// `data.seo` feeds SeoService: title, description, canonical and the social tags
-// are re-applied on every navigation. A route without it falls back to the
-// homepage values baked into index.html.
+// `data.seo` feeds SeoService: title, description, canonical, robots, the social
+// tags and the page-level JSON-LD are re-applied on every navigation. A route
+// without it falls back to the homepage values baked into index.html.
 export const routes: Routes = [
     {
         path: '',
@@ -49,7 +50,9 @@ export const routes: Routes = [
             seo: {
                 title: 'How to Use Wheelr | Spin Wheel Guide, Examples & FAQ',
                 description:
-                    'Step-by-step guide to the Wheelr spin wheel: add participants, customize colors and sounds, run giveaways, classroom picks and live stream draws. With FAQ.'
+                    'Step-by-step guide to the Wheelr spin wheel: add participants, customize colors and sounds, run giveaways, classroom picks and live stream draws. With FAQ.',
+                breadcrumb: 'Guide',
+                jsonLd: [INFO_FAQ_JSON_LD]
             }
         }
     },
@@ -60,7 +63,8 @@ export const routes: Routes = [
             seo: {
                 title: 'Support Wheelr | Keep the Free Wheel Spinner Free',
                 description:
-                    'Wheelr is free and always will be. If it saves your team time or makes your events more fun, a donation keeps the project running.'
+                    'Wheelr is free and always will be. If it saves your team time or makes your events more fun, a donation keeps the project running.',
+                breadcrumb: 'Support'
             }
         }
     },
@@ -71,7 +75,8 @@ export const routes: Routes = [
             seo: {
                 title: 'Wheel Templates | Ready-Made Spin Wheels - Wheelr',
                 description:
-                    'Ready-made wheels you can load in one click: Yes or No, Prize Giveaway, Team Picker, Truth or Dare, Discount Wheel, Movie Night and more. Free, no signup.'
+                    'Ready-made wheels you can load in one click: Yes or No, Prize Giveaway, Team Picker, Truth or Dare, Discount Wheel, Movie Night and more. Free, no signup.',
+                breadcrumb: 'Templates'
             }
         }
     },
@@ -82,11 +87,18 @@ export const routes: Routes = [
             seo: {
                 title: 'Privacy Policy - Wheelr',
                 description:
-                    'What Wheelr collects on the web and in the Android app, why, the GDPR basis for it, and how to export or delete your data at any time.'
+                    'What Wheelr collects on the web and in the Android app, why, the GDPR basis for it, and how to export or delete your data at any time.',
+                breadcrumb: 'Privacy'
             }
         }
     },
     // Keep every static page above this: ':id' swallows any single-segment path.
+    //
+    // Shared wheels are user content, not pages of this site: they are thin, they
+    // all share one title, they are never linked from the sitemap, and ':id' also
+    // catches every mistyped URL — which would otherwise enter the index as a
+    // soft 404. 'follow' still passes their links on, and the og: tags are
+    // untouched, so link previews keep working.
     {
         path: ':id',
         loadComponent: () => import('./feature/public-wheel/public-wheel').then((x) => x.PublicWheel),
@@ -94,7 +106,8 @@ export const routes: Routes = [
             seo: {
                 title: 'Shared Wheel - Wheelr',
                 description:
-                    'A wheel shared with Wheelr, the free online wheel spinner. Open the link to see the entries and spin it — no account needed.'
+                    'A wheel shared with Wheelr, the free online wheel spinner. Open the link to see the entries and spin it — no account needed.',
+                robots: 'noindex, follow'
             }
         }
     },

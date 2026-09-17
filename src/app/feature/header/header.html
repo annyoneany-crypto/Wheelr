@@ -9,9 +9,11 @@
             <div class="absolute w-5 h-5 bg-blue-500 rounded-full blur-xl" style="bottom: 5px; left: 0px; box-shadow: 0 0 15px rgba(59, 130, 246, 0.8);"></div>
             <div class="absolute w-6 h-6 bg-purple-500 rounded-full blur-xl" style="top: 5px; right: 5px; box-shadow: 0 0 20px rgba(168, 85, 247, 0.8);"></div>
           </div>
-          <h1 class="relative z-10 text-xl md:text-3xl uppercase font-black text-white truncate tracking-wide drop-shadow-[0_0_12px_rgba(245,158,11,0.3)]">
-              Wheelr
-          </h1>
+          @if (isWheelRoute()) {
+            <h1 class="wl-brand">Wheelr</h1>
+          } @else {
+            <p class="wl-brand">Wheelr</p>
+          }
         </div>
         @if (isWheelRoute()) {
           <span

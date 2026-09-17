@@ -7,20 +7,43 @@ import { filter } from 'rxjs';
 export interface PageSeo {
   title: string;
   description: string;
+  /**
+   * `<meta name="robots">`. Defaults to indexable; set `noindex, follow` on
+   * routes that are not pages of this site in their own right.
+   */
+  robots?: string;
+  /** Label of this page in the breadcrumb trail. Omit to emit no breadcrumbs. */
+  breadcrumb?: string;
+  /** Extra JSON-LD nodes describing *this page's* content (see seo-structured-data.ts). */
+  jsonLd?: readonly object[];
 }
 
 const ORIGIN = 'https://www.wheelr.xyz';
+
+const INDEXABLE = 'index, follow';
+
+/**
+ * A `googlebot` directive overrides the generic `robots` one for Google, so the
+ * two always move together — leaving the rich indexable default in place next to
+ * a `noindex` robots tag would simply keep the page in the index.
+ */
+const GOOGLEBOT_INDEXABLE =
+  'index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1';
 
 /** Mirrors the tags baked into `index.html`, used for any route without its own. */
 const DEFAULT_SEO: PageSeo = {
   title: 'Free Wheel Online | Spin the Wheel & Random Picker - Wheelr',
   description:
     'Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now — no signup needed!',
+  robots: INDEXABLE,
 };
 
+/** Marks the JSON-LD block this service owns, so it can be replaced wholesale. */
+const ROUTE_JSON_LD_ATTR = 'data-wl-route-seo';
+
 /**
- * Keeps title, description, canonical and the social tags in sync with the
- * active route.
+ * Keeps title, description, canonical, robots, the social tags and the
+ * page-level JSON-LD in sync with the active route.
  *
  * The canonical is built from the **primary outlet segments only**, never from
  * `document.URL`: the settings panels are secondary-outlet routes, so the raw
@@ -56,15 +79,22 @@ export class SeoService {
 
   private apply(seo: PageSeo): void {
     const url = this.canonicalUrl();
+    const robots = seo.robots ?? INDEXABLE;
 
     this.titleService.setTitle(seo.title);
     this.meta.updateTag({ name: 'description', content: seo.description });
+    this.meta.updateTag({ name: 'robots', content: robots });
+    this.meta.updateTag({
+      name: 'googlebot',
+      content: robots === INDEXABLE ? GOOGLEBOT_INDEXABLE : robots,
+    });
     this.meta.updateTag({ property: 'og:title', content: seo.title });
     this.meta.updateTag({ property: 'og:description', content: seo.description });
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ name: 'twitter:title', content: seo.title });
     this.meta.updateTag({ name: 'twitter:description', content: seo.description });
     this.setCanonical(url);
+    this.setRouteJsonLd(seo, url);
   }
 
   /** `https://www.wheelr.xyz/templates` — origin plus the primary-outlet path. */
@@ -109,5 +139,47 @@ export class SeoService {
     }
 
     link.setAttribute('href', url);
+  }
+
+  /**
+   * Replaces the page-level JSON-LD block. The site-wide entities stay in
+   * `index.html` untouched; only what describes *this* page is rewritten, so a
+   * FAQ never follows the reader onto the privacy policy.
+   */
+  private setRouteJsonLd(seo: PageSeo, url: string): void {
+    this.document
+      .querySelectorAll(`script[${ROUTE_JSON_LD_ATTR}]`)
+      .forEach((script) => script.remove());
+
+    const graph = [...this.breadcrumbNodes(seo, url), ...(seo.jsonLd ?? [])];
+    if (!graph.length) {
+      return;
+    }
+
+    const script = this.document.createElement('script');
+    script.setAttribute('type', 'application/ld+json');
+    script.setAttribute(ROUTE_JSON_LD_ATTR, '');
+    script.textContent = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph });
+    this.document.head.appendChild(script);
+  }
+
+  /**
+   * Home → this page. A single-item trail says nothing, so the homepage and any
+   * route without a `breadcrumb` label emit none at all.
+   */
+  private breadcrumbNodes(seo: PageSeo, url: string): object[] {
+    if (!seo.breadcrumb) {
+      return [];
+    }
+
+    return [
+      {
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          { '@type': 'ListItem', position: 1, name: 'Home', item: `${ORIGIN}/` },
+          { '@type': 'ListItem', position: 2, name: seo.breadcrumb, item: url },
+        ],
+      },
+    ];
   }
 }

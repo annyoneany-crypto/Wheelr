@@ -4,7 +4,7 @@
 
 /* Long-form legal copy: give the prose comfortable rhythm without repeating the
    same utility classes on every paragraph of the page. */
-.wl-legal h3 {
+.wl-legal h2 {
   margin-top: 2rem;
   margin-bottom: 0.75rem;
   font-size: 1.125rem;
@@ -12,7 +12,7 @@
   color: #fff;
 }
 
-.wl-legal h3:first-child {
+.wl-legal h2:first-child {
   margin-top: 0;
 }
 

@@ -23,8 +23,8 @@
   <meta property="og:description" content="Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now!">
   <meta property="og:url" content="https://www.wheelr.xyz/">
   <meta property="og:image" content="https://www.wheelr.xyz/Wheelr.webp">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
+  <meta property="og:image:width" content="965">
+  <meta property="og:image:height" content="751">
   <meta property="og:image:alt" content="Wheelr - Free online wheel spinner">
   <meta property="og:locale" content="en_US">
   <meta property="og:site_name" content="Wheelr">
@@ -75,20 +75,28 @@
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@type": "Person",
+        "@id": "https://www.wheelr.xyz/#author",
+        "name": "AnnyoneAny",
+        "url": "https://x.com/AnnyoneAny",
+        "sameAs": [
+          "https://x.com/AnnyoneAny"
+        ]
+      },
+      {
         "@type": "WebSite",
         "name": "Wheelr",
         "url": "https://www.wheelr.xyz",
         "inLanguage": "en",
         "publisher": {
-          "@type": "Person",
-          "name": "AnnyoneAny",
-          "sameAs": ["https://x.com/AnnyoneAny"]
+          "@id": "https://www.wheelr.xyz/#author"
         },
         "potentialAction": {
           "@type": "SearchAction",
           "target": "https://www.wheelr.xyz/?q={search_term_string}",
           "query-input": "required name=search_term_string"
-        }
+        },
+        "@id": "https://www.wheelr.xyz/#website"
       },
       {
         "@type": "WebApplication",
@@ -136,9 +144,11 @@
           "priceCurrency": "USD"
         },
         "author": {
-          "@type": "Person",
-          "name": "AnnyoneAny",
-          "sameAs": ["https://x.com/AnnyoneAny"]
+          "@id": "https://www.wheelr.xyz/#author"
+        },
+        "@id": "https://www.wheelr.xyz/#webapp",
+        "isPartOf": {
+          "@id": "https://www.wheelr.xyz/#website"
         }
       },
       {
@@ -157,124 +167,12 @@
           "priceCurrency": "USD"
         },
         "author": {
-          "@type": "Person",
-          "name": "AnnyoneAny",
-          "sameAs": ["https://x.com/AnnyoneAny"]
+          "@id": "https://www.wheelr.xyz/#author"
+        },
+        "@id": "https://www.wheelr.xyz/#androidapp",
+        "isPartOf": {
+          "@id": "https://www.wheelr.xyz/#website"
         }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is Wheelr completely free to use?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, Wheelr is 100% free. No registration, no credit card, no hidden fees. You can spin the wheel, customize colors, add sounds, and run giveaways at no cost."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I spin the wheel for a giveaway?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Add participant names, customize your wheel colors and sounds, then click the spin button. The wheel randomly selects a winner with a fair and transparent extraction."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use Wheelr as a yes or no wheel?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Absolutely. Just add 'Yes' and 'No' as the two options on the wheel and spin. It works perfectly as a quick decision maker for any yes-or-no question."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How many wheels can I manage at the same time?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "You can manage up to 4 wheels simultaneously, each with its own set of participants, colors, and settings. Switch between them instantly during events."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Can I use Wheelr for classroom activities?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, Wheelr is perfect for classrooms. Teachers use it to randomly pick students for questions, assign tasks, create fun learning games, and keep students engaged."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does Wheelr work for live stream giveaways?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes, Wheelr is designed for live streams and events. Add viewer names, customize the wheel to match your stream branding, and use countdown sounds for extra suspense."
-            }
-          }
-        ]
-      },
-      {
-        "@type": "HowTo",
-        "name": "How to run a giveaway with Wheelr",
-        "description": "A step-by-step guide to running a fair and fun giveaway using the Wheelr spin wheel.",
-        "totalTime": "PT2M",
-        "step": [
-          {
-            "@type": "HowToStep",
-            "position": 1,
-            "name": "Add participants",
-            "text": "Open Wheelr and add the names of all participants to the wheel."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 2,
-            "name": "Customize the wheel",
-            "text": "Choose your color palette, background, and center logo to match your event branding."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 3,
-            "name": "Set sounds and effects",
-            "text": "Configure rotation sounds, countdown timer, and winner announcement effects."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 4,
-            "name": "Spin the wheel",
-            "text": "Click the spin button and watch the wheel randomly select a winner with a fair extraction."
-          },
-          {
-            "@type": "HowToStep",
-            "position": 5,
-            "name": "Announce the winner",
-            "text": "The winner is displayed on screen with optional celebration effects and sounds."
-          }
-        ]
-      },
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.wheelr.xyz/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Info",
-            "item": "https://www.wheelr.xyz/info"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "Donation",
-            "item": "https://www.wheelr.xyz/donation"
-          }
-        ]
       }
     ]
   }

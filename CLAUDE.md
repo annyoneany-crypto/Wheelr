@@ -14,6 +14,9 @@ npm run build      # ng build — production build; THIS IS THE CORRECTNESS GATE
 npm run watch      # ng build --watch (development config)
 npm test           # ng test — vitest + jsdom, zoneless
 
+npm run llms       # regenerate public/llms-full.txt from public/md/
+npm run sitemap    # regenerate public/sitemap.xml (lastmod from git history)
+
 npm run android:sync    # ng build + cap sync android — run after ANY web change
 npm run android:build   # android:sync + gradlew assembleDebug -> app-debug.apk
 npm run android:run     # android:sync + cap run android (device picker)
@@ -101,6 +104,17 @@ The same Angular bundle ships as a native Android app; `android/` is a checked-i
 All routes lazy-load standalone components. The root `WheelPage` hosts named-outlet child routes (`outlet: 'panel'`) for the settings panels (`users`, `color-settings`, `effects`, `sound`, `wheel-manager`). `/:id` resolves a public shared wheel via `PublicWheel`; `/info`, `/donation`, `/templates` and `/privacy` are static pages.
 
 **`:id` swallows any single-segment path**, so every new static route must be declared *above* it in `app.routes.ts` or it will render as a (missing) public wheel. `/privacy` is also the Play Store's required privacy-policy URL — see `docs/play-store-listing.md`.
+
+### SEO (`seo.service.ts`, `index.html`, `public/sitemap.xml`)
+`SeoService.watchNavigation()` re-applies title, description, canonical, `robots`/`googlebot` and the social tags on every `NavigationEnd`, from `data.seo` in `app.routes.ts`. Components refine them with `setPage()` once they know their content (`PublicWheel` does, for the wheel's own name).
+
+- **`robots` and `googlebot` always move together.** A `googlebot` directive overrides the generic one for Google, so leaving the indexable default next to a `noindex` would simply keep the page indexed.
+- **`/:id` is `noindex, follow`**: shared wheels are user content, they all share one title, and `:id` also catches every mistyped URL — which the SPA answers with HTTP 200, i.e. a soft 404.
+- **Site-wide JSON-LD lives in `index.html`; page-level JSON-LD does not.** The head is shared by every route, so anything describing one page's content (the FAQ) is emitted per route by `setRouteJsonLd` from `data.seo.jsonLd` (see `seo-structured-data.ts`) and torn down on the next navigation. Google only honours FAQ markup whose Q&As are visible on that page — `INFO_FAQ_JSON_LD` is a verbatim copy of `info.html`, so edit the two together.
+- **Each page owns exactly one `<h1>`**, its own main heading. The header's brand is an `<h1>` only on the wheel route and a `<p>` everywhere else.
+- `public/sitemap.xml` is **generated** — run `npm run sitemap`; `lastmod` comes from the git history of each page's sources.
+
+The remaining gap is that Vercel serves the same `index.html` for every route, so a crawler that does not execute JavaScript reads the homepage tags on all of them. Fixing that needs prerendering, which the app cannot do as-is (`WheelConfigurator` touches `localStorage`/IndexedDB during construction).
 
 ### AI / agent discoverability (`public/`, `vercel.json`)
 AI crawlers do not run JavaScript, so the SPA shell is all they would see. The site therefore ships a plain-text mirror:

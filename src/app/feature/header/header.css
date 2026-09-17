@@ -1,3 +1,6 @@
+/* `@apply` in a component stylesheet needs the Tailwind theme in scope (v4). */
+@reference "tailwindcss";
+
 @keyframes spin-slow {
   from {
     transform: rotate(0deg);
@@ -9,4 +12,11 @@
 
 .animate-spin-slow {
   animation: spin-slow 8s linear infinite;
+}
+/* The brand is the page's <h1> only on the wheel route, where the wheel itself
+   is the content; every other page owns a descriptive <h1> of its own and the
+   brand renders as a plain <p>. Shared here so both elements look identical. */
+.wl-brand {
+  @apply relative z-10 text-xl md:text-3xl uppercase font-black text-white truncate
+    tracking-wide drop-shadow-[0_0_12px_rgba(245,158,11,0.3)];
 }

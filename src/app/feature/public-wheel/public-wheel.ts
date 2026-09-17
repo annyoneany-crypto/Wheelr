@@ -5,6 +5,7 @@ import { WheelCloudRepository } from '../../services/wheel-cloud-repository.serv
 import { contrastForHex } from '../../services/global_function';
 import { drawWheelCanvas } from '../../shared/extraction-effect/wheel-renderer';
 import { WheelDisplayConfig } from '../../services/wheel-configurator.models';
+import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-public-wheel',
@@ -14,6 +15,7 @@ import { WheelDisplayConfig } from '../../services/wheel-configurator.models';
 export class PublicWheel implements OnDestroy {
   private readonly route = inject(ActivatedRoute);
   private readonly cloudRepository = inject(WheelCloudRepository);
+  private readonly seo = inject(SeoService);
 
   readonly wheelCanvasRefs = viewChildren<ElementRef<HTMLCanvasElement>>('wheelCanvas');
 
@@ -102,6 +104,7 @@ export class PublicWheel implements OnDestroy {
       this.wheelTitle.set(publicData.title);
       this.wheelSubtitle.set(publicData.description);
       this.wheelConfigs.set(publicData.displayConfigs);
+      this.applySharedWheelSeo(publicData.title, publicData.description);
       this.startIdleRotation();
       requestAnimationFrame(() => this.drawAllWheels());
     } catch (error) {
@@ -110,6 +113,20 @@ export class PublicWheel implements OnDestroy {
     } finally {
       this.loading.set(false);
     }
+  }
+
+  /**
+   * The page stays `noindex` (see the route data), but the title and the og:
+   * tags still drive what a browser tab and a chat link preview show, so they
+   * get the wheel's own name instead of the generic "Shared Wheel".
+   */
+  private applySharedWheelSeo(title: string, description: string): void {
+    const name = title.trim();
+
+    this.seo.setPage({
+      title: name ? `${name} - Shared Wheel | Wheelr` : 'Shared Wheel - Wheelr',
+      ...(description.trim() ? { description: description.trim() } : {}),
+    });
   }
 
   private startIdleRotation(): void {
