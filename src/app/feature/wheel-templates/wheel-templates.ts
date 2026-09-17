@@ -14,6 +14,7 @@ import { NativePlatformService } from '../../services/native-platform.service';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
 import { drawWheelCanvas } from '../../shared/extraction-effect/wheel-renderer';
 import { WHEEL_TEMPLATES, WheelTemplateItem } from './wheel-templates.data';
+import { templateLandingPath } from './wheel-templates.seo';
 
 @Component({
   selector: 'app-wheel-templates',
@@ -30,6 +31,9 @@ export class WheelTemplates {
   private readonly router = inject(Router);
 
   protected readonly templates = WHEEL_TEMPLATES;
+
+  /** `/templates/<slug>` for a card, so the list links into every landing page. */
+  protected readonly landingPath = templateLandingPath;
   protected readonly copyingTemplateId = signal<string | null>(null);
 
   /** In the Android app a template is unlocked by watching a rewarded ad. */

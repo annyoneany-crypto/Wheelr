@@ -14,6 +14,8 @@ export interface PageSeo {
   robots?: string;
   /** Label of this page in the breadcrumb trail. Omit to emit no breadcrumbs. */
   breadcrumb?: string;
+  /** Section this page sits under, for a three-level trail (Home → section → page). */
+  breadcrumbParent?: { name: string; path: string };
   /** Extra JSON-LD nodes describing *this page's* content (see seo-structured-data.ts). */
   jsonLd?: readonly object[];
 }
@@ -172,13 +174,23 @@ export class SeoService {
       return [];
     }
 
+    const trail = [
+      { name: 'Home', item: `${ORIGIN}/` },
+      ...(seo.breadcrumbParent
+        ? [{ name: seo.breadcrumbParent.name, item: `${ORIGIN}${seo.breadcrumbParent.path}` }]
+        : []),
+      { name: seo.breadcrumb, item: url },
+    ];
+
     return [
       {
         '@type': 'BreadcrumbList',
-        itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: `${ORIGIN}/` },
-          { '@type': 'ListItem', position: 2, name: seo.breadcrumb, item: url },
-        ],
+        itemListElement: trail.map((entry, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          name: entry.name,
+          item: entry.item,
+        })),
       },
     ];
   }

@@ -12,7 +12,7 @@
  * Run `npm run sitemap` after adding a route or reworking a page.
  */
 import { execFileSync } from 'node:child_process';
-import { writeFile } from 'node:fs/promises';
+import { readFile, writeFile } from 'node:fs/promises';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -41,6 +41,24 @@ const PAGES = [
   { loc: '/privacy', changefreq: 'yearly', priority: '0.3', sources: ['src/app/feature/privacy'] },
 ];
 
+/**
+ * Landing-page slugs, read straight out of the source of truth.
+ *
+ * Importing the TypeScript would need a build step, so the slugs are scraped
+ * instead — if the shape of `wheel-templates.seo.ts` ever changes, this throws
+ * rather than silently emitting a sitemap that is missing ten pages.
+ */
+async function templateSlugs() {
+  const source = await readFile(join(root, 'src/app/feature/wheel-templates/wheel-templates.seo.ts'), 'utf8');
+  const slugs = [...source.matchAll(/^\s{4}slug: '([a-z0-9-]+)',$/gm)].map((match) => match[1]);
+
+  if (!slugs.length) {
+    throw new Error('No template slugs found in wheel-templates.seo.ts — has its shape changed?');
+  }
+
+  return slugs;
+}
+
 /** Last commit date touching any of `paths`, as YYYY-MM-DD. */
 function lastModified(paths) {
   const out = execFileSync('git', ['log', '-1', '--format=%cs', '--', ...paths], {
@@ -66,7 +84,14 @@ function imageBlock(image) {
   ].join('\n');
 }
 
-const body = PAGES.map((page) =>
+const templatePages = (await templateSlugs()).map((slug) => ({
+  loc: `/templates/${slug}`,
+  changefreq: 'monthly',
+  priority: '0.7',
+  sources: ['src/app/feature/wheel-templates'],
+}));
+
+const body = [...PAGES, ...templatePages].map((page) =>
   [
     '  <url>',
     `    <loc>${ORIGIN}${page.loc}</loc>`,
@@ -87,4 +112,4 @@ ${body}
 `;
 
 await writeFile(join(root, 'public', 'sitemap.xml'), xml, 'utf8');
-console.log(`sitemap.xml: ${PAGES.length} urls`);
+console.log(`sitemap.xml: ${PAGES.length + templatePages.length} urls (${templatePages.length} template landing pages)`);

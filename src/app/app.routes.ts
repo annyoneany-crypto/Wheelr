@@ -81,6 +81,21 @@ export const routes: Routes = [
         }
     },
     {
+        // One indexable page per ready-made wheel. Two segments, so it never
+        // collides with the single-segment ':id' shared-wheel route below.
+        path: 'templates/:slug',
+        loadComponent: () =>
+            import('./feature/wheel-templates/template-landing/template-landing').then((x) => x.TemplateLanding),
+        data: {
+            seo: {
+                // Replaced per template by TemplateLanding.applySeo once the slug resolves.
+                title: 'Ready-Made Spin Wheel - Wheelr',
+                description:
+                    'A ready-made wheel you can spin straight away and copy to your own wheels. Free, no signup.'
+            }
+        }
+    },
+    {
         path: 'privacy',
         loadComponent: () => import('./feature/privacy/privacy').then((x) => x.Privacy),
         data: {

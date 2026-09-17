@@ -1,0 +1,19 @@
+:host {
+  display: block;
+}
+
+/* The spin is a CSS transition rather than a rAF loop: the wheel is a static
+   image between spins, so there is nothing to animate frame by frame. The
+   duration is bound in the template and matched by the timer that reads the
+   winner. */
+.wl-template-wheel {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.17, 0.67, 0.12, 0.99);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-template-wheel {
+    transition-duration: 1ms !important;
+  }
+}
