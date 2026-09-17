@@ -111,7 +111,7 @@ export class WheelTemplates {
 
       if (outcome === 'skipped') {
         this.lockedNotice.set(
-          'The ad has to play all the way through to unlock this template. Give it another go.',
+          $localize`:@@templates.adLocked:The ad has to play all the way through to unlock this template. Give it another go.`,
         );
         return;
       }

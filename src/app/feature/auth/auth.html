@@ -3,7 +3,7 @@
         class="fixed inset-0 z-90 bg-neutral-950/80 backdrop-blur-md flex items-center justify-center px-4"
         role="dialog"
         aria-modal="true"
-        aria-label="Login modal"
+        i18n-aria-label="@@auth.dialog" aria-label="Login modal"
         (click)="closeModal()">
         <section
             class="wl-animate-modal w-full max-w-md rounded-2xl border border-white/15 bg-gradient-to-b from-neutral-900/98 to-neutral-950/98 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.5)]"
@@ -12,17 +12,17 @@
                 <div>
                     <h2 class="text-xl font-black text-white">
                         @if (isRegisterMode()) {
-                            Create account
+                            <span i18n="@@auth.title.register">Create account</span>
                         } @else {
-                            Sign in
+                            <span i18n="@@auth.title.signin">Sign in</span>
                         }
                     </h2>
-                    <p class="mt-1 text-sm text-white/50">Choose how you want to authenticate</p>
+                    <p i18n="@@auth.subtitle" class="mt-1 text-sm text-white/50">Choose how you want to authenticate</p>
                 </div>
                 <button
                     type="button"
                     class="h-9 w-9 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 inline-flex items-center justify-center"
-                    aria-label="Close auth modal"
+                    i18n-aria-label="@@auth.close" aria-label="Close auth modal"
                     (click)="closeModal()">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
@@ -36,7 +36,7 @@
                     formControlName="email"
                     class="w-full rounded-xl border border-white/20 bg-neutral-800 px-3 py-2 text-white outline-none focus:border-yellow-400"
                     autocomplete="email"
-                    placeholder="you@example.com" />
+                    i18n-placeholder="@@auth.emailPlaceholder" placeholder="you@example.com" />
 
                 <label class="block text-sm text-white/90" for="auth-password">Password</label>
                 <input
@@ -92,7 +92,7 @@
                 [disabled]="isAuthSubmitLoading()"
                 (click)="loginWithGoogle()">
                 <i class="fa-brands fa-google text-lg" aria-hidden="true"></i>
-                Sign in with Google
+                <span i18n="@@auth.google">Sign in with Google</span>
             </button>
 
             @if (authError()) {

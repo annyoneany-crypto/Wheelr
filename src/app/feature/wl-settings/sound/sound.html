@@ -1,5 +1,5 @@
 <label class="wl-settings-label">
-  <i class="fa-solid fa-volume-high mr-2" aria-hidden="true"></i>Sound
+  <i class="fa-solid fa-volume-high mr-2" aria-hidden="true"></i><span i18n="@@sound.title">Sound</span>
 </label>
 
 <div class="space-y-4">
@@ -21,7 +21,7 @@
   @if (wheelConfigurator.soundEnabled()) {
     <div class="pt-3 border-t border-white/10 space-y-3">
       <label class="wl-settings-label">
-        <i class="fa-solid fa-music mr-1.5" aria-hidden="true"></i>Spin Audio
+        <i class="fa-solid fa-music mr-1.5" aria-hidden="true"></i><span i18n="@@sound.spinAudio">Spin Audio</span>
       </label>
 
       <div class="flex gap-2">
@@ -36,14 +36,14 @@
       @if (wheelConfigurator.customAudio()) {
         <div class="flex items-center justify-between bg-white/[0.04] border border-white/10 rounded-xl p-3">
           <span class="text-xs text-white/80">
-            <i class="fa-solid fa-music mr-2 text-amber-400" aria-hidden="true"></i>Spin audio loaded
+            <i class="fa-solid fa-music mr-2 text-amber-400" aria-hidden="true"></i><span i18n="@@sound.spinLoaded">Spin audio loaded</span>
           </span>
           <button
             type="button"
             (click)="clearCustomAudio()"
             class="py-1 px-2.5 text-xs font-semibold bg-red-500/10 text-red-300 border border-red-500/20 rounded-lg hover:bg-red-500/20 transition-colors"
           >
-            Remove
+            <span i18n="@@sound.remove">Remove</span>
           </button>
         </div>
       }
@@ -51,7 +51,7 @@
       <!-- Winner audio upload section -->
       <div class="pt-3 border-t border-white/10 space-y-3">
         <label class="wl-settings-label">
-          <i class="fa-solid fa-trophy mr-1.5" aria-hidden="true"></i>Winner Audio
+          <i class="fa-solid fa-trophy mr-1.5" aria-hidden="true"></i><span i18n="@@sound.winnerAudio">Winner Audio</span>
         </label>
 
         <div class="flex gap-2">
@@ -66,14 +66,14 @@
         @if (wheelConfigurator.winnerAudio()) {
           <div class="flex items-center justify-between bg-white/[0.04] border border-white/10 rounded-xl p-3">
             <span class="text-xs text-white/80">
-              <i class="fa-solid fa-trophy mr-2 text-amber-400" aria-hidden="true"></i>Winner audio loaded
+              <i class="fa-solid fa-trophy mr-2 text-amber-400" aria-hidden="true"></i><span i18n="@@sound.winnerLoaded">Winner audio loaded</span>
             </span>
             <button
               type="button"
               (click)="clearWinnerAudio()"
               class="py-1 px-2.5 text-xs font-semibold bg-red-500/10 text-red-300 border border-red-500/20 rounded-lg hover:bg-red-500/20 transition-colors"
             >
-              Remove
+              <span i18n="@@sound.remove">Remove</span>
             </button>
           </div>
         }
@@ -81,7 +81,7 @@
         <!-- Countdown audio upload section -->
         <div class="pt-3 border-t border-white/10 space-y-3">
           <label class="wl-settings-label">
-            <i class="fa-solid fa-clock mr-1.5" aria-hidden="true"></i>Countdown Audio
+            <i class="fa-solid fa-clock mr-1.5" aria-hidden="true"></i><span i18n="@@sound.countdownAudio">Countdown Audio</span>
           </label>
 
           <div class="flex gap-2">
@@ -96,14 +96,14 @@
           @if (wheelConfigurator.countdownAudio()) {
             <div class="flex items-center justify-between bg-white/[0.04] border border-white/10 rounded-xl p-3">
               <span class="text-xs text-white/80">
-                <i class="fa-solid fa-clock mr-2 text-amber-400" aria-hidden="true"></i>Countdown audio loaded
+                <i class="fa-solid fa-clock mr-2 text-amber-400" aria-hidden="true"></i><span i18n="@@sound.countdownLoaded">Countdown audio loaded</span>
               </span>
               <button
                 type="button"
                 (click)="clearCountdownAudio()"
                 class="py-1 px-2.5 text-xs font-semibold bg-red-500/10 text-red-300 border border-red-500/20 rounded-lg hover:bg-red-500/20 transition-colors"
               >
-                Remove
+                <span i18n="@@sound.remove">Remove</span>
               </button>
             </div>
           }
@@ -114,7 +114,7 @@
 
   <div class="pt-3 border-t border-white/10 space-y-3">
     <div class="wl-settings-label">
-      <i class="fa-solid fa-hourglass-half mr-1.5" aria-hidden="true"></i>Countdown
+      <i class="fa-solid fa-hourglass-half mr-1.5" aria-hidden="true"></i><span i18n="@@sound.countdown">Countdown</span>
     </div>
     <div class="flex items-center gap-3">
       <input
@@ -124,14 +124,14 @@
         [checked]="wheelConfigurator.countdownEnabled()"
         (change)="wheelConfigurator.setCountdownEnabled($any($event.target).checked)"
       />
-      <label for="countdown-toggle-audio" class="text-sm text-white cursor-pointer select-none">
+      <label for="countdown-toggle-audio" class="text-sm text-white cursor-pointer select-none" i18n="@@sound.enableCountdown">
         Enable countdown
       </label>
     </div>
 
     @if (wheelConfigurator.countdownEnabled()) {
       <div class="flex items-center gap-3">
-        <label for="countdown-start-audio" class="text-sm text-white/70">Start from</label>
+        <label for="countdown-start-audio" class="text-sm text-white/70" i18n="@@sound.startFrom">Start from</label>
         <input
           id="countdown-start-audio"
           type="number"

@@ -4,7 +4,7 @@
     aria-labelledby="template-title">
     <div class="wl-stagger mx-auto max-w-5xl space-y-8">
 
-      <nav class="text-xs text-white/45" aria-label="Breadcrumb">
+      <nav class="text-xs text-white/45" i18n-aria-label="@@landing.breadcrumb" aria-label="Breadcrumb">
         <ol class="flex flex-wrap items-center gap-1.5">
           <li><a routerLink="/" class="hover:text-amber-300 transition-colors">Wheelr</a></li>
           <li aria-hidden="true">/</li>
@@ -101,7 +101,7 @@
             </div>
           </dl>
 
-          <ul class="mt-5 flex flex-wrap gap-1.5" aria-label="Entries on this wheel">
+          <ul class="mt-5 flex flex-wrap gap-1.5" i18n-aria-label="@@landing.entries" aria-label="Entries on this wheel">
             @for (entry of data.template.names; track $index) {
               <li class="rounded-full border border-white/[0.06] bg-white/[0.05] px-2 py-0.5 text-[0.7rem] text-white/55">
                 {{ entry }}

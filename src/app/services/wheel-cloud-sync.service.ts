@@ -61,7 +61,7 @@ export class WheelCloudSync {
   private async runSync(): Promise<void> {
     this.clearFeedbackTimeout();
     this.state.set('syncing');
-    this.message.set('Syncing wheels...');
+    this.message.set($localize`:@@sync.inProgress:Syncing wheels...`);
 
     try {
       const cloudWheels = await this.wheelCloudRepository.listCurrentUserWheels();
@@ -71,8 +71,8 @@ export class WheelCloudSync {
     } catch (error) {
       const message =
         error instanceof Error && error.message === 'AUTH_REQUIRED'
-          ? 'Sign in to sync your wheels.'
-          : 'Could not sync wheels from cloud.';
+          ? $localize`:@@sync.signIn:Sign in to sync your wheels.`
+          : $localize`:@@sync.failed:Could not sync wheels from cloud.`;
       this.setFeedback('error', message);
 
       // Let a later attempt retry instead of being swallowed by the uid guard.
@@ -82,7 +82,7 @@ export class WheelCloudSync {
 
   private buildSummary(imported: number, removed: number): string {
     if (!imported && !removed) {
-      return 'Wheels are up to date.';
+      return $localize`:@@sync.upToDate:Wheels are up to date.`;
     }
 
     const parts: string[] = [];

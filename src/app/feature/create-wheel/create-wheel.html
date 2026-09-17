@@ -3,20 +3,20 @@
         class="fixed inset-0 z-90 bg-neutral-950/80 backdrop-blur-md flex items-center justify-center px-4"
         role="dialog"
         aria-modal="true"
-        aria-label="Create a new wheel"
+        i18n-aria-label="@@createWheel.dialog" aria-label="Create a new wheel"
         (click)="closeModal()">
         <section
             class="wl-animate-modal w-full max-w-sm rounded-2xl border border-white/15 bg-gradient-to-b from-neutral-900/98 to-neutral-950/98 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.5)]"
             (click)="$event.stopPropagation()">
             <div class="mb-5 flex items-start justify-between gap-4">
                 <div>
-                    <h2 class="text-xl font-black text-white">New wheel</h2>
-                    <p class="mt-1 text-sm text-white/50">Give your wheel a name to get started.</p>
+                    <h2 class="text-xl font-black text-white" i18n="@@createWheel.title">New wheel</h2>
+                    <p class="mt-1 text-sm text-white/50" i18n="@@createWheel.subtitle">Give your wheel a name to get started.</p>
                 </div>
                 <button
                     type="button"
                     class="h-9 w-9 shrink-0 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 inline-flex items-center justify-center"
-                    aria-label="Close new wheel dialog"
+                    i18n-aria-label="@@createWheel.close" aria-label="Close new wheel dialog"
                     (click)="closeModal()">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
@@ -35,7 +35,7 @@
                         autocomplete="off"
                         maxlength="60"
                         class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2.5 text-white text-sm placeholder:text-white/40 focus:border-amber-400/50 focus:outline-none transition-colors"
-                        placeholder="Friday giveaway" />
+                        i18n-placeholder="@@createWheel.namePlaceholder" placeholder="Friday giveaway" />
                 </div>
 
                 <div class="grid gap-1.5">
@@ -52,7 +52,7 @@
                         autocomplete="off"
                         maxlength="160"
                         class="w-full rounded-xl bg-white/[0.06] border border-white/10 px-3 py-2.5 text-white text-sm placeholder:text-white/40 focus:border-amber-400/50 focus:outline-none transition-colors"
-                        placeholder="What is this wheel for?" />
+                        i18n-placeholder="@@createWheel.descPlaceholder" placeholder="What is this wheel for?" />
                 </div>
 
                 @if (createError()) {
@@ -75,10 +75,10 @@
                         [disabled]="isCreating()">
                         @if (isCreating()) {
                             <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>
-                            <span>Creating...</span>
+                            <span i18n="@@createWheel.creating">Creating...</span>
                         } @else {
                             <i class="fa-solid fa-plus" aria-hidden="true"></i>
-                            <span>Create wheel</span>
+                            <span i18n="@@createWheel.submit">Create wheel</span>
                         }
                     </button>
                 </div>

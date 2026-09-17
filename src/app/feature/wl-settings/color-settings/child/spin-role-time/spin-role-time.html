@@ -1,6 +1,6 @@
 <div class="border-b border-white/10 pb-4">
   <label class="wl-settings-label">
-    <i class="fa-solid fa-stopwatch mr-2" aria-hidden="true"></i>Spin duration
+    <i class="fa-solid fa-stopwatch mr-2" aria-hidden="true"></i><span i18n="@@spin.duration">Spin duration</span>
   </label>
 
   <div class="flex items-center gap-3">
@@ -10,6 +10,6 @@
       class="w-24 bg-white/[0.06] border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white text-center"
       [(ngModel)]="durationSec"
     />
-    <span class="text-sm text-white/60">seconds</span>
+    <span class="text-sm text-white/60" i18n="@@spin.seconds">seconds</span>
   </div>
 </div>

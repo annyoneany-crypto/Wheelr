@@ -20,13 +20,13 @@
         <a
           routerLink="/"
           class="inline-flex items-center rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200 transition-colors duration-200 hover:bg-amber-300/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60"
-          aria-label="Go to Wheel page">
+          i18n-aria-label="@@templates.goToWheel" aria-label="Go to Wheel page">
           <i class="fa-solid fa-dharmachakra mr-1.5" aria-hidden="true"></i>Go to Wheel
         </a>
       </div>
     </header>
 
-    <ul class="wl-stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3" aria-label="Ready-made wheel templates">
+    <ul class="wl-stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3" i18n-aria-label="@@templates.grid" aria-label="Ready-made wheel templates">
       @for (template of templates; track template.id) {
         <li>
           <article

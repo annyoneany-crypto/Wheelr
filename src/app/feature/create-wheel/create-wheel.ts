@@ -63,7 +63,7 @@ export class WlCreateWheel {
 
     if (this.createForm.invalid) {
       this.createForm.markAllAsTouched();
-      this.createError.set('Enter a name for the wheel.');
+      this.createError.set($localize`:@@createWheel.err.name:Enter a name for the wheel.`);
       return;
     }
 
@@ -81,7 +81,7 @@ export class WlCreateWheel {
       this.closeRequested.emit();
     } catch {
       this.isCreating.set(false);
-      this.createError.set('Could not create the wheel. Try again.');
+      this.createError.set($localize`:@@createWheel.err.failed:Could not create the wheel. Try again.`);
     }
   }
 

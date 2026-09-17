@@ -1,0 +1,1830 @@
+{
+  "_comment": "Translations for the UI strings extracted into src/locale/messages.xlf. Keyed by the @@id used in the templates, then by locale. tools/apply-translations.mjs merges these into the per-locale XLIFF files; a message missing here is reported and falls back to English rather than shipping silently untranslated.",
+  "auth.dialog": {
+    "it": "Finestra di accesso",
+    "de": "Anmeldefenster",
+    "fr": "Fenêtre de connexion",
+    "es": "Ventana de acceso",
+    "zh": "登录窗口"
+  },
+  "auth.title.register": {
+    "it": "Crea account",
+    "de": "Konto erstellen",
+    "fr": "Créer un compte",
+    "es": "Crear cuenta",
+    "zh": "创建账户"
+  },
+  "auth.title.signin": {
+    "it": "Accedi",
+    "de": "Anmelden",
+    "fr": "Se connecter",
+    "es": "Iniciar sesión",
+    "zh": "登录"
+  },
+  "auth.subtitle": {
+    "it": "Scegli come vuoi autenticarti",
+    "de": "Wähle, wie du dich anmelden möchtest",
+    "fr": "Choisissez votre méthode de connexion",
+    "es": "Elige cómo quieres autenticarte",
+    "zh": "选择登录方式"
+  },
+  "auth.close": {
+    "it": "Chiudi la finestra di accesso",
+    "de": "Anmeldefenster schließen",
+    "fr": "Fermer la fenêtre de connexion",
+    "es": "Cerrar la ventana de acceso",
+    "zh": "关闭登录窗口"
+  },
+  "auth.google": {
+    "it": "Accedi con Google",
+    "de": "Mit Google anmelden",
+    "fr": "Se connecter avec Google",
+    "es": "Iniciar sesión con Google",
+    "zh": "使用 Google 登录"
+  },
+  "createWheel.dialog": {
+    "it": "Crea una nuova ruota",
+    "de": "Neues Rad erstellen",
+    "fr": "Créer une nouvelle roue",
+    "es": "Crear una rueda nueva",
+    "zh": "创建新转盘"
+  },
+  "createWheel.title": {
+    "it": "Nuova ruota",
+    "de": "Neues Rad",
+    "fr": "Nouvelle roue",
+    "es": "Rueda nueva",
+    "zh": "新转盘"
+  },
+  "createWheel.subtitle": {
+    "it": "Dai un nome alla ruota per iniziare.",
+    "de": "Gib deinem Rad einen Namen, um zu starten.",
+    "fr": "Donnez un nom à votre roue pour commencer.",
+    "es": "Dale un nombre a tu rueda para empezar.",
+    "zh": "先给转盘起个名字。"
+  },
+  "createWheel.close": {
+    "it": "Chiudi la finestra della nuova ruota",
+    "de": "Fenster für neues Rad schließen",
+    "fr": "Fermer la fenêtre de nouvelle roue",
+    "es": "Cerrar la ventana de rueda nueva",
+    "zh": "关闭新转盘窗口"
+  },
+  "createWheel.namePlaceholder": {
+    "it": "Estrazione del venerdì",
+    "de": "Freitags-Verlosung",
+    "fr": "Tirage du vendredi",
+    "es": "Sorteo del viernes",
+    "zh": "周五抽奖"
+  },
+  "createWheel.descPlaceholder": {
+    "it": "A cosa serve questa ruota?",
+    "de": "Wofür ist dieses Rad?",
+    "fr": "À quoi sert cette roue ?",
+    "es": "¿Para qué es esta rueda?",
+    "zh": "这个转盘用来做什么？"
+  },
+  "createWheel.creating": {
+    "it": "Creazione...",
+    "de": "Wird erstellt...",
+    "fr": "Création...",
+    "es": "Creando...",
+    "zh": "创建中…"
+  },
+  "createWheel.submit": {
+    "it": "Crea ruota",
+    "de": "Rad erstellen",
+    "fr": "Créer la roue",
+    "es": "Crear rueda",
+    "zh": "创建转盘"
+  },
+  "header.main": {
+    "it": "Intestazione principale",
+    "de": "Hauptkopfzeile",
+    "fr": "En-tête principal",
+    "es": "Encabezado principal",
+    "zh": "主页眉"
+  },
+  "header.home": {
+    "it": "Vai alla homepage",
+    "de": "Zur Startseite",
+    "fr": "Aller à l'accueil",
+    "es": "Ir a la página de inicio",
+    "zh": "前往首页"
+  },
+  "header.namesCount": {
+    "it": "Numero di nomi sulla ruota",
+    "de": "Anzahl der Namen auf dem Rad",
+    "fr": "Nombre de noms sur la roue",
+    "es": "Número de nombres en la rueda",
+    "zh": "转盘上的名称数量"
+  },
+  "header.selectedWheel": {
+    "it": "Ruota selezionata",
+    "de": "Ausgewähltes Rad",
+    "fr": "Roue sélectionnée",
+    "es": "Rueda seleccionada",
+    "zh": "已选转盘"
+  },
+  "header.actions": {
+    "it": "Azioni dell'intestazione",
+    "de": "Kopfzeilen-Aktionen",
+    "fr": "Actions de l'en-tête",
+    "es": "Acciones del encabezado",
+    "zh": "页眉操作"
+  },
+  "header.newWheel.aria": {
+    "it": "Crea una nuova ruota",
+    "de": "Neues Rad erstellen",
+    "fr": "Créer une nouvelle roue",
+    "es": "Crear una rueda nueva",
+    "zh": "创建新转盘"
+  },
+  "header.newWheel.title": {
+    "it": "Crea una nuova ruota",
+    "de": "Neues Rad erstellen",
+    "fr": "Créer une nouvelle roue",
+    "es": "Crear una rueda nueva",
+    "zh": "创建新转盘"
+  },
+  "header.menu.open": {
+    "it": "Apri il menu principale",
+    "de": "Hauptmenü öffnen",
+    "fr": "Ouvrir le menu principal",
+    "es": "Abrir el menú principal",
+    "zh": "打开主菜单"
+  },
+  "header.menu.dialog": {
+    "it": "Menu principale",
+    "de": "Hauptmenü",
+    "fr": "Menu principal",
+    "es": "Menú principal",
+    "zh": "主菜单"
+  },
+  "header.menu.close": {
+    "it": "Chiudi il menu",
+    "de": "Menü schließen",
+    "fr": "Fermer le menu",
+    "es": "Cerrar el menú",
+    "zh": "关闭菜单"
+  },
+  "header.menu.closeLabel": {
+    "it": "Chiudi",
+    "de": "Schließen",
+    "fr": "Fermer",
+    "es": "Cerrar",
+    "zh": "关闭"
+  },
+  "header.menu.nav": {
+    "it": "Pagine principali",
+    "de": "Hauptseiten",
+    "fr": "Pages principales",
+    "es": "Páginas principales",
+    "zh": "主要页面"
+  },
+  "header.menu.wheel": {
+    "it": "Vai alla pagina della ruota",
+    "de": "Zur Rad-Seite",
+    "fr": "Aller à la page de la roue",
+    "es": "Ir a la página de la rueda",
+    "zh": "前往转盘页面"
+  },
+  "header.menu.item.wheel": {
+    "it": "🎡 Wheelr",
+    "de": "🎡 Wheelr",
+    "fr": "🎡 Wheelr",
+    "es": "🎡 Wheelr",
+    "zh": "🎡 Wheelr"
+  },
+  "header.menu.templates": {
+    "it": "Vai alle ruote pronte all'uso",
+    "de": "Zu den fertigen Rädern",
+    "fr": "Aller aux roues prêtes à l'emploi",
+    "es": "Ir a las ruedas listas para usar",
+    "zh": "前往现成转盘页面"
+  },
+  "header.menu.item.templates": {
+    "it": "✨ Ruote pronte",
+    "de": "✨ Fertige Räder",
+    "fr": "✨ Roues prêtes",
+    "es": "✨ Ruedas listas",
+    "zh": "✨ 现成转盘"
+  },
+  "header.menu.stream": {
+    "it": "Vai alla guida per lo streaming",
+    "de": "Zum Streaming-Leitfaden",
+    "fr": "Aller au guide streaming",
+    "es": "Ir a la guía para streaming",
+    "zh": "前往直播指南"
+  },
+  "header.menu.item.stream": {
+    "it": "🎥 Per streamer",
+    "de": "🎥 Für Streamer",
+    "fr": "🎥 Pour les streamers",
+    "es": "🎥 Para streamers",
+    "zh": "🎥 主播专区"
+  },
+  "header.menu.info": {
+    "it": "Vai alla pagina Info",
+    "de": "Zur Info-Seite",
+    "fr": "Aller à la page Infos",
+    "es": "Ir a la página de información",
+    "zh": "前往信息页面"
+  },
+  "header.menu.item.info": {
+    "it": "ℹ️ Info",
+    "de": "ℹ️ Info",
+    "fr": "ℹ️ Infos",
+    "es": "ℹ️ Información",
+    "zh": "ℹ️ 信息"
+  },
+  "header.menu.donation": {
+    "it": "Vai alla pagina delle donazioni",
+    "de": "Zur Spendenseite",
+    "fr": "Aller à la page des dons",
+    "es": "Ir a la página de donaciones",
+    "zh": "前往捐赠页面"
+  },
+  "header.menu.item.donation": {
+    "it": "💝 Donazioni",
+    "de": "💝 Spenden",
+    "fr": "💝 Faire un don",
+    "es": "💝 Donaciones",
+    "zh": "💝 捐赠"
+  },
+  "header.menu.wiki": {
+    "it": "Apri la wiki di Wheelr (si apre in una nuova scheda)",
+    "de": "Wheelr-Wiki öffnen (in neuem Tab)",
+    "fr": "Ouvrir le wiki Wheelr (nouvel onglet)",
+    "es": "Abrir la wiki de Wheelr (en una pestaña nueva)",
+    "zh": "打开 Wheelr 维基（新标签页）"
+  },
+  "header.menu.item.wiki": {
+    "it": "📖 Wiki",
+    "de": "📖 Wiki",
+    "fr": "📖 Wiki",
+    "es": "📖 Wiki",
+    "zh": "📖 维基"
+  },
+  "header.menu.privacy": {
+    "it": "Vai all'informativa sulla privacy",
+    "de": "Zur Datenschutzerklärung",
+    "fr": "Aller à la politique de confidentialité",
+    "es": "Ir a la política de privacidad",
+    "zh": "前往隐私政策"
+  },
+  "header.menu.item.privacy": {
+    "it": "🛡️ Privacy",
+    "de": "🛡️ Datenschutz",
+    "fr": "🛡️ Confidentialité",
+    "es": "🛡️ Privacidad",
+    "zh": "🛡️ 隐私"
+  },
+  "header.social.twitter": {
+    "it": "Profilo Twitter di AnnyoneAny",
+    "de": "Twitter-Profil von AnnyoneAny",
+    "fr": "Profil Twitter d'AnnyoneAny",
+    "es": "Perfil de Twitter de AnnyoneAny",
+    "zh": "AnnyoneAny 的 Twitter 主页"
+  },
+  "account.dialog": {
+    "it": "Pannello account",
+    "de": "Kontobereich",
+    "fr": "Panneau du compte",
+    "es": "Panel de la cuenta",
+    "zh": "账户面板"
+  },
+  "account.title": {
+    "it": "Il tuo account",
+    "de": "Dein Konto",
+    "fr": "Votre compte",
+    "es": "Tu cuenta",
+    "zh": "你的账户"
+  },
+  "account.signedInAs": {
+    "it": "Hai effettuato l'accesso come",
+    "de": "Angemeldet als",
+    "fr": "Vous êtes connecté en tant que",
+    "es": "Has iniciado sesión como",
+    "zh": "当前登录身份"
+  },
+  "account.close": {
+    "it": "Chiudi il pannello account",
+    "de": "Kontobereich schließen",
+    "fr": "Fermer le panneau du compte",
+    "es": "Cerrar el panel de la cuenta",
+    "zh": "关闭账户面板"
+  },
+  "account.signOut": {
+    "it": "Esci",
+    "de": "Abmelden",
+    "fr": "Se déconnecter",
+    "es": "Cerrar sesión",
+    "zh": "退出登录"
+  },
+  "account.delete": {
+    "it": "Elimina account",
+    "de": "Konto löschen",
+    "fr": "Supprimer le compte",
+    "es": "Eliminar cuenta",
+    "zh": "删除账户"
+  },
+  "account.deleteTitle": {
+    "it": "Vuoi eliminare il tuo account?",
+    "de": "Konto wirklich löschen?",
+    "fr": "Supprimer votre compte ?",
+    "es": "¿Eliminar tu cuenta?",
+    "zh": "确定删除账户吗？"
+  },
+  "account.confirmPassword": {
+    "it": "Conferma la password",
+    "de": "Passwort bestätigen",
+    "fr": "Confirmez votre mot de passe",
+    "es": "Confirma tu contraseña",
+    "zh": "确认密码"
+  },
+  "account.passwordPlaceholder": {
+    "it": "La tua password",
+    "de": "Dein Passwort",
+    "fr": "Votre mot de passe",
+    "es": "Tu contraseña",
+    "zh": "你的密码"
+  },
+  "account.googleConfirm": {
+    "it": "Ti verrà chiesto di confermare con Google.",
+    "de": "Du wirst zuerst gebeten, dich mit Google zu bestätigen.",
+    "fr": "Vous devrez d'abord confirmer avec Google.",
+    "es": "Primero se te pedirá confirmar con Google.",
+    "zh": "系统会先要求你通过 Google 确认。"
+  },
+  "bar.controls": {
+    "it": "Controlli della ruota",
+    "de": "Rad-Steuerung",
+    "fr": "Commandes de la roue",
+    "es": "Controles de la rueda",
+    "zh": "转盘控件"
+  },
+  "bar.home": {
+    "it": "Chiudi le impostazioni e mostra la ruota",
+    "de": "Einstellungen schließen und Rad anzeigen",
+    "fr": "Fermer les réglages et afficher la roue",
+    "es": "Cerrar los ajustes y mostrar la rueda",
+    "zh": "关闭设置并显示转盘"
+  },
+  "bar.home.label": {
+    "it": "Ruota",
+    "de": "Start",
+    "fr": "Accueil",
+    "es": "Inicio",
+    "zh": "首页"
+  },
+  "qr.open": {
+    "it": "Apri il codice QR della ruota",
+    "de": "QR-Code des Rads öffnen",
+    "fr": "Ouvrir le QR code de la roue",
+    "es": "Abrir el código QR de la rueda",
+    "zh": "打开转盘二维码"
+  },
+  "panel.close": {
+    "it": "Chiudi il pannello",
+    "de": "Bereich schließen",
+    "fr": "Fermer le panneau",
+    "es": "Cerrar el panel",
+    "zh": "关闭面板"
+  },
+  "banner.region": {
+    "it": "Wheelr per Android",
+    "de": "Wheelr für Android",
+    "fr": "Wheelr pour Android",
+    "es": "Wheelr para Android",
+    "zh": "Wheelr 安卓版"
+  },
+  "banner.cta": {
+    "it": "Scarica Wheelr per Android su Google Play (si apre in una nuova scheda)",
+    "de": "Wheelr für Android bei Google Play laden (in neuem Tab)",
+    "fr": "Télécharger Wheelr pour Android sur Google Play (nouvel onglet)",
+    "es": "Descargar Wheelr para Android en Google Play (en una pestaña nueva)",
+    "zh": "在 Google Play 下载 Wheelr 安卓版（新标签页）"
+  },
+  "banner.kicker": {
+    "it": "Wheelr per Android",
+    "de": "Wheelr für Android",
+    "fr": "Wheelr pour Android",
+    "es": "Wheelr para Android",
+    "zh": "Wheelr 安卓版"
+  },
+  "banner.action": {
+    "it": "Scaricala su Google Play",
+    "de": "Bei Google Play laden",
+    "fr": "Disponible sur Google Play",
+    "es": "Consíguela en Google Play",
+    "zh": "前往 Google Play"
+  },
+  "banner.dismiss": {
+    "it": "Chiudi il banner dell'app",
+    "de": "App-Banner ausblenden",
+    "fr": "Masquer la bannière de l'application",
+    "es": "Cerrar el banner de la app",
+    "zh": "关闭应用横幅"
+  },
+  "banner.dismiss.title": {
+    "it": "Chiudi",
+    "de": "Schließen",
+    "fr": "Masquer",
+    "es": "Cerrar",
+    "zh": "关闭"
+  },
+  "background.title": {
+    "it": "Sfondo",
+    "de": "Hintergrund",
+    "fr": "Arrière-plan",
+    "es": "Fondo",
+    "zh": "背景"
+  },
+  "background.reset": {
+    "it": "Ripristina sfondo",
+    "de": "Hintergrund zurücksetzen",
+    "fr": "Réinitialiser l'arrière-plan",
+    "es": "Restablecer el fondo",
+    "zh": "重置背景"
+  },
+  "background.type": {
+    "it": "Tipo di sfondo",
+    "de": "Hintergrundtyp",
+    "fr": "Type d'arrière-plan",
+    "es": "Tipo de fondo",
+    "zh": "背景类型"
+  },
+  "background.color": {
+    "it": "Colore",
+    "de": "Farbe",
+    "fr": "Couleur",
+    "es": "Color",
+    "zh": "颜色"
+  },
+  "background.image": {
+    "it": "Immagine",
+    "de": "Bild",
+    "fr": "Image",
+    "es": "Imagen",
+    "zh": "图片"
+  },
+  "background.hint": {
+    "it": "Scegli un colore pieno per lo sfondo.",
+    "de": "Wähle eine einfarbige Hintergrundfarbe.",
+    "fr": "Choisissez une couleur unie pour l'arrière-plan.",
+    "es": "Elige un color sólido para el fondo.",
+    "zh": "为背景选择纯色。"
+  },
+  "background.upload": {
+    "it": "Carica un'immagine di sfondo",
+    "de": "Hintergrundbild hochladen",
+    "fr": "Importer une image d'arrière-plan",
+    "es": "Subir imagen de fondo",
+    "zh": "上传背景图片"
+  },
+  "background.empty": {
+    "it": "Nessuna immagine caricata.",
+    "de": "Kein Bild hochgeladen.",
+    "fr": "Aucune image importée.",
+    "es": "No hay ninguna imagen.",
+    "zh": "尚未上传图片。"
+  },
+  "logo.title": {
+    "it": "Logo centrale",
+    "de": "Zentrales Logo",
+    "fr": "Logo central",
+    "es": "Logo central",
+    "zh": "中心徽标"
+  },
+  "logo.reset": {
+    "it": "Ripristina il logo centrale",
+    "de": "Zentrales Logo zurücksetzen",
+    "fr": "Réinitialiser le logo central",
+    "es": "Restablecer el logo central",
+    "zh": "重置中心徽标"
+  },
+  "logo.type": {
+    "it": "Tipo di logo centrale",
+    "de": "Typ des zentralen Logos",
+    "fr": "Type de logo central",
+    "es": "Tipo de logo central",
+    "zh": "中心徽标类型"
+  },
+  "logo.color": {
+    "it": "Colore",
+    "de": "Farbe",
+    "fr": "Couleur",
+    "es": "Color",
+    "zh": "颜色"
+  },
+  "logo.image": {
+    "it": "Immagine",
+    "de": "Bild",
+    "fr": "Image",
+    "es": "Imagen",
+    "zh": "图片"
+  },
+  "logo.centerText": {
+    "it": "Testo al centro",
+    "de": "Text in der Mitte",
+    "fr": "Texte central",
+    "es": "Texto central",
+    "zh": "中心文字"
+  },
+  "logo.textPlaceholder": {
+    "it": "GIRA",
+    "de": "DREHEN",
+    "fr": "TOURNER",
+    "es": "GIRAR",
+    "zh": "转动"
+  },
+  "logo.colorHint": {
+    "it": "Colore del cerchio centrale.",
+    "de": "Farbe des mittleren Kreises.",
+    "fr": "Couleur du cercle central.",
+    "es": "Color del círculo central.",
+    "zh": "中心圆的颜色。"
+  },
+  "logo.upload": {
+    "it": "Carica un logo",
+    "de": "Logo hochladen",
+    "fr": "Importer un logo",
+    "es": "Subir un logo",
+    "zh": "上传徽标"
+  },
+  "logo.empty": {
+    "it": "Nessun logo caricato.",
+    "de": "Kein Logo hochgeladen.",
+    "fr": "Aucun logo importé.",
+    "es": "No hay ningún logo.",
+    "zh": "尚未上传徽标。"
+  },
+  "font.title": {
+    "it": "Font della ruota",
+    "de": "Schriftart des Rads",
+    "fr": "Police de la roue",
+    "es": "Fuente de la rueda",
+    "zh": "转盘字体"
+  },
+  "palette.title": {
+    "it": "Palette",
+    "de": "Palette",
+    "fr": "Palette",
+    "es": "Paleta",
+    "zh": "配色"
+  },
+  "palette.images": {
+    "it": "Immagini",
+    "de": "Bilder",
+    "fr": "Images",
+    "es": "Imágenes",
+    "zh": "图片"
+  },
+  "palette.wheel": {
+    "it": "Palette della ruota",
+    "de": "Rad-Palette",
+    "fr": "Palette de la roue",
+    "es": "Paleta de la rueda",
+    "zh": "转盘配色"
+  },
+  "palette.create": {
+    "it": "Crea una palette personalizzata",
+    "de": "Eigene Palette erstellen",
+    "fr": "Créer une palette personnalisée",
+    "es": "Crear una paleta personalizada",
+    "zh": "创建自定义配色"
+  },
+  "palette.custom": {
+    "it": "Palette personalizzata",
+    "de": "Eigene Palette",
+    "fr": "Palette personnalisée",
+    "es": "Paleta personalizada",
+    "zh": "自定义配色"
+  },
+  "palette.namePlaceholder": {
+    "it": "Nome della palette",
+    "de": "Name der Palette",
+    "fr": "Nom de la palette",
+    "es": "Nombre de la paleta",
+    "zh": "配色名称"
+  },
+  "palette.save": {
+    "it": "Salva",
+    "de": "Speichern",
+    "fr": "Enregistrer",
+    "es": "Guardar",
+    "zh": "保存"
+  },
+  "palette.cancel": {
+    "it": "Annulla",
+    "de": "Abbrechen",
+    "fr": "Annuler",
+    "es": "Cancelar",
+    "zh": "取消"
+  },
+  "palette.wheelBg": {
+    "it": "Sfondo ruota",
+    "de": "Rad-Hintergrund",
+    "fr": "Fond de la roue",
+    "es": "Fondo de la rueda",
+    "zh": "转盘背景"
+  },
+  "palette.sliceImages": {
+    "it": "Immagini degli spicchi",
+    "de": "Segmentbilder",
+    "fr": "Images des segments",
+    "es": "Imágenes de los sectores",
+    "zh": "扇区图片"
+  },
+  "palette.clearAll": {
+    "it": "Cancella tutto",
+    "de": "Alle entfernen",
+    "fr": "Tout effacer",
+    "es": "Borrar todo",
+    "zh": "全部清除"
+  },
+  "spin.duration": {
+    "it": "Durata del giro",
+    "de": "Dauer der Drehung",
+    "fr": "Durée du tour",
+    "es": "Duración del giro",
+    "zh": "旋转时长"
+  },
+  "spin.seconds": {
+    "it": "secondi",
+    "de": "Sekunden",
+    "fr": "secondes",
+    "es": "segundos",
+    "zh": "秒"
+  },
+  "winnerList.title": {
+    "it": "Lista dei vincitori",
+    "de": "Gewinnerliste",
+    "fr": "Liste des gagnants",
+    "es": "Lista de ganadores",
+    "zh": "中奖名单"
+  },
+  "winnerList.position": {
+    "it": "Posizione del pannello",
+    "de": "Position des Bereichs",
+    "fr": "Position du panneau",
+    "es": "Posición del panel",
+    "zh": "面板位置"
+  },
+  "winnerList.left": {
+    "it": "Sinistra",
+    "de": "Links",
+    "fr": "Gauche",
+    "es": "Izquierda",
+    "zh": "左侧"
+  },
+  "winnerList.top": {
+    "it": "Alto",
+    "de": "Oben",
+    "fr": "Haut",
+    "es": "Arriba",
+    "zh": "顶部"
+  },
+  "winnerList.right": {
+    "it": "Destra",
+    "de": "Rechts",
+    "fr": "Droite",
+    "es": "Derecha",
+    "zh": "右侧"
+  },
+  "winnerList.bottom": {
+    "it": "Basso",
+    "de": "Unten",
+    "fr": "Bas",
+    "es": "Abajo",
+    "zh": "底部"
+  },
+  "effects.wheelType": {
+    "it": "Tipo di ruota",
+    "de": "Rad-Typ",
+    "fr": "Type de roue",
+    "es": "Tipo de rueda",
+    "zh": "转盘类型"
+  },
+  "effects.view.wheel": {
+    "it": "Ruota",
+    "de": "Rad",
+    "fr": "Roue",
+    "es": "Rueda",
+    "zh": "转盘"
+  },
+  "effects.view.cards": {
+    "it": "Carte",
+    "de": "Karten",
+    "fr": "Cartes",
+    "es": "Cartas",
+    "zh": "卡片"
+  },
+  "effects.winnerEffect": {
+    "it": "Effetto del vincitore",
+    "de": "Gewinner-Effekt",
+    "fr": "Effet du gagnant",
+    "es": "Efecto del ganador",
+    "zh": "中奖特效"
+  },
+  "effects.winnerAnimation": {
+    "it": "Animazione del vincitore",
+    "de": "Gewinner-Animation",
+    "fr": "Animation du gagnant",
+    "es": "Animación del ganador",
+    "zh": "中奖动画"
+  },
+  "effects.winnerHint": {
+    "it": "Fuoco, coriandoli o altri effetti partono quando la ruota si ferma.",
+    "de": "Feuer, Konfetti oder andere Effekte laufen, wenn das Rad stoppt.",
+    "fr": "Feu, confettis ou autres effets se déclenchent à l'arrêt de la roue.",
+    "es": "Fuego, confeti u otros efectos se activan cuando la rueda se detiene.",
+    "zh": "转盘停止时播放火焰、彩纸等特效。"
+  },
+  "effects.winnerHintOff": {
+    "it": "Lo spicchio vincente si illumina — nessun effetto a schermo intero.",
+    "de": "Das Gewinnersegment leuchtet — kein Vollbild-Effekt.",
+    "fr": "Le segment gagnant s'illumine — pas d'effet plein écran.",
+    "es": "El sector ganador se ilumina — sin efecto a pantalla completa.",
+    "zh": "中奖扇区会发光——没有全屏特效。"
+  },
+  "effects.fx.fire": {
+    "it": "Fuoco",
+    "de": "Feuer",
+    "fr": "Feu",
+    "es": "Fuego",
+    "zh": "火焰"
+  },
+  "effects.fx.confetti": {
+    "it": "Coriandoli",
+    "de": "Konfetti",
+    "fr": "Confettis",
+    "es": "Confeti",
+    "zh": "彩纸"
+  },
+  "effects.fx.fireworks": {
+    "it": "Fuochi d'artificio",
+    "de": "Feuerwerk",
+    "fr": "Feux d'artifice",
+    "es": "Fuegos artificiales",
+    "zh": "烟花"
+  },
+  "effects.fx.cartoonFire": {
+    "it": "Fuoco cartoon",
+    "de": "Comic-Feuer",
+    "fr": "Feu cartoon",
+    "es": "Fuego de dibujos",
+    "zh": "卡通火焰"
+  },
+  "effects.pointer": {
+    "it": "Indicatore della ruota",
+    "de": "Rad-Zeiger",
+    "fr": "Pointeur de la roue",
+    "es": "Puntero de la rueda",
+    "zh": "转盘指针"
+  },
+  "effects.pointer.drop": {
+    "it": "Goccia",
+    "de": "Tropfen",
+    "fr": "Goutte",
+    "es": "Gota",
+    "zh": "水滴"
+  },
+  "effects.pointer.arrow": {
+    "it": "Freccia",
+    "de": "Pfeil",
+    "fr": "Flèche",
+    "es": "Flecha",
+    "zh": "箭头"
+  },
+  "effects.pointer.finger": {
+    "it": "Dito",
+    "de": "Finger",
+    "fr": "Doigt",
+    "es": "Dedo",
+    "zh": "手指"
+  },
+  "effects.pointer.star": {
+    "it": "Stella",
+    "de": "Stern",
+    "fr": "Étoile",
+    "es": "Estrella",
+    "zh": "星形"
+  },
+  "effects.pointer.diamond": {
+    "it": "Rombo",
+    "de": "Raute",
+    "fr": "Losange",
+    "es": "Rombo",
+    "zh": "菱形"
+  },
+  "effects.pointer.bolt": {
+    "it": "Fulmine",
+    "de": "Blitz",
+    "fr": "Éclair",
+    "es": "Rayo",
+    "zh": "闪电"
+  },
+  "sound.title": {
+    "it": "Audio",
+    "de": "Ton",
+    "fr": "Son",
+    "es": "Sonido",
+    "zh": "声音"
+  },
+  "sound.spinAudio": {
+    "it": "Audio del giro",
+    "de": "Dreh-Sound",
+    "fr": "Son du tour",
+    "es": "Sonido del giro",
+    "zh": "旋转音效"
+  },
+  "sound.spinLoaded": {
+    "it": "Audio del giro caricato",
+    "de": "Dreh-Sound geladen",
+    "fr": "Son du tour chargé",
+    "es": "Sonido del giro cargado",
+    "zh": "已载入旋转音效"
+  },
+  "sound.remove": {
+    "it": "Rimuovi",
+    "de": "Entfernen",
+    "fr": "Supprimer",
+    "es": "Quitar",
+    "zh": "移除"
+  },
+  "sound.winnerAudio": {
+    "it": "Audio del vincitore",
+    "de": "Gewinner-Sound",
+    "fr": "Son du gagnant",
+    "es": "Sonido del ganador",
+    "zh": "中奖音效"
+  },
+  "sound.winnerLoaded": {
+    "it": "Audio del vincitore caricato",
+    "de": "Gewinner-Sound geladen",
+    "fr": "Son du gagnant chargé",
+    "es": "Sonido del ganador cargado",
+    "zh": "已载入中奖音效"
+  },
+  "sound.countdownAudio": {
+    "it": "Audio del conto alla rovescia",
+    "de": "Countdown-Sound",
+    "fr": "Son du compte à rebours",
+    "es": "Sonido de la cuenta atrás",
+    "zh": "倒计时音效"
+  },
+  "sound.countdownLoaded": {
+    "it": "Audio del conto alla rovescia caricato",
+    "de": "Countdown-Sound geladen",
+    "fr": "Son du compte à rebours chargé",
+    "es": "Sonido de la cuenta atrás cargado",
+    "zh": "已载入倒计时音效"
+  },
+  "sound.countdown": {
+    "it": "Conto alla rovescia",
+    "de": "Countdown",
+    "fr": "Compte à rebours",
+    "es": "Cuenta atrás",
+    "zh": "倒计时"
+  },
+  "sound.enableCountdown": {
+    "it": "Attiva il conto alla rovescia",
+    "de": "Countdown aktivieren",
+    "fr": "Activer le compte à rebours",
+    "es": "Activar la cuenta atrás",
+    "zh": "启用倒计时"
+  },
+  "sound.startFrom": {
+    "it": "Parti da",
+    "de": "Starten bei",
+    "fr": "Démarrer à",
+    "es": "Empezar desde",
+    "zh": "起始于"
+  },
+  "users.shuffle": {
+    "it": "Mescola i nomi",
+    "de": "Namen mischen",
+    "fr": "Mélanger les noms",
+    "es": "Mezclar los nombres",
+    "zh": "打乱名称"
+  },
+  "users.clear": {
+    "it": "Svuota",
+    "de": "Leeren",
+    "fr": "Vider",
+    "es": "Vaciar",
+    "zh": "清空"
+  },
+  "users.name": {
+    "it": "Nome",
+    "de": "Name",
+    "fr": "Nom",
+    "es": "Nombre",
+    "zh": "名称"
+  },
+  "users.namePlaceholder": {
+    "it": "Nome",
+    "de": "Name",
+    "fr": "Nom",
+    "es": "Nombre",
+    "zh": "名称"
+  },
+  "users.repeatCount": {
+    "it": "Numero di ripetizioni",
+    "de": "Anzahl der Wiederholungen",
+    "fr": "Nombre de répétitions",
+    "es": "Número de repeticiones",
+    "zh": "重复次数"
+  },
+  "users.add": {
+    "it": "Aggiungi",
+    "de": "Hinzufügen",
+    "fr": "Ajouter",
+    "es": "Añadir",
+    "zh": "添加"
+  },
+  "users.bulkPlaceholder": {
+    "it": "Un nome per riga...",
+    "de": "Ein Name pro Zeile...",
+    "fr": "Un nom par ligne...",
+    "es": "Un nombre por línea...",
+    "zh": "每行一个名称…"
+  },
+  "users.nameToRemove": {
+    "it": "Nome da rimuovere",
+    "de": "Zu entfernender Name",
+    "fr": "Nom à supprimer",
+    "es": "Nombre a quitar",
+    "zh": "要移除的名称"
+  },
+  "users.removePlaceholder": {
+    "it": "Nome da rimuovere",
+    "de": "Zu entfernender Name",
+    "fr": "Nom à supprimer",
+    "es": "Nombre a quitar",
+    "zh": "要移除的名称"
+  },
+  "users.remove": {
+    "it": "Rimuovi",
+    "de": "Entfernen",
+    "fr": "Supprimer",
+    "es": "Quitar",
+    "zh": "移除"
+  },
+  "users.togglePresets": {
+    "it": "Mostra o nascondi i vincitori predefiniti",
+    "de": "Vordefinierte Gewinner ein-/ausblenden",
+    "fr": "Afficher ou masquer les gagnants prédéfinis",
+    "es": "Mostrar u ocultar los ganadores predefinidos",
+    "zh": "显示或隐藏预设中奖者"
+  },
+  "users.hidden": {
+    "it": "Nascosti",
+    "de": "Versteckt",
+    "fr": "Masqués",
+    "es": "Ocultos",
+    "zh": "隐藏"
+  },
+  "users.winnersOrder": {
+    "it": "Ordine dei vincitori",
+    "de": "Reihenfolge der Gewinner",
+    "fr": "Ordre des gagnants",
+    "es": "Orden de los ganadores",
+    "zh": "中奖顺序"
+  },
+  "users.clearPresets": {
+    "it": "Cancella tutti i vincitori predefiniti",
+    "de": "Alle vordefinierten Gewinner löschen",
+    "fr": "Effacer tous les gagnants prédéfinis",
+    "es": "Borrar todos los ganadores predefinidos",
+    "zh": "清除所有预设中奖者"
+  },
+  "users.presetsList": {
+    "it": "Vincitori predefiniti in ordine di estrazione",
+    "de": "Vordefinierte Gewinner in Ziehungsreihenfolge",
+    "fr": "Gagnants prédéfinis dans l'ordre du tirage",
+    "es": "Ganadores predefinidos en orden de sorteo",
+    "zh": "按抽取顺序排列的预设中奖者"
+  },
+  "users.onWheel": {
+    "it": "Persone sulla ruota",
+    "de": "Personen auf dem Rad",
+    "fr": "Personnes sur la roue",
+    "es": "Personas en la rueda",
+    "zh": "转盘上的人"
+  },
+  "users.empty": {
+    "it": "Nessun nome sulla ruota.",
+    "de": "Noch keine Namen auf dem Rad.",
+    "fr": "Aucun nom sur la roue.",
+    "es": "Todavía no hay nombres en la rueda.",
+    "zh": "转盘上还没有名称。"
+  },
+  "manager.display": {
+    "it": "Visualizzazione",
+    "de": "Anzeige",
+    "fr": "Affichage",
+    "es": "Visualización",
+    "zh": "显示"
+  },
+  "manager.displayHint": {
+    "it": "Mostra da 1 a 4 ruote affiancate nella pagina.",
+    "de": "Zeige 1 bis 4 Räder nebeneinander auf der Seite.",
+    "fr": "Affichez de 1 à 4 roues côte à côte sur la page.",
+    "es": "Muestra de 1 a 4 ruedas juntas en la página.",
+    "zh": "在页面上并排显示 1 到 4 个转盘。"
+  },
+  "manager.visibleWheels": {
+    "it": "Ruote visibili",
+    "de": "Sichtbare Räder",
+    "fr": "Roues visibles",
+    "es": "Ruedas visibles",
+    "zh": "可见转盘"
+  },
+  "manager.decrease": {
+    "it": "Riduci le ruote visibili",
+    "de": "Weniger sichtbare Räder",
+    "fr": "Réduire les roues visibles",
+    "es": "Reducir las ruedas visibles",
+    "zh": "减少可见转盘"
+  },
+  "manager.increase": {
+    "it": "Aumenta le ruote visibili",
+    "de": "Mehr sichtbare Räder",
+    "fr": "Augmenter les roues visibles",
+    "es": "Aumentar las ruedas visibles",
+    "zh": "增加可见转盘"
+  },
+  "manager.wheelList": {
+    "it": "Elenco delle ruote",
+    "de": "Rad-Liste",
+    "fr": "Liste des roues",
+    "es": "Lista de ruedas",
+    "zh": "转盘列表"
+  },
+  "manager.import": {
+    "it": "Importa...",
+    "de": "Importieren...",
+    "fr": "Importer...",
+    "es": "Importar...",
+    "zh": "导入…"
+  },
+  "manager.importCloud": {
+    "it": "Importa dal cloud",
+    "de": "Aus der Cloud importieren",
+    "fr": "Importer depuis le cloud",
+    "es": "Importar desde la nube",
+    "zh": "从云端导入"
+  },
+  "manager.wheelName": {
+    "it": "Nome della ruota",
+    "de": "Name des Rads",
+    "fr": "Nom de la roue",
+    "es": "Nombre de la rueda",
+    "zh": "转盘名称"
+  },
+  "manager.wheelDescription": {
+    "it": "Descrizione della ruota",
+    "de": "Beschreibung des Rads",
+    "fr": "Description de la roue",
+    "es": "Descripción de la rueda",
+    "zh": "转盘描述"
+  },
+  "manager.save": {
+    "it": "Salva",
+    "de": "Speichern",
+    "fr": "Enregistrer",
+    "es": "Guardar",
+    "zh": "保存"
+  },
+  "manager.cancel": {
+    "it": "Annulla",
+    "de": "Abbrechen",
+    "fr": "Annuler",
+    "es": "Cancelar",
+    "zh": "取消"
+  },
+  "manager.load": {
+    "it": "Carica",
+    "de": "Laden",
+    "fr": "Charger",
+    "es": "Cargar",
+    "zh": "载入"
+  },
+  "manager.rename": {
+    "it": "Rinomina",
+    "de": "Umbenennen",
+    "fr": "Renommer",
+    "es": "Renombrar",
+    "zh": "重命名"
+  },
+  "manager.delete": {
+    "it": "Elimina",
+    "de": "Löschen",
+    "fr": "Supprimer",
+    "es": "Eliminar",
+    "zh": "删除"
+  },
+  "manager.savedToCloud": {
+    "it": "Salvata nel cloud.",
+    "de": "In der Cloud gespeichert.",
+    "fr": "Enregistrée dans le cloud.",
+    "es": "Guardada en la nube.",
+    "zh": "已保存到云端。"
+  },
+  "auth.err.fillSignup": {
+    "it": "Inserisci email, password e conferma password per registrarti.",
+    "de": "Gib E-Mail, Passwort und Passwortbestätigung ein, um dich zu registrieren.",
+    "fr": "Saisissez e-mail, mot de passe et confirmation pour créer un compte.",
+    "es": "Introduce correo, contraseña y confirmación para registrarte.",
+    "zh": "请填写邮箱、密码并确认密码以注册。"
+  },
+  "auth.err.fillSignin": {
+    "it": "Inserisci email e password per accedere.",
+    "de": "Gib E-Mail und Passwort ein, um dich anzumelden.",
+    "fr": "Saisissez votre e-mail et votre mot de passe pour vous connecter.",
+    "es": "Introduce correo y contraseña para iniciar sesión.",
+    "zh": "请填写邮箱和密码以登录。"
+  },
+  "auth.err.confirmPassword": {
+    "it": "Conferma la password per creare il profilo.",
+    "de": "Bestätige dein Passwort, um dein Profil zu erstellen.",
+    "fr": "Confirmez votre mot de passe pour créer votre profil.",
+    "es": "Confirma tu contraseña para crear tu perfil.",
+    "zh": "请确认密码以创建资料。"
+  },
+  "auth.err.passwordMismatch": {
+    "it": "Le password non coincidono.",
+    "de": "Die Passwörter stimmen nicht überein.",
+    "fr": "Les mots de passe ne correspondent pas.",
+    "es": "Las contraseñas no coinciden.",
+    "zh": "两次输入的密码不一致。"
+  },
+  "auth.err.registerFailed": {
+    "it": "Registrazione non riuscita. Riprova tra poco.",
+    "de": "Registrierung fehlgeschlagen. Bitte versuche es gleich noch einmal.",
+    "fr": "Échec de l'inscription. Réessayez dans un instant.",
+    "es": "No se pudo completar el registro. Inténtalo de nuevo en un momento.",
+    "zh": "注册失败，请稍后重试。"
+  },
+  "auth.err.authFailed": {
+    "it": "Autenticazione non riuscita. Riprova tra poco.",
+    "de": "Anmeldung fehlgeschlagen. Bitte versuche es gleich noch einmal.",
+    "fr": "Échec de l'authentification. Réessayez dans un instant.",
+    "es": "No se pudo autenticar. Inténtalo de nuevo en un momento.",
+    "zh": "验证失败，请稍后重试。"
+  },
+  "auth.err.emailInUse": {
+    "it": "Questa email è già registrata.",
+    "de": "Diese E-Mail ist bereits registriert.",
+    "fr": "Cet e-mail est déjà enregistré.",
+    "es": "Este correo ya está registrado.",
+    "zh": "该邮箱已注册。"
+  },
+  "auth.err.invalidEmail": {
+    "it": "Email non valida.",
+    "de": "Ungültige E-Mail.",
+    "fr": "E-mail invalide.",
+    "es": "Correo no válido.",
+    "zh": "邮箱无效。"
+  },
+  "auth.err.weakPassword": {
+    "it": "Password troppo debole. Usa almeno 6 caratteri.",
+    "de": "Passwort zu schwach. Verwende mindestens 6 Zeichen.",
+    "fr": "Mot de passe trop faible. Utilisez au moins 6 caractères.",
+    "es": "Contraseña demasiado débil. Usa al menos 6 caracteres.",
+    "zh": "密码强度不足，请至少使用 6 个字符。"
+  },
+  "auth.err.wrongCredentials": {
+    "it": "Email o password non corretti.",
+    "de": "E-Mail oder Passwort ist falsch.",
+    "fr": "E-mail ou mot de passe incorrect.",
+    "es": "Correo o contraseña incorrectos.",
+    "zh": "邮箱或密码不正确。"
+  },
+  "auth.err.popupBlocked": {
+    "it": "Popup bloccato dal browser. Abilita i popup e riprova.",
+    "de": "Popup vom Browser blockiert. Erlaube Popups und versuche es erneut.",
+    "fr": "Fenêtre bloquée par le navigateur. Autorisez les pop-ups et réessayez.",
+    "es": "El navegador bloqueó la ventana emergente. Permítelas e inténtalo de nuevo.",
+    "zh": "浏览器拦截了弹出窗口，请允许弹窗后重试。"
+  },
+  "auth.err.tooMany": {
+    "it": "Troppi tentativi. Riprova tra qualche minuto.",
+    "de": "Zu viele Versuche. Versuche es in ein paar Minuten erneut.",
+    "fr": "Trop de tentatives. Réessayez dans quelques minutes.",
+    "es": "Demasiados intentos. Inténtalo de nuevo en unos minutos.",
+    "zh": "尝试次数过多，请几分钟后再试。"
+  },
+  "auth.err.network": {
+    "it": "Errore di rete. Controlla la connessione e riprova.",
+    "de": "Netzwerkfehler. Prüfe deine Verbindung und versuche es erneut.",
+    "fr": "Erreur réseau. Vérifiez votre connexion et réessayez.",
+    "es": "Error de red. Comprueba tu conexión e inténtalo de nuevo.",
+    "zh": "网络错误，请检查连接后重试。"
+  },
+  "auth.err.registerDetails": {
+    "it": "Registrazione non riuscita. Controlla i dati e riprova.",
+    "de": "Registrierung fehlgeschlagen. Prüfe deine Angaben und versuche es erneut.",
+    "fr": "Échec de l'inscription. Vérifiez vos informations et réessayez.",
+    "es": "No se pudo completar el registro. Revisa los datos e inténtalo de nuevo.",
+    "zh": "注册失败，请检查填写的信息后重试。"
+  },
+  "auth.err.authDetails": {
+    "it": "Autenticazione non riuscita. Controlla i dati e riprova.",
+    "de": "Anmeldung fehlgeschlagen. Prüfe deine Angaben und versuche es erneut.",
+    "fr": "Échec de l'authentification. Vérifiez vos informations et réessayez.",
+    "es": "No se pudo autenticar. Revisa los datos e inténtalo de nuevo.",
+    "zh": "验证失败，请检查填写的信息后重试。"
+  },
+  "auth.err.noGoogleAccount": {
+    "it": "Nessun account Google su questo dispositivo. Aggiungine uno nelle impostazioni Android e riprova.",
+    "de": "Kein Google-Konto auf diesem Gerät. Füge eines in den Android-Einstellungen hinzu und versuche es erneut.",
+    "fr": "Aucun compte Google sur cet appareil. Ajoutez-en un dans les réglages Android, puis réessayez.",
+    "es": "No hay ninguna cuenta de Google en este dispositivo. Añade una en los ajustes de Android e inténtalo de nuevo.",
+    "zh": "此设备上没有 Google 账户。请在 Android 设置中添加后重试。"
+  },
+  "auth.err.unauthorizedBuild": {
+    "it": "Questa build dell'app non è autorizzata per l'accesso con Google. Registra la sua impronta di firma su Firebase.",
+    "de": "Dieser App-Build ist nicht für die Google-Anmeldung autorisiert. Registriere seinen Signatur-Fingerabdruck in Firebase.",
+    "fr": "Cette version de l'application n'est pas autorisée pour la connexion Google. Enregistrez son empreinte de signature dans Firebase.",
+    "es": "Esta compilación de la app no está autorizada para iniciar sesión con Google. Registra su huella de firma en Firebase.",
+    "zh": "此应用版本未获授权使用 Google 登录。请在 Firebase 中注册其签名指纹。"
+  },
+  "createWheel.err.name": {
+    "it": "Inserisci un nome per la ruota.",
+    "de": "Gib einen Namen für das Rad ein.",
+    "fr": "Saisissez un nom pour la roue.",
+    "es": "Introduce un nombre para la rueda.",
+    "zh": "请为转盘输入名称。"
+  },
+  "createWheel.err.failed": {
+    "it": "Impossibile creare la ruota. Riprova.",
+    "de": "Das Rad konnte nicht erstellt werden. Versuche es erneut.",
+    "fr": "Impossible de créer la roue. Réessayez.",
+    "es": "No se pudo crear la rueda. Inténtalo de nuevo.",
+    "zh": "无法创建转盘，请重试。"
+  },
+  "donation.err.amount": {
+    "it": "Inserisci un importo AVAX valido maggiore di 0 (fino a 18 decimali).",
+    "de": "Gib einen gültigen AVAX-Betrag größer als 0 ein (bis zu 18 Dezimalstellen).",
+    "fr": "Saisissez un montant AVAX valide supérieur à 0 (jusqu'à 18 décimales).",
+    "es": "Introduce un importe de AVAX válido mayor que 0 (hasta 18 decimales).",
+    "zh": "请输入大于 0 的有效 AVAX 金额（最多 18 位小数）。"
+  },
+  "donation.err.noWallet": {
+    "it": "Nessun wallet rilevato nel browser. Installa un'estensione wallet per inviare AVAX.",
+    "de": "Kein Browser-Wallet erkannt. Installiere eine Wallet-Erweiterung, um AVAX zu senden.",
+    "fr": "Aucun portefeuille détecté dans le navigateur. Installez une extension de portefeuille pour envoyer des AVAX.",
+    "es": "No se detectó ninguna cartera en el navegador. Instala una extensión de cartera para enviar AVAX.",
+    "zh": "未检测到浏览器钱包。请安装钱包扩展以发送 AVAX。"
+  },
+  "donation.err.noAccount": {
+    "it": "Nessun account collegato. Collega il wallet una volta, poi riprova con Donate $Avax.",
+    "de": "Kein verbundenes Konto gefunden. Verbinde dein Wallet einmal und versuche Donate $Avax dann erneut.",
+    "fr": "Aucun compte connecté. Connectez votre portefeuille une fois, puis réessayez Donate $Avax.",
+    "es": "No se encontró ninguna cuenta conectada. Conecta tu cartera una vez y vuelve a intentar Donate $Avax.",
+    "zh": "未找到已连接的账户。请先连接钱包，然后重试 Donate $Avax。"
+  },
+  "header.auth.openAccount": {
+    "it": "Apri il pannello account",
+    "de": "Kontobereich öffnen",
+    "fr": "Ouvrir le panneau du compte",
+    "es": "Abrir el panel de la cuenta",
+    "zh": "打开账户面板"
+  },
+  "header.auth.openLogin": {
+    "it": "Apri la finestra di accesso",
+    "de": "Anmeldefenster öffnen",
+    "fr": "Ouvrir la fenêtre de connexion",
+    "es": "Abrir la ventana de acceso",
+    "zh": "打开登录窗口"
+  },
+  "header.save.saving": {
+    "it": "Salvataggio della ruota nel cloud",
+    "de": "Rad wird in der Cloud gespeichert",
+    "fr": "Enregistrement de la roue dans le cloud",
+    "es": "Guardando la rueda en la nube",
+    "zh": "正在将转盘保存到云端"
+  },
+  "header.save.saved": {
+    "it": "Ruota salvata nel cloud",
+    "de": "Rad in der Cloud gespeichert",
+    "fr": "Roue enregistrée dans le cloud",
+    "es": "Rueda guardada en la nube",
+    "zh": "转盘已保存到云端"
+  },
+  "header.save.failed": {
+    "it": "Salvataggio non riuscito, riprova",
+    "de": "Speichern fehlgeschlagen, erneut versuchen",
+    "fr": "Échec de l'enregistrement, réessayer",
+    "es": "No se pudo guardar, reintentar",
+    "zh": "保存失败，请重试"
+  },
+  "header.save.update": {
+    "it": "Aggiorna la ruota salvata nel cloud",
+    "de": "Gespeichertes Rad in der Cloud aktualisieren",
+    "fr": "Mettre à jour la roue enregistrée dans le cloud",
+    "es": "Actualizar la rueda guardada en la nube",
+    "zh": "更新云端已保存的转盘"
+  },
+  "header.save.toCloud": {
+    "it": "Salva la ruota nel cloud",
+    "de": "Rad in der Cloud speichern",
+    "fr": "Enregistrer la roue dans le cloud",
+    "es": "Guardar la rueda en la nube",
+    "zh": "将转盘保存到云端"
+  },
+  "header.save.noWheel": {
+    "it": "Nessuna ruota selezionata da salvare.",
+    "de": "Kein Rad zum Speichern ausgewählt.",
+    "fr": "Aucune roue sélectionnée à enregistrer.",
+    "es": "No hay ninguna rueda seleccionada para guardar.",
+    "zh": "没有选择要保存的转盘。"
+  },
+  "header.save.notFound": {
+    "it": "Configurazione della ruota non trovata. Riprova.",
+    "de": "Rad-Konfiguration nicht gefunden. Versuche es erneut.",
+    "fr": "Configuration de la roue introuvable. Réessayez.",
+    "es": "No se encontró la configuración de la rueda. Inténtalo de nuevo.",
+    "zh": "未找到转盘配置，请重试。"
+  },
+  "header.save.updatedMsg": {
+    "it": "Ruota aggiornata nel cloud.",
+    "de": "Rad in der Cloud aktualisiert.",
+    "fr": "Roue mise à jour dans le cloud.",
+    "es": "Rueda actualizada en la nube.",
+    "zh": "转盘已在云端更新。"
+  },
+  "header.save.savedMsg": {
+    "it": "Ruota salvata nel cloud.",
+    "de": "Rad in der Cloud gespeichert.",
+    "fr": "Roue enregistrée dans le cloud.",
+    "es": "Rueda guardada en la nube.",
+    "zh": "转盘已保存到云端。"
+  },
+  "header.save.signIn": {
+    "it": "Accedi per salvare la ruota nel cloud.",
+    "de": "Melde dich an, um das Rad in der Cloud zu speichern.",
+    "fr": "Connectez-vous pour enregistrer la roue dans le cloud.",
+    "es": "Inicia sesión para guardar la rueda en la nube.",
+    "zh": "请登录后将转盘保存到云端。"
+  },
+  "header.save.error": {
+    "it": "Salvataggio nel cloud non riuscito. Riprova.",
+    "de": "Speichern in der Cloud fehlgeschlagen. Versuche es erneut.",
+    "fr": "Échec de l'enregistrement dans le cloud. Réessayez.",
+    "es": "No se pudo guardar en la nube. Inténtalo de nuevo.",
+    "zh": "云端保存失败，请重试。"
+  },
+  "account.err.enterPassword": {
+    "it": "Inserisci la password per confermare.",
+    "de": "Gib dein Passwort zur Bestätigung ein.",
+    "fr": "Saisissez votre mot de passe pour confirmer.",
+    "es": "Introduce tu contraseña para confirmar.",
+    "zh": "请输入密码以确认。"
+  },
+  "account.err.wrongPassword": {
+    "it": "Password non corretta.",
+    "de": "Das Passwort ist nicht korrekt.",
+    "fr": "Ce mot de passe est incorrect.",
+    "es": "Esa contraseña no es correcta.",
+    "zh": "密码不正确。"
+  },
+  "account.err.canceled": {
+    "it": "Verifica annullata: non è stato eliminato nulla.",
+    "de": "Die Bestätigung wurde abgebrochen, es wurde nichts gelöscht.",
+    "fr": "La vérification a été annulée, rien n'a été supprimé.",
+    "es": "Se canceló la verificación, así que no se eliminó nada.",
+    "zh": "验证已取消，未删除任何内容。"
+  },
+  "account.err.tooMany": {
+    "it": "Troppi tentativi. Aspetta qualche minuto e riprova.",
+    "de": "Zu viele Versuche. Warte ein paar Minuten und versuche es erneut.",
+    "fr": "Trop de tentatives. Patientez quelques minutes et réessayez.",
+    "es": "Demasiados intentos. Espera unos minutos e inténtalo de nuevo.",
+    "zh": "尝试次数过多，请等待几分钟后重试。"
+  },
+  "account.err.network": {
+    "it": "Nessuna connessione. Controlla la rete e riprova.",
+    "de": "Keine Verbindung. Prüfe dein Netzwerk und versuche es erneut.",
+    "fr": "Pas de connexion. Vérifiez votre réseau et réessayez.",
+    "es": "Sin conexión. Comprueba tu red e inténtalo de nuevo.",
+    "zh": "无网络连接，请检查网络后重试。"
+  },
+  "account.err.failed": {
+    "it": "Non è stato possibile eliminare l'account. Riprova.",
+    "de": "Das Konto konnte nicht gelöscht werden. Bitte versuche es erneut.",
+    "fr": "Le compte n'a pas pu être supprimé. Veuillez réessayer.",
+    "es": "No se pudo eliminar la cuenta. Inténtalo de nuevo.",
+    "zh": "无法删除账户，请重试。"
+  },
+  "publicWheel.err.invalidId": {
+    "it": "ID della ruota non valido.",
+    "de": "Ungültige Rad-ID.",
+    "fr": "Identifiant de roue invalide.",
+    "es": "ID de rueda no válido.",
+    "zh": "转盘 ID 无效。"
+  },
+  "publicWheel.err.notFound": {
+    "it": "Ruota non trovata nel cloud.",
+    "de": "Rad in der Cloud nicht gefunden.",
+    "fr": "Roue introuvable dans le cloud.",
+    "es": "No se encontró la rueda en la nube.",
+    "zh": "云端未找到该转盘。"
+  },
+  "publicWheel.err.loadFailed": {
+    "it": "Errore nel caricamento della ruota dal cloud.",
+    "de": "Fehler beim Laden des Rads aus der Cloud.",
+    "fr": "Erreur lors du chargement de la roue depuis le cloud.",
+    "es": "Error al cargar la rueda desde la nube.",
+    "zh": "从云端加载转盘时出错。"
+  },
+  "bar.panel.users.aria": {
+    "it": "Apri il pannello dei nomi",
+    "de": "Namen-Bereich öffnen",
+    "fr": "Ouvrir le panneau des noms",
+    "es": "Abrir el panel de nombres",
+    "zh": "打开名称面板"
+  },
+  "bar.panel.users.caption": {
+    "it": "Nomi",
+    "de": "Namen",
+    "fr": "Noms",
+    "es": "Nombres",
+    "zh": "名称"
+  },
+  "bar.panel.colors.aria": {
+    "it": "Apri il pannello dei colori",
+    "de": "Farben-Bereich öffnen",
+    "fr": "Ouvrir le panneau des couleurs",
+    "es": "Abrir el panel de colores",
+    "zh": "打开颜色面板"
+  },
+  "bar.panel.colors.caption": {
+    "it": "Colori",
+    "de": "Farben",
+    "fr": "Couleurs",
+    "es": "Colores",
+    "zh": "颜色"
+  },
+  "bar.panel.sound.aria": {
+    "it": "Apri il pannello dell'audio",
+    "de": "Ton-Bereich öffnen",
+    "fr": "Ouvrir le panneau du son",
+    "es": "Abrir el panel de sonido",
+    "zh": "打开声音面板"
+  },
+  "bar.panel.sound.caption": {
+    "it": "Audio",
+    "de": "Ton",
+    "fr": "Son",
+    "es": "Sonido",
+    "zh": "声音"
+  },
+  "bar.panel.effects.aria": {
+    "it": "Apri il pannello degli effetti",
+    "de": "Effekte-Bereich öffnen",
+    "fr": "Ouvrir le panneau des effets",
+    "es": "Abrir el panel de efectos",
+    "zh": "打开特效面板"
+  },
+  "bar.panel.effects.caption": {
+    "it": "Effetti",
+    "de": "Effekte",
+    "fr": "Effets",
+    "es": "Efectos",
+    "zh": "特效"
+  },
+  "bar.panel.wheels.aria": {
+    "it": "Apri il gestore delle ruote",
+    "de": "Rad-Verwaltung öffnen",
+    "fr": "Ouvrir le gestionnaire de roues",
+    "es": "Abrir el gestor de ruedas",
+    "zh": "打开转盘管理面板"
+  },
+  "bar.panel.wheels.caption": {
+    "it": "Ruote",
+    "de": "Räder",
+    "fr": "Roues",
+    "es": "Ruedas",
+    "zh": "转盘"
+  },
+  "wheelPage.qr.notSynced": {
+    "it": "Questa ruota non è ancora sincronizzata con il cloud.",
+    "de": "Dieses Rad ist noch nicht mit der Cloud synchronisiert.",
+    "fr": "Cette roue n'est pas encore synchronisée avec le cloud.",
+    "es": "Esta rueda aún no está sincronizada con la nube.",
+    "zh": "此转盘尚未同步到云端。"
+  },
+  "wheelPage.qr.failed": {
+    "it": "Impossibile generare il codice QR.",
+    "de": "QR-Code konnte nicht erstellt werden.",
+    "fr": "Impossible de générer le QR code.",
+    "es": "No se pudo generar el código QR.",
+    "zh": "无法生成二维码。"
+  },
+  "wheelPage.chrome.show": {
+    "it": "Mostra intestazione, piè di pagina e controlli",
+    "de": "Kopfzeile, Fußzeile und Steuerung einblenden",
+    "fr": "Afficher l'en-tête, le pied de page et les commandes",
+    "es": "Mostrar encabezado, pie de página y controles",
+    "zh": "显示页眉、页脚和控件"
+  },
+  "wheelPage.chrome.hide": {
+    "it": "Nascondi intestazione, piè di pagina e controlli",
+    "de": "Kopfzeile, Fußzeile und Steuerung ausblenden",
+    "fr": "Masquer l'en-tête, le pied de page et les commandes",
+    "es": "Ocultar encabezado, pie de página y controles",
+    "zh": "隐藏页眉、页脚和控件"
+  },
+  "wheelPage.rename.multiple": {
+    "it": "Rinomina le ruote visibili",
+    "de": "Sichtbare Räder umbenennen",
+    "fr": "Renommer les roues visibles",
+    "es": "Renombrar las ruedas visibles",
+    "zh": "重命名可见转盘"
+  },
+  "wheelPage.rename.single": {
+    "it": "Rinomina la ruota selezionata",
+    "de": "Ausgewähltes Rad umbenennen",
+    "fr": "Renommer la roue sélectionnée",
+    "es": "Renombrar la rueda seleccionada",
+    "zh": "重命名所选转盘"
+  },
+  "templates.adLocked": {
+    "it": "L'annuncio deve essere guardato fino in fondo per sbloccare il template. Riprova.",
+    "de": "Die Anzeige muss vollständig abgespielt werden, um diese Vorlage freizuschalten. Versuche es noch einmal.",
+    "fr": "La publicité doit être regardée jusqu'au bout pour débloquer ce modèle. Réessayez.",
+    "es": "El anuncio debe reproducirse por completo para desbloquear esta plantilla. Inténtalo otra vez.",
+    "zh": "需要完整播放广告才能解锁该模板，请再试一次。"
+  },
+  "sync.inProgress": {
+    "it": "Sincronizzazione delle ruote...",
+    "de": "Räder werden synchronisiert...",
+    "fr": "Synchronisation des roues...",
+    "es": "Sincronizando las ruedas...",
+    "zh": "正在同步转盘…"
+  },
+  "sync.signIn": {
+    "it": "Accedi per sincronizzare le tue ruote.",
+    "de": "Melde dich an, um deine Räder zu synchronisieren.",
+    "fr": "Connectez-vous pour synchroniser vos roues.",
+    "es": "Inicia sesión para sincronizar tus ruedas.",
+    "zh": "请登录以同步你的转盘。"
+  },
+  "sync.failed": {
+    "it": "Impossibile sincronizzare le ruote dal cloud.",
+    "de": "Räder konnten nicht aus der Cloud synchronisiert werden.",
+    "fr": "Impossible de synchroniser les roues depuis le cloud.",
+    "es": "No se pudieron sincronizar las ruedas desde la nube.",
+    "zh": "无法从云端同步转盘。"
+  },
+  "sync.upToDate": {
+    "it": "Le ruote sono aggiornate.",
+    "de": "Die Räder sind aktuell.",
+    "fr": "Les roues sont à jour.",
+    "es": "Las ruedas están al día.",
+    "zh": "转盘已是最新。"
+  },
+  "app.mainContent": {
+    "it": "Contenuto principale",
+    "de": "Hauptinhalt",
+    "fr": "Contenu principal",
+    "es": "Contenido principal",
+    "zh": "主要内容"
+  },
+  "wheelPage.rail.info": {
+    "it": "Apri la pagina Info",
+    "de": "Info-Seite öffnen",
+    "fr": "Ouvrir la page Infos",
+    "es": "Abrir la página de información",
+    "zh": "打开信息页面"
+  },
+  "wheelPage.rail.infoTitle": {
+    "it": "Info",
+    "de": "Info",
+    "fr": "Infos",
+    "es": "Información",
+    "zh": "信息"
+  },
+  "wheelPage.rail.donation": {
+    "it": "Apri la pagina delle donazioni",
+    "de": "Spendenseite öffnen",
+    "fr": "Ouvrir la page des dons",
+    "es": "Abrir la página de donaciones",
+    "zh": "打开捐赠页面"
+  },
+  "wheelPage.rail.donationTitle": {
+    "it": "Donazioni",
+    "de": "Spenden",
+    "fr": "Dons",
+    "es": "Donaciones",
+    "zh": "捐赠"
+  },
+  "wheelPage.rail.share": {
+    "it": "Condividi su X",
+    "de": "Auf X teilen",
+    "fr": "Partager sur X",
+    "es": "Compartir en X",
+    "zh": "分享到 X"
+  },
+  "wheelPage.rename.closeModal": {
+    "it": "Chiudi la finestra di rinomina",
+    "de": "Umbenennen-Fenster schließen",
+    "fr": "Fermer la fenêtre de renommage",
+    "es": "Cerrar la ventana de renombrado",
+    "zh": "关闭重命名窗口"
+  },
+  "wheelPage.qr.closeModal": {
+    "it": "Chiudi la finestra del codice QR",
+    "de": "QR-Code-Fenster schließen",
+    "fr": "Fermer la fenêtre du QR code",
+    "es": "Cerrar la ventana del código QR",
+    "zh": "关闭二维码窗口"
+  },
+  "landing.breadcrumb": {
+    "it": "Percorso di navigazione",
+    "de": "Navigationspfad",
+    "fr": "Fil d'Ariane",
+    "es": "Ruta de navegación",
+    "zh": "面包屑导航"
+  },
+  "landing.entries": {
+    "it": "Voci su questa ruota",
+    "de": "Einträge auf diesem Rad",
+    "fr": "Entrées de cette roue",
+    "es": "Entradas de esta rueda",
+    "zh": "此转盘上的条目"
+  },
+  "templates.goToWheel": {
+    "it": "Vai alla pagina della ruota",
+    "de": "Zur Rad-Seite",
+    "fr": "Aller à la page de la roue",
+    "es": "Ir a la página de la rueda",
+    "zh": "前往转盘页面"
+  },
+  "templates.grid": {
+    "it": "Ruote pronte all'uso",
+    "de": "Fertige Rad-Vorlagen",
+    "fr": "Modèles de roues prêts à l'emploi",
+    "es": "Plantillas de ruedas listas para usar",
+    "zh": "现成转盘模板"
+  },
+  "seo.home.title": {
+    "it": "Ruota della Fortuna Online Gratis | Gira la Ruota - Wheelr",
+    "de": "Glücksrad Online Kostenlos | Zufallsgenerator - Wheelr",
+    "fr": "Roue de la Fortune en Ligne Gratuite | Tirage au Sort - Wheelr",
+    "es": "Ruleta Online Gratis | Sorteo Aleatorio - Wheelr",
+    "zh": "免费在线转盘 | 抽奖转盘与随机选择器 - Wheelr"
+  },
+  "seo.home.description": {
+    "it": "Wheelr è una ruota della fortuna gratuita per estrazioni, classi, dirette ed eventi. Personalizza colori, suoni ed effetti. Gira senza registrazione!",
+    "de": "Wheelr ist ein kostenloses Glücksrad für Verlosungen, Unterricht, Livestreams und Events. Farben, Sounds und Effekte anpassen. Jetzt drehen — ohne Anmeldung!",
+    "fr": "Wheelr est une roue de la fortune gratuite pour tirages au sort, classes, lives et événements. Personnalisez couleurs, sons et effets. Sans inscription !",
+    "es": "Wheelr es una ruleta gratuita para sorteos, clases, directos y eventos. Personaliza colores, sonidos y efectos. Gira la ruleta — ¡sin registro!",
+    "zh": "Wheelr 是一款免费在线转盘，适用于抽奖、课堂、直播和活动。可自定义颜色、声音和特效。立即转动——无需注册！"
+  },
+  "seo.info.title": {
+    "it": "Come Usare Wheelr | Guida alla Ruota, Esempi e FAQ",
+    "de": "Wheelr verwenden | Anleitung zum Glücksrad, Beispiele & FAQ",
+    "fr": "Comment Utiliser Wheelr | Guide de la Roue, Exemples et FAQ",
+    "es": "Cómo Usar Wheelr | Guía de la Ruleta, Ejemplos y FAQ",
+    "zh": "如何使用 Wheelr | 转盘指南、示例与常见问题"
+  },
+  "seo.info.description": {
+    "it": "Guida passo passo alla ruota Wheelr: aggiungi partecipanti, personalizza colori e suoni, organizza estrazioni, scelte in classe e sorteggi live. Con FAQ.",
+    "de": "Schritt-für-Schritt-Anleitung zum Wheelr-Glücksrad: Teilnehmer hinzufügen, Farben und Sounds anpassen, Verlosungen und Live-Ziehungen durchführen. Mit FAQ.",
+    "fr": "Guide pas à pas de la roue Wheelr : ajoutez les participants, personnalisez couleurs et sons, organisez tirages, choix en classe et lives. Avec FAQ.",
+    "es": "Guía paso a paso de la ruleta Wheelr: añade participantes, personaliza colores y sonidos, organiza sorteos, elecciones en clase y directos. Con FAQ.",
+    "zh": "Wheelr 转盘分步指南：添加参与者、自定义颜色和声音、举办抽奖、课堂点名和直播抽签。附常见问题。"
+  },
+  "seo.info.breadcrumb": {
+    "it": "Guida",
+    "de": "Anleitung",
+    "fr": "Guide",
+    "es": "Guía",
+    "zh": "指南"
+  },
+  "seo.donation.title": {
+    "it": "Sostieni Wheelr | Mantieni Gratuita la Ruota della Fortuna",
+    "de": "Wheelr unterstützen | Das Glücksrad kostenlos halten",
+    "fr": "Soutenir Wheelr | Garder la Roue de la Fortune Gratuite",
+    "es": "Apoya a Wheelr | Mantén la Ruleta Gratuita",
+    "zh": "支持 Wheelr | 让这款转盘保持免费"
+  },
+  "seo.donation.description": {
+    "it": "Wheelr è gratuito e lo resterà. Se fa risparmiare tempo al tuo team o rende più divertenti i tuoi eventi, una donazione tiene in vita il progetto.",
+    "de": "Wheelr ist kostenlos und bleibt es. Wenn es deinem Team Zeit spart oder eure Events besser macht, hält eine Spende das Projekt am Leben.",
+    "fr": "Wheelr est gratuit et le restera. S'il fait gagner du temps à votre équipe ou rend vos événements plus amusants, un don fait vivre le projet.",
+    "es": "Wheelr es gratis y lo seguirá siendo. Si ahorra tiempo a tu equipo o hace más divertidos tus eventos, una donación mantiene vivo el proyecto.",
+    "zh": "Wheelr 一直免费，未来也是。如果它为你的团队节省了时间或让活动更有趣，一份捐赠就能让项目继续运行。"
+  },
+  "seo.donation.breadcrumb": {
+    "it": "Sostieni",
+    "de": "Unterstützen",
+    "fr": "Soutenir",
+    "es": "Apoyar",
+    "zh": "支持"
+  },
+  "seo.templates.title": {
+    "it": "Ruote Pronte all'Uso | Modelli di Ruota della Fortuna - Wheelr",
+    "de": "Glücksrad-Vorlagen | Fertige Räder zum Drehen - Wheelr",
+    "fr": "Modèles de Roues | Roues Prêtes à Tourner - Wheelr",
+    "es": "Plantillas de Ruleta | Ruletas Listas para Girar - Wheelr",
+    "zh": "转盘模板 | 现成的抽奖转盘 - Wheelr"
+  },
+  "seo.templates.description": {
+    "it": "Ruote pronte da caricare con un clic: Sì o No, Estrazione Premi, Scegli la Squadra, Obbligo o Verità, Ruota Sconti, Film della Sera e altre. Gratis.",
+    "de": "Fertige Räder mit einem Klick: Ja oder Nein, Gewinnspiel, Team-Auswahl, Wahrheit oder Pflicht, Rabatt-Rad, Filmabend und mehr. Kostenlos, ohne Anmeldung.",
+    "fr": "Roues prêtes à charger en un clic : Oui ou Non, Tirage de Prix, Choix d'Équipe, Action ou Vérité, Roue de Remises, Soirée Film et plus. Gratuit.",
+    "es": "Ruletas listas para cargar con un clic: Sí o No, Sorteo de Premios, Elegir Equipo, Verdad o Reto, Ruleta de Descuentos, Noche de Cine y más. Gratis.",
+    "zh": "一键加载的现成转盘：是或否、奖品抽奖、随机分组、真心话大冒险、折扣转盘、电影之夜等。免费，无需注册。"
+  },
+  "seo.templates.breadcrumb": {
+    "it": "Modelli",
+    "de": "Vorlagen",
+    "fr": "Modèles",
+    "es": "Plantillas",
+    "zh": "模板"
+  },
+  "seo.landing.title": {
+    "it": "Ruota Pronta all'Uso - Wheelr",
+    "de": "Fertiges Glücksrad - Wheelr",
+    "fr": "Roue Prête à Tourner - Wheelr",
+    "es": "Ruleta Lista para Girar - Wheelr",
+    "zh": "现成转盘 - Wheelr"
+  },
+  "seo.landing.description": {
+    "it": "Una ruota pronta che puoi girare subito e copiare fra le tue. Gratis, senza registrazione.",
+    "de": "Ein fertiges Rad, das du sofort drehen und in deine eigenen übernehmen kannst. Kostenlos, ohne Anmeldung.",
+    "fr": "Une roue prête à tourner immédiatement et à copier parmi les vôtres. Gratuit, sans inscription.",
+    "es": "Una ruleta lista para girar al momento y copiar entre las tuyas. Gratis, sin registro.",
+    "zh": "一个可以立即转动并复制到你自己转盘中的现成转盘。免费，无需注册。"
+  },
+  "seo.stream.title": {
+    "it": "Ruota per Dirette | Overlay OBS per Estrazioni - Wheelr",
+    "de": "Glücksrad für Streams | OBS-Overlay für Verlosungen - Wheelr",
+    "fr": "Roue pour Streams | Overlay OBS pour Tirages - Wheelr",
+    "es": "Ruleta para Directos | Overlay de OBS para Sorteos - Wheelr",
+    "zh": "直播转盘 | OBS 抽奖叠加层 - Wheelr"
+  },
+  "seo.stream.description": {
+    "it": "Metti una ruota nella tua diretta: nascondi l'interfaccia, cattura la finestra in OBS o Streamlabs ed estrai un vincitore dal vivo. Gratis, senza plugin.",
+    "de": "Bring ein Glücksrad in deinen Stream: Oberfläche ausblenden, Fenster in OBS oder Streamlabs aufnehmen und live einen Gewinner ziehen. Gratis, ohne Plugin.",
+    "fr": "Mettez une roue sur votre stream : masquez l'interface, capturez la fenêtre dans OBS ou Streamlabs et tirez un gagnant en direct. Gratuit, sans plugin.",
+    "es": "Pon una ruleta en tu directo: oculta la interfaz, captura la ventana en OBS o Streamlabs y sortea un ganador en vivo. Gratis, sin plugin.",
+    "zh": "把转盘放进你的直播：隐藏界面、在 OBS 或 Streamlabs 中捕获窗口，实时抽出中奖者。免费，无需插件。"
+  },
+  "seo.stream.breadcrumb": {
+    "it": "Per streamer",
+    "de": "Für Streamer",
+    "fr": "Pour les streamers",
+    "es": "Para streamers",
+    "zh": "主播专区"
+  },
+  "seo.privacy.title": {
+    "it": "Informativa sulla Privacy - Wheelr",
+    "de": "Datenschutzerklärung - Wheelr",
+    "fr": "Politique de Confidentialité - Wheelr",
+    "es": "Política de Privacidad - Wheelr",
+    "zh": "隐私政策 - Wheelr"
+  },
+  "seo.privacy.description": {
+    "it": "Quali dati raccoglie Wheelr sul web e nell'app Android, perché, su quale base giuridica GDPR, e come esportarli o cancellarli in qualsiasi momento.",
+    "de": "Welche Daten Wheelr im Web und in der Android-App erhebt, warum, auf welcher DSGVO-Grundlage und wie du sie jederzeit exportieren oder löschen kannst.",
+    "fr": "Quelles données Wheelr collecte sur le web et dans l'application Android, pourquoi, sur quelle base RGPD, et comment les exporter ou les supprimer.",
+    "es": "Qué datos recoge Wheelr en la web y en la app de Android, por qué, con qué base del RGPD, y cómo exportarlos o eliminarlos en cualquier momento.",
+    "zh": "Wheelr 在网页端和安卓应用中收集哪些数据、为何收集、依据哪条 GDPR 条款，以及如何随时导出或删除这些数据。"
+  },
+  "seo.privacy.breadcrumb": {
+    "it": "Privacy",
+    "de": "Datenschutz",
+    "fr": "Confidentialité",
+    "es": "Privacidad",
+    "zh": "隐私"
+  },
+  "seo.shared.title": {
+    "it": "Ruota Condivisa - Wheelr",
+    "de": "Geteiltes Rad - Wheelr",
+    "fr": "Roue Partagée - Wheelr",
+    "es": "Ruleta Compartida - Wheelr",
+    "zh": "共享转盘 - Wheelr"
+  },
+  "seo.shared.description": {
+    "it": "Una ruota condivisa con Wheelr, la ruota della fortuna online gratuita. Apri il link per vedere le voci e girarla — senza account.",
+    "de": "Ein mit Wheelr geteiltes Rad, dem kostenlosen Online-Glücksrad. Öffne den Link, um die Einträge zu sehen und es zu drehen — ohne Konto.",
+    "fr": "Une roue partagée avec Wheelr, la roue de la fortune en ligne gratuite. Ouvrez le lien pour voir les entrées et la faire tourner — sans compte.",
+    "es": "Una ruleta compartida con Wheelr, la ruleta online gratuita. Abre el enlace para ver las entradas y girarla — sin cuenta.",
+    "zh": "通过免费在线转盘 Wheelr 共享的转盘。打开链接即可查看条目并转动——无需账户。"
+  },
+  "seo.breadcrumb.home": {
+    "it": "Home",
+    "de": "Startseite",
+    "fr": "Accueil",
+    "es": "Inicio",
+    "zh": "首页"
+  }
+}

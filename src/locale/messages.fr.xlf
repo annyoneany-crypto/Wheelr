@@ -1,0 +1,2127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" target-language="fr" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="app.mainContent" datatype="html">
+        <source>Main content</source>
+        <target>Contenu principal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.home.title" datatype="html">
+        <source>Free Wheel Online | Spin the Wheel &amp; Random Picker - Wheelr</source>
+        <target>Roue de la Fortune en Ligne Gratuite | Tirage au Sort - Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.home.description" datatype="html">
+        <source>Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now — no signup needed!</source>
+        <target>Wheelr est une roue de la fortune gratuite pour tirages au sort, classes, lives et événements. Personnalisez couleurs, sons et effets. Sans inscription !</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.info.title" datatype="html">
+        <source>How to Use Wheelr | Spin Wheel Guide, Examples &amp; FAQ</source>
+        <target>Comment Utiliser Wheelr | Guide de la Roue, Exemples et FAQ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">51</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.info.description" datatype="html">
+        <source>Step-by-step guide to the Wheelr spin wheel: add participants, customize colors and sounds, run giveaways, classroom picks and live stream draws. With FAQ.</source>
+        <target>Guide pas à pas de la roue Wheelr : ajoutez les participants, personnalisez couleurs et sons, organisez tirages, choix en classe et lives. Avec FAQ.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.info.breadcrumb" datatype="html">
+        <source>Guide</source>
+        <target>Guide</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.donation.title" datatype="html">
+        <source>Support Wheelr | Keep the Free Wheel Spinner Free</source>
+        <target>Soutenir Wheelr | Garder la Roue de la Fortune Gratuite</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.donation.description" datatype="html">
+        <source>Wheelr is free and always will be. If it saves your team time or makes your events more fun, a donation keeps the project running.</source>
+        <target>Wheelr est gratuit et le restera. S'il fait gagner du temps à votre équipe ou rend vos événements plus amusants, un don fait vivre le projet.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.donation.breadcrumb" datatype="html">
+        <source>Support</source>
+        <target>Soutenir</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.templates.title" datatype="html">
+        <source>Wheel Templates | Ready-Made Spin Wheels - Wheelr</source>
+        <target>Modèles de Roues | Roues Prêtes à Tourner - Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.templates.description" datatype="html">
+        <source>Ready-made wheels you can load in one click: Yes or No, Prize Giveaway, Team Picker, Truth or Dare, Discount Wheel, Movie Night and more. Free, no signup.</source>
+        <target>Roues prêtes à charger en un clic : Oui ou Non, Tirage de Prix, Choix d'Équipe, Action ou Vérité, Roue de Remises, Soirée Film et plus. Gratuit.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">78</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.templates.breadcrumb" datatype="html">
+        <source>Templates</source>
+        <target>Modèles</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.landing.title" datatype="html">
+        <source>Ready-Made Spin Wheel - Wheelr</source>
+        <target>Roue Prête à Tourner - Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.landing.description" datatype="html">
+        <source>A ready-made wheel you can spin straight away and copy to your own wheels. Free, no signup.</source>
+        <target>Une roue prête à tourner immédiatement et à copier parmi les vôtres. Gratuit, sans inscription.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">94</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.stream.title" datatype="html">
+        <source>Spin Wheel for Streams | OBS Giveaway Wheel Overlay</source>
+        <target>Roue pour Streams | Overlay OBS pour Tirages - Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.stream.description" datatype="html">
+        <source>Put a spin wheel on your stream: hide the interface, capture the window in OBS or Streamlabs, and draw a winner live. Free, no plugin, no signup for viewers.</source>
+        <target>Mettez une roue sur votre stream : masquez l'interface, capturez la fenêtre dans OBS ou Streamlabs et tirez un gagnant en direct. Gratuit, sans plugin.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.stream.breadcrumb" datatype="html">
+        <source>For streamers</source>
+        <target>Pour les streamers</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.privacy.title" datatype="html">
+        <source>Privacy Policy - Wheelr</source>
+        <target>Politique de Confidentialité - Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.privacy.description" datatype="html">
+        <source>What Wheelr collects on the web and in the Android app, why, the GDPR basis for it, and how to export or delete your data at any time.</source>
+        <target>Quelles données Wheelr collecte sur le web et dans l'application Android, pourquoi, sur quelle base RGPD, et comment les exporter ou les supprimer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.privacy.breadcrumb" datatype="html">
+        <source>Privacy</source>
+        <target>Confidentialité</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.shared.title" datatype="html">
+        <source>Shared Wheel - Wheelr</source>
+        <target>Roue Partagée - Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/public-wheel/public-wheel.ts</context>
+          <context context-type="linenumber">142</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.shared.description" datatype="html">
+        <source>A wheel shared with Wheelr, the free online wheel spinner. Open the link to see the entries and spin it — no account needed.</source>
+        <target>Une roue partagée avec Wheelr, la roue de la fortune en ligne gratuite. Ouvrez le lien pour voir les entrées et la faire tourner — sans compte.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">137</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.dialog" datatype="html">
+        <source>Login modal</source>
+        <target>Fenêtre de connexion</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.title.register" datatype="html">
+        <source>Create account</source>
+        <target>Créer un compte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.title.signin" datatype="html">
+        <source>Sign in</source>
+        <target>Se connecter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.html</context>
+          <context context-type="linenumber">17,18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.subtitle" datatype="html">
+        <source>Choose how you want to authenticate</source>
+        <target>Choisissez votre méthode de connexion</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.html</context>
+          <context context-type="linenumber">20,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.close" datatype="html">
+        <source>Close auth modal</source>
+        <target>Fermer la fenêtre de connexion</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.html</context>
+          <context context-type="linenumber">25,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.google" datatype="html">
+        <source>Sign in with Google</source>
+        <target>Se connecter avec Google</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.html</context>
+          <context context-type="linenumber">95,96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.fillSignup" datatype="html">
+        <source>Fill in email, password, and confirm password to sign up.</source>
+        <target>Saisissez e-mail, mot de passe et confirmation pour créer un compte.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.fillSignin" datatype="html">
+        <source>Fill in email and password to sign in.</source>
+        <target>Saisissez votre e-mail et votre mot de passe pour vous connecter.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.confirmPassword" datatype="html">
+        <source>Confirm your password to create your profile.</source>
+        <target>Confirmez votre mot de passe pour créer votre profil.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.passwordMismatch" datatype="html">
+        <source>Passwords do not match.</source>
+        <target>Les mots de passe ne correspondent pas.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.registerFailed" datatype="html">
+        <source>Registration failed. Please try again shortly.</source>
+        <target>Échec de l'inscription. Réessayez dans un instant.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">140</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.authFailed" datatype="html">
+        <source>Authentication failed. Please try again shortly.</source>
+        <target>Échec de l'authentification. Réessayez dans un instant.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">141</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.emailInUse" datatype="html">
+        <source>This email is already registered.</source>
+        <target>Cet e-mail est déjà enregistré.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">146</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.invalidEmail" datatype="html">
+        <source>Invalid email.</source>
+        <target>E-mail invalide.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.weakPassword" datatype="html">
+        <source>Password is too weak. Use at least 6 characters.</source>
+        <target>Mot de passe trop faible. Utilisez au moins 6 caractères.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.wrongCredentials" datatype="html">
+        <source>Incorrect email or password.</source>
+        <target>E-mail ou mot de passe incorrect.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.popupBlocked" datatype="html">
+        <source>Popup blocked by browser. Enable popups and try again.</source>
+        <target>Fenêtre bloquée par le navigateur. Autorisez les pop-ups et réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">158</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.tooMany" datatype="html">
+        <source>Too many attempts. Try again in a few minutes.</source>
+        <target>Trop de tentatives. Réessayez dans quelques minutes.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.network" datatype="html">
+        <source>Network error. Check your connection and try again.</source>
+        <target>Erreur réseau. Vérifiez votre connexion et réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">162</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.registerDetails" datatype="html">
+        <source>Registration failed. Check your details and try again.</source>
+        <target>Échec de l'inscription. Vérifiez vos informations et réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">165</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.authDetails" datatype="html">
+        <source>Authentication failed. Check your details and try again.</source>
+        <target>Échec de l'authentification. Vérifiez vos informations et réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">166</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.noGoogleAccount" datatype="html">
+        <source>No Google account on this device. Add one in Android settings, then try again.</source>
+        <target>Aucun compte Google sur cet appareil. Ajoutez-en un dans les réglages Android, puis réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">180</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="auth.err.unauthorizedBuild" datatype="html">
+        <source>This app build is not authorized for Google sign-in. Register its signing fingerprint in Firebase.</source>
+        <target>Cette version de l'application n'est pas autorisée pour la connexion Google. Enregistrez son empreinte de signature dans Firebase.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
+          <context context-type="linenumber">190</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.dialog" datatype="html">
+        <source>Create a new wheel</source>
+        <target>Créer une nouvelle roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.title" datatype="html">
+        <source>New wheel</source>
+        <target>Nouvelle roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.subtitle" datatype="html">
+        <source>Give your wheel a name to get started.</source>
+        <target>Donnez un nom à votre roue pour commencer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.close" datatype="html">
+        <source>Close new wheel dialog</source>
+        <target>Fermer la fenêtre de nouvelle roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.namePlaceholder" datatype="html">
+        <source>Friday giveaway</source>
+        <target>Tirage du vendredi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.html</context>
+          <context context-type="linenumber">38,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.descPlaceholder" datatype="html">
+        <source>What is this wheel for?</source>
+        <target>À quoi sert cette roue ?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.html</context>
+          <context context-type="linenumber">55,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.creating" datatype="html">
+        <source>Creating...</source>
+        <target>Création...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.html</context>
+          <context context-type="linenumber">78,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.submit" datatype="html">
+        <source>Create wheel</source>
+        <target>Créer la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.html</context>
+          <context context-type="linenumber">81,82</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.err.name" datatype="html">
+        <source>Enter a name for the wheel.</source>
+        <target>Saisissez un nom pour la roue.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.ts</context>
+          <context context-type="linenumber">66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="createWheel.err.failed" datatype="html">
+        <source>Could not create the wheel. Try again.</source>
+        <target>Impossible de créer la roue. Réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/create-wheel/create-wheel.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="donation.err.amount" datatype="html">
+        <source>Please enter a valid AVAX amount greater than 0 (up to 18 decimals).</source>
+        <target>Saisissez un montant AVAX valide supérieur à 0 (jusqu'à 18 décimales).</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/donation/donation.ts</context>
+          <context context-type="linenumber">48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="donation.err.noWallet" datatype="html">
+        <source>No browser wallet detected. Please install a wallet extension to send AVAX.</source>
+        <target>Aucun portefeuille détecté dans le navigateur. Installez une extension de portefeuille pour envoyer des AVAX.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/donation/donation.ts</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="donation.err.noAccount" datatype="html">
+        <source>No connected account found. Connect your wallet once, then try Donate $Avax again.</source>
+        <target>Aucun compte connecté. Connectez votre portefeuille une fois, puis réessayez Donate $Avax.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/donation/donation.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.main" datatype="html">
+        <source>Main header</source>
+        <target>En-tête principal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.home" datatype="html">
+        <source>Go to homepage</source>
+        <target>Aller à l'accueil</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">2,3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.namesCount" datatype="html">
+        <source>Number of names on the wheel</source>
+        <target>Nombre de noms sur la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">22,23</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">34,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.selectedWheel" datatype="html">
+        <source>Selected Wheel</source>
+        <target>Roue sélectionnée</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.actions" datatype="html">
+        <source>Header actions</source>
+        <target>Actions de l'en-tête</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">59,60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.newWheel.aria" datatype="html">
+        <source>Create a new wheel</source>
+        <target>Créer une nouvelle roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">65,66</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.newWheel.title" datatype="html">
+        <source>Create a new wheel</source>
+        <target>Créer une nouvelle roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">66,67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.open" datatype="html">
+        <source>Open main menu</source>
+        <target>Ouvrir le menu principal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">118,119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.dialog" datatype="html">
+        <source>Main menu</source>
+        <target>Menu principal</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">143,145</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.close" datatype="html">
+        <source>Close menu</source>
+        <target>Fermer le menu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">150,151</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.closeLabel" datatype="html">
+        <source>Close</source>
+        <target>Fermer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">153,155</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.nav" datatype="html">
+        <source>Main pages</source>
+        <target>Pages principales</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">159,160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.wheel" datatype="html">
+        <source>Go to Wheelr page</source>
+        <target>Aller à la page de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">166,167</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.wheel" datatype="html">
+        <source>🎡 Wheelr</source>
+        <target>🎡 Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">168,170</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.templates" datatype="html">
+        <source>Go to ready-made wheels page</source>
+        <target>Aller aux roues prêtes à l'emploi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">175,176</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.templates" datatype="html">
+        <source>✨ Ready-made wheels</source>
+        <target>✨ Roues prêtes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">177,179</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.stream" datatype="html">
+        <source>Go to the streaming guide</source>
+        <target>Aller au guide streaming</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">184,185</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.stream" datatype="html">
+        <source>🎥 For streamers</source>
+        <target>🎥 Pour les streamers</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">186,188</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.info" datatype="html">
+        <source>Go to Info page</source>
+        <target>Aller à la page Infos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">193,194</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.info" datatype="html">
+        <source>ℹ️ Info</source>
+        <target>ℹ️ Infos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">195,197</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.donation" datatype="html">
+        <source>Go to Donation page</source>
+        <target>Aller à la page des dons</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">202,203</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.donation" datatype="html">
+        <source>💝 Donation</source>
+        <target>💝 Faire un don</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">204,206</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.wiki" datatype="html">
+        <source>Open Wheelr wiki (opens in a new tab)</source>
+        <target>Ouvrir le wiki Wheelr (nouvel onglet)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">212,213</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.wiki" datatype="html">
+        <source>📖 Wiki</source>
+        <target>📖 Wiki</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">214,216</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.privacy" datatype="html">
+        <source>Go to Privacy Policy page</source>
+        <target>Aller à la politique de confidentialité</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">221,222</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.privacy" datatype="html">
+        <source>🛡️ Privacy</source>
+        <target>🛡️ Confidentialité</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">223,225</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.social.twitter" datatype="html">
+        <source>AnnyoneAny Twitter profile</source>
+        <target>Profil Twitter d'AnnyoneAny</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">234,235</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.rename.multiple" datatype="html">
+        <source>Rename visible wheels</source>
+        <target>Renommer les roues visibles</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">145</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
+          <context context-type="linenumber">1027</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.rename.single" datatype="html">
+        <source>Rename selected wheel</source>
+        <target>Renommer la roue sélectionnée</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">146</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
+          <context context-type="linenumber">1027</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.auth.openAccount" datatype="html">
+        <source>Open account panel</source>
+        <target>Ouvrir le panneau du compte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.auth.openLogin" datatype="html">
+        <source>Open login modal</source>
+        <target>Ouvrir la fenêtre de connexion</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">154</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.saving" datatype="html">
+        <source>Saving wheel to cloud</source>
+        <target>Enregistrement de la roue dans le cloud</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">219</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.saved" datatype="html">
+        <source>Wheel saved to cloud</source>
+        <target>Roue enregistrée dans le cloud</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">221</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.failed" datatype="html">
+        <source>Wheel save failed, retry</source>
+        <target>Échec de l'enregistrement, réessayer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">223</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.update" datatype="html">
+        <source>Update saved wheel in cloud</source>
+        <target>Mettre à jour la roue enregistrée dans le cloud</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">226</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.toCloud" datatype="html">
+        <source>Save wheel to cloud</source>
+        <target>Enregistrer la roue dans le cloud</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">227</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.noWheel" datatype="html">
+        <source>No wheel selected to save.</source>
+        <target>Aucune roue sélectionnée à enregistrer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">264</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.notFound" datatype="html">
+        <source>Wheel configuration not found. Try again.</source>
+        <target>Configuration de la roue introuvable. Réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">278</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.updatedMsg" datatype="html">
+        <source>Wheel updated in cloud.</source>
+        <target>Roue mise à jour dans le cloud.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">292</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.savedMsg" datatype="html">
+        <source>Wheel saved to cloud.</source>
+        <target>Roue enregistrée dans le cloud.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">292</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.signIn" datatype="html">
+        <source>Sign in to save the wheel to cloud.</source>
+        <target>Connectez-vous pour enregistrer la roue dans le cloud.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">297</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.save.error" datatype="html">
+        <source>Cloud save failed. Try again.</source>
+        <target>Échec de l'enregistrement dans le cloud. Réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">298</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.dialog" datatype="html">
+        <source>Account panel</source>
+        <target>Panneau du compte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">6,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.title" datatype="html">
+        <source>Your account</source>
+        <target>Votre compte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.signedInAs" datatype="html">
+        <source>You are signed in as</source>
+        <target>Vous êtes connecté en tant que</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.close" datatype="html">
+        <source>Close account panel</source>
+        <target>Fermer le panneau du compte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">19,20</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.signOut" datatype="html">
+        <source>Sign out</source>
+        <target>Se déconnecter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.delete" datatype="html">
+        <source>Delete account</source>
+        <target>Supprimer le compte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">44,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.deleteTitle" datatype="html">
+        <source>Delete your account?</source>
+        <target>Supprimer votre compte ?</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">51,53</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.confirmPassword" datatype="html">
+        <source>Confirm your password</source>
+        <target>Confirmez votre mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">63,64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.passwordPlaceholder" datatype="html">
+        <source>Your password</source>
+        <target>Votre mot de passe</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">70,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.googleConfirm" datatype="html">
+        <source>You will be asked to confirm with Google first.</source>
+        <target>Vous devrez d'abord confirmer avec Google.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.html</context>
+          <context context-type="linenumber">76,77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.err.enterPassword" datatype="html">
+        <source>Enter your password to confirm.</source>
+        <target>Saisissez votre mot de passe pour confirmer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.ts</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.err.wrongPassword" datatype="html">
+        <source>That password is not correct.</source>
+        <target>Ce mot de passe est incorrect.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.ts</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.err.canceled" datatype="html">
+        <source>Verification was canceled, so nothing was deleted.</source>
+        <target>La vérification a été annulée, rien n'a été supprimé.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.ts</context>
+          <context context-type="linenumber">144</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.err.tooMany" datatype="html">
+        <source>Too many attempts. Wait a few minutes and try again.</source>
+        <target>Trop de tentatives. Patientez quelques minutes et réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.ts</context>
+          <context context-type="linenumber">148</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.err.network" datatype="html">
+        <source>No connection. Check your network and try again.</source>
+        <target>Pas de connexion. Vérifiez votre réseau et réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.ts</context>
+          <context context-type="linenumber">152</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="account.err.failed" datatype="html">
+        <source>The account could not be deleted. Please try again.</source>
+        <target>Le compte n'a pas pu être supprimé. Veuillez réessayer.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/info-utente/info-utente.ts</context>
+          <context context-type="linenumber">155</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="publicWheel.err.invalidId" datatype="html">
+        <source>Invalid wheel ID.</source>
+        <target>Identifiant de roue invalide.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/public-wheel/public-wheel.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="publicWheel.err.notFound" datatype="html">
+        <source>Wheel not found in cloud.</source>
+        <target>Roue introuvable dans le cloud.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/public-wheel/public-wheel.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="publicWheel.err.loadFailed" datatype="html">
+        <source>Error loading wheel from cloud.</source>
+        <target>Erreur lors du chargement de la roue depuis le cloud.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/public-wheel/public-wheel.ts</context>
+          <context context-type="linenumber">127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.controls" datatype="html">
+        <source>Wheel controls</source>
+        <target>Commandes de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.home" datatype="html">
+        <source>Close settings panel and show the wheel</source>
+        <target>Fermer les réglages et afficher la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
+          <context context-type="linenumber">14,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.home.label" datatype="html">
+        <source>Home</source>
+        <target>Accueil</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
+          <context context-type="linenumber">18,21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="qr.open" datatype="html">
+        <source>Open wheel QR code</source>
+        <target>Ouvrir le QR code de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
+          <context context-type="linenumber">71,72</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
+          <context context-type="linenumber">137,138</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="panel.close" datatype="html">
+        <source>Close panel</source>
+        <target>Fermer le panneau</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
+          <context context-type="linenumber">168,169</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.users.aria" datatype="html">
+        <source>Open users panel</source>
+        <target>Ouvrir le panneau des noms</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.users.caption" datatype="html">
+        <source>Names</source>
+        <target>Noms</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.colors.aria" datatype="html">
+        <source>Open color settings panel</source>
+        <target>Ouvrir le panneau des couleurs</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.colors.caption" datatype="html">
+        <source>Colors</source>
+        <target>Couleurs</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.sound.aria" datatype="html">
+        <source>Open sound panel</source>
+        <target>Ouvrir le panneau du son</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.sound.caption" datatype="html">
+        <source>Sound</source>
+        <target>Son</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.effects.aria" datatype="html">
+        <source>Open effects panel</source>
+        <target>Ouvrir le panneau des effets</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.effects.caption" datatype="html">
+        <source>Effects</source>
+        <target>Effets</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.wheels.aria" datatype="html">
+        <source>Open wheel manager panel</source>
+        <target>Ouvrir le gestionnaire de roues</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="bar.panel.wheels.caption" datatype="html">
+        <source>Wheels</source>
+        <target>Roues</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
+          <context context-type="linenumber">34</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.rail.info" datatype="html">
+        <source>Open Info page</source>
+        <target>Ouvrir la page Infos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.rail.infoTitle" datatype="html">
+        <source>Info</source>
+        <target>Infos</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
+          <context context-type="linenumber">1,2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.rail.donation" datatype="html">
+        <source>Open Donation page</source>
+        <target>Ouvrir la page des dons</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.rail.donationTitle" datatype="html">
+        <source>Donation</source>
+        <target>Dons</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
+          <context context-type="linenumber">12,13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.rail.share" datatype="html">
+        <source>Share on X</source>
+        <target>Partager sur X</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
+          <context context-type="linenumber">46,48</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.rename.closeModal" datatype="html">
+        <source>Close rename modal</source>
+        <target>Fermer la fenêtre de renommage</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
+          <context context-type="linenumber">207,208</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.qr.closeModal" datatype="html">
+        <source>Close QR modal</source>
+        <target>Fermer la fenêtre du QR code</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
+          <context context-type="linenumber">268,269</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.qr.notSynced" datatype="html">
+        <source>This wheel is not synced to cloud yet.</source>
+        <target>Cette roue n'est pas encore synchronisée avec le cloud.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
+          <context context-type="linenumber">410</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.chrome.show" datatype="html">
+        <source>Show header, footer and controls</source>
+        <target>Afficher l'en-tête, le pied de page et les commandes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
+          <context context-type="linenumber">496</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.chrome.hide" datatype="html">
+        <source>Hide header, footer and controls</source>
+        <target>Masquer l'en-tête, le pied de page et les commandes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
+          <context context-type="linenumber">497</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="wheelPage.qr.failed" datatype="html">
+        <source>Unable to generate QR code.</source>
+        <target>Impossible de générer le QR code.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
+          <context context-type="linenumber">541</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.breadcrumb" datatype="html">
+        <source>Breadcrumb</source>
+        <target>Fil d'Ariane</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.entries" datatype="html">
+        <source>Entries on this wheel</source>
+        <target>Entrées de cette roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
+          <context context-type="linenumber">104,105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="templates.goToWheel" datatype="html">
+        <source>Go to Wheel page</source>
+        <target>Aller à la page de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
+          <context context-type="linenumber">23,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="templates.grid" datatype="html">
+        <source>Ready-made wheel templates</source>
+        <target>Modèles de roues prêts à l'emploi</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
+          <context context-type="linenumber">29,30</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="templates.adLocked" datatype="html">
+        <source>The ad has to play all the way through to unlock this template. Give it another go.</source>
+        <target>La publicité doit être regardée jusqu'au bout pour débloquer ce modèle. Réessayez.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="background.title" datatype="html">
+        <source>Background</source>
+        <target>Arrière-plan</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/background/background.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="background.reset" datatype="html">
+        <source>Reset Background</source>
+        <target>Réinitialiser l'arrière-plan</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/background/background.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="background.type" datatype="html">
+        <source>Background type</source>
+        <target>Type d'arrière-plan</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/background/background.html</context>
+          <context context-type="linenumber">10,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="background.color" datatype="html">
+        <source> Color </source>
+        <target>Couleur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/background/background.html</context>
+          <context context-type="linenumber">25,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="background.image" datatype="html">
+        <source> Image </source>
+        <target>Image</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/background/background.html</context>
+          <context context-type="linenumber">42,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="background.hint" datatype="html">
+        <source>Choose a solid color for the background.</source>
+        <target>Choisissez une couleur unie pour l'arrière-plan.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/background/background.html</context>
+          <context context-type="linenumber">54,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="background.upload" datatype="html">
+        <source>Upload background image</source>
+        <target>Importer une image d'arrière-plan</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/background/background.html</context>
+          <context context-type="linenumber">64,67</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="background.empty" datatype="html">
+        <source>No image uploaded.</source>
+        <target>Aucune image importée.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/background/background.html</context>
+          <context context-type="linenumber">82,85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.title" datatype="html">
+        <source>Central Logo</source>
+        <target>Logo central</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.reset" datatype="html">
+        <source>Reset Central Logo</source>
+        <target>Réinitialiser le logo central</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.type" datatype="html">
+        <source>Central logo type</source>
+        <target>Type de logo central</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.color" datatype="html">
+        <source> Color </source>
+        <target>Couleur</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">24,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.image" datatype="html">
+        <source> Image </source>
+        <target>Image</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">41,43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.centerText" datatype="html">
+        <source> Center text </source>
+        <target>Texte central</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">128,130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.textPlaceholder" datatype="html">
+        <source>SPIN</source>
+        <target>TOURNER</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">137</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.colorHint" datatype="html">
+        <source>Color of the center circle.</source>
+        <target>Couleur du cercle central.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">146,150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.upload" datatype="html">
+        <source>Upload logo</source>
+        <target>Importer un logo</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">156,159</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="logo.empty" datatype="html">
+        <source>No logo uploaded.</source>
+        <target>Aucun logo importé.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/centra-logo/centra-logo.html</context>
+          <context context-type="linenumber">181,184</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="font.title" datatype="html">
+        <source>Wheel Font</source>
+        <target>Police de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/font-settings/font-settings.html</context>
+          <context context-type="linenumber">3,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.title" datatype="html">
+        <source>Palette</source>
+        <target>Palette</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">12,14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.images" datatype="html">
+        <source>Images</source>
+        <target>Images</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">21,23</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.wheel" datatype="html">
+        <source>Palette Wheel</source>
+        <target>Palette de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">28,31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.create" datatype="html">
+        <source>Create Custom Palette</source>
+        <target>Créer une palette personnalisée</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">57,59</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.custom" datatype="html">
+        <source> Custom Palette </source>
+        <target>Palette personnalisée</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">66,69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.namePlaceholder" datatype="html">
+        <source>Palette Name</source>
+        <target>Nom de la palette</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">72,74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.save" datatype="html">
+        <source> Save </source>
+        <target>Enregistrer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">91,92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.cancel" datatype="html">
+        <source> Cancel </source>
+        <target>Annuler</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">97,98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.wheelBg" datatype="html">
+        <source> Wheel BG </source>
+        <target>Fond de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">116,118</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.sliceImages" datatype="html">
+        <source> Slice Images </source>
+        <target>Images des segments</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">125,127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.clearAll" datatype="html">
+        <source> Clear All </source>
+        <target>Tout effacer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">195,196</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="spin.duration" datatype="html">
+        <source>Spin duration</source>
+        <target>Durée du tour</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/spin-role-time/spin-role-time.html</context>
+          <context context-type="linenumber">3,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="spin.seconds" datatype="html">
+        <source>seconds</source>
+        <target>secondes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/spin-role-time/spin-role-time.html</context>
+          <context context-type="linenumber">13,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="winnerList.title" datatype="html">
+        <source>Winners List</source>
+        <target>Liste des gagnants</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/winner-list/winner-list.html</context>
+          <context context-type="linenumber">3,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="winnerList.position" datatype="html">
+        <source>Panel position</source>
+        <target>Position du panneau</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/winner-list/winner-list.html</context>
+          <context context-type="linenumber">21,22</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="winnerList.left" datatype="html">
+        <source> Left </source>
+        <target>Gauche</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/winner-list/winner-list.html</context>
+          <context context-type="linenumber">33,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="winnerList.top" datatype="html">
+        <source> Top </source>
+        <target>Haut</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/winner-list/winner-list.html</context>
+          <context context-type="linenumber">46,49</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="winnerList.right" datatype="html">
+        <source> Right </source>
+        <target>Droite</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/winner-list/winner-list.html</context>
+          <context context-type="linenumber">59,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="winnerList.bottom" datatype="html">
+        <source> Bottom </source>
+        <target>Bas</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/winner-list/winner-list.html</context>
+          <context context-type="linenumber">72,74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.wheelType" datatype="html">
+        <source> Wheel Type </source>
+        <target>Type de roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">5,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.view.wheel" datatype="html">
+        <source>Wheel</source>
+        <target>Roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">21,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.view.cards" datatype="html">
+        <source>Cards</source>
+        <target>Cartes</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">36,38</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.winnerEffect" datatype="html">
+        <source> Winner Effect </source>
+        <target>Effet du gagnant</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">43,46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.winnerAnimation" datatype="html">
+        <source>Winner animation</source>
+        <target>Animation du gagnant</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">58,60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.winnerHint" datatype="html">
+        <source>Fire, confetti or other effects play when the wheel stops.</source>
+        <target>Feu, confettis ou autres effets se déclenchent à l'arrêt de la roue.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">74,76</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.winnerHintOff" datatype="html">
+        <source>The winning slice glows — no full-screen effect.</source>
+        <target>Le segment gagnant s'illumine — pas d'effet plein écran.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">76,80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.fx.fire" datatype="html">
+        <source>Fire</source>
+        <target>Feu</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">95,98</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.fx.confetti" datatype="html">
+        <source>Confetti</source>
+        <target>Confettis</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">110,113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.fx.fireworks" datatype="html">
+        <source>Fireworks</source>
+        <target>Feux d'artifice</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">125,128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.fx.cartoonFire" datatype="html">
+        <source>Cartoon Fire</source>
+        <target>Feu cartoon</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">140,143</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer" datatype="html">
+        <source> Wheel Pointer </source>
+        <target>Pointeur de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">147,150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer.drop" datatype="html">
+        <source>Drop</source>
+        <target>Goutte</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">166,169</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer.arrow" datatype="html">
+        <source>Arrow</source>
+        <target>Flèche</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">184,187</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer.finger" datatype="html">
+        <source>Finger</source>
+        <target>Doigt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">202,205</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer.star" datatype="html">
+        <source>Star</source>
+        <target>Étoile</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">220,223</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer.diamond" datatype="html">
+        <source>Diamond</source>
+        <target>Losange</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">238,241</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer.bolt" datatype="html">
+        <source>Bolt</source>
+        <target>Éclair</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">256,259</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.title" datatype="html">
+        <source>Sound</source>
+        <target>Son</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">2,5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.spinAudio" datatype="html">
+        <source>Spin Audio</source>
+        <target>Son du tour</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">24,27</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.spinLoaded" datatype="html">
+        <source>Spin audio loaded</source>
+        <target>Son du tour chargé</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">39,41</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.remove" datatype="html">
+        <source>Remove</source>
+        <target>Supprimer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">46,47</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">76,77</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">106,107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.winnerAudio" datatype="html">
+        <source>Winner Audio</source>
+        <target>Son du gagnant</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">54,57</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.winnerLoaded" datatype="html">
+        <source>Winner audio loaded</source>
+        <target>Son du gagnant chargé</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">69,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.countdownAudio" datatype="html">
+        <source>Countdown Audio</source>
+        <target>Son du compte à rebours</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">84,87</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.countdownLoaded" datatype="html">
+        <source>Countdown audio loaded</source>
+        <target>Son du compte à rebours chargé</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">99,101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.countdown" datatype="html">
+        <source>Countdown</source>
+        <target>Compte à rebours</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">117,119</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.enableCountdown" datatype="html">
+        <source> Enable countdown </source>
+        <target>Activer le compte à rebours</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">128,132</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.startFrom" datatype="html">
+        <source>Start from</source>
+        <target>Démarrer à</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">134,136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.shuffle" datatype="html">
+        <source>Shuffle Names</source>
+        <target>Mélanger les noms</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">8,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.clear" datatype="html">
+        <source>Clear</source>
+        <target>Vider</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">112,113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.name" datatype="html">
+        <source>Name</source>
+        <target>Nom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">22,24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.namePlaceholder" datatype="html">
+        <source>Name</source>
+        <target>Nom</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">28,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.repeatCount" datatype="html">
+        <source>Repeat count</source>
+        <target>Nombre de répétitions</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">33,35</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.add" datatype="html">
+        <source>Add</source>
+        <target>Ajouter</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">48,50</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.bulkPlaceholder" datatype="html">
+        <source>One name per line...</source>
+        <target>Un nom par ligne...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">57,60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.nameToRemove" datatype="html">
+        <source>Name to remove</source>
+        <target>Nom à supprimer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">62,64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.removePlaceholder" datatype="html">
+        <source>Name to remove</source>
+        <target>Nom à supprimer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">67,69</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.remove" datatype="html">
+        <source>Remove</source>
+        <target>Supprimer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">77,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.togglePresets" datatype="html">
+        <source>Toggle hidden preset winners section</source>
+        <target>Afficher ou masquer les gagnants prédéfinis</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">89,90</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.hidden" datatype="html">
+        <source>Hidden</source>
+        <target>Masqués</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">91,92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.winnersOrder" datatype="html">
+        <source>Winners order</source>
+        <target>Ordre des gagnants</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">106,108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.clearPresets" datatype="html">
+        <source>Clear all preset winners</source>
+        <target>Effacer tous les gagnants prédéfinis</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">111,112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.presetsList" datatype="html">
+        <source>Preset winners in draw order</source>
+        <target>Gagnants prédéfinis dans l'ordre du tirage</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">115,116</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.onWheel" datatype="html">
+        <source>People on the wheel</source>
+        <target>Personnes sur la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">152,153</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="users.empty" datatype="html">
+        <source>No names on the wheel yet.</source>
+        <target>Aucun nom sur la roue.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
+          <context context-type="linenumber">154,156</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.display" datatype="html">
+        <source>Display</source>
+        <target>Affichage</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">3,4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.displayHint" datatype="html">
+        <source>Show 1 to 4 wheels side by side on the page.</source>
+        <target>Affichez de 1 à 4 roues côte à côte sur la page.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">4,6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.visibleWheels" datatype="html">
+        <source>Visible wheels</source>
+        <target>Roues visibles</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.decrease" datatype="html">
+        <source>Decrease visible wheels</source>
+        <target>Réduire les roues visibles</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.increase" datatype="html">
+        <source>Increase visible wheels</source>
+        <target>Augmenter les roues visibles</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">23,25</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.wheelList" datatype="html">
+        <source>Wheel list</source>
+        <target>Liste des roues</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">32,33</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.import" datatype="html">
+        <source>Import...</source>
+        <target>Importer...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">40,42</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.importCloud" datatype="html">
+        <source>Import from cloud</source>
+        <target>Importer depuis le cloud</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">42,44</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.wheelName" datatype="html">
+        <source>Wheel name</source>
+        <target>Nom de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">61,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.wheelDescription" datatype="html">
+        <source>Wheel description</source>
+        <target>Description de la roue</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">69,71</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.save" datatype="html">
+        <source> Save </source>
+        <target>Enregistrer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">82,83</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.cancel" datatype="html">
+        <source> Cancel </source>
+        <target>Annuler</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">88,89</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.load" datatype="html">
+        <source> Load </source>
+        <target>Charger</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">103,104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.rename" datatype="html">
+        <source> Rename </source>
+        <target>Renommer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">123,124</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.delete" datatype="html">
+        <source> Delete </source>
+        <target>Supprimer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">130,131</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="manager.savedToCloud" datatype="html">
+        <source>Saved to cloud.</source>
+        <target>Enregistrée dans le cloud.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/wheel-manager/wheel-manager.html</context>
+          <context context-type="linenumber">136,139</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.breadcrumb.home" datatype="html">
+        <source>Home</source>
+        <target>Accueil</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/seo.service.ts</context>
+          <context context-type="linenumber">234</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sync.inProgress" datatype="html">
+        <source>Syncing wheels...</source>
+        <target>Synchronisation des roues...</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/wheel-cloud-sync.service.ts</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sync.signIn" datatype="html">
+        <source>Sign in to sync your wheels.</source>
+        <target>Connectez-vous pour synchroniser vos roues.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/wheel-cloud-sync.service.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sync.failed" datatype="html">
+        <source>Could not sync wheels from cloud.</source>
+        <target>Impossible de synchroniser les roues depuis le cloud.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/wheel-cloud-sync.service.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sync.upToDate" datatype="html">
+        <source>Wheels are up to date.</source>
+        <target>Les roues sont à jour.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/wheel-cloud-sync.service.ts</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="banner.region" datatype="html">
+        <source>Wheelr for Android</source>
+        <target>Wheelr pour Android</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/app-download-banner/app-download-banner.html</context>
+          <context context-type="linenumber">8,10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="banner.cta" datatype="html">
+        <source>Download Wheelr for Android on Google Play (opens in a new tab)</source>
+        <target>Télécharger Wheelr pour Android sur Google Play (nouvel onglet)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/app-download-banner/app-download-banner.html</context>
+          <context context-type="linenumber">15,17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="banner.kicker" datatype="html">
+        <source> Wheelr for Android </source>
+        <target>Wheelr pour Android</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/app-download-banner/app-download-banner.html</context>
+          <context context-type="linenumber">24,26</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="banner.action" datatype="html">
+        <source> Get it on Google Play </source>
+        <target>Disponible sur Google Play</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/app-download-banner/app-download-banner.html</context>
+          <context context-type="linenumber">27,29</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="banner.dismiss" datatype="html">
+        <source>Dismiss the app download banner</source>
+        <target>Masquer la bannière de l'application</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/app-download-banner/app-download-banner.html</context>
+          <context context-type="linenumber">38,39</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="banner.dismiss.title" datatype="html">
+        <source>Dismiss</source>
+        <target>Masquer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/app-download-banner/app-download-banner.html</context>
+          <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

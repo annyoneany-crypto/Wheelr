@@ -139,12 +139,19 @@ export class Header {
     this.isMenuOpen.set(false);
   }
 
+  /** Shares its message ids with the wheel page, which offers the same action. */
+  renameAriaLabel(): string {
+    return this.showIndependentPreview()
+      ? $localize`:@@wheelPage.rename.multiple:Rename visible wheels`
+      : $localize`:@@wheelPage.rename.single:Rename selected wheel`;
+  }
+
   requestRenameModal(): void {
     this.wheelConfigurator.requestRenameModalOpen();
   }
 
   authButtonAriaLabel(): string {
-    return this.authService.isLoggedIn() ? 'Open account panel' : 'Open login modal';
+    return this.authService.isLoggedIn() ? $localize`:@@header.auth.openAccount:Open account panel` : $localize`:@@header.auth.openLogin:Open login modal`;
   }
 
   onAuthButtonClick(): void {
@@ -209,15 +216,15 @@ export class Header {
   saveButtonAriaLabel(): string {
     switch (this.cloudSaveState()) {
       case 'saving':
-        return 'Saving wheel to cloud';
+        return $localize`:@@header.save.saving:Saving wheel to cloud`;
       case 'success':
-        return 'Wheel saved to cloud';
+        return $localize`:@@header.save.saved:Wheel saved to cloud`;
       case 'error':
-        return 'Wheel save failed, retry';
+        return $localize`:@@header.save.failed:Wheel save failed, retry`;
       default:
         return this.wheelConfigurator.activeWheel()?.cloudConfigId
-          ? 'Update saved wheel in cloud'
-          : 'Save wheel to cloud';
+          ? $localize`:@@header.save.update:Update saved wheel in cloud`
+          : $localize`:@@header.save.toCloud:Save wheel to cloud`;
     }
   }
 
@@ -254,7 +261,7 @@ export class Header {
   private async saveActiveWheelToCloud(): Promise<void> {
     const workspace = this.wheelConfigurator.activeWheel();
     if (!workspace) {
-      this.setSaveFeedback('error', 'No wheel selected to save.');
+      this.setSaveFeedback('error', $localize`:@@header.save.noWheel:No wheel selected to save.`);
       return;
     }
 
@@ -268,7 +275,7 @@ export class Header {
         rootWorkspaceId
       );
       if (!displayConfigs.length) {
-        this.setSaveFeedback('error', 'Wheel configuration not found. Try again.');
+        this.setSaveFeedback('error', $localize`:@@header.save.notFound:Wheel configuration not found. Try again.`);
         return;
       }
 
@@ -282,13 +289,13 @@ export class Header {
       this.wheelConfigurator.setGroupCloudConfigId(rootWorkspaceId, cloudConfigId);
       this.setSaveFeedback(
         'success',
-        isUpdate ? 'Wheel updated in cloud.' : 'Wheel saved to cloud.'
+        isUpdate ? $localize`:@@header.save.updatedMsg:Wheel updated in cloud.` : $localize`:@@header.save.savedMsg:Wheel saved to cloud.`
       );
     } catch (error) {
       const message =
         error instanceof Error && error.message === 'AUTH_REQUIRED'
-          ? 'Sign in to save the wheel to cloud.'
-          : 'Cloud save failed. Try again.';
+          ? $localize`:@@header.save.signIn:Sign in to save the wheel to cloud.`
+          : $localize`:@@header.save.error:Cloud save failed. Try again.`;
       this.setSaveFeedback('error', message);
     }
   }

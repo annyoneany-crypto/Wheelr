@@ -111,6 +111,10 @@
       "handle": "filesystem"
     },
     {
+      "src": "/(it|de|fr|es|zh)/(.*)",
+      "dest": "/$1/index.csr.html"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.csr.html"
     }

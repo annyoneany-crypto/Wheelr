@@ -1,6 +1,6 @@
 <div class="border-b border-white/10 pb-4">
   <label class="wl-settings-label" for="toggle-winners-list">
-    <i class="fa-solid fa-trophy mr-2" aria-hidden="true"></i>Winners List
+    <i class="fa-solid fa-trophy mr-2" aria-hidden="true"></i><span i18n="@@winnerList.title">Winners List</span>
   </label>
 
   <div class="flex items-center gap-3">
@@ -18,7 +18,7 @@
 
   @if (wheelConfigurator.showWinnersList()) {
     <div class="mt-4 border-t border-white/10 pt-3">
-      <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-white/50">Panel position</p>
+      <p class="mb-2 text-xs font-semibold uppercase tracking-wider text-white/50" i18n="@@winnerList.position">Panel position</p>
       <div class="grid grid-cols-2 gap-2">
         <button
           type="button"
@@ -29,7 +29,7 @@
           [class.border-white/10]="wheelConfigurator.winnerPanelPosition() !== 'left'"
           [class.bg-white/[0.04]]="wheelConfigurator.winnerPanelPosition() !== 'left'"
           [class.text-white/70]="wheelConfigurator.winnerPanelPosition() !== 'left'"
-          (click)="wheelConfigurator.setWinnerPanelPosition('left')">
+          (click)="wheelConfigurator.setWinnerPanelPosition('left')" i18n="@@winnerList.left">
           Left
         </button>
 
@@ -42,7 +42,7 @@
           [class.border-white/10]="wheelConfigurator.winnerPanelPosition() !== 'top'"
           [class.bg-white/[0.04]]="wheelConfigurator.winnerPanelPosition() !== 'top'"
           [class.text-white/70]="wheelConfigurator.winnerPanelPosition() !== 'top'"
-          (click)="wheelConfigurator.setWinnerPanelPosition('top')">
+          (click)="wheelConfigurator.setWinnerPanelPosition('top')" i18n="@@winnerList.top">
           Top
         </button>
 
@@ -55,7 +55,7 @@
           [class.border-white/10]="wheelConfigurator.winnerPanelPosition() !== 'right'"
           [class.bg-white/[0.04]]="wheelConfigurator.winnerPanelPosition() !== 'right'"
           [class.text-white/70]="wheelConfigurator.winnerPanelPosition() !== 'right'"
-          (click)="wheelConfigurator.setWinnerPanelPosition('right')">
+          (click)="wheelConfigurator.setWinnerPanelPosition('right')" i18n="@@winnerList.right">
           Right
         </button>
 
@@ -68,7 +68,7 @@
           [class.border-white/10]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
           [class.bg-white/[0.04]]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
           [class.text-white/70]="wheelConfigurator.winnerPanelPosition() !== 'bottom'"
-          (click)="wheelConfigurator.setWinnerPanelPosition('bottom')">
+          (click)="wheelConfigurator.setWinnerPanelPosition('bottom')" i18n="@@winnerList.bottom">
           Bottom
         </button>
       </div>

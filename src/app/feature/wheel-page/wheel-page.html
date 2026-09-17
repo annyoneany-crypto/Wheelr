@@ -1,4 +1,4 @@
-  <a href="/info" target="_self" rel="noopener noreferrer" aria-label="Open Info page" title="Info" class="hidden lg:block">
+  <a href="/info" target="_self" rel="noopener noreferrer" i18n-aria-label="@@wheelPage.rail.info" aria-label="Open Info page" i18n-title="@@wheelPage.rail.infoTitle" title="Info" class="hidden lg:block">
     <div class="fixed top-28 left-8
       w-12 h-12 rounded-xl
       border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
@@ -9,7 +9,7 @@
       <i class="fa-solid fa-info text-white/70 z-50" aria-hidden="true"></i>
     </div>
   </a>
-  <a [routerLink]="['/donation']" target="_self" rel="noopener noreferrer" aria-label="Open Donation page" title="Donation" class="hidden lg:block">
+  <a [routerLink]="['/donation']" target="_self" rel="noopener noreferrer" i18n-aria-label="@@wheelPage.rail.donation" aria-label="Open Donation page" i18n-title="@@wheelPage.rail.donationTitle" title="Donation" class="hidden lg:block">
     <div class="fixed top-44 left-8
       w-12 h-12 rounded-xl
       border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
@@ -43,7 +43,7 @@
     [class.wl-ui-hidden]="uiChromeHidden()"
     role="button"
     tabindex="0"
-    aria-label="Share on X"
+    i18n-aria-label="@@wheelPage.rail.share" aria-label="Share on X"
     (click)="ShareOnX()"
     (keydown.enter)="ShareOnX()"
     (keydown.space)="ShareOnX(); $event.preventDefault()">
@@ -204,7 +204,7 @@
           <button
             type="button"
             class="h-8 w-8 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 inline-flex items-center justify-center"
-            aria-label="Close rename modal"
+            i18n-aria-label="@@wheelPage.rename.closeModal" aria-label="Close rename modal"
             (click)="closeRenameModal()">
             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
           </button>
@@ -265,7 +265,7 @@
           <button
             type="button"
             class="h-8 w-8 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 inline-flex items-center justify-center"
-            aria-label="Close QR modal"
+            i18n-aria-label="@@wheelPage.qr.closeModal" aria-label="Close QR modal"
             (click)="closeQrModal()">
             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
           </button>

@@ -6,16 +6,16 @@
   border-t border-white/[0.08] bg-neutral-950/85 backdrop-blur-xl
   transition-all duration-300 ease-in-out"
   [class.wl-ui-hidden]="uiChromeHidden()"
-  aria-label="Wheel controls">
+  i18n-aria-label="@@bar.controls" aria-label="Wheel controls">
 
   <button type="button"
     class="wl-bottom-bar-item"
     [class.wl-bottom-bar-item-active]="isHomeActive()"
-    aria-label="Close settings panel and show the wheel"
+    i18n-aria-label="@@bar.home" aria-label="Close settings panel and show the wheel"
     [attr.aria-current]="isHomeActive() ? 'true' : null"
     (click)="requestClosePanel()">
     <i class="fa-solid fa-house" aria-hidden="true"></i>
-    <span>Home</span>
+    <span i18n="@@bar.home.label">Home</span>
   </button>
 
   @for (action of panelActions; track action.path) {
@@ -68,7 +68,7 @@
     [class]="qrModalOpen() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
     role="button"
     tabindex="0"
-    aria-label="Open wheel QR code"
+    i18n-aria-label="@@qr.open" aria-label="Open wheel QR code"
     (click)="requestOpenQr()"
     (keydown.enter)="requestOpenQr()"
     (keydown.space)="requestOpenQr(); $event.preventDefault()">
@@ -134,7 +134,7 @@
     [class.lg:right-100]="showPanelSettings()"
     role="button"
     tabindex="0"
-    aria-label="Open wheel QR code"
+    i18n-aria-label="@@qr.open" aria-label="Open wheel QR code"
     (click)="requestOpenQr()"
     (keydown.enter)="requestOpenQr()"
     (keydown.space)="requestOpenQr(); $event.preventDefault()">
@@ -165,7 +165,7 @@
     <h2 class="text-base font-semibold uppercase tracking-wide text-white/85">{{ panelTitle() }}</h2>
     <button
       type="button"
-      aria-label="Close panel"
+      i18n-aria-label="@@panel.close" aria-label="Close panel"
       class="h-8 w-8 rounded-xl border border-white/10 bg-white/[0.06] text-white/80 hover:bg-white/15 hover:text-white transition-all duration-200 hover:cursor-pointer"
       (click)="requestClosePanel()">
       <i class="fa-solid fa-xmark" aria-hidden="true"></i>

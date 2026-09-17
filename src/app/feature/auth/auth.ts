@@ -46,8 +46,8 @@ export class WlAuth {
       if (!this.isAuthSubmitLoading()) {
         this.authError.set(
           this.isRegisterMode()
-            ? 'Fill in email, password, and confirm password to sign up.'
-            : 'Fill in email and password to sign in.'
+            ? $localize`:@@auth.err.fillSignup:Fill in email, password, and confirm password to sign up.`
+            : $localize`:@@auth.err.fillSignin:Fill in email and password to sign in.`
         );
       }
       return;
@@ -66,13 +66,13 @@ export class WlAuth {
 
       if (this.isRegisterMode()) {
         if (!confirmPassword) {
-          this.authError.set('Confirm your password to create your profile.');
+          this.authError.set($localize`:@@auth.err.confirmPassword:Confirm your password to create your profile.`);
           this.isAuthSubmitLoading.set(false);
           return;
         }
 
         if (password !== confirmPassword) {
-          this.authError.set('Passwords do not match.');
+          this.authError.set($localize`:@@auth.err.passwordMismatch:Passwords do not match.`);
           this.isAuthSubmitLoading.set(false);
           return;
         }
@@ -137,33 +137,33 @@ export class WlAuth {
       }
 
       return this.isRegisterMode()
-        ? 'Registration failed. Please try again shortly.'
-        : 'Authentication failed. Please try again shortly.';
+        ? $localize`:@@auth.err.registerFailed:Registration failed. Please try again shortly.`
+        : $localize`:@@auth.err.authFailed:Authentication failed. Please try again shortly.`;
     }
 
     switch (error.code) {
       case 'auth/email-already-in-use':
-        return 'This email is already registered.';
+        return $localize`:@@auth.err.emailInUse:This email is already registered.`;
       case 'auth/invalid-email':
-        return 'Invalid email.';
+        return $localize`:@@auth.err.invalidEmail:Invalid email.`;
       case 'auth/weak-password':
-        return 'Password is too weak. Use at least 6 characters.';
+        return $localize`:@@auth.err.weakPassword:Password is too weak. Use at least 6 characters.`;
       case 'auth/user-not-found':
       case 'auth/wrong-password':
       case 'auth/invalid-credential':
-        return 'Incorrect email or password.';
+        return $localize`:@@auth.err.wrongCredentials:Incorrect email or password.`;
       case 'auth/popup-closed-by-user':
         return 'Google sign-in was canceled.';
       case 'auth/popup-blocked':
-        return 'Popup blocked by browser. Enable popups and try again.';
+        return $localize`:@@auth.err.popupBlocked:Popup blocked by browser. Enable popups and try again.`;
       case 'auth/too-many-requests':
-        return 'Too many attempts. Try again in a few minutes.';
+        return $localize`:@@auth.err.tooMany:Too many attempts. Try again in a few minutes.`;
       case 'auth/network-request-failed':
-        return 'Network error. Check your connection and try again.';
+        return $localize`:@@auth.err.network:Network error. Check your connection and try again.`;
       default:
         return this.isRegisterMode()
-          ? 'Registration failed. Check your details and try again.'
-          : 'Authentication failed. Check your details and try again.';
+          ? $localize`:@@auth.err.registerDetails:Registration failed. Check your details and try again.`
+          : $localize`:@@auth.err.authDetails:Authentication failed. Check your details and try again.`;
     }
   }
 
@@ -177,7 +177,7 @@ export class WlAuth {
     const message = error instanceof Error ? error.message : '';
 
     if (message.includes('NoCredentialException') || message.includes('No credentials available')) {
-      return 'No Google account on this device. Add one in Android settings, then try again.';
+      return $localize`:@@auth.err.noGoogleAccount:No Google account on this device. Add one in Android settings, then try again.`;
     }
 
     if (message.includes('GetCredentialCancellationException') || message.includes('activity is cancelled')) {
@@ -187,7 +187,7 @@ export class WlAuth {
     // 10 is Play Services' DEVELOPER_ERROR: the app signature is not registered
     // against the Firebase project, so no ID token is ever issued.
     if (message.includes('10:') || message.includes('DEVELOPER_ERROR')) {
-      return 'This app build is not authorized for Google sign-in. Register its signing fingerprint in Firebase.';
+      return $localize`:@@auth.err.unauthorizedBuild:This app build is not authorized for Google sign-in. Register its signing fingerprint in Firebase.`;
     }
 
     return null;

@@ -125,7 +125,7 @@ export class WlInfoUtente {
     const code = this.errorCode(error);
 
     if (code === 'PASSWORD_REQUIRED') {
-      return 'Enter your password to confirm.';
+      return $localize`:@@account.err.enterPassword:Enter your password to confirm.`;
     }
 
     if (
@@ -133,7 +133,7 @@ export class WlInfoUtente {
       code === 'auth/invalid-credential' ||
       code === 'auth/invalid-login-credentials'
     ) {
-      return 'That password is not correct.';
+      return $localize`:@@account.err.wrongPassword:That password is not correct.`;
     }
 
     if (
@@ -141,18 +141,18 @@ export class WlInfoUtente {
       code === 'auth/cancelled-popup-request' ||
       code === 'auth/user-cancelled'
     ) {
-      return 'Verification was canceled, so nothing was deleted.';
+      return $localize`:@@account.err.canceled:Verification was canceled, so nothing was deleted.`;
     }
 
     if (code === 'auth/too-many-requests') {
-      return 'Too many attempts. Wait a few minutes and try again.';
+      return $localize`:@@account.err.tooMany:Too many attempts. Wait a few minutes and try again.`;
     }
 
     if (code === 'auth/network-request-failed') {
-      return 'No connection. Check your network and try again.';
+      return $localize`:@@account.err.network:No connection. Check your network and try again.`;
     }
 
-    return 'The account could not be deleted. Please try again.';
+    return $localize`:@@account.err.failed:The account could not be deleted. Please try again.`;
   }
 
   private errorCode(error: unknown): string {
