@@ -42,5 +42,18 @@ for (const name of ordered) {
   parts.push('', stripFrontmatter(body).trim(), '');
 }
 
+// The template landing pages live in their own folder and are generated from the
+// app source (see generate-template-md.mjs). Sorted so the file is reproducible.
+const templateDir = join(mdDir, 'templates');
+const templateFiles = (await readdir(templateDir)).filter((name) => name.endsWith('.md')).sort();
+
+for (const name of templateFiles) {
+  const body = await readFile(join(templateDir, name), 'utf8');
+  parts.push('', stripFrontmatter(body).trim(), '');
+}
+
 await writeFile(join(root, 'public', 'llms-full.txt'), parts.join('\n') + '\n', 'utf8');
-console.log(`llms-full.txt written from ${ordered.length} page(s): ${ordered.join(', ')}`);
+console.log(
+  `llms-full.txt written from ${ordered.length + templateFiles.length} page(s): ` +
+    `${ordered.join(', ')} + ${templateFiles.length} template landing pages`
+);

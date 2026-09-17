@@ -77,6 +77,21 @@
       }
     },
     {
+      "src": "/templates/([a-z0-9-]+)/?",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": ".*text/markdown.*"
+        }
+      ],
+      "dest": "/md/templates/$1.md",
+      "headers": {
+        "Content-Type": "text/markdown; charset=utf-8",
+        "Vary": "Accept"
+      }
+    },
+    {
       "handle": "filesystem"
     },
     {

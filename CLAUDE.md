@@ -136,8 +136,9 @@ All routes lazy-load standalone components. The root `WheelPage` hosts named-out
 AI crawlers do not run JavaScript, so the SPA shell is all they would see. The site therefore ships a plain-text mirror:
 
 - `public/md/<page>.md` — one markdown file per public route. `vercel.json` rewrites `/`, `/info`, `/templates`, `/donation` and `/privacy` to the matching file **when the request carries `Accept: text/markdown`**; browsers are unaffected. The rewrite must live in the legacy `routes` array, not `rewrites`: modern rewrites run *after* the filesystem check, so a path that exists as a static file would never reach them.
-- `public/llms.txt` (index) and `public/llms-full.txt` (everything in one fetch). **`llms-full.txt` is generated** — run `npm run llms` after editing anything under `public/md/`.
-- `public/.well-known/*` advertise all of the above and are linked from `Link:` response headers set in `vercel.json`.
+- `public/md/templates/<slug>.md` — one per ready-made wheel, **generated** from `wheel-templates.seo.ts` by `tools/generate-template-md.mjs`, so the mirror cannot drift from the page. `vercel.json` serves them for `/templates/<slug>` under one regex route.
+- `public/llms.txt` (index) and `public/llms-full.txt` (everything in one fetch). **Both are partly generated** — run `npm run llms` after editing anything under `public/md/` or the template copy: it rewrites the template markdown, refreshes the "Ready-made wheels" section of `llms.txt` wholesale, and rebuilds `llms-full.txt` from all 25 pages.
+- `public/.well-known/*` advertise all of the above and are linked from `Link:` response headers set in `vercel.json`. **They are hand-written, so they go stale silently** — `service-doc.json` told agents to skip the HTML because it was client-rendered, which stopped being true the day prerendering landed. Re-read them whenever the way pages are served changes.
 
 This replaced an `api/markdown.ts` serverless function that returned **500 for every URL** on the site whenever a client asked for markdown: `tsconfig.json` sets `"module": "preserve"`, so Vercel emitted ESM that Node loaded as CJS. Don't reintroduce a TS function under `api/` without pinning `"module": "commonjs"` for it.
 

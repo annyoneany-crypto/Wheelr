@@ -7,13 +7,23 @@
   "agentContent": {
     "index": "https://www.wheelr.xyz/llms.txt",
     "full": "https://www.wheelr.xyz/llms-full.txt",
-    "contentNegotiation": "Send `Accept: text/markdown` to any page URL to receive markdown instead of the HTML app shell."
+    "contentNegotiation": "Send `Accept: text/markdown` to any page URL — including /templates/{slug} — to receive markdown instead of HTML. The HTML itself is prerendered and needs no JavaScript."
   },
   "endpoints": [
     {
       "path": "/",
       "method": "GET",
       "purpose": "Render the main wheel application"
+    },
+    {
+      "path": "/templates",
+      "method": "GET",
+      "purpose": "List the 20 ready-made wheels"
+    },
+    {
+      "path": "/templates/{slug}",
+      "method": "GET",
+      "purpose": "One ready-made wheel: description, entries, FAQ, and a wheel that can be spun in the browser"
     },
     {
       "path": "/llms.txt",
@@ -23,12 +33,18 @@
     {
       "path": "/llms-full.txt",
       "method": "GET",
-      "purpose": "Full text of every page in a single response"
+      "purpose": "Full text of all 25 pages in a single response"
     },
     {
       "path": "/md/{page}.md",
       "method": "GET",
-      "purpose": "Markdown version of a page (index, info, templates, privacy, donation)"
+      "purpose": "Markdown version of a top-level page (index, info, templates, privacy, donation)"
+    },
+    {
+      "path": "/md/templates/{slug}.md",
+      "method": "GET",
+      "purpose": "Markdown version of a ready-made wheel page"
     }
-  ]
+  ],
+  "androidApp": "https://play.google.com/store/apps/details?id=xyz.wheelr.app"
 }

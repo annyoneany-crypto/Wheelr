@@ -1,13 +1,20 @@
 {
   "name": "Wheelr Agent Discovery Profile",
   "site": "https://www.wheelr.xyz/",
-  "summary": "Free online wheel spinner and random picker for raffles, giveaways, classrooms, live streams and team decisions. Works in any browser without an account; also available as a free Android app.",
-  "relations": ["api-catalog", "service-desc", "service-doc", "describedby"],
+  "summary": "Free online wheel spinner and random picker for raffles, giveaways, classrooms, live streams and team decisions. Works in any browser without an account; also available as a free Android app. Twenty ready-made wheels each have their own page.",
+  "relations": [
+    "api-catalog",
+    "service-desc",
+    "service-doc",
+    "describedby"
+  ],
   "content": {
     "llmsTxt": "https://www.wheelr.xyz/llms.txt",
     "llmsFullTxt": "https://www.wheelr.xyz/llms-full.txt",
-    "markdownNegotiation": "Accept: text/markdown"
+    "markdownNegotiation": "Accept: text/markdown (works on every page, including /templates/{slug})",
+    "prerendered": "All public pages are static HTML; no JavaScript execution required."
   },
   "usagePolicy": "Crawling, indexing and quoting are allowed for all AI assistants; see /robots.txt.",
-  "generatedAt": "2026-08-13"
+  "generatedAt": "2026-09-17",
+  "androidApp": "https://play.google.com/store/apps/details?id=xyz.wheelr.app"
 }
