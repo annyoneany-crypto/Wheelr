@@ -1,7 +1,7 @@
 <div class="pb-4 space-y-6">
 
   <div class="space-y-2 border-b border-white/10 pb-4">
-    <div class="wl-settings-label">
+    <div class="wl-settings-label" i18n="@@effects.wheelType">
       Wheel Type
     </div>
 
@@ -18,7 +18,7 @@
         [class.border-white/10]="wheelConfigurator.wheelView() !== 'wheel'"
         [class.text-white/70]="wheelConfigurator.wheelView() !== 'wheel'"
         [class.hover:border-white/20]="wheelConfigurator.wheelView() !== 'wheel'">
-        <i class="fa-solid fa-circle-notch mr-1.5" aria-hidden="true"></i>Wheel
+        <i class="fa-solid fa-circle-notch mr-1.5" aria-hidden="true"></i><span i18n="@@effects.view.wheel">Wheel</span>
       </button>
 
       <button
@@ -33,13 +33,13 @@
         [class.border-white/10]="wheelConfigurator.wheelView() !== 'cards'"
         [class.text-white/70]="wheelConfigurator.wheelView() !== 'cards'"
         [class.hover:border-white/20]="wheelConfigurator.wheelView() !== 'cards'">
-        <i class="fa-solid fa-clone mr-1.5" aria-hidden="true"></i>Cards
+        <i class="fa-solid fa-clone mr-1.5" aria-hidden="true"></i><span i18n="@@effects.view.cards">Cards</span>
       </button>
     </div>
   </div>
 
   <div class="space-y-2 border-b border-white/10 pb-4">
-    <div class="wl-settings-label">
+    <div class="wl-settings-label" i18n="@@effects.winnerEffect">
       Winner Effect
     </div>
 
@@ -55,7 +55,7 @@
       <span class="text-sm font-semibold text-white">
         <i class="fa-solid fa-wand-sparkles mr-2" aria-hidden="true"
           [class.text-amber-300]="wheelConfigurator.showWinnerEffect()"
-          [class.text-white/40]="!wheelConfigurator.showWinnerEffect()"></i>Winner animation
+          [class.text-white/40]="!wheelConfigurator.showWinnerEffect()"></i><span i18n="@@effects.winnerAnimation">Winner animation</span>
       </span>
       <!-- Toggle pill -->
       <span
@@ -71,9 +71,9 @@
     </button>
     <p class="text-xs text-white/40">
       @if (wheelConfigurator.showWinnerEffect()) {
-        Fire, confetti or other effects play when the wheel stops.
+        <span i18n="@@effects.winnerHint">Fire, confetti or other effects play when the wheel stops.</span>
       } @else {
-        The winning slice glows — no full-screen effect.
+        <span i18n="@@effects.winnerHintOff">The winning slice glows — no full-screen effect.</span>
       }
     </p>
 
@@ -92,7 +92,7 @@
         [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'fire'"
         [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'fire'"
         [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'fire'">
-        <i class="fa-solid fa-fire mr-2" aria-hidden="true"></i>Fire
+        <i class="fa-solid fa-fire mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.fire">Fire</span>
       </button>
 
       <button
@@ -107,7 +107,7 @@
         [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'confetti'"
         [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'confetti'"
         [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'confetti'">
-        <i class="fa-solid fa-champagne-glasses mr-2" aria-hidden="true"></i>Confetti
+        <i class="fa-solid fa-champagne-glasses mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.confetti">Confetti</span>
       </button>
 
       <button
@@ -122,7 +122,7 @@
         [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'fireworks'"
         [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'fireworks'"
         [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'fireworks'">
-        <i class="fa-solid fa-burst mr-2" aria-hidden="true"></i>Fireworks
+        <i class="fa-solid fa-burst mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.fireworks">Fireworks</span>
       </button>
 
       <button
@@ -137,13 +137,13 @@
         [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
         [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
         [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'">
-        <i class="fa-solid fa-wand-magic-sparkles mr-2" aria-hidden="true"></i>Cartoon Fire
+        <i class="fa-solid fa-wand-magic-sparkles mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.cartoonFire">Cartoon Fire</span>
       </button>
     </div>
   </div>
 
   <div class="space-y-2">
-    <div class="wl-settings-label">
+    <div class="wl-settings-label" i18n="@@effects.pointer">
       Wheel Pointer
     </div>
 
@@ -163,7 +163,7 @@
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 58C24 47 18 39 18 29C18 18 24.7 10 32 10C39.3 10 46 18 46 29C46 39 40 47 32 58Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
         </svg>
-        Drop
+        <span i18n="@@effects.pointer.drop">Drop</span>
       </button>
 
       <button
@@ -181,7 +181,7 @@
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 8L18 52H28L32 40L36 52H46L32 8Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         </svg>
-        Arrow
+        <span i18n="@@effects.pointer.arrow">Arrow</span>
       </button>
 
       <button
@@ -199,7 +199,7 @@
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 6C29 6 27 8 27 11V34L21 28C19 26 16 26 14 28C12 30 12 33 14 35L28 54C29 56 31 57 33 57H44C48 57 51 54 51 50V30C51 27 49 25 46 25C45 25 44 25.5 43 26V23C43 20 41 18 38 18C37.5 18 37 18.1 36.5 18.3V11C36.5 8 34.5 6 32 6Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
         </svg>
-        Finger
+        <span i18n="@@effects.pointer.finger">Finger</span>
       </button>
 
       <button
@@ -217,7 +217,7 @@
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 4L39 24L60 24L43 37L49 58L32 45L15 58L21 37L4 24L25 24Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
         </svg>
-        Star
+        <span i18n="@@effects.pointer.star">Star</span>
       </button>
 
       <button
@@ -235,7 +235,7 @@
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 4L56 32L32 60L8 32Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         </svg>
-        Diamond
+        <span i18n="@@effects.pointer.diamond">Diamond</span>
       </button>
 
       <button
@@ -253,7 +253,7 @@
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M38 4L14 36H28L24 60L50 26H36Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         </svg>
-        Bolt
+        <span i18n="@@effects.pointer.bolt">Bolt</span>
       </button>
     </div>
   </div>

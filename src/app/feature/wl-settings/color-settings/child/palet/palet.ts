@@ -16,6 +16,16 @@ type ImageTab = 'wheel' | 'slices';
 export class Palet {
   wheelConfigurator = inject(WheelConfigurator);
 
+  wheelImageLabel(): string {
+    return this.wheelConfigurator.wheelImage()
+      ? $localize`:@@palette.replaceImage:Replace Image`
+      : $localize`:@@palette.uploadImage:Upload Image`;
+  }
+
+  sliceImageAlt(index: number): string {
+    return $localize`:@@palette.sliceImageAlt:Slice image ${index}:INDEX:`;
+  }
+
   activeTab = signal<PaletTab>('palette');
   imageTab = signal<ImageTab>('wheel');
   showCustomPalette = signal(false);

@@ -1,12 +1,12 @@
 <div class="border-b border-white/10 pb-4">
   <div class="flex items-center justify-between">
     <label class="wl-settings-label">
-      <i class="fa-solid fa-bullseye mr-2" aria-hidden="true"></i>Central Logo
+      <i class="fa-solid fa-bullseye mr-2" aria-hidden="true"></i><span i18n="@@logo.title">Central Logo</span>
     </label>
-    <i class="fa-solid fa-eraser text-white/50 hover:text-white hover:cursor-pointer transition-colors" title="Reset Central Logo" (click)="resetCenterLogo()"></i>
+    <i class="fa-solid fa-eraser text-white/50 hover:text-white hover:cursor-pointer transition-colors" i18n-title="@@logo.reset" title="Reset Central Logo" (click)="resetCenterLogo()"></i>
   </div>
 
-  <div class="flex mb-4" role="tablist" aria-label="Central logo type">
+  <div class="flex mb-4" role="tablist" i18n-aria-label="@@logo.type" aria-label="Central logo type">
     <button
       type="button"
       role="tab"
@@ -20,7 +20,7 @@
       [class.border-amber-400/50]="selectedTab() === 'color'"
       [class.bg-white/[0.04]]="selectedTab() !== 'color'"
       [class.text-white/70]="selectedTab() !== 'color'"
-      [class.border-white/10]="selectedTab() !== 'color'">
+      [class.border-white/10]="selectedTab() !== 'color'" i18n="@@logo.color">
       Color
     </button>
 
@@ -37,7 +37,7 @@
       [class.border-amber-400/50]="selectedTab() === 'image'"
       [class.bg-white/[0.04]]="selectedTab() !== 'image'"
       [class.text-white/70]="selectedTab() !== 'image'"
-      [class.border-white/10]="selectedTab() !== 'image'">
+      [class.border-white/10]="selectedTab() !== 'image'" i18n="@@logo.image">
       Image
     </button>
   </div>
@@ -124,7 +124,7 @@
 
   @if (selectedTab() === 'color') {
     <div class="mb-3 space-y-1">
-      <label for="center-text-input" class="block text-xs text-white/40 uppercase tracking-wide">
+      <label for="center-text-input" class="block text-xs text-white/40 uppercase tracking-wide" i18n="@@logo.centerText">
         Center text
       </label>
       <input
@@ -133,7 +133,7 @@
         [value]="wheelConfigurator.centerText()"
         (input)="onCenterTextChange($event)"
         maxlength="24"
-        placeholder="SPIN"
+        i18n-placeholder="@@logo.textPlaceholder" placeholder="SPIN"
         class="w-full bg-neutral-950 border border-white/10 rounded-xl px-3 py-2.5 text-sm text-white placeholder:text-white/40">
     </div>
 
@@ -143,7 +143,7 @@
         [value]="wheelConfigurator.centerColor()"
         (input)="onCenterColorChange($event)"
         class="w-full h-10 rounded-xl cursor-pointer border border-white/10">
-      <p class="text-xs text-white/40">Color of the center circle.</p>
+      <p class="text-xs text-white/40" i18n="@@logo.colorHint">Color of the center circle.</p>
     </div>
   }
 
@@ -153,7 +153,7 @@
         type="button"
         (click)="fileInput.click()"
         class="w-full mt-3 py-2.5 rounded-xl text-sm font-semibold bg-white/[0.06] hover:cursor-pointer text-white border border-white/10 hover:border-amber-400/40 hover:bg-amber-400/10 transition-all duration-200">
-        <i class="fa-solid fa-upload mr-1.5" aria-hidden="true"></i>Upload logo
+        <i class="fa-solid fa-upload mr-1.5" aria-hidden="true"></i><span i18n="@@logo.upload">Upload logo</span>
       </button>
 
       <input
@@ -166,7 +166,7 @@
       <!-- <input
         #urlInput
         type="text"
-        placeholder="URL Logo..."
+        i18n-placeholder="@@logo.urlPlaceholder" placeholder="URL Logo..."
         (keyup.enter)="onCenterImageUrlEnter(urlInput.value)"
         class="w-full bg-neutral-950 border border-neutral-700 rounded-lg px-3 py-2 text-sm text-white placeholder:text-neutral-500"> -->
 
@@ -178,7 +178,7 @@
             class="preview-image">
         </div>
       } @else {
-        <p class="text-xs text-white/40">No logo uploaded.</p>
+        <p class="text-xs text-white/40" i18n="@@logo.empty">No logo uploaded.</p>
       }
     </div>
   }

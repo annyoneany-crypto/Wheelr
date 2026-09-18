@@ -10,9 +10,9 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/wheel-page/wheel-page').then((x) => x.WheelPage),
         data: {
             seo: {
-                title: 'Free Wheel Online | Spin the Wheel & Random Picker - Wheelr',
+                title: $localize`:@@seo.home.title:Free Wheel Online | Spin the Wheel & Random Picker - Wheelr`,
                 description:
-                    'Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now — no signup needed!'
+                    $localize`:@@seo.home.description:Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now — no signup needed!`
             }
         },
         children: [
@@ -48,10 +48,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/info/info').then((x) => x.Info),
         data: {
             seo: {
-                title: 'How to Use Wheelr | Spin Wheel Guide, Examples & FAQ',
+                title: $localize`:@@seo.info.title:How to Use Wheelr | Spin Wheel Guide, Examples & FAQ`,
                 description:
-                    'Step-by-step guide to the Wheelr spin wheel: add participants, customize colors and sounds, run giveaways, classroom picks and live stream draws. With FAQ.',
-                breadcrumb: 'Guide',
+                    $localize`:@@seo.info.description:Step-by-step guide to the Wheelr spin wheel: add participants, customize colors and sounds, run giveaways, classroom picks and live stream draws. With FAQ.`,
+                breadcrumb: $localize`:@@seo.info.breadcrumb:Guide`,
                 jsonLd: [INFO_FAQ_JSON_LD]
             }
         }
@@ -61,10 +61,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/donation/donation').then((x) => x.Donation),
         data: {
             seo: {
-                title: 'Support Wheelr | Keep the Free Wheel Spinner Free',
+                title: $localize`:@@seo.donation.title:Support Wheelr | Keep the Free Wheel Spinner Free`,
                 description:
-                    'Wheelr is free and always will be. If it saves your team time or makes your events more fun, a donation keeps the project running.',
-                breadcrumb: 'Support'
+                    $localize`:@@seo.donation.description:Wheelr is free and always will be. If it saves your team time or makes your events more fun, a donation keeps the project running.`,
+                breadcrumb: $localize`:@@seo.donation.breadcrumb:Support`
             }
         }
     },
@@ -73,10 +73,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/wheel-templates/wheel-templates').then((x) => x.WheelTemplates),
         data: {
             seo: {
-                title: 'Wheel Templates | Ready-Made Spin Wheels - Wheelr',
+                title: $localize`:@@seo.templates.title:Wheel Templates | Ready-Made Spin Wheels - Wheelr`,
                 description:
-                    'Ready-made wheels you can load in one click: Yes or No, Prize Giveaway, Team Picker, Truth or Dare, Discount Wheel, Movie Night and more. Free, no signup.',
-                breadcrumb: 'Templates'
+                    $localize`:@@seo.templates.description:Ready-made wheels you can load in one click: Yes or No, Prize Giveaway, Team Picker, Truth or Dare, Discount Wheel, Movie Night and more. Free, no signup.`,
+                breadcrumb: $localize`:@@seo.templates.breadcrumb:Templates`
             }
         }
     },
@@ -89,9 +89,9 @@ export const routes: Routes = [
         data: {
             seo: {
                 // Replaced per template by TemplateLanding.applySeo once the slug resolves.
-                title: 'Ready-Made Spin Wheel - Wheelr',
+                title: $localize`:@@seo.landing.title:Ready-Made Spin Wheel - Wheelr`,
                 description:
-                    'A ready-made wheel you can spin straight away and copy to your own wheels. Free, no signup.'
+                    $localize`:@@seo.landing.description:A ready-made wheel you can spin straight away and copy to your own wheels. Free, no signup.`
             }
         }
     },
@@ -100,10 +100,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/stream/stream').then((x) => x.Stream),
         data: {
             seo: {
-                title: 'Spin Wheel for Streams | OBS Giveaway Wheel Overlay',
+                title: $localize`:@@seo.stream.title:Spin Wheel for Streams | OBS Giveaway Wheel Overlay`,
                 description:
-                    'Put a spin wheel on your stream: hide the interface, capture the window in OBS or Streamlabs, and draw a winner live. Free, no plugin, no signup for viewers.',
-                breadcrumb: 'For streamers',
+                    $localize`:@@seo.stream.description:Put a spin wheel on your stream: hide the interface, capture the window in OBS or Streamlabs, and draw a winner live. Free, no plugin, no signup for viewers.`,
+                breadcrumb: $localize`:@@seo.stream.breadcrumb:For streamers`,
                 jsonLd: [STREAM_FAQ_JSON_LD]
             }
         }
@@ -113,10 +113,10 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/privacy/privacy').then((x) => x.Privacy),
         data: {
             seo: {
-                title: 'Privacy Policy - Wheelr',
+                title: $localize`:@@seo.privacy.title:Privacy Policy - Wheelr`,
                 description:
-                    'What Wheelr collects on the web and in the Android app, why, the GDPR basis for it, and how to export or delete your data at any time.',
-                breadcrumb: 'Privacy'
+                    $localize`:@@seo.privacy.description:What Wheelr collects on the web and in the Android app, why, the GDPR basis for it, and how to export or delete your data at any time.`,
+                breadcrumb: $localize`:@@seo.privacy.breadcrumb:Privacy`
             }
         }
     },
@@ -132,9 +132,9 @@ export const routes: Routes = [
         loadComponent: () => import('./feature/public-wheel/public-wheel').then((x) => x.PublicWheel),
         data: {
             seo: {
-                title: 'Shared Wheel - Wheelr',
+                title: $localize`:@@seo.shared.title:Shared Wheel - Wheelr`,
                 description:
-                    'A wheel shared with Wheelr, the free online wheel spinner. Open the link to see the entries and spin it — no account needed.',
+                    $localize`:@@seo.shared.description:A wheel shared with Wheelr, the free online wheel spinner. Open the link to see the entries and spin it — no account needed.`,
                 robots: 'noindex, follow'
             }
         }

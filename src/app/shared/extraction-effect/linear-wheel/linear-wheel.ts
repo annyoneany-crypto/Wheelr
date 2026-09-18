@@ -21,6 +21,12 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 export class LinearWheel {
   wheelConfigurator = inject(WheelConfigurator);
 
+  spinButtonLabel(): string {
+    return this.wheelConfigurator.isSpinning()
+      ? $localize`:@@linear.spinning:Spinning…`
+      : $localize`:@@linear.spin:SPIN!`;
+  }
+
   canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('canvas');
 
   private ctx!: CanvasRenderingContext2D;

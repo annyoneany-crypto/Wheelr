@@ -45,7 +45,7 @@ export class Donation {
   async submitAvaxDonation(): Promise<void> {
     const amountHex = this.parseAvaxToWeiHex(this.avaxAmountInput);
     if (!amountHex) {
-      window.alert('Please enter a valid AVAX amount greater than 0 (up to 18 decimals).');
+      window.alert($localize`:@@donation.err.amount:Please enter a valid AVAX amount greater than 0 (up to 18 decimals).`);
       return;
     }
 
@@ -56,7 +56,7 @@ export class Donation {
   private async donateWithAvax(amountHex: string): Promise<void> {
     const provider = this.getEthereumProvider();
     if (!provider) {
-      window.alert('No browser wallet detected. Please install a wallet extension to send AVAX.');
+      window.alert($localize`:@@donation.err.noWallet:No browser wallet detected. Please install a wallet extension to send AVAX.`);
       return;
     }
 
@@ -66,7 +66,7 @@ export class Donation {
       const accounts = (await provider.request({ method: 'eth_accounts' })) as string[];
       const from = accounts[0];
       if (!from) {
-        window.alert('No connected account found. Connect your wallet once, then try Donate $Avax again.');
+        window.alert($localize`:@@donation.err.noAccount:No connected account found. Connect your wallet once, then try Donate $Avax again.`);
         return;
       }
 

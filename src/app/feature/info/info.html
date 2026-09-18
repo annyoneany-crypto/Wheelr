@@ -1,296 +1,187 @@
+<!--
+  Translatable text sits on single lines. The FAQ questions and answers share
+  their message ids with INFO_FAQ_JSON_LD, so their text must stay identical to
+  it: emoji live in a separate aria-hidden span, and the answers carry no inline
+  markup (a placeholder would make the two messages differ).
+-->
 <section class="wl-page-bg min-h-screen pt-28 pb-20 px-4 text-white/90 bg-neutral-950" aria-labelledby="info-title">
   <div class="wl-stagger max-w-5xl mx-auto space-y-8">
     <header class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm p-6 shadow-[0_4px_24px_rgba(0,0,0,0.3)] md:p-8">
-      <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold">
-        <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-amber-400/70" aria-hidden="true"></i>Wheelr &bull; Spin with style
-      </p>
-      <h1 id="info-title" class="mt-2 text-3xl md:text-4xl font-black text-white">The wheel that makes every pick feel epic</h1>
-      <p class="mt-3 text-sm md:text-base leading-relaxed text-white/70 max-w-3xl">
-        Wheelr is your co-pilot for random decisions: turn giveaways, team moments, and fast picks into experiences
-        that are clear, quick, and genuinely fun. Customize names, color palettes, effects, and sounds… then let luck do its thing
-      </p>
+      <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold"><i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-amber-400/70" aria-hidden="true"></i><span i18n="@@info.kicker">Wheelr &bull; Spin with style</span></p>
+      <h1 id="info-title" class="mt-2 text-3xl md:text-4xl font-black text-white" i18n="@@info.heading">The wheel that makes every pick feel epic</h1>
+      <p class="mt-3 text-sm md:text-base leading-relaxed text-white/70 max-w-3xl" i18n="@@info.intro">Wheelr is your co-pilot for random decisions: turn giveaways, team moments, and fast picks into experiences that are clear, quick, and genuinely fun. Customize names, color palettes, effects, and sounds… then let luck do its thing</p>
       <div class="mt-5 flex flex-wrap gap-3">
-        <span class="inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs text-white/60">
-          <i class="fa-solid fa-bullseye mr-1.5 text-amber-400/60" aria-hidden="true"></i>Random, but with style
-        </span>
+        <span class="inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs text-white/60"><i class="fa-solid fa-bullseye mr-1.5 text-amber-400/60" aria-hidden="true"></i><span i18n="@@info.badge">Random, but with style</span></span>
         <a
           routerLink="/"
           class="inline-flex items-center rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200 transition-colors duration-200 hover:bg-amber-300/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60"
-          aria-label="Go to Wheel page">
-          <i class="fa-solid fa-dharmachakra mr-1.5" aria-hidden="true"></i>Go to Wheel
-        </a>
+          i18n-aria-label="@@templates.goToWheel"
+          aria-label="Go to Wheel page"><i class="fa-solid fa-dharmachakra mr-1.5" aria-hidden="true"></i><span i18n="@@info.goToWheel">Go to Wheel</span></a>
       </div>
     </header>
 
-    <section class="grid gap-4 md:grid-cols-2" aria-label="Wheelr usage visuals">
+    <section class="grid gap-4 md:grid-cols-2" i18n-aria-label="@@info.visuals.region" aria-label="Wheelr usage visuals">
       <article class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-        <img
-          ngSrc="/info-office.svg"
-          width="640"
-          height="360"
-          alt="Professional Wheelr usage in a team meeting"
-          class="w-full rounded-xl border border-white/[0.08]" />
-        <h2 class="mt-3 text-lg font-semibold text-white">At work: less indecision, more action</h2>
-        <p class="mt-1 text-sm text-white/65 leading-relaxed">
-          Standups, workshops, retros, or onboarding: pick speakers, tasks, or prizes quickly and transparently.
-        </p>
+        <img ngSrc="/info-office.svg" width="640" height="360" i18n-alt="@@info.visuals.work.alt" alt="Professional Wheelr usage in a team meeting" class="w-full rounded-xl border border-white/[0.08]" />
+        <h2 class="mt-3 text-lg font-semibold text-white" i18n="@@info.visuals.work.title">At work: less indecision, more action</h2>
+        <p class="mt-1 text-sm text-white/65 leading-relaxed" i18n="@@info.visuals.work.body">Standups, workshops, retros, or onboarding: pick speakers, tasks, or prizes quickly and transparently.</p>
       </article>
 
       <article class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-        <img
-          ngSrc="/info-fun.svg"
-          width="640"
-          height="360"
-          alt="Fun Wheelr usage with friends"
-          class="w-full rounded-xl border border-white/[0.08]" />
-        <h2 class="mt-3 text-lg font-semibold text-white">With friends: good chaos and guaranteed laughs</h2>
-        <p class="mt-1 text-sm text-white/65 leading-relaxed">
-          Movie night, games, challenges, or “who buys coffee?”: when nobody can choose, the wheel decides.
-        </p>
+        <img ngSrc="/info-fun.svg" width="640" height="360" i18n-alt="@@info.visuals.fun.alt" alt="Fun Wheelr usage with friends" class="w-full rounded-xl border border-white/[0.08]" />
+        <h2 class="mt-3 text-lg font-semibold text-white" i18n="@@info.visuals.fun.title">With friends: good chaos and guaranteed laughs</h2>
+        <p class="mt-1 text-sm text-white/65 leading-relaxed" i18n="@@info.visuals.fun.body">Movie night, games, challenges, or “who buys coffee?”: when nobody can choose, the wheel decides.</p>
       </article>
     </section>
 
     <section class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6" aria-labelledby="examples-title">
-      <h2 id="examples-title" class="text-xl font-bold text-white">Funny real-life examples to use the wheel 🎯</h2>
-      <p class="mt-3 text-sm leading-relaxed text-white/70">
-        Looking for a <strong>free spinner</strong> that works for daily choices, team rituals, and event picks? These examples show
-        how Wheelr can be your go-to <strong>wheel</strong>, <strong>prize wheel</strong>, <strong>wheel of fortune</strong>,
-        and <strong>raffle tool</strong> for every <strong>online giveaway</strong> or group decision.
-      </p>
-      <p class="mt-2 text-sm leading-relaxed text-white/70">
-        You can use it as a simple <strong>raffle</strong> picker, a <strong>free wheel</strong> for class games, or a live host flow to
-        <strong>spin the wheel</strong> and build instant suspense. If your audience asks for <strong>spin for prizes free</strong>
-        options or a fast <strong>raffle free</strong> setup, Wheelr gives you a clear and fun way to run every draw.
-      </p>
+      <h2 id="examples-title" class="text-xl font-bold text-white" i18n="@@info.examples.title">Funny real-life examples to use the wheel 🎯</h2>
+      <p class="mt-3 text-sm leading-relaxed text-white/70" i18n="@@info.examples.p1">Looking for a <strong>free spinner</strong> that works for daily choices, team rituals, and event picks? These examples show how Wheelr can be your go-to <strong>wheel</strong>, <strong>prize wheel</strong>, <strong>wheel of fortune</strong>, and <strong>raffle tool</strong> for every <strong>online giveaway</strong> or group decision.</p>
+      <p class="mt-2 text-sm leading-relaxed text-white/70" i18n="@@info.examples.p2">You can use it as a simple <strong>raffle</strong> picker, a <strong>free wheel</strong> for class games, or a live host flow to <strong>spin the wheel</strong> and build instant suspense. If your audience asks for <strong>spin for prizes free</strong> options or a fast <strong>raffle free</strong> setup, Wheelr gives you a clear and fun way to run every draw.</p>
 
       <div class="mt-4 grid gap-3 md:grid-cols-2 text-sm leading-relaxed text-white/70">
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Yes or No Wheel: dinner-time drama solved ✅❌</h3>
-          <p class="mt-2">
-            One evening, two friends spent 20 minutes arguing: "Should we order sushi, yes or no?" They used a
-            <strong>yes or no wheel</strong> on this <strong>free spinner</strong>, spun once, got "Yes," and saved the night.
-            It is the fastest way to stop overthinking and turn indecision into action.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.ex.yesNo.title">Yes or No Wheel: dinner-time drama solved ✅❌</h3>
+          <p class="mt-2" i18n="@@info.ex.yesNo.body">One evening, two friends spent 20 minutes arguing: "Should we order sushi, yes or no?" They used a <strong>yes or no wheel</strong> on this <strong>free spinner</strong>, spun once, got "Yes," and saved the night. It is the fastest way to stop overthinking and turn indecision into action.</p>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Who does the house cleaning: fair and funny 🧹</h3>
-          <p class="mt-2">
-            In a shared apartment, "not me" became a daily tradition. They added all names to the wheel and let the
-            <strong>wheel spinner</strong> pick who handles dishes, vacuum, and trash. No fights, no bias, just one transparent result
-            from a playful <strong>wheel of fortune</strong>.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.ex.cleaning.title">Who does the house cleaning: fair and funny 🧹</h3>
+          <p class="mt-2" i18n="@@info.ex.cleaning.body">In a shared apartment, "not me" became a daily tradition. They added all names to the wheel and let the <strong>wheel spinner</strong> pick who handles dishes, vacuum, and trash. No fights, no bias, just one transparent result from a playful <strong>wheel of fortune</strong>.</p>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Who speaks first in a meeting: zero awkward silence 🎤</h3>
-          <p class="mt-2">
-            A remote team kept waiting for someone else to start. They built a speaking-order wheel and used it as a
-            quick <strong>contest tool</strong> for standups. The spin broke the silence, everyone laughed, and meetings started on time.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.ex.meeting.title">Who speaks first in a meeting: zero awkward silence 🎤</h3>
+          <p class="mt-2" i18n="@@info.ex.meeting.body">A remote team kept waiting for someone else to start. They built a speaking-order wheel and used it as a quick <strong>contest tool</strong> for standups. The spin broke the silence, everyone laughed, and meetings started on time.</p>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Who wins the giveaway: live hype in seconds 🏆</h3>
-          <p class="mt-2">
-            During a livestream, the host needed a trusted <strong>wheel</strong> and <strong>raffle tool</strong> to pick a winner.
-            With one spin, the audience saw a fair random result, chat exploded, and the <strong>online giveaway</strong> felt exciting,
-            transparent, and professional. Perfect for any <strong>prize wheel</strong> moment.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.ex.giveaway.title">Who wins the giveaway: live hype in seconds 🏆</h3>
+          <p class="mt-2" i18n="@@info.ex.giveaway.body">During a livestream, the host needed a trusted <strong>wheel</strong> and <strong>raffle tool</strong> to pick a winner. With one spin, the audience saw a fair random result, chat exploded, and the <strong>online giveaway</strong> felt exciting, transparent, and professional. Perfect for any <strong>prize wheel</strong> moment.</p>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Community raffle night: quick setup, trusted result 🎟️</h3>
-          <p class="mt-2">
-            A local group wanted a lightweight <strong>raffle</strong> flow without complicated forms. They entered participant names,
-            clicked <strong>spin the wheel</strong>, and announced the winner in under a minute. It worked as a practical
-            <strong>raffle free</strong> solution for small events and social clubs.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.ex.community.title">Community raffle night: quick setup, trusted result 🎟️</h3>
+          <p class="mt-2" i18n="@@info.ex.community.body">A local group wanted a lightweight <strong>raffle</strong> flow without complicated forms. They entered participant names, clicked <strong>spin the wheel</strong>, and announced the winner in under a minute. It worked as a practical <strong>raffle free</strong> solution for small events and social clubs.</p>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Shop promo day: spin for prizes free campaign 🛍️</h3>
-          <p class="mt-2">
-            A small store launched a <strong>spin for prizes free</strong> corner to attract visitors. Customers used a branded
-            <strong>free wheel</strong> at checkout, won discounts or gifts, and shared the moment on social media.
-            The campaign felt fair, energetic, and easy to manage throughout the day.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.ex.shop.title">Shop promo day: spin for prizes free campaign 🛍️</h3>
+          <p class="mt-2" i18n="@@info.ex.shop.body">A small store launched a <strong>spin for prizes free</strong> corner to attract visitors. Customers used a branded <strong>free wheel</strong> at checkout, won discounts or gifts, and shared the moment on social media. The campaign felt fair, energetic, and easy to manage throughout the day.</p>
         </article>
       </div>
     </section>
 
     <section class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6" aria-labelledby="social-live-title">
-      <h2 id="social-live-title" class="text-xl font-bold text-white">Live social media examples</h2>
-      <p class="mt-3 text-sm leading-relaxed text-white/70">
-        Use Wheelr to run transparent picks and interactive moments during your live sessions.
-        Here are practical scenarios for the main social platforms.
-      </p>
+      <h2 id="social-live-title" class="text-xl font-bold text-white" i18n="@@info.social.title">Live social media examples</h2>
+      <p class="mt-3 text-sm leading-relaxed text-white/70" i18n="@@info.social.intro">Use Wheelr to run transparent picks and interactive moments during your live sessions. Here are practical scenarios for the main social platforms.</p>
 
       <div class="mt-4 grid gap-3 md:grid-cols-2 text-sm leading-relaxed text-white/70">
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Twitch live stream giveaway</h3>
-          <p class="mt-2">
-            Add all eligible usernames from chat and spin live to pick the winner of your sub-only reward,
-            game key, or merch drop. The on-screen wheel makes the selection clear and keeps chat engaged.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.social.twitch.title">Twitch live stream giveaway</h3>
+          <p class="mt-2" i18n="@@info.social.twitch.body">Add all eligible usernames from chat and spin live to pick the winner of your sub-only reward, game key, or merch drop. The on-screen wheel makes the selection clear and keeps chat engaged.</p>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Instagram Live challenge picker</h3>
-          <p class="mt-2">
-            During an Instagram Live, prepare entries for followers who commented on your story or post.
-            Spin the wheel to choose who gets a shoutout, discount code, or the next challenge slot.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.social.instagram.title">Instagram Live challenge picker</h3>
+          <p class="mt-2" i18n="@@info.social.instagram.body">During an Instagram Live, prepare entries for followers who commented on your story or post. Spin the wheel to choose who gets a shoutout, discount code, or the next challenge slot.</p>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">TikTok LIVE winner reveal</h3>
-          <p class="mt-2">
-            Collect participant names from your TikTok LIVE campaign and run the draw in real time.
-            Use a short countdown before each spin to build suspense and boost watch time.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.social.tiktok.title">TikTok LIVE winner reveal</h3>
+          <p class="mt-2" i18n="@@info.social.tiktok.body">Collect participant names from your TikTok LIVE campaign and run the draw in real time. Use a short countdown before each spin to build suspense and boost watch time.</p>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <h3 class="font-semibold text-white">Facebook Live community draw</h3>
-          <p class="mt-2">
-            For Facebook groups or page events, import names from comments and spin to select a fair winner.
-            It is perfect for weekly community prizes, quiz rewards, and event participation draws.
-          </p>
+          <h3 class="font-semibold text-white" i18n="@@info.social.facebook.title">Facebook Live community draw</h3>
+          <p class="mt-2" i18n="@@info.social.facebook.body">For Facebook groups or page events, import names from comments and spin to select a fair winner. It is perfect for weekly community prizes, quiz rewards, and event participation draws.</p>
         </article>
       </div>
     </section>
 
     <section class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6" aria-labelledby="how-to-title">
-      <h2 id="how-to-title" class="text-xl font-bold text-white">How to use Wheelr step by step 🧭</h2>
-      <p class="mt-3 text-sm leading-relaxed text-white/70">
-        This quick guide follows the same workflow shown in the official Wheelr article: from first setup to live extraction.
-      </p>
+      <h2 id="how-to-title" class="text-xl font-bold text-white" i18n="@@info.howto.title">How to use Wheelr step by step 🧭</h2>
+      <p class="mt-3 text-sm leading-relaxed text-white/70" i18n="@@info.howto.intro">This quick guide follows the same workflow shown in the official Wheelr article: from first setup to live extraction.</p>
 
       <ol class="mt-4 space-y-3 text-sm leading-relaxed text-white/70 list-decimal list-inside">
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Open Wheelr and pick your mode.</strong>
-          Start from the main page and decide whether you need one wheel or a multi-wheel layout (up to 4 wheels) for complex events.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Add participants or options.</strong>
-          Insert names, prizes, or tasks in the entries list. Keep labels short so they stay readable during the spin.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Save presets from the wheel menu.</strong>
-          Create different configurations (for example Junior Draw, Senior Draw, Gold Prizes) and switch instantly between them during the event.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Customize the visual identity.</strong>
-          Set your segment colors, choose a custom background image, and configure the center area with a logo or text plus preferred size.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Choose your wheel font style.</strong>
-          Select the font that best matches your brand or event tone so every wheel stays consistent and easy to read.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Set audio for suspense.</strong>
-          Upload rotation, victory, and countdown sounds to make each extraction feel like a live show moment.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Configure the countdown timer.</strong>
-          Enable countdown (for example 3, 2, 1) before the wheel spins to build anticipation in livestreams, classrooms, or office events.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Spin and announce the result.</strong>
-          Click to spin, let the wheel stop naturally, then share the winner on screen for a transparent and fair draw.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white">Repeat quickly with presets or multiple wheels.</strong>
-          For multi-phase sessions, load the next preset or switch wheel and continue without re-entering all names.
-        </li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.1"><strong class="text-white">Open Wheelr and pick your mode.</strong> Start from the main page and decide whether you need one wheel or a multi-wheel layout (up to 4 wheels) for complex events.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.2"><strong class="text-white">Add participants or options.</strong> Insert names, prizes, or tasks in the entries list. Keep labels short so they stay readable during the spin.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.3"><strong class="text-white">Save presets from the wheel menu.</strong> Create different configurations (for example Junior Draw, Senior Draw, Gold Prizes) and switch instantly between them during the event.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.4"><strong class="text-white">Customize the visual identity.</strong> Set your segment colors, choose a custom background image, and configure the center area with a logo or text plus preferred size.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.5"><strong class="text-white">Choose your wheel font style.</strong> Select the font that best matches your brand or event tone so every wheel stays consistent and easy to read.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.6"><strong class="text-white">Set audio for suspense.</strong> Upload rotation, victory, and countdown sounds to make each extraction feel like a live show moment.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.7"><strong class="text-white">Configure the countdown timer.</strong> Enable countdown (for example 3, 2, 1) before the wheel spins to build anticipation in livestreams, classrooms, or office events.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.8"><strong class="text-white">Spin and announce the result.</strong> Click to spin, let the wheel stop naturally, then share the winner on screen for a transparent and fair draw.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@info.howto.9"><strong class="text-white">Repeat quickly with presets or multiple wheels.</strong> For multi-phase sessions, load the next preset or switch wheel and continue without re-entering all names.</li>
       </ol>
     </section>
 
     <section class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6" aria-labelledby="faq-title">
-      <h2 id="faq-title" class="text-xl font-bold text-white">FAQ</h2>
+      <h2 id="faq-title" class="text-xl font-bold text-white" i18n="@@info.faq.title">FAQ</h2>
       <div class="mt-4 space-y-3 text-sm text-white/70">
         <details class="group rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <summary class="cursor-pointer font-semibold text-white">How do I make draws fairer? ⚖️</summary>
-          <p class="mt-2 leading-relaxed">Clean your names list, remove unwanted duplicates, and use <strong>Shuffle Names</strong> before every spin.</p>
+          <summary class="cursor-pointer font-semibold text-white"><span i18n="@@info.faq.q1">How do I make draws fairer?</span> <span aria-hidden="true">⚖️</span></summary>
+          <p class="mt-2 leading-relaxed" i18n="@@info.faq.a1">Clean your names list, remove unwanted duplicates, and use Shuffle Names before every spin.</p>
         </details>
 
         <details class="group rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <summary class="cursor-pointer font-semibold text-white">Can I use it in livestreams or classrooms? 🎥</summary>
-          <p class="mt-2 leading-relaxed">Absolutely. Wheelr is perfect for public moments: everyone sees the result and engagement spikes instantly.</p>
+          <summary class="cursor-pointer font-semibold text-white"><span i18n="@@info.faq.q2">Can I use it in livestreams or classrooms?</span> <span aria-hidden="true">🎥</span></summary>
+          <p class="mt-2 leading-relaxed" i18n="@@info.faq.a2">Absolutely. Wheelr is perfect for public moments: everyone sees the result and engagement spikes instantly.</p>
         </details>
 
         <details class="group rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <summary class="cursor-pointer font-semibold text-white">How can I make it more branded? 🎨</summary>
-          <p class="mt-2 leading-relaxed">Customize colors, background, effects, and audio to match your team's identity or event tone.</p>
+          <summary class="cursor-pointer font-semibold text-white"><span i18n="@@info.faq.q3">How can I make it more branded?</span> <span aria-hidden="true">🎨</span></summary>
+          <p class="mt-2 leading-relaxed" i18n="@@info.faq.a3">Customize colors, background, effects, and audio to match your team's identity or event tone.</p>
         </details>
 
         <details class="group rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <summary class="cursor-pointer font-semibold text-white">Is it also good for light and funny decisions? 😎</summary>
-          <p class="mt-2 leading-relaxed">100%. From “who does the dishes” to “who picks the playlist,” the wheel settles debates in three seconds.</p>
+          <summary class="cursor-pointer font-semibold text-white"><span i18n="@@info.faq.q4">Is it also good for light and funny decisions?</span> <span aria-hidden="true">😎</span></summary>
+          <p class="mt-2 leading-relaxed" i18n="@@info.faq.a4">100%. From “who does the dishes” to “who picks the playlist,” the wheel settles debates in three seconds.</p>
         </details>
       </div>
     </section>
 
     <section class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6" aria-labelledby="reviews-title">
-      <h2 id="reviews-title" class="text-xl font-bold text-white">Enjoying Wheelr? Leave a review</h2>
-      <p class="mt-3 text-sm leading-relaxed text-white/70">
-        Your feedback helps us improve the product and reach new people.
-        Choose your preferred platform and open the review page instantly.
-      </p>
+      <h2 id="reviews-title" class="text-xl font-bold text-white" i18n="@@info.reviews.title">Enjoying Wheelr? Leave a review</h2>
+      <p class="mt-3 text-sm leading-relaxed text-white/70" i18n="@@info.reviews.intro">Your feedback helps us improve the product and reach new people. Choose your preferred platform and open the review page instantly.</p>
 
       <div class="mt-4 grid gap-3 md:grid-cols-3">
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <a
-            href="https://www.trustpilot.com/review/www.wheelr.xyz"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex h-full flex-col"
-            aria-label="Open Trustpilot to leave a review for Wheelr">
+          <a href="https://www.trustpilot.com/review/www.wheelr.xyz" target="_blank" rel="noopener noreferrer" class="flex h-full flex-col" i18n-aria-label="@@info.reviews.trustpilot.aria" aria-label="Open Trustpilot to leave a review for Wheelr">
             <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-emerald-500/15 text-emerald-300" aria-hidden="true">
               <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current" role="img" focusable="false">
                 <path d="M12 2.4l2.95 5.98 6.6.96-4.78 4.66 1.13 6.57L12 17.47 6.1 20.57l1.13-6.57L2.45 9.34l6.6-.96L12 2.4z"></path>
               </svg>
             </div>
             <h3 class="mt-3 text-base font-semibold text-white">Trustpilot</h3>
-            <p class="mt-1 text-sm leading-relaxed text-white/65">Share your experience with Wheelr on Trustpilot.</p>
-            <span class="mt-3 text-sm font-semibold text-emerald-300">Write a review</span>
+            <p class="mt-1 text-sm leading-relaxed text-white/65" i18n="@@info.reviews.trustpilot.body">Share your experience with Wheelr on Trustpilot.</p>
+            <span class="mt-3 text-sm font-semibold text-emerald-300" i18n="@@info.reviews.trustpilot.cta">Write a review</span>
           </a>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <a
-            href="https://www.producthunt.com/products/wheelr"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex h-full flex-col"
-            aria-label="Open Product Hunt to leave a review for Wheelr">
+          <a href="https://www.producthunt.com/products/wheelr" target="_blank" rel="noopener noreferrer" class="flex h-full flex-col" i18n-aria-label="@@info.reviews.producthunt.aria" aria-label="Open Product Hunt to leave a review for Wheelr">
             <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-orange-500/15 text-orange-300" aria-hidden="true">
               <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current" role="img" focusable="false">
                 <path d="M6 4h7a5 5 0 010 10H9v6H6V4zm3 3v4h4a2 2 0 000-4H9z"></path>
               </svg>
             </div>
             <h3 class="mt-3 text-base font-semibold text-white">Product Hunt</h3>
-            <p class="mt-1 text-sm leading-relaxed text-white/65">Tell others what you like about Wheelr in the reviews section.</p>
-            <span class="mt-3 text-sm font-semibold text-orange-300">Leave your feedback</span>
+            <p class="mt-1 text-sm leading-relaxed text-white/65" i18n="@@info.reviews.producthunt.body">Tell others what you like about Wheelr in the reviews section.</p>
+            <span class="mt-3 text-sm font-semibold text-orange-300" i18n="@@info.reviews.producthunt.cta">Leave your feedback</span>
           </a>
         </article>
 
         <article class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <a
-            href="https://www.indiehackers.com/product/wheelr"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="flex h-full flex-col"
-            aria-label="Open Indie Hackers to publish a review about Wheelr">
+          <a href="https://www.indiehackers.com/product/wheelr" target="_blank" rel="noopener noreferrer" class="flex h-full flex-col" i18n-aria-label="@@info.reviews.indiehackers.aria" aria-label="Open Indie Hackers to publish a review about Wheelr">
             <div class="inline-flex h-10 w-10 items-center justify-center rounded-lg bg-sky-500/15 text-sky-300" aria-hidden="true">
               <svg viewBox="0 0 24 24" class="h-6 w-6 fill-current" role="img" focusable="false">
                 <path d="M7 4h3v16H7V4zm7 0h3v16h-3V4z"></path>
               </svg>
             </div>
             <h3 class="mt-3 text-base font-semibold text-white">Indie Hackers</h3>
-            <p class="mt-1 text-sm leading-relaxed text-white/65">Share Wheelr with the founders and makers community.</p>
-            <span class="mt-3 text-sm font-semibold text-sky-300">Open Indie Hackers</span>
+            <p class="mt-1 text-sm leading-relaxed text-white/65" i18n="@@info.reviews.indiehackers.body">Share Wheelr with the founders and makers community.</p>
+            <span class="mt-3 text-sm font-semibold text-sky-300" i18n="@@info.reviews.indiehackers.cta">Open Indie Hackers</span>
           </a>
         </article>
       </div>

@@ -258,7 +258,7 @@ select:focus {
 }
 
 wl-header header,
-footer[aria-label='Site footer'] {
+.wl-site-footer {
   transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
 }
 
@@ -269,7 +269,7 @@ body.immersive-ui-hidden wl-header header {
   transform: translateY(-16px);
 }
 
-body.immersive-ui-hidden footer[aria-label='Site footer'] {
+body.immersive-ui-hidden .wl-site-footer {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;

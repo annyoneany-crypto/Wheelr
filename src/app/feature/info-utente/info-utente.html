@@ -3,20 +3,20 @@
         class="fixed inset-0 z-90 bg-neutral-950/80 backdrop-blur-md flex items-center justify-center px-4"
         role="dialog"
         aria-modal="true"
-        aria-label="Account panel"
+        i18n-aria-label="@@account.dialog" aria-label="Account panel"
         (click)="closePanel()">
         <section
             class="wl-animate-modal w-full max-w-sm rounded-2xl border border-white/15 bg-gradient-to-b from-neutral-900/98 to-neutral-950/98 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.5)]"
             (click)="$event.stopPropagation()">
             <div class="mb-5 flex items-start justify-between gap-4">
                 <div>
-                    <h2 class="text-xl font-black text-white">Your account</h2>
-                    <p class="mt-1 text-sm text-white/50">You are signed in as</p>
+                    <h2 class="text-xl font-black text-white" i18n="@@account.title">Your account</h2>
+                    <p class="mt-1 text-sm text-white/50" i18n="@@account.signedInAs">You are signed in as</p>
                 </div>
                 <button
                     type="button"
                     class="h-9 w-9 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 inline-flex items-center justify-center"
-                    aria-label="Close account panel"
+                    i18n-aria-label="@@account.close" aria-label="Close account panel"
                     (click)="closePanel()">
                     <i class="fa-solid fa-xmark" aria-hidden="true"></i>
                 </button>
@@ -32,7 +32,7 @@
                     class="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-300 hover:bg-red-500/20 hover:border-red-400/50 hover:cursor-pointer transition-all duration-200"
                     (click)="requestLogout()">
                     <i class="fa-solid fa-right-from-bracket" aria-hidden="true"></i>
-                    Sign out
+                    <span i18n="@@account.signOut">Sign out</span>
                 </button>
 
                 <div class="mt-5 border-t border-white/10 pt-5">
@@ -41,39 +41,34 @@
                         class="w-full inline-flex items-center justify-center gap-2 rounded-xl border border-white/10 bg-transparent px-4 py-3 text-sm font-semibold text-white/50 hover:text-red-300 hover:border-red-400/40 hover:bg-red-500/[0.06] hover:cursor-pointer transition-all duration-200"
                         (click)="startDelete()">
                         <i class="fa-solid fa-trash-can" aria-hidden="true"></i>
-                        Delete account
+                        <span i18n="@@account.delete">Delete account</span>
                     </button>
                 </div>
             } @else {
                 <div class="rounded-xl border border-red-400/30 bg-red-500/[0.07] p-4">
                     <h3 class="flex items-center gap-2 text-sm font-bold text-red-300">
                         <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
-                        Delete your account?
+                        <span i18n="@@account.deleteTitle">Delete your account?</span>
                     </h3>
-                    <p class="mt-2 text-xs leading-relaxed text-white/70">
-                        This permanently deletes your account and every wheel you have synced to the cloud,
-                        including any you have shared — their links will stop working. <strong class="text-white/90">This cannot be undone.</strong>
-                    </p>
-                    <p class="mt-2 text-xs leading-relaxed text-white/50">
-                        The wheels saved on this device stay where they are.
-                    </p>
+                    <p class="mt-2 text-xs leading-relaxed text-white/70" i18n="@@account.deleteWarning">This permanently deletes your account and every wheel you have synced to the cloud, including any you have shared — their links will stop working. <strong class="text-white/90">This cannot be undone.</strong></p>
+                    <p class="mt-2 text-xs leading-relaxed text-white/50" i18n="@@account.deviceWheels">The wheels saved on this device stay where they are.</p>
 
                     @if (signInProvider() === 'password') {
                         <label class="mt-4 block text-xs font-semibold uppercase tracking-wider text-white/60" for="delete-password">
-                            Confirm your password
+                            <span i18n="@@account.confirmPassword">Confirm your password</span>
                         </label>
                         <input
                             id="delete-password"
                             type="password"
                             autocomplete="current-password"
                             class="mt-2 w-full rounded-xl border border-white/10 bg-white/[0.04] px-3 py-2.5 text-sm text-white placeholder:text-white/30"
-                            placeholder="Your password"
+                            i18n-placeholder="@@account.passwordPlaceholder" placeholder="Your password"
                             [value]="password()"
                             [disabled]="mode() === 'deleting'"
                             (input)="onPasswordInput($event)" />
                     } @else {
                         <p class="mt-4 text-xs leading-relaxed text-white/60">
-                            You will be asked to confirm with Google first.
+                            <span i18n="@@account.googleConfirm">You will be asked to confirm with Google first.</span>
                         </p>
                     }
 
@@ -89,7 +84,7 @@
                             class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm font-semibold text-white/80 hover:bg-white/15 hover:text-white hover:cursor-pointer transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                             [disabled]="mode() === 'deleting'"
                             (click)="cancelDelete()">
-                            Cancel
+                            <span i18n="@@account.cancel">Cancel</span>
                         </button>
                         <button
                             type="button"
@@ -97,9 +92,9 @@
                             [disabled]="mode() === 'deleting'"
                             (click)="confirmDelete()">
                             @if (mode() === 'deleting') {
-                                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Deleting…
+                                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i><span i18n="@@account.deleting">Deleting…</span>
                             } @else {
-                                Delete forever
+                                <span i18n="@@account.deleteForever">Delete forever</span>
                             }
                         </button>
                     </div>

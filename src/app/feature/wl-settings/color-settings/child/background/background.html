@@ -1,13 +1,13 @@
 <div class="border-b border-white/10 pb-4">
   <div class="flex items-center justify-between">
     <label class="wl-settings-label">
-      <i class="fa-solid fa-image mr-2" aria-hidden="true"></i>Background
+      <i class="fa-solid fa-image mr-2" aria-hidden="true"></i><span i18n="@@background.title">Background</span>
     </label>
-    <i class="fa-solid fa-eraser text-white/50 hover:text-white hover:cursor-pointer transition-colors" title="Reset Background" (click)="resetBackground()"></i>
+    <i class="fa-solid fa-eraser text-white/50 hover:text-white hover:cursor-pointer transition-colors" i18n-title="@@background.reset" title="Reset Background" (click)="resetBackground()"></i>
   </div>
 
   <!-- Background type tabs -->
-  <div class="flex mb-4" role="tablist" aria-label="Background type">
+  <div class="flex mb-4" role="tablist" i18n-aria-label="@@background.type" aria-label="Background type">
     <button
       type="button"
       role="tab"
@@ -21,7 +21,7 @@
       [class.border-amber-400/50]="selectedTab() === 'color'"
       [class.bg-white/[0.04]]="selectedTab() !== 'color'"
       [class.text-white/70]="selectedTab() !== 'color'"
-      [class.border-white/10]="selectedTab() !== 'color'">
+      [class.border-white/10]="selectedTab() !== 'color'" i18n="@@background.color">
       Color
     </button>
 
@@ -38,7 +38,7 @@
       [class.border-amber-400/50]="selectedTab() === 'image'"
       [class.bg-white/[0.04]]="selectedTab() !== 'image'"
       [class.text-white/70]="selectedTab() !== 'image'"
-      [class.border-white/10]="selectedTab() !== 'image'">
+      [class.border-white/10]="selectedTab() !== 'image'" i18n="@@background.image">
       Image
     </button>
   </div>
@@ -51,7 +51,7 @@
           [value]="wheelConfigurator.bgColor()"
           (input)="onBgColorChange($event)"
           class="w-full h-10 rounded-xl cursor-pointer border border-white/10">
-        <p class="text-xs text-white/40">Choose a solid color for the background.</p>
+        <p class="text-xs text-white/40" i18n="@@background.hint">Choose a solid color for the background.</p>
       </div>
     }
 
@@ -61,7 +61,7 @@
           type="button"
           (click)="bgFileInput.click()"
           class="w-full py-2.5 rounded-xl text-sm font-semibold bg-white/[0.06] hover:cursor-pointer text-white border border-white/10 hover:border-amber-400/40 hover:bg-amber-400/10 transition-all duration-200">
-          <i class="fa-solid fa-upload mr-1.5" aria-hidden="true"></i>Upload background image
+          <i class="fa-solid fa-upload mr-1.5" aria-hidden="true"></i><span i18n="@@background.upload">Upload background image</span>
         </button>
 
         <input
@@ -79,7 +79,7 @@
               class="preview-image">
           </div>
         } @else {
-          <p class="text-xs text-white/40">No image uploaded.</p>
+          <p class="text-xs text-white/40" i18n="@@background.empty">No image uploaded.</p>
         }
       </div>
     }

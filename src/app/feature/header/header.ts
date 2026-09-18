@@ -1,6 +1,7 @@
 import {
   Component,
   DestroyRef,
+  LOCALE_ID,
   computed,
   effect,
   inject,
@@ -9,7 +10,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, PRIMARY_OUTLET, Router, RouterLink } from '@angular/router';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -20,6 +21,7 @@ import { NativePlatformService } from '../../services/native-platform.service';
 import { WlAuth } from '../auth/auth';
 import { WlCreateWheel } from '../create-wheel/create-wheel';
 import { WlInfoUtente } from '../info-utente/info-utente';
+import { SITE_LOCALES, SiteLocale, localizedPath, resolveLocale } from '../../services/i18n.config';
 
 type CloudSaveState = 'idle' | 'saving' | 'success' | 'error';
 
@@ -54,6 +56,11 @@ export class Header {
   isAuthModalOpen = signal(false);
   isUserPanelOpen = signal(false);
   isCreateWheelModalOpen = signal(false);
+
+  protected readonly locales = SITE_LOCALES;
+  /** Baked in at compile time: each locale is its own bundle. */
+  protected readonly currentLocale = resolveLocale(inject(LOCALE_ID));
+  isLangMenuOpen = signal(false);
 
   cloudSaveState = signal<CloudSaveState>('idle');
   cloudSaveMessage = signal('');
@@ -123,6 +130,11 @@ export class Header {
       return true;
     }
 
+    if (this.isLangMenuOpen()) {
+      this.closeLangMenu();
+      return true;
+    }
+
     if (this.isMenuOpen()) {
       this.closeMenu();
       return true;
@@ -139,12 +151,48 @@ export class Header {
     this.isMenuOpen.set(false);
   }
 
+  toggleLangMenu(): void {
+    this.isLangMenuOpen.update((current) => !current);
+  }
+
+  closeLangMenu(): void {
+    this.isLangMenuOpen.set(false);
+  }
+
+  /**
+   * The same page in another language — a real `href`, never a `routerLink`:
+   * every locale is a separate bundle served from its own `<base href>`, so the
+   * switch has to be a document load rather than an in-app navigation. The
+   * router URL carries no locale prefix, so the current path transfers as is.
+   */
+  localeHref(locale: SiteLocale): string {
+    const primary = this.router.parseUrl(this.currentUrl()).root.children[PRIMARY_OUTLET];
+    const path = primary ? primary.segments.map((segment) => segment.path).join('/') : '';
+
+    return localizedPath(locale, path);
+  }
+
+  languageAriaLabel(locale: SiteLocale): string {
+    return $localize`:@@header.lang.switchTo:Switch to ${locale.label}:LANGUAGE:`;
+  }
+
+  namesCountTitle(): string {
+    return $localize`:@@header.namesCount.title:${this.wheelConfigurator.namesCount()}:COUNT: names on the wheel`;
+  }
+
+  /** Shares its message ids with the wheel page, which offers the same action. */
+  renameAriaLabel(): string {
+    return this.showIndependentPreview()
+      ? $localize`:@@wheelPage.rename.multiple:Rename visible wheels`
+      : $localize`:@@wheelPage.rename.single:Rename selected wheel`;
+  }
+
   requestRenameModal(): void {
     this.wheelConfigurator.requestRenameModalOpen();
   }
 
   authButtonAriaLabel(): string {
-    return this.authService.isLoggedIn() ? 'Open account panel' : 'Open login modal';
+    return this.authService.isLoggedIn() ? $localize`:@@header.auth.openAccount:Open account panel` : $localize`:@@header.auth.openLogin:Open login modal`;
   }
 
   onAuthButtonClick(): void {
@@ -209,15 +257,15 @@ export class Header {
   saveButtonAriaLabel(): string {
     switch (this.cloudSaveState()) {
       case 'saving':
-        return 'Saving wheel to cloud';
+        return $localize`:@@header.save.saving:Saving wheel to cloud`;
       case 'success':
-        return 'Wheel saved to cloud';
+        return $localize`:@@header.save.saved:Wheel saved to cloud`;
       case 'error':
-        return 'Wheel save failed, retry';
+        return $localize`:@@header.save.failed:Wheel save failed, retry`;
       default:
         return this.wheelConfigurator.activeWheel()?.cloudConfigId
-          ? 'Update saved wheel in cloud'
-          : 'Save wheel to cloud';
+          ? $localize`:@@header.save.update:Update saved wheel in cloud`
+          : $localize`:@@header.save.toCloud:Save wheel to cloud`;
     }
   }
 
@@ -254,7 +302,7 @@ export class Header {
   private async saveActiveWheelToCloud(): Promise<void> {
     const workspace = this.wheelConfigurator.activeWheel();
     if (!workspace) {
-      this.setSaveFeedback('error', 'No wheel selected to save.');
+      this.setSaveFeedback('error', $localize`:@@header.save.noWheel:No wheel selected to save.`);
       return;
     }
 
@@ -268,7 +316,7 @@ export class Header {
         rootWorkspaceId
       );
       if (!displayConfigs.length) {
-        this.setSaveFeedback('error', 'Wheel configuration not found. Try again.');
+        this.setSaveFeedback('error', $localize`:@@header.save.notFound:Wheel configuration not found. Try again.`);
         return;
       }
 
@@ -282,13 +330,13 @@ export class Header {
       this.wheelConfigurator.setGroupCloudConfigId(rootWorkspaceId, cloudConfigId);
       this.setSaveFeedback(
         'success',
-        isUpdate ? 'Wheel updated in cloud.' : 'Wheel saved to cloud.'
+        isUpdate ? $localize`:@@header.save.updatedMsg:Wheel updated in cloud.` : $localize`:@@header.save.savedMsg:Wheel saved to cloud.`
       );
     } catch (error) {
       const message =
         error instanceof Error && error.message === 'AUTH_REQUIRED'
-          ? 'Sign in to save the wheel to cloud.'
-          : 'Cloud save failed. Try again.';
+          ? $localize`:@@header.save.signIn:Sign in to save the wheel to cloud.`
+          : $localize`:@@header.save.error:Cloud save failed. Try again.`;
       this.setSaveFeedback('error', message);
     }
   }

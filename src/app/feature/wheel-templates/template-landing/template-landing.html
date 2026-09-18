@@ -4,11 +4,11 @@
     aria-labelledby="template-title">
     <div class="wl-stagger mx-auto max-w-5xl space-y-8">
 
-      <nav class="text-xs text-white/45" aria-label="Breadcrumb">
+      <nav class="text-xs text-white/45" i18n-aria-label="@@landing.breadcrumb" aria-label="Breadcrumb">
         <ol class="flex flex-wrap items-center gap-1.5">
           <li><a routerLink="/" class="hover:text-amber-300 transition-colors">Wheelr</a></li>
           <li aria-hidden="true">/</li>
-          <li><a routerLink="/templates" class="hover:text-amber-300 transition-colors">Templates</a></li>
+          <li><a routerLink="/templates" class="hover:text-amber-300 transition-colors" i18n="@@seo.templates.breadcrumb">Templates</a></li>
           <li aria-hidden="true">/</li>
           <li class="text-white/70" aria-current="page">{{ data.template.name }}</li>
         </ol>
@@ -44,7 +44,7 @@
               class="wl-template-wheel w-[min(78vw,26rem)] max-w-full rounded-full border border-white/15 shadow-[0_0_50px_rgba(0,0,0,0.5)]"
               [style.transform]="'rotate(' + rotationDeg() + 'deg)'"
               [style.transitionDuration]="spinDurationMs + 'ms'"
-              [attr.aria-label]="'The ' + data.template.name + ' wheel'"
+              [attr.aria-label]="labels.wheel(data.template.name)"
               role="img"></canvas>
           </div>
 
@@ -53,11 +53,11 @@
             class="primaryButton mt-6 w-full max-w-xs text-base"
             [disabled]="spinning()"
             (click)="spin()"
-            [attr.aria-label]="'Spin the ' + data.template.name + ' wheel'">
+            [attr.aria-label]="labels.spin(data.template.name)">
             @if (spinning()) {
-              <i class="fa-solid fa-spinner fa-spin mr-2" aria-hidden="true"></i>Spinning…
+              <i class="fa-solid fa-spinner fa-spin mr-2" aria-hidden="true"></i><span i18n="@@landing.spinning">Spinning…</span>
             } @else {
-              <i class="fa-solid fa-dharmachakra mr-2" aria-hidden="true"></i>Spin the wheel
+              <i class="fa-solid fa-dharmachakra mr-2" aria-hidden="true"></i><span i18n="@@landing.spin">Spin the wheel</span>
             }
           </button>
 
@@ -65,16 +65,15 @@
             @if (winner()) {
               <span class="font-bold text-amber-300">{{ winner() }}</span>
             } @else {
-              <span class="text-white/40">Give it a spin — nothing is saved until you copy it.</span>
+              <span class="text-white/40" i18n="@@landing.tryHint">Give it a spin — nothing is saved until you copy it.</span>
             }
           </p>
         </div>
 
         <aside class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-transparent p-6">
-          <h2 class="text-lg font-bold text-white">Use this wheel</h2>
+          <h2 class="text-lg font-bold text-white" i18n="@@landing.use.title">Use this wheel</h2>
           <p class="mt-2 text-sm leading-relaxed text-white/65">
-            {{ data.template.description }} Copy it to your own wheels and change the entries,
-            colours, sounds and effects however you like.
+            {{ data.template.description }} <span i18n="@@landing.use.body">Copy it to your own wheels and change the entries, colours, sounds and effects however you like.</span>
           </p>
 
           <button
@@ -82,26 +81,26 @@
             class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-amber-300/40 bg-amber-300/10 px-4 py-2.5 text-sm font-bold uppercase tracking-[0.1em] text-amber-200 transition-colors duration-200 hover:cursor-pointer hover:bg-amber-300/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 disabled:cursor-not-allowed disabled:opacity-50"
             [disabled]="copying()"
             (click)="useTemplate()"
-            [attr.aria-label]="'Copy the ' + data.template.name + ' wheel and open it'">
+            [attr.aria-label]="labels.copyLanding(data.template.name)">
             @if (copying()) {
-              <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Copying…
+              <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i><span i18n="@@templates.copying">Copying…</span>
             } @else {
-              <i class="fa-solid fa-copy" aria-hidden="true"></i>Copy &amp; customize
+              <i class="fa-solid fa-copy" aria-hidden="true"></i><span i18n="@@landing.copyCustomize">Copy &amp; customize</span>
             }
           </button>
 
           <dl class="mt-6 space-y-3 text-sm">
             <div class="flex items-center justify-between gap-3">
-              <dt class="text-white/45">Entries</dt>
+              <dt class="text-white/45" i18n="@@landing.entriesLabel">Entries</dt>
               <dd class="font-semibold text-white/80">{{ data.template.names.length }}</dd>
             </div>
             <div class="flex items-center justify-between gap-3">
-              <dt class="text-white/45">Price</dt>
-              <dd class="font-semibold text-white/80">Free, no signup</dd>
+              <dt class="text-white/45" i18n="@@landing.priceLabel">Price</dt>
+              <dd class="font-semibold text-white/80" i18n="@@landing.price">Free, no signup</dd>
             </div>
           </dl>
 
-          <ul class="mt-5 flex flex-wrap gap-1.5" aria-label="Entries on this wheel">
+          <ul class="mt-5 flex flex-wrap gap-1.5" i18n-aria-label="@@landing.entries" aria-label="Entries on this wheel">
             @for (entry of data.template.names; track $index) {
               <li class="rounded-full border border-white/[0.06] bg-white/[0.05] px-2 py-0.5 text-[0.7rem] text-white/55">
                 {{ entry }}
@@ -121,7 +120,7 @@
       <section
         class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6"
         aria-labelledby="template-faq-title">
-        <h2 id="template-faq-title" class="text-xl font-bold text-white">Questions about this wheel</h2>
+        <h2 id="template-faq-title" class="text-xl font-bold text-white" i18n="@@landing.faq.title">Questions about this wheel</h2>
         <div class="mt-4 space-y-3">
           @for (entry of data.seo.faq; track entry.question) {
             <details class="group rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:border-amber-400/25 hover:bg-white/[0.06]">
@@ -134,7 +133,7 @@
 
       <!-- Internal links: every landing page reachable from every other one. -->
       <section class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6">
-        <h2 class="text-xl font-bold text-white">More ready-made wheels</h2>
+        <h2 class="text-xl font-bold text-white" i18n="@@landing.more.title">More ready-made wheels</h2>
         <ul class="mt-4 flex flex-wrap gap-2">
           @for (other of otherPages(); track other.seo.slug) {
             <li>
@@ -149,7 +148,7 @@
         <a
           routerLink="/templates"
           class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-amber-300 hover:text-amber-200">
-          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>All templates
+          <i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span i18n="@@landing.more.all">All templates</span>
         </a>
       </section>
     </div>

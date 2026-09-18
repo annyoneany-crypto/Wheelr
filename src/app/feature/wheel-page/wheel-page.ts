@@ -407,7 +407,7 @@ export class WheelPage {
 
     const url = this.publicWheelUrl();
     if (!url) {
-      this.qrCodeError.set('This wheel is not synced to cloud yet.');
+      this.qrCodeError.set($localize`:@@wheelPage.qr.notSynced:This wheel is not synced to cloud yet.`);
       this.qrCodeDataUrl.set('');
       this.qrCodeLoading.set(false);
       return;
@@ -493,8 +493,8 @@ export class WheelPage {
 
   uiChromeToggleAriaLabel(): string {
     return this.uiChromeHidden()
-      ? 'Show header, footer and controls'
-      : 'Hide header, footer and controls';
+      ? $localize`:@@wheelPage.chrome.show:Show header, footer and controls`
+      : $localize`:@@wheelPage.chrome.hide:Hide header, footer and controls`;
   }
 
   openQrModal(): void {
@@ -538,7 +538,7 @@ export class WheelPage {
       this.qrCodeDataUrl.set(dataUrl);
     } catch (error) {
       console.error('Error generating QR code:', error);
-      this.qrCodeError.set('Unable to generate QR code.');
+      this.qrCodeError.set($localize`:@@wheelPage.qr.failed:Unable to generate QR code.`);
       this.qrCodeDataUrl.set('');
     } finally {
       if (requestId === this.qrRenderRequestId) {
@@ -1024,7 +1024,7 @@ export class WheelPage {
   }
 
   renameModalTitle(): string {
-    return this.showIndependentPreview() ? 'Rename visible wheels' : 'Rename selected wheel';
+    return this.showIndependentPreview() ? $localize`:@@wheelPage.rename.multiple:Rename visible wheels` : $localize`:@@wheelPage.rename.single:Rename selected wheel`;
   }
 
   private getRenameTargets(): WheelDisplayConfig[] {

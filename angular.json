@@ -17,6 +17,9 @@
           "builder": "@angular/build:application",
           "options": {
             "browser": "src/main.ts",
+            "polyfills": [
+              "@angular/localize/init"
+            ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
@@ -33,7 +36,8 @@
               "src/styles.css"
             ],
             "server": "src/main.server.ts",
-            "outputMode": "static"
+            "outputMode": "static",
+            "localize": true
           },
           "configurations": {
             "production": {
@@ -59,7 +63,10 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "localize": [
+                "en-US"
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -78,6 +85,34 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        }
+      },
+      "i18n": {
+        "sourceLocale": {
+          "code": "en-US",
+          "subPath": ""
+        },
+        "locales": {
+          "it": {
+            "translation": "src/locale/messages.it.xlf",
+            "subPath": "it"
+          },
+          "de": {
+            "translation": "src/locale/messages.de.xlf",
+            "subPath": "de"
+          },
+          "fr": {
+            "translation": "src/locale/messages.fr.xlf",
+            "subPath": "fr"
+          },
+          "es": {
+            "translation": "src/locale/messages.es.xlf",
+            "subPath": "es"
+          },
+          "zh": {
+            "translation": "src/locale/messages.zh.xlf",
+            "subPath": "zh"
+          }
         }
       }
     }

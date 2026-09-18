@@ -1,7 +1,8 @@
-import { DOCUMENT, Injectable, inject } from '@angular/core';
+import { DOCUMENT, Injectable, LOCALE_ID, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { ActivatedRoute, NavigationEnd, PRIMARY_OUTLET, Router } from '@angular/router';
 import { filter } from 'rxjs';
+import { SITE_LOCALES, localizedPath, resolveLocale } from './i18n.config';
 
 /** Per-route metadata, declared in `app.routes.ts` under `data.seo`. */
 export interface PageSeo {
@@ -34,14 +35,17 @@ const GOOGLEBOT_INDEXABLE =
 
 /** Mirrors the tags baked into `index.html`, used for any route without its own. */
 const DEFAULT_SEO: PageSeo = {
-  title: 'Free Wheel Online | Spin the Wheel & Random Picker - Wheelr',
-  description:
-    'Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now — no signup needed!',
+  // Same ids as the home route: identical copy, so it is translated once.
+  title: $localize`:@@seo.home.title:Free Wheel Online | Spin the Wheel & Random Picker - Wheelr`,
+  description: $localize`:@@seo.home.description:Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now — no signup needed!`,
   robots: INDEXABLE,
 };
 
 /** Marks the JSON-LD block this service owns, so it can be replaced wholesale. */
 const ROUTE_JSON_LD_ATTR = 'data-wl-route-seo';
+
+/** Same idea for the hreflang links, which are rewritten on every navigation. */
+const ALTERNATE_ATTR = 'data-wl-alternate';
 
 /**
  * Keeps title, description, canonical, robots, the social tags and the
@@ -63,6 +67,15 @@ export class SeoService {
   private readonly router = inject(Router);
   private readonly titleService = inject(Title);
   private readonly meta = inject(Meta);
+
+  /**
+   * Which build this is. Baked in at compile time: each locale is its own
+   * bundle, so this never changes at runtime.
+   */
+  private readonly locale = resolveLocale(inject(LOCALE_ID));
+
+  /** The site-wide block is the same on every route, so it is rewritten once. */
+  private siteJsonLdLocalized = false;
 
   /** Call once at bootstrap; re-applies the tags after every navigation. */
   watchNavigation(): void {
@@ -95,16 +108,72 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ name: 'twitter:title', content: seo.title });
     this.meta.updateTag({ name: 'twitter:description', content: seo.description });
+    this.meta.updateTag({ property: 'og:locale', content: this.locale.ogLocale });
     this.setCanonical(url);
+    this.setAlternates();
     this.setRouteJsonLd(seo, url);
+    this.localizeSiteJsonLd();
   }
 
-  /** `https://www.wheelr.xyz/templates` — origin plus the primary-outlet path. */
-  private canonicalUrl(): string {
-    const primary = this.router.parseUrl(this.router.url).root.children[PRIMARY_OUTLET];
-    const path = primary ? primary.segments.map((segment) => segment.path).join('/') : '';
+  /**
+   * The site-wide JSON-LD lives in `index.html`, which is plain HTML and so has
+   * no way to reach `$localize` — every locale would otherwise describe the app
+   * in English and declare `inLanguage: "en"`. Rewriting the block here catches
+   * it during prerendering too, which is the version a crawler actually reads.
+   */
+  private localizeSiteJsonLd(): void {
+    if (this.siteJsonLdLocalized) {
+      return;
+    }
+    this.siteJsonLdLocalized = true;
 
-    return path ? `${ORIGIN}/${path}` : `${ORIGIN}/`;
+    const script = this.document.querySelector<HTMLScriptElement>(
+      `script[type="application/ld+json"]:not([${ROUTE_JSON_LD_ATTR}])`
+    );
+    if (!script?.textContent) {
+      return;
+    }
+
+    let data: { '@graph'?: Record<string, unknown>[] };
+    try {
+      data = JSON.parse(script.textContent);
+    } catch {
+      return;
+    }
+
+    for (const node of data['@graph'] ?? []) {
+      if (typeof node['inLanguage'] === 'string') {
+        node['inLanguage'] = this.locale.hreflang;
+      }
+      if (node['@type'] === 'WebSite' || node['@type'] === 'WebApplication') {
+        node['description'] = DEFAULT_SEO.description;
+        if (typeof node['headline'] === 'string') {
+          node['headline'] = DEFAULT_SEO.title;
+        }
+      }
+    }
+
+    script.textContent = JSON.stringify(data);
+  }
+
+  /**
+   * `https://www.wheelr.xyz/it/templates` — origin, locale subpath, then the
+   * primary-outlet path.
+   *
+   * The router URL does **not** contain the locale: Angular serves each locale
+   * from its own `<base href>`, so `/it/stream` is `/stream` as far as routing
+   * is concerned. Leaving the prefix out here would point every translated page
+   * at its English equivalent, and search engines would drop the translations.
+   */
+  private canonicalUrl(): string {
+    return `${ORIGIN}${localizedPath(this.locale, this.routePath())}`;
+  }
+
+  /** The primary-outlet path, without locale prefix, query or fragment. */
+  private routePath(): string {
+    const primary = this.router.parseUrl(this.router.url).root.children[PRIMARY_OUTLET];
+
+    return primary ? primary.segments.map((segment) => segment.path).join('/') : '';
   }
 
   /** The `seo` data of the deepest primary-outlet route, over the defaults. */
@@ -144,6 +213,39 @@ export class SeoService {
   }
 
   /**
+   * Rewrites the `hreflang` alternates for the page currently being shown.
+   *
+   * Every locale must list every other one *including itself*, and the set has
+   * to be reciprocal: a page that is not pointed at from its siblings is treated
+   * as unrelated. `x-default` goes to the source locale, which is what a user
+   * with an unmatched language gets.
+   */
+  private setAlternates(): void {
+    this.document
+      .querySelectorAll(`link[${ALTERNATE_ATTR}]`)
+      .forEach((link) => link.remove());
+
+    const path = this.routePath();
+
+    const entries = [
+      ...SITE_LOCALES.map((locale) => ({
+        hreflang: locale.hreflang,
+        href: `${ORIGIN}${localizedPath(locale, path)}`,
+      })),
+      { hreflang: 'x-default', href: `${ORIGIN}${localizedPath(SITE_LOCALES[0], path)}` },
+    ];
+
+    for (const entry of entries) {
+      const link = this.document.createElement('link');
+      link.setAttribute('rel', 'alternate');
+      link.setAttribute('hreflang', entry.hreflang);
+      link.setAttribute('href', entry.href);
+      link.setAttribute(ALTERNATE_ATTR, '');
+      this.document.head.appendChild(link);
+    }
+  }
+
+  /**
    * Replaces the page-level JSON-LD block. The site-wide entities stay in
    * `index.html` untouched; only what describes *this* page is rewritten, so a
    * FAQ never follows the reader onto the privacy policy.
@@ -175,7 +277,7 @@ export class SeoService {
     }
 
     const trail = [
-      { name: 'Home', item: `${ORIGIN}/` },
+      { name: $localize`:@@seo.breadcrumb.home:Home`, item: `${ORIGIN}${localizedPath(this.locale, '')}` },
       ...(seo.breadcrumbParent
         ? [{ name: seo.breadcrumbParent.name, item: `${ORIGIN}${seo.breadcrumbParent.path}` }]
         : []),

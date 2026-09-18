@@ -2,16 +2,10 @@
   <div class="wl-stagger mx-auto max-w-5xl space-y-8">
     <header class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm p-6 shadow-[0_4px_24px_rgba(0,0,0,0.3)] md:p-8">
       <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold">
-        <i class="fa-solid fa-heart mr-1.5 text-amber-400/70" aria-hidden="true"></i>Wheelr &bull; Community Support
+        <i class="fa-solid fa-heart mr-1.5 text-amber-400/70" aria-hidden="true"></i><span i18n="@@donation.kicker">Wheelr • Community Support</span>
       </p>
-      <h1 id="donation-title" class="mt-2 text-3xl font-black text-white md:text-4xl">
-        Free to use, built with care, and powered by your support
-      </h1>
-      <p class="mt-3 max-w-3xl text-sm leading-relaxed text-white/70 md:text-base">
-        Wheelr is and will remain free to use. If it saves your team time, adds energy to your events,
-        or simply makes your day more fun, a donation is warmly appreciated. Think of it as buying the
-        project a coffee and a little extra momentum.
-      </p>
+      <h1 id="donation-title" class="mt-2 text-3xl font-black text-white md:text-4xl" i18n="@@donation.heading">Free to use, built with care, and powered by your support</h1>
+      <p class="mt-3 max-w-3xl text-sm leading-relaxed text-white/70 md:text-base" i18n="@@donation.intro">Wheelr is and will remain free to use. If it saves your team time, adds energy to your events, or simply makes your day more fun, a donation is warmly appreciated. Think of it as buying the project a coffee and a little extra momentum.</p>
 
       <div class="mt-6 flex flex-wrap gap-3">
 
@@ -28,19 +22,20 @@
         }
 
         <a href="https://www.buymeacoffee.com/annyoneany">
-          <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Beer&emoji=🍺&slug=annyoneany&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" />
+          <img src="https://img.buymeacoffee.com/button-api/?text=Buy me a Beer&emoji=🍺&slug=annyoneany&button_colour=FFDD00&font_colour=000000&font_family=Cookie&outline_colour=000000&coffee_colour=ffffff" i18n-alt="@@donation.bmc.alt" alt="Buy me a beer on Buy Me a Coffee" />
         </a>
 
         <button
           type="button"
-          class="inline-flex items-center gap-2 rounded-xl border 
-          border-orange-400/30 bg-gradient-to-b from-orange-400 to-orange-500 px-5 py-2.5 
+          class="inline-flex items-center gap-2 rounded-xl border
+          border-orange-400/30 bg-gradient-to-b from-orange-400 to-orange-500 px-5 py-2.5
           text-sm font-bold text-orange-950 shadow-[0_2px_12px_rgba(251,146,60,0.25)] transition-all duration-200
           hover:shadow-[0_4px_20px_rgba(251,146,60,0.4)] hover:cursor-pointer active:scale-95"
+          i18n-aria-label="@@donation.avax.aria"
           aria-label="Donate with AVAX wallet"
           (click)="openAvaxPopup()">
           <i class="fa-solid fa-coins" aria-hidden="true"></i>
-          <span>Donate $Avax</span>
+          <span i18n="@@donation.avax.button">Donate $Avax</span>
         </button>
       </div>
     </header>
@@ -50,15 +45,11 @@
       <div class="fixed inset-0 z-75 flex items-center justify-center p-4">
         <div class="wl-animate-modal w-full max-w-md rounded-2xl border border-white/[0.1] bg-gradient-to-b from-neutral-900/98 to-neutral-950/98 backdrop-blur-md p-6 shadow-[0_24px_80px_rgba(0,0,0,0.6)]" (click)="$event.stopPropagation()">
           <h2 class="text-lg font-bold text-white">
-            <i class="fa-solid fa-coins mr-2 text-orange-400" aria-hidden="true"></i>Donate with AVAX
+            <i class="fa-solid fa-coins mr-2 text-orange-400" aria-hidden="true"></i><span i18n="@@donation.avax.title">Donate with AVAX</span>
           </h2>
-          <p class="mt-2 text-sm text-white/65 leading-relaxed">
-            Choose how many AVAX you want to send. The transaction will be requested in your browser wallet.
-          </p>
+          <p class="mt-2 text-sm text-white/65 leading-relaxed" i18n="@@donation.avax.body">Choose how many AVAX you want to send. The transaction will be requested in your browser wallet.</p>
 
-          <label for="avax-amount" class="mt-5 block text-xs font-semibold uppercase tracking-widest text-white/50">
-            Amount (AVAX)
-          </label>
+          <label for="avax-amount" class="mt-5 block text-xs font-semibold uppercase tracking-widest text-white/50" i18n="@@donation.avax.amount">Amount (AVAX)</label>
           <input
             id="avax-amount"
             type="number"
@@ -68,21 +59,19 @@
             [value]="avaxAmountInput"
             (input)="onAvaxAmountInput($event)" />
 
-          <p class="mt-2 text-xs text-white/45">Default value is 0.5 AVAX.</p>
+          <p class="mt-2 text-xs text-white/45" i18n="@@donation.avax.default">Default value is 0.5 AVAX.</p>
 
           <div class="mt-6 flex gap-3">
             <button
               type="button"
               class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] py-2.5 text-sm font-semibold text-white/80 hover:bg-white/[0.1] transition-all duration-200"
-              (click)="closeAvaxPopup()">
-              Cancel
-            </button>
+              (click)="closeAvaxPopup()"
+              i18n="@@donation.avax.cancel">Cancel</button>
             <button
               type="button"
               class="flex-1 rounded-xl border border-orange-400/30 bg-gradient-to-b from-orange-400 to-orange-500 py-2.5 text-sm font-bold text-orange-950 shadow-[0_2px_12px_rgba(251,146,60,0.25)] hover:shadow-[0_4px_20px_rgba(251,146,60,0.4)] transition-all duration-200"
-              (click)="submitAvaxDonation()">
-              Continue
-            </button>
+              (click)="submitAvaxDonation()"
+              i18n="@@donation.avax.continue">Continue</button>
           </div>
         </div>
       </div>
@@ -90,32 +79,21 @@
 
     <section class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6" aria-labelledby="why-support-title">
       <h2 id="why-support-title" class="text-xl font-bold text-white">
-        <i class="fa-solid fa-hand-holding-heart mr-2 text-amber-400/70" aria-hidden="true"></i>Why donations help
+        <i class="fa-solid fa-hand-holding-heart mr-2 text-amber-400/70" aria-hidden="true"></i><span i18n="@@donation.why.title">Why donations help</span>
       </h2>
       <ul class="mt-4 grid gap-3 text-sm leading-relaxed text-white/75 md:grid-cols-2">
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white/90">Product quality:</strong> supports maintenance, bug fixes, and improvements.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white/90">New features:</strong> helps prioritize enhancements requested by the community.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white/90">Reliability:</strong> keeps the project stable and ready for events and live sessions.
-        </li>
-        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]">
-          <strong class="text-white/90">Continuity:</strong> makes long-term open access sustainable.
-        </li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@donation.why.quality"><strong class="text-white/90">Product quality:</strong> supports maintenance, bug fixes, and improvements.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@donation.why.features"><strong class="text-white/90">New features:</strong> helps prioritize enhancements requested by the community.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@donation.why.reliability"><strong class="text-white/90">Reliability:</strong> keeps the project stable and ready for events and live sessions.</li>
+        <li class="rounded-xl border border-white/[0.08] bg-white/[0.04] p-4 transition-all duration-200 hover:bg-white/[0.06] hover:-translate-y-0.5 hover:border-amber-400/25 hover:shadow-[0_10px_28px_rgba(0,0,0,0.35)]" i18n="@@donation.why.continuity"><strong class="text-white/90">Continuity:</strong> makes long-term open access sustainable.</li>
       </ul>
     </section>
 
     <section class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.04] to-transparent p-6" aria-labelledby="thank-you-title">
       <h2 id="thank-you-title" class="text-xl font-bold text-white">
-        <i class="fa-solid fa-wand-magic-sparkles mr-2 text-amber-400/70" aria-hidden="true"></i>A sincere thank you
+        <i class="fa-solid fa-wand-magic-sparkles mr-2 text-amber-400/70" aria-hidden="true"></i><span i18n="@@donation.thanks.title">A sincere thank you</span>
       </h2>
-      <p class="mt-3 text-sm leading-relaxed text-white/70">
-        Whether you donate or simply use Wheelr, your support matters. Every spin, every suggestion,
-        and every shared moment helps this project grow in the right direction.
-      </p>
+      <p class="mt-3 text-sm leading-relaxed text-white/70" i18n="@@donation.thanks.body">Whether you donate or simply use Wheelr, your support matters. Every spin, every suggestion, and every shared moment helps this project grow in the right direction.</p>
     </section>
   </div>
 </section>

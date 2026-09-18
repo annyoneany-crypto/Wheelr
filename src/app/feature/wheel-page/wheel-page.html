@@ -1,4 +1,4 @@
-  <a href="/info" target="_self" rel="noopener noreferrer" aria-label="Open Info page" title="Info" class="hidden lg:block">
+  <a routerLink="/info" i18n-aria-label="@@wheelPage.rail.info" aria-label="Open Info page" i18n-title="@@wheelPage.rail.infoTitle" title="Info" class="hidden lg:block">
     <div class="fixed top-28 left-8
       w-12 h-12 rounded-xl
       border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
@@ -9,7 +9,7 @@
       <i class="fa-solid fa-info text-white/70 z-50" aria-hidden="true"></i>
     </div>
   </a>
-  <a [routerLink]="['/donation']" target="_self" rel="noopener noreferrer" aria-label="Open Donation page" title="Donation" class="hidden lg:block">
+  <a [routerLink]="['/donation']" target="_self" rel="noopener noreferrer" i18n-aria-label="@@wheelPage.rail.donation" aria-label="Open Donation page" i18n-title="@@wheelPage.rail.donationTitle" title="Donation" class="hidden lg:block">
     <div class="fixed top-44 left-8
       w-12 h-12 rounded-xl
       border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
@@ -43,7 +43,7 @@
     [class.wl-ui-hidden]="uiChromeHidden()"
     role="button"
     tabindex="0"
-    aria-label="Share on X"
+    i18n-aria-label="@@wheelPage.rail.share" aria-label="Share on X"
     (click)="ShareOnX()"
     (keydown.enter)="ShareOnX()"
     (keydown.space)="ShareOnX(); $event.preventDefault()">
@@ -204,7 +204,7 @@
           <button
             type="button"
             class="h-8 w-8 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 inline-flex items-center justify-center"
-            aria-label="Close rename modal"
+            i18n-aria-label="@@wheelPage.rename.closeModal" aria-label="Close rename modal"
             (click)="closeRenameModal()">
             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
           </button>
@@ -222,10 +222,10 @@
                 class="w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm text-white"
                 [value]="renameDrafts()[target.workspaceId]"
                 (input)="updateRenameDraft(target.workspaceId, $event)"
-                placeholder="Wheel name" />
+                i18n-placeholder="@@wheelPage.rename.namePlaceholder" placeholder="Wheel name" />
 
               <label class="mb-1 mt-3 block text-xs uppercase tracking-wide text-white/50" [attr.for]="'rename-description-' + target.workspaceId">
-                Description
+                <span i18n="@@wheelPage.rename.description">Description</span>
               </label>
               <textarea
                 [id]="'rename-description-' + target.workspaceId"
@@ -233,7 +233,7 @@
                 class="w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm text-white"
                 [value]="renameDescriptionDrafts()[target.workspaceId]"
                 (input)="updateRenameDescriptionDraft(target.workspaceId, $event)"
-                placeholder="Wheel description"></textarea>
+                i18n-placeholder="@@wheelPage.rename.descPlaceholder" placeholder="Wheel description"></textarea>
             </div>
           }
         </div>
@@ -243,13 +243,13 @@
             type="button"
             class="flex-1 rounded-xl border border-white/10 bg-white/[0.04] py-2.5 text-sm font-semibold text-white/70 hover:bg-white/[0.08] transition-all duration-200"
             (click)="closeRenameModal()">
-            Cancel
+            <span i18n="@@wheelPage.rename.cancel">Cancel</span>
           </button>
           <button
             type="button"
             class="flex-1 rounded-xl border border-amber-400/40 bg-gradient-to-b from-amber-400 to-amber-500 py-2.5 text-sm font-bold text-neutral-950 hover:from-amber-300 hover:to-amber-400 shadow-[0_2px_12px_rgba(245,158,11,0.25)] transition-all duration-200 active:scale-95"
             (click)="saveRenameModal()">
-            Save
+            <span i18n="@@wheelPage.rename.save">Save</span>
           </button>
         </div>
       </div>
@@ -261,11 +261,11 @@
     <div class="fixed inset-0 z-75 flex items-center justify-center p-4">
       <div class="wl-animate-modal w-full max-w-md rounded-2xl border border-white/15 bg-gradient-to-b from-neutral-900/98 to-neutral-950/98 p-5 shadow-[0_25px_60px_rgba(0,0,0,0.5)]" (click)="$event.stopPropagation()">
         <div class="mb-4 flex items-center justify-between">
-          <h2 class="text-sm font-bold uppercase tracking-wide text-white/90">Public Wheel QR</h2>
+          <h2 class="text-sm font-bold uppercase tracking-wide text-white/90" i18n="@@wheelPage.qr.title">Public Wheel QR</h2>
           <button
             type="button"
             class="h-8 w-8 rounded-xl border border-white/10 bg-white/[0.04] text-white/70 hover:bg-white/10 hover:text-white transition-all duration-200 inline-flex items-center justify-center"
-            aria-label="Close QR modal"
+            i18n-aria-label="@@wheelPage.qr.closeModal" aria-label="Close QR modal"
             (click)="closeQrModal()">
             <i class="fa-solid fa-xmark" aria-hidden="true"></i>
           </button>
@@ -273,11 +273,11 @@
 
         <div class="rounded-xl border border-white/10 bg-white p-4 shadow-inner">
           @if (qrCodeLoading()) {
-            <div class="flex h-72 items-center justify-center text-sm font-semibold text-neutral-700">Generating QR code...</div>
+            <div class="flex h-72 items-center justify-center text-sm font-semibold text-neutral-700" i18n="@@wheelPage.qr.generating">Generating QR code…</div>
           } @else if (qrCodeError()) {
             <div class="flex h-72 items-center justify-center text-center text-sm font-semibold text-red-700">{{ qrCodeError() }}</div>
           } @else if (qrCodeDataUrl()) {
-            <img [src]="qrCodeDataUrl()" alt="Public wheel QR code" class="mx-auto h-72 w-72 object-contain" />
+            <img [src]="qrCodeDataUrl()" i18n-alt="@@wheelPage.qr.alt" alt="Public wheel QR code" class="mx-auto h-72 w-72 object-contain" />
           }
         </div>
 
@@ -285,7 +285,7 @@
           {{ publicWheelUrl() }}
         </div>
 
-        <h3 class="text-sm font-bold uppercase tracking-wide text-white/90 mt-4">Link overlay for OBS:</h3>
+        <h3 class="text-sm font-bold uppercase tracking-wide text-white/90 mt-4" i18n="@@wheelPage.qr.obsLink">Link overlay for OBS:</h3>
         <div class="mt-3 rounded-xl border border-white/[0.08] bg-white/[0.04] p-3 text-center text-xs text-white/70 break-all">
           {{ publicWheelUrl() + '?nobg=true' }}
         </div>

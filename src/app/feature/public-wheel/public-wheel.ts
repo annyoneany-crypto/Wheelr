@@ -9,7 +9,7 @@ import {
   viewChildren,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { WheelCloudRepository } from '../../services/wheel-cloud-repository.service';
 import { contrastForHex } from '../../services/global_function';
@@ -19,6 +19,7 @@ import { SeoService } from '../../services/seo.service';
 
 @Component({
   selector: 'app-public-wheel',
+  imports: [RouterLink],
   templateUrl: './public-wheel.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './public-wheel.css',
@@ -103,7 +104,7 @@ export class PublicWheel implements OnDestroy {
     this.stopIdleRotation();
 
     if (!id) {
-      this.error.set('Invalid wheel ID.');
+      this.error.set($localize`:@@publicWheel.err.invalidId:Invalid wheel ID.`);
       this.loading.set(false);
       return;
     }
@@ -111,7 +112,7 @@ export class PublicWheel implements OnDestroy {
     try {
       const publicData = await this.cloudRepository.getWheelDisplayConfigById(id);
       if (!publicData) {
-        this.error.set('Wheel not found in cloud.');
+        this.error.set($localize`:@@publicWheel.err.notFound:Wheel not found in cloud.`);
         this.loading.set(false);
         return;
       }
@@ -124,7 +125,7 @@ export class PublicWheel implements OnDestroy {
       requestAnimationFrame(() => this.drawAllWheels());
     } catch (error) {
       console.error('Error loading wheel from cloud:', error);
-      this.error.set('Error loading wheel from cloud.');
+      this.error.set($localize`:@@publicWheel.err.loadFailed:Error loading wheel from cloud.`);
     } finally {
       this.loading.set(false);
     }
@@ -139,7 +140,7 @@ export class PublicWheel implements OnDestroy {
     const name = title.trim();
 
     this.seo.setPage({
-      title: name ? `${name} - Shared Wheel | Wheelr` : 'Shared Wheel - Wheelr',
+      title: name ? $localize`:@@seo.shared.named:${name}:NAME: - Shared Wheel | Wheelr` : $localize`:@@seo.shared.title:Shared Wheel - Wheelr`,
       ...(description.trim() ? { description: description.trim() } : {}),
     });
   }

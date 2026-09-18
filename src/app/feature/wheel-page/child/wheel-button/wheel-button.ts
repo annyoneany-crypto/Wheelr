@@ -27,11 +27,11 @@ export class WheelButton {
    * the design calls for — Home, users, colors, sound, effects, wheels.
    */
   readonly panelActions: readonly WheelPanelAction[] = [
-    { path: 'users', icon: 'fa-user-plus', ariaLabel: 'Open users panel', caption: 'Names' },
-    { path: 'color-settings', icon: 'fa-swatchbook', ariaLabel: 'Open color settings panel', caption: 'Colors' },
-    { path: 'sound', icon: 'fa-volume-high', ariaLabel: 'Open sound panel', caption: 'Sound' },
-    { path: 'effects', icon: 'fa-wand-magic-sparkles', ariaLabel: 'Open effects panel', caption: 'Effects' },
-    { path: 'wheel-manager', icon: 'fa-layer-group', ariaLabel: 'Open wheel manager panel', caption: 'Wheels' }
+    { path: 'users', icon: 'fa-user-plus', ariaLabel: $localize`:@@bar.panel.users.aria:Open users panel`, caption: $localize`:@@bar.panel.users.caption:Names` },
+    { path: 'color-settings', icon: 'fa-swatchbook', ariaLabel: $localize`:@@bar.panel.colors.aria:Open color settings panel`, caption: $localize`:@@bar.panel.colors.caption:Colors` },
+    { path: 'sound', icon: 'fa-volume-high', ariaLabel: $localize`:@@bar.panel.sound.aria:Open sound panel`, caption: $localize`:@@bar.panel.sound.caption:Sound` },
+    { path: 'effects', icon: 'fa-wand-magic-sparkles', ariaLabel: $localize`:@@bar.panel.effects.aria:Open effects panel`, caption: $localize`:@@bar.panel.effects.caption:Effects` },
+    { path: 'wheel-manager', icon: 'fa-layer-group', ariaLabel: $localize`:@@bar.panel.wheels.aria:Open wheel manager panel`, caption: $localize`:@@bar.panel.wheels.caption:Wheels` }
   ];
 
   uiChromeHidden = input(false);

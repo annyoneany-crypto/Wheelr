@@ -5,32 +5,32 @@
       type="button"
       (click)="cleanAndShuffleUsers()"
       class="flex-1 py-2.5 rounded-xl text-sm font-semibold bg-white/[0.06] hover:cursor-pointer text-white border border-white/10 hover:border-amber-400/40 hover:bg-amber-400/10 transition-all duration-200">
-      <i class="fa-solid fa-shuffle mr-1.5" aria-hidden="true"></i>Shuffle Names
+      <i class="fa-solid fa-shuffle mr-1.5" aria-hidden="true"></i><span i18n="@@users.shuffle">Shuffle Names</span>
     </button>
 
     <button
       type="button"
       (click)="clearUsers()"
       class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-red-500/10 text-white border border-red-500/20 hover:bg-red-500/20 hover:border-red-400/40 transition-all duration-200 hover:cursor-pointer">
-      <i class="fa-solid fa-trash-can mr-1.5" aria-hidden="true"></i>Clear
+      <i class="fa-solid fa-trash-can mr-1.5" aria-hidden="true"></i><span i18n="@@users.clear">Clear</span>
     </button>
   </div>
 
 <!-- section for adding a name multiple times -->
   <div class="flex gap-2 items-end">
     <div class="flex-1">
-      <label class="sr-only" for="new-name">Name</label>
+      <label class="sr-only" for="new-name" i18n="@@users.name">Name</label>
       <input
         id="new-name"
         type="text"
         class="w-full px-3 py-2.5 rounded-xl bg-white/[0.06] border border-white/10 text-white placeholder:text-white/40 text-sm"
-        placeholder="Name"
+        i18n-placeholder="@@users.namePlaceholder" placeholder="Name"
         [ngModel]="newName()"
         (ngModelChange)="newName.set($event)"
       />
     </div>
     <div class="w-20">
-      <label class="sr-only" for="repeat-count">Repeat count</label>
+      <label class="sr-only" for="repeat-count" i18n="@@users.repeatCount">Repeat count</label>
       <input
         id="repeat-count"
         type="number"
@@ -45,7 +45,7 @@
       (click)="addRepeated()"
       class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-blue-500/30 text-white hover:border-blue-600/40 hover:bg-blue-600/60 transition-all duration-200 active:scale-95 hover:cursor-pointer"
     >
-      <i class="fa-solid fa-plus mr-1" aria-hidden="true"></i>Add
+      <i class="fa-solid fa-plus mr-1" aria-hidden="true"></i><span i18n="@@users.add">Add</span>
     </button>
   </div>
 
@@ -54,17 +54,17 @@
     [(ngModel)]="usersText"
     (ngModelChange)="userTextChange($event)"
     rows="5"
-    placeholder="One name per line...">
+    i18n-placeholder="@@users.bulkPlaceholder" placeholder="One name per line...">
   </textarea>
 
   <div class="flex gap-2 items-end">
     <div class="flex-1">
-      <label class="sr-only" for="delete-name">Name to remove</label>
+      <label class="sr-only" for="delete-name" i18n="@@users.nameToRemove">Name to remove</label>
       <input
         id="delete-name"
         type="text"
         class="w-full px-3 py-2.5 rounded-xl bg-white/[0.06] border border-white/10 text-white placeholder:text-white/40 text-sm"
-        placeholder="Name to remove"
+        i18n-placeholder="@@users.removePlaceholder" placeholder="Name to remove"
         [ngModel]="nameToRemove()"
         (ngModelChange)="nameToRemove.set($event)"
       />
@@ -74,7 +74,7 @@
       (click)="removeNameFromUsers()"
       class="py-2.5 px-4 rounded-xl text-sm font-semibold bg-red-500/10 text-white border border-red-500/20 hover:bg-red-500/20 hover:border-red-400/40 transition-all duration-200 hover:cursor-pointer"
     >
-      <i class="fa-solid fa-minus mr-1" aria-hidden="true"></i>Remove
+      <i class="fa-solid fa-minus mr-1" aria-hidden="true"></i><span i18n="@@users.remove">Remove</span>
     </button>
   </div>
 
@@ -86,9 +86,9 @@
       class="w-full flex items-center justify-center gap-1.5 py-1.5 text-[0.65rem] uppercase tracking-[0.22em] text-white/20 hover:text-white/60 transition-colors duration-200 hover:cursor-pointer"
       [attr.aria-expanded]="hiddenSectionOpen()"
       aria-controls="hidden-winners-section"
-      aria-label="Toggle hidden preset winners section">
+      i18n-aria-label="@@users.togglePresets" aria-label="Toggle hidden preset winners section">
       <i class="fa-solid fa-user-secret" aria-hidden="true"></i>
-      <span>Hidden</span>
+      <span i18n="@@users.hidden">Hidden</span>
       <i class="fa-solid text-[0.55rem]" [class.fa-chevron-down]="!hiddenSectionOpen()" [class.fa-chevron-up]="hiddenSectionOpen()" aria-hidden="true"></i>
     </button>
 
@@ -96,23 +96,21 @@
       <div id="hidden-winners-section" class="mt-1 space-y-3 max-h-72 overflow-y-auto rounded-xl border border-purple-400/20 bg-purple-500/[0.06] p-3">
         <p class="text-[0.7rem] leading-relaxed text-white/50">
           <i class="fa-solid fa-eye-slash mr-1 text-purple-300/60" aria-hidden="true"></i>
-          Choose who must win and in which order: spin 1 stops on #1, spin 2 on #2, and so on.
-          Winners are removed from this list as they come out. Nobody watching the wheel can tell.
-        </p>
+          <span i18n="@@users.presetHint">Choose who must win and in which order: spin 1 stops on #1, spin 2 on #2, and so on. Winners are removed from this list as they come out. Nobody watching the wheel can tell.</span></p>
 
         @if (wheelConfigurator.presetWinners().length > 0) {
           <div>
             <div class="flex items-center justify-between">
-              <p class="text-[0.65rem] uppercase tracking-[0.18em] text-purple-200/70 font-semibold">Winners order</p>
+              <p class="text-[0.65rem] uppercase tracking-[0.18em] text-purple-200/70 font-semibold" i18n="@@users.winnersOrder">Winners order</p>
               <button
                 type="button"
                 (click)="clearPresetWinners()"
                 class="text-[0.65rem] uppercase tracking-[0.1em] text-white/30 hover:text-red-300 transition-colors hover:cursor-pointer"
-                aria-label="Clear all preset winners">
-                <i class="fa-solid fa-trash-can mr-1" aria-hidden="true"></i>Clear
+                i18n-aria-label="@@users.clearPresets" aria-label="Clear all preset winners">
+                <i class="fa-solid fa-trash-can mr-1" aria-hidden="true"></i><span i18n="@@users.clear">Clear</span>
               </button>
             </div>
-            <ul class="mt-2 space-y-1.5" aria-label="Preset winners in draw order">
+            <ul class="mt-2 space-y-1.5" i18n-aria-label="@@users.presetsList" aria-label="Preset winners in draw order">
               @for (winner of wheelConfigurator.presetWinners(); track $index) {
                 <li class="flex items-center gap-2 rounded-lg border border-white/[0.08] bg-white/[0.04] px-2.5 py-1.5">
                   <span class="w-5 h-5 shrink-0 inline-flex items-center justify-center rounded-full bg-purple-400/20 text-purple-200 text-[0.65rem] font-bold">
@@ -149,9 +147,9 @@
         }
 
         <div>
-          <p class="text-[0.65rem] uppercase tracking-[0.18em] text-white/40 font-semibold">People on the wheel</p>
+          <p class="text-[0.65rem] uppercase tracking-[0.18em] text-white/40 font-semibold" i18n="@@users.onWheel">People on the wheel</p>
           @if (nameSummary().length === 0) {
-            <p class="mt-2 text-xs text-white/40">No names on the wheel yet.</p>
+            <p class="mt-2 text-xs text-white/40" i18n="@@users.empty">No names on the wheel yet.</p>
           } @else {
             <div class="mt-2 flex flex-wrap gap-1.5">
               @for (person of nameSummary(); track person.name) {
