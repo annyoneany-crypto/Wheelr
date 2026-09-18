@@ -2,26 +2,23 @@
   <div class="wl-stagger max-w-6xl mx-auto space-y-8">
     <header class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm p-6 shadow-[0_4px_24px_rgba(0,0,0,0.3)] md:p-8">
       <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold">
-        <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-amber-400/70" aria-hidden="true"></i>Wheelr &bull; Ready-made wheels
+        <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-amber-400/70" aria-hidden="true"></i><span i18n="@@templates.kicker">Wheelr • Ready-made wheels</span>
       </p>
-      <h1 id="templates-title" class="mt-2 text-3xl md:text-4xl font-black text-white">Pick a wheel, copy it, spin it</h1>
-      <p class="mt-3 text-sm md:text-base leading-relaxed text-white/70 max-w-3xl">
-        A collection of ready-to-use wheels: decisions, prizes, party games, and raffles.
-        Copy any template to your wheels and customize it however you like — names, colors, effects, and sounds.
-      </p>
+      <h1 id="templates-title" class="mt-2 text-3xl md:text-4xl font-black text-white" i18n="@@templates.heading">Pick a wheel, copy it, spin it</h1>
+      <p class="mt-3 text-sm md:text-base leading-relaxed text-white/70 max-w-3xl" i18n="@@templates.intro">A collection of ready-to-use wheels: decisions, prizes, party games, and raffles. Copy any template to your wheels and customize it however you like — names, colors, effects, and sounds.</p>
       <div class="mt-5 flex flex-wrap gap-3">
         <span class="inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-3 py-1 text-xs text-white/60">
           @if (adsRequired) {
-            <i class="fa-solid fa-circle-play mr-1.5 text-amber-400/60" aria-hidden="true"></i>Watch a short ad to unlock
+            <i class="fa-solid fa-circle-play mr-1.5 text-amber-400/60" aria-hidden="true"></i><span i18n="@@templates.badge.ad">Watch a short ad to unlock</span>
           } @else {
-            <i class="fa-solid fa-copy mr-1.5 text-amber-400/60" aria-hidden="true"></i>One click to copy &amp; use
+            <i class="fa-solid fa-copy mr-1.5 text-amber-400/60" aria-hidden="true"></i><span i18n="@@templates.badge.copy">One click to copy &amp; use</span>
           }
         </span>
         <a
           routerLink="/"
           class="inline-flex items-center rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200 transition-colors duration-200 hover:bg-amber-300/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60"
           i18n-aria-label="@@templates.goToWheel" aria-label="Go to Wheel page">
-          <i class="fa-solid fa-dharmachakra mr-1.5" aria-hidden="true"></i>Go to Wheel
+          <i class="fa-solid fa-dharmachakra mr-1.5" aria-hidden="true"></i><span i18n="@@templates.goToWheel.label">Go to Wheel</span>
         </a>
       </div>
     </header>
@@ -46,7 +43,7 @@
               </div>
               <span
                 class="shrink-0 inline-flex items-center rounded-full border border-white/[0.08] bg-white/[0.04] px-2.5 py-1 text-xs text-white/60"
-                [title]="template.names.length + ' entries on this wheel'">
+                [title]="labels.entryCount(template.names.length)">
                 <i class="fa-solid fa-users mr-1.5 text-amber-400/60" aria-hidden="true"></i>{{ template.names.length }}
               </span>
             </div>
@@ -57,7 +54,7 @@
                 width="220"
                 height="220"
                 class="w-44 h-44 md:w-52 md:h-52 transition-all duration-500 group-hover:rotate-12 group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.25)]"
-                [attr.aria-label]="'Preview of the ' + template.name + ' wheel'"
+                [attr.aria-label]="labels.preview(template.name)"
                 role="img"></canvas>
             </div>
 
@@ -70,9 +67,7 @@
                 </span>
               }
               @if (template.names.length > 4) {
-                <span class="rounded-full px-2 py-0.5 text-[0.65rem] text-white/40">
-                  +{{ template.names.length - 4 }} more
-                </span>
+                <span class="rounded-full px-2 py-0.5 text-[0.65rem] text-white/40" i18n="@@templates.moreEntries">+{{ template.names.length - 4 }} more</span>
               }
             </div>
 
@@ -81,21 +76,21 @@
               class="mt-5 inline-flex items-center justify-center gap-2 rounded-xl border border-amber-300/40 bg-amber-300/10 px-4 py-2.5 text-sm font-bold uppercase tracking-[0.1em] text-amber-200 transition-colors duration-200 hover:bg-amber-300/20 hover:cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60 disabled:opacity-50 disabled:cursor-not-allowed"
               [disabled]="copyingTemplateId() !== null"
               (click)="requestTemplate(template)"
-              [attr.aria-label]="'Copy the ' + template.name + ' wheel to your wheels and open it'">
+              [attr.aria-label]="labels.copyAndOpen(template.name)">
               @if (copyingTemplateId() === template.id) {
-                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Copying…
+                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i><span i18n="@@templates.copying">Copying…</span>
               } @else if (adsRequired) {
-                <i class="fa-solid fa-circle-play" aria-hidden="true"></i>Watch ad &amp; use
+                <i class="fa-solid fa-circle-play" aria-hidden="true"></i><span i18n="@@templates.watchAdUse">Watch ad &amp; use</span>
               } @else {
-                <i class="fa-solid fa-copy" aria-hidden="true"></i>Copy &amp; use
+                <i class="fa-solid fa-copy" aria-hidden="true"></i><span i18n="@@templates.copyUse">Copy &amp; use</span>
               }
             </button>
             @if (landingPath(template.id); as path) {
               <a
                 [routerLink]="path"
                 class="mt-3 inline-flex items-center justify-center gap-1.5 text-xs font-semibold text-white/50 transition-colors hover:text-amber-300"
-                [attr.aria-label]="'Read about the ' + template.name + ' wheel and try it'">
-                Try it &amp; read more<i class="fa-solid fa-arrow-right text-[0.65rem]" aria-hidden="true"></i>
+                [attr.aria-label]="labels.readMore(template.name)">
+                <span i18n="@@templates.readMore">Try it &amp; read more</span><i class="fa-solid fa-arrow-right text-[0.65rem]" aria-hidden="true"></i>
               </a>
             }
           </article>
@@ -119,15 +114,12 @@
           <i class="fa-solid fa-circle-play text-lg" aria-hidden="true"></i>
         </span>
         <div>
-          <h2 id="template-ad-title" class="text-base font-bold text-white">Unlock this template</h2>
+          <h2 id="template-ad-title" class="text-base font-bold text-white" i18n="@@templates.ad.title">Unlock this template</h2>
           <p class="text-xs text-white/55">{{ template.emoji }} {{ template.name }}</p>
         </div>
       </div>
 
-      <p class="mt-4 text-sm leading-relaxed text-white/70">
-        Watch a short video ad and this wheel gets copied to your wheels, ready to spin.
-        Ads keep Wheelr free.
-      </p>
+      <p class="mt-4 text-sm leading-relaxed text-white/70" i18n="@@templates.ad.body">Watch a short video ad and this wheel gets copied to your wheels, ready to spin. Ads keep Wheelr free.</p>
 
       @if (lockedNotice(); as notice) {
         <p class="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-xs text-amber-200" role="alert">
@@ -140,18 +132,17 @@
           type="button"
           class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-4 py-2.5 text-sm font-semibold text-white/80 transition-colors duration-200 hover:bg-white/15 hover:text-white hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           [disabled]="adPlaying()"
-          (click)="dismissAdPrompt()">
-          Cancel
-        </button>
+          (click)="dismissAdPrompt()"
+          i18n="@@templates.ad.cancel">Cancel</button>
         <button
           type="button"
           class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl border border-amber-300/40 bg-amber-300/15 px-4 py-2.5 text-sm font-bold text-amber-200 transition-colors duration-200 hover:bg-amber-300/25 hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           [disabled]="adPlaying()"
           (click)="confirmWatchAd()">
           @if (adPlaying()) {
-            <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Loading…
+            <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i><span i18n="@@templates.ad.loading">Loading…</span>
           } @else {
-            <i class="fa-solid fa-circle-play" aria-hidden="true"></i>Watch ad
+            <i class="fa-solid fa-circle-play" aria-hidden="true"></i><span i18n="@@templates.ad.watch">Watch ad</span>
           }
         </button>
       </div>

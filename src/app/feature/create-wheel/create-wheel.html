@@ -25,7 +25,7 @@
             <form [formGroup]="createForm" (ngSubmit)="submit()" class="grid gap-3">
                 <div class="grid gap-1.5">
                     <label class="text-xs font-semibold uppercase tracking-wide text-white/60" for="create-wheel-name">
-                        Wheel name
+                        <span i18n="@@createWheel.nameLabel">Wheel name</span>
                     </label>
                     <input
                         #nameInput
@@ -42,8 +42,8 @@
                     <label
                         class="text-xs font-semibold uppercase tracking-wide text-white/60"
                         for="create-wheel-description">
-                        Description
-                        <span class="font-normal normal-case tracking-normal text-white/35">(optional)</span>
+                        <span i18n="@@createWheel.descLabel">Description</span>
+                        <span class="font-normal normal-case tracking-normal text-white/35" i18n="@@createWheel.optional">(optional)</span>
                     </label>
                     <input
                         id="create-wheel-description"
@@ -67,7 +67,7 @@
                         class="flex-1 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-semibold text-white/70 hover:bg-white/[0.08] hover:text-white transition-all duration-200"
                         [disabled]="isCreating()"
                         (click)="closeModal()">
-                        Cancel
+                        <span i18n="@@createWheel.cancel">Cancel</span>
                     </button>
                     <button
                         type="submit"

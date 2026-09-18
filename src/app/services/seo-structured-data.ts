@@ -18,34 +18,34 @@ export const INFO_FAQ_JSON_LD = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'How do I make draws fairer?',
+      name: $localize`:@@info.faq.q1:How do I make draws fairer?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Clean your names list, remove unwanted duplicates, and use Shuffle Names before every spin.',
+        text: $localize`:@@info.faq.a1:Clean your names list, remove unwanted duplicates, and use Shuffle Names before every spin.`,
       },
     },
     {
       '@type': 'Question',
-      name: 'Can I use it in livestreams or classrooms?',
+      name: $localize`:@@info.faq.q2:Can I use it in livestreams or classrooms?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Absolutely. Wheelr is perfect for public moments: everyone sees the result and engagement spikes instantly.',
+        text: $localize`:@@info.faq.a2:Absolutely. Wheelr is perfect for public moments: everyone sees the result and engagement spikes instantly.`,
       },
     },
     {
       '@type': 'Question',
-      name: 'How can I make it more branded?',
+      name: $localize`:@@info.faq.q3:How can I make it more branded?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Customize colors, background, effects, and audio to match your team's identity or event tone.",
+        text: $localize`:@@info.faq.a3:Customize colors, background, effects, and audio to match your team's identity or event tone.`,
       },
     },
     {
       '@type': 'Question',
-      name: 'Is it also good for light and funny decisions?',
+      name: $localize`:@@info.faq.q4:Is it also good for light and funny decisions?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: '100%. From "who does the dishes" to "who picks the playlist," the wheel settles debates in three seconds.',
+        text: $localize`:@@info.faq.a4:100%. From “who does the dishes” to “who picks the playlist,” the wheel settles debates in three seconds.`,
       },
     },
   ],
@@ -60,34 +60,34 @@ export const STREAM_FAQ_JSON_LD = {
   mainEntity: [
     {
       '@type': 'Question',
-      name: 'Does it work with Streamlabs, Twitch and YouTube?',
+      name: $localize`:@@stream.faq.q1:Does it work with Streamlabs, Twitch and YouTube?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Yes. Wheelr is a web page, so anything that can capture a browser window can put it on stream — OBS Studio, Streamlabs Desktop, XSplit. The platform you broadcast to makes no difference.',
+        text: $localize`:@@stream.faq.a1:Yes. Wheelr is a web page, so anything that can capture a browser window can put it on stream — OBS Studio, Streamlabs Desktop, XSplit. The platform you broadcast to makes no difference.`,
       },
     },
     {
       '@type': 'Question',
-      name: 'Do my viewers need an account?',
+      name: $localize`:@@stream.faq.q2:Do my viewers need an account?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'No. A shared wheel opens in any browser with no signup. An account is only needed on your side, to publish the link and to reach your wheels from another device.',
+        text: $localize`:@@stream.faq.a2:No. A shared wheel opens in any browser with no signup. An account is only needed on your side, to publish the link and to reach your wheels from another device.`,
       },
     },
     {
       '@type': 'Question',
-      name: 'Can I match the wheel to my channel branding?',
+      name: $localize`:@@stream.faq.q3:Can I match the wheel to my channel branding?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: "Colours, background, fonts, the centre logo and every sound are replaceable, so the wheel can carry your channel's look instead of a stock one. The setup is saved, so it is a one-off job.",
+        text: $localize`:@@stream.faq.a3:Colours, background, fonts, the centre logo and every sound are replaceable, so the wheel can carry your channel's look instead of a stock one. The setup is saved, so it is a one-off job.`,
       },
     },
     {
       '@type': 'Question',
-      name: 'How do I add hundreds of viewer names quickly?',
+      name: $localize`:@@stream.faq.q4:How do I add hundreds of viewer names quickly?`,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Paste the whole list in one go rather than typing entries one by one, then shuffle before the first spin. On very long lists the labels get thin, so the winner is zoomed in on when the wheel stops.',
+        text: $localize`:@@stream.faq.a4:Paste the whole list in one go rather than typing entries one by one, then shuffle before the first spin. On very long lists the labels get thin, so the winner is zoomed in on when the wheel stops.`,
       },
     },
   ],

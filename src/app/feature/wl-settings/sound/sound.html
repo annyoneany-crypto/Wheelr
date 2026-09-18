@@ -13,7 +13,7 @@
       (change)="wheelConfigurator.soundEnabled.set(!wheelConfigurator.soundEnabled())"
     />
     <label for="sound-enabled" class="text-white text-sm cursor-pointer select-none">
-      {{ wheelConfigurator.soundEnabled() ? 'Sound Enabled' : 'Muted' }}
+      {{ soundToggleLabel() }}
     </label>
   </div>
 
@@ -24,14 +24,22 @@
         <i class="fa-solid fa-music mr-1.5" aria-hidden="true"></i><span i18n="@@sound.spinAudio">Spin Audio</span>
       </label>
 
-      <div class="flex gap-2">
-        <input
-          type="file"
-          accept="audio/*"
-          class="flex-1 text-xs text-white file:bg-white/[0.06] file:border file:border-white/10 file:rounded-xl file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white file:cursor-pointer file:hover:bg-white/10 file:transition-colors"
-          (change)="onAudioFileSelected($event)"
-        />
-      </div>
+      <!-- The native file control labels itself in the *browser's* language, not
+           the app's, so it is hidden behind a button we can translate. -->
+      <button
+        type="button"
+        (click)="spinAudioInput.click()"
+        class="w-full py-2.5 rounded-xl text-sm font-semibold bg-white/[0.06] hover:cursor-pointer text-white border border-white/10 hover:border-amber-400/40 hover:bg-amber-400/10 transition-all duration-200">
+        <i class="fa-solid fa-upload mr-1.5" aria-hidden="true"></i><span i18n="@@sound.chooseFile">Choose an audio file</span>
+      </button>
+
+      <input
+        #spinAudioInput
+        type="file"
+        accept="audio/*"
+        class="hidden"
+        (change)="onAudioFileSelected($event)"
+      />
 
       @if (wheelConfigurator.customAudio()) {
         <div class="flex items-center justify-between bg-white/[0.04] border border-white/10 rounded-xl p-3">
@@ -54,14 +62,20 @@
           <i class="fa-solid fa-trophy mr-1.5" aria-hidden="true"></i><span i18n="@@sound.winnerAudio">Winner Audio</span>
         </label>
 
-        <div class="flex gap-2">
-          <input
-            type="file"
-            accept="audio/*"
-            class="flex-1 text-xs text-white file:bg-white/[0.06] file:border file:border-white/10 file:rounded-xl file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white file:cursor-pointer file:hover:bg-white/10 file:transition-colors"
-            (change)="onWinnerAudioFileSelected($event)"
-          />
-        </div>
+        <button
+          type="button"
+          (click)="winnerAudioInput.click()"
+          class="w-full py-2.5 rounded-xl text-sm font-semibold bg-white/[0.06] hover:cursor-pointer text-white border border-white/10 hover:border-amber-400/40 hover:bg-amber-400/10 transition-all duration-200">
+          <i class="fa-solid fa-upload mr-1.5" aria-hidden="true"></i><span i18n="@@sound.chooseFile">Choose an audio file</span>
+        </button>
+
+        <input
+          #winnerAudioInput
+          type="file"
+          accept="audio/*"
+          class="hidden"
+          (change)="onWinnerAudioFileSelected($event)"
+        />
 
         @if (wheelConfigurator.winnerAudio()) {
           <div class="flex items-center justify-between bg-white/[0.04] border border-white/10 rounded-xl p-3">
@@ -84,14 +98,20 @@
             <i class="fa-solid fa-clock mr-1.5" aria-hidden="true"></i><span i18n="@@sound.countdownAudio">Countdown Audio</span>
           </label>
 
-          <div class="flex gap-2">
-            <input
-              type="file"
-              accept="audio/*"
-              class="flex-1 text-xs text-white file:bg-white/[0.06] file:border file:border-white/10 file:rounded-xl file:px-3 file:py-2 file:text-xs file:font-semibold file:text-white file:cursor-pointer file:hover:bg-white/10 file:transition-colors"
-              (change)="onCountdownAudioFileSelected($event)"
-            />
-          </div>
+          <button
+            type="button"
+            (click)="countdownAudioInput.click()"
+            class="w-full py-2.5 rounded-xl text-sm font-semibold bg-white/[0.06] hover:cursor-pointer text-white border border-white/10 hover:border-amber-400/40 hover:bg-amber-400/10 transition-all duration-200">
+            <i class="fa-solid fa-upload mr-1.5" aria-hidden="true"></i><span i18n="@@sound.chooseFile">Choose an audio file</span>
+          </button>
+
+          <input
+            #countdownAudioInput
+            type="file"
+            accept="audio/*"
+            class="hidden"
+            (change)="onCountdownAudioFileSelected($event)"
+          />
 
           @if (wheelConfigurator.countdownAudio()) {
             <div class="flex items-center justify-between bg-white/[0.04] border border-white/10 rounded-xl p-3">

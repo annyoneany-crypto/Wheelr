@@ -12,6 +12,12 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 export class Sound {
   wheelConfigurator = inject(WheelConfigurator);
 
+  soundToggleLabel(): string {
+    return this.wheelConfigurator.soundEnabled()
+      ? $localize`:@@sound.enabled:Sound Enabled`
+      : $localize`:@@sound.muted:Muted`;
+  }
+
   /**
    * Handle audio file selection.
    * Reads the file as data URL and stores in IndexDB via the service.

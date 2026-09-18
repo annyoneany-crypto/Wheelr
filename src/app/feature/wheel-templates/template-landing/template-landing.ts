@@ -23,6 +23,7 @@ import {
   TemplateLandingPage,
   findTemplateLandingPage,
 } from '../wheel-templates.seo';
+import { templateLabels } from '../template-labels';
 
 /** Full turns before the wheel settles, matching the feel of the real spin. */
 const FULL_TURNS = 5;
@@ -69,6 +70,7 @@ export class TemplateLanding {
 
   protected readonly template = computed(() => this.page()?.template ?? null);
   protected readonly spinDurationMs = SPIN_DURATION_MS;
+  protected readonly labels = templateLabels;
 
   /** The other landing pages, so each one links to every other (and is crawlable from it). */
   protected readonly otherPages = computed(() => {
@@ -164,7 +166,10 @@ export class TemplateLanding {
       title: seo.title,
       description: seo.description,
       breadcrumb: template.name,
-      breadcrumbParent: { name: 'Templates', path: '/templates' },
+      breadcrumbParent: {
+        name: $localize`:@@seo.templates.breadcrumb:Templates`,
+        path: '/templates',
+      },
       // Mirrors the FAQ rendered further down the page — Google ignores (and
       // penalises) FAQ markup whose answers are not visible.
       jsonLd: [

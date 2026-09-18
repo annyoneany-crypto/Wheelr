@@ -96,9 +96,7 @@
       <div id="hidden-winners-section" class="mt-1 space-y-3 max-h-72 overflow-y-auto rounded-xl border border-purple-400/20 bg-purple-500/[0.06] p-3">
         <p class="text-[0.7rem] leading-relaxed text-white/50">
           <i class="fa-solid fa-eye-slash mr-1 text-purple-300/60" aria-hidden="true"></i>
-          Choose who must win and in which order: spin 1 stops on #1, spin 2 on #2, and so on.
-          Winners are removed from this list as they come out. Nobody watching the wheel can tell.
-        </p>
+          <span i18n="@@users.presetHint">Choose who must win and in which order: spin 1 stops on #1, spin 2 on #2, and so on. Winners are removed from this list as they come out. Nobody watching the wheel can tell.</span></p>
 
         @if (wheelConfigurator.presetWinners().length > 0) {
           <div>

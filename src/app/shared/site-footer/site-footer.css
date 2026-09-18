@@ -1,0 +1,4 @@
+:host {
+  /* Anchor for a fixed child only; it takes no part in layout. */
+  display: contents;
+}

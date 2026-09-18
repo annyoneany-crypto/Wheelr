@@ -17,13 +17,20 @@ const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const ORIGIN = 'https://www.wheelr.xyz';
 const outDir = join(root, 'public', 'md', 'templates');
 
-const seoSource = await readFile(
-  join(root, 'src/app/feature/wheel-templates/wheel-templates.seo.ts'),
-  'utf8'
+/**
+ * The copy is wrapped in `$localize` so the pages ship translated, but the
+ * mirror is English (the source text). Turning each `` $localize`:@@id:text` ``
+ * back into a plain single-quoted literal keeps every regex below unchanged.
+ */
+function delocalize(source) {
+  return source.replace(/\$localize`:@@[^:`]+:([^`]*)`/g, (_, text) => `'${text.replace(/'/g, "\\'")}'`);
+}
+
+const seoSource = delocalize(
+  await readFile(join(root, 'src/app/feature/wheel-templates/wheel-templates.seo.ts'), 'utf8')
 );
-const dataSource = await readFile(
-  join(root, 'src/app/feature/wheel-templates/wheel-templates.data.ts'),
-  'utf8'
+const dataSource = delocalize(
+  await readFile(join(root, 'src/app/feature/wheel-templates/wheel-templates.data.ts'), 'utf8')
 );
 
 /** Single- or double-quoted TS string literal. */

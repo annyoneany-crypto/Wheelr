@@ -50,13 +50,8 @@
                         <i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i>
                         <span i18n="@@account.deleteTitle">Delete your account?</span>
                     </h3>
-                    <p class="mt-2 text-xs leading-relaxed text-white/70">
-                        This permanently deletes your account and every wheel you have synced to the cloud,
-                        including any you have shared — their links will stop working. <strong class="text-white/90">This cannot be undone.</strong>
-                    </p>
-                    <p class="mt-2 text-xs leading-relaxed text-white/50">
-                        The wheels saved on this device stay where they are.
-                    </p>
+                    <p class="mt-2 text-xs leading-relaxed text-white/70" i18n="@@account.deleteWarning">This permanently deletes your account and every wheel you have synced to the cloud, including any you have shared — their links will stop working. <strong class="text-white/90">This cannot be undone.</strong></p>
+                    <p class="mt-2 text-xs leading-relaxed text-white/50" i18n="@@account.deviceWheels">The wheels saved on this device stay where they are.</p>
 
                     @if (signInProvider() === 'password') {
                         <label class="mt-4 block text-xs font-semibold uppercase tracking-wider text-white/60" for="delete-password">
@@ -89,7 +84,7 @@
                             class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm font-semibold text-white/80 hover:bg-white/15 hover:text-white hover:cursor-pointer transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                             [disabled]="mode() === 'deleting'"
                             (click)="cancelDelete()">
-                            Cancel
+                            <span i18n="@@account.cancel">Cancel</span>
                         </button>
                         <button
                             type="button"
@@ -97,9 +92,9 @@
                             [disabled]="mode() === 'deleting'"
                             (click)="confirmDelete()">
                             @if (mode() === 'deleting') {
-                                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i>Deleting…
+                                <i class="fa-solid fa-spinner fa-spin" aria-hidden="true"></i><span i18n="@@account.deleting">Deleting…</span>
                             } @else {
-                                Delete forever
+                                <span i18n="@@account.deleteForever">Delete forever</span>
                             }
                         </button>
                     </div>

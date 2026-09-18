@@ -9,4 +9,10 @@ import { WheelConfigurator } from '../../../../../services/wheel-configurator.se
 })
 export class WinnerList {
   wheelConfigurator = inject(WheelConfigurator);
+
+  toggleLabel(): string {
+    return this.wheelConfigurator.showWinnersList()
+      ? $localize`:@@winnerList.show:Show winners list`
+      : $localize`:@@winnerList.hide:Hide winners list`;
+  }
 }

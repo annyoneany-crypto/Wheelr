@@ -12,7 +12,7 @@
       (change)="wheelConfigurator.setShowWinnersList($any($event.target).checked)"
     />
     <label for="toggle-winners-list" class="text-sm text-white cursor-pointer select-none">
-      {{ wheelConfigurator.showWinnersList() ? 'Show winners list' : 'Hide winners list' }}
+      {{ toggleLabel() }}
     </label>
   </div>
 

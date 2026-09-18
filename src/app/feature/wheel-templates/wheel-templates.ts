@@ -15,6 +15,7 @@ import { WheelConfigurator } from '../../services/wheel-configurator.service';
 import { drawWheelCanvas } from '../../shared/extraction-effect/wheel-renderer';
 import { WHEEL_TEMPLATES, WheelTemplateItem } from './wheel-templates.data';
 import { templateLandingPath } from './wheel-templates.seo';
+import { templateLabels } from './template-labels';
 
 @Component({
   selector: 'app-wheel-templates',
@@ -31,6 +32,7 @@ export class WheelTemplates {
   private readonly router = inject(Router);
 
   protected readonly templates = WHEEL_TEMPLATES;
+  protected readonly labels = templateLabels;
 
   /** `/templates/<slug>` for a card, so the list links into every landing page. */
   protected readonly landingPath = templateLandingPath;

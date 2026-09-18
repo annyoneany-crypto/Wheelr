@@ -16,6 +16,10 @@ export type WinnerPanelPosition = 'left' | 'top' | 'right' | 'bottom';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WinnerPanel {
+  removeAriaLabel(name: string): string {
+    return $localize`:@@winnerPanel.remove:Remove winner ${name}:NAME:`;
+  }
+
   entries = input.required<WinnerPanelEntry[]>();
   uiHidden = input(false);
   position = input<WinnerPanelPosition>('left');

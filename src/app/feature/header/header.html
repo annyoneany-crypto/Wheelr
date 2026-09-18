@@ -18,7 +18,7 @@
         @if (isWheelRoute()) {
           <span
             class="relative z-10 hidden md:inline-flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-amber-400/10 px-2.5 py-1 text-sm font-bold text-amber-200"
-            [title]="wheelConfigurator.namesCount() + ' names on the wheel'"
+            [title]="namesCountTitle()"
             i18n-aria-label="@@header.namesCount" aria-label="Number of names on the wheel">
             <i class="fa-solid fa-users text-xs" aria-hidden="true"></i>
             {{ wheelConfigurator.namesCount() }}
@@ -30,7 +30,7 @@
       <!-- Mobile-only names counter, moved below the header bar to avoid crowding it -->
       <span
         class="md:hidden fixed top-[4.5rem] left-3 z-20 inline-flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-neutral-950/70 backdrop-blur-sm px-2.5 py-1 text-xs font-bold text-amber-200"
-        [title]="wheelConfigurator.namesCount() + ' names on the wheel'"
+        [title]="namesCountTitle()"
         i18n-aria-label="@@header.namesCount" aria-label="Number of names on the wheel">
         <i class="fa-solid fa-users text-[0.6rem]" aria-hidden="true"></i>
         {{ wheelConfigurator.namesCount() }}
@@ -110,6 +110,46 @@
             }
         </button>
 
+        <div class="relative">
+            <button
+                type="button"
+                (click)="toggleLangMenu()"
+                class="secondaryButton h-10 w-10 p-0! md:h-11 md:w-auto md:px-4! md:py-2.5! inline-flex items-center justify-center gap-2 border-yellow-400/50!"
+                [attr.aria-expanded]="isLangMenuOpen()"
+                aria-haspopup="true"
+                i18n-aria-label="@@header.lang.open" aria-label="Change language"
+                i18n-title="@@header.lang.open" title="Change language">
+                <i class="fa-solid fa-globe" aria-hidden="true"></i>
+                <span class="hidden md:inline text-xs font-bold uppercase tracking-wider">{{ currentLocale.hreflang }}</span>
+            </button>
+
+            @if (isLangMenuOpen()) {
+                <!-- Click-away layer; the panel sits above it. -->
+                <div class="fixed inset-0 z-30" (click)="closeLangMenu()"></div>
+                <ul
+                    class="absolute right-0 top-full z-40 mt-2 w-44 overflow-hidden rounded-xl border border-white/10 bg-neutral-950/95 backdrop-blur-xl shadow-[0_12px_40px_rgba(0,0,0,0.5)]"
+                    i18n-aria-label="@@header.lang.list" aria-label="Choose a language">
+                    @for (locale of locales; track locale.id) {
+                        <li>
+                            <a
+                                [href]="localeHref(locale)"
+                                [attr.hreflang]="locale.hreflang"
+                                [attr.lang]="locale.hreflang"
+                                [attr.aria-current]="locale.id === currentLocale.id ? 'true' : null"
+                                [attr.aria-label]="languageAriaLabel(locale)"
+                                class="flex items-center justify-between gap-2 px-4 py-2.5 text-sm text-white/80 transition-colors hover:bg-white/[0.08] hover:text-amber-200"
+                                [class.text-amber-300]="locale.id === currentLocale.id">
+                                <span>{{ locale.label }}</span>
+                                @if (locale.id === currentLocale.id) {
+                                    <i class="fa-solid fa-check text-xs" aria-hidden="true"></i>
+                                }
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+        </div>
+
         <button
             type="button"
             (click)="toggleMenu()"
@@ -143,10 +183,10 @@
         i18n-aria-label="@@header.menu.dialog" aria-label="Main menu"
         (click)="closeMenu()">
         <div
-            class="absolute top-5 right-6">
+            class="absolute top-3 right-3 md:top-5 md:right-6">
             <button
                 type="button"
-                class="secondaryButton inline-flex items-center gap-2"
+                class="secondaryButton inline-flex items-center gap-2 px-3! py-2! text-sm md:px-6! md:py-2.5!"
                 i18n-aria-label="@@header.menu.close" aria-label="Close menu"
                 (click)="closeMenu()">
                 <i class="fa-solid fa-xmark" aria-hidden="true"></i>
@@ -154,17 +194,19 @@
             </button>
         </div>
 
+        <!-- Seven entries at the desktop size overflow a phone screen, so below
+             `md` they become a compact two-column grid that fits without scrolling. -->
         <nav
-            class="w-full max-w-xl px-6"
+            class="w-full max-w-xl max-h-[76vh] overflow-y-auto px-4 md:px-6"
             i18n-aria-label="@@header.menu.nav" aria-label="Main pages"
             (click)="$event.stopPropagation()">
-            <ul class="grid gap-5 text-center">
-                <li>
+            <ul class="grid grid-cols-2 gap-2.5 text-center md:grid-cols-1 md:gap-5">
+                <li class="col-span-2 md:col-span-1">
                     <a
                         [routerLink]="['/']"
                         (click)="closeMenu()"
                         i18n-aria-label="@@header.menu.wheel" aria-label="Go to Wheelr page"
-                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
+                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
                         <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.wheel">🎡 Wheelr</span>
                     </a>
                 </li>
@@ -173,7 +215,7 @@
                         [routerLink]="['/templates']"
                         (click)="closeMenu()"
                         i18n-aria-label="@@header.menu.templates" aria-label="Go to ready-made wheels page"
-                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
+                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
                         <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.templates">✨ Ready-made wheels</span>
                     </a>
                 </li>
@@ -182,7 +224,7 @@
                         [routerLink]="['/stream']"
                         (click)="closeMenu()"
                         i18n-aria-label="@@header.menu.stream" aria-label="Go to the streaming guide"
-                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
+                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
                         <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.stream">🎥 For streamers</span>
                     </a>
                 </li>
@@ -191,7 +233,7 @@
                         [routerLink]="['/info']"
                         (click)="closeMenu()"
                         i18n-aria-label="@@header.menu.info" aria-label="Go to Info page"
-                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
+                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
                         <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.info">ℹ️ Info</span>
                     </a>
                 </li>
@@ -200,7 +242,7 @@
                         [routerLink]="['/donation']"
                         (click)="closeMenu()"
                         i18n-aria-label="@@header.menu.donation" aria-label="Go to Donation page"
-                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
+                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
                         <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.donation">💝 Donation</span>
                     </a>
                 </li>
@@ -210,7 +252,7 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         i18n-aria-label="@@header.menu.wiki" aria-label="Open Wheelr wiki (opens in a new tab)"
-                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
+                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
                         <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.wiki">📖 Wiki</span>
                     </a>
                 </li>
@@ -219,7 +261,7 @@
                         [routerLink]="['/privacy']"
                         (click)="closeMenu()"
                         i18n-aria-label="@@header.menu.privacy" aria-label="Go to Privacy Policy page"
-                        class="group block rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-6 py-6 text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
+                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
                         <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.privacy">🛡️ Privacy</span>
                     </a>
                 </li>
@@ -232,14 +274,14 @@
             target="_blank"
             rel="noopener noreferrer"
             i18n-aria-label="@@header.social.twitter" aria-label="AnnyoneAny Twitter profile"
-            class="absolute bottom-8 left-1/2 -translate-x-1/2 transition-transform hover:scale-105 invert"
+            class="absolute bottom-4 left-1/2 -translate-x-1/2 transition-transform hover:scale-105 invert md:bottom-8"
             (click)="$event.stopPropagation()">
             <img
                 ngSrc="/twitter-logo.webp"
                 width="60"
                 height="60"
                 alt="Twitter"
-                class="h-14 w-14 md:h-14 md:w-14" />
+                class="h-10 w-10 md:h-14 md:w-14" />
         </a>
     </div>
 </div>

@@ -129,9 +129,7 @@
     <!-- Wheel background image -->
     @if (imageTab() === 'wheel') {
       <div class="space-y-3">
-        <p class="text-xs text-white/40 leading-relaxed">
-          Fills the wheel disc with an image. Slice separators and labels are drawn on top.
-        </p>
+        <p class="text-xs text-white/40 leading-relaxed" i18n="@@palette.wheelImageHint">Fills the wheel disc with an image. Slice separators and labels are drawn on top.</p>
 
         @if (wheelConfigurator.wheelImage()) {
           <div class="relative w-full h-28 rounded-xl overflow-hidden border border-white/10">
@@ -151,7 +149,7 @@
           [class.border-white/20]="!!wheelConfigurator.wheelImage()"
           [class.hover:bg-white/6]="!!wheelConfigurator.wheelImage()">
           <i class="fa-solid fa-upload" aria-hidden="true"></i>
-          {{ wheelConfigurator.wheelImage() ? 'Replace Image' : 'Upload Image' }}
+          {{ wheelImageLabel() }}
           <input type="file" accept="image/*" class="hidden" (change)="onWheelImageSelected($event)">
         </label>
       </div>
@@ -160,16 +158,14 @@
     <!-- Per-slice images -->
     @if (imageTab() === 'slices') {
       <div class="space-y-3">
-        <p class="text-xs text-white/40 leading-relaxed">
-          Add up to 10 images. They repeat across wheel slices replacing the palette colors.
-        </p>
+        <p class="text-xs text-white/40 leading-relaxed" i18n="@@palette.sliceImagesHint">Add up to 10 images. They repeat across wheel slices replacing the palette colors.</p>
 
         @for (img of wheelConfigurator.sliceImages(); track $index) {
           <div class="flex items-center gap-3 p-2 bg-white/4 rounded-xl border border-white/10">
             <div class="w-11 h-11 rounded-lg overflow-hidden shrink-0 bg-white/10">
-              <img [src]="img" class="w-full h-full object-cover" [alt]="'Slice image ' + ($index + 1)">
+              <img [src]="img" class="w-full h-full object-cover" [alt]="sliceImageAlt($index + 1)">
             </div>
-            <span class="text-xs text-white/50 flex-1">Image {{ $index + 1 }}</span>
+            <span class="text-xs text-white/50 flex-1" i18n="@@palette.sliceImage">Image {{ $index + 1 }}</span>
             <button
               type="button"
               (click)="removeSliceImage($index)"
@@ -182,7 +178,7 @@
         @if (wheelConfigurator.sliceImages().length < 10) {
           <label class="w-full flex items-center justify-center gap-2 py-2.5 rounded-xl border border-dashed border-amber-400/40 text-sm font-semibold text-white/60 hover:text-white hover:bg-amber-400/10 transition-all duration-200 hover:cursor-pointer">
             <i class="fa-solid fa-plus" aria-hidden="true"></i>
-            Add Image ({{ wheelConfigurator.sliceImages().length }}/10)
+            <span i18n="@@palette.addImage">Add Image ({{ wheelConfigurator.sliceImages().length }}/10)</span>
             <input type="file" accept="image/*" class="hidden" (change)="onAddSliceImage($event)">
           </label>
         }

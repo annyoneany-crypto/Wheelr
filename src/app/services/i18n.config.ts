@@ -17,15 +17,17 @@ export interface SiteLocale {
   hreflang: string;
   /** Shown in the language switcher. */
   label: string;
+  /** `og:locale`, which Facebook and friends want as `language_TERRITORY`. */
+  ogLocale: string;
 }
 
 export const SITE_LOCALES: readonly SiteLocale[] = [
-  { id: 'en-US', subPath: '', hreflang: 'en', label: 'English' },
-  { id: 'it', subPath: 'it', hreflang: 'it', label: 'Italiano' },
-  { id: 'de', subPath: 'de', hreflang: 'de', label: 'Deutsch' },
-  { id: 'fr', subPath: 'fr', hreflang: 'fr', label: 'Français' },
-  { id: 'es', subPath: 'es', hreflang: 'es', label: 'Español' },
-  { id: 'zh', subPath: 'zh', hreflang: 'zh', label: '中文' },
+  { id: 'en-US', subPath: '', hreflang: 'en', label: 'English', ogLocale: 'en_US' },
+  { id: 'it', subPath: 'it', hreflang: 'it', label: 'Italiano', ogLocale: 'it_IT' },
+  { id: 'de', subPath: 'de', hreflang: 'de', label: 'Deutsch', ogLocale: 'de_DE' },
+  { id: 'fr', subPath: 'fr', hreflang: 'fr', label: 'Français', ogLocale: 'fr_FR' },
+  { id: 'es', subPath: 'es', hreflang: 'es', label: 'Español', ogLocale: 'es_ES' },
+  { id: 'zh', subPath: 'zh', hreflang: 'zh', label: '中文', ogLocale: 'zh_CN' },
 ];
 
 /** The locale search engines are sent to when no language matches the user. */

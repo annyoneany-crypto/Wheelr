@@ -1,6 +1,7 @@
 import {
   Component,
   DestroyRef,
+  LOCALE_ID,
   computed,
   effect,
   inject,
@@ -9,7 +10,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
-import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, PRIMARY_OUTLET, Router, RouterLink } from '@angular/router';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -20,6 +21,7 @@ import { NativePlatformService } from '../../services/native-platform.service';
 import { WlAuth } from '../auth/auth';
 import { WlCreateWheel } from '../create-wheel/create-wheel';
 import { WlInfoUtente } from '../info-utente/info-utente';
+import { SITE_LOCALES, SiteLocale, localizedPath, resolveLocale } from '../../services/i18n.config';
 
 type CloudSaveState = 'idle' | 'saving' | 'success' | 'error';
 
@@ -54,6 +56,11 @@ export class Header {
   isAuthModalOpen = signal(false);
   isUserPanelOpen = signal(false);
   isCreateWheelModalOpen = signal(false);
+
+  protected readonly locales = SITE_LOCALES;
+  /** Baked in at compile time: each locale is its own bundle. */
+  protected readonly currentLocale = resolveLocale(inject(LOCALE_ID));
+  isLangMenuOpen = signal(false);
 
   cloudSaveState = signal<CloudSaveState>('idle');
   cloudSaveMessage = signal('');
@@ -123,6 +130,11 @@ export class Header {
       return true;
     }
 
+    if (this.isLangMenuOpen()) {
+      this.closeLangMenu();
+      return true;
+    }
+
     if (this.isMenuOpen()) {
       this.closeMenu();
       return true;
@@ -137,6 +149,35 @@ export class Header {
 
   closeMenu(): void {
     this.isMenuOpen.set(false);
+  }
+
+  toggleLangMenu(): void {
+    this.isLangMenuOpen.update((current) => !current);
+  }
+
+  closeLangMenu(): void {
+    this.isLangMenuOpen.set(false);
+  }
+
+  /**
+   * The same page in another language — a real `href`, never a `routerLink`:
+   * every locale is a separate bundle served from its own `<base href>`, so the
+   * switch has to be a document load rather than an in-app navigation. The
+   * router URL carries no locale prefix, so the current path transfers as is.
+   */
+  localeHref(locale: SiteLocale): string {
+    const primary = this.router.parseUrl(this.currentUrl()).root.children[PRIMARY_OUTLET];
+    const path = primary ? primary.segments.map((segment) => segment.path).join('/') : '';
+
+    return localizedPath(locale, path);
+  }
+
+  languageAriaLabel(locale: SiteLocale): string {
+    return $localize`:@@header.lang.switchTo:Switch to ${locale.label}:LANGUAGE:`;
+  }
+
+  namesCountTitle(): string {
+    return $localize`:@@header.namesCount.title:${this.wheelConfigurator.namesCount()}:COUNT: names on the wheel`;
   }
 
   /** Shares its message ids with the wheel page, which offers the same action. */

@@ -4,9 +4,9 @@
     rounded-2xl text-center border 
     border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm shadow-[0_4px_24px_rgba(0,0,0,0.3)]">
     <p class="text-[0.72rem] uppercase tracking-[0.25em] text-amber-300/90 font-semibold">
-      <i class="fa-solid fa-clone mr-1.5 text-amber-400/70" aria-hidden="true"></i>Card Extraction
+      <i class="fa-solid fa-clone mr-1.5 text-amber-400/70" aria-hidden="true"></i><span i18n="@@cards.kicker">Card Extraction</span>
     </p>
-    <h2 class="text-[clamp(1.1rem,2.3vw,1.8rem)] font-extrabold text-neutral-50">Shuffle and draw the next winner</h2>
+    <h2 class="text-[clamp(1.1rem,2.3vw,1.8rem)] font-extrabold text-neutral-50" i18n="@@cards.heading">Shuffle and draw the next winner</h2>
     <!-- <button
       type="button"
       (click)="startExtraction()"
@@ -21,7 +21,7 @@
       <p class="grid min-h-82.5 place-items-center px-4 text-center text-slate-300/80 sm:min-h-97.5">
         <span class="flex flex-col items-center gap-2">
           <i class="fa-solid fa-layer-group text-2xl text-slate-400/50" aria-hidden="true"></i>
-          Add at least one name to start the draw.
+          <span i18n="@@cards.empty">Add at least one name to start the draw.</span>
         </span>
       </p>
     } @else {

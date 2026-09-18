@@ -35,9 +35,9 @@ const GOOGLEBOT_INDEXABLE =
 
 /** Mirrors the tags baked into `index.html`, used for any route without its own. */
 const DEFAULT_SEO: PageSeo = {
-  title: 'Free Wheel Online | Spin the Wheel & Random Picker - Wheelr',
-  description:
-    'Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now — no signup needed!',
+  // Same ids as the home route: identical copy, so it is translated once.
+  title: $localize`:@@seo.home.title:Free Wheel Online | Spin the Wheel & Random Picker - Wheelr`,
+  description: $localize`:@@seo.home.description:Wheelr is a free wheel spinner for raffles, classrooms, live streams and events. Customize colors, sounds and effects. Spin the wheel now — no signup needed!`,
   robots: INDEXABLE,
 };
 
@@ -74,6 +74,9 @@ export class SeoService {
    */
   private readonly locale = resolveLocale(inject(LOCALE_ID));
 
+  /** The site-wide block is the same on every route, so it is rewritten once. */
+  private siteJsonLdLocalized = false;
+
   /** Call once at bootstrap; re-applies the tags after every navigation. */
   watchNavigation(): void {
     this.router.events
@@ -105,9 +108,52 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:url', content: url });
     this.meta.updateTag({ name: 'twitter:title', content: seo.title });
     this.meta.updateTag({ name: 'twitter:description', content: seo.description });
+    this.meta.updateTag({ property: 'og:locale', content: this.locale.ogLocale });
     this.setCanonical(url);
     this.setAlternates();
     this.setRouteJsonLd(seo, url);
+    this.localizeSiteJsonLd();
+  }
+
+  /**
+   * The site-wide JSON-LD lives in `index.html`, which is plain HTML and so has
+   * no way to reach `$localize` — every locale would otherwise describe the app
+   * in English and declare `inLanguage: "en"`. Rewriting the block here catches
+   * it during prerendering too, which is the version a crawler actually reads.
+   */
+  private localizeSiteJsonLd(): void {
+    if (this.siteJsonLdLocalized) {
+      return;
+    }
+    this.siteJsonLdLocalized = true;
+
+    const script = this.document.querySelector<HTMLScriptElement>(
+      `script[type="application/ld+json"]:not([${ROUTE_JSON_LD_ATTR}])`
+    );
+    if (!script?.textContent) {
+      return;
+    }
+
+    let data: { '@graph'?: Record<string, unknown>[] };
+    try {
+      data = JSON.parse(script.textContent);
+    } catch {
+      return;
+    }
+
+    for (const node of data['@graph'] ?? []) {
+      if (typeof node['inLanguage'] === 'string') {
+        node['inLanguage'] = this.locale.hreflang;
+      }
+      if (node['@type'] === 'WebSite' || node['@type'] === 'WebApplication') {
+        node['description'] = DEFAULT_SEO.description;
+        if (typeof node['headline'] === 'string') {
+          node['headline'] = DEFAULT_SEO.title;
+        }
+      }
+    }
+
+    script.textContent = JSON.stringify(data);
   }
 
   /**
