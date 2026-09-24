@@ -48,6 +48,30 @@ export function resolveLocale(localeId: string): SiteLocale {
   );
 }
 
+/**
+ * localStorage key holding the base path (`/it/`, `/` …) of the language picked
+ * in the Android app. Read by the inline script in `index.html`, which cannot
+ * import this file: keep the two in step.
+ */
+export const NATIVE_LOCALE_STORAGE_KEY = 'wheelr.appLocale';
+
+/**
+ * Where the language switcher points inside the Android app.
+ *
+ * Capacitor's local server answers every path whose last segment has no dot
+ * with the *root* `index.html` — the English bundle — so `/it/stream` would
+ * boot English Angular, whose router then takes `it` for a shared wheel's id.
+ * Naming the file makes the server hand out that locale's own `index.html`; the
+ * route travels in `wl-route` and the inline script in `index.html` puts it back
+ * into the URL before Angular reads it.
+ */
+export function nativeLocaleEntry(locale: SiteLocale, path: string): string {
+  const prefix = locale.subPath ? `/${locale.subPath}` : '';
+  const route = path.replace(/^\/+/, '');
+
+  return `${prefix}/index.html${route ? `?wl-route=${encodeURIComponent(route)}` : ''}`;
+}
+
 /** `/it/templates/prize-wheel` — the path a given locale serves `path` at. */
 export function localizedPath(locale: SiteLocale, path: string): string {
   const clean = path.replace(/^\/+/, '');

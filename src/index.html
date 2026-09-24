@@ -39,6 +39,50 @@
   <meta name="twitter:creator" content="@AnnyoneAny">
   
   <base href="/">
+  <script>
+    // Android app only: keeps each language on its own bundle.
+    // Capacitor's local server answers every extension-less path with the ROOT
+    // index.html (English), so /it/… would boot English Angular and its router
+    // would read "it" as a shared wheel's id. The switcher therefore links to
+    // /it/index.html?wl-route=…, and this script, which runs before Angular,
+    //  1. turns that back into the real route (/it/stream) for the router;
+    //  2. at launch, when the shell opens the root, jumps to the saved language;
+    //  3. sends any /it/… that still lands on the root bundle to its own bundle.
+    // Locale list and storage key mirror services/i18n.config.ts.
+    (function () {
+      var cap = window.Capacitor;
+      if (!(cap && cap.isNativePlatform && cap.isNativePlatform())) return;
+
+      var locales = ['it', 'de', 'fr', 'es', 'zh'];
+      var base = document.querySelector('base').getAttribute('href') || '/';
+      var path = location.pathname;
+
+      if (/\/index\.html$/.test(path)) {
+        var params = new URLSearchParams(location.search);
+        var route = (params.get('wl-route') || '').replace(/^\/+/, '');
+        params.delete('wl-route');
+        var query = params.toString();
+        history.replaceState(history.state, '', base + route + (query ? '?' + query : '') + location.hash);
+        return;
+      }
+
+      if (base !== '/') return;
+
+      var first = path.split('/')[1] || '';
+      if (locales.indexOf(first) !== -1) {
+        var rest = path.split('/').slice(2).join('/');
+        location.replace('/' + first + '/index.html' + (rest ? '?wl-route=' + encodeURIComponent(rest) : ''));
+        return;
+      }
+
+      var saved = null;
+      try { saved = localStorage.getItem('wheelr.appLocale'); } catch (e) {}
+      var savedLocale = saved ? saved.replace(/\//g, '') : '';
+      if (path === '/' && locales.indexOf(savedLocale) !== -1) {
+        location.replace('/' + savedLocale + '/index.html');
+      }
+    })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#111113">
   <meta name="apple-mobile-web-app-capable" content="yes">

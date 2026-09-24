@@ -22,7 +22,14 @@ import { PremiumService } from '../../services/premium.service';
 import { WlAuth } from '../auth/auth';
 import { WlCreateWheel } from '../create-wheel/create-wheel';
 import { WlInfoUtente } from '../info-utente/info-utente';
-import { SITE_LOCALES, SiteLocale, localizedPath, resolveLocale } from '../../services/i18n.config';
+import {
+  NATIVE_LOCALE_STORAGE_KEY,
+  SITE_LOCALES,
+  SiteLocale,
+  localizedPath,
+  nativeLocaleEntry,
+  resolveLocale,
+} from '../../services/i18n.config';
 
 type CloudSaveState = 'idle' | 'saving' | 'success' | 'error';
 
@@ -187,7 +194,25 @@ export class Header {
     const primary = this.router.parseUrl(this.currentUrl()).root.children[PRIMARY_OUTLET];
     const path = primary ? primary.segments.map((segment) => segment.path).join('/') : '';
 
-    return localizedPath(locale, path);
+    // The app's local server cannot serve /it/… as the Italian bundle (see nativeLocaleEntry).
+    return this.nativePlatform.isNative ? nativeLocaleEntry(locale, path) : localizedPath(locale, path);
+  }
+
+  /**
+   * The Android shell always opens on the root (English) bundle, so the app has to
+   * remember the choice itself; the inline script in index.html reads it at launch.
+   * The web keeps the language in the URL and needs nothing.
+   */
+  rememberLocale(locale: SiteLocale): void {
+    if (!this.nativePlatform.isNative) {
+      return;
+    }
+
+    try {
+      localStorage.setItem(NATIVE_LOCALE_STORAGE_KEY, locale.subPath ? `/${locale.subPath}/` : '/');
+    } catch {
+      // Storage unavailable: the language still switches, it just is not remembered.
+    }
   }
 
   languageAriaLabel(locale: SiteLocale): string {

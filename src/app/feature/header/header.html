@@ -123,6 +123,7 @@
                             <li>
                                 <a
                                     [href]="localeHref(locale)"
+                                    (click)="rememberLocale(locale)"
                                     [attr.hreflang]="locale.hreflang"
                                     [attr.lang]="locale.hreflang"
                                     [attr.aria-current]="locale.id === currentLocale.id ? 'true' : null"
