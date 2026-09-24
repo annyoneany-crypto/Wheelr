@@ -1376,7 +1376,8 @@ export class WheelConfigurator {
       effectiveWinnerEffect === 'cartoon-fire' ||
       effectiveWinnerEffect === 'confetti' ||
       effectiveWinnerEffect === 'fireworks' ||
-      effectiveWinnerEffect === 'applause'
+      effectiveWinnerEffect === 'applause' ||
+      effectiveWinnerEffect === 'chest'
     ) {
       this.winnerEffect.set(effectiveWinnerEffect);
     }

@@ -38,7 +38,7 @@ export class PremiumUnlock {
       const outcome = await this.premium.unlockWithRewardedAd();
       if (outcome === 'skipped') {
         this.lockedNotice.set(
-          $localize`:@@premium.adLocked:The ad has to play all the way through to unlock the 3D wheel. Give it another go.`,
+          $localize`:@@premium.unlock.skipped:The ad has to play all the way through to unlock Premium. Give it another go.`,
         );
         return;
       }

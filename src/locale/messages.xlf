@@ -822,7 +822,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">1038</context>
+          <context context-type="linenumber">1030</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.single" datatype="html">
@@ -833,7 +833,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">1038</context>
+          <context context-type="linenumber">1030</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.auth.openAccount" datatype="html">
@@ -2151,28 +2151,28 @@
         <source>This wheel is not synced to cloud yet.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">421</context>
+          <context context-type="linenumber">413</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.chrome.show" datatype="html">
         <source>Show header, footer and controls</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">507</context>
+          <context context-type="linenumber">499</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.chrome.hide" datatype="html">
         <source>Hide header, footer and controls</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">508</context>
+          <context context-type="linenumber">500</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.failed" datatype="html">
         <source>Unable to generate QR code.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">552</context>
+          <context context-type="linenumber">544</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.entryCount" datatype="html">
@@ -5919,6 +5919,10 @@
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
           <context context-type="linenumber">56,58</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">194,196</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="effects.view.wheel3dHint" datatype="html">
         <source>Gold rim, lights and a ticking pointer.</source>
@@ -5994,56 +5998,63 @@
         <source>Cartoon Fire</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">177,179</context>
+          <context context-type="linenumber">177,180</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.fx.chest" datatype="html">
+        <source>3D Chests</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">192,193</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer" datatype="html">
         <source> Wheel Pointer </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">184,187</context>
+          <context context-type="linenumber">205,208</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.drop" datatype="html">
         <source>Drop</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">203,206</context>
+          <context context-type="linenumber">224,227</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.arrow" datatype="html">
         <source>Arrow</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">221,224</context>
+          <context context-type="linenumber">242,245</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.finger" datatype="html">
         <source>Finger</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">239,242</context>
+          <context context-type="linenumber">260,263</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.star" datatype="html">
         <source>Star</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">257,260</context>
+          <context context-type="linenumber">278,281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.diamond" datatype="html">
         <source>Diamond</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">275,278</context>
+          <context context-type="linenumber">296,299</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.bolt" datatype="html">
         <source>Bolt</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">293,295</context>
+          <context context-type="linenumber">314,317</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.title" datatype="html">
@@ -6571,29 +6582,29 @@
           <context context-type="linenumber">221,223</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.ad.title" datatype="html">
-        <source>Unlock the 3D wheel</source>
+      <trans-unit id="premium.unlock.title" datatype="html">
+        <source>Unlock Premium</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
           <context context-type="linenumber">13,14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.ad.subtitle" datatype="html">
-        <source>Premium wheel</source>
+      <trans-unit id="premium.unlock.subtitle" datatype="html">
+        <source>3D wheel and 3D chests</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
           <context context-type="linenumber">14,18</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.ad.body" datatype="html">
-        <source>Watch a short video ad and the 3D wheel is yours for the next 24 hours. Ads keep Wheelr free.</source>
+      <trans-unit id="premium.unlock.body" datatype="html">
+        <source>Watch a short video ad and the premium features are yours for the next 24 hours. Ads keep Wheelr free.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
           <context context-type="linenumber">18,20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.adLocked" datatype="html">
-        <source>The ad has to play all the way through to unlock the 3D wheel. Give it another go.</source>
+      <trans-unit id="premium.unlock.skipped" datatype="html">
+        <source>The ad has to play all the way through to unlock Premium. Give it another go.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.ts</context>
           <context context-type="linenumber">41</context>
@@ -7030,49 +7041,49 @@
         <source>Winner</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
-          <context context-type="linenumber">11,12</context>
+          <context context-type="linenumber">15,16</context>
         </context-group>
       </trans-unit>
       <trans-unit id="winner.close.aria" datatype="html">
         <source>Close winner dialog</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
-          <context context-type="linenumber">17,18</context>
+          <context context-type="linenumber">21,22</context>
         </context-group>
       </trans-unit>
       <trans-unit id="winner.close" datatype="html">
         <source> Close </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
-          <context context-type="linenumber">20,21</context>
+          <context context-type="linenumber">24,25</context>
         </context-group>
       </trans-unit>
       <trans-unit id="winner.removeOne.aria" datatype="html">
         <source>Remove one winner entry from users</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
-          <context context-type="linenumber">25,26</context>
+          <context context-type="linenumber">29,30</context>
         </context-group>
       </trans-unit>
       <trans-unit id="winner.removeOne" datatype="html">
         <source> Remove 1 entry </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
-          <context context-type="linenumber">28,29</context>
+          <context context-type="linenumber">32,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="winner.removeAll.aria" datatype="html">
         <source>Remove all winner entries from users</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
-          <context context-type="linenumber">32,33</context>
+          <context context-type="linenumber">36,37</context>
         </context-group>
       </trans-unit>
       <trans-unit id="winner.removeAll" datatype="html">
         <source> Remove all entries </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
-          <context context-type="linenumber">35,36</context>
+          <context context-type="linenumber">39,40</context>
         </context-group>
       </trans-unit>
     </body>

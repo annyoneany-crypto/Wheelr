@@ -1,0 +1,17 @@
+/* Casket reveal: the card waits for the lid (chest-reveal.css opens it at 1.3s). */
+.wl-chest-card {
+  animation: wl-chest-card 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.6s both;
+}
+
+@keyframes wl-chest-card {
+  from {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.6);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-chest-card {
+    animation: none;
+  }
+}

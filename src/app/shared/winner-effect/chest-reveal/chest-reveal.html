@@ -1,0 +1,26 @@
+<div class="wlc-rays absolute left-1/2 rounded-full pointer-events-none"></div>
+<div class="wlc-glow absolute left-1/2 rounded-full pointer-events-none"></div>
+
+@for (chest of chests; track $index) {
+  <div class="wlc-slot" [class.wlc-main]="chest.main" [style.--wlc-delay]="chest.delay">
+    <div class="wlc-shake">
+      <div class="wlc-chest">
+        <div class="wlc-f wlc-front wlc-lock"></div>
+        <div class="wlc-f wlc-back"></div>
+        <div class="wlc-f wlc-left"></div>
+        <div class="wlc-f wlc-right"></div>
+        <div class="wlc-f wlc-bottom"></div>
+        <div class="wlc-f wlc-top wlc-mouth" [attr.data-chest-mouth]="chest.main ? '' : null"></div>
+
+        <div class="wlc-lid">
+          <div class="wlc-f wlc-front wlc-hasp"></div>
+          <div class="wlc-f wlc-back"></div>
+          <div class="wlc-f wlc-left"></div>
+          <div class="wlc-f wlc-right"></div>
+          <div class="wlc-f wlc-top wlc-crown"></div>
+          <div class="wlc-f wlc-bottom wlc-under"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+}

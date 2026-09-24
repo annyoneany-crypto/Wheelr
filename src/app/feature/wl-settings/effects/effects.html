@@ -121,14 +121,14 @@
         type="button"
         (click)="setWinnerEffect('fire')"
         class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
-        [class.bg-orange-500/15]="wheelConfigurator.winnerEffect() === 'fire'"
-        [class.border-orange-400/50]="wheelConfigurator.winnerEffect() === 'fire'"
-        [class.text-orange-300]="wheelConfigurator.winnerEffect() === 'fire'"
-        [class.shadow-[0_0_14px_rgba(251,146,60,0.15)]]="wheelConfigurator.winnerEffect() === 'fire'"
-        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'fire'"
-        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'fire'"
-        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'fire'"
-        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'fire'">
+        [class.bg-orange-500/15]="premium.renderedWinnerEffect() === 'fire'"
+        [class.border-orange-400/50]="premium.renderedWinnerEffect() === 'fire'"
+        [class.text-orange-300]="premium.renderedWinnerEffect() === 'fire'"
+        [class.shadow-[0_0_14px_rgba(251,146,60,0.15)]]="premium.renderedWinnerEffect() === 'fire'"
+        [class.bg-white/[0.04]]="premium.renderedWinnerEffect() !== 'fire'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'fire'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'fire'"
+        [class.hover:border-white/20]="premium.renderedWinnerEffect() !== 'fire'">
         <i class="fa-solid fa-fire mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.fire">Fire</span>
       </button>
 
@@ -136,14 +136,14 @@
         type="button"
         (click)="setWinnerEffect('confetti')"
         class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
-        [class.bg-cyan-500/15]="wheelConfigurator.winnerEffect() === 'confetti'"
-        [class.border-cyan-400/50]="wheelConfigurator.winnerEffect() === 'confetti'"
-        [class.text-cyan-300]="wheelConfigurator.winnerEffect() === 'confetti'"
-        [class.shadow-[0_0_14px_rgba(34,211,238,0.15)]]="wheelConfigurator.winnerEffect() === 'confetti'"
-        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'confetti'"
-        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'confetti'"
-        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'confetti'"
-        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'confetti'">
+        [class.bg-cyan-500/15]="premium.renderedWinnerEffect() === 'confetti'"
+        [class.border-cyan-400/50]="premium.renderedWinnerEffect() === 'confetti'"
+        [class.text-cyan-300]="premium.renderedWinnerEffect() === 'confetti'"
+        [class.shadow-[0_0_14px_rgba(34,211,238,0.15)]]="premium.renderedWinnerEffect() === 'confetti'"
+        [class.bg-white/[0.04]]="premium.renderedWinnerEffect() !== 'confetti'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'confetti'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'confetti'"
+        [class.hover:border-white/20]="premium.renderedWinnerEffect() !== 'confetti'">
         <i class="fa-solid fa-champagne-glasses mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.confetti">Confetti</span>
       </button>
 
@@ -151,14 +151,14 @@
         type="button"
         (click)="setWinnerEffect('fireworks')"
         class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
-        [class.bg-fuchsia-500/15]="wheelConfigurator.winnerEffect() === 'fireworks'"
-        [class.border-fuchsia-400/50]="wheelConfigurator.winnerEffect() === 'fireworks'"
-        [class.text-fuchsia-300]="wheelConfigurator.winnerEffect() === 'fireworks'"
-        [class.shadow-[0_0_14px_rgba(232,121,249,0.15)]]="wheelConfigurator.winnerEffect() === 'fireworks'"
-        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'fireworks'"
-        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'fireworks'"
-        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'fireworks'"
-        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'fireworks'">
+        [class.bg-fuchsia-500/15]="premium.renderedWinnerEffect() === 'fireworks'"
+        [class.border-fuchsia-400/50]="premium.renderedWinnerEffect() === 'fireworks'"
+        [class.text-fuchsia-300]="premium.renderedWinnerEffect() === 'fireworks'"
+        [class.shadow-[0_0_14px_rgba(232,121,249,0.15)]]="premium.renderedWinnerEffect() === 'fireworks'"
+        [class.bg-white/[0.04]]="premium.renderedWinnerEffect() !== 'fireworks'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'fireworks'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'fireworks'"
+        [class.hover:border-white/20]="premium.renderedWinnerEffect() !== 'fireworks'">
         <i class="fa-solid fa-burst mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.fireworks">Fireworks</span>
       </button>
 
@@ -166,15 +166,36 @@
         type="button"
         (click)="setWinnerEffect('cartoon-fire')"
         class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
-        [class.bg-amber-500/15]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
-        [class.border-amber-400/50]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
-        [class.text-amber-300]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
-        [class.shadow-[0_0_14px_rgba(251,191,36,0.15)]]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
-        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
-        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
-        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
-        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'">
+        [class.bg-amber-500/15]="premium.renderedWinnerEffect() === 'cartoon-fire'"
+        [class.border-amber-400/50]="premium.renderedWinnerEffect() === 'cartoon-fire'"
+        [class.text-amber-300]="premium.renderedWinnerEffect() === 'cartoon-fire'"
+        [class.shadow-[0_0_14px_rgba(251,191,36,0.15)]]="premium.renderedWinnerEffect() === 'cartoon-fire'"
+        [class.bg-white/[0.04]]="premium.renderedWinnerEffect() !== 'cartoon-fire'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'cartoon-fire'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'cartoon-fire'"
+        [class.hover:border-white/20]="premium.renderedWinnerEffect() !== 'cartoon-fire'">
         <i class="fa-solid fa-wand-magic-sparkles mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.cartoonFire">Cartoon Fire</span>
+      </button>
+
+      <!-- Premium: 3D chests -->
+      <button
+        type="button"
+        (click)="setWinnerEffect('chest')"
+        class="sm:col-span-2 flex items-center gap-2 rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200 bg-linear-to-r from-rose-500/10 via-amber-400/10 to-rose-500/10"
+        [class.border-amber-400/60]="premium.renderedWinnerEffect() === 'chest'"
+        [class.text-amber-300]="premium.renderedWinnerEffect() === 'chest'"
+        [class.shadow-[0_0_14px_rgba(251,191,36,0.25)]]="premium.renderedWinnerEffect() === 'chest'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'chest'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'chest'"
+        [class.hover:border-amber-300/40]="premium.renderedWinnerEffect() !== 'chest'">
+        <i class="fa-solid fa-gem" aria-hidden="true"></i>
+        <span class="flex-1" i18n="@@effects.fx.chest">3D Chests</span>
+        <span class="inline-flex items-center gap-1 rounded-full bg-amber-400/20 px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wider text-amber-300">
+          <i class="fa-solid fa-crown" aria-hidden="true"></i><span i18n="@@effects.premium">Premium</span>
+        </span>
+        @if (!premium.hasPremium()) {
+          <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
+        }
       </button>
     </div>
   </div>

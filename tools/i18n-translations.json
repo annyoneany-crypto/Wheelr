@@ -6846,39 +6846,46 @@
     "es": "Inicia sesión gratis para desbloquearla.",
     "zh": "免费登录即可解锁。"
   },
-  "premium.adLocked": {
-    "it": "L'annuncio deve essere guardato fino alla fine per sbloccare la ruota 3D. Riprova.",
-    "de": "Die Werbung muss bis zum Ende laufen, um das 3D-Rad freizuschalten. Versuch es noch einmal.",
-    "fr": "La publicité doit être regardée jusqu’au bout pour débloquer la roue 3D. Réessayez.",
-    "es": "El anuncio tiene que verse hasta el final para desbloquear la ruleta 3D. Inténtalo de nuevo.",
-    "zh": "需要完整观看广告才能解锁 3D 转盘。请再试一次。"
-  },
-  "premium.ad.title": {
-    "it": "Sblocca la ruota 3D",
-    "de": "3D-Rad freischalten",
-    "fr": "Débloquer la roue 3D",
-    "es": "Desbloquea la ruleta 3D",
-    "zh": "解锁 3D 转盘"
-  },
-  "premium.ad.subtitle": {
-    "it": "Ruota premium",
-    "de": "Premium-Rad",
-    "fr": "Roue premium",
-    "es": "Ruleta premium",
-    "zh": "高级转盘"
-  },
-  "premium.ad.body": {
-    "it": "Guarda un breve video pubblicitario e la ruota 3D è tua per le prossime 24 ore. Gli annunci mantengono Wheelr gratuito.",
-    "de": "Sieh dir ein kurzes Werbevideo an und das 3D-Rad gehört dir für die nächsten 24 Stunden. Werbung hält Wheelr kostenlos.",
-    "fr": "Regardez une courte vidéo publicitaire et la roue 3D est à vous pour les 24 prochaines heures. La publicité permet à Wheelr de rester gratuit.",
-    "es": "Mira un breve vídeo publicitario y la ruleta 3D es tuya durante las próximas 24 horas. Los anuncios mantienen Wheelr gratis.",
-    "zh": "观看一段简短的视频广告，即可在接下来的 24 小时内使用 3D 转盘。广告让 Wheelr 保持免费。"
-  },
   "wheel3d.spin": {
     "it": "Gira la ruota",
     "de": "Rad drehen",
     "fr": "Faire tourner la roue",
     "es": "Girar la ruleta",
     "zh": "转动转盘"
+  },
+  "effects.fx.chest": {
+    "it": "Cofanetti 3D",
+    "de": "3D-Schatztruhen",
+    "fr": "Coffrets 3D",
+    "es": "Cofres 3D",
+    "zh": "3D 宝箱"
+  },
+  "premium.unlock.title": {
+    "it": "Sblocca Premium",
+    "de": "Premium freischalten",
+    "fr": "Débloquer Premium",
+    "es": "Desbloquea Premium",
+    "zh": "解锁高级功能"
+  },
+  "premium.unlock.subtitle": {
+    "it": "Ruota 3D e cofanetti 3D",
+    "de": "3D-Rad und 3D-Schatztruhen",
+    "fr": "Roue 3D et coffrets 3D",
+    "es": "Ruleta 3D y cofres 3D",
+    "zh": "3D 转盘和 3D 宝箱"
+  },
+  "premium.unlock.body": {
+    "it": "Guarda un breve video pubblicitario e le funzioni premium sono tue per le prossime 24 ore. Gli annunci mantengono Wheelr gratuito.",
+    "de": "Sieh dir ein kurzes Werbevideo an und die Premium-Funktionen gehören dir für die nächsten 24 Stunden. Werbung hält Wheelr kostenlos.",
+    "fr": "Regardez une courte vidéo publicitaire et les fonctions premium sont à vous pour les 24 prochaines heures. La publicité permet à Wheelr de rester gratuit.",
+    "es": "Mira un breve vídeo publicitario y las funciones premium son tuyas durante las próximas 24 horas. Los anuncios mantienen Wheelr gratis.",
+    "zh": "观看一段简短的视频广告，即可在接下来的 24 小时内使用高级功能。广告让 Wheelr 保持免费。"
+  },
+  "premium.unlock.skipped": {
+    "it": "L'annuncio deve essere guardato fino alla fine per sbloccare Premium. Riprova.",
+    "de": "Die Werbung muss bis zum Ende laufen, um Premium freizuschalten. Versuch es noch einmal.",
+    "fr": "La publicité doit être regardée jusqu’au bout pour débloquer Premium. Réessayez.",
+    "es": "El anuncio tiene que verse hasta el final para desbloquear Premium. Inténtalo de nuevo.",
+    "zh": "需要完整观看广告才能解锁高级功能。请再试一次。"
   }
 }

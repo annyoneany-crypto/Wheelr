@@ -1,0 +1,203 @@
+/*
+ * Timeline (from mount): drop-in 0-0.7s, main casket shakes 0.8-1.3s, its lid
+ * opens at 1.3s, light at 1.4s. FireEffect bursts coins at CHEST_OPEN_MS and
+ * shows the winner card at 1.6s.
+ *
+ * Each face reuses one set of rules: --fw/--fh pick the face size from the box
+ * dimensions, and the lid simply redefines --h as its own (shorter) height.
+ */
+:host {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1.75rem;
+  width: 100%;
+  height: 190px;
+  margin-bottom: 0.5rem;
+}
+
+.wlc-slot {
+  --w: 104px;
+  --bh: 62px;
+  --d: 76px;
+  --lh: 26px;
+  position: relative;
+  width: var(--w);
+  height: calc(var(--bh) + var(--lh));
+  perspective: 700px;
+  animation: wlc-dim 0.5s ease 1.3s both;
+}
+
+.wlc-main {
+  --w: 164px;
+  --bh: 96px;
+  --d: 118px;
+  --lh: 40px;
+  animation: none;
+}
+
+.wlc-shake,
+.wlc-chest,
+.wlc-lid {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+.wlc-main .wlc-shake {
+  animation: wlc-shake 0.5s ease-in-out 0.8s;
+}
+
+.wlc-chest {
+  --h: var(--bh);
+  top: auto;
+  height: var(--bh);
+  transform: rotateX(-16deg) rotateY(-24deg);
+  animation: wlc-drop 0.7s cubic-bezier(0.3, 0.7, 0.4, 1) var(--wlc-delay) both;
+}
+
+.wlc-lid {
+  --h: var(--lh);
+  transform-origin: 50% calc(50% + var(--lh) / 2) calc(var(--d) / -2);
+  transform: translateY(calc((var(--bh) + var(--lh)) / -2));
+}
+
+.wlc-main .wlc-lid {
+  animation: wlc-open 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 1.3s both;
+}
+
+/* ---- Faces ---- */
+
+.wlc-f {
+  --fw: var(--w);
+  --fh: var(--h);
+  position: absolute;
+  left: calc(50% - var(--fw) / 2);
+  top: calc(50% - var(--fh) / 2);
+  width: var(--fw);
+  height: var(--fh);
+  backface-visibility: hidden;
+  background:
+    linear-gradient(90deg, #f4c64f 0 7%, transparent 7% 93%, #f4c64f 93%),
+    linear-gradient(#f4c64f 0 8%, transparent 8% 92%, #b7862b 92%),
+    linear-gradient(160deg, #9d2257, #4c0b28);
+}
+
+.wlc-left,
+.wlc-right {
+  --fw: var(--d);
+  filter: brightness(0.7);
+}
+
+.wlc-top,
+.wlc-bottom {
+  --fh: var(--d);
+}
+
+.wlc-front { transform: translateZ(calc(var(--d) / 2)); }
+.wlc-back { transform: rotateY(180deg) translateZ(calc(var(--d) / 2)); }
+.wlc-left { transform: rotateY(-90deg) translateZ(calc(var(--w) / 2)); }
+.wlc-right { transform: rotateY(90deg) translateZ(calc(var(--w) / 2)); }
+.wlc-top { transform: rotateX(90deg) translateZ(calc(var(--h) / 2)); }
+.wlc-bottom { transform: rotateX(-90deg) translateZ(calc(var(--h) / 2)); background: #2a0515; }
+
+.wlc-crown {
+  background:
+    linear-gradient(90deg, transparent 44%, #f4c64f 44% 56%, transparent 56%),
+    linear-gradient(90deg, #f4c64f 0 7%, transparent 7% 93%, #f4c64f 93%),
+    radial-gradient(ellipse at 35% 30%, #c43a73, #5c0d31);
+}
+
+.wlc-mouth,
+.wlc-under {
+  backface-visibility: visible;
+  background: radial-gradient(circle, #fffbeb, #fcd34d 45%, #b45309);
+  box-shadow: 0 0 30px 8px rgba(252, 211, 77, 0.8);
+}
+
+.wlc-lock::after,
+.wlc-hasp::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  width: 22%;
+  translate: -50%;
+  border-radius: 4px;
+  background: radial-gradient(circle at 50% 42%, #3b1d02 12%, transparent 13%), linear-gradient(#fde68a, #b7862b);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.wlc-lock::after { top: 6%; height: 42%; }
+.wlc-hasp::after { bottom: -2px; height: 36%; background: linear-gradient(#fde68a, #b7862b); }
+
+/* ---- Light ---- */
+
+.wlc-rays,
+.wlc-glow {
+  translate: -50% -50%;
+  opacity: 0;
+  animation: wlc-fade 0.5s ease 1.4s forwards;
+}
+
+.wlc-rays {
+  top: 25%;
+  width: 460px;
+  height: 460px;
+  background: repeating-conic-gradient(rgba(253, 230, 138, 0.35) 0 5deg, transparent 5deg 16deg);
+  mask: radial-gradient(closest-side, #000 20%, transparent);
+  animation: wlc-fade 0.5s ease 1.4s forwards, wlc-spin 14s linear infinite;
+}
+
+.wlc-glow {
+  top: 45%;
+  width: 240px;
+  height: 140px;
+  background: radial-gradient(closest-side, rgba(253, 224, 71, 0.85), transparent);
+  filter: blur(8px);
+}
+
+/* ---- Keyframes ---- */
+
+@keyframes wlc-drop {
+  0% { transform: translateY(-80vh) rotateX(-16deg) rotateY(-200deg); }
+  70% { transform: translateY(0) rotateX(-16deg) rotateY(-24deg); }
+  85% { transform: translateY(-14px) rotateX(-16deg) rotateY(-24deg); }
+}
+
+@keyframes wlc-shake {
+  25% { transform: rotateZ(-5deg); }
+  50% { transform: rotateZ(5deg) translateY(-4px); }
+  75% { transform: rotateZ(-3deg); }
+}
+
+@keyframes wlc-open {
+  to { transform: translateY(calc((var(--bh) + var(--lh)) / -2)) rotateX(105deg); }
+}
+
+@keyframes wlc-dim {
+  to { opacity: 0.45; scale: 0.9; }
+}
+
+@keyframes wlc-fade {
+  to { opacity: 1; }
+}
+
+@keyframes wlc-spin {
+  to { rotate: 360deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 1ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (max-width: 639px) {
+  :host {
+    height: 150px;
+    zoom: 0.75;
+  }
+}

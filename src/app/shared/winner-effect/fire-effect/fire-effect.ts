@@ -1,12 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  computed,
   effect,
   ElementRef,
   inject,
   viewChild,
 } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
+import { PremiumService } from '../../../services/premium.service';
+import { ChestReveal } from '../chest-reveal/chest-reveal';
 import type { IWinnerEffect } from '../../../modules/interface/IWinnerEffect';
 import type { effectType } from '../../../modules/classes/custom-type';
 
@@ -62,6 +65,21 @@ interface FireworkSpark {
   size: number;
 }
 
+/** A gold coin or a sparkle thrown out of the opening casket. */
+interface ChestParticle {
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  life: number;
+  size: number;
+  spin: number;
+  coin: boolean;
+}
+
+/** When the casket's lid is open (see chest-reveal.css): the burst fires then. */
+const CHEST_OPEN_MS = 1400;
+
 interface ApplauseHand {
   x: number;
   y: number;
@@ -74,15 +92,25 @@ interface ApplauseHand {
 
 @Component({
   selector: 'wl-fire-effect',
-  imports: [],
+  imports: [ChestReveal],
   templateUrl: './fire-effect.html',
   styleUrl: './fire-effect.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FireEffect implements IWinnerEffect {
   wheelConfigurator = inject(WheelConfigurator);
+  private readonly premium = inject(PremiumService);
+  private readonly host = inject<ElementRef<HTMLElement>>(ElementRef);
 
   effectType: effectType = 'fire';
+
+  /**
+   * The effect on screen, as a signal. The template reads this rather than
+   * `effectType`, a plain field set only once the animation starts, which an
+   * OnPush view never picked up (every card kept the fire colours).
+   */
+  protected readonly shownEffect = this.premium.renderedWinnerEffect;
+  protected readonly chestMode = computed(() => this.shownEffect() === 'chest');
 
   fireCanvasRef = viewChild<ElementRef<HTMLCanvasElement>>('fireCanvas');
   private fireParticles: FireParticle[] = [];
@@ -91,6 +119,9 @@ export class FireEffect implements IWinnerEffect {
   private confettiPieces: ConfettiPiece[] = [];
   private fireworkSparks: FireworkSpark[] = [];
   private applauseHands: ApplauseHand[] = [];
+  private chestParticles: ChestParticle[] = [];
+  private chestStartedAt = 0;
+  private chestBurstDone = false;
   private lastBurstAt = 0;
   private fireFlickerPhase = 0;
   // Cached radial gradients for the fire glow; only depend on canvas size.
@@ -138,7 +169,8 @@ export class FireEffect implements IWinnerEffect {
     if (!canvasRef) return;
 
     this.cancelRunningAnimation();
-    this.effectType = this.wheelConfigurator.winnerEffect();
+    // A premium effect falls back to confetti while premium is off.
+    this.effectType = this.premium.renderedWinnerEffect();
 
     const canvas = canvasRef.nativeElement;
     const fctx = canvas.getContext('2d');
@@ -158,12 +190,17 @@ export class FireEffect implements IWinnerEffect {
     this.confettiPieces = [];
     this.fireworkSparks = [];
     this.applauseHands = [];
+    this.chestParticles = [];
+    this.chestBurstDone = false;
     this.lastBurstAt = performance.now();
+    this.chestStartedAt = this.lastBurstAt;
 
     const animate = () => {
       fctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      if (this.effectType === 'confetti') {
+      if (this.effectType === 'chest') {
+        this.drawChest(fctx, canvas);
+      } else if (this.effectType === 'confetti') {
         this.drawConfetti(fctx, canvas);
       } else if (this.effectType === 'fireworks') {
         this.drawFireworks(fctx, canvas);
@@ -184,64 +221,76 @@ export class FireEffect implements IWinnerEffect {
   }
 
   winnerTitle(): string {
-    if (this.effectType === 'confetti') {
+    if (this.shownEffect() === 'chest') {
+      return 'Winner - 3D Chests';
+    }
+    if (this.shownEffect() === 'confetti') {
       return 'Winner - Confetti Rain';
     }
-    if (this.effectType === 'fireworks') {
+    if (this.shownEffect() === 'fireworks') {
       return 'Winner - Fireworks';
     }
-    if (this.effectType === 'applause') {
+    if (this.shownEffect() === 'applause') {
       return 'Winner - Applause';
     }
-    if (this.effectType === 'cartoon-fire') {
+    if (this.shownEffect() === 'cartoon-fire') {
       return 'Winner - Cartoon Fire';
     }
     return 'Winner - Fire';
   }
 
   winnerBorderColor(): string {
-    if (this.effectType === 'confetti') {
+    if (this.shownEffect() === 'chest') {
+      return '#fcd34d';
+    }
+    if (this.shownEffect() === 'confetti') {
       return '#22d3ee';
     }
-    if (this.effectType === 'fireworks') {
+    if (this.shownEffect() === 'fireworks') {
       return '#f472b6';
     }
-    if (this.effectType === 'applause') {
+    if (this.shownEffect() === 'applause') {
       return '#a3e635';
     }
-    if (this.effectType === 'cartoon-fire') {
+    if (this.shownEffect() === 'cartoon-fire') {
       return '#fbbf24';
     }
     return '#f97316';
   }
 
   winnerBoxShadow(): string {
-    if (this.effectType === 'confetti') {
+    if (this.shownEffect() === 'chest') {
+      return '0 0 40px rgba(252,211,77,0.6)';
+    }
+    if (this.shownEffect() === 'confetti') {
       return '0 0 30px rgba(34,211,238,0.5)';
     }
-    if (this.effectType === 'fireworks') {
+    if (this.shownEffect() === 'fireworks') {
       return '0 0 30px rgba(244,114,182,0.5)';
     }
-    if (this.effectType === 'applause') {
+    if (this.shownEffect() === 'applause') {
       return '0 0 30px rgba(163,230,53,0.5)';
     }
-    if (this.effectType === 'cartoon-fire') {
+    if (this.shownEffect() === 'cartoon-fire') {
       return '0 0 30px rgba(251,191,36,0.6)';
     }
     return '0 0 30px rgba(249,115,22,0.6)';
   }
 
   winnerLabelColor(): string {
-    if (this.effectType === 'confetti') {
+    if (this.shownEffect() === 'chest') {
+      return '#fde68a';
+    }
+    if (this.shownEffect() === 'confetti') {
       return '#67e8f9';
     }
-    if (this.effectType === 'fireworks') {
+    if (this.shownEffect() === 'fireworks') {
       return '#f9a8d4';
     }
-    if (this.effectType === 'applause') {
+    if (this.shownEffect() === 'applause') {
       return '#bef264';
     }
-    if (this.effectType === 'cartoon-fire') {
+    if (this.shownEffect() === 'cartoon-fire') {
       return '#fde68a';
     }
     return '#f97316';
@@ -597,6 +646,96 @@ export class FireEffect implements IWinnerEffect {
       ctx.globalAlpha = 1;
     }
     this.emberParticles.length = cartoonEmberWrite;
+  }
+
+  /**
+   * Coins and sparkles for the casket reveal. Nothing is drawn until the lid is
+   * open; then one big burst, followed by a gentle fountain of sparkles.
+   */
+  private drawChest(ctx: CanvasRenderingContext2D, canvas: HTMLCanvasElement): void {
+    if (performance.now() - this.chestStartedAt < CHEST_OPEN_MS) {
+      return;
+    }
+
+    const mouth = this.host.nativeElement.querySelector('[data-chest-mouth]');
+    if (!mouth) {
+      return;
+    }
+
+    // The canvas is never narrower than 800px, so it can be stretched on phones.
+    const rect = mouth.getBoundingClientRect();
+    const scaleX = canvas.width / window.innerWidth;
+    const scaleY = canvas.height / window.innerHeight;
+    const originX = (rect.left + rect.width / 2) * scaleX;
+    const originY = (rect.top + rect.height / 2) * scaleY;
+
+    const spawn = (coin: boolean, speed: number) => {
+      this.chestParticles.push({
+        x: originX + this.randomRange(-rect.width * 0.35, rect.width * 0.35) * scaleX,
+        y: originY,
+        vx: this.randomRange(-speed * 0.45, speed * 0.45),
+        vy: -this.randomRange(speed * 0.6, speed),
+        life: this.randomRange(70, 130),
+        size: coin ? this.randomRange(7, 12) : this.randomRange(2, 5),
+        spin: this.randomRange(0, Math.PI * 2),
+        coin,
+      });
+    };
+
+    if (!this.chestBurstDone) {
+      this.chestBurstDone = true;
+      for (let i = 0; i < 70; i += 1) spawn(true, 17);
+      for (let i = 0; i < 60; i += 1) spawn(false, 14);
+    } else if (this.chestParticles.length < 160) {
+      spawn(false, 7);
+      if (Math.random() < 0.08) spawn(true, 10);
+    }
+
+    let write = 0;
+    for (const particle of this.chestParticles) {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.vy += particle.coin ? 0.38 : 0.08;
+      particle.vx *= 0.99;
+      particle.spin += 0.18;
+      particle.life -= 1;
+      if (particle.life <= 0 || particle.y > canvas.height + 40) {
+        continue;
+      }
+      this.chestParticles[write++] = particle;
+
+      ctx.save();
+      ctx.translate(particle.x, particle.y);
+      ctx.globalAlpha = Math.min(1, particle.life / 30);
+
+      if (particle.coin) {
+        // Squashing the width with the spin reads as a coin turning over.
+        const width = Math.max(1.5, Math.abs(Math.cos(particle.spin)) * particle.size);
+        const gradient = ctx.createLinearGradient(-width, 0, width, 0);
+        gradient.addColorStop(0, '#b45309');
+        gradient.addColorStop(0.5, '#fde68a');
+        gradient.addColorStop(1, '#d97706');
+        ctx.fillStyle = gradient;
+        ctx.beginPath();
+        ctx.ellipse(0, 0, width, particle.size, 0, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        const size = particle.size * (0.7 + 0.3 * Math.sin(particle.spin * 2)) * 2.2;
+        ctx.fillStyle = '#fffbeb';
+        ctx.shadowColor = '#fcd34d';
+        ctx.shadowBlur = 12;
+        ctx.beginPath();
+        ctx.moveTo(0, -size);
+        ctx.quadraticCurveTo(0, 0, size, 0);
+        ctx.quadraticCurveTo(0, 0, 0, size);
+        ctx.quadraticCurveTo(0, 0, -size, 0);
+        ctx.quadraticCurveTo(0, 0, 0, -size);
+        ctx.fill();
+      }
+
+      ctx.restore();
+    }
+    this.chestParticles.length = write;
   }
 
   private randomRange(min: number, max: number): number {

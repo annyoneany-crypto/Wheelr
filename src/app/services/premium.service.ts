@@ -4,7 +4,7 @@ import { AdsService, RewardedAdOutcome } from './ads.service';
 import { AuthService } from './auth.service';
 import { readJson, writeJson } from './global_function';
 import { WheelConfigurator } from './wheel-configurator.service';
-import type { wheelViewType } from '../modules/classes/custom-type';
+import type { effectType, wheelViewType } from '../modules/classes/custom-type';
 
 const AD_UNLOCK_STORAGE_KEY = 'giveawayWheel.premiumAdUnlockUntil.v1';
 
@@ -47,6 +47,12 @@ export class PremiumService {
   readonly renderedWheelView = computed<wheelViewType>(() => {
     const view = this.wheelConfigurator.wheelView();
     return view === 'wheel3d' && !this.hasPremium() ? 'wheel' : view;
+  });
+
+  /** Same rule for the winner effect: the `chest` reveal stands down to confetti. */
+  readonly renderedWinnerEffect = computed<effectType>(() => {
+    const effect = this.wheelConfigurator.winnerEffect();
+    return effect === 'chest' && !this.hasPremium() ? 'confetti' : effect;
   });
 
   /**

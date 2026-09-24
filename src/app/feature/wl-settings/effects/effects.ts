@@ -15,19 +15,20 @@ export class Effects {
   protected readonly premium = inject(PremiumService);
 
   /** The 3D wheel was asked for while locked: switch to it as soon as premium turns on. */
-  private readonly pending3dView = signal(false);
+  private readonly pendingPremiumChoice = signal<(() => void) | null>(null);
 
   constructor() {
     effect(() => {
-      if (this.pending3dView() && this.premium.hasPremium()) {
-        this.pending3dView.set(false);
-        untracked(() => this.setView('wheel3d'));
+      const choice = this.pendingPremiumChoice();
+      if (choice && this.premium.hasPremium()) {
+        this.pendingPremiumChoice.set(null);
+        untracked(choice);
       }
     });
   }
 
   setView(view: wheelViewType): void {
-    this.pending3dView.set(false);
+    this.pendingPremiumChoice.set(null);
     this.wheelConfigurator.resetWinnerEffect();
     this.wheelConfigurator.isSpinning.set(false);
     this.wheelConfigurator.wheelView.set(view);
@@ -35,17 +36,32 @@ export class Effects {
 
   /** Premium-only: opens the login (web) or the rewarded-ad prompt (app) when locked. */
   select3dView(): void {
-    if (this.premium.requestUnlock()) {
-      this.setView('wheel3d');
-      return;
-    }
-
-    this.pending3dView.set(true);
+    this.choosePremium(() => this.setView('wheel3d'));
   }
 
   setWinnerEffect(effect: effectType): void {
+    if (effect === 'chest') {
+      this.choosePremium(() => this.applyWinnerEffect('chest'));
+      return;
+    }
+
+    this.pendingPremiumChoice.set(null);
+    this.applyWinnerEffect(effect);
+  }
+
+  private applyWinnerEffect(effect: effectType): void {
     this.wheelConfigurator.resetWinnerEffect();
     this.wheelConfigurator.winnerEffect.set(effect);
+  }
+
+  /** Applies `choice` now if premium is on, otherwise as soon as the unlock succeeds. */
+  private choosePremium(choice: () => void): void {
+    if (this.premium.requestUnlock()) {
+      choice();
+      return;
+    }
+
+    this.pendingPremiumChoice.set(choice);
   }
 
   setPointerType(pointer: pointerType): void {
