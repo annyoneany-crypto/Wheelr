@@ -947,7 +947,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">1030</context>
+          <context context-type="linenumber">1031</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.single" datatype="html">
@@ -959,7 +959,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">1030</context>
+          <context context-type="linenumber">1031</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.auth.openAccount" datatype="html">
@@ -2195,11 +2195,11 @@
         <target>Apri il codice QR della ruota</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
-          <context context-type="linenumber">71,72</context>
+          <context context-type="linenumber">63,64</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
-          <context context-type="linenumber">137,138</context>
+          <context context-type="linenumber">114,115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.close" datatype="html">
@@ -2207,7 +2207,7 @@
         <target>Chiudi il pannello</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
-          <context context-type="linenumber">168,169</context>
+          <context context-type="linenumber">145,146</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bar.panel.users.aria" datatype="html">
@@ -2343,7 +2343,7 @@
         <target>Apri la pagina delle donazioni</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">12</context>
+          <context context-type="linenumber">7</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rail.donationTitle" datatype="html">
@@ -2351,7 +2351,7 @@
         <target>Donazioni</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">12,13</context>
+          <context context-type="linenumber">7,8</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rail.share" datatype="html">
@@ -2359,7 +2359,7 @@
         <target>Condividi su X</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">46,48</context>
+          <context context-type="linenumber">31,33</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.closeModal" datatype="html">
@@ -2367,7 +2367,7 @@
         <target>Chiudi la finestra di rinomina</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">212,213</context>
+          <context context-type="linenumber">197,198</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.namePlaceholder" datatype="html">
@@ -2375,7 +2375,7 @@
         <target>Nome della ruota</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">230,232</context>
+          <context context-type="linenumber">215,217</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.description" datatype="html">
@@ -2383,7 +2383,7 @@
         <target>Descrizione</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">233,235</context>
+          <context context-type="linenumber">218,220</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.descPlaceholder" datatype="html">
@@ -2391,7 +2391,7 @@
         <target>Descrizione della ruota</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">241,244</context>
+          <context context-type="linenumber">226,229</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.cancel" datatype="html">
@@ -2399,7 +2399,7 @@
         <target>Annulla</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">251,253</context>
+          <context context-type="linenumber">236,238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.save" datatype="html">
@@ -2407,7 +2407,7 @@
         <target>Salva</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">257,259</context>
+          <context context-type="linenumber">242,244</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.title" datatype="html">
@@ -2415,7 +2415,7 @@
         <target>QR della ruota pubblica</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">269,271</context>
+          <context context-type="linenumber">254,256</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.closeModal" datatype="html">
@@ -2423,7 +2423,7 @@
         <target>Chiudi la finestra del codice QR</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">273,274</context>
+          <context context-type="linenumber">258,259</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.generating" datatype="html">
@@ -2431,7 +2431,7 @@
         <target>Generazione del codice QR…</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">281,282</context>
+          <context context-type="linenumber">266,267</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.alt" datatype="html">
@@ -2439,7 +2439,7 @@
         <target>Codice QR della ruota pubblica</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">285</context>
+          <context context-type="linenumber">270</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.obsLink" datatype="html">
@@ -2447,7 +2447,7 @@
         <target>Link overlay per OBS:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">293,294</context>
+          <context context-type="linenumber">278,279</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.notSynced" datatype="html">
@@ -6335,7 +6335,7 @@
         <target>L'annuncio deve essere guardato fino in fondo per sbloccare il template. Riprova.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.ts</context>
-          <context context-type="linenumber">116</context>
+          <context context-type="linenumber">117</context>
         </context-group>
       </trans-unit>
       <trans-unit id="background.title" datatype="html">
@@ -6514,12 +6514,20 @@
           <context context-type="linenumber">28,31</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="palette.gradientBadge" datatype="html">
+        <source>Gradient palette</source>
+        <target>Palette sfumata</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">45,46</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="palette.create" datatype="html">
         <source>Create Custom Palette</source>
         <target>Crea una palette personalizzata</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">57,59</context>
+          <context context-type="linenumber">62,64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.custom" datatype="html">
@@ -6527,7 +6535,7 @@
         <target>Palette personalizzata</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">66,69</context>
+          <context context-type="linenumber">71,74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.namePlaceholder" datatype="html">
@@ -6535,7 +6543,31 @@
         <target>Nome della palette</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">72,74</context>
+          <context context-type="linenumber">77,79</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.solid" datatype="html">
+        <source>Solid</source>
+        <target>Tinta unita</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">90,92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.gradient" datatype="html">
+        <source>Gradient</source>
+        <target>Sfumatura</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">100,102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="palette.gradientHint" datatype="html">
+        <source>Each slice fades from its first colour at the centre to its second colour at the edge.</source>
+        <target>Ogni spicchio sfuma dal primo colore al centro al secondo colore sul bordo.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
+          <context context-type="linenumber">105,108</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.save" datatype="html">
@@ -6543,7 +6575,7 @@
         <target>Salva</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">91,92</context>
+          <context context-type="linenumber">131,132</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.cancel" datatype="html">
@@ -6551,7 +6583,7 @@
         <target>Annulla</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">97,98</context>
+          <context context-type="linenumber">137,138</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.wheelBg" datatype="html">
@@ -6559,7 +6591,7 @@
         <target>Sfondo ruota</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">116,118</context>
+          <context context-type="linenumber">156,158</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.sliceImages" datatype="html">
@@ -6567,7 +6599,7 @@
         <target>Immagini degli spicchi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">125,127</context>
+          <context context-type="linenumber">165,167</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.wheelImageHint" datatype="html">
@@ -6575,7 +6607,7 @@
         <target>Riempie il disco della ruota con un'immagine. Separatori degli spicchi ed etichette vengono disegnati sopra.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">132,134</context>
+          <context context-type="linenumber">172,174</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.sliceImagesHint" datatype="html">
@@ -6583,7 +6615,7 @@
         <target>Aggiungi fino a 10 immagini. Si ripetono sugli spicchi della ruota sostituendo i colori della palette.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">161,163</context>
+          <context context-type="linenumber">201,203</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.sliceImage" datatype="html">
@@ -6591,7 +6623,7 @@
         <target>Immagine <x id="INTERPOLATION" equiv-text="{{ $index + 1 }}"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">168,169</context>
+          <context context-type="linenumber">208,209</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.addImage" datatype="html">
@@ -6599,7 +6631,7 @@
         <target>Aggiungi immagine (<x id="INTERPOLATION" equiv-text="{{ wheelConfigurator.sliceImages().length }}"/>/10)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">181,182</context>
+          <context context-type="linenumber">221,222</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.clearAll" datatype="html">
@@ -6607,7 +6639,7 @@
         <target>Cancella tutto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/color-settings/child/palet/palet.html</context>
-          <context context-type="linenumber">191,192</context>
+          <context context-type="linenumber">231,232</context>
         </context-group>
       </trans-unit>
       <trans-unit id="palette.replaceImage" datatype="html">

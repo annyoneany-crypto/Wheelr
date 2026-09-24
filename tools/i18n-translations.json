@@ -6894,5 +6894,33 @@
     "fr": "Nouvelle roue",
     "es": "Nueva ruleta",
     "zh": "新建转盘"
+  },
+  "palette.gradientBadge": {
+    "it": "Palette sfumata",
+    "de": "Verlaufspalette",
+    "fr": "Palette en dégradé",
+    "es": "Paleta degradada",
+    "zh": "渐变配色"
+  },
+  "palette.solid": {
+    "it": "Tinta unita",
+    "de": "Einfarbig",
+    "fr": "Unie",
+    "es": "Sólida",
+    "zh": "纯色"
+  },
+  "palette.gradient": {
+    "it": "Sfumatura",
+    "de": "Verlauf",
+    "fr": "Dégradé",
+    "es": "Degradado",
+    "zh": "渐变"
+  },
+  "palette.gradientHint": {
+    "it": "Ogni spicchio sfuma dal primo colore al centro al secondo colore sul bordo.",
+    "de": "Jedes Segment verläuft von seiner ersten Farbe in der Mitte zu seiner zweiten Farbe am Rand.",
+    "fr": "Chaque part passe de sa première couleur au centre à sa seconde couleur sur le bord.",
+    "es": "Cada porción pasa de su primer color en el centro a su segundo color en el borde.",
+    "zh": "每个扇区从中心的第一种颜色渐变到边缘的第二种颜色。"
   }
 }

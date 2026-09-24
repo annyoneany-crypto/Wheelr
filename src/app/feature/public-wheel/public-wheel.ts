@@ -225,6 +225,7 @@ export class PublicWheel implements OnDestroy {
     drawWheelCanvas(canvas, context, {
       names: config.names ?? [],
       colors: config.colors ?? [],
+      gradientTo: config.gradientTo,
       fontFamily: config.fontFamily,
       radiusInset: 4,
       emptyFillStyle: '#6b7280',

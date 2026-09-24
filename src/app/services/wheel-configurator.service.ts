@@ -10,6 +10,7 @@ import {
   readImage,
   clampDeg,
   contrastForHex,
+  paletteRimColor,
   ColorPalette,
 } from './global_function';
 import { WheelAudioManager } from './wheel-audio-manager';
@@ -383,11 +384,8 @@ export class WheelConfigurator {
     const n = this.names().length;
     if (!n) return '#ffffff';
 
-    const colors = this.selectedPalette().colors;
-    if (!colors.length) return '#ffffff';
-
-    const idx = this.pointerSliceIndex();
-    return colors[idx % colors.length] ?? '#ffffff';
+    // The pointer sits on the rim, which is where a gradient slice ends.
+    return paletteRimColor(this.selectedPalette(), this.pointerSliceIndex());
   });
 
   pointerContrastColor = computed(() => {
@@ -1086,10 +1084,12 @@ export class WheelConfigurator {
   ): Promise<void> {
     const paletteName = 'Cloud Import';
     const paletteColors = config.colors.length ? [...config.colors] : ['#f59e0b'];
+    const importedPalette: ColorPalette = { name: paletteName, colors: paletteColors };
+    if (config.gradientTo?.length) {
+      importedPalette.gradientTo = [...config.gradientTo];
+    }
 
-    writeJson(storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId), [
-      { name: paletteName, colors: paletteColors },
-    ]);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId), [importedPalette]);
     writeJson(storageKeyForWorkspace(STORAGE_KEYS.selectedPaletteName, workspaceId), paletteName);
     writeJson(storageKeyForWorkspace(STORAGE_KEYS.names, workspaceId), Array.isArray(config.names) ? config.names : []);
     writeJson(storageKeyForWorkspace(STORAGE_KEYS.centerColor, workspaceId), config.centerColor || '#ffffff');
@@ -1693,6 +1693,7 @@ export class WheelConfigurator {
     drawWheelCanvas(canvas, ctx, {
       names: this.names(),
       colors: this.selectedPalette().colors,
+      gradientTo: this.selectedPalette().gradientTo,
       fontFamily: this.fontFamily(),
       renderScale,
       zoomed,

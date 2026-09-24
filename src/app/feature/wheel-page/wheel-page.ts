@@ -824,6 +824,7 @@ export class WheelPage {
     drawWheelCanvas(canvas, ctx, {
       names: config.names,
       colors: config.colors,
+      gradientTo: config.gradientTo,
       fontFamily: config.fontFamily,
       emptyFillStyle: '#5e5e5eBB',
       wheelImage: wheelImageEl,

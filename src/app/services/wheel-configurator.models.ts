@@ -19,6 +19,11 @@ export interface WheelDisplayConfig {
   workspaceName: string;
   names: string[];
   colors: string[];
+  /**
+   * Gradient palettes only (see ColorPalette.gradientTo). Left out entirely otherwise:
+   * Firestore rejects `undefined` fields, and older documents simply have none.
+   */
+  gradientTo?: string[];
   bgColor: string;
   bgImage: string;
   centerImage: string;

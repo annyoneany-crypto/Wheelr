@@ -5,13 +5,15 @@
  * the multi-wheel previews (WheelPage) and the public read-only wheel
  * (PublicWheel) to avoid duplicating the slice/label drawing logic.
  */
-import { contrastForHex } from '../../services/global_function';
+import { contrastForHex, mixHex } from '../../services/global_function';
 
 const DEFAULT_FONT_FAMILY = '"Inter", sans-serif';
 
 export interface WheelRenderOptions {
   names: string[];
   colors: string[];
+  /** Gradient palettes only: the rim colour of each slice (see ColorPalette.gradientTo). */
+  gradientTo?: string[];
   fontFamily: string;
   /** Multiplier applied to font/line sizing when drawing on an upscaled canvas. */
   renderScale?: number;
@@ -50,6 +52,7 @@ export function drawWheelCanvas(
     wheelImage = null,
     sliceImages = [],
     labelSliceIndices = [],
+    gradientTo = [],
   } = options;
   const fontFamily = options.fontFamily || DEFAULT_FONT_FAMILY;
 
@@ -106,9 +109,29 @@ export function drawWheelCanvas(
       ? new Set(labelSliceIndices.map((idx) => ((idx % n) + n) % n))
       : null;
 
+  // Every slice shares one radius, so a gradient depends only on its two stops:
+  // build each distinct pair once instead of once per slice.
+  const gradientCache = new Map<string, CanvasGradient>();
+  const sliceFill = (from: string, to: string | undefined): string | CanvasGradient => {
+    if (!to || to === from) {
+      return from;
+    }
+
+    const key = `${from}>${to}`;
+    let gradient = gradientCache.get(key);
+    if (!gradient) {
+      gradient = ctx.createRadialGradient(centerX, centerY, radius * 0.08, centerX, centerY, radius);
+      gradient.addColorStop(0, from);
+      gradient.addColorStop(1, to);
+      gradientCache.set(key, gradient);
+    }
+    return gradient;
+  };
+
   for (let i = 0; i < n; i += 1) {
     const angle = i * sliceAngle;
     const sliceColor = colors[i % colorCount] ?? '#ffffff';
+    const sliceColorTo = gradientTo[i % colorCount];
     const sliceImg = hasSliceImages ? (sliceImages[i % sliceImages.length] ?? null) : null;
 
     ctx.beginPath();
@@ -157,8 +180,8 @@ export function drawWheelCanvas(
         ctx.stroke();
       }
     } else if (!wheelImage) {
-      // Default: solid color fill.
-      ctx.fillStyle = sliceColor;
+      // Default: the palette colour, or its hub-to-rim gradient.
+      ctx.fillStyle = sliceFill(sliceColor, sliceColorTo);
       ctx.fill();
       if (sliceStroke) {
         ctx.lineWidth = renderScale;
@@ -186,7 +209,10 @@ export function drawWheelCanvas(
 
     // Over images always use white text with a dark outline for readability.
     const useImageText = !!(sliceImg || wheelImage);
-    const labelColor = useImageText ? '#FFFFFF' : contrastForHex(sliceColor);
+    // Labels sit in the outer part of the slice, so on a gradient the contrast is
+    // judged against the colour there rather than the hub colour.
+    const labelBackground = sliceColorTo ? mixHex(sliceColor, sliceColorTo, 0.7) : sliceColor;
+    const labelColor = useImageText ? '#FFFFFF' : contrastForHex(labelBackground);
     const outlineColor = useImageText ? '#000000' : (labelColor === '#FFFFFF' ? '#000000' : '#FFFFFF');
     ctx.fillStyle = labelColor;
 

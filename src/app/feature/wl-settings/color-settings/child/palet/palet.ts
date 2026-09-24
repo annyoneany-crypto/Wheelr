@@ -32,6 +32,9 @@ export class Palet {
 
   customName = 'Custom';
   customColors: string[] = ['#A855F7', '#EC4899', '#3B82F6', '#10B981', '#F59E0B', '#EF4444'];
+  /** Rim colours, used only when the custom palette is a gradient. */
+  customGradientTo: string[] = ['#EC4899', '#F97316', '#06B6D4', '#A3E635', '#EF4444', '#7C3AED'];
+  customIsGradient = signal(false);
   colorIndexes = [0, 1, 2, 3, 4, 5];
 
   toggleCustomPalette(): void {
@@ -40,12 +43,16 @@ export class Palet {
 
   saveCustomPalette(): void {
     const name = this.customName.trim() || 'Custom';
-    const colors = this.customColors.filter((c) => !!c);
-    if (!colors.length) {
+    const slots = this.colorIndexes.filter((i) => !!this.customColors[i]);
+    if (!slots.length) {
       return;
     }
 
-    const newPalette: ColorPalette = { name, colors };
+    const newPalette: ColorPalette = { name, colors: slots.map((i) => this.customColors[i]) };
+    if (this.customIsGradient()) {
+      // A missing end colour falls back to the start one, i.e. a solid slice.
+      newPalette.gradientTo = slots.map((i) => this.customGradientTo[i] || this.customColors[i]);
+    }
     const palettes = [...this.wheelConfigurator.palettes()];
     const existingIndex = palettes.findIndex((p) => p.name === name);
 
@@ -58,6 +65,13 @@ export class Palet {
     this.wheelConfigurator.palettes.set(palettes);
     this.wheelConfigurator.selectedPalette.set(newPalette);
     this.showCustomPalette.set(false);
+  }
+
+  /** CSS for one swatch in the palette list: a left-to-right fade for gradient palettes. */
+  swatchBackground(palette: ColorPalette, index: number): string {
+    const from = palette.colors[index];
+    const to = palette.gradientTo?.[index];
+    return to && to !== from ? `linear-gradient(90deg, ${from}, ${to})` : from;
   }
 
   // --- Wheel background image ---
