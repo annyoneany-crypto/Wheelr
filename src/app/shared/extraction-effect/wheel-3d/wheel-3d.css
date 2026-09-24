@@ -1,0 +1,221 @@
+/*
+ * Sizes come in from the component as --wl3d-size (painted face), --wl3d-rim
+ * (bezel width) and --wl3d-outer (face + bezel on both sides).
+ */
+.wl3d-stage {
+  --wl3d-tilt: 28deg;
+  position: relative;
+  width: var(--wl3d-outer);
+  height: var(--wl3d-outer);
+  perspective: calc(var(--wl3d-outer) * 2.4);
+  perspective-origin: 50% 20%;
+  cursor: pointer;
+  outline: none;
+}
+
+.wl3d-stage:hover,
+.wl3d-stage:focus-visible {
+  --wl3d-tilt: 20deg;
+}
+
+.wl3d-floor {
+  background: radial-gradient(closest-side, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+
+.wl3d-tilt {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transform: rotateX(var(--wl3d-tilt));
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+/* ---- Rim thickness ---------------------------------------------------- */
+
+.wl3d-edge {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  transform: translateZ(calc(var(--wl3d-layer) * var(--wl3d-size) * -0.0042));
+  /* Horizontal banding reads as a lit cylinder once only the bottom edge shows. */
+  background: linear-gradient(90deg, #2a1c04, #8a6216 18%, #f5d27a 46%, #b8892a 62%, #5c3f0b 84%, #2a1c04);
+}
+
+
+/* ---- Bezel with chasing bulbs ------------------------------------------ */
+
+.wl3d-bezel {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 20deg, #b7862b, #fef3c7, #a16207, #fde68a, #92400e, #fef3c7, #b7862b);
+  box-shadow:
+    inset 0 2px 3px rgba(255, 255, 255, 0.7),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.55);
+}
+
+/* Dark groove between the bezel and the face. */
+.wl3d-bezel::after {
+  content: '';
+  position: absolute;
+  inset: calc(var(--wl3d-rim) * 0.8);
+  border-radius: 50%;
+  background: #140d02;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.5);
+}
+
+.wl3d-bulb {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--wl3d-rim) * 0.4);
+  height: calc(var(--wl3d-rim) * 0.4);
+  margin: calc(var(--wl3d-rim) * -0.2) 0 0 calc(var(--wl3d-rim) * -0.2);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #fef3c7 30%, #f59e0b 75%, #92400e 100%);
+  box-shadow:
+    0 0 6px 2px rgba(253, 230, 138, 0.9),
+    0 0 16px 4px rgba(245, 158, 11, 0.55);
+  animation: wl3d-bulb 1.4s steps(1, end) infinite;
+}
+
+.wl3d-bulb-alt {
+  animation-delay: -0.7s;
+}
+
+.wl3d-spinning .wl3d-bulb {
+  animation-duration: 0.28s;
+}
+
+@keyframes wl3d-bulb {
+  0% {
+    filter: brightness(1.15);
+    opacity: 1;
+  }
+  50% {
+    filter: brightness(0.45) saturate(0.6);
+    opacity: 0.75;
+  }
+}
+
+/* ---- Face -------------------------------------------------------------- */
+
+.wl3d-face {
+  inset: var(--wl3d-rim);
+  background: #111;
+  transform: translateZ(1px);
+}
+
+.wl3d-peg {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(var(--wl3d-size) * 0.024);
+  height: calc(var(--wl3d-size) * 0.024);
+  margin: calc(var(--wl3d-size) * -0.012) 0 0 calc(var(--wl3d-size) * -0.012);
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fffbeb 0%, #fcd34d 35%, #b45309 80%, #451a03 100%);
+  box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.6);
+}
+
+.wl3d-shade {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    linear-gradient(155deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.08) 32%, rgba(255, 255, 255, 0) 48%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 58%, rgba(0, 0, 0, 0.18) 80%, rgba(0, 0, 0, 0.5) 100%);
+  box-shadow:
+    inset 0 10px 26px rgba(0, 0, 0, 0.55),
+    inset 0 -4px 12px rgba(255, 255, 255, 0.08);
+}
+
+.wl3d-winner-glow {
+  opacity: 0.6;
+  filter: drop-shadow(0 0 6px #fbbf24);
+  animation: wl3d-winner-glow 1.1s ease-in-out infinite;
+}
+
+@keyframes wl3d-winner-glow {
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #fbbf24) drop-shadow(0 0 28px #f59e0b);
+  }
+}
+
+/* ---- Hub --------------------------------------------------------------- */
+
+/* A second, darker disc under the cap: seen through the tilt as the hub's side. */
+.wl3d-hub-post {
+  width: calc(var(--wl3d-hub) + 10px);
+  height: calc(var(--wl3d-hub) + 10px);
+  transform: translate(-50%, -50%) translateZ(8px);
+  background: radial-gradient(circle, #5c3f0b 0%, #2a1c04 100%);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.7);
+}
+
+.wl3d-hub {
+  width: calc(var(--wl3d-hub) + 14px);
+  height: calc(var(--wl3d-hub) + 14px);
+  padding: 7px;
+  transform: translate(-50%, -50%) translateZ(22px);
+  background: conic-gradient(from 200deg, #92400e, #fde68a, #b7862b, #fef3c7, #a16207, #fde68a, #92400e);
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  transition: transform 0.3s ease;
+}
+
+.wl3d-stage:hover .wl3d-hub {
+  transform: translate(-50%, -50%) translateZ(30px) scale(1.06);
+}
+
+/* Dome highlight. */
+.wl3d-hub-cap {
+  box-shadow: inset 0 -6px 12px rgba(0, 0, 0, 0.35);
+}
+
+.wl3d-hub-cap::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 60% 40% at 38% 22%, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0) 70%),
+    radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.3) 100%);
+}
+
+/* ---- Pointer ----------------------------------------------------------- */
+
+.wl3d-pointer-mount {
+  position: absolute;
+  left: 50%;
+  top: calc(var(--wl3d-rim) * 0.2);
+  width: clamp(38px, calc(var(--wl3d-size) * 0.09), 64px);
+  aspect-ratio: 64 / 88;
+  /* Lifted off the wheel and turned back upright so it faces the viewer. */
+  transform: translate(-50%, -68%) translateZ(40px) rotateX(calc(var(--wl3d-tilt) * -1));
+  transform-origin: 50% 100%;
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.wl3d-pointer {
+  width: 100%;
+  height: 100%;
+  /* Pivot on the gem, so a passing peg swings the tip. */
+  transform-origin: 50% 28%;
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.55));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl3d-bulb {
+    animation: none;
+  }
+
+  .wl3d-tilt,
+  .wl3d-pointer-mount {
+    transition: none;
+  }
+}

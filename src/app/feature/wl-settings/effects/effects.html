@@ -10,14 +10,14 @@
         type="button"
         (click)="setView('wheel')"
         class="flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.wheelView() === 'wheel'"
-        [class.border-amber-400/50]="wheelConfigurator.wheelView() === 'wheel'"
-        [class.text-amber-300]="wheelConfigurator.wheelView() === 'wheel'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.wheelView() === 'wheel'"
-        [class.bg-white/[0.04]]="wheelConfigurator.wheelView() !== 'wheel'"
-        [class.border-white/10]="wheelConfigurator.wheelView() !== 'wheel'"
-        [class.text-white/70]="wheelConfigurator.wheelView() !== 'wheel'"
-        [class.hover:border-white/20]="wheelConfigurator.wheelView() !== 'wheel'">
+        [class.bg-amber-400/15]="premium.renderedWheelView() === 'wheel'"
+        [class.border-amber-400/50]="premium.renderedWheelView() === 'wheel'"
+        [class.text-amber-300]="premium.renderedWheelView() === 'wheel'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedWheelView() === 'wheel'"
+        [class.bg-white/[0.04]]="premium.renderedWheelView() !== 'wheel'"
+        [class.border-white/10]="premium.renderedWheelView() !== 'wheel'"
+        [class.text-white/70]="premium.renderedWheelView() !== 'wheel'"
+        [class.hover:border-white/20]="premium.renderedWheelView() !== 'wheel'">
         <i class="fa-solid fa-circle-notch mr-1.5" aria-hidden="true"></i><span i18n="@@effects.view.wheel">Wheel</span>
       </button>
 
@@ -25,17 +25,54 @@
         type="button"
         (click)="setView('cards')"
         class="flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.wheelView() === 'cards'"
-        [class.border-amber-400/50]="wheelConfigurator.wheelView() === 'cards'"
-        [class.text-amber-300]="wheelConfigurator.wheelView() === 'cards'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.wheelView() === 'cards'"
-        [class.bg-white/[0.04]]="wheelConfigurator.wheelView() !== 'cards'"
-        [class.border-white/10]="wheelConfigurator.wheelView() !== 'cards'"
-        [class.text-white/70]="wheelConfigurator.wheelView() !== 'cards'"
-        [class.hover:border-white/20]="wheelConfigurator.wheelView() !== 'cards'">
+        [class.bg-amber-400/15]="premium.renderedWheelView() === 'cards'"
+        [class.border-amber-400/50]="premium.renderedWheelView() === 'cards'"
+        [class.text-amber-300]="premium.renderedWheelView() === 'cards'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedWheelView() === 'cards'"
+        [class.bg-white/[0.04]]="premium.renderedWheelView() !== 'cards'"
+        [class.border-white/10]="premium.renderedWheelView() !== 'cards'"
+        [class.text-white/70]="premium.renderedWheelView() !== 'cards'"
+        [class.hover:border-white/20]="premium.renderedWheelView() !== 'cards'">
         <i class="fa-solid fa-clone mr-1.5" aria-hidden="true"></i><span i18n="@@effects.view.cards">Cards</span>
       </button>
     </div>
+
+    <!-- Premium: 3D wheel -->
+    <button
+      type="button"
+      (click)="select3dView()"
+      class="relative w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border text-left transition-all duration-200 hover:cursor-pointer bg-linear-to-r from-amber-400/10 via-fuchsia-500/10 to-sky-400/10"
+      [class.border-amber-400/60]="premium.renderedWheelView() === 'wheel3d'"
+      [class.shadow-[0_0_16px_rgba(245,158,11,0.25)]]="premium.renderedWheelView() === 'wheel3d'"
+      [class.border-white/10]="premium.renderedWheelView() !== 'wheel3d'"
+      [class.hover:border-amber-300/40]="premium.renderedWheelView() !== 'wheel3d'">
+      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-amber-300/40 bg-amber-300/10 text-amber-300">
+        <i class="fa-solid fa-cube" aria-hidden="true"></i>
+      </span>
+      <span class="flex-1 min-w-0">
+        <span class="flex items-center gap-2 text-sm font-semibold text-white">
+          <span i18n="@@effects.view.wheel3d">3D Wheel</span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-amber-400/20 px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wider text-amber-300">
+            <i class="fa-solid fa-crown" aria-hidden="true"></i><span i18n="@@effects.premium">Premium</span>
+          </span>
+        </span>
+        <span class="block text-xs text-white/50" i18n="@@effects.view.wheel3dHint">Gold rim, lights and a ticking pointer.</span>
+      </span>
+      @if (!premium.hasPremium()) {
+        <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
+      } @else if (premium.renderedWheelView() === 'wheel3d') {
+        <i class="fa-solid fa-check text-amber-300" aria-hidden="true"></i>
+      }
+    </button>
+    @if (!premium.hasPremium()) {
+      <p class="text-xs text-white/40">
+        @if (premium.unlocksWithAd) {
+          <span i18n="@@effects.wheel3d.lockedApp">Watch a short ad to unlock it for 24 hours.</span>
+        } @else {
+          <span i18n="@@effects.wheel3d.lockedWeb">Sign in for free to unlock it.</span>
+        }
+      </p>
+    }
   </div>
 
   <div class="space-y-2 border-b border-white/10 pb-4">

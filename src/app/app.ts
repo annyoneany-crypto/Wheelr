@@ -8,11 +8,12 @@ import { SeoService } from './services/seo.service';
 import { NativePlatformService } from './services/native-platform.service';
 import { WlAppDownloadBanner } from './shared/app-download-banner/app-download-banner';
 import { WlSiteFooter } from './shared/site-footer/site-footer';
+import { PremiumUnlock } from './shared/premium-unlock/premium-unlock';
 
 @Component({
   selector: 'app-root',
   imports: [Header, RouterOutlet, WlAppDownloadBanner,
-    WlSiteFooter],
+    WlSiteFooter, PremiumUnlock],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.Eager,

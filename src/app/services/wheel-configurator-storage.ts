@@ -14,7 +14,7 @@ import {
   WheelSnapshotEntry,
   WheelWorkspaceMeta,
 } from './wheel-configurator.models';
-import type { effectType, pointerType } from '../modules/classes/custom-type';
+import type { effectType, pointerType, wheelViewType } from '../modules/classes/custom-type';
 
 export function storageKeyForWorkspace(baseKey: string, workspaceId: string): string {
   return `${baseKey}.${workspaceId}`;
@@ -73,7 +73,7 @@ export function readSnapshotEntryFromStorage(meta: WheelWorkspaceMeta): WheelSna
       storageKeyForWorkspace(STORAGE_KEYS.centerLogoSize, workspaceId)
     ) ?? 'm';
   const wheelView =
-    readJson<'wheel' | 'linear' | 'cards'>(storageKeyForWorkspace(STORAGE_KEYS.wheelView, workspaceId)) ??
+    readJson<wheelViewType>(storageKeyForWorkspace(STORAGE_KEYS.wheelView, workspaceId)) ??
     'wheel';
   const winnerEffect =
     readJson<effectType>(storageKeyForWorkspace(STORAGE_KEYS.winnerEffect, workspaceId)) ?? 'confetti';

@@ -70,7 +70,7 @@ Play requires apps with sign-up to offer in-app account deletion, so the account
 Order is load-bearing: `reauthenticate()` → `deleteAllCurrentUserWheels()` → `deleteAccount()`. Firebase rejects `deleteUser` on a credential more than a few minutes old, so re-verification happens **up front** — doing it as error recovery would wipe the Firestore data and then fail, leaving an account with nothing in it. Deleting the auth user first is equally wrong: the security rules key off the caller's uid, so the wheels would be orphaned and unreachable. Re-auth branches per provider (`AuthService.signInProvider`) and, on native, uses the Capacitor plugin because the WebView cannot open Firebase's popup.
 
 ### Rendering
-`shared/extraction-effect/wheel-renderer.ts` (`drawWheelCanvas`) is the single canvas drawing implementation shared by: the interactive `Wheel`, the multi-wheel previews on `WheelPage`, and the read-only `PublicWheel`. Three view modes exist: `'wheel'` | `'linear'` | `'cards'`. Winner effects (`fire`, `cartoon-fire`, `confetti`, `fireworks`, `applause`) live under `shared/winner-effect/`. Pointer/effect string unions are in `modules/classes/custom-type.ts`.
+`shared/extraction-effect/wheel-renderer.ts` (`drawWheelCanvas`) is the single canvas drawing implementation shared by: the interactive `Wheel`, the multi-wheel previews on `WheelPage`, and the read-only `PublicWheel`. Four view modes exist (`wheelViewType`): `'wheel'` | `'linear'` | `'cards'` | `'wheel3d'`; the last is premium-only (see below) and is the same canvas inside a CSS 3D scene (`Wheel3d`). Winner effects (`fire`, `cartoon-fire`, `confetti`, `fireworks`, `applause`) live under `shared/winner-effect/`. Pointer/effect string unions are in `modules/classes/custom-type.ts`.
 
 ### Android app (Capacitor)
 The same Angular bundle ships as a native Android app; `android/` is a checked-in Capacitor project (`appId` `xyz.wheelr.app`, `webDir` `dist/wheelr/browser`). There is **no separate mobile codebase** — the web build *is* the app, so `npm run android:sync` after every web change or the APK keeps serving stale assets.
@@ -83,6 +83,13 @@ The same Angular bundle ships as a native Android app; `android/` is a checked-i
 - Native theming lives in `android/app/src/main/res/values/styles.xml`; `postSplashScreenTheme` must point at the dark `AppTheme.NoActionBar` or the status bar reverts to white.
 - Icons/splash are generated from `public/Logo.webp` by `tools/generate-app-assets.mjs` into `assets/`, then rendered by `capacitor-assets`. Edit the logo, not the generated files.
 - **Google sign-in** cannot use `signInWithPopup` in a WebView. `AuthService.loginWithGoogle()` branches on `isNative` and uses `@capacitor-firebase/authentication` with `skipNativeAuth: true`, feeding the returned ID token to `signInWithCredential` so the JS SDK stays the single session source. It needs `android/app/google-services.json` (Firebase console → Android app for `xyz.wheelr.app` + the signing SHA-1); the Gradle build stays green without it, but the plugin fails to load at runtime and Google login is unavailable.
+
+### Premium (`premium.service.ts`)
+There is no purchase flow; "premium" (today: only the 3D wheel) is unlocked by **signing in on the web** and by **a rewarded ad in the app**, which opens it for `PREMIUM_AD_UNLOCK_MS` (24 h, stored in localStorage). `PremiumService.hasPremium` is the single check.
+
+- **Never rewrite settings when premium lapses.** A stored `wheelView: 'wheel3d'` stays as is; `PremiumService.renderedWheelView` shows the classic wheel instead, so logging back in restores it. Anything that renders by view must read `renderedWheelView`, not `wheelView`.
+- The login modal belongs to `Header`, so a locked feature asks for it by bumping `loginRequestToken`. The app's ad prompt is `PremiumUnlock`, mounted in `app.html` because the settings drawer is its own stacking context.
+- Like the templates: a *skipped* ad keeps it locked, an ad that could not *load* unlocks it.
 
 ### Ads (`ads.service.ts`, app only)
 `@capacitor-community/admob` monetises the Android build; `AdsService.isEnabled` is false on web and every method short-circuits there, so the browser app is unchanged.

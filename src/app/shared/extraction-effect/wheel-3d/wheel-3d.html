@@ -1,0 +1,130 @@
+<div class="relative flex flex-col items-center gap-6 mt-12 z-10">
+  <!-- Nothing above the effect may carry a transform: the winner overlay is
+       position:fixed, and a transformed ancestor would trap it inside the wheel. -->
+  <div class="relative">
+    <div
+      class="wl3d-stage"
+      [class.wl3d-spinning]="wheelConfigurator.isSpinning()"
+      [style.--wl3d-size.px]="size()"
+      [style.--wl3d-rim.px]="rim()"
+      [style.--wl3d-outer.px]="outerSize()"
+      role="button"
+      tabindex="0"
+      i18n-aria-label="@@wheel3d.spin"
+      aria-label="Spin the wheel"
+      (click)="spin()"
+      (keydown.enter)="spin()"
+      (keydown.space)="spin(); $event.preventDefault()">
+      <div class="wl3d-floor absolute left-[6%] right-[6%] -bottom-[7%] h-[18%] rounded-[50%] blur-[6px]" aria-hidden="true"></div>
+
+      <div class="wl3d-tilt">
+        <!-- Thickness: discs stacked behind the face, visible as the rim's side. -->
+        @for (layer of edgeLayers; track layer) {
+          <div class="wl3d-edge" [style.--wl3d-layer]="layer + 1" aria-hidden="true"></div>
+        }
+
+        <div class="wl3d-bezel" aria-hidden="true">
+          @for (bulb of bulbs; track bulb) {
+            <span
+              class="wl3d-bulb"
+              [class.wl3d-bulb-alt]="bulb % 2 === 1"
+              [style.transform]="bulbTransform(bulb)"></span>
+          }
+        </div>
+
+        <div class="wl3d-face absolute rounded-full overflow-hidden">
+          <canvas
+            #wheelCanvas
+            class="absolute inset-0 w-full h-full transition-transform"
+            [width]="size() * renderScale"
+            [height]="size() * renderScale"
+            [style.transform]="rotationTransform()"
+            [style.transitionDuration]="rotationDuration()"
+            [style.transitionTimingFunction]="rotationEasing()"
+            [style.backgroundColor]="wheelConfigurator.names().length === 0 ? '#5e5e5eBB' : 'transparent'"></canvas>
+
+          @if (pegs().length) {
+            <div
+              class="absolute inset-0 w-full h-full transition-transform"
+              [style.transform]="rotationTransform()"
+              [style.transitionDuration]="rotationDuration()"
+              [style.transitionTimingFunction]="rotationEasing()"
+              aria-hidden="true">
+              @for (angle of pegs(); track $index) {
+                <span class="wl3d-peg" [style.transform]="pegTransform(angle)"></span>
+              }
+            </div>
+          }
+
+          <!-- Static lighting on top of the turning face: rim shadow + glass gloss. -->
+          <div class="wl3d-shade" aria-hidden="true"></div>
+
+          @if (wheelConfigurator.winner() && !wheelConfigurator.showWinnerEffect()) {
+            <svg
+              class="absolute inset-0 pointer-events-none wl3d-winner-glow"
+              [attr.width]="size()"
+              [attr.height]="size()"
+              [attr.viewBox]="'0 0 ' + size() + ' ' + size()"
+              aria-hidden="true">
+              <path [attr.d]="winnerSlicePath()" fill="none" stroke="#fbbf24" stroke-width="5" stroke-linejoin="round" />
+            </svg>
+          }
+        </div>
+
+        <div class="wl3d-hub-post absolute left-1/2 top-1/2 rounded-full" [style.--wl3d-hub.px]="hubSize()" aria-hidden="true"></div>
+        <div class="wl3d-hub absolute left-1/2 top-1/2 rounded-full" [style.--wl3d-hub.px]="hubSize()">
+          <div class="wl3d-hub-cap relative w-full h-full rounded-full overflow-hidden flex items-center justify-center" [style.backgroundColor]="wheelConfigurator.centerColor()">
+            @if (wheelConfigurator.centerImage()) {
+              <img [src]="wheelConfigurator.centerImage()" class="w-full h-full object-cover" alt="Center">
+            } @else {
+              <span class="font-bold text-sm px-1 text-center" [style.color]="wheelConfigurator.centerContrastColor()">
+                {{ wheelConfigurator.centerText() }}
+              </span>
+            }
+          </div>
+        </div>
+
+        <div class="wl3d-pointer-mount" aria-hidden="true">
+          <div #pointer class="wl3d-pointer">
+            <svg class="block w-full h-full" viewBox="0 0 64 88" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="wl3d-pointer-gold" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#7c5a12" />
+                  <stop offset="0.35" stop-color="#fde68a" />
+                  <stop offset="0.55" stop-color="#f59e0b" />
+                  <stop offset="1" stop-color="#6b4a0c" />
+                </linearGradient>
+                <radialGradient id="wl3d-pointer-gem" cx="0.35" cy="0.3" r="0.8">
+                  <stop offset="0" stop-color="#fff" />
+                  <stop offset="0.25" stop-color="#fca5a5" />
+                  <stop offset="1" stop-color="#991b1b" />
+                </radialGradient>
+              </defs>
+              <path d="M32 86L10 34A24 24 0 1 1 54 34Z" fill="url(#wl3d-pointer-gold)" stroke="#3b2a08" stroke-width="2" stroke-linejoin="round" />
+              <path d="M32 74L17 36A17 17 0 1 1 47 36Z" fill="none" stroke="#fff7d6" stroke-opacity="0.45" stroke-width="1.5" />
+              <circle cx="32" cy="25" r="10" fill="url(#wl3d-pointer-gem)" stroke="#3b2a08" stroke-width="1.5" />
+              <ellipse cx="28.5" cy="21" rx="3" ry="2" fill="#fff" opacity="0.8" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winner effect (fire / confetti / etc.) -->
+    @if (wheelConfigurator.winner() && wheelConfigurator.showWinnerEffect()) {
+      <ng-content></ng-content>
+    }
+  </div>
+
+  <div class="h-16 flex items-center justify-center text-center">
+    @if (wheelConfigurator.isSpinning()) {
+      <p class="text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] animate-pulse uppercase tracking-[0.2em] font-semibold text-sm">
+        <i class="fa-solid fa-star-of-life mr-2 text-amber-400/80 animate-spin" aria-hidden="true"></i><span i18n="@@wheel.spinning">Destiny is choosing…</span>
+      </p>
+    } @else if (!wheelConfigurator.winner()) {
+      <p class="text-white/70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] uppercase tracking-[0.2em] font-medium text-sm transition-opacity duration-300 hover:text-white/90">
+        <i class="fa-solid fa-hand-pointer mr-2 text-amber-400/60" aria-hidden="true"></i><span i18n="@@wheel.clickToSpin">Click the wheel to spin</span>
+      </p>
+    }
+  </div>
+</div>

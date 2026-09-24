@@ -161,11 +161,16 @@
       }
     </div>
   } @else {
-    @switch (wheelConfigurator.wheelView()) {
+    @switch (premium.renderedWheelView()) {
       @case ('linear') {
         <wl-linear-wheel>
           <wl-fire-effect></wl-fire-effect>
         </wl-linear-wheel>
+      }
+      @case ('wheel3d') {
+        <wl-wheel-3d>
+          <wl-fire-effect></wl-fire-effect>
+        </wl-wheel-3d>
       }
       @case ('cards') {
         <wl-cards-effect>

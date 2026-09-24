@@ -18,6 +18,7 @@ import { AuthService } from '../../services/auth.service';
 import { WheelCloudRepository } from '../../services/wheel-cloud-repository.service';
 import { WheelCloudSync } from '../../services/wheel-cloud-sync.service';
 import { NativePlatformService } from '../../services/native-platform.service';
+import { PremiumService } from '../../services/premium.service';
 import { WlAuth } from '../auth/auth';
 import { WlCreateWheel } from '../create-wheel/create-wheel';
 import { WlInfoUtente } from '../info-utente/info-utente';
@@ -41,6 +42,8 @@ export class Header {
   private readonly nativePlatform = inject(NativePlatformService);
   protected readonly wheelConfigurator = inject(WheelConfigurator);
   protected readonly authService = inject(AuthService);
+  private readonly premium = inject(PremiumService);
+  private handledLoginRequestToken = this.premium.loginRequestToken();
 
   isMenuOpen = signal(false);
   currentUrl = signal(this.router.url);
@@ -93,6 +96,17 @@ export class Header {
 
       this.pendingCloudSave = false;
       untracked(() => void this.saveAfterLoginSync());
+    });
+
+    // Premium features on the web ask for a login, and the modal lives here.
+    effect(() => {
+      const token = this.premium.loginRequestToken();
+      if (token === this.handledLoginRequestToken) {
+        return;
+      }
+
+      this.handledLoginRequestToken = token;
+      untracked(() => this.openAuthModal());
     });
 
     this.destroyRef.onDestroy(() => this.clearFeedbackTimeout());

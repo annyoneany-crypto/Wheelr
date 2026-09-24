@@ -30,7 +30,7 @@ import {
 } from './wheel-configurator.models';
 import { CloudWheelSyncItem } from './wheel-cloud-repository.service';
 import { drawWheelCanvas } from '../shared/extraction-effect/wheel-renderer';
-import type { effectType, pointerType } from '../modules/classes/custom-type';
+import type { effectType, pointerType, wheelViewType } from '../modules/classes/custom-type';
 
 export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.models';
 
@@ -198,7 +198,7 @@ export class WheelConfigurator {
   showModal = signal(false);
   renameModalRequestToken = signal(0);
 
-  wheelView = signal<'wheel' | 'linear' | 'cards'>('wheel');
+  wheelView = signal<wheelViewType>('wheel');
   winnerEffect = signal<effectType>('confetti');
   showWinnerEffect = signal<boolean>(true);
   pointerType = signal<pointerType>('drop');
@@ -1362,7 +1362,12 @@ export class WheelConfigurator {
       console.debug('no valid centerLogoSize in storage, defaulting', effectiveCenterLogoSize);
     }
 
-    if (effectiveWheelView === 'wheel' || effectiveWheelView === 'linear' || effectiveWheelView === 'cards') {
+    if (
+      effectiveWheelView === 'wheel' ||
+      effectiveWheelView === 'linear' ||
+      effectiveWheelView === 'cards' ||
+      effectiveWheelView === 'wheel3d'
+    ) {
       this.wheelView.set(effectiveWheelView);
     }
 
