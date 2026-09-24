@@ -58,16 +58,18 @@
         </span>
         <span class="block text-xs text-white/50" i18n="@@effects.view.wheel3dHint">Gold rim, lights and a ticking pointer.</span>
       </span>
-      @if (!premium.hasPremium()) {
+      @if (!premium.isUnlocked('wheel3d') && !isInUse('wheel3d')) {
         <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
+      } @else if (premium.remainingLabel('wheel3d')) {
+        <span class="rounded-full bg-amber-400/15 px-1.5 py-0.5 text-[0.6rem] font-bold tabular-nums text-amber-300" i18n-title="@@effects.premium.timeLeft" title="Time left on this unlock">{{ premium.remainingLabel('wheel3d') }}</span>
       } @else if (premium.renderedWheelView() === 'wheel3d') {
         <i class="fa-solid fa-check text-amber-300" aria-hidden="true"></i>
       }
     </button>
-    @if (!premium.hasPremium()) {
+    @if (!premium.isUnlocked('wheel3d') && !isInUse('wheel3d')) {
       <p class="text-xs text-white/40">
         @if (premium.unlocksWithAd) {
-          <span i18n="@@effects.wheel3d.lockedApp">Watch a short ad to unlock it for 24 hours.</span>
+          <span i18n="@@effects.premium.adRule">Each premium option has its own short ad. Once chosen it stays; switching back to it after 1 minute needs a new ad.</span>
         } @else {
           <span i18n="@@effects.wheel3d.lockedWeb">Sign in for free to unlock it.</span>
         }
@@ -193,8 +195,10 @@
         <span class="inline-flex items-center gap-1 rounded-full bg-amber-400/20 px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wider text-amber-300">
           <i class="fa-solid fa-crown" aria-hidden="true"></i><span i18n="@@effects.premium">Premium</span>
         </span>
-        @if (!premium.hasPremium()) {
+        @if (!premium.isUnlocked('chest') && !isInUse('chest')) {
           <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
+        } @else if (premium.remainingLabel('chest')) {
+          <span class="rounded-full bg-amber-400/15 px-1.5 py-0.5 text-[0.6rem] font-bold tabular-nums text-amber-300" i18n-title="@@effects.premium.timeLeft" title="Time left on this unlock">{{ premium.remainingLabel('chest') }}</span>
         }
       </button>
     </div>
@@ -326,12 +330,16 @@
           [class.border-white/10]="premium.renderedPointerType() !== pointer.id"
           [class.text-white/70]="premium.renderedPointerType() !== pointer.id"
           [class.hover:border-amber-300/40]="premium.renderedPointerType() !== pointer.id">
-          <i class="fa-solid absolute top-1.5 right-1.5 text-[0.6rem]"
-            [class.fa-crown]="premium.hasPremium()"
-            [class.text-amber-300]="premium.hasPremium()"
-            [class.fa-lock]="!premium.hasPremium()"
-            [class.text-white/40]="!premium.hasPremium()"
-            aria-hidden="true"></i>
+          @if (premium.remainingLabel(pointer.id); as left) {
+            <span class="absolute top-1 right-1 text-[0.55rem] font-bold tabular-nums text-amber-300" i18n-title="@@effects.premium.timeLeft" title="Time left on this unlock">{{ left }}</span>
+          } @else {
+            <i class="fa-solid absolute top-1.5 right-1.5 text-[0.6rem]"
+              [class.fa-crown]="premium.isUnlocked(pointer.id) || isInUse(pointer.id)"
+              [class.text-amber-300]="premium.isUnlocked(pointer.id) || isInUse(pointer.id)"
+              [class.fa-lock]="!premium.isUnlocked(pointer.id) && !isInUse(pointer.id)"
+              [class.text-white/40]="!premium.isUnlocked(pointer.id) && !isInUse(pointer.id)"
+              aria-hidden="true"></i>
+          }
           <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
             @if (pointer.id === 'crown') {
               <path d="M11 31L8 11L20 20L32 5L44 20L56 11L53 31Z M23 35H41L32 61Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
@@ -344,7 +352,7 @@
         </button>
       }
     </div>
-    @if (!premium.hasPremium()) {
+    @if (!premium.isUnlocked('crown') || !premium.isUnlocked('crystal')) {
       <p class="text-xs text-white/40" i18n="@@effects.pointer.premiumHint">Crown and Crystal are premium pointers.</p>
     }
   </div>

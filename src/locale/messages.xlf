@@ -5951,6 +5951,10 @@
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
           <context context-type="linenumber">54,55</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="effects.premium" datatype="html">
         <source>Premium</source>
@@ -5960,7 +5964,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">194,196</context>
+          <context context-type="linenumber">196,198</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.view.wheel3dHint" datatype="html">
@@ -5970,151 +5974,178 @@
           <context context-type="linenumber">59,61</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="effects.wheel3d.lockedApp" datatype="html">
-        <source>Watch a short ad to unlock it for 24 hours.</source>
+      <trans-unit id="effects.premium.timeLeft" datatype="html">
+        <source>Time left on this unlock</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">70,72</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">201</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">334,335</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.premium.adRule" datatype="html">
+        <source>Each premium option has its own short ad. Once chosen it stays; switching back to it after 1 minute needs a new ad.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">72,74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.wheel3d.lockedWeb" datatype="html">
         <source>Sign in for free to unlock it.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">72,76</context>
+          <context context-type="linenumber">74,78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerEffect" datatype="html">
         <source> Winner Effect </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">80,83</context>
+          <context context-type="linenumber">82,85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerAnimation" datatype="html">
         <source>Winner animation</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">95,97</context>
+          <context context-type="linenumber">97,99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerHint" datatype="html">
         <source>Fire, confetti or other effects play when the wheel stops.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">111,113</context>
+          <context context-type="linenumber">113,115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerHintOff" datatype="html">
         <source>The winning slice glows — no full-screen effect.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">113,117</context>
+          <context context-type="linenumber">115,119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.fire" datatype="html">
         <source>Fire</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">132,135</context>
+          <context context-type="linenumber">134,137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.confetti" datatype="html">
         <source>Confetti</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">147,150</context>
+          <context context-type="linenumber">149,152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.fireworks" datatype="html">
         <source>Fireworks</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">162,165</context>
+          <context context-type="linenumber">164,167</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.cartoonFire" datatype="html">
         <source>Cartoon Fire</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">177,180</context>
+          <context context-type="linenumber">179,182</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.chest" datatype="html">
         <source>3D Chests</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">192,193</context>
+          <context context-type="linenumber">194,195</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer" datatype="html">
         <source> Wheel Pointer </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">205,208</context>
+          <context context-type="linenumber">209,212</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.drop" datatype="html">
         <source>Drop</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">224,227</context>
+          <context context-type="linenumber">228,231</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.arrow" datatype="html">
         <source>Arrow</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">242,245</context>
+          <context context-type="linenumber">246,249</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.finger" datatype="html">
         <source>Finger</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">260,263</context>
+          <context context-type="linenumber">264,267</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.star" datatype="html">
         <source>Star</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">278,281</context>
+          <context context-type="linenumber">282,285</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.diamond" datatype="html">
         <source>Diamond</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">296,299</context>
+          <context context-type="linenumber">300,303</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.bolt" datatype="html">
         <source>Bolt</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">314,317</context>
+          <context context-type="linenumber">318,321</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.premiumHint" datatype="html">
         <source>Crown and Crystal are premium pointers.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">348,352</context>
+          <context context-type="linenumber">356,360</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.crown" datatype="html">
         <source>Crown</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.crystal" datatype="html">
         <source>Crystal</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.title" datatype="html">
@@ -6681,32 +6712,25 @@
           <context context-type="linenumber">279,281</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.unlock.title" datatype="html">
-        <source>Unlock Premium</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
-          <context context-type="linenumber">13,14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="premium.unlock.features" datatype="html">
-        <source>3D wheel, 3D chests and premium pointers</source>
+      <trans-unit id="premium.feature.window" datatype="html">
+        <source>Premium · one ad per option</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
           <context context-type="linenumber">14,18</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.unlock.body" datatype="html">
-        <source>Watch a short video ad and the premium features are yours for the next 24 hours. Ads keep Wheelr free.</source>
+      <trans-unit id="premium.feature.explain" datatype="html">
+        <source>Watch a short video ad to use this option. It stays on as long as you keep it; switching back to it after 1 minute needs a new ad. Ads keep Wheelr free.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
           <context context-type="linenumber">18,20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.unlock.skipped" datatype="html">
-        <source>The ad has to play all the way through to unlock Premium. Give it another go.</source>
+      <trans-unit id="premium.feature.skipped" datatype="html">
+        <source>The ad has to play all the way through to unlock it. Give it another go.</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.region" datatype="html">

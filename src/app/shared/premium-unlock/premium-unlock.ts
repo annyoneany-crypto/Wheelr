@@ -32,18 +32,24 @@ export class PremiumUnlock {
       return;
     }
 
+    const feature = this.premium.adPromptFeature();
+    if (!feature) {
+      return;
+    }
+
     this.adPlaying.set(true);
     this.lockedNotice.set(null);
     try {
-      const outcome = await this.premium.unlockWithRewardedAd();
+      // Unlocks this feature only: every premium option has its own ad.
+      const outcome = await this.premium.unlockWithRewardedAd(feature);
       if (outcome === 'skipped') {
         this.lockedNotice.set(
-          $localize`:@@premium.unlock.skipped:The ad has to play all the way through to unlock Premium. Give it another go.`,
+          $localize`:@@premium.feature.skipped:The ad has to play all the way through to unlock it. Give it another go.`,
         );
         return;
       }
 
-      this.premium.adPromptOpen.set(false);
+      this.premium.adPromptFeature.set(null);
     } finally {
       this.adPlaying.set(false);
     }
@@ -52,11 +58,11 @@ export class PremiumUnlock {
   /** Returns true when the prompt was open and got closed. */
   protected dismiss(): boolean {
     // Closing mid-ad would desync the prompt from the fullscreen ad on top of it.
-    if (!this.premium.adPromptOpen() || this.adPlaying()) {
+    if (!this.premium.adPromptFeature() || this.adPlaying()) {
       return false;
     }
 
-    this.premium.adPromptOpen.set(false);
+    this.premium.adPromptFeature.set(null);
     this.lockedNotice.set(null);
     return true;
   }

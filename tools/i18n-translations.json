@@ -6832,13 +6832,6 @@
     "es": "Borde dorado, luces y un puntero que hace tic.",
     "zh": "金色边框、灯光和会跳动的指针。"
   },
-  "effects.wheel3d.lockedApp": {
-    "it": "Guarda un breve annuncio per sbloccarla per 24 ore.",
-    "de": "Sieh dir eine kurze Werbung an, um es 24 Stunden lang freizuschalten.",
-    "fr": "Regardez une courte publicité pour la débloquer pendant 24 heures.",
-    "es": "Mira un anuncio corto para desbloquearla durante 24 horas.",
-    "zh": "观看一段简短广告即可解锁 24 小时。"
-  },
   "effects.wheel3d.lockedWeb": {
     "it": "Accedi gratuitamente per sbloccarla.",
     "de": "Melde dich kostenlos an, um es freizuschalten.",
@@ -6859,27 +6852,6 @@
     "fr": "Coffrets 3D",
     "es": "Cofres 3D",
     "zh": "3D 宝箱"
-  },
-  "premium.unlock.title": {
-    "it": "Sblocca Premium",
-    "de": "Premium freischalten",
-    "fr": "Débloquer Premium",
-    "es": "Desbloquea Premium",
-    "zh": "解锁高级功能"
-  },
-  "premium.unlock.body": {
-    "it": "Guarda un breve video pubblicitario e le funzioni premium sono tue per le prossime 24 ore. Gli annunci mantengono Wheelr gratuito.",
-    "de": "Sieh dir ein kurzes Werbevideo an und die Premium-Funktionen gehören dir für die nächsten 24 Stunden. Werbung hält Wheelr kostenlos.",
-    "fr": "Regardez une courte vidéo publicitaire et les fonctions premium sont à vous pour les 24 prochaines heures. La publicité permet à Wheelr de rester gratuit.",
-    "es": "Mira un breve vídeo publicitario y las funciones premium son tuyas durante las próximas 24 horas. Los anuncios mantienen Wheelr gratis.",
-    "zh": "观看一段简短的视频广告，即可在接下来的 24 小时内使用高级功能。广告让 Wheelr 保持免费。"
-  },
-  "premium.unlock.skipped": {
-    "it": "L'annuncio deve essere guardato fino alla fine per sbloccare Premium. Riprova.",
-    "de": "Die Werbung muss bis zum Ende laufen, um Premium freizuschalten. Versuch es noch einmal.",
-    "fr": "La publicité doit être regardée jusqu’au bout pour débloquer Premium. Réessayez.",
-    "es": "El anuncio tiene que verse hasta el final para desbloquear Premium. Inténtalo de nuevo.",
-    "zh": "需要完整观看广告才能解锁高级功能。请再试一次。"
   },
   "header.newWheel.label": {
     "it": "Nuova ruota",
@@ -6937,13 +6909,6 @@
     "es": "Corona y Cristal son punteros premium.",
     "zh": "皇冠和水晶是高级指针。"
   },
-  "premium.unlock.features": {
-    "it": "Ruota 3D, cofanetti 3D e puntatori premium",
-    "de": "3D-Rad, 3D-Schatztruhen und Premium-Zeiger",
-    "fr": "Roue 3D, coffrets 3D et pointeurs premium",
-    "es": "Ruleta 3D, cofres 3D y punteros premium",
-    "zh": "3D 转盘、3D 宝箱和高级指针"
-  },
   "sound.defaultSpin": {
     "it": "Predefinito: ticchettio della ruota",
     "de": "Standard: Ticken des Rads",
@@ -6978,5 +6943,40 @@
     "fr": "Écouter le son du gagnant par défaut",
     "es": "Escuchar el sonido de ganador predeterminado",
     "zh": "试听默认获胜音效"
+  },
+  "premium.feature.skipped": {
+    "it": "L'annuncio deve essere guardato fino alla fine per sbloccarla. Riprova.",
+    "de": "Die Werbung muss bis zum Ende laufen, um die Option freizuschalten. Versuch es noch einmal.",
+    "fr": "La publicité doit être regardée jusqu’au bout pour la débloquer. Réessayez.",
+    "es": "El anuncio tiene que verse hasta el final para desbloquearla. Inténtalo de nuevo.",
+    "zh": "需要完整观看广告才能解锁。请再试一次。"
+  },
+  "effects.premium.timeLeft": {
+    "it": "Tempo rimasto di questo sblocco",
+    "de": "Verbleibende Zeit dieser Freischaltung",
+    "fr": "Temps restant pour ce déblocage",
+    "es": "Tiempo restante de este desbloqueo",
+    "zh": "本次解锁的剩余时间"
+  },
+  "premium.feature.window": {
+    "it": "Premium · un annuncio per opzione",
+    "de": "Premium · eine Werbung pro Option",
+    "fr": "Premium · une publicité par option",
+    "es": "Premium · un anuncio por opción",
+    "zh": "高级 · 每个选项一个广告"
+  },
+  "premium.feature.explain": {
+    "it": "Guarda un breve video pubblicitario per usare questa opzione. Resta attiva finché la tieni; per riselezionarla dopo 1 minuto serve un nuovo annuncio. Gli annunci mantengono Wheelr gratuito.",
+    "de": "Sieh dir ein kurzes Werbevideo an, um diese Option zu nutzen. Sie bleibt aktiv, solange du sie behältst; um sie nach 1 Minute erneut auszuwählen, brauchst du eine neue Werbung. Werbung hält Wheelr kostenlos.",
+    "fr": "Regardez une courte vidéo publicitaire pour utiliser cette option. Elle reste active tant que vous la gardez ; pour la sélectionner de nouveau après 1 minute, il faut une nouvelle publicité. La publicité permet à Wheelr de rester gratuit.",
+    "es": "Mira un breve vídeo publicitario para usar esta opción. Permanece activa mientras la mantengas; para volver a seleccionarla después de 1 minuto hace falta un nuevo anuncio. Los anuncios mantienen Wheelr gratis.",
+    "zh": "观看一段简短的视频广告即可使用此选项。只要你保持选择，它就一直有效；1 分钟后若要重新选择，需要再看一个广告。广告让 Wheelr 保持免费。"
+  },
+  "effects.premium.adRule": {
+    "it": "Ogni opzione premium ha il suo breve annuncio. Una volta scelta resta; per riselezionarla dopo 1 minuto serve un nuovo annuncio.",
+    "de": "Jede Premium-Option hat ihre eigene kurze Werbung. Einmal gewählt, bleibt sie; um sie nach 1 Minute erneut zu wählen, brauchst du eine neue Werbung.",
+    "fr": "Chaque option premium a sa propre courte publicité. Une fois choisie, elle reste ; pour la reprendre après 1 minute, il faut une nouvelle publicité.",
+    "es": "Cada opción premium tiene su propio anuncio corto. Una vez elegida se queda; para volver a elegirla después de 1 minuto hace falta un nuevo anuncio.",
+    "zh": "每个高级选项都有自己的简短广告。选择后会一直保留；1 分钟后若要重新选择，需要再看一个广告。"
   }
 }

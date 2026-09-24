@@ -6777,6 +6777,10 @@
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
           <context context-type="linenumber">54,55</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">135</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="effects.premium" datatype="html">
         <source>Premium</source>
@@ -6787,7 +6791,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">194,196</context>
+          <context context-type="linenumber">196,198</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.view.wheel3dHint" datatype="html">
@@ -6798,12 +6802,28 @@
           <context context-type="linenumber">59,61</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="effects.wheel3d.lockedApp" datatype="html">
-        <source>Watch a short ad to unlock it for 24 hours.</source>
-        <target>观看一段简短广告即可解锁 24 小时。</target>
+      <trans-unit id="effects.premium.timeLeft" datatype="html">
+        <source>Time left on this unlock</source>
+        <target>本次解锁的剩余时间</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">70,72</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">201</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">334,335</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.premium.adRule" datatype="html">
+        <source>Each premium option has its own short ad. Once chosen it stays; switching back to it after 1 minute needs a new ad.</source>
+        <target>每个高级选项都有自己的简短广告。选择后会一直保留；1 分钟后若要重新选择，需要再看一个广告。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">72,74</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.wheel3d.lockedWeb" datatype="html">
@@ -6811,7 +6831,7 @@
         <target>免费登录即可解锁。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">72,76</context>
+          <context context-type="linenumber">74,78</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerEffect" datatype="html">
@@ -6819,7 +6839,7 @@
         <target>中奖特效</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">80,83</context>
+          <context context-type="linenumber">82,85</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerAnimation" datatype="html">
@@ -6827,7 +6847,7 @@
         <target>中奖动画</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">95,97</context>
+          <context context-type="linenumber">97,99</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerHint" datatype="html">
@@ -6835,7 +6855,7 @@
         <target>转盘停止时播放火焰、彩纸等特效。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">111,113</context>
+          <context context-type="linenumber">113,115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerHintOff" datatype="html">
@@ -6843,7 +6863,7 @@
         <target>中奖扇区会发光——没有全屏特效。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">113,117</context>
+          <context context-type="linenumber">115,119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.fire" datatype="html">
@@ -6851,7 +6871,7 @@
         <target>火焰</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">132,135</context>
+          <context context-type="linenumber">134,137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.confetti" datatype="html">
@@ -6859,7 +6879,7 @@
         <target>彩纸</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">147,150</context>
+          <context context-type="linenumber">149,152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.fireworks" datatype="html">
@@ -6867,7 +6887,7 @@
         <target>烟花</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">162,165</context>
+          <context context-type="linenumber">164,167</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.cartoonFire" datatype="html">
@@ -6875,7 +6895,7 @@
         <target>卡通火焰</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">177,180</context>
+          <context context-type="linenumber">179,182</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.chest" datatype="html">
@@ -6883,7 +6903,11 @@
         <target>3D 宝箱</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">192,193</context>
+          <context context-type="linenumber">194,195</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">137</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer" datatype="html">
@@ -6891,7 +6915,7 @@
         <target>转盘指针</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">205,208</context>
+          <context context-type="linenumber">209,212</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.drop" datatype="html">
@@ -6899,7 +6923,7 @@
         <target>水滴</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">224,227</context>
+          <context context-type="linenumber">228,231</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.arrow" datatype="html">
@@ -6907,7 +6931,7 @@
         <target>箭头</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">242,245</context>
+          <context context-type="linenumber">246,249</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.finger" datatype="html">
@@ -6915,7 +6939,7 @@
         <target>手指</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">260,263</context>
+          <context context-type="linenumber">264,267</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.star" datatype="html">
@@ -6923,7 +6947,7 @@
         <target>星形</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">278,281</context>
+          <context context-type="linenumber">282,285</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.diamond" datatype="html">
@@ -6931,7 +6955,7 @@
         <target>菱形</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">296,299</context>
+          <context context-type="linenumber">300,303</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.bolt" datatype="html">
@@ -6939,7 +6963,7 @@
         <target>闪电</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">314,317</context>
+          <context context-type="linenumber">318,321</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.premiumHint" datatype="html">
@@ -6947,7 +6971,7 @@
         <target>皇冠和水晶是高级指针。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">348,352</context>
+          <context context-type="linenumber">356,360</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.crown" datatype="html">
@@ -6955,7 +6979,11 @@
         <target>皇冠</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.ts</context>
-          <context context-type="linenumber">68</context>
+          <context context-type="linenumber">85</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.crystal" datatype="html">
@@ -6963,7 +6991,11 @@
         <target>水晶</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.ts</context>
-          <context context-type="linenumber">69</context>
+          <context context-type="linenumber">86</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">141</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.title" datatype="html">
@@ -7606,36 +7638,28 @@
           <context context-type="linenumber">279,281</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.unlock.title" datatype="html">
-        <source>Unlock Premium</source>
-        <target>解锁高级功能</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
-          <context context-type="linenumber">13,14</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="premium.unlock.features" datatype="html">
-        <source>3D wheel, 3D chests and premium pointers</source>
-        <target>3D 转盘、3D 宝箱和高级指针</target>
+      <trans-unit id="premium.feature.window" datatype="html">
+        <source>Premium · one ad per option</source>
+        <target>高级 · 每个选项一个广告</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
           <context context-type="linenumber">14,18</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.unlock.body" datatype="html">
-        <source>Watch a short video ad and the premium features are yours for the next 24 hours. Ads keep Wheelr free.</source>
-        <target>观看一段简短的视频广告，即可在接下来的 24 小时内使用高级功能。广告让 Wheelr 保持免费。</target>
+      <trans-unit id="premium.feature.explain" datatype="html">
+        <source>Watch a short video ad to use this option. It stays on as long as you keep it; switching back to it after 1 minute needs a new ad. Ads keep Wheelr free.</source>
+        <target>观看一段简短的视频广告即可使用此选项。只要你保持选择，它就一直有效；1 分钟后若要重新选择，需要再看一个广告。广告让 Wheelr 保持免费。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
           <context context-type="linenumber">18,20</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.unlock.skipped" datatype="html">
-        <source>The ad has to play all the way through to unlock Premium. Give it another go.</source>
-        <target>需要完整观看广告才能解锁高级功能。请再试一次。</target>
+      <trans-unit id="premium.feature.skipped" datatype="html">
+        <source>The ad has to play all the way through to unlock it. Give it another go.</source>
+        <target>需要完整观看广告才能解锁。请再试一次。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">47</context>
         </context-group>
       </trans-unit>
       <trans-unit id="footer.region" datatype="html">

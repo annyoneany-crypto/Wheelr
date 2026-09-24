@@ -1,4 +1,4 @@
-@if (premium.adPromptOpen()) {
+@if (premium.adPromptFeature(); as feature) {
   <div
     class="fixed inset-0 z-100 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
     role="dialog"
@@ -10,12 +10,12 @@
           <i class="fa-solid fa-crown text-lg" aria-hidden="true"></i>
         </span>
         <div>
-          <h2 id="premium-ad-title" class="text-base font-bold text-white" i18n="@@premium.unlock.title">Unlock Premium</h2>
-          <p class="text-xs text-white/55" i18n="@@premium.unlock.features">3D wheel, 3D chests and premium pointers</p>
+          <h2 id="premium-ad-title" class="text-base font-bold text-white">{{ premium.featureLabel(feature) }}</h2>
+          <p class="text-xs text-white/55" i18n="@@premium.feature.window">Premium · one ad per option</p>
         </div>
       </div>
 
-      <p class="mt-4 text-sm leading-relaxed text-white/70" i18n="@@premium.unlock.body">Watch a short video ad and the premium features are yours for the next 24 hours. Ads keep Wheelr free.</p>
+      <p class="mt-4 text-sm leading-relaxed text-white/70" i18n="@@premium.feature.explain">Watch a short video ad to use this option. It stays on as long as you keep it; switching back to it after 1 minute needs a new ad. Ads keep Wheelr free.</p>
 
       @if (lockedNotice(); as notice) {
         <p class="mt-3 rounded-xl border border-amber-400/30 bg-amber-400/10 px-3 py-2 text-xs text-amber-200" role="alert">
