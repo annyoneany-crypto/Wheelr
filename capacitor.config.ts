@@ -27,10 +27,13 @@ const config: CapacitorConfig = {
       splashFullScreen: true,
       splashImmersive: false
     },
-    StatusBar: {
+    // Capacitor's core replacement for @capacitor/status-bar, which coloured the bar
+    // through APIs Android 15 deprecates for edge-to-edge. With insetsHandling 'css'
+    // and no viewport-fit=cover in index.html, Capacitor pads the WebView by the
+    // system bars itself, so the page never slides under them.
+    SystemBars: {
       style: 'DARK',
-      backgroundColor: '#111113',
-      overlaysWebView: false
+      insetsHandling: 'css'
     },
     Keyboard: {
       resize: 'body'

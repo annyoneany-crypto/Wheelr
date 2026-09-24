@@ -1,9 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { Capacitor } from '@capacitor/core';
+import { Capacitor, SystemBars, SystemBarsStyle } from '@capacitor/core';
 import { App as CapacitorApp } from '@capacitor/app';
 import { SplashScreen } from '@capacitor/splash-screen';
-import { StatusBar, Style } from '@capacitor/status-bar';
 
 /** Returns true when the press was consumed, false to let the next handler try. */
 export type BackHandler = () => boolean;
@@ -65,10 +64,13 @@ export class NativePlatformService {
 
   private async applySystemBarStyle(): Promise<void> {
     try {
-      await StatusBar.setStyle({ style: Style.Dark });
-      await StatusBar.setBackgroundColor({ color: '#111113' });
+      // Light icons for the dark bars. There is no bar *colour* to set any more:
+      // Android 15 draws edge-to-edge and deprecates Window.setStatusBarColor —
+      // what the old status-bar plugin called, and what Play flagged. The window
+      // background (the theme's brandSurface) now shows behind transparent bars.
+      await SystemBars.setStyle({ style: SystemBarsStyle.Dark });
     } catch {
-      // StatusBar is unavailable on some OEM skins; the app works without it.
+      // Unavailable on some OEM skins; the app works without it.
     }
   }
 

@@ -15,9 +15,12 @@
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+        <!-- Android 15+ draws edge-to-edge: the bars are transparent and this
+             background is what shows behind them. android:statusBarColor and
+             navigationBarColor are deprecated there (Play flags them), so the
+             colour below Android 15 comes from colorPrimaryDark instead. -->
         <item name="android:windowBackground">@color/brandSurface</item>
-        <item name="android:statusBarColor">@color/brandSurface</item>
-        <item name="android:navigationBarColor">@color/brandSurface</item>
+        <item name="colorPrimaryDark">@color/brandSurface</item>
         <!-- Dark bars want light icons. -->
         <item name="android:windowLightStatusBar">false</item>
     </style>

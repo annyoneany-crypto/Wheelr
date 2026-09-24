@@ -16,12 +16,15 @@
 -keepattributes SourceFile,LineNumberTable
 -renamesourcefileattribute SourceFile
 
-# Capacitor instantiates the plugin list in capacitor.plugins.json by name. The
-# consumer rules cover the annotated classes; this covers the entry point the
-# manifest names and the bridge classes reached only through reflection.
--keep class xyz.wheelr.app.MainActivity { *; }
--keep class com.getcapacitor.** { *; }
--dontwarn com.getcapacitor.**
+# No blanket keep for Capacitor. `-keep class com.getcapacitor.** { *; }` used to
+# sit here, and it froze the whole runtime: R8 could neither shrink nor optimize
+# any of it, which is what Play Console's "improve memory and performance with R8"
+# notice measures. What the bridge reaches by reflection is already kept by the
+# consumer rules of @capacitor/android (plugin classes, @PluginMethod and callback
+# methods) and by proguard-android-optimize.txt (@JavascriptInterface methods);
+# MainActivity is kept by the rules AAPT generates from the manifest.
+# If a plugin ever stops registering in a release build, add a keep for that
+# plugin's class — never the whole package again.
 
 # Annotations drive both the Capacitor bridge and the Play Services SDKs; losing
 # them silently breaks plugin method dispatch rather than failing the build.
