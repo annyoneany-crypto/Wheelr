@@ -2,7 +2,11 @@
 <div class="fixed inset-0 flex items-center justify-center z-60 pointer-events-none p-3 sm:p-4" role="dialog" aria-modal="true" [attr.aria-label]="winnerTitle()">
     <canvas #fireCanvas class="absolute inset-0 w-full h-full" aria-hidden="true"></canvas>
     <div class="relative z-10 w-full max-w-88 sm:max-w-md scale-100 sm:scale-125 wl-animate-modal flex flex-col items-center gap-4 pointer-events-auto" aria-live="polite">
+        @if (chestMode()) {
+            <wl-chest-reveal></wl-chest-reveal>
+        }
         <div
+            [class.wl-chest-card]="chestMode()"
             class="w-full bg-black/85 backdrop-blur-md border-2 px-4 sm:px-6 py-3 rounded-2xl shadow-[0_0_40px_rgba(0,0,0,0.5)]"
             [style.border-color]="winnerBorderColor()"
             [style.box-shadow]="winnerBoxShadow()">
@@ -11,7 +15,7 @@
                 [style.color]="winnerLabelColor()" i18n="@@winner.label">Winner</p>
             <p class="text-white text-center text-2xl sm:text-3xl font-black mt-1 drop-shadow-[0_2px_10px_rgba(255,255,255,0.5)] wrap-break-word">{{ wheelConfigurator.winner() }}</p>
         </div>
-        <div class="w-full flex flex-col gap-2">
+        <div class="w-full flex flex-col gap-2" [class.wl-chest-card]="chestMode()">
             <button 
                 type="button"
                 i18n-aria-label="@@winner.close.aria" aria-label="Close winner dialog"

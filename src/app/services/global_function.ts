@@ -35,7 +35,15 @@ export const STORAGE_KEYS = {
 
 export interface ColorPalette {
   name: string;
+  /** One colour per slice, cycling. For a gradient palette: the colour at the hub. */
   colors: string[];
+  /**
+   * Optional: makes this a gradient palette. `gradientTo[i]` is the colour slice
+   * `i` fades to at the rim, starting from `colors[i]` at the hub. Anything that
+   * does not draw gradients keeps using `colors`, so older wheels, cloud
+   * documents and the other views are unaffected.
+   */
+  gradientTo?: string[];
 }
 
 export const DEFAULT_PALETTES: ColorPalette[] = [
@@ -44,7 +52,38 @@ export const DEFAULT_PALETTES: ColorPalette[] = [
   { name: 'Neon', colors: ['#39FF14', '#FF00FF', '#00FFFF', '#FFFF00', '#FF0000', '#4D4DFF'] },
   { name: 'Ocean', colors: ['#0891b2', '#0e7490', '#155e75', '#0369a1', '#075985', '#0c4a6e'] },
   { name: 'Sunset', colors: ['#f43f5e', '#fb7185', '#fb923c', '#fbbf24', '#f59e0b', '#d97706'] },
+  {
+    name: 'Aurora',
+    colors: ['#7C3AED', '#2563EB', '#059669', '#F59E0B', '#DB2777', '#9333EA'],
+    gradientTo: ['#EC4899', '#06B6D4', '#A3E635', '#EF4444', '#F97316', '#3B82F6'],
+  },
 ];
+
+/** The rim colour of slice `index` in `palette`: its gradient end, or its solid colour. */
+export function paletteRimColor(palette: ColorPalette, index: number): string {
+  const colors = palette.colors;
+  if (!colors.length) {
+    return '#ffffff';
+  }
+
+  const i = index % colors.length;
+  return palette.gradientTo?.[i] || colors[i] || '#ffffff';
+}
+
+/** Linear blend of two hex colours; `t` = 0 gives `from`, 1 gives `to`. */
+export function mixHex(from: string, to: string, t: number): string {
+  const a = parseColorToRgb(from);
+  const b = parseColorToRgb(to);
+  if (!a || !b) {
+    return from;
+  }
+
+  const channel = (x: number, y: number) =>
+    Math.round(x + (y - x) * t)
+      .toString(16)
+      .padStart(2, '0');
+  return `#${channel(a.r, b.r)}${channel(a.g, b.g)}${channel(a.b, b.b)}`;
+}
 
 /**
  * Read JSON value from localStorage

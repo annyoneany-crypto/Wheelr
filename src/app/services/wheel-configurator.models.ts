@@ -1,5 +1,5 @@
 import { ColorPalette } from './global_function';
-import type { effectType, pointerType } from '../modules/classes/custom-type';
+import type { effectType, pointerType, wheelViewType } from '../modules/classes/custom-type';
 
 export type WinnerPanelPosition = 'left' | 'top' | 'right' | 'bottom';
 
@@ -19,6 +19,11 @@ export interface WheelDisplayConfig {
   workspaceName: string;
   names: string[];
   colors: string[];
+  /**
+   * Gradient palettes only (see ColorPalette.gradientTo). Left out entirely otherwise:
+   * Firestore rejects `undefined` fields, and older documents simply have none.
+   */
+  gradientTo?: string[];
   bgColor: string;
   bgImage: string;
   centerImage: string;
@@ -51,7 +56,7 @@ export interface WheelSnapshotEntry {
   selectedPaletteName: string;
   names: string[];
   centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
-  wheelView: 'wheel' | 'linear' | 'cards';
+  wheelView: wheelViewType;
   winnerEffect: effectType;
   showWinnerEffect: boolean;
   spinDurationMs: number;
@@ -78,7 +83,7 @@ export interface ActiveWheelSnapshotState {
   selectedPaletteName: string;
   names: string[];
   centerLogoSize: 's' | 'm' | 'l' | 'xl' | 'xxl' | 'xxxl';
-  wheelView: 'wheel' | 'linear' | 'cards';
+  wheelView: wheelViewType;
   winnerEffect: effectType;
   showWinnerEffect: boolean;
   spinDurationMs: number;

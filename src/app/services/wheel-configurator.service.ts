@@ -1,4 +1,4 @@
-import { computed, effect, ElementRef, Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+import { computed, effect, ElementRef, Injectable, PLATFORM_ID, inject, signal, untracked } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AdsService } from './ads.service';
 import {
@@ -10,9 +10,11 @@ import {
   readImage,
   clampDeg,
   contrastForHex,
+  paletteRimColor,
   ColorPalette,
 } from './global_function';
 import { WheelAudioManager } from './wheel-audio-manager';
+import { DefaultSoundPlayer } from './default-sounds';
 import {
   clearWorkspaceIndexedDb,
   clearWorkspaceStorage,
@@ -30,7 +32,7 @@ import {
 } from './wheel-configurator.models';
 import { CloudWheelSyncItem } from './wheel-cloud-repository.service';
 import { drawWheelCanvas } from '../shared/extraction-effect/wheel-renderer';
-import type { effectType, pointerType } from '../modules/classes/custom-type';
+import type { effectType, pointerType, wheelViewType } from '../modules/classes/custom-type';
 
 export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurator.models';
 
@@ -73,6 +75,14 @@ export class WheelConfigurator {
   private readonly wheelSettingsSnapshotKey = 'giveawayWheel.settingsSnapshot.v1';
   private readonly snapshotMigrationKey = 'giveawayWheel.snapshotMigrated.v1';
   private readonly audioManager = new WheelAudioManager();
+  /** Synthesised tick and fanfare, used whenever no custom audio was uploaded. */
+  private readonly defaultSounds = new DefaultSoundPlayer();
+  /** A spin cut short (view switch, reset) must not keep ticking to its planned end. */
+  private readonly stopDefaultTicksEffect = effect(() => {
+    if (!this.isSpinning()) {
+      untracked(() => this.defaultSounds.stopSpin());
+    }
+  });
   private readonly fontLoadTimeoutMs = 2000;
   private isHydratingWorkspace = false;
 
@@ -198,7 +208,7 @@ export class WheelConfigurator {
   showModal = signal(false);
   renameModalRequestToken = signal(0);
 
-  wheelView = signal<'wheel' | 'linear' | 'cards'>('wheel');
+  wheelView = signal<wheelViewType>('wheel');
   winnerEffect = signal<effectType>('confetti');
   showWinnerEffect = signal<boolean>(true);
   pointerType = signal<pointerType>('drop');
@@ -359,6 +369,16 @@ export class WheelConfigurator {
     writeImage(this.storageKey(STORAGE_KEYS.customAudio), audioData).catch(() => {});
   }
 
+  /** Sound panel: lets the user hear the default spin ticks before spinning. */
+  previewDefaultSpinSound(): void {
+    this.defaultSounds.previewSpin();
+  }
+
+  /** Sound panel: lets the user hear the default winner fanfare. */
+  previewDefaultWinnerSound(): void {
+    this.defaultSounds.playWinner();
+  }
+
   setWinnerAudio(audioData: string) {
     this.winnerAudio.set(audioData);
     writeImage(this.storageKey(STORAGE_KEYS.winnerAudio), audioData).catch(() => {});
@@ -383,11 +403,8 @@ export class WheelConfigurator {
     const n = this.names().length;
     if (!n) return '#ffffff';
 
-    const colors = this.selectedPalette().colors;
-    if (!colors.length) return '#ffffff';
-
-    const idx = this.pointerSliceIndex();
-    return colors[idx % colors.length] ?? '#ffffff';
+    // The pointer sits on the rim, which is where a gradient slice ends.
+    return paletteRimColor(this.selectedPalette(), this.pointerSliceIndex());
   });
 
   pointerContrastColor = computed(() => {
@@ -1086,10 +1103,12 @@ export class WheelConfigurator {
   ): Promise<void> {
     const paletteName = 'Cloud Import';
     const paletteColors = config.colors.length ? [...config.colors] : ['#f59e0b'];
+    const importedPalette: ColorPalette = { name: paletteName, colors: paletteColors };
+    if (config.gradientTo?.length) {
+      importedPalette.gradientTo = [...config.gradientTo];
+    }
 
-    writeJson(storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId), [
-      { name: paletteName, colors: paletteColors },
-    ]);
+    writeJson(storageKeyForWorkspace(STORAGE_KEYS.palettes, workspaceId), [importedPalette]);
     writeJson(storageKeyForWorkspace(STORAGE_KEYS.selectedPaletteName, workspaceId), paletteName);
     writeJson(storageKeyForWorkspace(STORAGE_KEYS.names, workspaceId), Array.isArray(config.names) ? config.names : []);
     writeJson(storageKeyForWorkspace(STORAGE_KEYS.centerColor, workspaceId), config.centerColor || '#ffffff');
@@ -1362,7 +1381,12 @@ export class WheelConfigurator {
       console.debug('no valid centerLogoSize in storage, defaulting', effectiveCenterLogoSize);
     }
 
-    if (effectiveWheelView === 'wheel' || effectiveWheelView === 'linear' || effectiveWheelView === 'cards') {
+    if (
+      effectiveWheelView === 'wheel' ||
+      effectiveWheelView === 'linear' ||
+      effectiveWheelView === 'cards' ||
+      effectiveWheelView === 'wheel3d'
+    ) {
       this.wheelView.set(effectiveWheelView);
     }
 
@@ -1371,7 +1395,8 @@ export class WheelConfigurator {
       effectiveWinnerEffect === 'cartoon-fire' ||
       effectiveWinnerEffect === 'confetti' ||
       effectiveWinnerEffect === 'fireworks' ||
-      effectiveWinnerEffect === 'applause'
+      effectiveWinnerEffect === 'applause' ||
+      effectiveWinnerEffect === 'chest'
     ) {
       this.winnerEffect.set(effectiveWinnerEffect);
     }
@@ -1388,7 +1413,9 @@ export class WheelConfigurator {
       effectivePointerType === 'finger' ||
       effectivePointerType === 'star' ||
       effectivePointerType === 'diamond' ||
-      effectivePointerType === 'bolt'
+      effectivePointerType === 'bolt' ||
+      effectivePointerType === 'crown' ||
+      effectivePointerType === 'crystal'
     ) {
       this.pointerType.set(effectivePointerType);
     }
@@ -1687,6 +1714,7 @@ export class WheelConfigurator {
     drawWheelCanvas(canvas, ctx, {
       names: this.names(),
       colors: this.selectedPalette().colors,
+      gradientTo: this.selectedPalette().gradientTo,
       fontFamily: this.fontFamily(),
       renderScale,
       zoomed,
@@ -1732,17 +1760,22 @@ export class WheelConfigurator {
     this.winner.set(null);
     if (this.winnerAnimationId()) cancelAnimationFrame(this.winnerAnimationId()!);
 
-    // Play audio if enabled
-    if (this.soundEnabled() && this.customAudio()) {
-      this.audioManager.playSpinAudio(this.customAudio());
-    }
-
+    const startRotation = this.currentRotation();
     const resolvedExtraDegrees =
       typeof extraDegrees === 'number' && Number.isFinite(extraDegrees)
         ? ((Math.floor(extraDegrees) % 360) + 360) % 360
         : this.generateSpinExtraDegrees();
     const totalRotation = this.currentRotation() + (360 * 6) + resolvedExtraDegrees;
     this.currentRotation.set(totalRotation);
+
+    // An uploaded file wins; otherwise the default ticks follow the wheel.
+    if (this.soundEnabled()) {
+      if (this.customAudio()) {
+        this.audioManager.playSpinAudio(this.customAudio());
+      } else {
+        this.defaultSounds.playSpin(startRotation, totalRotation, this.spinDurationMs(), this.names().length);
+      }
+    }
 
     setTimeout(() => {
       this.isSpinning.set(false);
@@ -1760,9 +1793,13 @@ export class WheelConfigurator {
         this.consumePresetWinner(winningName);
       }
 
-      // Play winner audio if enabled
-      if (this.soundEnabled() && this.winnerAudio()) {
-        this.audioManager.playWinnerAudio(this.winnerAudio());
+      // Winner audio: the uploaded file, or the default fanfare.
+      if (this.soundEnabled()) {
+        if (this.winnerAudio()) {
+          this.audioManager.playWinnerAudio(this.winnerAudio());
+        } else {
+          this.defaultSounds.playWinner();
+        }
       }
 
       // Every Nth spin this shows an interstitial; on web it only counts.

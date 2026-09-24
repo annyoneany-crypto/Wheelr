@@ -74,6 +74,7 @@ export class WheelTemplates {
       drawWheelCanvas(canvas, ctx, {
         names: template.names,
         colors: template.palette.colors,
+        gradientTo: template.palette.gradientTo,
         fontFamily: '"Inter", sans-serif',
         radiusInset: 6,
       });

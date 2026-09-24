@@ -72,6 +72,79 @@
       transition-all duration-200 active:scale-95;
 }
 
+/* ── Header actions ─────────────────────────────────────────
+   One primary button, one toolbar for the utilities, the account last. */
+
+/* The standalone buttons share the toolbar's monochrome surface; like its icons
+   they only turn amber on hover. */
+.wl-hcta,
+.wl-hsignin,
+.wl-havatar {
+  @apply inline-flex h-10 w-10 items-center justify-center gap-2 rounded-full
+    border border-white/10 bg-white/[0.04] text-sm font-semibold text-white/80
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md transition-all duration-200
+    hover:cursor-pointer hover:border-white/20 hover:bg-white/10 hover:text-amber-200
+    active:scale-95 disabled:cursor-not-allowed disabled:opacity-40 md:h-11;
+}
+
+.wl-hcta {
+  @apply md:w-auto md:px-5;
+}
+
+.wl-hgroup {
+  @apply inline-flex items-center gap-0.5 rounded-full border border-white/10 bg-white/[0.04] p-1
+    shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] backdrop-blur-md;
+}
+
+.wl-hbtn {
+  @apply inline-flex h-8 w-8 items-center justify-center rounded-full text-sm text-white/70
+    transition-all duration-200 hover:cursor-pointer hover:bg-white/10 hover:text-amber-200
+    active:scale-90 disabled:cursor-not-allowed disabled:opacity-40 md:h-9 md:w-9;
+}
+
+.wl-hbtn-active {
+  @apply bg-amber-400/15 text-amber-200;
+}
+
+.wl-hdivider {
+  @apply mx-0.5 h-5 w-px bg-white/10;
+}
+
+.wl-hsignin {
+  @apply md:w-auto md:px-4;
+}
+
+.wl-havatar {
+  @apply relative text-base font-black text-white md:w-11;
+}
+
+.wl-havatar-dot {
+  @apply absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-neutral-950 bg-white;
+}
+
+/* Side rails (info/donation/share on the left, settings panels on the right):
+   the header's look, on a darker base since they float over the page background.
+   No display or position here — the markup picks flex/hidden per breakpoint. */
+.wl-rail-btn {
+  @apply h-12 w-12 items-center justify-center rounded-full border border-white/10
+    bg-neutral-950/70 text-white/75 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]
+    backdrop-blur-md transition-all duration-300 ease-in-out
+    hover:cursor-pointer hover:border-white/20 hover:bg-neutral-800/80 hover:text-amber-200
+    active:scale-95;
+}
+
+.wl-rail-btn-active {
+  @apply border-white/20 bg-neutral-800/80 text-amber-200;
+}
+
+.wl-rail-btn:focus-visible,
+.wl-hcta:focus-visible,
+.wl-hbtn:focus-visible,
+.wl-hsignin:focus-visible,
+.wl-havatar:focus-visible {
+  @apply outline-2 outline-offset-2 outline-amber-400;
+}
+
 /* ── Styled Toggle Switch ────────────────────────────────── */
 .wl-toggle {
   appearance: none;

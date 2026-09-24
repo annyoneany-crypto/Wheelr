@@ -6810,5 +6810,173 @@
     "fr": "Choisir un fichier audio",
     "es": "Elige un archivo de audio",
     "zh": "选择音频文件"
+  },
+  "effects.view.wheel3d": {
+    "it": "Ruota 3D",
+    "de": "3D-Rad",
+    "fr": "Roue 3D",
+    "es": "Ruleta 3D",
+    "zh": "3D 转盘"
+  },
+  "effects.premium": {
+    "it": "Premium",
+    "de": "Premium",
+    "fr": "Premium",
+    "es": "Premium",
+    "zh": "高级"
+  },
+  "effects.view.wheel3dHint": {
+    "it": "Bordo dorato, luci e un puntatore che scatta.",
+    "de": "Goldener Rand, Lichter und ein tickender Zeiger.",
+    "fr": "Bord doré, lumières et un pointeur qui cliquette.",
+    "es": "Borde dorado, luces y un puntero que hace tic.",
+    "zh": "金色边框、灯光和会跳动的指针。"
+  },
+  "effects.wheel3d.lockedApp": {
+    "it": "Guarda un breve annuncio per sbloccarla per 24 ore.",
+    "de": "Sieh dir eine kurze Werbung an, um es 24 Stunden lang freizuschalten.",
+    "fr": "Regardez une courte publicité pour la débloquer pendant 24 heures.",
+    "es": "Mira un anuncio corto para desbloquearla durante 24 horas.",
+    "zh": "观看一段简短广告即可解锁 24 小时。"
+  },
+  "effects.wheel3d.lockedWeb": {
+    "it": "Accedi gratuitamente per sbloccarla.",
+    "de": "Melde dich kostenlos an, um es freizuschalten.",
+    "fr": "Connectez-vous gratuitement pour la débloquer.",
+    "es": "Inicia sesión gratis para desbloquearla.",
+    "zh": "免费登录即可解锁。"
+  },
+  "wheel3d.spin": {
+    "it": "Gira la ruota",
+    "de": "Rad drehen",
+    "fr": "Faire tourner la roue",
+    "es": "Girar la ruleta",
+    "zh": "转动转盘"
+  },
+  "effects.fx.chest": {
+    "it": "Cofanetti 3D",
+    "de": "3D-Schatztruhen",
+    "fr": "Coffrets 3D",
+    "es": "Cofres 3D",
+    "zh": "3D 宝箱"
+  },
+  "premium.unlock.title": {
+    "it": "Sblocca Premium",
+    "de": "Premium freischalten",
+    "fr": "Débloquer Premium",
+    "es": "Desbloquea Premium",
+    "zh": "解锁高级功能"
+  },
+  "premium.unlock.body": {
+    "it": "Guarda un breve video pubblicitario e le funzioni premium sono tue per le prossime 24 ore. Gli annunci mantengono Wheelr gratuito.",
+    "de": "Sieh dir ein kurzes Werbevideo an und die Premium-Funktionen gehören dir für die nächsten 24 Stunden. Werbung hält Wheelr kostenlos.",
+    "fr": "Regardez une courte vidéo publicitaire et les fonctions premium sont à vous pour les 24 prochaines heures. La publicité permet à Wheelr de rester gratuit.",
+    "es": "Mira un breve vídeo publicitario y las funciones premium son tuyas durante las próximas 24 horas. Los anuncios mantienen Wheelr gratis.",
+    "zh": "观看一段简短的视频广告，即可在接下来的 24 小时内使用高级功能。广告让 Wheelr 保持免费。"
+  },
+  "premium.unlock.skipped": {
+    "it": "L'annuncio deve essere guardato fino alla fine per sbloccare Premium. Riprova.",
+    "de": "Die Werbung muss bis zum Ende laufen, um Premium freizuschalten. Versuch es noch einmal.",
+    "fr": "La publicité doit être regardée jusqu’au bout pour débloquer Premium. Réessayez.",
+    "es": "El anuncio tiene que verse hasta el final para desbloquear Premium. Inténtalo de nuevo.",
+    "zh": "需要完整观看广告才能解锁高级功能。请再试一次。"
+  },
+  "header.newWheel.label": {
+    "it": "Nuova ruota",
+    "de": "Neues Rad",
+    "fr": "Nouvelle roue",
+    "es": "Nueva ruleta",
+    "zh": "新建转盘"
+  },
+  "palette.gradientBadge": {
+    "it": "Palette sfumata",
+    "de": "Verlaufspalette",
+    "fr": "Palette en dégradé",
+    "es": "Paleta degradada",
+    "zh": "渐变配色"
+  },
+  "palette.solid": {
+    "it": "Tinta unita",
+    "de": "Einfarbig",
+    "fr": "Unie",
+    "es": "Sólida",
+    "zh": "纯色"
+  },
+  "palette.gradient": {
+    "it": "Sfumatura",
+    "de": "Verlauf",
+    "fr": "Dégradé",
+    "es": "Degradado",
+    "zh": "渐变"
+  },
+  "palette.gradientHint": {
+    "it": "Ogni spicchio sfuma dal primo colore al centro al secondo colore sul bordo.",
+    "de": "Jedes Segment verläuft von seiner ersten Farbe in der Mitte zu seiner zweiten Farbe am Rand.",
+    "fr": "Chaque part passe de sa première couleur au centre à sa seconde couleur sur le bord.",
+    "es": "Cada porción pasa de su primer color en el centro a su segundo color en el borde.",
+    "zh": "每个扇区从中心的第一种颜色渐变到边缘的第二种颜色。"
+  },
+  "effects.pointer.crown": {
+    "it": "Corona",
+    "de": "Krone",
+    "fr": "Couronne",
+    "es": "Corona",
+    "zh": "皇冠"
+  },
+  "effects.pointer.crystal": {
+    "it": "Cristallo",
+    "de": "Kristall",
+    "fr": "Cristal",
+    "es": "Cristal",
+    "zh": "水晶"
+  },
+  "effects.pointer.premiumHint": {
+    "it": "Corona e Cristallo sono puntatori premium.",
+    "de": "Krone und Kristall sind Premium-Zeiger.",
+    "fr": "Couronne et Cristal sont des pointeurs premium.",
+    "es": "Corona y Cristal son punteros premium.",
+    "zh": "皇冠和水晶是高级指针。"
+  },
+  "premium.unlock.features": {
+    "it": "Ruota 3D, cofanetti 3D e puntatori premium",
+    "de": "3D-Rad, 3D-Schatztruhen und Premium-Zeiger",
+    "fr": "Roue 3D, coffrets 3D et pointeurs premium",
+    "es": "Ruleta 3D, cofres 3D y punteros premium",
+    "zh": "3D 转盘、3D 宝箱和高级指针"
+  },
+  "sound.defaultSpin": {
+    "it": "Predefinito: ticchettio della ruota",
+    "de": "Standard: Ticken des Rads",
+    "fr": "Par défaut : cliquetis de la roue",
+    "es": "Predeterminado: tictac de la ruleta",
+    "zh": "默认：转盘滴答声"
+  },
+  "sound.defaultWinner": {
+    "it": "Predefinito: fanfara di vittoria",
+    "de": "Standard: Siegesfanfare",
+    "fr": "Par défaut : fanfare de victoire",
+    "es": "Predeterminado: fanfarria de victoria",
+    "zh": "默认：胜利号角"
+  },
+  "sound.preview": {
+    "it": "Ascolta",
+    "de": "Anhören",
+    "fr": "Écouter",
+    "es": "Escuchar",
+    "zh": "试听"
+  },
+  "sound.previewSpin.aria": {
+    "it": "Ascolta il suono di rotazione predefinito",
+    "de": "Standard-Drehgeräusch anhören",
+    "fr": "Écouter le son de rotation par défaut",
+    "es": "Escuchar el sonido de giro predeterminado",
+    "zh": "试听默认旋转音效"
+  },
+  "sound.previewWinner.aria": {
+    "it": "Ascolta il suono del vincitore predefinito",
+    "de": "Standard-Gewinnergeräusch anhören",
+    "fr": "Écouter le son du gagnant par défaut",
+    "es": "Escuchar el sonido de ganador predeterminado",
+    "zh": "试听默认获胜音效"
   }
 }

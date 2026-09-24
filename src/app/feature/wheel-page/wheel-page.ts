@@ -15,6 +15,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { WheelConfigurator, WheelDisplayConfig } from '../../services/wheel-configurator.service';
 import { LinearWheel } from '../../shared/extraction-effect/linear-wheel/linear-wheel';
 import { Wheel } from '../../shared/extraction-effect/wheel/wheel';
+import { Wheel3d } from '../../shared/extraction-effect/wheel-3d/wheel-3d';
 import { CardsEffect } from '../../shared/extraction-effect/cards-draw/cards-draw';
 import { FireEffect } from '../../shared/winner-effect/fire-effect/fire-effect';
 import {
@@ -32,6 +33,7 @@ import { WinnerPanel } from './child/winner-panel/winner-panel';
 import type { WinnerPanelEntry } from './child/winner-panel/winner-panel';
 import { WheelButton } from './child/wheel-button/wheel-button';
 import { NativePlatformService } from '../../services/native-platform.service';
+import { PremiumService } from '../../services/premium.service';
 
 /** Loaded preview images plus the source URLs they were loaded from. */
 interface PreviewImageEntry {
@@ -43,7 +45,7 @@ interface PreviewImageEntry {
 
 @Component({
   selector: 'app-wheel-page',
-  imports: [LinearWheel, Wheel, CardsEffect, FireEffect, RouterModule, WinnerPanel, WheelButton],
+  imports: [LinearWheel, Wheel, Wheel3d, CardsEffect, FireEffect, RouterModule, WinnerPanel, WheelButton],
   templateUrl: './wheel-page.html',
   styleUrl: './wheel-page.css',
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -82,6 +84,7 @@ export class WheelPage {
     return 'grid-col-1 md:grid-cols-2';
   });
   showIndependentPreview = computed(() => this.wheelConfigurator.visibleWheelCount() > 1);
+  protected readonly premium = inject(PremiumService);
   renameModalOpen = signal(false);
   renameDrafts = signal<Record<string, string>>({});
   renameDescriptionDrafts = signal<Record<string, string>>({});
@@ -821,6 +824,7 @@ export class WheelPage {
     drawWheelCanvas(canvas, ctx, {
       names: config.names,
       colors: config.colors,
+      gradientTo: config.gradientTo,
       fontFamily: config.fontFamily,
       emptyFillStyle: '#5e5e5eBB',
       wheelImage: wheelImageEl,

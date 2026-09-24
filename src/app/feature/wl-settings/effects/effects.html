@@ -10,14 +10,14 @@
         type="button"
         (click)="setView('wheel')"
         class="flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.wheelView() === 'wheel'"
-        [class.border-amber-400/50]="wheelConfigurator.wheelView() === 'wheel'"
-        [class.text-amber-300]="wheelConfigurator.wheelView() === 'wheel'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.wheelView() === 'wheel'"
-        [class.bg-white/[0.04]]="wheelConfigurator.wheelView() !== 'wheel'"
-        [class.border-white/10]="wheelConfigurator.wheelView() !== 'wheel'"
-        [class.text-white/70]="wheelConfigurator.wheelView() !== 'wheel'"
-        [class.hover:border-white/20]="wheelConfigurator.wheelView() !== 'wheel'">
+        [class.bg-amber-400/15]="premium.renderedWheelView() === 'wheel'"
+        [class.border-amber-400/50]="premium.renderedWheelView() === 'wheel'"
+        [class.text-amber-300]="premium.renderedWheelView() === 'wheel'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedWheelView() === 'wheel'"
+        [class.bg-white/[0.04]]="premium.renderedWheelView() !== 'wheel'"
+        [class.border-white/10]="premium.renderedWheelView() !== 'wheel'"
+        [class.text-white/70]="premium.renderedWheelView() !== 'wheel'"
+        [class.hover:border-white/20]="premium.renderedWheelView() !== 'wheel'">
         <i class="fa-solid fa-circle-notch mr-1.5" aria-hidden="true"></i><span i18n="@@effects.view.wheel">Wheel</span>
       </button>
 
@@ -25,17 +25,54 @@
         type="button"
         (click)="setView('cards')"
         class="flex-1 py-2.5 rounded-xl text-sm font-semibold border transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.wheelView() === 'cards'"
-        [class.border-amber-400/50]="wheelConfigurator.wheelView() === 'cards'"
-        [class.text-amber-300]="wheelConfigurator.wheelView() === 'cards'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.wheelView() === 'cards'"
-        [class.bg-white/[0.04]]="wheelConfigurator.wheelView() !== 'cards'"
-        [class.border-white/10]="wheelConfigurator.wheelView() !== 'cards'"
-        [class.text-white/70]="wheelConfigurator.wheelView() !== 'cards'"
-        [class.hover:border-white/20]="wheelConfigurator.wheelView() !== 'cards'">
+        [class.bg-amber-400/15]="premium.renderedWheelView() === 'cards'"
+        [class.border-amber-400/50]="premium.renderedWheelView() === 'cards'"
+        [class.text-amber-300]="premium.renderedWheelView() === 'cards'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedWheelView() === 'cards'"
+        [class.bg-white/[0.04]]="premium.renderedWheelView() !== 'cards'"
+        [class.border-white/10]="premium.renderedWheelView() !== 'cards'"
+        [class.text-white/70]="premium.renderedWheelView() !== 'cards'"
+        [class.hover:border-white/20]="premium.renderedWheelView() !== 'cards'">
         <i class="fa-solid fa-clone mr-1.5" aria-hidden="true"></i><span i18n="@@effects.view.cards">Cards</span>
       </button>
     </div>
+
+    <!-- Premium: 3D wheel -->
+    <button
+      type="button"
+      (click)="select3dView()"
+      class="relative w-full flex items-center gap-3 px-3 py-2.5 rounded-xl border text-left transition-all duration-200 hover:cursor-pointer bg-linear-to-r from-amber-400/10 via-fuchsia-500/10 to-sky-400/10"
+      [class.border-amber-400/60]="premium.renderedWheelView() === 'wheel3d'"
+      [class.shadow-[0_0_16px_rgba(245,158,11,0.25)]]="premium.renderedWheelView() === 'wheel3d'"
+      [class.border-white/10]="premium.renderedWheelView() !== 'wheel3d'"
+      [class.hover:border-amber-300/40]="premium.renderedWheelView() !== 'wheel3d'">
+      <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-amber-300">
+        <i class="fa-solid fa-cube" aria-hidden="true"></i>
+      </span>
+      <span class="flex-1 min-w-0">
+        <span class="flex items-center gap-2 text-sm font-semibold text-white">
+          <span i18n="@@effects.view.wheel3d">3D Wheel</span>
+          <span class="inline-flex items-center gap-1 rounded-full bg-amber-400/20 px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wider text-amber-300">
+            <i class="fa-solid fa-crown" aria-hidden="true"></i><span i18n="@@effects.premium">Premium</span>
+          </span>
+        </span>
+        <span class="block text-xs text-white/50" i18n="@@effects.view.wheel3dHint">Gold rim, lights and a ticking pointer.</span>
+      </span>
+      @if (!premium.hasPremium()) {
+        <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
+      } @else if (premium.renderedWheelView() === 'wheel3d') {
+        <i class="fa-solid fa-check text-amber-300" aria-hidden="true"></i>
+      }
+    </button>
+    @if (!premium.hasPremium()) {
+      <p class="text-xs text-white/40">
+        @if (premium.unlocksWithAd) {
+          <span i18n="@@effects.wheel3d.lockedApp">Watch a short ad to unlock it for 24 hours.</span>
+        } @else {
+          <span i18n="@@effects.wheel3d.lockedWeb">Sign in for free to unlock it.</span>
+        }
+      </p>
+    }
   </div>
 
   <div class="space-y-2 border-b border-white/10 pb-4">
@@ -84,14 +121,14 @@
         type="button"
         (click)="setWinnerEffect('fire')"
         class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
-        [class.bg-orange-500/15]="wheelConfigurator.winnerEffect() === 'fire'"
-        [class.border-orange-400/50]="wheelConfigurator.winnerEffect() === 'fire'"
-        [class.text-orange-300]="wheelConfigurator.winnerEffect() === 'fire'"
-        [class.shadow-[0_0_14px_rgba(251,146,60,0.15)]]="wheelConfigurator.winnerEffect() === 'fire'"
-        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'fire'"
-        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'fire'"
-        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'fire'"
-        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'fire'">
+        [class.bg-orange-500/15]="premium.renderedWinnerEffect() === 'fire'"
+        [class.border-orange-400/50]="premium.renderedWinnerEffect() === 'fire'"
+        [class.text-orange-300]="premium.renderedWinnerEffect() === 'fire'"
+        [class.shadow-[0_0_14px_rgba(251,146,60,0.15)]]="premium.renderedWinnerEffect() === 'fire'"
+        [class.bg-white/[0.04]]="premium.renderedWinnerEffect() !== 'fire'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'fire'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'fire'"
+        [class.hover:border-white/20]="premium.renderedWinnerEffect() !== 'fire'">
         <i class="fa-solid fa-fire mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.fire">Fire</span>
       </button>
 
@@ -99,14 +136,14 @@
         type="button"
         (click)="setWinnerEffect('confetti')"
         class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
-        [class.bg-cyan-500/15]="wheelConfigurator.winnerEffect() === 'confetti'"
-        [class.border-cyan-400/50]="wheelConfigurator.winnerEffect() === 'confetti'"
-        [class.text-cyan-300]="wheelConfigurator.winnerEffect() === 'confetti'"
-        [class.shadow-[0_0_14px_rgba(34,211,238,0.15)]]="wheelConfigurator.winnerEffect() === 'confetti'"
-        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'confetti'"
-        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'confetti'"
-        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'confetti'"
-        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'confetti'">
+        [class.bg-cyan-500/15]="premium.renderedWinnerEffect() === 'confetti'"
+        [class.border-cyan-400/50]="premium.renderedWinnerEffect() === 'confetti'"
+        [class.text-cyan-300]="premium.renderedWinnerEffect() === 'confetti'"
+        [class.shadow-[0_0_14px_rgba(34,211,238,0.15)]]="premium.renderedWinnerEffect() === 'confetti'"
+        [class.bg-white/[0.04]]="premium.renderedWinnerEffect() !== 'confetti'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'confetti'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'confetti'"
+        [class.hover:border-white/20]="premium.renderedWinnerEffect() !== 'confetti'">
         <i class="fa-solid fa-champagne-glasses mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.confetti">Confetti</span>
       </button>
 
@@ -114,14 +151,14 @@
         type="button"
         (click)="setWinnerEffect('fireworks')"
         class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
-        [class.bg-fuchsia-500/15]="wheelConfigurator.winnerEffect() === 'fireworks'"
-        [class.border-fuchsia-400/50]="wheelConfigurator.winnerEffect() === 'fireworks'"
-        [class.text-fuchsia-300]="wheelConfigurator.winnerEffect() === 'fireworks'"
-        [class.shadow-[0_0_14px_rgba(232,121,249,0.15)]]="wheelConfigurator.winnerEffect() === 'fireworks'"
-        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'fireworks'"
-        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'fireworks'"
-        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'fireworks'"
-        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'fireworks'">
+        [class.bg-fuchsia-500/15]="premium.renderedWinnerEffect() === 'fireworks'"
+        [class.border-fuchsia-400/50]="premium.renderedWinnerEffect() === 'fireworks'"
+        [class.text-fuchsia-300]="premium.renderedWinnerEffect() === 'fireworks'"
+        [class.shadow-[0_0_14px_rgba(232,121,249,0.15)]]="premium.renderedWinnerEffect() === 'fireworks'"
+        [class.bg-white/[0.04]]="premium.renderedWinnerEffect() !== 'fireworks'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'fireworks'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'fireworks'"
+        [class.hover:border-white/20]="premium.renderedWinnerEffect() !== 'fireworks'">
         <i class="fa-solid fa-burst mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.fireworks">Fireworks</span>
       </button>
 
@@ -129,15 +166,36 @@
         type="button"
         (click)="setWinnerEffect('cartoon-fire')"
         class="group rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200"
-        [class.bg-amber-500/15]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
-        [class.border-amber-400/50]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
-        [class.text-amber-300]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
-        [class.shadow-[0_0_14px_rgba(251,191,36,0.15)]]="wheelConfigurator.winnerEffect() === 'cartoon-fire'"
-        [class.bg-white/[0.04]]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
-        [class.border-white/10]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
-        [class.text-white/70]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'"
-        [class.hover:border-white/20]="wheelConfigurator.winnerEffect() !== 'cartoon-fire'">
+        [class.bg-amber-500/15]="premium.renderedWinnerEffect() === 'cartoon-fire'"
+        [class.border-amber-400/50]="premium.renderedWinnerEffect() === 'cartoon-fire'"
+        [class.text-amber-300]="premium.renderedWinnerEffect() === 'cartoon-fire'"
+        [class.shadow-[0_0_14px_rgba(251,191,36,0.15)]]="premium.renderedWinnerEffect() === 'cartoon-fire'"
+        [class.bg-white/[0.04]]="premium.renderedWinnerEffect() !== 'cartoon-fire'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'cartoon-fire'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'cartoon-fire'"
+        [class.hover:border-white/20]="premium.renderedWinnerEffect() !== 'cartoon-fire'">
         <i class="fa-solid fa-wand-magic-sparkles mr-2" aria-hidden="true"></i><span i18n="@@effects.fx.cartoonFire">Cartoon Fire</span>
+      </button>
+
+      <!-- Premium: 3D chests -->
+      <button
+        type="button"
+        (click)="setWinnerEffect('chest')"
+        class="sm:col-span-2 flex items-center gap-2 rounded-xl border px-3 py-3 text-left text-sm font-semibold transition-all duration-200 bg-linear-to-r from-rose-500/10 via-amber-400/10 to-rose-500/10"
+        [class.border-amber-400/60]="premium.renderedWinnerEffect() === 'chest'"
+        [class.text-amber-300]="premium.renderedWinnerEffect() === 'chest'"
+        [class.shadow-[0_0_14px_rgba(251,191,36,0.25)]]="premium.renderedWinnerEffect() === 'chest'"
+        [class.border-white/10]="premium.renderedWinnerEffect() !== 'chest'"
+        [class.text-white/70]="premium.renderedWinnerEffect() !== 'chest'"
+        [class.hover:border-amber-300/40]="premium.renderedWinnerEffect() !== 'chest'">
+        <i class="fa-solid fa-gem" aria-hidden="true"></i>
+        <span class="flex-1" i18n="@@effects.fx.chest">3D Chests</span>
+        <span class="inline-flex items-center gap-1 rounded-full bg-amber-400/20 px-2 py-0.5 text-[0.6rem] font-black uppercase tracking-wider text-amber-300">
+          <i class="fa-solid fa-crown" aria-hidden="true"></i><span i18n="@@effects.premium">Premium</span>
+        </span>
+        @if (!premium.hasPremium()) {
+          <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
+        }
       </button>
     </div>
   </div>
@@ -152,14 +210,14 @@
         type="button"
         (click)="setPointerType('drop')"
         class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'drop'"
-        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'drop'"
-        [class.text-amber-300]="wheelConfigurator.pointerType() === 'drop'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'drop'"
-        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'drop'"
-        [class.border-white/10]="wheelConfigurator.pointerType() !== 'drop'"
-        [class.text-white/70]="wheelConfigurator.pointerType() !== 'drop'"
-        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'drop'">
+        [class.bg-amber-400/15]="premium.renderedPointerType() === 'drop'"
+        [class.border-amber-400/50]="premium.renderedPointerType() === 'drop'"
+        [class.text-amber-300]="premium.renderedPointerType() === 'drop'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedPointerType() === 'drop'"
+        [class.bg-white/[0.04]]="premium.renderedPointerType() !== 'drop'"
+        [class.border-white/10]="premium.renderedPointerType() !== 'drop'"
+        [class.text-white/70]="premium.renderedPointerType() !== 'drop'"
+        [class.hover:border-white/20]="premium.renderedPointerType() !== 'drop'">
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 58C24 47 18 39 18 29C18 18 24.7 10 32 10C39.3 10 46 18 46 29C46 39 40 47 32 58Z" fill="currentColor" stroke="currentColor" stroke-width="2"/>
         </svg>
@@ -170,14 +228,14 @@
         type="button"
         (click)="setPointerType('arrow')"
         class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'arrow'"
-        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'arrow'"
-        [class.text-amber-300]="wheelConfigurator.pointerType() === 'arrow'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'arrow'"
-        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'arrow'"
-        [class.border-white/10]="wheelConfigurator.pointerType() !== 'arrow'"
-        [class.text-white/70]="wheelConfigurator.pointerType() !== 'arrow'"
-        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'arrow'">
+        [class.bg-amber-400/15]="premium.renderedPointerType() === 'arrow'"
+        [class.border-amber-400/50]="premium.renderedPointerType() === 'arrow'"
+        [class.text-amber-300]="premium.renderedPointerType() === 'arrow'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedPointerType() === 'arrow'"
+        [class.bg-white/[0.04]]="premium.renderedPointerType() !== 'arrow'"
+        [class.border-white/10]="premium.renderedPointerType() !== 'arrow'"
+        [class.text-white/70]="premium.renderedPointerType() !== 'arrow'"
+        [class.hover:border-white/20]="premium.renderedPointerType() !== 'arrow'">
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 8L18 52H28L32 40L36 52H46L32 8Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         </svg>
@@ -188,14 +246,14 @@
         type="button"
         (click)="setPointerType('finger')"
         class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'finger'"
-        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'finger'"
-        [class.text-amber-300]="wheelConfigurator.pointerType() === 'finger'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'finger'"
-        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'finger'"
-        [class.border-white/10]="wheelConfigurator.pointerType() !== 'finger'"
-        [class.text-white/70]="wheelConfigurator.pointerType() !== 'finger'"
-        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'finger'">
+        [class.bg-amber-400/15]="premium.renderedPointerType() === 'finger'"
+        [class.border-amber-400/50]="premium.renderedPointerType() === 'finger'"
+        [class.text-amber-300]="premium.renderedPointerType() === 'finger'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedPointerType() === 'finger'"
+        [class.bg-white/[0.04]]="premium.renderedPointerType() !== 'finger'"
+        [class.border-white/10]="premium.renderedPointerType() !== 'finger'"
+        [class.text-white/70]="premium.renderedPointerType() !== 'finger'"
+        [class.hover:border-white/20]="premium.renderedPointerType() !== 'finger'">
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 6C29 6 27 8 27 11V34L21 28C19 26 16 26 14 28C12 30 12 33 14 35L28 54C29 56 31 57 33 57H44C48 57 51 54 51 50V30C51 27 49 25 46 25C45 25 44 25.5 43 26V23C43 20 41 18 38 18C37.5 18 37 18.1 36.5 18.3V11C36.5 8 34.5 6 32 6Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
         </svg>
@@ -206,14 +264,14 @@
         type="button"
         (click)="setPointerType('star')"
         class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'star'"
-        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'star'"
-        [class.text-amber-300]="wheelConfigurator.pointerType() === 'star'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'star'"
-        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'star'"
-        [class.border-white/10]="wheelConfigurator.pointerType() !== 'star'"
-        [class.text-white/70]="wheelConfigurator.pointerType() !== 'star'"
-        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'star'">
+        [class.bg-amber-400/15]="premium.renderedPointerType() === 'star'"
+        [class.border-amber-400/50]="premium.renderedPointerType() === 'star'"
+        [class.text-amber-300]="premium.renderedPointerType() === 'star'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedPointerType() === 'star'"
+        [class.bg-white/[0.04]]="premium.renderedPointerType() !== 'star'"
+        [class.border-white/10]="premium.renderedPointerType() !== 'star'"
+        [class.text-white/70]="premium.renderedPointerType() !== 'star'"
+        [class.hover:border-white/20]="premium.renderedPointerType() !== 'star'">
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 4L39 24L60 24L43 37L49 58L32 45L15 58L21 37L4 24L25 24Z" fill="currentColor" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
         </svg>
@@ -224,14 +282,14 @@
         type="button"
         (click)="setPointerType('diamond')"
         class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'diamond'"
-        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'diamond'"
-        [class.text-amber-300]="wheelConfigurator.pointerType() === 'diamond'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'diamond'"
-        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'diamond'"
-        [class.border-white/10]="wheelConfigurator.pointerType() !== 'diamond'"
-        [class.text-white/70]="wheelConfigurator.pointerType() !== 'diamond'"
-        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'diamond'">
+        [class.bg-amber-400/15]="premium.renderedPointerType() === 'diamond'"
+        [class.border-amber-400/50]="premium.renderedPointerType() === 'diamond'"
+        [class.text-amber-300]="premium.renderedPointerType() === 'diamond'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedPointerType() === 'diamond'"
+        [class.bg-white/[0.04]]="premium.renderedPointerType() !== 'diamond'"
+        [class.border-white/10]="premium.renderedPointerType() !== 'diamond'"
+        [class.text-white/70]="premium.renderedPointerType() !== 'diamond'"
+        [class.hover:border-white/20]="premium.renderedPointerType() !== 'diamond'">
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M32 4L56 32L32 60L8 32Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         </svg>
@@ -242,19 +300,52 @@
         type="button"
         (click)="setPointerType('bolt')"
         class="flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200"
-        [class.bg-amber-400/15]="wheelConfigurator.pointerType() === 'bolt'"
-        [class.border-amber-400/50]="wheelConfigurator.pointerType() === 'bolt'"
-        [class.text-amber-300]="wheelConfigurator.pointerType() === 'bolt'"
-        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="wheelConfigurator.pointerType() === 'bolt'"
-        [class.bg-white/[0.04]]="wheelConfigurator.pointerType() !== 'bolt'"
-        [class.border-white/10]="wheelConfigurator.pointerType() !== 'bolt'"
-        [class.text-white/70]="wheelConfigurator.pointerType() !== 'bolt'"
-        [class.hover:border-white/20]="wheelConfigurator.pointerType() !== 'bolt'">
+        [class.bg-amber-400/15]="premium.renderedPointerType() === 'bolt'"
+        [class.border-amber-400/50]="premium.renderedPointerType() === 'bolt'"
+        [class.text-amber-300]="premium.renderedPointerType() === 'bolt'"
+        [class.shadow-[0_0_12px_rgba(245,158,11,0.15)]]="premium.renderedPointerType() === 'bolt'"
+        [class.bg-white/[0.04]]="premium.renderedPointerType() !== 'bolt'"
+        [class.border-white/10]="premium.renderedPointerType() !== 'bolt'"
+        [class.text-white/70]="premium.renderedPointerType() !== 'bolt'"
+        [class.hover:border-white/20]="premium.renderedPointerType() !== 'bolt'">
         <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
           <path d="M38 4L14 36H28L24 60L50 26H36Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
         </svg>
         <span i18n="@@effects.pointer.bolt">Bolt</span>
       </button>
+
+      <!-- Premium pointers -->
+      @for (pointer of premiumPointers; track pointer.id) {
+        <button
+          type="button"
+          (click)="setPointerType(pointer.id)"
+          class="relative flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-xs font-semibold transition-all duration-200 bg-linear-to-b from-amber-400/10 to-transparent"
+          [class.border-amber-400/60]="premium.renderedPointerType() === pointer.id"
+          [class.text-amber-300]="premium.renderedPointerType() === pointer.id"
+          [class.shadow-[0_0_12px_rgba(245,158,11,0.2)]]="premium.renderedPointerType() === pointer.id"
+          [class.border-white/10]="premium.renderedPointerType() !== pointer.id"
+          [class.text-white/70]="premium.renderedPointerType() !== pointer.id"
+          [class.hover:border-amber-300/40]="premium.renderedPointerType() !== pointer.id">
+          <i class="fa-solid absolute top-1.5 right-1.5 text-[0.6rem]"
+            [class.fa-crown]="premium.hasPremium()"
+            [class.text-amber-300]="premium.hasPremium()"
+            [class.fa-lock]="!premium.hasPremium()"
+            [class.text-white/40]="!premium.hasPremium()"
+            aria-hidden="true"></i>
+          <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
+            @if (pointer.id === 'crown') {
+              <path d="M11 31L8 11L20 20L32 5L44 20L56 11L53 31Z M23 35H41L32 61Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+            } @else {
+              <path d="M32 61L15 24L23 7H41L49 24Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+              <path d="M15 24H49M28 24L32 7L36 24" fill="none" stroke="#0a0a0a" stroke-opacity="0.45" stroke-width="2"/>
+            }
+          </svg>
+          <span>{{ pointer.label }}</span>
+        </button>
+      }
     </div>
+    @if (!premium.hasPremium()) {
+      <p class="text-xs text-white/40" i18n="@@effects.pointer.premiumHint">Crown and Crystal are premium pointers.</p>
+    }
   </div>
 </div>
