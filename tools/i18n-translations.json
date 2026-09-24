@@ -6943,5 +6943,40 @@
     "fr": "Roue 3D, coffrets 3D et pointeurs premium",
     "es": "Ruleta 3D, cofres 3D y punteros premium",
     "zh": "3D 转盘、3D 宝箱和高级指针"
+  },
+  "sound.defaultSpin": {
+    "it": "Predefinito: ticchettio della ruota",
+    "de": "Standard: Ticken des Rads",
+    "fr": "Par défaut : cliquetis de la roue",
+    "es": "Predeterminado: tictac de la ruleta",
+    "zh": "默认：转盘滴答声"
+  },
+  "sound.defaultWinner": {
+    "it": "Predefinito: fanfara di vittoria",
+    "de": "Standard: Siegesfanfare",
+    "fr": "Par défaut : fanfare de victoire",
+    "es": "Predeterminado: fanfarria de victoria",
+    "zh": "默认：胜利号角"
+  },
+  "sound.preview": {
+    "it": "Ascolta",
+    "de": "Anhören",
+    "fr": "Écouter",
+    "es": "Escuchar",
+    "zh": "试听"
+  },
+  "sound.previewSpin.aria": {
+    "it": "Ascolta il suono di rotazione predefinito",
+    "de": "Standard-Drehgeräusch anhören",
+    "fr": "Écouter le son de rotation par défaut",
+    "es": "Escuchar el sonido de giro predeterminado",
+    "zh": "试听默认旋转音效"
+  },
+  "sound.previewWinner.aria": {
+    "it": "Ascolta il suono del vincitore predefinito",
+    "de": "Standard-Gewinnergeräusch anhören",
+    "fr": "Écouter le son du gagnant par défaut",
+    "es": "Escuchar el sonido de ganador predeterminado",
+    "zh": "试听默认获胜音效"
   }
 }

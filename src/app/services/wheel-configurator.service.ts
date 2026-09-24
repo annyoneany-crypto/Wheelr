@@ -1,4 +1,4 @@
-import { computed, effect, ElementRef, Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
+import { computed, effect, ElementRef, Injectable, PLATFORM_ID, inject, signal, untracked } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { AdsService } from './ads.service';
 import {
@@ -14,6 +14,7 @@ import {
   ColorPalette,
 } from './global_function';
 import { WheelAudioManager } from './wheel-audio-manager';
+import { DefaultSoundPlayer } from './default-sounds';
 import {
   clearWorkspaceIndexedDb,
   clearWorkspaceStorage,
@@ -74,6 +75,14 @@ export class WheelConfigurator {
   private readonly wheelSettingsSnapshotKey = 'giveawayWheel.settingsSnapshot.v1';
   private readonly snapshotMigrationKey = 'giveawayWheel.snapshotMigrated.v1';
   private readonly audioManager = new WheelAudioManager();
+  /** Synthesised tick and fanfare, used whenever no custom audio was uploaded. */
+  private readonly defaultSounds = new DefaultSoundPlayer();
+  /** A spin cut short (view switch, reset) must not keep ticking to its planned end. */
+  private readonly stopDefaultTicksEffect = effect(() => {
+    if (!this.isSpinning()) {
+      untracked(() => this.defaultSounds.stopSpin());
+    }
+  });
   private readonly fontLoadTimeoutMs = 2000;
   private isHydratingWorkspace = false;
 
@@ -358,6 +367,16 @@ export class WheelConfigurator {
   setCustomAudio(audioData: string) {
     this.customAudio.set(audioData);
     writeImage(this.storageKey(STORAGE_KEYS.customAudio), audioData).catch(() => {});
+  }
+
+  /** Sound panel: lets the user hear the default spin ticks before spinning. */
+  previewDefaultSpinSound(): void {
+    this.defaultSounds.previewSpin();
+  }
+
+  /** Sound panel: lets the user hear the default winner fanfare. */
+  previewDefaultWinnerSound(): void {
+    this.defaultSounds.playWinner();
   }
 
   setWinnerAudio(audioData: string) {
@@ -1741,17 +1760,22 @@ export class WheelConfigurator {
     this.winner.set(null);
     if (this.winnerAnimationId()) cancelAnimationFrame(this.winnerAnimationId()!);
 
-    // Play audio if enabled
-    if (this.soundEnabled() && this.customAudio()) {
-      this.audioManager.playSpinAudio(this.customAudio());
-    }
-
+    const startRotation = this.currentRotation();
     const resolvedExtraDegrees =
       typeof extraDegrees === 'number' && Number.isFinite(extraDegrees)
         ? ((Math.floor(extraDegrees) % 360) + 360) % 360
         : this.generateSpinExtraDegrees();
     const totalRotation = this.currentRotation() + (360 * 6) + resolvedExtraDegrees;
     this.currentRotation.set(totalRotation);
+
+    // An uploaded file wins; otherwise the default ticks follow the wheel.
+    if (this.soundEnabled()) {
+      if (this.customAudio()) {
+        this.audioManager.playSpinAudio(this.customAudio());
+      } else {
+        this.defaultSounds.playSpin(startRotation, totalRotation, this.spinDurationMs(), this.names().length);
+      }
+    }
 
     setTimeout(() => {
       this.isSpinning.set(false);
@@ -1769,9 +1793,13 @@ export class WheelConfigurator {
         this.consumePresetWinner(winningName);
       }
 
-      // Play winner audio if enabled
-      if (this.soundEnabled() && this.winnerAudio()) {
-        this.audioManager.playWinnerAudio(this.winnerAudio());
+      // Winner audio: the uploaded file, or the default fanfare.
+      if (this.soundEnabled()) {
+        if (this.winnerAudio()) {
+          this.audioManager.playWinnerAudio(this.winnerAudio());
+        } else {
+          this.defaultSounds.playWinner();
+        }
       }
 
       // Every Nth spin this shows an interstitial; on web it only counts.

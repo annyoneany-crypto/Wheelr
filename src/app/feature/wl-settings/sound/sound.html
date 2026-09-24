@@ -54,6 +54,20 @@
             <span i18n="@@sound.remove">Remove</span>
           </button>
         </div>
+      } @else {
+        <!-- No file: the synthesised default plays; let the user hear it. -->
+        <div class="flex items-center justify-between bg-white/[0.04] border border-white/10 rounded-xl p-3">
+          <span class="text-xs text-white/60">
+            <i class="fa-solid fa-music mr-2 text-white/40" aria-hidden="true"></i><span i18n="@@sound.defaultSpin">Default: wheel ticking</span>
+          </span>
+          <button
+            type="button"
+            (click)="wheelConfigurator.previewDefaultSpinSound()"
+            class="inline-flex items-center gap-1.5 py-1 px-2.5 text-xs font-semibold bg-white/[0.06] text-white/80 border border-white/10 rounded-lg hover:cursor-pointer hover:bg-white/10 hover:text-amber-200 transition-colors"
+            i18n-aria-label="@@sound.previewSpin.aria" aria-label="Preview the default spin sound">
+            <i class="fa-solid fa-play text-[0.6rem]" aria-hidden="true"></i><span i18n="@@sound.preview">Preview</span>
+          </button>
+        </div>
       }
 
       <!-- Winner audio upload section -->
@@ -88,6 +102,20 @@
               class="py-1 px-2.5 text-xs font-semibold bg-red-500/10 text-red-300 border border-red-500/20 rounded-lg hover:bg-red-500/20 transition-colors"
             >
               <span i18n="@@sound.remove">Remove</span>
+            </button>
+          </div>
+        } @else {
+          <!-- No file: the synthesised default plays; let the user hear it. -->
+          <div class="flex items-center justify-between bg-white/[0.04] border border-white/10 rounded-xl p-3">
+            <span class="text-xs text-white/60">
+              <i class="fa-solid fa-trophy mr-2 text-white/40" aria-hidden="true"></i><span i18n="@@sound.defaultWinner">Default: victory fanfare</span>
+            </span>
+            <button
+              type="button"
+              (click)="wheelConfigurator.previewDefaultWinnerSound()"
+              class="inline-flex items-center gap-1.5 py-1 px-2.5 text-xs font-semibold bg-white/[0.06] text-white/80 border border-white/10 rounded-lg hover:cursor-pointer hover:bg-white/10 hover:text-amber-200 transition-colors"
+              i18n-aria-label="@@sound.previewWinner.aria" aria-label="Preview the default winner sound">
+              <i class="fa-solid fa-play text-[0.6rem]" aria-hidden="true"></i><span i18n="@@sound.preview">Preview</span>
             </button>
           </div>
         }

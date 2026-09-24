@@ -6139,11 +6139,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">69,72</context>
+          <context context-type="linenumber">83,86</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">105,108</context>
+          <context context-type="linenumber">133,136</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.spinLoaded" datatype="html">
@@ -6161,60 +6161,99 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">90,91</context>
+          <context context-type="linenumber">104,105</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">126,127</context>
+          <context context-type="linenumber">154,155</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.defaultSpin" datatype="html">
+        <source>Default: wheel ticking</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">61,63</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.previewSpin.aria" datatype="html">
+        <source>Preview the default spin sound</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">67,68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.preview" datatype="html">
+        <source>Preview</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">68,70</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">118,119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.winnerAudio" datatype="html">
         <source>Winner Audio</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">62,65</context>
+          <context context-type="linenumber">76,79</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.winnerLoaded" datatype="html">
         <source>Winner audio loaded</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">83,85</context>
+          <context context-type="linenumber">97,99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.defaultWinner" datatype="html">
+        <source>Default: victory fanfare</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">111,113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sound.previewWinner.aria" datatype="html">
+        <source>Preview the default winner sound</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
+          <context context-type="linenumber">117,118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.countdownAudio" datatype="html">
         <source>Countdown Audio</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">98,101</context>
+          <context context-type="linenumber">126,129</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.countdownLoaded" datatype="html">
         <source>Countdown audio loaded</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">119,121</context>
+          <context context-type="linenumber">147,149</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.countdown" datatype="html">
         <source>Countdown</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">137,139</context>
+          <context context-type="linenumber">165,167</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.enableCountdown" datatype="html">
         <source> Enable countdown </source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">148,152</context>
+          <context context-type="linenumber">176,180</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.startFrom" datatype="html">
         <source>Start from</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/sound/sound.html</context>
-          <context context-type="linenumber">154,156</context>
+          <context context-type="linenumber">182,184</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.enabled" datatype="html">
@@ -6621,7 +6660,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel/wheel.html</context>
-          <context context-type="linenumber">270,272</context>
+          <context context-type="linenumber">271,273</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheel.clickToSpin" datatype="html">
@@ -6632,14 +6671,14 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel/wheel.html</context>
-          <context context-type="linenumber">282,285</context>
+          <context context-type="linenumber">283,286</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheel.zoomOut" datatype="html">
         <source>Zoom out</source>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel/wheel.html</context>
-          <context context-type="linenumber">278,280</context>
+          <context context-type="linenumber">279,281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="premium.unlock.title" datatype="html">
