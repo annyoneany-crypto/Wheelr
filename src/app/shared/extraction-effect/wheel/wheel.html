@@ -2,7 +2,65 @@
     
     <!-- Win pointer -->
     <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 drop-shadow-[0_10px_18px_rgba(0,0,0,0.45)]">
-      @switch (wheelConfigurator.pointerType()) {
+      @switch (premium.renderedPointerType()) {
+        @case ('crown') {
+          <!-- Premium: gold crown with a ruby pendant; a shine sweeps across it. The ruby is a
+               fixed colour: in the slice colour it vanished against the slice it points at. -->
+          <svg width="76" height="76" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="wl-ptr-crown" aria-hidden="true">
+            <defs>
+              <linearGradient id="wl-ptr-gold" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fef3c7" />
+                <stop offset="0.45" stop-color="#fbbf24" />
+                <stop offset="1" stop-color="#b45309" />
+              </linearGradient>
+              <radialGradient id="wl-ptr-gem" cx="0.35" cy="0.3" r="0.9">
+                <stop offset="0" stop-color="#fee2e2" />
+                <stop offset="0.4" stop-color="#dc2626" />
+                <stop offset="1" stop-color="#7f1d1d" />
+              </radialGradient>
+              <clipPath id="wl-ptr-crown-clip">
+                <path d="M11 31L8 11L20 20L32 5L44 20L56 11L53 31Z" />
+              </clipPath>
+            </defs>
+            <!-- Pendant: points at the winning slice. -->
+            <path d="M23 33H41L32 61Z" fill="url(#wl-ptr-gem)" stroke="#f59e0b" stroke-width="2" stroke-linejoin="round" />
+            <path d="M23 33L32 40L41 33M32 40V61" fill="none" stroke="#ffffff" stroke-opacity="0.35" stroke-width="1" />
+            <!-- Crown -->
+            <path d="M11 31L8 11L20 20L32 5L44 20L56 11L53 31Z" fill="url(#wl-ptr-gold)" stroke="#78350f" stroke-width="1.5" stroke-linejoin="round" />
+            <rect x="10" y="29" width="44" height="6" rx="2" fill="url(#wl-ptr-gold)" stroke="#78350f" stroke-width="1.5" />
+            <circle cx="8" cy="11" r="3" fill="#fef3c7" stroke="#78350f" stroke-width="1.2" />
+            <circle cx="32" cy="5" r="3" fill="#fef3c7" stroke="#78350f" stroke-width="1.2" />
+            <circle cx="56" cy="11" r="3" fill="#fef3c7" stroke="#78350f" stroke-width="1.2" />
+            <circle cx="20" cy="32" r="1.8" fill="#ef4444" />
+            <circle cx="32" cy="32" r="1.8" fill="#3b82f6" />
+            <circle cx="44" cy="32" r="1.8" fill="#10b981" />
+            <g clip-path="url(#wl-ptr-crown-clip)">
+              <rect class="wl-ptr-shine" x="-20" y="0" width="10" height="40" fill="#ffffff" opacity="0.55" transform="skewX(-20)" />
+            </g>
+          </svg>
+        }
+        @case ('crystal') {
+          <!-- Premium: faceted crystal with an iridescent shimmer and twinkling sparkles. -->
+          <svg width="76" height="76" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="wl-ptr-crystal" aria-hidden="true">
+            <defs>
+              <linearGradient id="wl-ptr-iris" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#a5f3fc" />
+                <stop offset="0.35" stop-color="#c4b5fd" />
+                <stop offset="0.7" stop-color="#f9a8d4" />
+                <stop offset="1" stop-color="#67e8f9" />
+              </linearGradient>
+            </defs>
+            <g class="wl-ptr-iris">
+              <path d="M32 61L15 24L23 7H41L49 24Z" fill="url(#wl-ptr-iris)" stroke="#312e81" stroke-width="1.5" stroke-linejoin="round" />
+              <!-- Facets -->
+              <path d="M15 24H49M23 7L28 24L32 61M41 7L36 24L32 61M28 24L32 7L36 24" fill="none" stroke="#ffffff" stroke-opacity="0.55" stroke-width="1" stroke-linejoin="round" />
+              <path d="M23 7L15 24L28 24Z" fill="#ffffff" opacity="0.35" />
+              <path d="M36 24L49 24L32 61Z" fill="#1e1b4b" opacity="0.18" />
+            </g>
+            <path class="wl-ptr-sparkle" d="M52 6L53.5 10.5L58 12L53.5 13.5L52 18L50.5 13.5L46 12L50.5 10.5Z" fill="#ffffff" />
+            <path class="wl-ptr-sparkle wl-ptr-sparkle-late" d="M11 30L12 33L15 34L12 35L11 38L10 35L7 34L10 33Z" fill="#ffffff" />
+          </svg>
+        }
         @case ('arrow') {
           <svg width="72" height="72" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="rotate-180" aria-hidden="true">
             <path

@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
+import { PremiumService } from '../../../services/premium.service';
 
 @Component({
   selector: 'wl-wheel',
@@ -24,6 +25,8 @@ import { WheelConfigurator } from '../../../services/wheel-configurator.service'
 })
 export class Wheel {
   wheelConfigurator = inject(WheelConfigurator);
+  /** Premium pointers fall back to the drop while premium is off. */
+  protected readonly premium = inject(PremiumService);
   /** False while prerendering: there is no viewport and no canvas context. */
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   readonly CANVAS_RENDER_SCALE = 7;

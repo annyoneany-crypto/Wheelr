@@ -4,7 +4,10 @@ import { AdsService, RewardedAdOutcome } from './ads.service';
 import { AuthService } from './auth.service';
 import { readJson, writeJson } from './global_function';
 import { WheelConfigurator } from './wheel-configurator.service';
-import type { effectType, wheelViewType } from '../modules/classes/custom-type';
+import type { effectType, pointerType, wheelViewType } from '../modules/classes/custom-type';
+
+/** Pointers only shown with premium. */
+export const PREMIUM_POINTERS: ReadonlySet<pointerType> = new Set<pointerType>(['crown', 'crystal']);
 
 const AD_UNLOCK_STORAGE_KEY = 'giveawayWheel.premiumAdUnlockUntil.v1';
 
@@ -47,6 +50,12 @@ export class PremiumService {
   readonly renderedWheelView = computed<wheelViewType>(() => {
     const view = this.wheelConfigurator.wheelView();
     return view === 'wheel3d' && !this.hasPremium() ? 'wheel' : view;
+  });
+
+  /** And for the pointer: the premium ones stand down to the default drop. */
+  readonly renderedPointerType = computed<pointerType>(() => {
+    const pointer = this.wheelConfigurator.pointerType();
+    return PREMIUM_POINTERS.has(pointer) && !this.hasPremium() ? 'drop' : pointer;
   });
 
   /** Same rule for the winner effect: the `chest` reveal stands down to confetti. */

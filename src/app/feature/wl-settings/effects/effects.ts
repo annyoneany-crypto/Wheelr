@@ -1,6 +1,6 @@
 import { Component, inject, ChangeDetectionStrategy, effect, signal, untracked } from '@angular/core';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
-import { PremiumService } from '../../../services/premium.service';
+import { PREMIUM_POINTERS, PremiumService } from '../../../services/premium.service';
 import type { effectType, pointerType, wheelViewType } from '../../../modules/classes/custom-type';
 
 @Component({
@@ -64,7 +64,18 @@ export class Effects {
     this.pendingPremiumChoice.set(choice);
   }
 
+  protected readonly premiumPointers: { id: pointerType; label: string }[] = [
+    { id: 'crown', label: $localize`:@@effects.pointer.crown:Crown` },
+    { id: 'crystal', label: $localize`:@@effects.pointer.crystal:Crystal` },
+  ];
+
   setPointerType(pointer: pointerType): void {
+    if (PREMIUM_POINTERS.has(pointer)) {
+      this.choosePremium(() => this.wheelConfigurator.pointerType.set(pointer));
+      return;
+    }
+
+    this.pendingPremiumChoice.set(null);
     this.wheelConfigurator.pointerType.set(pointer);
   }
 }

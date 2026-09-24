@@ -1394,7 +1394,9 @@ export class WheelConfigurator {
       effectivePointerType === 'finger' ||
       effectivePointerType === 'star' ||
       effectivePointerType === 'diamond' ||
-      effectivePointerType === 'bolt'
+      effectivePointerType === 'bolt' ||
+      effectivePointerType === 'crown' ||
+      effectivePointerType === 'crystal'
     ) {
       this.pointerType.set(effectivePointerType);
     }

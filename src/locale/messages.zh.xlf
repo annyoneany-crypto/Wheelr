@@ -6942,6 +6942,30 @@
           <context context-type="linenumber">314,317</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="effects.pointer.premiumHint" datatype="html">
+        <source>Crown and Crystal are premium pointers.</source>
+        <target>皇冠和水晶是高级指针。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">348,352</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer.crown" datatype="html">
+        <source>Crown</source>
+        <target>皇冠</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.ts</context>
+          <context context-type="linenumber">68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.pointer.crystal" datatype="html">
+        <source>Crystal</source>
+        <target>水晶</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="sound.title" datatype="html">
         <source>Sound</source>
         <target>声音</target>
@@ -7515,7 +7539,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel/wheel.html</context>
-          <context context-type="linenumber">213,215</context>
+          <context context-type="linenumber">270,272</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheel.clickToSpin" datatype="html">
@@ -7527,7 +7551,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel/wheel.html</context>
-          <context context-type="linenumber">225,228</context>
+          <context context-type="linenumber">282,285</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheel.zoomOut" datatype="html">
@@ -7535,7 +7559,7 @@
         <target>缩小</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel/wheel.html</context>
-          <context context-type="linenumber">221,223</context>
+          <context context-type="linenumber">278,280</context>
         </context-group>
       </trans-unit>
       <trans-unit id="premium.unlock.title" datatype="html">
@@ -7546,9 +7570,9 @@
           <context context-type="linenumber">13,14</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="premium.unlock.subtitle" datatype="html">
-        <source>3D wheel and 3D chests</source>
-        <target>3D 转盘和 3D 宝箱</target>
+      <trans-unit id="premium.unlock.features" datatype="html">
+        <source>3D wheel, 3D chests and premium pointers</source>
+        <target>3D 转盘、3D 宝箱和高级指针</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
           <context context-type="linenumber">14,18</context>

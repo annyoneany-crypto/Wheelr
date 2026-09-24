@@ -6867,13 +6867,6 @@
     "es": "Desbloquea Premium",
     "zh": "解锁高级功能"
   },
-  "premium.unlock.subtitle": {
-    "it": "Ruota 3D e cofanetti 3D",
-    "de": "3D-Rad und 3D-Schatztruhen",
-    "fr": "Roue 3D et coffrets 3D",
-    "es": "Ruleta 3D y cofres 3D",
-    "zh": "3D 转盘和 3D 宝箱"
-  },
   "premium.unlock.body": {
     "it": "Guarda un breve video pubblicitario e le funzioni premium sono tue per le prossime 24 ore. Gli annunci mantengono Wheelr gratuito.",
     "de": "Sieh dir ein kurzes Werbevideo an und die Premium-Funktionen gehören dir für die nächsten 24 Stunden. Werbung hält Wheelr kostenlos.",
@@ -6922,5 +6915,33 @@
     "fr": "Chaque part passe de sa première couleur au centre à sa seconde couleur sur le bord.",
     "es": "Cada porción pasa de su primer color en el centro a su segundo color en el borde.",
     "zh": "每个扇区从中心的第一种颜色渐变到边缘的第二种颜色。"
+  },
+  "effects.pointer.crown": {
+    "it": "Corona",
+    "de": "Krone",
+    "fr": "Couronne",
+    "es": "Corona",
+    "zh": "皇冠"
+  },
+  "effects.pointer.crystal": {
+    "it": "Cristallo",
+    "de": "Kristall",
+    "fr": "Cristal",
+    "es": "Cristal",
+    "zh": "水晶"
+  },
+  "effects.pointer.premiumHint": {
+    "it": "Corona e Cristallo sono puntatori premium.",
+    "de": "Krone und Kristall sind Premium-Zeiger.",
+    "fr": "Couronne et Cristal sont des pointeurs premium.",
+    "es": "Corona y Cristal son punteros premium.",
+    "zh": "皇冠和水晶是高级指针。"
+  },
+  "premium.unlock.features": {
+    "it": "Ruota 3D, cofanetti 3D e puntatori premium",
+    "de": "3D-Rad, 3D-Schatztruhen und Premium-Zeiger",
+    "fr": "Roue 3D, coffrets 3D et pointeurs premium",
+    "es": "Ruleta 3D, cofres 3D y punteros premium",
+    "zh": "3D 转盘、3D 宝箱和高级指针"
   }
 }
