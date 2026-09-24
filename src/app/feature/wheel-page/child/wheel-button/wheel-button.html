@@ -36,16 +36,12 @@
      Deliberately kept off the bar: these are toggles, not destinations. The
      chrome toggle stays reachable while the chrome is hidden — it is the only
      way back. -->
-<div class="lg:hidden fixed w-12 h-12 rounded-xl
-  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  flex items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10"
+<div class="wl-rail-btn lg:hidden fixed flex z-50"
   [class.top-26]="!uiChromeHidden()"
   [class.top-10]="uiChromeHidden()"
   [class.right-4]="!showPanelSettings()"
   [class.right-[21rem]]="showPanelSettings()"
-  [class]="uiChromeHidden() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
+  [class]="uiChromeHidden() ? 'wl-rail-btn-active' : ''"
   role="button"
   tabindex="0"
   [attr.aria-label]="uiChromeToggleAriaLabel()"
@@ -53,40 +49,31 @@
   (click)="requestUiChromeToggle()"
   (keydown.enter)="requestUiChromeToggle()"
   (keydown.space)="requestUiChromeToggle(); $event.preventDefault()">
-  <i class="fa-solid text-white/70" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
+  <i class="fa-solid" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
 </div>
 
 @if (canShowQrButton()) {
-  <div class="lg:hidden fixed top-42 w-12 h-12 rounded-xl
-    border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-    flex items-center justify-center hover:cursor-pointer
-    transition-all duration-300 ease-in-out z-50
-    hover:border-amber-400/50 hover:bg-amber-400/10"
+  <div class="wl-rail-btn lg:hidden fixed top-42 flex z-50"
     [class.wl-ui-hidden]="uiChromeHidden()"
     [class.right-4]="!showPanelSettings()"
     [class.right-[21rem]]="showPanelSettings()"
-    [class]="qrModalOpen() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
+    [class]="qrModalOpen() ? 'wl-rail-btn-active' : ''"
     role="button"
     tabindex="0"
     i18n-aria-label="@@qr.open" aria-label="Open wheel QR code"
     (click)="requestOpenQr()"
     (keydown.enter)="requestOpenQr()"
     (keydown.space)="requestOpenQr(); $event.preventDefault()">
-    <i class="fa-solid fa-qrcode text-white/70" aria-hidden="true"></i>
+    <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
   </div>
 }
 
 <!-- ── Desktop: right-hand rail (unchanged behaviour) ─────────────────────── -->
 @for (action of panelActions; track action.path; let i = $index) {
-  <div class="hidden lg:flex fixed
-    w-12 h-12 rounded-xl
-    border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-    items-center justify-center hover:cursor-pointer
-    transition-all duration-300 ease-in-out z-50
-    hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
+  <div class="wl-rail-btn hidden lg:flex fixed z-50"
     [style.top.rem]="desktopTopRem(i)"
     [class.wl-ui-hidden]="uiChromeHidden()"
-    [class]="isPanelActive(action.path) ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
+    [class]="isPanelActive(action.path) ? 'wl-rail-btn-active' : ''"
     [class.right-8]="!showPanelSettings()"
     [class.lg:right-100]="showPanelSettings()"
     role="button"
@@ -96,18 +83,13 @@
     (click)="requestTogglePanel(action.path)"
     (keydown.enter)="requestTogglePanel(action.path)"
     (keydown.space)="requestTogglePanel(action.path); $event.preventDefault()">
-    <i class="fa-solid text-white/70" [class]="action.icon" aria-hidden="true"></i>
+    <i class="fa-solid" [class]="action.icon" aria-hidden="true"></i>
   </div>
 }
 
-<div class="hidden lg:flex fixed
-  w-12 h-12 rounded-xl
-  border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-  items-center justify-center hover:cursor-pointer
-  transition-all duration-300 ease-in-out z-50
-  hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
+<div class="wl-rail-btn hidden lg:flex fixed z-50"
   [style.top.rem]="uiChromeHidden() ? 2.5 : uiChromeToggleTopRem"
-  [class]="uiChromeHidden() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
+  [class]="uiChromeHidden() ? 'wl-rail-btn-active' : ''"
   [class.right-8]="!showPanelSettings()"
   [class.lg:right-100]="showPanelSettings()"
   role="button"
@@ -117,19 +99,14 @@
   (click)="requestUiChromeToggle()"
   (keydown.enter)="requestUiChromeToggle()"
   (keydown.space)="requestUiChromeToggle(); $event.preventDefault()">
-  <i class="fa-solid text-white/70" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
+  <i class="fa-solid" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
 </div>
 
 @if (canShowQrButton()) {
-  <div class="hidden lg:flex fixed
-    w-12 h-12 rounded-xl
-    border border-white/[0.08] bg-neutral-950/60 backdrop-blur-sm
-    items-center justify-center hover:cursor-pointer
-    transition-all duration-300 ease-in-out z-50
-    hover:border-amber-400/50 hover:bg-amber-400/10 hover:shadow-[0_0_16px_rgba(245,158,11,0.15)]"
+  <div class="wl-rail-btn hidden lg:flex fixed z-50"
     [style.top.rem]="qrButtonTopRem"
     [class.wl-ui-hidden]="uiChromeHidden()"
-    [class]="qrModalOpen() ? 'border-amber-400/50! ring-0 bg-amber-400/10!' : ''"
+    [class]="qrModalOpen() ? 'wl-rail-btn-active' : ''"
     [class.right-8]="!showPanelSettings()"
     [class.lg:right-100]="showPanelSettings()"
     role="button"
@@ -138,7 +115,7 @@
     (click)="requestOpenQr()"
     (keydown.enter)="requestOpenQr()"
     (keydown.space)="requestOpenQr(); $event.preventDefault()">
-    <i class="fa-solid fa-qrcode text-white/70" aria-hidden="true"></i>
+    <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
   </div>
 }
 

@@ -42,6 +42,10 @@ export class Header {
   private readonly nativePlatform = inject(NativePlatformService);
   protected readonly wheelConfigurator = inject(WheelConfigurator);
   protected readonly authService = inject(AuthService);
+  /** First letter of the signed-in email, shown in the account avatar. */
+  protected readonly accountInitial = computed(
+    () => this.authService.email().trim().charAt(0).toUpperCase() || '?',
+  );
   private readonly premium = inject(PremiumService);
   private handledLoginRequestToken = this.premium.loginRequestToken();
 

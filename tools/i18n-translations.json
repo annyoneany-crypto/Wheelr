@@ -6887,5 +6887,12 @@
     "fr": "La publicité doit être regardée jusqu’au bout pour débloquer Premium. Réessayez.",
     "es": "El anuncio tiene que verse hasta el final para desbloquear Premium. Inténtalo de nuevo.",
     "zh": "需要完整观看广告才能解锁高级功能。请再试一次。"
+  },
+  "header.newWheel.label": {
+    "it": "Nuova ruota",
+    "de": "Neues Rad",
+    "fr": "Nouvelle roue",
+    "es": "Nueva ruleta",
+    "zh": "新建转盘"
   }
 }
