@@ -8,7 +8,7 @@ import { WheelConfigurator } from './wheel-configurator.service';
 
 describe('PremiumService (app: one ad per option, 1 minute to choose it)', () => {
   let adOutcome: RewardedAdOutcome;
-  const wheelView = signal<'wheel' | 'wheel3d'>('wheel');
+  const wheelView = signal<'wheel' | 'wheel3d' | 'pumpkin'>('wheel');
 
   function create(): PremiumService {
     TestBed.configureTestingModule({
@@ -52,6 +52,15 @@ describe('PremiumService (app: one ad per option, 1 minute to choose it)', () =>
     expect(premium.isUnlocked('chest')).toBe(false);
     expect(premium.isUnlocked('crown')).toBe(false);
     expect(premium.isUnlocked('crystal')).toBe(false);
+  });
+
+  it('gives the pumpkin its own ad, separate from the 3D wheel', async () => {
+    const premium = create();
+
+    await premium.unlockWithRewardedAd('pumpkin');
+
+    expect(premium.isUnlocked('pumpkin')).toBe(true);
+    expect(premium.isUnlocked('wheel3d')).toBe(false);
   });
 
   it('asks for a new ad to choose the option again once its minute is up', async () => {
@@ -107,5 +116,38 @@ describe('PremiumService (app: one ad per option, 1 minute to choose it)', () =>
 
     expect(second.isUnlocked('crown')).toBe(true);
     expect(second.remainingLabel('crown')).toBe('0:40');
+  });
+});
+
+describe('PremiumService (web: signing in unlocks everything)', () => {
+  const wheelView = signal<'wheel' | 'wheel3d' | 'pumpkin'>('pumpkin');
+  const loggedIn = signal(false);
+
+  function create(): PremiumService {
+    TestBed.configureTestingModule({
+      providers: [
+        { provide: AdsService, useValue: { isEnabled: false } },
+        { provide: AuthService, useValue: { isLoggedIn: loggedIn } },
+        {
+          provide: WheelConfigurator,
+          useValue: { wheelView, pointerType: signal('drop'), winnerEffect: signal('confetti') },
+        },
+      ],
+    });
+    return TestBed.inject(PremiumService);
+  }
+
+  afterEach(() => TestBed.resetTestingModule());
+
+  it('shows the classic wheel for a stored pumpkin while signed out, without rewriting it', () => {
+    loggedIn.set(false);
+    const premium = create();
+
+    expect(premium.renderedWheelView()).toBe('wheel');
+    expect(wheelView()).toBe('pumpkin');
+
+    loggedIn.set(true);
+    expect(premium.renderedWheelView()).toBe('pumpkin');
+    expect(premium.isUnlocked('pumpkin')).toBe(true);
   });
 });

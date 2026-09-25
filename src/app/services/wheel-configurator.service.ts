@@ -1391,7 +1391,8 @@ export class WheelConfigurator {
       effectiveWheelView === 'wheel' ||
       effectiveWheelView === 'linear' ||
       effectiveWheelView === 'cards' ||
-      effectiveWheelView === 'wheel3d'
+      effectiveWheelView === 'wheel3d' ||
+      effectiveWheelView === 'pumpkin'
     ) {
       this.wheelView.set(effectiveWheelView);
     }

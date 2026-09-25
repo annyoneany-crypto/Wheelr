@@ -1,0 +1,204 @@
+<div class="relative flex flex-col items-center gap-4 mt-14 z-10">
+  <!-- Nothing above the effect may carry a transform: the winner overlay is
+       position:fixed, and a transformed ancestor would trap it inside the pumpkin. -->
+  <div class="relative">
+    <div
+      class="wlp-stage"
+      [class.wlp-spinning]="wheelConfigurator.isSpinning()"
+      [class.wlp-chomp]="chomping()"
+      [style.--wlp-w.px]="width()"
+      [style.--wlp-h.px]="height()"
+      role="button"
+      tabindex="0"
+      i18n-aria-label="@@wheel3d.spin"
+      aria-label="Spin the wheel"
+      (click)="spin()"
+      (keydown.enter)="spin()"
+      (keydown.space)="spin(); $event.preventDefault()">
+      <div class="wlp-floor" aria-hidden="true"></div>
+
+      <div class="wlp-pumpkin">
+        <!-- Depth: darker silhouettes stacked behind the body, seen as its sides when it sways. -->
+        @for (layer of depthLayers; track layer) {
+          <div class="wlp-depth" [style.--wlp-layer]="layer + 1" aria-hidden="true"></div>
+        }
+
+        <svg class="wlp-body" viewBox="0 -14 100 104" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <radialGradient id="wlp-lobe-center" cx="0.42" cy="0.3" r="0.8">
+              <stop offset="0" stop-color="#ffc46b" />
+              <stop offset="0.45" stop-color="#fb8c1a" />
+              <stop offset="1" stop-color="#c2410c" />
+            </radialGradient>
+            <radialGradient id="wlp-lobe-inner" cx="0.45" cy="0.3" r="0.85">
+              <stop offset="0" stop-color="#fdac4f" />
+              <stop offset="0.5" stop-color="#ea7412" />
+              <stop offset="1" stop-color="#9a3412" />
+            </radialGradient>
+            <radialGradient id="wlp-lobe-outer" cx="0.5" cy="0.3" r="0.9">
+              <stop offset="0" stop-color="#f59e3b" />
+              <stop offset="0.55" stop-color="#c2560c" />
+              <stop offset="1" stop-color="#6b2206" />
+            </radialGradient>
+            <linearGradient id="wlp-stem" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0" stop-color="#3f2a0c" />
+              <stop offset="0.45" stop-color="#7c6a2a" />
+              <stop offset="1" stop-color="#2f200a" />
+            </linearGradient>
+            <linearGradient id="wlp-leaf" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0" stop-color="#65a30d" />
+              <stop offset="1" stop-color="#1a4d0a" />
+            </linearGradient>
+            <!-- The mouth is cut out of the body, so the wheel behind it shows through. -->
+            <mask id="wlp-mouth-cut" maskUnits="userSpaceOnUse" x="0" y="-14" width="100" height="104">
+              <rect x="0" y="-14" width="100" height="104" fill="#fff" />
+              <circle cx="50" cy="52" r="32.5" fill="#000" />
+            </mask>
+            <radialGradient id="wlp-glow" cx="0.5" cy="0.55" r="0.6">
+              <stop offset="0" stop-color="#fff7c2" />
+              <stop offset="0.45" stop-color="#ffc233" />
+              <stop offset="1" stop-color="#e2590a" />
+            </radialGradient>
+          </defs>
+
+          <!-- Stem, leaf and a curl of vine, behind the top of the body. -->
+          <path d="M45.5 9 C45 1 47 -6 43.5 -11 L52.5 -12.5 C54.5 -6 55 1 54.5 9 Z" fill="url(#wlp-stem)" stroke="#1f1405" stroke-width="0.6" />
+          <path d="M54 1 C61 -8 72 -7 78 -1 C70 4 61 6 54 1 Z" fill="url(#wlp-leaf)" stroke="#143a07" stroke-width="0.5" />
+          <path d="M56 0.5 C63 -3 70 -3 75 -1" fill="none" stroke="#a3e635" stroke-opacity="0.5" stroke-width="0.5" />
+          <path d="M44 -3 C38 -5 35 0 38 3 C40.5 5.5 44 3 42.5 0.5" fill="none" stroke="#3f6212" stroke-width="1" stroke-linecap="round" />
+
+          <g mask="url(#wlp-mouth-cut)">
+          <!-- Lobes, back to front: the ribs of the pumpkin. -->
+          <ellipse cx="23" cy="48" rx="22.5" ry="38" fill="url(#wlp-lobe-outer)" />
+          <ellipse cx="77" cy="48" rx="22.5" ry="38" fill="url(#wlp-lobe-outer)" />
+          <ellipse cx="36" cy="47" rx="22" ry="41.5" fill="url(#wlp-lobe-inner)" />
+          <ellipse cx="64" cy="47" rx="22" ry="41.5" fill="url(#wlp-lobe-inner)" />
+          <ellipse cx="50" cy="46.5" rx="20.5" ry="43" fill="url(#wlp-lobe-center)" />
+          <!-- Rib creases. -->
+          <g fill="none" stroke="#7c2d12" stroke-opacity="0.45" stroke-width="0.8">
+            <path d="M31 8 C22 28 22 68 31 88" />
+            <path d="M69 8 C78 28 78 68 69 88" />
+            <path d="M40 5 C34 28 34 68 40 89.5" />
+            <path d="M60 5 C66 28 66 68 60 89.5" />
+          </g>
+          <!-- Soft top light across the whole body. -->
+          <ellipse cx="44" cy="22" rx="30" ry="14" fill="#fff4d6" opacity="0.14" />
+          </g>
+
+          <!-- The cut edge of the mouth: pale flesh inside, a darker lip outside. -->
+          <circle cx="50" cy="52" r="33.1" fill="none" stroke="#9a3412" stroke-width="1.2" />
+          <circle cx="50" cy="52" r="32.4" fill="none" stroke="#fcd9a0" stroke-width="1" />
+
+          <!-- Carved eyes: flesh-coloured cut edge, candle glow inside. No nose: the fang hangs where it would be. -->
+          <g class="wlp-eyes">
+            <path d="M10 26 L31 22.5 L23.5 10.5 Z" fill="#fcd9a0" transform="translate(0.6 0.8)" />
+            <path d="M10 26 L31 22.5 L23.5 10.5 Z" fill="url(#wlp-glow)" stroke="#6b2206" stroke-width="0.9" stroke-linejoin="round" />
+            <path d="M90 26 L69 22.5 L76.5 10.5 Z" fill="#fcd9a0" transform="translate(-0.6 0.8)" />
+            <path d="M90 26 L69 22.5 L76.5 10.5 Z" fill="url(#wlp-glow)" stroke="#6b2206" stroke-width="0.9" stroke-linejoin="round" />
+          </g>
+        </svg>
+
+        <div
+          class="wlp-mouth"
+          [style.left.px]="mouthLeft()"
+          [style.top.px]="mouthTop()"
+          [style.width.px]="mouthSize()"
+          [style.height.px]="mouthSize()">
+          <!-- The carved hole: cut flesh at the edge, darkness and candlelight inside. -->
+          <div class="wlp-hole" aria-hidden="true"></div>
+
+          <div class="wlp-wheel" [style.width.px]="wheelSize()" [style.height.px]="wheelSize()">
+            <canvas
+              #wheelCanvas
+              class="absolute inset-0 w-full h-full transition-transform"
+              [width]="wheelSize() * renderScale"
+              [height]="wheelSize() * renderScale"
+              [style.transform]="rotationTransform()"
+              [style.transitionDuration]="rotationDuration()"
+              [style.transitionTimingFunction]="rotationEasing()"
+              [style.backgroundColor]="wheelConfigurator.names().length === 0 ? '#5e5e5eBB' : 'transparent'"></canvas>
+
+            <!-- Candlelight from below and a shadowed rim: the wheel sits inside the pumpkin. -->
+            <div class="wlp-candle" aria-hidden="true"></div>
+
+            @if (wheelConfigurator.winner() && !wheelConfigurator.showWinnerEffect()) {
+              <svg
+                class="absolute inset-0 pointer-events-none wlp-winner-glow"
+                [attr.width]="wheelSize()"
+                [attr.height]="wheelSize()"
+                [attr.viewBox]="'0 0 ' + wheelSize() + ' ' + wheelSize()"
+                aria-hidden="true">
+                <path [attr.d]="winnerSlicePath()" fill="none" stroke="#fbbf24" stroke-width="5" stroke-linejoin="round" />
+              </svg>
+            }
+          </div>
+
+          <div class="wlp-hub" [style.--wlp-hub.px]="hubSize()">
+            <div class="wlp-hub-cap relative w-full h-full rounded-full overflow-hidden flex items-center justify-center" [style.backgroundColor]="wheelConfigurator.centerColor()">
+              @if (wheelConfigurator.centerImage()) {
+                <img [src]="wheelConfigurator.centerImage()" class="w-full h-full object-cover" alt="Center">
+              } @else {
+                <span class="font-bold text-sm px-1 text-center" [style.color]="wheelConfigurator.centerContrastColor()">
+                  {{ wheelConfigurator.centerText() }}
+                </span>
+              }
+            </div>
+          </div>
+
+          <svg class="wlp-teeth" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="wlp-tooth" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#fbe3b4" />
+                <stop offset="0.55" stop-color="#fffaf0" />
+                <stop offset="1" stop-color="#f2d9a6" />
+              </linearGradient>
+            </defs>
+            @for (tooth of teeth; track tooth.angle) {
+              <polygon
+                [attr.points]="toothPoints(tooth)"
+                [attr.transform]="'rotate(' + tooth.angle + ' 50 50)'"
+                fill="url(#wlp-tooth)"
+                stroke="#5c1d05"
+                stroke-width="0.5"
+                stroke-linejoin="round" />
+            }
+          </svg>
+
+          <!-- The pointer: a fang at the top of the mouth, on the wheel's vertical axis. -->
+          <div class="wlp-fang-mount" aria-hidden="true">
+            <div #fang class="wlp-fang">
+              <svg class="block w-full h-full" viewBox="0 0 40 72" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="wlp-fang" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#d6b37a" />
+                    <stop offset="0.4" stop-color="#fffdf5" />
+                    <stop offset="1" stop-color="#c9a266" />
+                  </linearGradient>
+                </defs>
+                <path d="M2 2 H38 C36 22 28 44 20 70 C12 44 4 22 2 2 Z" fill="url(#wlp-fang)" stroke="#4a1703" stroke-width="2" stroke-linejoin="round" />
+                <path d="M11 6 C12 22 16 38 20 54" fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winner effect (fire / confetti / etc.) -->
+    @if (wheelConfigurator.winner() && wheelConfigurator.showWinnerEffect()) {
+      <ng-content></ng-content>
+    }
+  </div>
+
+  <div class="h-16 flex items-center justify-center text-center">
+    @if (wheelConfigurator.isSpinning()) {
+      <p class="text-white/90 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] animate-pulse uppercase tracking-[0.2em] font-semibold text-sm">
+        <i class="fa-solid fa-star-of-life mr-2 text-orange-400/80 animate-spin" aria-hidden="true"></i><span i18n="@@wheel.spinning">Destiny is choosing…</span>
+      </p>
+    } @else if (!wheelConfigurator.winner()) {
+      <p class="text-white/70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] uppercase tracking-[0.2em] font-medium text-sm transition-opacity duration-300 hover:text-white/90">
+        <i class="fa-solid fa-hand-pointer mr-2 text-orange-400/70" aria-hidden="true"></i><span i18n="@@wheel.clickToSpin">Click the wheel to spin</span>
+      </p>
+    }
+  </div>
+</div>

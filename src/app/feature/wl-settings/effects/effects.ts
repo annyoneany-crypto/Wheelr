@@ -39,6 +39,11 @@ export class Effects {
     this.choosePremium('wheel3d', () => this.setView('wheel3d'));
   }
 
+  /** Premium-only, like the 3D wheel: its own ad in the app, a login on the web. */
+  selectPumpkinView(): void {
+    this.choosePremium('pumpkin', () => this.setView('pumpkin'));
+  }
+
   setWinnerEffect(effect: effectType): void {
     if (effect === 'chest') {
       this.choosePremium('chest', () => this.applyWinnerEffect('chest'));
@@ -73,7 +78,8 @@ export class Effects {
   protected isInUse(feature: PremiumFeature): boolean {
     switch (feature) {
       case 'wheel3d':
-        return this.premium.renderedWheelView() === 'wheel3d';
+      case 'pumpkin':
+        return this.premium.renderedWheelView() === feature;
       case 'chest':
         return this.premium.renderedWinnerEffect() === 'chest';
       default:

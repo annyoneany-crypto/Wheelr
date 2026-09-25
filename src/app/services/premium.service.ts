@@ -7,7 +7,10 @@ import { WheelConfigurator } from './wheel-configurator.service';
 import type { effectType, pointerType, wheelViewType } from '../modules/classes/custom-type';
 
 /** Everything premium. In the app each one is unlocked by its own rewarded ad. */
-export type PremiumFeature = 'wheel3d' | 'chest' | 'crown' | 'crystal';
+export type PremiumFeature = 'wheel3d' | 'pumpkin' | 'chest' | 'crown' | 'crystal';
+
+/** Wheel views only shown with premium. Each one is also a `PremiumFeature` of the same name. */
+export const PREMIUM_VIEWS: ReadonlySet<wheelViewType> = new Set<wheelViewType>(['wheel3d', 'pumpkin']);
 
 /** Pointers only shown with premium. */
 export const PREMIUM_POINTERS: ReadonlySet<pointerType> = new Set<pointerType>(['crown', 'crystal']);
@@ -64,13 +67,13 @@ export class PremiumService {
   private readonly canShowChosen = computed(() => this.unlocksWithAd || this.auth.isLoggedIn());
 
   /**
-   * The wheel view actually on screen. On the web a stored `wheel3d` is left alone
-   * after signing out so it comes back on its own; until then the classic wheel
-   * stands in for it.
+   * The wheel view actually on screen. On the web a stored premium view (`wheel3d`,
+   * `pumpkin`) is left alone after signing out so it comes back on its own; until
+   * then the classic wheel stands in for it.
    */
   readonly renderedWheelView = computed<wheelViewType>(() => {
     const view = this.wheelConfigurator.wheelView();
-    return view === 'wheel3d' && !this.canShowChosen() ? 'wheel' : view;
+    return PREMIUM_VIEWS.has(view) && !this.canShowChosen() ? 'wheel' : view;
   });
 
   /** And for the pointer: the premium ones stand down to the default drop. */
@@ -133,6 +136,8 @@ export class PremiumService {
     switch (feature) {
       case 'wheel3d':
         return $localize`:@@effects.view.wheel3d:3D Wheel`;
+      case 'pumpkin':
+        return $localize`:@@effects.view.pumpkin:Halloween Pumpkin`;
       case 'chest':
         return $localize`:@@effects.fx.chest:3D Chests`;
       case 'crown':

@@ -947,7 +947,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">1031</context>
+          <context context-type="linenumber">1032</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.single" datatype="html">
@@ -959,7 +959,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">1031</context>
+          <context context-type="linenumber">1032</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.auth.openAccount" datatype="html">
@@ -2367,7 +2367,7 @@
         <target>Umbenennen-Fenster schließen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">197,198</context>
+          <context context-type="linenumber">202,203</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.namePlaceholder" datatype="html">
@@ -2375,7 +2375,7 @@
         <target>Name des Rads</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">215,217</context>
+          <context context-type="linenumber">220,222</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.description" datatype="html">
@@ -2383,7 +2383,7 @@
         <target>Beschreibung</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">218,220</context>
+          <context context-type="linenumber">223,225</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.descPlaceholder" datatype="html">
@@ -2391,7 +2391,7 @@
         <target>Beschreibung des Rads</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">226,229</context>
+          <context context-type="linenumber">231,234</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.cancel" datatype="html">
@@ -2399,7 +2399,7 @@
         <target>Abbrechen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">236,238</context>
+          <context context-type="linenumber">241,243</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.save" datatype="html">
@@ -2407,7 +2407,7 @@
         <target>Speichern</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">242,244</context>
+          <context context-type="linenumber">247,249</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.title" datatype="html">
@@ -2415,7 +2415,7 @@
         <target>QR-Code des öffentlichen Rads</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">254,256</context>
+          <context context-type="linenumber">259,261</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.closeModal" datatype="html">
@@ -2423,7 +2423,7 @@
         <target>QR-Code-Fenster schließen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">258,259</context>
+          <context context-type="linenumber">263,264</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.generating" datatype="html">
@@ -2431,7 +2431,7 @@
         <target>QR-Code wird erstellt…</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">266,267</context>
+          <context context-type="linenumber">271,272</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.alt" datatype="html">
@@ -2439,7 +2439,7 @@
         <target>QR-Code des öffentlichen Rads</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">270</context>
+          <context context-type="linenumber">275</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.obsLink" datatype="html">
@@ -2447,7 +2447,7 @@
         <target>Overlay-Link für OBS:</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.html</context>
-          <context context-type="linenumber">278,279</context>
+          <context context-type="linenumber">283,284</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.notSynced" datatype="html">
@@ -2455,7 +2455,7 @@
         <target>Dieses Rad ist noch nicht mit der Cloud synchronisiert.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">413</context>
+          <context context-type="linenumber">414</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.chrome.show" datatype="html">
@@ -2463,7 +2463,7 @@
         <target>Kopfzeile, Fußzeile und Steuerung einblenden</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">499</context>
+          <context context-type="linenumber">500</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.chrome.hide" datatype="html">
@@ -2471,7 +2471,7 @@
         <target>Kopfzeile, Fußzeile und Steuerung ausblenden</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">500</context>
+          <context context-type="linenumber">501</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.qr.failed" datatype="html">
@@ -2479,7 +2479,7 @@
         <target>QR-Code konnte nicht erstellt werden.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
-          <context context-type="linenumber">544</context>
+          <context context-type="linenumber">545</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.entryCount" datatype="html">
@@ -11523,7 +11523,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/services/premium.service.ts</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="linenumber">138</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.premium" datatype="html">
@@ -11535,7 +11535,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">196,198</context>
+          <context context-type="linenumber">85,87</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">225,227</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.view.wheel3dHint" datatype="html">
@@ -11555,11 +11559,35 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">201</context>
+          <context context-type="linenumber">93</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">334,335</context>
+          <context context-type="linenumber">230</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">363,364</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.view.pumpkin" datatype="html">
+        <source>Halloween Pumpkin</source>
+        <target>Halloween-Kürbis</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">83,84</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/premium.service.ts</context>
+          <context context-type="linenumber">140</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="effects.view.pumpkinHint" datatype="html">
+        <source>A carved 3D jack-o’-lantern that spins your wheel in its toothy grin.</source>
+        <target>Ein geschnitzter 3D-Kürbis, der dein Rad in seinem Zahngrinsen dreht.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
+          <context context-type="linenumber">88,90</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.premium.adRule" datatype="html">
@@ -11567,7 +11595,7 @@
         <target>Jede Premium-Option hat ihre eigene kurze Werbung. Einmal gewählt, bleibt sie; um sie nach 1 Minute erneut zu wählen, brauchst du eine neue Werbung.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">72,74</context>
+          <context context-type="linenumber">101,103</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.wheel3d.lockedWeb" datatype="html">
@@ -11575,7 +11603,7 @@
         <target>Melde dich kostenlos an, um es freizuschalten.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">74,78</context>
+          <context context-type="linenumber">103,107</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerEffect" datatype="html">
@@ -11583,7 +11611,7 @@
         <target>Gewinner-Effekt</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">82,85</context>
+          <context context-type="linenumber">111,114</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerAnimation" datatype="html">
@@ -11591,7 +11619,7 @@
         <target>Gewinner-Animation</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">97,99</context>
+          <context context-type="linenumber">126,128</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerHint" datatype="html">
@@ -11599,7 +11627,7 @@
         <target>Feuer, Konfetti oder andere Effekte laufen, wenn das Rad stoppt.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">113,115</context>
+          <context context-type="linenumber">142,144</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.winnerHintOff" datatype="html">
@@ -11607,7 +11635,7 @@
         <target>Das Gewinnersegment leuchtet — kein Vollbild-Effekt.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">115,119</context>
+          <context context-type="linenumber">144,148</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.fire" datatype="html">
@@ -11615,7 +11643,7 @@
         <target>Feuer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">134,137</context>
+          <context context-type="linenumber">163,166</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.confetti" datatype="html">
@@ -11623,7 +11651,7 @@
         <target>Konfetti</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">149,152</context>
+          <context context-type="linenumber">178,181</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.fireworks" datatype="html">
@@ -11631,7 +11659,7 @@
         <target>Feuerwerk</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">164,167</context>
+          <context context-type="linenumber">193,196</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.cartoonFire" datatype="html">
@@ -11639,7 +11667,7 @@
         <target>Comic-Feuer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">179,182</context>
+          <context context-type="linenumber">208,211</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.fx.chest" datatype="html">
@@ -11647,11 +11675,11 @@
         <target>3D-Schatztruhen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">194,195</context>
+          <context context-type="linenumber">223,224</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/services/premium.service.ts</context>
-          <context context-type="linenumber">137</context>
+          <context context-type="linenumber">142</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer" datatype="html">
@@ -11659,7 +11687,7 @@
         <target>Rad-Zeiger</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">209,212</context>
+          <context context-type="linenumber">238,241</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.drop" datatype="html">
@@ -11667,7 +11695,7 @@
         <target>Tropfen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">228,231</context>
+          <context context-type="linenumber">257,260</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.arrow" datatype="html">
@@ -11675,7 +11703,7 @@
         <target>Pfeil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">246,249</context>
+          <context context-type="linenumber">275,278</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.finger" datatype="html">
@@ -11683,7 +11711,7 @@
         <target>Finger</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">264,267</context>
+          <context context-type="linenumber">293,296</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.star" datatype="html">
@@ -11691,7 +11719,7 @@
         <target>Stern</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">282,285</context>
+          <context context-type="linenumber">311,314</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.diamond" datatype="html">
@@ -11699,7 +11727,7 @@
         <target>Raute</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">300,303</context>
+          <context context-type="linenumber">329,332</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.bolt" datatype="html">
@@ -11707,7 +11735,7 @@
         <target>Blitz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">318,321</context>
+          <context context-type="linenumber">347,350</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.premiumHint" datatype="html">
@@ -11715,7 +11743,7 @@
         <target>Krone und Kristall sind Premium-Zeiger.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.html</context>
-          <context context-type="linenumber">356,360</context>
+          <context context-type="linenumber">385,389</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.crown" datatype="html">
@@ -11723,11 +11751,11 @@
         <target>Krone</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.ts</context>
-          <context context-type="linenumber">85</context>
+          <context context-type="linenumber">91</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/services/premium.service.ts</context>
-          <context context-type="linenumber">139</context>
+          <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit>
       <trans-unit id="effects.pointer.crystal" datatype="html">
@@ -11735,11 +11763,11 @@
         <target>Kristall</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/effects/effects.ts</context>
-          <context context-type="linenumber">86</context>
+          <context context-type="linenumber">92</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/services/premium.service.ts</context>
-          <context context-type="linenumber">141</context>
+          <context context-type="linenumber">146</context>
         </context-group>
       </trans-unit>
       <trans-unit id="sound.title" datatype="html">
@@ -12369,6 +12397,10 @@
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel-3d/wheel-3d.html</context>
           <context context-type="linenumber">14,16</context>
         </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/extraction-effect/wheel-pumpkin/wheel-pumpkin.html</context>
+          <context context-type="linenumber">14,16</context>
+        </context-group>
       </trans-unit>
       <trans-unit id="wheel.spinning" datatype="html">
         <source>Destiny is choosing…</source>
@@ -12376,6 +12408,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel-3d/wheel-3d.html</context>
           <context context-type="linenumber">122,124</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/extraction-effect/wheel-pumpkin/wheel-pumpkin.html</context>
+          <context context-type="linenumber">196,198</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel/wheel.html</context>
@@ -12388,6 +12424,10 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel-3d/wheel-3d.html</context>
           <context context-type="linenumber">126,129</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/extraction-effect/wheel-pumpkin/wheel-pumpkin.html</context>
+          <context context-type="linenumber">200,203</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/extraction-effect/wheel/wheel.html</context>

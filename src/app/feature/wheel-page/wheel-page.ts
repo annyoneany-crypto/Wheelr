@@ -16,6 +16,7 @@ import { WheelConfigurator, WheelDisplayConfig } from '../../services/wheel-conf
 import { LinearWheel } from '../../shared/extraction-effect/linear-wheel/linear-wheel';
 import { Wheel } from '../../shared/extraction-effect/wheel/wheel';
 import { Wheel3d } from '../../shared/extraction-effect/wheel-3d/wheel-3d';
+import { WheelPumpkin } from '../../shared/extraction-effect/wheel-pumpkin/wheel-pumpkin';
 import { CardsEffect } from '../../shared/extraction-effect/cards-draw/cards-draw';
 import { FireEffect } from '../../shared/winner-effect/fire-effect/fire-effect';
 import {
@@ -45,7 +46,7 @@ interface PreviewImageEntry {
 
 @Component({
   selector: 'app-wheel-page',
-  imports: [LinearWheel, Wheel, Wheel3d, CardsEffect, FireEffect, RouterModule, WinnerPanel, WheelButton],
+  imports: [LinearWheel, Wheel, Wheel3d, WheelPumpkin, CardsEffect, FireEffect, RouterModule, WinnerPanel, WheelButton],
   templateUrl: './wheel-page.html',
   styleUrl: './wheel-page.css',
   changeDetection: ChangeDetectionStrategy.Eager,

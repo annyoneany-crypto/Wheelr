@@ -11192,5 +11192,19 @@
     "fr": "Aucun modèle ne correspond à « {INTERPOLATION} ».",
     "es": "Ninguna plantilla coincide con “{INTERPOLATION}”.",
     "zh": "没有与“{INTERPOLATION}”匹配的模板。"
+  },
+  "effects.view.pumpkin": {
+    "it": "Zucca di Halloween",
+    "de": "Halloween-Kürbis",
+    "fr": "Citrouille d’Halloween",
+    "es": "Calabaza de Halloween",
+    "zh": "万圣节南瓜"
+  },
+  "effects.view.pumpkinHint": {
+    "it": "Una zucca 3D intagliata che fa girare la ruota nel suo ghigno pieno di denti.",
+    "de": "Ein geschnitzter 3D-Kürbis, der dein Rad in seinem Zahngrinsen dreht.",
+    "fr": "Une citrouille 3D sculptée qui fait tourner votre roue dans son sourire plein de dents.",
+    "es": "Una calabaza 3D tallada que gira tu ruleta en su sonrisa llena de dientes.",
+    "zh": "一个雕刻的 3D 南瓜灯，在它满是牙齿的笑口中转动你的转盘。"
   }
 }
