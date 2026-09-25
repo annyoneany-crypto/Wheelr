@@ -856,6 +856,646 @@ export const TEMPLATE_SEO: Readonly<Record<string, WheelTemplateSeo>> = {
       },
     ],
   },
+
+  'spin-the-bottle': {
+    slug: 'spin-the-bottle',
+    title: $localize`:@@tpl.spin-the-bottle.title:Spin the Bottle Online | Free Spin the Bottle Wheel`,
+    description:
+      $localize`:@@tpl.spin-the-bottle.desc:Play spin the bottle online with a free wheel: add the players’ names, spin, and see who it points to. Works on any phone, no bottle and no signup.`,
+    heading: $localize`:@@tpl.spin-the-bottle.heading:Spin the Bottle Online`,
+    intro:
+      $localize`:@@tpl.spin-the-bottle.intro:The party classic, minus the bottle rolling under the sofa. Put everyone’s name on the wheel, set the phone in the middle of the circle and spin. It stops on one name, clearly, with no arguing about which way the neck was pointing.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.spin-the-bottle.s1.heading:Make up your own rules`,
+        body: $localize`:@@tpl.spin-the-bottle.s1.body:The wheel only picks a person; what happens next is up to the group. Truth or dare, a question, a compliment, a silly challenge — pair it with another wheel of tasks and let two spins decide who does what.`,
+      },
+      {
+        heading: $localize`:@@tpl.spin-the-bottle.s2.heading:Nobody gets picked twice in a row`,
+        body: $localize`:@@tpl.spin-the-bottle.s2.body:Remove whoever was picked after each spin and everyone gets a turn before anyone goes again. Put the names back when the wheel is empty and the next round starts.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.spin-the-bottle.faq1.q:Can I play spin the bottle online with friends on a call?`,
+        answer:
+          $localize`:@@tpl.spin-the-bottle.faq1.a:Yes. Share your screen, or publish the wheel as a read-only link so everyone can watch the same wheel in their own browser.`,
+      },
+      {
+        question: $localize`:@@tpl.spin-the-bottle.faq2.q:How many players can I add?`,
+        answer:
+          $localize`:@@tpl.spin-the-bottle.faq2.a:As many as you like — paste the whole list at once. With large groups each name just gets a thinner slice.`,
+      },
+    ],
+  },
+
+  'zodiac-sign': {
+    slug: 'random-zodiac-sign-wheel',
+    title: $localize`:@@tpl.zodiac-sign.title:Random Zodiac Sign Wheel | Spin for a Star Sign`,
+    description:
+      $localize`:@@tpl.zodiac-sign.desc:Spin the zodiac wheel for a random star sign: all twelve signs, from Aries to Pisces. Free for party games, writing prompts, quizzes and classrooms.`,
+    heading: $localize`:@@tpl.zodiac-sign.heading:Random Zodiac Sign Wheel`,
+    intro:
+      $localize`:@@tpl.zodiac-sign.intro:Twelve signs, one spin. Use it to give a character a star sign, to pick the next horoscope to read aloud, or to run a quiz round where everyone has to guess the dates. Every sign has the same chance of coming up.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.zodiac-sign.s1.heading:Games with a star sign`,
+        body: $localize`:@@tpl.zodiac-sign.s1.body:Guess the dates of the sign, name a famous person born under it, or act out its symbol. For writers, a random sign is a quick way to decide how a character sees the world before you know anything else about them.`,
+      },
+      {
+        heading: $localize`:@@tpl.zodiac-sign.s2.heading:Twelve slices, equal odds`,
+        body: $localize`:@@tpl.zodiac-sign.s2.body:Each sign takes one slice of the same size, and the spin uses your browser’s cryptographic random source. Remove a sign after it comes up to go through all twelve without repeats.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.zodiac-sign.faq1.q:Is this a horoscope?`,
+        answer:
+          $localize`:@@tpl.zodiac-sign.faq1.a:No — the wheel picks a sign at random, it does not predict anything. What you do with the sign is up to you.`,
+      },
+      {
+        question: $localize`:@@tpl.zodiac-sign.faq2.q:Can I add the Chinese zodiac animals instead?`,
+        answer:
+          $localize`:@@tpl.zodiac-sign.faq2.a:Yes. Copy the wheel and replace the entries with the twelve animals, or any other list you like.`,
+      },
+    ],
+  },
+
+  'baby-names': {
+    slug: 'baby-name-generator-wheel',
+    title: $localize`:@@tpl.baby-names.title:Baby Name Generator Wheel | Pick From Your Shortlist`,
+    description:
+      $localize`:@@tpl.baby-names.desc:Stuck between baby names? Put your shortlist on the wheel and spin. A free baby name picker that helps you notice which name you were hoping for.`,
+    heading: $localize`:@@tpl.baby-names.heading:Baby Name Generator Wheel`,
+    intro:
+      $localize`:@@tpl.baby-names.intro:Choosing a name can go on for months. Put the names you both like on the wheel and spin: the useful part is often not the result, but the moment it lands and you realise whether you were hoping for that name or another one.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.baby-names.s1.heading:Your shortlist, not ours`,
+        body: $localize`:@@tpl.baby-names.s1.body:The names on the wheel are just an example. Replace them with your own shortlist — first names, middle names, or combinations of both — and keep separate wheels for different ideas.`,
+      },
+      {
+        heading: $localize`:@@tpl.baby-names.s2.heading:Spin it with the family`,
+        body: $localize`:@@tpl.baby-names.s2.body:Publish the wheel as a read-only link and grandparents or friends can spin it from their own phone. It is a gentle way to share a shortlist without asking everyone to vote.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.baby-names.faq1.q:Should we really let a wheel choose our baby’s name?`,
+        answer:
+          $localize`:@@tpl.baby-names.faq1.a:Only if you want to. Most parents use it to break a tie or to see how they feel when a name comes up — the decision stays yours.`,
+      },
+      {
+        question: $localize`:@@tpl.baby-names.faq2.q:Can I give our favourite name better odds?`,
+        answer:
+          $localize`:@@tpl.baby-names.faq2.a:Add it more than once and it gets more slices, so it comes up more often.`,
+      },
+    ],
+  },
+
+  'pet-names': {
+    slug: 'pet-name-generator-wheel',
+    title: $localize`:@@tpl.pet-names.title:Pet Name Generator Wheel | Name Your Dog or Cat`,
+    description:
+      $localize`:@@tpl.pet-names.desc:A free pet name generator wheel: spin for a name for your new puppy, kitten or rabbit, or put your family’s ideas on it and let the wheel settle it.`,
+    heading: $localize`:@@tpl.pet-names.heading:Pet Name Generator Wheel`,
+    intro:
+      $localize`:@@tpl.pet-names.intro:A new pet arrives and everybody in the house has a different favourite name. Put all the ideas on the wheel, spin it together, and the name is picked fairly — which matters when the children are the ones voting.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.pet-names.s1.heading:Everyone adds one name`,
+        body: $localize`:@@tpl.pet-names.s1.body:Let each member of the family add their favourite, then spin. Nobody wins the argument; the wheel does. If the result falls flat, remove it and spin again — it is your pet, after all.`,
+      },
+      {
+        heading: $localize`:@@tpl.pet-names.s2.heading:Ideas to start from`,
+        body: $localize`:@@tpl.pet-names.s2.body:The stock names are some of the most popular for dogs and cats. Replace them with names that suit your animal: food names, famous characters, or something to do with where you found them.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.pet-names.faq1.q:Does it work for any animal?`,
+        answer:
+          $localize`:@@tpl.pet-names.faq1.a:Yes. The wheel only holds names, so it works for a dog, a cat, a rabbit, a fish or a horse.`,
+      },
+      {
+        question: $localize`:@@tpl.pet-names.faq2.q:Can the kids spin it on their own device?`,
+        answer:
+          $localize`:@@tpl.pet-names.faq2.a:Publish the wheel as a read-only link and it opens in any browser, with no account.`,
+      },
+    ],
+  },
+
+  'party-games': {
+    slug: 'party-games-wheel',
+    title: $localize`:@@tpl.party-games.title:Party Games Wheel | Random Party Game Picker`,
+    description:
+      $localize`:@@tpl.party-games.desc:Spin the party games wheel and keep the fun going: charades, musical chairs, hot potato and more. Free for birthdays, sleepovers and family parties.`,
+    heading: $localize`:@@tpl.party-games.heading:Party Games Wheel`,
+    intro:
+      $localize`:@@tpl.party-games.intro:The party slows down every time someone asks “what shall we play now?”. Put the games on the wheel, let the birthday child spin, and the next game starts without a debate.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.party-games.s1.heading:Games that need nothing`,
+        body: $localize`:@@tpl.party-games.s1.body:Every game on the stock wheel works with what is already in the room: some music, a few chairs, a cushion to pass around. Swap in the games your guests actually know and love.`,
+      },
+      {
+        heading: $localize`:@@tpl.party-games.s2.heading:Big screen, big moment`,
+        body: $localize`:@@tpl.party-games.s2.body:Put the wheel on the TV or a projector and turn on the countdown and the winner effects. The spin itself becomes part of the entertainment, especially for younger children.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.party-games.faq1.q:Is it suitable for kids’ parties?`,
+        answer:
+          $localize`:@@tpl.party-games.faq1.a:Yes. Everything on the stock wheel is suitable for children, and you can replace the games with ones that fit the age of your guests.`,
+      },
+      {
+        question: $localize`:@@tpl.party-games.faq2.q:Can I stop a game from coming up twice?`,
+        answer:
+          $localize`:@@tpl.party-games.faq2.a:Remove each game after it has been played and the wheel only offers the ones that are left.`,
+      },
+    ],
+  },
+
+  'study-subject': {
+    slug: 'study-subject-picker',
+    title: $localize`:@@tpl.study-subject.title:What to Study Wheel | Random Study Subject Picker`,
+    description:
+      $localize`:@@tpl.study-subject.desc:Can’t decide what to revise first? Spin the study wheel for your next subject and start studying instead of planning. Free, no signup.`,
+    heading: $localize`:@@tpl.study-subject.heading:What to Study Wheel`,
+    intro:
+      $localize`:@@tpl.study-subject.intro:Planning what to revise can take longer than the revision itself. Put your subjects on the wheel, spin, and start on whatever it picks for the next study session. The decision is made; now only the work is left.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.study-subject.s1.heading:One spin per session`,
+        body: $localize`:@@tpl.study-subject.s1.body:Pair the wheel with a timer: spin, study that subject for 25 minutes, take a break, spin again. Remove a subject once it is covered for the day, so the wheel keeps pushing you through the whole list.`,
+      },
+      {
+        heading: $localize`:@@tpl.study-subject.s2.heading:Weight the hard subjects`,
+        body: $localize`:@@tpl.study-subject.s2.body:The subject you keep avoiding is usually the one that needs the most time. Add it to the wheel twice and it will come up more often.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.study-subject.faq1.q:Can I use it for study groups?`,
+        answer:
+          $localize`:@@tpl.study-subject.faq1.a:Yes. Share your screen or publish the wheel as a link, and the group spins to decide which topic to go through next.`,
+      },
+      {
+        question: $localize`:@@tpl.study-subject.faq2.q:Does it save my subjects?`,
+        answer:
+          $localize`:@@tpl.study-subject.faq2.a:Your wheel stays saved in your browser. Signing in syncs it across your devices.`,
+      },
+    ],
+  },
+
+  'random-hobby': {
+    slug: 'random-hobby-generator',
+    title: $localize`:@@tpl.random-hobby.title:Random Hobby Generator | Spin for a New Hobby`,
+    description:
+      $localize`:@@tpl.random-hobby.desc:A free random hobby generator: spin the wheel for a new hobby to try this month, from baking and chess to pottery and birdwatching.`,
+    heading: $localize`:@@tpl.random-hobby.heading:Random Hobby Generator`,
+    intro:
+      $localize`:@@tpl.random-hobby.intro:Wanting a new hobby is easy; picking one is where it stalls. Spin the wheel, commit to trying whatever it lands on for a month, and find out whether you like it by doing it rather than reading about it.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.random-hobby.s1.heading:Try it for a month`,
+        body: $localize`:@@tpl.random-hobby.s1.body:One month is long enough to get past the awkward start and short enough not to feel like a commitment. When the month is over, remove the hobby from the wheel and spin for the next one.`,
+      },
+      {
+        heading: $localize`:@@tpl.random-hobby.s2.heading:Add the ones you keep thinking about`,
+        body: $localize`:@@tpl.random-hobby.s2.body:The best hobby list is the one you already have in your head: the instrument in the cupboard, the class a friend keeps mentioning. Put those on the wheel next to the stock ideas.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.random-hobby.faq1.q:Are the hobbies expensive?`,
+        answer:
+          $localize`:@@tpl.random-hobby.faq1.a:Most of the stock hobbies can be started with very little. Replace any of them with ones that fit your budget and your space.`,
+      },
+      {
+        question: $localize`:@@tpl.random-hobby.faq2.q:Can I use it with a partner or friends?`,
+        answer:
+          $localize`:@@tpl.random-hobby.faq2.a:Yes — spin it together and try the same hobby as a group, or keep one wheel each.`,
+      },
+    ],
+  },
+
+  'bored': {
+    slug: 'what-to-do-when-bored-wheel',
+    title: $localize`:@@tpl.bored.title:What to Do When Bored Wheel | Boredom Buster Spinner`,
+    description:
+      $localize`:@@tpl.bored.desc:Bored and out of ideas? Spin the boredom wheel for something to do right now, indoors or out. Free, no signup, and you can add your own ideas.`,
+    heading: $localize`:@@tpl.bored.heading:What to Do When Bored Wheel`,
+    intro:
+      $localize`:@@tpl.bored.intro:Boredom is rarely a lack of things to do — it is not being able to pick one. Spin the wheel, do the first thing it says for ten minutes, and see where it takes you.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.bored.s1.heading:Ten minutes, no excuses`,
+        body: $localize`:@@tpl.bored.s1.body:Everything on the stock wheel can be started right now, without buying anything or going far. The rule that makes it work: whatever comes up, you do it for at least ten minutes.`,
+      },
+      {
+        heading: $localize`:@@tpl.bored.s2.heading:A wheel for the kids`,
+        body: $localize`:@@tpl.bored.s2.body:Build a version for the school holidays with activities your children can do on their own. Letting them spin it turns “I’m bored” into a game rather than a complaint.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.bored.faq1.q:Can I make an indoor and an outdoor version?`,
+        answer:
+          $localize`:@@tpl.bored.faq1.a:Yes. Keep two wheels and spin the one that suits the weather.`,
+      },
+      {
+        question: $localize`:@@tpl.bored.faq2.q:Does it work offline?`,
+        answer:
+          $localize`:@@tpl.bored.faq2.a:The Android app works without a connection, and on the web the page keeps working once it has loaded.`,
+      },
+    ],
+  },
+
+  'self-care': {
+    slug: 'self-care-wheel',
+    title: $localize`:@@tpl.self-care.title:Self-Care Wheel | Random Self-Care Ideas Spinner`,
+    description:
+      $localize`:@@tpl.self-care.desc:Spin the self-care wheel for one small, kind thing to do for yourself today. Free, private, and you can fill it with the ideas that help you most.`,
+    heading: $localize`:@@tpl.self-care.heading:Self-Care Wheel`,
+    intro:
+      $localize`:@@tpl.self-care.intro:On a hard day even choosing how to look after yourself can feel like one decision too many. Spin the wheel and let it pick one small thing — a glass of water, a walk, an early night. Small is the point.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.self-care.s1.heading:Fill it with what works for you`,
+        body: $localize`:@@tpl.self-care.s1.body:The stock ideas are simple and universal. Replace them with the things that genuinely help you: a particular song, a place you like to walk, a person you like to call.`,
+      },
+      {
+        heading: $localize`:@@tpl.self-care.s2.heading:Private by default`,
+        body: $localize`:@@tpl.self-care.s2.body:Your wheel is saved only in your own browser. Nothing leaves your device unless you choose to sign in and sync it, or publish it as a link.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.self-care.faq1.q:Is this a replacement for professional help?`,
+        answer:
+          $localize`:@@tpl.self-care.faq1.a:No. It is a small everyday tool. If you are struggling, please talk to someone you trust or to a health professional.`,
+      },
+      {
+        question: $localize`:@@tpl.self-care.faq2.q:Can I use it every day?`,
+        answer:
+          $localize`:@@tpl.self-care.faq2.a:Yes. The wheel stays saved, so you can spin it each morning or whenever you need it.`,
+      },
+    ],
+  },
+
+  'what-to-cook': {
+    slug: 'what-to-cook-wheel',
+    title: $localize`:@@tpl.what-to-cook.title:What to Cook Wheel | Random Dinner Recipe Picker`,
+    description:
+      $localize`:@@tpl.what-to-cook.desc:Don’t know what to cook tonight? Spin the wheel for a dish and start cooking. Free, and you can fill it with the recipes you actually make.`,
+    heading: $localize`:@@tpl.what-to-cook.heading:What to Cook Wheel`,
+    intro:
+      $localize`:@@tpl.what-to-cook.intro:Deciding what to cook is the part of cooking nobody enjoys. Put the dishes you know how to make on the wheel, spin it while the pan heats up, and dinner is decided.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.what-to-cook.s1.heading:Your recipes, your wheel`,
+        body: $localize`:@@tpl.what-to-cook.s1.body:The stock dishes are everyday classics. Replace them with your own repertoire, and the wheel becomes a way to stop cooking the same three meals every week.`,
+      },
+      {
+        heading: $localize`:@@tpl.what-to-cook.s2.heading:Plan the whole week`,
+        body: $localize`:@@tpl.what-to-cook.s2.body:Spin seven times, removing each dish as it comes up, and you have a week of dinners — and a shopping list to go with it.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.what-to-cook.faq1.q:Is this different from the “what to eat” wheel?`,
+        answer:
+          $localize`:@@tpl.what-to-cook.faq1.a:Yes. This one is for cooking at home; the what to eat wheel is for choosing a type of food or a restaurant.`,
+      },
+      {
+        question: $localize`:@@tpl.what-to-cook.faq2.q:Can the whole family add dishes?`,
+        answer:
+          $localize`:@@tpl.what-to-cook.faq2.a:Share the wheel as a read-only link to show the list, and add the dishes everybody asks for.`,
+      },
+    ],
+  },
+
+  'superpower': {
+    slug: 'random-superpower-generator',
+    title: $localize`:@@tpl.superpower.title:Random Superpower Generator | Spin for a Superpower`,
+    description:
+      $localize`:@@tpl.superpower.desc:Spin the random superpower generator: flight, invisibility, time travel and more. Free for kids’ games, story writing, drawing and icebreakers.`,
+    heading: $localize`:@@tpl.superpower.heading:Random Superpower Generator`,
+    intro:
+      $localize`:@@tpl.superpower.intro:Everyone has an answer to “which superpower would you pick?”. The wheel takes the choice away: spin, get your power, and then explain what you would do with it.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.superpower.s1.heading:Games and stories`,
+        body: $localize`:@@tpl.superpower.s1.body:Use it for a storytelling round where each player gets a power, a drawing challenge for a new hero, or a creative writing prompt. It is also a reliable icebreaker for classes and teams.`,
+      },
+      {
+        heading: $localize`:@@tpl.superpower.s2.heading:Add weaknesses`,
+        body: $localize`:@@tpl.superpower.s2.body:Show a second wheel next to it with a weakness for each hero. A hero who can fly but is afraid of heights makes a much better story.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.superpower.faq1.q:Is it good for classrooms?`,
+        answer:
+          $localize`:@@tpl.superpower.faq1.a:Yes. Project it on the board and let each student spin their power before a writing or drawing task.`,
+      },
+      {
+        question: $localize`:@@tpl.superpower.faq2.q:Can I add my own powers?`,
+        answer:
+          $localize`:@@tpl.superpower.faq2.a:Copy the wheel and add as many as you like; every entry is editable.`,
+      },
+    ],
+  },
+
+  'charades': {
+    slug: 'charades-ideas-wheel',
+    title: $localize`:@@tpl.charades.title:Charades Ideas Wheel | Random Charades Generator`,
+    description:
+      $localize`:@@tpl.charades.desc:A free charades generator: spin the wheel for something to act out, with no words and no sounds. Great for family game nights and parties.`,
+    heading: $localize`:@@tpl.charades.heading:Charades Ideas Wheel`,
+    intro:
+      $localize`:@@tpl.charades.intro:The hardest part of charades is thinking up what to act. Let the wheel do it: the player spins where only they can see the phone, gets their prompt, and starts acting.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.charades.s1.heading:Keep the prompt secret`,
+        body: $localize`:@@tpl.charades.s1.body:Spin on the actor’s phone rather than the big screen, so only they see the result. Remove each prompt once it has been guessed and the round never repeats.`,
+      },
+      {
+        heading: $localize`:@@tpl.charades.s2.heading:Themed rounds`,
+        body: $localize`:@@tpl.charades.s2.body:Keep a wheel for films, one for animals and one for jobs, and let the team pick the theme before the actor spins. Up to four wheels can be shown side by side.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.charades.faq1.q:Is it suitable for children?`,
+        answer:
+          $localize`:@@tpl.charades.faq1.a:Yes. The stock prompts are family friendly, and you can replace them with things younger children can act out easily.`,
+      },
+      {
+        question: $localize`:@@tpl.charades.faq2.q:Can I use it with teams?`,
+        answer:
+          $localize`:@@tpl.charades.faq2.a:Yes. Put the team names on a second wheel to decide who goes next.`,
+      },
+    ],
+  },
+
+  'random-job': {
+    slug: 'random-job-generator',
+    title: $localize`:@@tpl.random-job.title:Random Job Generator | Spin for a Random Job`,
+    description:
+      $localize`:@@tpl.random-job.desc:A free random job generator wheel for role-play, writing, career days and guessing games. Spin for a job and step into the role.`,
+    heading: $localize`:@@tpl.random-job.heading:Random Job Generator`,
+    intro:
+      $localize`:@@tpl.random-job.intro:Astronaut, detective, vet: a random job is a surprisingly good starting point. Spin for a role in a game of pretend, a character for a story, or a topic for a career-day talk.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.random-job.s1.heading:Role-play and guessing games`,
+        body: $localize`:@@tpl.random-job.s1.body:One player spins in secret and answers questions in character until the others guess the job. It works as a warm-up for classes, teams and language lessons.`,
+      },
+      {
+        heading: $localize`:@@tpl.random-job.s2.heading:Career days`,
+        body: $localize`:@@tpl.random-job.s2.body:Replace the stock jobs with the careers your class is exploring, and let each student spin the one they will research and present.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.random-job.faq1.q:Is it useful for language lessons?`,
+        answer:
+          $localize`:@@tpl.random-job.faq1.a:Yes. Guessing a job through questions is a classic speaking exercise, and the wheel keeps the prompts random.`,
+      },
+      {
+        question: $localize`:@@tpl.random-job.faq2.q:Can I add more jobs?`,
+        answer:
+          $localize`:@@tpl.random-job.faq2.a:Copy the wheel and add as many as you like.`,
+      },
+    ],
+  },
+
+  'writing-prompts': {
+    slug: 'writing-prompt-wheel',
+    title: $localize`:@@tpl.writing-prompts.title:Writing Prompt Wheel | Random Story Prompt Generator`,
+    description:
+      $localize`:@@tpl.writing-prompts.desc:Spin the writing prompt wheel for a random story starter and start writing before you can overthink it. Free for writers, teachers and students.`,
+    heading: $localize`:@@tpl.writing-prompts.heading:Writing Prompt Wheel`,
+    intro:
+      $localize`:@@tpl.writing-prompts.intro:A blank page gets easier with a constraint. Spin the wheel, take the prompt it lands on, and write the first line straight away — the prompt is a door, not a rule.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.writing-prompts.s1.heading:For classrooms`,
+        body: $localize`:@@tpl.writing-prompts.s1.body:Project the wheel and spin once for the whole class, or let each student spin their own. Removing each prompt after it is used means nobody writes the same story as their neighbour.`,
+      },
+      {
+        heading: $localize`:@@tpl.writing-prompts.s2.heading:Combine wheels`,
+        body: $localize`:@@tpl.writing-prompts.s2.body:Show a wheel of prompts next to a wheel of genres — mystery, comedy, science fiction — and a third for the setting. Three spins make a prompt no list can give you.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.writing-prompts.faq1.q:Can I add my own prompts?`,
+        answer:
+          $localize`:@@tpl.writing-prompts.faq1.a:Yes. Copy the wheel and replace or add prompts; the wheel stays saved for your next session.`,
+      },
+      {
+        question: $localize`:@@tpl.writing-prompts.faq2.q:Is it free for schools?`,
+        answer:
+          $localize`:@@tpl.writing-prompts.faq2.a:Yes. There is no account, no subscription and no student data involved.`,
+      },
+    ],
+  },
+
+  'what-to-wear': {
+    slug: 'what-to-wear-wheel',
+    title: $localize`:@@tpl.what-to-wear.title:What to Wear Wheel | Random Outfit Challenge`,
+    description:
+      $localize`:@@tpl.what-to-wear.desc:Can’t decide what to wear? Spin the outfit wheel for a style challenge: a colour, a theme, a piece you never wear. Free, no signup.`,
+    heading: $localize`:@@tpl.what-to-wear.heading:What to Wear Wheel`,
+    intro:
+      $localize`:@@tpl.what-to-wear.intro:A wardrobe full of clothes and nothing to wear. The wheel will not dress you, but it gives you a rule — all black, something red, stripes — and a rule is usually all it takes to get dressed.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.what-to-wear.s1.heading:A challenge, not a uniform`,
+        body: $localize`:@@tpl.what-to-wear.s1.body:The stock entries are prompts rather than outfits, so they work whatever is in your wardrobe. Spin in the morning, build the look around the prompt, and you have saved ten minutes.`,
+      },
+      {
+        heading: $localize`:@@tpl.what-to-wear.s2.heading:Content for your feed`,
+        body: $localize`:@@tpl.what-to-wear.s2.body:Outfit challenges are a popular format for stories and short videos. Spin on camera, then show the result — the winner card can save an image of the spin for your post.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.what-to-wear.faq1.q:Can I put my actual clothes on the wheel?`,
+        answer:
+          $localize`:@@tpl.what-to-wear.faq1.a:Yes. Add your tops, trousers or shoes as entries — or keep three wheels side by side, one for each.`,
+      },
+      {
+        question: $localize`:@@tpl.what-to-wear.faq2.q:Does it work on my phone?`,
+        answer:
+          $localize`:@@tpl.what-to-wear.faq2.a:Yes, in any mobile browser, and as an Android app.`,
+      },
+    ],
+  },
+
+  'what-game-to-play': {
+    slug: 'what-game-to-play-wheel',
+    title: $localize`:@@tpl.what-game-to-play.title:What Game to Play Wheel | Random Video Game Picker`,
+    description:
+      $localize`:@@tpl.what-game-to-play.desc:Too many games in your library? Spin the wheel to pick what to play tonight — by genre or by title. Free, and a great segment on stream.`,
+    heading: $localize`:@@tpl.what-game-to-play.heading:What Game to Play Wheel`,
+    intro:
+      $localize`:@@tpl.what-game-to-play.intro:A library of a hundred games and an evening spent scrolling through it. Put the genres — or the actual titles — on the wheel, spin once, and play whatever it picks.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.what-game-to-play.s1.heading:Put your backlog on it`,
+        body: $localize`:@@tpl.what-game-to-play.s1.body:The stock wheel uses genres; the version that really works holds the titles you own and never started. Paste the list in one go and let the wheel clear your backlog one spin at a time.`,
+      },
+      {
+        heading: $localize`:@@tpl.what-game-to-play.s2.heading:Let chat decide on stream`,
+        body: $localize`:@@tpl.what-game-to-play.s2.body:Spin live and let the wheel pick the next game in front of your viewers. The countdown, the sounds and the winner effects make the spin a small show of its own.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.what-game-to-play.faq1.q:Can I use it as a stream overlay?`,
+        answer:
+          $localize`:@@tpl.what-game-to-play.faq1.a:Yes. Capture the browser window in OBS or Streamlabs and spin it live.`,
+      },
+      {
+        question: $localize`:@@tpl.what-game-to-play.faq2.q:Can viewers add games?`,
+        answer:
+          $localize`:@@tpl.what-game-to-play.faq2.a:Add their suggestions to the wheel before the spin — adding a title more than once gives it better odds.`,
+      },
+    ],
+  },
+
+  'heads-or-tails': {
+    slug: 'heads-or-tails-wheel',
+    title: $localize`:@@tpl.heads-or-tails.title:Heads or Tails Wheel | Online Coin Flip Spinner`,
+    description:
+      $localize`:@@tpl.heads-or-tails.desc:Flip a coin online with the heads or tails wheel: two sides, one spin, and a fair result everyone can watch. Free, no coin required.`,
+    heading: $localize`:@@tpl.heads-or-tails.heading:Heads or Tails Wheel`,
+    intro:
+      $localize`:@@tpl.heads-or-tails.intro:No coin in your pocket? Spin the wheel instead. Heads and tails share the wheel equally, and the result comes from your browser’s cryptographic random source — as fair as a coin, and nobody can drop it.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.heads-or-tails.s1.heading:Fair for both sides`,
+        body: $localize`:@@tpl.heads-or-tails.s1.body:Each side is exactly half of the wheel, so the odds are exactly fifty-fifty. Unlike a real coin toss, nobody can claim it was thrown badly or landed on the edge.`,
+      },
+      {
+        heading: $localize`:@@tpl.heads-or-tails.s2.heading:Best of three`,
+        body: $localize`:@@tpl.heads-or-tails.s2.body:Keep the winners list open and every result is recorded on screen, which makes a best-of-three or best-of-five easy to follow.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.heads-or-tails.faq1.q:Is it really fifty-fifty?`,
+        answer:
+          $localize`:@@tpl.heads-or-tails.faq1.a:Yes. Heads and tails have the same number of slices, all the same size, and the spin uses a cryptographic random source.`,
+      },
+      {
+        question: $localize`:@@tpl.heads-or-tails.faq2.q:Can I use it to decide who starts a game?`,
+        answer:
+          $localize`:@@tpl.heads-or-tails.faq2.a:Yes — that is one of the most common uses, along with choosing ends in sports matches.`,
+      },
+    ],
+  },
+
+  'punishment': {
+    slug: 'punishment-wheel',
+    title: $localize`:@@tpl.punishment.title:Punishment Wheel | Forfeit Spinner for Games & Streams`,
+    description:
+      $localize`:@@tpl.punishment.desc:Lost the round? Spin the punishment wheel for a harmless forfeit. Free for game nights, parties and live streams, and every forfeit is editable.`,
+    heading: $localize`:@@tpl.punishment.heading:Punishment Wheel`,
+    intro:
+      $localize`:@@tpl.punishment.intro:A game is more fun when losing costs something. Put a few harmless forfeits on the wheel, and whoever loses the round spins for theirs — in front of everyone, with no way to negotiate.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.punishment.s1.heading:Keep it harmless`,
+        body: $localize`:@@tpl.punishment.s1.body:The best forfeits are embarrassing, not unpleasant: a song, a dance, an accent. The stock wheel sticks to those, and everything on it is safe for a family evening.`,
+      },
+      {
+        heading: $localize`:@@tpl.punishment.s2.heading:A stream favourite`,
+        body: $localize`:@@tpl.punishment.s2.body:Streamers use punishment wheels for lost matches and chat challenges. Spin live, and the fire or fireworks effect turns every loss into a moment.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.punishment.faq1.q:Can I add my own forfeits?`,
+        answer:
+          $localize`:@@tpl.punishment.faq1.a:Yes. Copy the wheel and replace any forfeit; keep them light enough that everybody still wants to play.`,
+      },
+      {
+        question: $localize`:@@tpl.punishment.faq2.q:Can I give the mild ones better odds?`,
+        answer:
+          $localize`:@@tpl.punishment.faq2.a:Add a forfeit more than once and it takes more slices, so it comes up more often.`,
+      },
+    ],
+  },
+
+  'music-genre': {
+    slug: 'random-music-genre-wheel',
+    title: $localize`:@@tpl.music-genre.title:Random Music Genre Wheel | Spin for a Genre`,
+    description:
+      $localize`:@@tpl.music-genre.desc:Spin the random music genre wheel for tonight’s playlist, a party theme or something new to listen to. Free, and every genre is editable.`,
+    heading: $localize`:@@tpl.music-genre.heading:Random Music Genre Wheel`,
+    intro:
+      $localize`:@@tpl.music-genre.intro:Your listening habits are probably stuck in the same three genres. Spin the wheel, commit to an evening of whatever it picks, and find the album you would never have chosen yourself.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.music-genre.s1.heading:Playlists and parties`,
+        body: $localize`:@@tpl.music-genre.s1.body:Spin for the theme of a party playlist, the genre of the next karaoke round, or the style a band has to play the next song in.`,
+      },
+      {
+        heading: $localize`:@@tpl.music-genre.s2.heading:Go deeper`,
+        body: $localize`:@@tpl.music-genre.s2.body:Once a genre comes up, show a second wheel of its sub-genres or decades next to it. Two spins take you from “jazz” to somewhere you have never been.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.music-genre.faq1.q:Can I add sub-genres?`,
+        answer:
+          $localize`:@@tpl.music-genre.faq1.a:Yes. Copy the wheel and add as many genres or sub-genres as you like.`,
+      },
+      {
+        question: $localize`:@@tpl.music-genre.faq2.q:Can I add my own sounds to the spin?`,
+        answer:
+          $localize`:@@tpl.music-genre.faq2.a:Yes. You can upload your own spin and winner sounds in the sound settings.`,
+      },
+    ],
+  },
+
+  'halloween-costume': {
+    slug: 'halloween-costume-wheel',
+    title: $localize`:@@tpl.halloween-costume.title:Halloween Costume Wheel | Random Costume Generator`,
+    description:
+      $localize`:@@tpl.halloween-costume.desc:No Halloween costume yet? Spin the costume wheel and dress as whatever it picks: vampire, witch, zombie and more. Free, with a spooky effect.`,
+    heading: $localize`:@@tpl.halloween-costume.heading:Halloween Costume Wheel`,
+    intro:
+      $localize`:@@tpl.halloween-costume.intro:Every October the same question: what are you going as? Spin the wheel and the costume is decided — then the only problem left is finding enough cardboard.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.halloween-costume.s1.heading:Costumes you can make at home`,
+        body: $localize`:@@tpl.halloween-costume.s1.body:Every costume on the stock wheel can be put together from things most houses already have: a sheet, some face paint, a stripy top. Swap in the characters your family loves.`,
+      },
+      {
+        heading: $localize`:@@tpl.halloween-costume.s2.heading:Group and family costumes`,
+        body: $localize`:@@tpl.halloween-costume.s2.body:Spin once for a theme the whole group follows, or let each person spin their own. Show two wheels side by side to combine a monster with a twist.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.halloween-costume.faq1.q:Is it suitable for kids?`,
+        answer:
+          $localize`:@@tpl.halloween-costume.faq1.a:Yes. The stock costumes are classic and child friendly, and every entry can be replaced.`,
+      },
+      {
+        question: $localize`:@@tpl.halloween-costume.faq2.q:Can I use it for a Halloween party?`,
+        answer:
+          $localize`:@@tpl.halloween-costume.faq2.a:Yes — spin for costumes, games or forfeits, and turn on the fire effect for the reveal.`,
+      },
+    ],
+  },
 };
 
 export interface TemplateLandingPage {

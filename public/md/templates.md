@@ -38,6 +38,26 @@ with its own entries and colour palette; everything stays editable afterwards.
 | Fantasy Draft Order | Settle your league's draft order live, in front of every manager. |
 | Random Color Wheel | Spin for a color: art challenges, outfits, party themes and games. |
 | What to Draw | Blank page? Spin for something to draw and start sketching. |
+| Spin the Bottle | The party classic without the bottle: put the players on the wheel and spin. |
+| Random Zodiac Sign | Twelve signs, one spin: a random star sign for games, stories and quizzes. |
+| Baby Name Picker | Put your shortlist of baby names on the wheel and see which one feels right. |
+| Pet Name Picker | A new puppy, kitten or bunny and no name yet? Let the wheel decide. |
+| Party Games | Which game next? Spin and keep the party moving. |
+| What to Study | Can’t choose where to start revising? Spin for the next subject. |
+| Random Hobby | Looking for a new hobby? Spin and give the first one a real try. |
+| What to Do When Bored | Nothing to do? Spin and do the first thing the wheel says. |
+| Self-Care Wheel | Small things that help: spin for one kind thing to do for yourself today. |
+| What to Cook | Staring into the fridge? Spin for tonight’s dish and start cooking. |
+| Random Superpower | If you could have one power… spin to find out which one you get. |
+| Charades Ideas | Spin for something to act out — no words, no sounds, just gestures. |
+| Random Job | A random job for role-play, stories, career days and guessing games. |
+| Writing Prompts | Spin for a story starter and write the first line before you can overthink it. |
+| What to Wear | Can’t decide on an outfit? Spin for today’s style challenge. |
+| What Game to Play | Too many games, not enough decisions: spin for tonight’s genre. |
+| Heads or Tails | A coin toss on a wheel: two sides, one spin, no coin needed. |
+| Punishment Wheel | Lost the round? Spin for a harmless forfeit and take it like a sport. |
+| Random Music Genre | Spin for a genre and build tonight’s playlist around it. |
+| Halloween Costume | No costume yet? Spin and dress as whatever the wheel picks. |
 
 ## Each template has its own page
 
@@ -70,6 +90,26 @@ without copying it first:
 - [Fantasy Draft Order Generator](https://www.wheelr.xyz/templates/fantasy-draft-order-generator) — Randomize your fantasy football draft order live: put every team on the wheel, spin until it is empty, and share the result with the league.
 - [Random Color Wheel](https://www.wheelr.xyz/templates/random-color-wheel) — Spin the random color wheel for art challenges, outfit games, party themes and classroom activities. Each slice is painted the color it names.
 - [What to Draw Wheel](https://www.wheelr.xyz/templates/what-to-draw-wheel) — Stuck on what to draw? Spin the wheel for a random drawing prompt and start sketching. Add your own ideas and keep a wheel for every sketchbook.
+- [Spin the Bottle Online](https://www.wheelr.xyz/templates/spin-the-bottle) — Play spin the bottle online with a free wheel: add the players’ names, spin, and see who it points to. Works on any phone, no bottle and no signup.
+- [Random Zodiac Sign Wheel](https://www.wheelr.xyz/templates/random-zodiac-sign-wheel) — Spin the zodiac wheel for a random star sign: all twelve signs, from Aries to Pisces. Free for party games, writing prompts, quizzes and classrooms.
+- [Baby Name Generator Wheel](https://www.wheelr.xyz/templates/baby-name-generator-wheel) — Stuck between baby names? Put your shortlist on the wheel and spin. A free baby name picker that helps you notice which name you were hoping for.
+- [Pet Name Generator Wheel](https://www.wheelr.xyz/templates/pet-name-generator-wheel) — A free pet name generator wheel: spin for a name for your new puppy, kitten or rabbit, or put your family’s ideas on it and let the wheel settle it.
+- [Party Games Wheel](https://www.wheelr.xyz/templates/party-games-wheel) — Spin the party games wheel and keep the fun going: charades, musical chairs, hot potato and more. Free for birthdays, sleepovers and family parties.
+- [What to Study Wheel](https://www.wheelr.xyz/templates/study-subject-picker) — Can’t decide what to revise first? Spin the study wheel for your next subject and start studying instead of planning. Free, no signup.
+- [Random Hobby Generator](https://www.wheelr.xyz/templates/random-hobby-generator) — A free random hobby generator: spin the wheel for a new hobby to try this month, from baking and chess to pottery and birdwatching.
+- [What to Do When Bored Wheel](https://www.wheelr.xyz/templates/what-to-do-when-bored-wheel) — Bored and out of ideas? Spin the boredom wheel for something to do right now, indoors or out. Free, no signup, and you can add your own ideas.
+- [Self-Care Wheel](https://www.wheelr.xyz/templates/self-care-wheel) — Spin the self-care wheel for one small, kind thing to do for yourself today. Free, private, and you can fill it with the ideas that help you most.
+- [What to Cook Wheel](https://www.wheelr.xyz/templates/what-to-cook-wheel) — Don’t know what to cook tonight? Spin the wheel for a dish and start cooking. Free, and you can fill it with the recipes you actually make.
+- [Random Superpower Generator](https://www.wheelr.xyz/templates/random-superpower-generator) — Spin the random superpower generator: flight, invisibility, time travel and more. Free for kids’ games, story writing, drawing and icebreakers.
+- [Charades Ideas Wheel](https://www.wheelr.xyz/templates/charades-ideas-wheel) — A free charades generator: spin the wheel for something to act out, with no words and no sounds. Great for family game nights and parties.
+- [Random Job Generator](https://www.wheelr.xyz/templates/random-job-generator) — A free random job generator wheel for role-play, writing, career days and guessing games. Spin for a job and step into the role.
+- [Writing Prompt Wheel](https://www.wheelr.xyz/templates/writing-prompt-wheel) — Spin the writing prompt wheel for a random story starter and start writing before you can overthink it. Free for writers, teachers and students.
+- [What to Wear Wheel](https://www.wheelr.xyz/templates/what-to-wear-wheel) — Can’t decide what to wear? Spin the outfit wheel for a style challenge: a colour, a theme, a piece you never wear. Free, no signup.
+- [What Game to Play Wheel](https://www.wheelr.xyz/templates/what-game-to-play-wheel) — Too many games in your library? Spin the wheel to pick what to play tonight — by genre or by title. Free, and a great segment on stream.
+- [Heads or Tails Wheel](https://www.wheelr.xyz/templates/heads-or-tails-wheel) — Flip a coin online with the heads or tails wheel: two sides, one spin, and a fair result everyone can watch. Free, no coin required.
+- [Punishment Wheel](https://www.wheelr.xyz/templates/punishment-wheel) — Lost the round? Spin the punishment wheel for a harmless forfeit. Free for game nights, parties and live streams, and every forfeit is editable.
+- [Random Music Genre Wheel](https://www.wheelr.xyz/templates/random-music-genre-wheel) — Spin the random music genre wheel for tonight’s playlist, a party theme or something new to listen to. Free, and every genre is editable.
+- [Halloween Costume Wheel](https://www.wheelr.xyz/templates/halloween-costume-wheel) — No Halloween costume yet? Spin the costume wheel and dress as whatever it picks: vampire, witch, zombie and more. Free, with a spooky effect.
 
 Loading a template creates a new wheel in your workspace — it never overwrites the
 wheel you are already working on. In the Android app, copying a template asks you

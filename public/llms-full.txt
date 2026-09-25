@@ -254,6 +254,26 @@ with its own entries and colour palette; everything stays editable afterwards.
 | Fantasy Draft Order | Settle your league's draft order live, in front of every manager. |
 | Random Color Wheel | Spin for a color: art challenges, outfits, party themes and games. |
 | What to Draw | Blank page? Spin for something to draw and start sketching. |
+| Spin the Bottle | The party classic without the bottle: put the players on the wheel and spin. |
+| Random Zodiac Sign | Twelve signs, one spin: a random star sign for games, stories and quizzes. |
+| Baby Name Picker | Put your shortlist of baby names on the wheel and see which one feels right. |
+| Pet Name Picker | A new puppy, kitten or bunny and no name yet? Let the wheel decide. |
+| Party Games | Which game next? Spin and keep the party moving. |
+| What to Study | Can’t choose where to start revising? Spin for the next subject. |
+| Random Hobby | Looking for a new hobby? Spin and give the first one a real try. |
+| What to Do When Bored | Nothing to do? Spin and do the first thing the wheel says. |
+| Self-Care Wheel | Small things that help: spin for one kind thing to do for yourself today. |
+| What to Cook | Staring into the fridge? Spin for tonight’s dish and start cooking. |
+| Random Superpower | If you could have one power… spin to find out which one you get. |
+| Charades Ideas | Spin for something to act out — no words, no sounds, just gestures. |
+| Random Job | A random job for role-play, stories, career days and guessing games. |
+| Writing Prompts | Spin for a story starter and write the first line before you can overthink it. |
+| What to Wear | Can’t decide on an outfit? Spin for today’s style challenge. |
+| What Game to Play | Too many games, not enough decisions: spin for tonight’s genre. |
+| Heads or Tails | A coin toss on a wheel: two sides, one spin, no coin needed. |
+| Punishment Wheel | Lost the round? Spin for a harmless forfeit and take it like a sport. |
+| Random Music Genre | Spin for a genre and build tonight’s playlist around it. |
+| Halloween Costume | No costume yet? Spin and dress as whatever the wheel picks. |
 
 ## Each template has its own page
 
@@ -286,6 +306,26 @@ without copying it first:
 - [Fantasy Draft Order Generator](https://www.wheelr.xyz/templates/fantasy-draft-order-generator) — Randomize your fantasy football draft order live: put every team on the wheel, spin until it is empty, and share the result with the league.
 - [Random Color Wheel](https://www.wheelr.xyz/templates/random-color-wheel) — Spin the random color wheel for art challenges, outfit games, party themes and classroom activities. Each slice is painted the color it names.
 - [What to Draw Wheel](https://www.wheelr.xyz/templates/what-to-draw-wheel) — Stuck on what to draw? Spin the wheel for a random drawing prompt and start sketching. Add your own ideas and keep a wheel for every sketchbook.
+- [Spin the Bottle Online](https://www.wheelr.xyz/templates/spin-the-bottle) — Play spin the bottle online with a free wheel: add the players’ names, spin, and see who it points to. Works on any phone, no bottle and no signup.
+- [Random Zodiac Sign Wheel](https://www.wheelr.xyz/templates/random-zodiac-sign-wheel) — Spin the zodiac wheel for a random star sign: all twelve signs, from Aries to Pisces. Free for party games, writing prompts, quizzes and classrooms.
+- [Baby Name Generator Wheel](https://www.wheelr.xyz/templates/baby-name-generator-wheel) — Stuck between baby names? Put your shortlist on the wheel and spin. A free baby name picker that helps you notice which name you were hoping for.
+- [Pet Name Generator Wheel](https://www.wheelr.xyz/templates/pet-name-generator-wheel) — A free pet name generator wheel: spin for a name for your new puppy, kitten or rabbit, or put your family’s ideas on it and let the wheel settle it.
+- [Party Games Wheel](https://www.wheelr.xyz/templates/party-games-wheel) — Spin the party games wheel and keep the fun going: charades, musical chairs, hot potato and more. Free for birthdays, sleepovers and family parties.
+- [What to Study Wheel](https://www.wheelr.xyz/templates/study-subject-picker) — Can’t decide what to revise first? Spin the study wheel for your next subject and start studying instead of planning. Free, no signup.
+- [Random Hobby Generator](https://www.wheelr.xyz/templates/random-hobby-generator) — A free random hobby generator: spin the wheel for a new hobby to try this month, from baking and chess to pottery and birdwatching.
+- [What to Do When Bored Wheel](https://www.wheelr.xyz/templates/what-to-do-when-bored-wheel) — Bored and out of ideas? Spin the boredom wheel for something to do right now, indoors or out. Free, no signup, and you can add your own ideas.
+- [Self-Care Wheel](https://www.wheelr.xyz/templates/self-care-wheel) — Spin the self-care wheel for one small, kind thing to do for yourself today. Free, private, and you can fill it with the ideas that help you most.
+- [What to Cook Wheel](https://www.wheelr.xyz/templates/what-to-cook-wheel) — Don’t know what to cook tonight? Spin the wheel for a dish and start cooking. Free, and you can fill it with the recipes you actually make.
+- [Random Superpower Generator](https://www.wheelr.xyz/templates/random-superpower-generator) — Spin the random superpower generator: flight, invisibility, time travel and more. Free for kids’ games, story writing, drawing and icebreakers.
+- [Charades Ideas Wheel](https://www.wheelr.xyz/templates/charades-ideas-wheel) — A free charades generator: spin the wheel for something to act out, with no words and no sounds. Great for family game nights and parties.
+- [Random Job Generator](https://www.wheelr.xyz/templates/random-job-generator) — A free random job generator wheel for role-play, writing, career days and guessing games. Spin for a job and step into the role.
+- [Writing Prompt Wheel](https://www.wheelr.xyz/templates/writing-prompt-wheel) — Spin the writing prompt wheel for a random story starter and start writing before you can overthink it. Free for writers, teachers and students.
+- [What to Wear Wheel](https://www.wheelr.xyz/templates/what-to-wear-wheel) — Can’t decide what to wear? Spin the outfit wheel for a style challenge: a colour, a theme, a piece you never wear. Free, no signup.
+- [What Game to Play Wheel](https://www.wheelr.xyz/templates/what-game-to-play-wheel) — Too many games in your library? Spin the wheel to pick what to play tonight — by genre or by title. Free, and a great segment on stream.
+- [Heads or Tails Wheel](https://www.wheelr.xyz/templates/heads-or-tails-wheel) — Flip a coin online with the heads or tails wheel: two sides, one spin, and a fair result everyone can watch. Free, no coin required.
+- [Punishment Wheel](https://www.wheelr.xyz/templates/punishment-wheel) — Lost the round? Spin the punishment wheel for a harmless forfeit. Free for game nights, parties and live streams, and every forfeit is editable.
+- [Random Music Genre Wheel](https://www.wheelr.xyz/templates/random-music-genre-wheel) — Spin the random music genre wheel for tonight’s playlist, a party theme or something new to listen to. Free, and every genre is editable.
+- [Halloween Costume Wheel](https://www.wheelr.xyz/templates/halloween-costume-wheel) — No Halloween costume yet? Spin the costume wheel and dress as whatever it picks: vampire, witch, zombie and more. Free, with a spooky effect.
 
 Loading a template creates a new wheel in your workspace — it never overwrites the
 wheel you are already working on. In the Android app, copying a template asks you
@@ -400,6 +440,96 @@ stays available to everyone either way.
 - Spin the wheel: https://www.wheelr.xyz/
 
 
+# Baby Name Generator Wheel
+
+Choosing a name can go on for months. Put the names you both like on the wheel and spin: the useful part is often not the result, but the moment it lands and you realise whether you were hoping for that name or another one.
+
+## On the wheel
+
+- Mia
+- Leo
+- Aria
+- Noah
+- Sofia
+- Luca
+- Zoe
+- Elio
+- Nora
+- Theo
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/baby-name-generator-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Your shortlist, not ours
+
+The names on the wheel are just an example. Replace them with your own shortlist — first names, middle names, or combinations of both — and keep separate wheels for different ideas.
+
+## Spin it with the family
+
+Publish the wheel as a read-only link and grandparents or friends can spin it from their own phone. It is a gentle way to share a shortlist without asking everyone to vote.
+
+## FAQ
+
+**Should we really let a wheel choose our baby’s name?**
+
+Only if you want to. Most parents use it to break a tie or to see how they feel when a name comes up — the decision stays yours.
+
+**Can I give our favourite name better odds?**
+
+Add it more than once and it gets more slices, so it comes up more often.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/baby-name-generator-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# Charades Ideas Wheel
+
+The hardest part of charades is thinking up what to act. Let the wheel do it: the player spins where only they can see the phone, gets their prompt, and starts acting.
+
+## On the wheel
+
+- Brushing your teeth
+- Surfing
+- A T-rex
+- Changing a tyre
+- Walking a dog
+- Making pizza
+- A dancing robot
+- Climbing a mountain
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/charades-ideas-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Keep the prompt secret
+
+Spin on the actor’s phone rather than the big screen, so only they see the result. Remove each prompt once it has been guessed and the round never repeats.
+
+## Themed rounds
+
+Keep a wheel for films, one for animals and one for jobs, and let the team pick the theme before the actor spins. Up to four wheels can be shown side by side.
+
+## FAQ
+
+**Is it suitable for children?**
+
+Yes. The stock prompts are family friendly, and you can replace them with things younger children can act out easily.
+
+**Can I use it with teams?**
+
+Yes. Put the team names on a second wheel to decide who goes next.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/charades-ideas-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
 # Chore Wheel
 
 Every shared house has the same argument, and it is never really about the dishes. A wheel settles it without anyone having to be the one who decided: spin, read the result, it is done.
@@ -453,11 +583,11 @@ A reward is more exciting when nobody knows which one is coming. Put the classro
 - Homework pass
 - Pick your seat
 - Class DJ
-- 5 extra minutes of break
+- Extra break time
 - Teacher's helper
 - Sticker
-- Choose the class game
-- Sit at the teacher's desk
+- Pick the class game
+- Teacher’s desk
 
 The wheel can be spun directly at https://www.wheelr.xyz/templates/classroom-reward-wheel — no account, no
 installation. Copying it creates your own editable wheel; the entries, colours,
@@ -622,6 +752,92 @@ Publish it as a read-only public link and anyone can open it in a browser, with 
 - Wheel app: https://www.wheelr.xyz/
 
 
+# Halloween Costume Wheel
+
+Every October the same question: what are you going as? Spin the wheel and the costume is decided — then the only problem left is finding enough cardboard.
+
+## On the wheel
+
+- Vampire
+- Witch
+- Ghost
+- Zombie
+- Skeleton
+- Pirate
+- Mummy
+- Werewolf
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/halloween-costume-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Costumes you can make at home
+
+Every costume on the stock wheel can be put together from things most houses already have: a sheet, some face paint, a stripy top. Swap in the characters your family loves.
+
+## Group and family costumes
+
+Spin once for a theme the whole group follows, or let each person spin their own. Show two wheels side by side to combine a monster with a twist.
+
+## FAQ
+
+**Is it suitable for kids?**
+
+Yes. The stock costumes are classic and child friendly, and every entry can be replaced.
+
+**Can I use it for a Halloween party?**
+
+Yes — spin for costumes, games or forfeits, and turn on the fire effect for the reveal.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/halloween-costume-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# Heads or Tails Wheel
+
+No coin in your pocket? Spin the wheel instead. Heads and tails share the wheel equally, and the result comes from your browser’s cryptographic random source — as fair as a coin, and nobody can drop it.
+
+## On the wheel
+
+- Heads
+- Tails
+- Heads
+- Tails
+- Heads
+- Tails
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/heads-or-tails-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Fair for both sides
+
+Each side is exactly half of the wheel, so the odds are exactly fifty-fifty. Unlike a real coin toss, nobody can claim it was thrown badly or landed on the edge.
+
+## Best of three
+
+Keep the winners list open and every result is recorded on screen, which makes a best-of-three or best-of-five easy to follow.
+
+## FAQ
+
+**Is it really fifty-fifty?**
+
+Yes. Heads and tails have the same number of slices, all the same size, and the spin uses a cryptographic random source.
+
+**Can I use it to decide who starts a game?**
+
+Yes — that is one of the most common uses, along with choosing ends in sports matches.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/heads-or-tails-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
 # Icebreaker Questions Wheel
 
 Icebreakers fail when the facilitator picks the question and everyone can tell it was picked. A wheel takes that away: the question arrives by chance, the room reacts to the wheel instead of to you, and the first answer comes faster.
@@ -754,6 +970,96 @@ Share it as a read-only public link and everyone opens the same wheel in their o
 - Wheel app: https://www.wheelr.xyz/
 
 
+# Party Games Wheel
+
+The party slows down every time someone asks “what shall we play now?”. Put the games on the wheel, let the birthday child spin, and the next game starts without a debate.
+
+## On the wheel
+
+- Charades
+- Musical chairs
+- Two truths and a lie
+- Karaoke round
+- Limbo
+- Hot potato
+- Treasure hunt
+- Freeze dance
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/party-games-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Games that need nothing
+
+Every game on the stock wheel works with what is already in the room: some music, a few chairs, a cushion to pass around. Swap in the games your guests actually know and love.
+
+## Big screen, big moment
+
+Put the wheel on the TV or a projector and turn on the countdown and the winner effects. The spin itself becomes part of the entertainment, especially for younger children.
+
+## FAQ
+
+**Is it suitable for kids’ parties?**
+
+Yes. Everything on the stock wheel is suitable for children, and you can replace the games with ones that fit the age of your guests.
+
+**Can I stop a game from coming up twice?**
+
+Remove each game after it has been played and the wheel only offers the ones that are left.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/party-games-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# Pet Name Generator Wheel
+
+A new pet arrives and everybody in the house has a different favourite name. Put all the ideas on the wheel, spin it together, and the name is picked fairly — which matters when the children are the ones voting.
+
+## On the wheel
+
+- Luna
+- Milo
+- Bella
+- Oliver
+- Coco
+- Leo
+- Daisy
+- Max
+- Nala
+- Rocky
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/pet-name-generator-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Everyone adds one name
+
+Let each member of the family add their favourite, then spin. Nobody wins the argument; the wheel does. If the result falls flat, remove it and spin again — it is your pet, after all.
+
+## Ideas to start from
+
+The stock names are some of the most popular for dogs and cats. Replace them with names that suit your animal: food names, famous characters, or something to do with where you found them.
+
+## FAQ
+
+**Does it work for any animal?**
+
+Yes. The wheel only holds names, so it works for a dog, a cat, a rabbit, a fish or a horse.
+
+**Can the kids spin it on their own device?**
+
+Publish the wheel as a read-only link and it opens in any browser, with no account.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/pet-name-generator-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
 # Prize Wheel for Giveaways
 
 A giveaway is only as good as the moment the winner is announced. This prize wheel puts that moment on screen: the prizes are visible before the spin, the wheel slows down in front of everybody, and the result is impossible to quietly edit afterwards.
@@ -794,6 +1100,50 @@ Yes. Publish the wheel as a read-only public link and anyone can open it in a br
 ## Links
 
 - This wheel: https://www.wheelr.xyz/templates/prize-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# Punishment Wheel
+
+A game is more fun when losing costs something. Put a few harmless forfeits on the wheel, and whoever loses the round spins for theirs — in front of everyone, with no way to negotiate.
+
+## On the wheel
+
+- Sing a song
+- Dance for 30 seconds
+- Embarrassing story
+- 30-second plank
+- Talk in an accent
+- Compliment everyone
+- Animal impression
+- Talk in rhyme
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/punishment-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Keep it harmless
+
+The best forfeits are embarrassing, not unpleasant: a song, a dance, an accent. The stock wheel sticks to those, and everything on it is safe for a family evening.
+
+## A stream favourite
+
+Streamers use punishment wheels for lost matches and chat challenges. Spin live, and the fire or fireworks effect turns every loss into a moment.
+
+## FAQ
+
+**Can I add my own forfeits?**
+
+Yes. Copy the wheel and replace any forfeit; keep them light enough that everybody still wants to play.
+
+**Can I give the mild ones better odds?**
+
+Add a forfeit more than once and it takes more slices, so it comes up more often.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/punishment-wheel
 - All templates: https://www.wheelr.xyz/templates
 - Wheel app: https://www.wheelr.xyz/
 
@@ -938,6 +1288,94 @@ Flag emoji work as entries, and each slice can also take its own image if you wa
 - Wheel app: https://www.wheelr.xyz/
 
 
+# Random Hobby Generator
+
+Wanting a new hobby is easy; picking one is where it stalls. Spin the wheel, commit to trying whatever it lands on for a month, and find out whether you like it by doing it rather than reading about it.
+
+## On the wheel
+
+- Baking
+- Gardening
+- Chess
+- Photography
+- Knitting
+- Guitar
+- Pottery
+- Birdwatching
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/random-hobby-generator — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Try it for a month
+
+One month is long enough to get past the awkward start and short enough not to feel like a commitment. When the month is over, remove the hobby from the wheel and spin for the next one.
+
+## Add the ones you keep thinking about
+
+The best hobby list is the one you already have in your head: the instrument in the cupboard, the class a friend keeps mentioning. Put those on the wheel next to the stock ideas.
+
+## FAQ
+
+**Are the hobbies expensive?**
+
+Most of the stock hobbies can be started with very little. Replace any of them with ones that fit your budget and your space.
+
+**Can I use it with a partner or friends?**
+
+Yes — spin it together and try the same hobby as a group, or keep one wheel each.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/random-hobby-generator
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# Random Job Generator
+
+Astronaut, detective, vet: a random job is a surprisingly good starting point. Spin for a role in a game of pretend, a character for a story, or a topic for a career-day talk.
+
+## On the wheel
+
+- Astronaut
+- Chef
+- Detective
+- Firefighter
+- Pilot
+- Vet
+- Architect
+- Marine biologist
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/random-job-generator — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Role-play and guessing games
+
+One player spins in secret and answers questions in character until the others guess the job. It works as a warm-up for classes, teams and language lessons.
+
+## Career days
+
+Replace the stock jobs with the careers your class is exploring, and let each student spin the one they will research and present.
+
+## FAQ
+
+**Is it useful for language lessons?**
+
+Yes. Guessing a job through questions is a classic speaking exercise, and the wheel keeps the prompts random.
+
+**Can I add more jobs?**
+
+Copy the wheel and add as many as you like.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/random-job-generator
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
 # Random Letter Generator
 
 Twenty-six letters, one spin. It is the starting gun for half the word games ever invented — categories, Scattergories-style rounds, spelling practice, a writing prompt when the page is blank.
@@ -996,6 +1434,50 @@ Twenty-six slices is a lot for one wheel. Removing letters you do not need makes
 ## Links
 
 - This wheel: https://www.wheelr.xyz/templates/random-letter-generator
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# Random Music Genre Wheel
+
+Your listening habits are probably stuck in the same three genres. Spin the wheel, commit to an evening of whatever it picks, and find the album you would never have chosen yourself.
+
+## On the wheel
+
+- Rock
+- Jazz
+- Hip hop
+- Classical
+- Reggae
+- Electronic
+- Country
+- Latin
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/random-music-genre-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Playlists and parties
+
+Spin for the theme of a party playlist, the genre of the next karaoke round, or the style a band has to play the next song in.
+
+## Go deeper
+
+Once a genre comes up, show a second wheel of its sub-genres or decades next to it. Two spins take you from “jazz” to somewhere you have never been.
+
+## FAQ
+
+**Can I add sub-genres?**
+
+Yes. Copy the wheel and add as many genres or sub-genres as you like.
+
+**Can I add my own sounds to the spin?**
+
+Yes. You can upload your own spin and winner sounds in the sound settings.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/random-music-genre-wheel
 - All templates: https://www.wheelr.xyz/templates
 - Wheel app: https://www.wheelr.xyz/
 
@@ -1094,6 +1576,50 @@ Yes. Turn on removing the winner after each spin and each number is drawn at mos
 - Wheel app: https://www.wheelr.xyz/
 
 
+# Random Superpower Generator
+
+Everyone has an answer to “which superpower would you pick?”. The wheel takes the choice away: spin, get your power, and then explain what you would do with it.
+
+## On the wheel
+
+- Flight
+- Invisibility
+- Teleportation
+- Super strength
+- Time travel
+- Mind reading
+- Talking to animals
+- Breathing underwater
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/random-superpower-generator — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Games and stories
+
+Use it for a storytelling round where each player gets a power, a drawing challenge for a new hero, or a creative writing prompt. It is also a reliable icebreaker for classes and teams.
+
+## Add weaknesses
+
+Show a second wheel next to it with a weakness for each hero. A hero who can fly but is afraid of heights makes a much better story.
+
+## FAQ
+
+**Is it good for classrooms?**
+
+Yes. Project it on the board and let each student spin their power before a writing or drawing task.
+
+**Can I add my own powers?**
+
+Copy the wheel and add as many as you like; every entry is editable.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/random-superpower-generator
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
 # Random Team Generator
 
 Picking teams by hand always ends with someone chosen last. A wheel removes the judgement from it: spin, read the name, move on to the next pick — and nobody can argue with a result nobody controlled.
@@ -1182,6 +1708,54 @@ The Android app works fully offline, so a saved wheel keeps spinning in a baseme
 - Wheel app: https://www.wheelr.xyz/
 
 
+# Random Zodiac Sign Wheel
+
+Twelve signs, one spin. Use it to give a character a star sign, to pick the next horoscope to read aloud, or to run a quiz round where everyone has to guess the dates. Every sign has the same chance of coming up.
+
+## On the wheel
+
+- Aries
+- Taurus
+- Gemini
+- Cancer
+- Leo
+- Virgo
+- Libra
+- Scorpio
+- Sagittarius
+- Capricorn
+- Aquarius
+- Pisces
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/random-zodiac-sign-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Games with a star sign
+
+Guess the dates of the sign, name a famous person born under it, or act out its symbol. For writers, a random sign is a quick way to decide how a character sees the world before you know anything else about them.
+
+## Twelve slices, equal odds
+
+Each sign takes one slice of the same size, and the spin uses your browser’s cryptographic random source. Remove a sign after it comes up to go through all twelve without repeats.
+
+## FAQ
+
+**Is this a horoscope?**
+
+No — the wheel picks a sign at random, it does not predict anything. What you do with the sign is up to you.
+
+**Can I add the Chinese zodiac animals instead?**
+
+Yes. Copy the wheel and replace the entries with the twelve animals, or any other list you like.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/random-zodiac-sign-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
 # Secret Santa Wheel
 
 A hat full of folded paper only works when everyone is in the same room. A wheel draws the names in front of whoever is watching — in the office, on a call, or in a group chat with the screen shared.
@@ -1226,6 +1800,136 @@ No. The wheel runs in any browser with no signup, and a read-only public link le
 - Wheel app: https://www.wheelr.xyz/
 
 
+# Self-Care Wheel
+
+On a hard day even choosing how to look after yourself can feel like one decision too many. Spin the wheel and let it pick one small thing — a glass of water, a walk, an early night. Small is the point.
+
+## On the wheel
+
+- Drink some water
+- 5-minute stretch
+- Walk outside
+- Text a friend
+- Read for 20 minutes
+- Take a long shower
+- An hour offline
+- Go to bed early
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/self-care-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Fill it with what works for you
+
+The stock ideas are simple and universal. Replace them with the things that genuinely help you: a particular song, a place you like to walk, a person you like to call.
+
+## Private by default
+
+Your wheel is saved only in your own browser. Nothing leaves your device unless you choose to sign in and sync it, or publish it as a link.
+
+## FAQ
+
+**Is this a replacement for professional help?**
+
+No. It is a small everyday tool. If you are struggling, please talk to someone you trust or to a health professional.
+
+**Can I use it every day?**
+
+Yes. The wheel stays saved, so you can spin it each morning or whenever you need it.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/self-care-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# Spin the Bottle Online
+
+The party classic, minus the bottle rolling under the sofa. Put everyone’s name on the wheel, set the phone in the middle of the circle and spin. It stops on one name, clearly, with no arguing about which way the neck was pointing.
+
+## On the wheel
+
+- Alex
+- Bea
+- Carlos
+- Dani
+- Emma
+- Finn
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/spin-the-bottle — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Make up your own rules
+
+The wheel only picks a person; what happens next is up to the group. Truth or dare, a question, a compliment, a silly challenge — pair it with another wheel of tasks and let two spins decide who does what.
+
+## Nobody gets picked twice in a row
+
+Remove whoever was picked after each spin and everyone gets a turn before anyone goes again. Put the names back when the wheel is empty and the next round starts.
+
+## FAQ
+
+**Can I play spin the bottle online with friends on a call?**
+
+Yes. Share your screen, or publish the wheel as a read-only link so everyone can watch the same wheel in their own browser.
+
+**How many players can I add?**
+
+As many as you like — paste the whole list at once. With large groups each name just gets a thinner slice.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/spin-the-bottle
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# What to Study Wheel
+
+Planning what to revise can take longer than the revision itself. Put your subjects on the wheel, spin, and start on whatever it picks for the next study session. The decision is made; now only the work is left.
+
+## On the wheel
+
+- Maths
+- History
+- Science
+- Languages
+- Geography
+- Literature
+- Art
+- Quick quiz
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/study-subject-picker — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## One spin per session
+
+Pair the wheel with a timer: spin, study that subject for 25 minutes, take a break, spin again. Remove a subject once it is covered for the day, so the wheel keeps pushing you through the whole list.
+
+## Weight the hard subjects
+
+The subject you keep avoiding is usually the one that needs the most time. Add it to the wheel twice and it will come up more often.
+
+## FAQ
+
+**Can I use it for study groups?**
+
+Yes. Share your screen or publish the wheel as a link, and the group spins to decide which topic to go through next.
+
+**Does it save my subjects?**
+
+Your wheel stays saved in your browser. Signing in syncs it across your devices.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/study-subject-picker
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
 # Truth or Dare Wheel
 
 The wheel does the part of truth or dare that nobody wants to do: choosing. Nobody picks on anybody, nobody goes easy on their friends, and the game keeps moving because there is nothing to negotiate.
@@ -1266,6 +1970,138 @@ It does. The wheel is designed for touch, fills the screen on a phone, and the i
 ## Links
 
 - This wheel: https://www.wheelr.xyz/templates/truth-or-dare-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# What Game to Play Wheel
+
+A library of a hundred games and an evening spent scrolling through it. Put the genres — or the actual titles — on the wheel, spin once, and play whatever it picks.
+
+## On the wheel
+
+- Racing
+- Puzzle
+- Platformer
+- Strategy
+- Horror
+- RPG
+- Co-op
+- Sports
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/what-game-to-play-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Put your backlog on it
+
+The stock wheel uses genres; the version that really works holds the titles you own and never started. Paste the list in one go and let the wheel clear your backlog one spin at a time.
+
+## Let chat decide on stream
+
+Spin live and let the wheel pick the next game in front of your viewers. The countdown, the sounds and the winner effects make the spin a small show of its own.
+
+## FAQ
+
+**Can I use it as a stream overlay?**
+
+Yes. Capture the browser window in OBS or Streamlabs and spin it live.
+
+**Can viewers add games?**
+
+Add their suggestions to the wheel before the spin — adding a title more than once gives it better odds.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/what-game-to-play-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# What to Cook Wheel
+
+Deciding what to cook is the part of cooking nobody enjoys. Put the dishes you know how to make on the wheel, spin it while the pan heats up, and dinner is decided.
+
+## On the wheel
+
+- Risotto
+- Stir-fry
+- Omelette
+- Curry
+- Homemade pizza
+- Soup
+- Tacos
+- Pasta bake
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/what-to-cook-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Your recipes, your wheel
+
+The stock dishes are everyday classics. Replace them with your own repertoire, and the wheel becomes a way to stop cooking the same three meals every week.
+
+## Plan the whole week
+
+Spin seven times, removing each dish as it comes up, and you have a week of dinners — and a shopping list to go with it.
+
+## FAQ
+
+**Is this different from the “what to eat” wheel?**
+
+Yes. This one is for cooking at home; the what to eat wheel is for choosing a type of food or a restaurant.
+
+**Can the whole family add dishes?**
+
+Share the wheel as a read-only link to show the list, and add the dishes everybody asks for.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/what-to-cook-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# What to Do When Bored Wheel
+
+Boredom is rarely a lack of things to do — it is not being able to pick one. Spin the wheel, do the first thing it says for ten minutes, and see where it takes you.
+
+## On the wheel
+
+- Read a chapter
+- Go for a walk
+- Call a friend
+- Tidy one drawer
+- Learn a card trick
+- Bake something
+- Draw for 10 minutes
+- Blanket fort
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/what-to-do-when-bored-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## Ten minutes, no excuses
+
+Everything on the stock wheel can be started right now, without buying anything or going far. The rule that makes it work: whatever comes up, you do it for at least ten minutes.
+
+## A wheel for the kids
+
+Build a version for the school holidays with activities your children can do on their own. Letting them spin it turns “I’m bored” into a game rather than a complaint.
+
+## FAQ
+
+**Can I make an indoor and an outdoor version?**
+
+Yes. Keep two wheels and spin the one that suits the weather.
+
+**Does it work offline?**
+
+The Android app works without a connection, and on the web the page keeps working once it has loaded.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/what-to-do-when-bored-wheel
 - All templates: https://www.wheelr.xyz/templates
 - Wheel app: https://www.wheelr.xyz/
 
@@ -1404,6 +2240,50 @@ Share it as a read-only public link and anyone can open the same wheel in their 
 - Wheel app: https://www.wheelr.xyz/
 
 
+# What to Wear Wheel
+
+A wardrobe full of clothes and nothing to wear. The wheel will not dress you, but it gives you a rule — all black, something red, stripes — and a rule is usually all it takes to get dressed.
+
+## On the wheel
+
+- Something red
+- All black
+- Comfiest outfit
+- Something forgotten
+- Dress up for fun
+- Stripes
+- Denim on denim
+- Monochrome
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/what-to-wear-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## A challenge, not a uniform
+
+The stock entries are prompts rather than outfits, so they work whatever is in your wardrobe. Spin in the morning, build the look around the prompt, and you have saved ten minutes.
+
+## Content for your feed
+
+Outfit challenges are a popular format for stories and short videos. Spin on camera, then show the result — the winner card can save an image of the spin for your post.
+
+## FAQ
+
+**Can I put my actual clothes on the wheel?**
+
+Yes. Add your tops, trousers or shoes as entries — or keep three wheels side by side, one for each.
+
+**Does it work on my phone?**
+
+Yes, in any mobile browser, and as an Android app.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/what-to-wear-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
 # Where to Travel Wheel
 
 A travel shortlist that never gets shorter is not a shortlist. Put the places on a wheel, agree in advance that the spin decides, and the trip stops being a discussion and becomes a date in a calendar.
@@ -1532,6 +2412,50 @@ Write the wheel in advance with the questions you are happy with. Because the wh
 ## Links
 
 - This wheel: https://www.wheelr.xyz/templates/would-you-rather-wheel
+- All templates: https://www.wheelr.xyz/templates
+- Wheel app: https://www.wheelr.xyz/
+
+
+# Writing Prompt Wheel
+
+A blank page gets easier with a constraint. Spin the wheel, take the prompt it lands on, and write the first line straight away — the prompt is a door, not a rule.
+
+## On the wheel
+
+- A letter never sent
+- Last day on Earth
+- A mysterious door
+- The villain’s story
+- Message in a bottle
+- 100 years later
+- An odd inheritance
+- The great storm
+
+The wheel can be spun directly at https://www.wheelr.xyz/templates/writing-prompt-wheel — no account, no
+installation. Copying it creates your own editable wheel; the entries, colours,
+sounds and effects are all replaceable.
+
+## For classrooms
+
+Project the wheel and spin once for the whole class, or let each student spin their own. Removing each prompt after it is used means nobody writes the same story as their neighbour.
+
+## Combine wheels
+
+Show a wheel of prompts next to a wheel of genres — mystery, comedy, science fiction — and a third for the setting. Three spins make a prompt no list can give you.
+
+## FAQ
+
+**Can I add my own prompts?**
+
+Yes. Copy the wheel and replace or add prompts; the wheel stays saved for your next session.
+
+**Is it free for schools?**
+
+Yes. There is no account, no subscription and no student data involved.
+
+## Links
+
+- This wheel: https://www.wheelr.xyz/templates/writing-prompt-wheel
 - All templates: https://www.wheelr.xyz/templates
 - Wheel app: https://www.wheelr.xyz/
 

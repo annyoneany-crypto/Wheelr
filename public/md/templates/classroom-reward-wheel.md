@@ -14,11 +14,11 @@ A reward is more exciting when nobody knows which one is coming. Put the classro
 - Homework pass
 - Pick your seat
 - Class DJ
-- 5 extra minutes of break
+- Extra break time
 - Teacher's helper
 - Sticker
-- Choose the class game
-- Sit at the teacher's desk
+- Pick the class game
+- Teacher’s desk
 
 The wheel can be spun directly at https://www.wheelr.xyz/templates/classroom-reward-wheel — no account, no
 installation. Copying it creates your own editable wheel; the entries, colours,

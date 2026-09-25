@@ -7323,11 +7323,11 @@
     "zh": "班级 DJ"
   },
   "tpl.classroom-rewards.entry4": {
-    "it": "5 minuti extra di ricreazione",
-    "de": "5 Minuten mehr Pause",
-    "fr": "5 minutes de récré en plus",
-    "es": "5 minutos más de recreo",
-    "zh": "多休息 5 分钟"
+    "it": "Ricreazione extra",
+    "de": "Extra Pause",
+    "fr": "Récré en plus",
+    "es": "Recreo extra",
+    "zh": "额外休息时间"
   },
   "tpl.classroom-rewards.entry5": {
     "it": "Aiutante del prof",
@@ -7344,17 +7344,17 @@
     "zh": "贴纸"
   },
   "tpl.classroom-rewards.entry7": {
-    "it": "Scegli il gioco della classe",
-    "de": "Klassenspiel aussuchen",
-    "fr": "Choisir le jeu de la classe",
-    "es": "Elige el juego de la clase",
+    "it": "Scegli il gioco",
+    "de": "Klassenspiel wählen",
+    "fr": "Choisir le jeu",
+    "es": "Elige el juego",
     "zh": "选择班级游戏"
   },
   "tpl.classroom-rewards.entry8": {
-    "it": "Siediti alla cattedra",
-    "de": "Am Lehrerpult sitzen",
-    "fr": "S’asseoir au bureau du prof",
-    "es": "Siéntate en la mesa del profe",
+    "it": "Posto in cattedra",
+    "de": "Am Lehrerpult",
+    "fr": "Bureau du prof",
+    "es": "Mesa del profe",
     "zh": "坐在讲台上"
   },
   "tpl.classroom-rewards.centerText": {
@@ -7876,10 +7876,10 @@
     "zh": "一座城堡"
   },
   "tpl.what-to-draw.entry7": {
-    "it": "Un gatto con il cappello",
+    "it": "Gatto col cappello",
     "de": "Eine Katze mit Hut",
-    "fr": "Un chat avec un chapeau",
-    "es": "Un gato con sombrero",
+    "fr": "Chat à chapeau",
+    "es": "Gato con sombrero",
     "zh": "戴帽子的猫"
   },
   "tpl.what-to-draw.entry8": {
@@ -7993,5 +7993,3183 @@
     "fr": "Retirez le sujet après l’avoir dessiné : la roue ne propose plus que ceux que vous n’avez pas encore faits.",
     "es": "Quita la idea después de dibujarla y la ruleta solo te ofrecerá las que aún no has hecho.",
     "zh": "画完后把该主题移除，转盘就只会给出你还没画过的主题。"
+  },
+  "tpl.spin-the-bottle.tagline": {
+    "it": "Classico da festa",
+    "de": "Party-Klassiker",
+    "fr": "Classique de soirée",
+    "es": "Clásico de fiesta",
+    "zh": "派对经典"
+  },
+  "tpl.spin-the-bottle.name": {
+    "it": "Gioco della bottiglia",
+    "de": "Flaschendrehen",
+    "fr": "Jeu de la bouteille",
+    "es": "Juego de la botella",
+    "zh": "转瓶子"
+  },
+  "tpl.spin-the-bottle.cardDesc": {
+    "it": "Il classico delle feste senza bottiglia: metti i giocatori sulla ruota e gira.",
+    "de": "Der Party-Klassiker ohne Flasche: Spieler aufs Rad setzen und drehen.",
+    "fr": "Le classique des soirées sans bouteille : mettez les joueurs sur la roue et tournez.",
+    "es": "El clásico de las fiestas sin botella: pon a los jugadores en la ruleta y gira.",
+    "zh": "不需要瓶子的派对经典：把玩家放上转盘，转起来。"
+  },
+  "tpl.spin-the-bottle.centerText": {
+    "it": "GIRA",
+    "de": "DREH",
+    "fr": "TOURNE",
+    "es": "GIRA",
+    "zh": "转"
+  },
+  "tpl.spin-the-bottle.title": {
+    "it": "Gioco della bottiglia online | Ruota gratis",
+    "de": "Flaschendrehen online | Kostenloses Flaschendreh-Rad",
+    "fr": "Jeu de la bouteille en ligne | Roue gratuite",
+    "es": "Juego de la botella online | Ruleta gratis",
+    "zh": "在线转瓶子 | 免费转瓶子转盘"
+  },
+  "tpl.spin-the-bottle.desc": {
+    "it": "Gioca al gioco della bottiglia online con una ruota gratuita: aggiungi i nomi dei giocatori, gira e scopri a chi tocca. Funziona su qualsiasi telefono.",
+    "de": "Flaschendrehen online mit einem kostenlosen Rad: Namen der Spieler eintragen, drehen und sehen, wen es trifft. Auf jedem Handy, ohne Flasche und Anmeldung.",
+    "fr": "Jouez à la bouteille en ligne avec une roue gratuite : ajoutez les prénoms, tournez et voyez qui est désigné. Sur tout téléphone, sans bouteille ni compte.",
+    "es": "Juega a la botella online con una ruleta gratis: añade los nombres, gira y mira a quién le toca. Funciona en cualquier móvil, sin botella y sin registro.",
+    "zh": "用免费转盘在线玩转瓶子：添加玩家名字，转动转盘，看看指向谁。任何手机都能用，无需瓶子，无需注册。"
+  },
+  "tpl.spin-the-bottle.heading": {
+    "it": "Gioco della bottiglia online",
+    "de": "Flaschendrehen online",
+    "fr": "Jeu de la bouteille en ligne",
+    "es": "Juego de la botella online",
+    "zh": "在线转瓶子"
+  },
+  "tpl.spin-the-bottle.intro": {
+    "it": "Il classico delle feste, senza la bottiglia che rotola sotto il divano. Metti il nome di tutti sulla ruota, appoggia il telefono al centro del cerchio e gira. Si ferma su un nome, chiaramente, senza discussioni su dove puntasse il collo.",
+    "de": "Der Party-Klassiker, ohne dass die Flasche unters Sofa rollt. Schreib alle Namen aufs Rad, leg das Handy in die Mitte des Kreises und dreh. Es bleibt eindeutig bei einem Namen stehen — ohne Streit darüber, wohin der Flaschenhals gezeigt hat.",
+    "fr": "Le classique des soirées, sans la bouteille qui roule sous le canapé. Mettez tous les prénoms sur la roue, posez le téléphone au milieu du cercle et tournez. Elle s’arrête sur un nom, sans discussion sur la direction du goulot.",
+    "es": "El clásico de las fiestas, sin la botella rodando bajo el sofá. Pon el nombre de todos en la ruleta, deja el móvil en el centro del círculo y gira. Se para en un nombre, sin discusiones sobre hacia dónde apuntaba el cuello.",
+    "zh": "派对经典游戏，不用担心瓶子滚到沙发底下。把所有人的名字放上转盘，把手机放在圆圈中间转一下。它会清楚地停在一个名字上，不用再争论瓶口到底指向谁。"
+  },
+  "tpl.spin-the-bottle.s1.heading": {
+    "it": "Inventa le tue regole",
+    "de": "Mach deine eigenen Regeln",
+    "fr": "Inventez vos propres règles",
+    "es": "Inventa tus propias reglas",
+    "zh": "自定规则"
+  },
+  "tpl.spin-the-bottle.s1.body": {
+    "it": "La ruota sceglie solo una persona; cosa succede dopo lo decide il gruppo. Obbligo o verità, una domanda, un complimento, una sfida sciocca: abbinala a un’altra ruota di compiti e lascia che due giri decidano chi fa cosa.",
+    "de": "Das Rad wählt nur eine Person; was dann passiert, entscheidet die Gruppe. Wahrheit oder Pflicht, eine Frage, ein Kompliment, eine alberne Aufgabe — kombiniere es mit einem zweiten Rad voller Aufgaben und lass zwei Drehungen entscheiden, wer was macht.",
+    "fr": "La roue désigne seulement une personne ; la suite, c’est le groupe qui décide. Action ou vérité, une question, un compliment, un défi idiot : associez-la à une deuxième roue de gages et laissez deux tours décider qui fait quoi.",
+    "es": "La ruleta solo elige a una persona; lo que pasa después lo decide el grupo. Verdad o reto, una pregunta, un cumplido, un reto tonto: combínala con otra ruleta de tareas y deja que dos giros decidan quién hace qué.",
+    "zh": "转盘只负责选出一个人，接下来做什么由大家决定。真心话大冒险、一个问题、一句赞美、一个搞笑挑战——再配一个任务转盘，让两次转动决定谁做什么。"
+  },
+  "tpl.spin-the-bottle.s2.heading": {
+    "it": "Nessuno viene scelto due volte di fila",
+    "de": "Niemand kommt zweimal hintereinander dran",
+    "fr": "Personne n’est choisi deux fois de suite",
+    "es": "Nadie sale dos veces seguidas",
+    "zh": "没人会连续被选两次"
+  },
+  "tpl.spin-the-bottle.s2.body": {
+    "it": "Togli chi è stato scelto dopo ogni giro e tutti avranno il loro turno prima che qualcuno ricominci. Quando la ruota è vuota, rimetti i nomi e parte il giro successivo.",
+    "de": "Entferne nach jeder Drehung, wer gewählt wurde, und jeder kommt dran, bevor jemand ein zweites Mal an der Reihe ist. Ist das Rad leer, kommen die Namen zurück und die nächste Runde beginnt.",
+    "fr": "Retirez la personne désignée après chaque tour et chacun passe avant que quelqu’un ne recommence. Quand la roue est vide, remettez les prénoms et la manche suivante commence.",
+    "es": "Quita a quien haya salido después de cada giro y todos tendrán su turno antes de que alguien repita. Cuando la ruleta esté vacía, vuelve a poner los nombres y empieza la siguiente ronda.",
+    "zh": "每次转动后移除被选中的人，这样在任何人重复之前每个人都会轮到。转盘空了之后，把名字放回去，开始下一轮。"
+  },
+  "tpl.spin-the-bottle.faq1.q": {
+    "it": "Posso giocare al gioco della bottiglia online con amici in videochiamata?",
+    "de": "Kann ich online mit Freunden im Videocall Flaschendrehen spielen?",
+    "fr": "Puis-je jouer à la bouteille en ligne avec des amis en visio ?",
+    "es": "¿Puedo jugar a la botella online con amigos en videollamada?",
+    "zh": "可以和朋友在视频通话中在线玩转瓶子吗？"
+  },
+  "tpl.spin-the-bottle.faq1.a": {
+    "it": "Sì. Condividi lo schermo, oppure pubblica la ruota come link in sola lettura così tutti possono guardare la stessa ruota nel proprio browser.",
+    "de": "Ja. Teile deinen Bildschirm oder veröffentliche das Rad als schreibgeschützten Link, damit alle dasselbe Rad in ihrem eigenen Browser sehen.",
+    "fr": "Oui. Partagez votre écran, ou publiez la roue en lien en lecture seule pour que chacun voie la même roue dans son navigateur.",
+    "es": "Sí. Comparte pantalla o publica la ruleta como enlace de solo lectura para que todos vean la misma ruleta en su navegador.",
+    "zh": "可以。共享屏幕，或者把转盘发布为只读链接，让每个人都在自己的浏览器中看到同一个转盘。"
+  },
+  "tpl.spin-the-bottle.faq2.q": {
+    "it": "Quanti giocatori posso aggiungere?",
+    "de": "Wie viele Spieler kann ich hinzufügen?",
+    "fr": "Combien de joueurs puis-je ajouter ?",
+    "es": "¿Cuántos jugadores puedo añadir?",
+    "zh": "可以添加多少名玩家？"
+  },
+  "tpl.spin-the-bottle.faq2.a": {
+    "it": "Quanti vuoi: incolla tutta la lista in un colpo solo. Con gruppi numerosi ogni nome ha semplicemente uno spicchio più sottile.",
+    "de": "So viele du willst — füge die ganze Liste auf einmal ein. Bei großen Gruppen bekommt jeder Name einfach ein schmaleres Feld.",
+    "fr": "Autant que vous voulez : collez toute la liste d’un coup. Avec un grand groupe, chaque prénom a simplement une part plus fine.",
+    "es": "Todos los que quieras: pega la lista entera de una vez. Con grupos grandes, cada nombre tiene simplemente una porción más fina.",
+    "zh": "想加多少都行——一次粘贴整份名单即可。人数多时，每个名字的扇区只是更窄一些。"
+  },
+  "tpl.zodiac-sign.tagline": {
+    "it": "Astrologia e giochi",
+    "de": "Astrologie & Spiele",
+    "fr": "Astrologie et jeux",
+    "es": "Astrología y juegos",
+    "zh": "星座与游戏"
+  },
+  "tpl.zodiac-sign.name": {
+    "it": "Segno zodiacale casuale",
+    "de": "Zufälliges Sternzeichen",
+    "fr": "Signe astrologique aléatoire",
+    "es": "Signo del zodiaco aleatorio",
+    "zh": "随机星座"
+  },
+  "tpl.zodiac-sign.cardDesc": {
+    "it": "Dodici segni, un giro: un segno zodiacale a caso per giochi, storie e quiz.",
+    "de": "Zwölf Zeichen, eine Drehung: ein zufälliges Sternzeichen für Spiele, Geschichten und Quiz.",
+    "fr": "Douze signes, un tour : un signe au hasard pour les jeux, les histoires et les quiz.",
+    "es": "Doce signos, un giro: un signo al azar para juegos, historias y concursos.",
+    "zh": "十二星座，一次转动：为游戏、故事和问答随机选出一个星座。"
+  },
+  "tpl.zodiac-sign.entry1": {
+    "it": "Ariete",
+    "de": "Widder",
+    "fr": "Bélier",
+    "es": "Aries",
+    "zh": "白羊座"
+  },
+  "tpl.zodiac-sign.entry2": {
+    "it": "Toro",
+    "de": "Stier",
+    "fr": "Taureau",
+    "es": "Tauro",
+    "zh": "金牛座"
+  },
+  "tpl.zodiac-sign.entry3": {
+    "it": "Gemelli",
+    "de": "Zwillinge",
+    "fr": "Gémeaux",
+    "es": "Géminis",
+    "zh": "双子座"
+  },
+  "tpl.zodiac-sign.entry4": {
+    "it": "Cancro",
+    "de": "Krebs",
+    "fr": "Cancer",
+    "es": "Cáncer",
+    "zh": "巨蟹座"
+  },
+  "tpl.zodiac-sign.entry5": {
+    "it": "Leone",
+    "de": "Löwe",
+    "fr": "Lion",
+    "es": "Leo",
+    "zh": "狮子座"
+  },
+  "tpl.zodiac-sign.entry6": {
+    "it": "Vergine",
+    "de": "Jungfrau",
+    "fr": "Vierge",
+    "es": "Virgo",
+    "zh": "处女座"
+  },
+  "tpl.zodiac-sign.entry7": {
+    "it": "Bilancia",
+    "de": "Waage",
+    "fr": "Balance",
+    "es": "Libra",
+    "zh": "天秤座"
+  },
+  "tpl.zodiac-sign.entry8": {
+    "it": "Scorpione",
+    "de": "Skorpion",
+    "fr": "Scorpion",
+    "es": "Escorpio",
+    "zh": "天蝎座"
+  },
+  "tpl.zodiac-sign.entry9": {
+    "it": "Sagittario",
+    "de": "Schütze",
+    "fr": "Sagittaire",
+    "es": "Sagitario",
+    "zh": "射手座"
+  },
+  "tpl.zodiac-sign.entry10": {
+    "it": "Capricorno",
+    "de": "Steinbock",
+    "fr": "Capricorne",
+    "es": "Capricornio",
+    "zh": "摩羯座"
+  },
+  "tpl.zodiac-sign.entry11": {
+    "it": "Acquario",
+    "de": "Wassermann",
+    "fr": "Verseau",
+    "es": "Acuario",
+    "zh": "水瓶座"
+  },
+  "tpl.zodiac-sign.entry12": {
+    "it": "Pesci",
+    "de": "Fische",
+    "fr": "Poissons",
+    "es": "Piscis",
+    "zh": "双鱼座"
+  },
+  "tpl.zodiac-sign.centerText": {
+    "it": "STELLE",
+    "de": "STERNE",
+    "fr": "ASTRES",
+    "es": "ASTROS",
+    "zh": "星座"
+  },
+  "tpl.zodiac-sign.title": {
+    "it": "Ruota dei segni zodiacali | Segno a caso",
+    "de": "Sternzeichen-Rad | Zufälliges Sternzeichen drehen",
+    "fr": "Roue du zodiaque | Tirez un signe au hasard",
+    "es": "Ruleta del zodiaco | Gira para un signo al azar",
+    "zh": "随机星座转盘 | 转出一个星座"
+  },
+  "tpl.zodiac-sign.desc": {
+    "it": "Gira la ruota dello zodiaco per un segno a caso: tutti e dodici, dall’Ariete ai Pesci. Gratis per giochi, spunti di scrittura, quiz e lezioni in classe.",
+    "de": "Dreh das Sternzeichen-Rad für ein zufälliges Zeichen: alle zwölf, vom Widder bis zu den Fischen. Kostenlos für Spiele, Schreibideen, Quiz und Unterricht.",
+    "fr": "Tournez la roue du zodiaque pour un signe au hasard : les douze, du Bélier aux Poissons. Gratuit pour les jeux, l’écriture, les quiz et la classe.",
+    "es": "Gira la ruleta del zodiaco para un signo al azar: los doce, de Aries a Piscis. Gratis para juegos, ideas de escritura, concursos y clases.",
+    "zh": "转动星座转盘随机选出一个星座：从白羊座到双鱼座，全部十二个。免费用于游戏、写作灵感、问答和课堂。"
+  },
+  "tpl.zodiac-sign.heading": {
+    "it": "Ruota dei segni zodiacali",
+    "de": "Sternzeichen-Rad",
+    "fr": "Roue du zodiaque",
+    "es": "Ruleta del zodiaco",
+    "zh": "随机星座转盘"
+  },
+  "tpl.zodiac-sign.intro": {
+    "it": "Dodici segni, un giro. Usala per dare un segno zodiacale a un personaggio, per scegliere il prossimo oroscopo da leggere ad alta voce o per un quiz in cui tutti devono indovinare le date. Ogni segno ha la stessa probabilità di uscire.",
+    "de": "Zwölf Zeichen, eine Drehung. Gib einer Figur ein Sternzeichen, wähle das nächste Horoskop zum Vorlesen oder spiel eine Quizrunde, in der alle die Daten erraten müssen. Jedes Zeichen hat dieselbe Chance.",
+    "fr": "Douze signes, un tour. Donnez un signe à un personnage, choisissez le prochain horoscope à lire à voix haute ou lancez un quiz où chacun doit deviner les dates. Chaque signe a la même chance de sortir.",
+    "es": "Doce signos, un giro. Úsala para darle un signo a un personaje, elegir el próximo horóscopo que leer en voz alta o jugar una ronda en la que todos deben adivinar las fechas. Cada signo tiene la misma probabilidad.",
+    "zh": "十二个星座，一次转动。可以用它给角色定一个星座、选出下一个要朗读的星座运势，或者进行一轮大家猜日期的问答。每个星座出现的概率都一样。"
+  },
+  "tpl.zodiac-sign.s1.heading": {
+    "it": "Giochi con un segno zodiacale",
+    "de": "Spiele mit einem Sternzeichen",
+    "fr": "Des jeux avec un signe",
+    "es": "Juegos con un signo",
+    "zh": "星座游戏"
+  },
+  "tpl.zodiac-sign.s1.body": {
+    "it": "Indovina le date del segno, nomina una persona famosa nata sotto quel segno o mima il suo simbolo. Per chi scrive, un segno a caso è un modo veloce per decidere come un personaggio vede il mondo prima di sapere altro su di lui.",
+    "de": "Errate die Daten des Zeichens, nenne eine berühmte Person mit diesem Zeichen oder stelle sein Symbol pantomimisch dar. Für Schreibende ist ein zufälliges Zeichen ein schneller Weg, festzulegen, wie eine Figur die Welt sieht.",
+    "fr": "Devinez les dates du signe, citez une célébrité née sous ce signe ou mimez son symbole. Pour qui écrit, un signe au hasard est un moyen rapide de décider comment un personnage voit le monde.",
+    "es": "Adivina las fechas del signo, nombra a un famoso de ese signo o representa su símbolo con mímica. Para quien escribe, un signo al azar es una forma rápida de decidir cómo ve el mundo un personaje.",
+    "zh": "猜这个星座的日期范围、说出一位这个星座的名人，或者用动作表演它的符号。对写作者来说，随机星座是在了解角色其他信息之前，快速决定其世界观的方法。"
+  },
+  "tpl.zodiac-sign.s2.heading": {
+    "it": "Dodici spicchi, stesse probabilità",
+    "de": "Zwölf Felder, gleiche Chancen",
+    "fr": "Douze parts, mêmes chances",
+    "es": "Doce porciones, mismas probabilidades",
+    "zh": "十二个扇区，概率相同"
+  },
+  "tpl.zodiac-sign.s2.body": {
+    "it": "Ogni segno occupa uno spicchio della stessa dimensione e il giro usa la fonte casuale crittografica del browser. Togli un segno dopo che è uscito per passarli tutti e dodici senza ripetizioni.",
+    "de": "Jedes Zeichen belegt ein gleich großes Feld, und die Drehung nutzt die kryptografische Zufallsquelle deines Browsers. Entferne ein Zeichen, nachdem es gekommen ist, um alle zwölf ohne Wiederholung durchzugehen.",
+    "fr": "Chaque signe occupe une part de même taille et le tirage utilise la source aléatoire cryptographique du navigateur. Retirez un signe une fois sorti pour passer les douze sans répétition.",
+    "es": "Cada signo ocupa una porción del mismo tamaño y el giro usa la fuente aleatoria criptográfica del navegador. Quita un signo cuando salga para recorrer los doce sin repeticiones.",
+    "zh": "每个星座占一个同样大小的扇区，转动使用浏览器的加密随机源。某个星座出现后将其移除，就能不重复地轮完全部十二个。"
+  },
+  "tpl.zodiac-sign.faq1.q": {
+    "it": "È un oroscopo?",
+    "de": "Ist das ein Horoskop?",
+    "fr": "Est-ce un horoscope ?",
+    "es": "¿Es un horóscopo?",
+    "zh": "这是星座运势吗？"
+  },
+  "tpl.zodiac-sign.faq1.a": {
+    "it": "No: la ruota sceglie un segno a caso, non predice nulla. Cosa farne dipende da te.",
+    "de": "Nein — das Rad wählt ein Zeichen zufällig aus, es sagt nichts voraus. Was du damit machst, liegt bei dir.",
+    "fr": "Non : la roue tire un signe au hasard, elle ne prédit rien. Ce que vous en faites ne dépend que de vous.",
+    "es": "No: la ruleta elige un signo al azar, no predice nada. Lo que hagas con él depende de ti.",
+    "zh": "不是——转盘只是随机选出一个星座，并不预测任何事情。怎么用由你决定。"
+  },
+  "tpl.zodiac-sign.faq2.q": {
+    "it": "Posso mettere invece gli animali dello zodiaco cinese?",
+    "de": "Kann ich stattdessen die Tiere des chinesischen Tierkreises verwenden?",
+    "fr": "Puis-je mettre les animaux du zodiaque chinois à la place ?",
+    "es": "¿Puedo poner los animales del zodiaco chino?",
+    "zh": "可以改成十二生肖吗？"
+  },
+  "tpl.zodiac-sign.faq2.a": {
+    "it": "Sì. Copia la ruota e sostituisci le voci con i dodici animali, o con qualsiasi altra lista.",
+    "de": "Ja. Kopiere das Rad und ersetze die Einträge durch die zwölf Tiere oder jede andere Liste.",
+    "fr": "Oui. Copiez la roue et remplacez les entrées par les douze animaux, ou par n’importe quelle autre liste.",
+    "es": "Sí. Copia la ruleta y sustituye las entradas por los doce animales, o por cualquier otra lista.",
+    "zh": "可以。复制转盘，把条目换成十二生肖，或任何其他列表。"
+  },
+  "tpl.baby-names.tagline": {
+    "it": "Futuri genitori",
+    "de": "Werdende Eltern",
+    "fr": "Futurs parents",
+    "es": "Futuros padres",
+    "zh": "准父母"
+  },
+  "tpl.baby-names.name": {
+    "it": "Scegli il nome del bebè",
+    "de": "Babynamen-Rad",
+    "fr": "Choisir un prénom de bébé",
+    "es": "Elige el nombre del bebé",
+    "zh": "宝宝取名转盘"
+  },
+  "tpl.baby-names.cardDesc": {
+    "it": "Metti sulla ruota la tua rosa di nomi per il bebè e scopri quale ti sembra giusto.",
+    "de": "Setz eure engere Auswahl an Babynamen aufs Rad und schau, welcher sich richtig anfühlt.",
+    "fr": "Mettez votre liste de prénoms sur la roue et voyez lequel vous semble le bon.",
+    "es": "Pon tu lista de nombres para el bebé en la ruleta y descubre cuál te parece el adecuado.",
+    "zh": "把候选宝宝名字放上转盘，看看哪个最合心意。"
+  },
+  "tpl.baby-names.centerText": {
+    "it": "NOME",
+    "de": "NAME",
+    "fr": "PRÉNOM",
+    "es": "NOMBRE",
+    "zh": "名字"
+  },
+  "tpl.baby-names.title": {
+    "it": "Ruota dei nomi per bambini | Scegli dalla tua lista",
+    "de": "Babynamen-Generator Rad | Aus eurer Auswahl wählen",
+    "fr": "Roue des prénoms de bébé | Choisir parmi votre liste",
+    "es": "Ruleta de nombres de bebé | Elige de tu lista",
+    "zh": "宝宝取名转盘 | 从候选名单中选择"
+  },
+  "tpl.baby-names.desc": {
+    "it": "Indecisi tra più nomi per il bebè? Mettete la vostra lista sulla ruota e girate. Un modo gratuito per capire quale nome speravate davvero che uscisse.",
+    "de": "Zwischen Babynamen hin- und hergerissen? Setzt eure Auswahl aufs Rad und dreht. Kostenlos — und ihr merkt, welchen Namen ihr euch insgeheim gewünscht habt.",
+    "fr": "Hésitants entre plusieurs prénoms ? Mettez votre liste sur la roue et tournez. Une aide gratuite pour sentir quel prénom vous espériez vraiment.",
+    "es": "¿Dudas entre varios nombres de bebé? Pon tu lista en la ruleta y gira. Una forma gratuita de notar qué nombre esperabas de verdad que saliera.",
+    "zh": "在几个宝宝名字之间犹豫不决？把候选名单放上转盘转一下。免费帮你发现自己心里真正期待的那个名字。"
+  },
+  "tpl.baby-names.heading": {
+    "it": "Ruota dei nomi per bambini",
+    "de": "Babynamen-Rad",
+    "fr": "Roue des prénoms de bébé",
+    "es": "Ruleta de nombres de bebé",
+    "zh": "宝宝取名转盘"
+  },
+  "tpl.baby-names.intro": {
+    "it": "Scegliere un nome può durare mesi. Mettete sulla ruota i nomi che piacciono a entrambi e girate: spesso la parte utile non è il risultato, ma il momento in cui la ruota si ferma e vi accorgete se speravate in quel nome o in un altro.",
+    "de": "Die Namenssuche kann Monate dauern. Setzt die Namen, die euch beiden gefallen, aufs Rad und dreht: Oft ist nicht das Ergebnis das Hilfreiche, sondern der Moment, in dem es stehen bleibt und ihr merkt, ob ihr auf diesen Namen oder einen anderen gehofft habt.",
+    "fr": "Choisir un prénom peut prendre des mois. Mettez sur la roue les prénoms qui vous plaisent à tous les deux et tournez : souvent, l’utile n’est pas le résultat, mais le moment où elle s’arrête et où vous réalisez si vous espériez ce prénom ou un autre.",
+    "es": "Elegir un nombre puede llevar meses. Pon en la ruleta los nombres que os gustan a los dos y gira: a menudo lo útil no es el resultado, sino el momento en que se para y te das cuenta de si esperabas ese nombre u otro.",
+    "zh": "取名字可能要纠结好几个月。把你们俩都喜欢的名字放上转盘转一下：有用的往往不是结果本身，而是转盘停下的那一刻，你会发现自己期待的是这个名字还是另一个。"
+  },
+  "tpl.baby-names.s1.heading": {
+    "it": "La vostra lista, non la nostra",
+    "de": "Eure Auswahl, nicht unsere",
+    "fr": "Votre liste, pas la nôtre",
+    "es": "Tu lista, no la nuestra",
+    "zh": "你们的名单，而不是我们的"
+  },
+  "tpl.baby-names.s1.body": {
+    "it": "I nomi sulla ruota sono solo un esempio. Sostituiteli con la vostra lista — nomi, secondi nomi o combinazioni — e tenete ruote separate per idee diverse.",
+    "de": "Die Namen auf dem Rad sind nur ein Beispiel. Ersetzt sie durch eure eigene Auswahl — Vornamen, Zweitnamen oder Kombinationen — und legt für verschiedene Ideen eigene Räder an.",
+    "fr": "Les prénoms sur la roue ne sont qu’un exemple. Remplacez-les par votre liste — prénoms, deuxièmes prénoms ou combinaisons — et gardez une roue par idée.",
+    "es": "Los nombres de la ruleta son solo un ejemplo. Cámbialos por tu lista —nombres, segundos nombres o combinaciones— y ten ruletas distintas para ideas distintas.",
+    "zh": "转盘上的名字只是示例。换成你们自己的候选名单——名字、中间名或组合都可以——不同的想法可以分别保存成不同的转盘。"
+  },
+  "tpl.baby-names.s2.heading": {
+    "it": "Giratela con la famiglia",
+    "de": "Dreht es mit der Familie",
+    "fr": "Tournez-la en famille",
+    "es": "Gírala con la familia",
+    "zh": "和家人一起转"
+  },
+  "tpl.baby-names.s2.body": {
+    "it": "Pubblicate la ruota come link in sola lettura e nonni o amici possono girarla dal proprio telefono. È un modo delicato per condividere la lista senza chiedere a tutti di votare.",
+    "de": "Veröffentlicht das Rad als schreibgeschützten Link, dann können Großeltern oder Freunde es auf dem eigenen Handy drehen. Eine sanfte Art, die Auswahl zu teilen, ohne alle abstimmen zu lassen.",
+    "fr": "Publiez la roue en lien en lecture seule : grands-parents ou amis peuvent la tourner depuis leur téléphone. Une façon douce de partager la liste sans demander à tout le monde de voter.",
+    "es": "Publica la ruleta como enlace de solo lectura y abuelos o amigos podrán girarla desde su móvil. Una forma suave de compartir la lista sin pedir a todos que voten.",
+    "zh": "把转盘发布为只读链接，祖父母或朋友就能在自己的手机上转。这是分享候选名单的温和方式，不用让每个人投票。"
+  },
+  "tpl.baby-names.faq1.q": {
+    "it": "Dovremmo davvero lasciar scegliere a una ruota il nome del nostro bambino?",
+    "de": "Sollen wir wirklich ein Rad den Namen unseres Babys wählen lassen?",
+    "fr": "Faut-il vraiment laisser une roue choisir le prénom de notre bébé ?",
+    "es": "¿De verdad deberíamos dejar que una ruleta elija el nombre de nuestro bebé?",
+    "zh": "真的要让转盘来决定宝宝的名字吗？"
+  },
+  "tpl.baby-names.faq1.a": {
+    "it": "Solo se volete. Quasi tutti i genitori la usano per sbloccare un pareggio o per capire cosa provano quando esce un nome: la decisione resta vostra.",
+    "de": "Nur wenn ihr wollt. Die meisten Eltern nutzen es, um ein Unentschieden aufzulösen oder zu spüren, wie sich ein Name anfühlt — die Entscheidung bleibt eure.",
+    "fr": "Seulement si vous le souhaitez. La plupart des parents s’en servent pour départager ou pour sentir ce qu’un prénom leur fait : la décision reste la vôtre.",
+    "es": "Solo si queréis. La mayoría de los padres la usan para desempatar o para ver qué sienten cuando sale un nombre: la decisión sigue siendo vuestra.",
+    "zh": "只有你们愿意时才这么做。大多数父母用它来打破僵局，或者感受某个名字出现时的心情——最终决定仍然由你们做。"
+  },
+  "tpl.baby-names.faq2.q": {
+    "it": "Posso dare più probabilità al nostro nome preferito?",
+    "de": "Kann ich unserem Lieblingsnamen bessere Chancen geben?",
+    "fr": "Puis-je donner plus de chances à notre prénom préféré ?",
+    "es": "¿Puedo darle más probabilidades a nuestro nombre favorito?",
+    "zh": "可以让我们最喜欢的名字概率更高吗？"
+  },
+  "tpl.baby-names.faq2.a": {
+    "it": "Aggiungilo più di una volta: avrà più spicchi e uscirà più spesso.",
+    "de": "Füge ihn mehrmals hinzu, dann bekommt er mehr Felder und kommt öfter.",
+    "fr": "Ajoutez-le plusieurs fois : il aura plus de parts et sortira plus souvent.",
+    "es": "Añádelo más de una vez: tendrá más porciones y saldrá más a menudo.",
+    "zh": "把它多添加几次，它会占据更多扇区，出现得更频繁。"
+  },
+  "tpl.pet-names.tagline": {
+    "it": "Nuovo cucciolo o gattino",
+    "de": "Neuer Welpe oder Kätzchen",
+    "fr": "Nouveau chiot ou chaton",
+    "es": "Cachorro o gatito nuevo",
+    "zh": "新来的小狗小猫"
+  },
+  "tpl.pet-names.name": {
+    "it": "Nome per il tuo animale",
+    "de": "Haustiernamen-Rad",
+    "fr": "Nom pour votre animal",
+    "es": "Nombre para tu mascota",
+    "zh": "宠物取名转盘"
+  },
+  "tpl.pet-names.cardDesc": {
+    "it": "Un cucciolo, un gattino o un coniglietto e ancora nessun nome? Decide la ruota.",
+    "de": "Ein neuer Welpe, ein Kätzchen oder Hase und noch kein Name? Das Rad entscheidet.",
+    "fr": "Un chiot, un chaton ou un lapin et toujours pas de nom ? La roue décide.",
+    "es": "¿Un cachorro, un gatito o un conejo y aún sin nombre? Que decida la ruleta.",
+    "zh": "新来的小狗、小猫或小兔还没有名字？让转盘来决定。"
+  },
+  "tpl.pet-names.centerText": {
+    "it": "PET",
+    "de": "TIER",
+    "fr": "ANIMAL",
+    "es": "MASCOTA",
+    "zh": "宠物"
+  },
+  "tpl.pet-names.title": {
+    "it": "Ruota dei nomi per animali | Nomi per cani e gatti",
+    "de": "Haustiernamen-Generator | Namen für Hund oder Katze",
+    "fr": "Générateur de noms d’animaux | Chien ou chat",
+    "es": "Generador de nombres de mascotas | Perro o gato",
+    "zh": "宠物取名转盘 | 给狗狗或猫咪取名"
+  },
+  "tpl.pet-names.desc": {
+    "it": "Una ruota gratuita per scegliere il nome del tuo animale: gira per il nome del nuovo cucciolo, gattino o coniglio, o metti le idee della famiglia e decidi.",
+    "de": "Ein kostenloses Haustiernamen-Rad: Dreh für einen Namen für Welpe, Kätzchen oder Hase, oder setz die Ideen der Familie drauf und lass das Rad entscheiden.",
+    "fr": "Une roue gratuite pour nommer votre animal : tournez pour un nom de chiot, chaton ou lapin, ou mettez les idées de la famille et laissez-la trancher.",
+    "es": "Una ruleta gratis para nombrar a tu mascota: gira para un nombre de cachorro, gatito o conejo, o pon las ideas de la familia y deja que decida.",
+    "zh": "免费宠物取名转盘：为新来的小狗、小猫或兔子转出一个名字，或者放上家人的点子，让转盘来决定。"
+  },
+  "tpl.pet-names.heading": {
+    "it": "Ruota dei nomi per animali",
+    "de": "Haustiernamen-Rad",
+    "fr": "Roue des noms d’animaux",
+    "es": "Ruleta de nombres de mascotas",
+    "zh": "宠物取名转盘"
+  },
+  "tpl.pet-names.intro": {
+    "it": "Arriva un nuovo animale e ognuno in casa ha un nome preferito diverso. Mettete tutte le idee sulla ruota, giratela insieme e il nome viene scelto in modo giusto — cosa che conta quando a votare sono i bambini.",
+    "de": "Ein neues Tier zieht ein, und jeder im Haus hat einen anderen Lieblingsnamen. Setzt alle Ideen aufs Rad, dreht gemeinsam, und der Name wird fair gewählt — wichtig, wenn die Kinder mitentscheiden.",
+    "fr": "Un nouvel animal arrive et chacun à la maison a un prénom favori différent. Mettez toutes les idées sur la roue, tournez-la ensemble et le nom est choisi équitablement — ce qui compte quand ce sont les enfants qui votent.",
+    "es": "Llega una mascota nueva y cada uno en casa tiene un nombre favorito distinto. Pon todas las ideas en la ruleta, giradla juntos y el nombre se elige de forma justa, algo importante cuando votan los niños.",
+    "zh": "新宠物来了，家里每个人喜欢的名字都不一样。把所有点子放上转盘一起转，名字就能公平地选出来——当孩子们也参与投票时，这点尤其重要。"
+  },
+  "tpl.pet-names.s1.heading": {
+    "it": "Ognuno aggiunge un nome",
+    "de": "Jeder fügt einen Namen hinzu",
+    "fr": "Chacun ajoute un nom",
+    "es": "Cada uno añade un nombre",
+    "zh": "每人添加一个名字"
+  },
+  "tpl.pet-names.s1.body": {
+    "it": "Lascia che ogni membro della famiglia aggiunga il suo preferito, poi gira. Nessuno vince la discussione: vince la ruota. Se il risultato non convince, toglilo e gira di nuovo: è il vostro animale, dopotutto.",
+    "de": "Lass jedes Familienmitglied seinen Favoriten hinzufügen und dreh dann. Niemand gewinnt den Streit; das Rad gewinnt. Überzeugt das Ergebnis nicht, entferne es und dreh noch einmal — es ist schließlich euer Tier.",
+    "fr": "Laissez chaque membre de la famille ajouter son favori, puis tournez. Personne ne gagne la dispute : c’est la roue. Si le résultat ne plaît pas, retirez-le et relancez — c’est votre animal, après tout.",
+    "es": "Deja que cada miembro de la familia añada su favorito y luego gira. Nadie gana la discusión: gana la ruleta. Si el resultado no convence, quítalo y vuelve a girar; al fin y al cabo, es vuestra mascota.",
+    "zh": "让每位家庭成员都添加自己最喜欢的名字，然后转动。谁也没赢得争论，赢的是转盘。如果结果不满意，移除后再转一次——毕竟这是你们的宠物。"
+  },
+  "tpl.pet-names.s2.heading": {
+    "it": "Idee da cui partire",
+    "de": "Ideen für den Anfang",
+    "fr": "Des idées pour commencer",
+    "es": "Ideas para empezar",
+    "zh": "参考灵感"
+  },
+  "tpl.pet-names.s2.body": {
+    "it": "I nomi di esempio sono tra i più popolari per cani e gatti. Sostituiscili con nomi adatti al tuo animale: nomi di cibi, personaggi famosi o qualcosa legato a dove l’avete trovato.",
+    "de": "Die Beispielnamen gehören zu den beliebtesten für Hunde und Katzen. Ersetze sie durch Namen, die zu deinem Tier passen: Essensnamen, berühmte Figuren oder etwas, das mit seinem Fundort zu tun hat.",
+    "fr": "Les noms proposés sont parmi les plus populaires pour les chiens et les chats. Remplacez-les par des noms qui conviennent à votre animal : des aliments, des personnages célèbres ou un clin d’œil à l’endroit où vous l’avez trouvé.",
+    "es": "Los nombres de ejemplo están entre los más populares para perros y gatos. Cámbialos por nombres que vayan con tu mascota: comidas, personajes famosos o algo relacionado con dónde la encontrasteis.",
+    "zh": "示例名字都是狗狗和猫咪最常用的名字。换成适合你家宠物的名字吧：食物名、著名角色，或者与你们遇见它的地方有关的名字。"
+  },
+  "tpl.pet-names.faq1.q": {
+    "it": "Funziona per qualsiasi animale?",
+    "de": "Funktioniert es für jedes Tier?",
+    "fr": "Cela marche pour n’importe quel animal ?",
+    "es": "¿Sirve para cualquier animal?",
+    "zh": "适用于任何动物吗？"
+  },
+  "tpl.pet-names.faq1.a": {
+    "it": "Sì. La ruota contiene solo nomi, quindi va bene per un cane, un gatto, un coniglio, un pesce o un cavallo.",
+    "de": "Ja. Das Rad enthält nur Namen, es passt also für Hund, Katze, Kaninchen, Fisch oder Pferd.",
+    "fr": "Oui. La roue ne contient que des noms, elle convient donc à un chien, un chat, un lapin, un poisson ou un cheval.",
+    "es": "Sí. La ruleta solo contiene nombres, así que sirve para un perro, un gato, un conejo, un pez o un caballo.",
+    "zh": "适用。转盘上只有名字，所以狗、猫、兔子、鱼或马都可以用。"
+  },
+  "tpl.pet-names.faq2.q": {
+    "it": "I bambini possono girarla dal loro dispositivo?",
+    "de": "Können die Kinder es auf ihrem eigenen Gerät drehen?",
+    "fr": "Les enfants peuvent-ils la tourner sur leur propre appareil ?",
+    "es": "¿Los niños pueden girarla en su propio dispositivo?",
+    "zh": "孩子们可以在自己的设备上转吗？"
+  },
+  "tpl.pet-names.faq2.a": {
+    "it": "Pubblica la ruota come link in sola lettura e si apre in qualsiasi browser, senza account.",
+    "de": "Veröffentliche das Rad als schreibgeschützten Link, dann öffnet es sich in jedem Browser, ohne Konto.",
+    "fr": "Publiez la roue en lien en lecture seule : elle s’ouvre dans n’importe quel navigateur, sans compte.",
+    "es": "Publica la ruleta como enlace de solo lectura y se abrirá en cualquier navegador, sin cuenta.",
+    "zh": "把转盘发布为只读链接，任何浏览器都能打开，无需账户。"
+  },
+  "tpl.party-games.tagline": {
+    "it": "Compleanni e feste",
+    "de": "Geburtstage & Partys",
+    "fr": "Anniversaires et fêtes",
+    "es": "Cumpleaños y fiestas",
+    "zh": "生日与派对"
+  },
+  "tpl.party-games.name": {
+    "it": "Giochi per feste",
+    "de": "Partyspiele",
+    "fr": "Jeux de fête",
+    "es": "Juegos de fiesta",
+    "zh": "派对游戏"
+  },
+  "tpl.party-games.cardDesc": {
+    "it": "Quale gioco adesso? Gira e la festa non si ferma.",
+    "de": "Welches Spiel als Nächstes? Dreh und die Party läuft weiter.",
+    "fr": "Quel jeu maintenant ? Tournez et la fête continue.",
+    "es": "¿A qué jugamos ahora? Gira y que siga la fiesta.",
+    "zh": "接下来玩什么？转一下，让派对继续嗨。"
+  },
+  "tpl.party-games.entry1": {
+    "it": "Mimo",
+    "de": "Scharade",
+    "fr": "Mime",
+    "es": "Mímica",
+    "zh": "你比我猜"
+  },
+  "tpl.party-games.entry2": {
+    "it": "Gioco della sedia",
+    "de": "Reise nach Jerusalem",
+    "fr": "Chaises musicales",
+    "es": "Sillas musicales",
+    "zh": "抢椅子"
+  },
+  "tpl.party-games.entry3": {
+    "it": "Due verità e una bugia",
+    "de": "Zwei Wahrheiten, eine Lüge",
+    "fr": "Deux vérités, un mensonge",
+    "es": "Dos verdades y una mentira",
+    "zh": "两真一假"
+  },
+  "tpl.party-games.entry4": {
+    "it": "Giro di karaoke",
+    "de": "Karaoke-Runde",
+    "fr": "Tour de karaoké",
+    "es": "Ronda de karaoke",
+    "zh": "卡拉OK轮唱"
+  },
+  "tpl.party-games.entry5": {
+    "it": "Limbo",
+    "de": "Limbo",
+    "fr": "Limbo",
+    "es": "Limbo",
+    "zh": "林波舞"
+  },
+  "tpl.party-games.entry6": {
+    "it": "Patata bollente",
+    "de": "Heiße Kartoffel",
+    "fr": "Patate chaude",
+    "es": "Patata caliente",
+    "zh": "烫手山芋"
+  },
+  "tpl.party-games.entry7": {
+    "it": "Caccia al tesoro",
+    "de": "Schatzsuche",
+    "fr": "Chasse au trésor",
+    "es": "Búsqueda del tesoro",
+    "zh": "寻宝游戏"
+  },
+  "tpl.party-games.entry8": {
+    "it": "Statue musicali",
+    "de": "Stopptanz",
+    "fr": "Danse de la statue",
+    "es": "Baile de las estatuas",
+    "zh": "木头人舞"
+  },
+  "tpl.party-games.centerText": {
+    "it": "GIOCA",
+    "de": "SPIEL",
+    "fr": "JOUE",
+    "es": "JUEGA",
+    "zh": "玩"
+  },
+  "tpl.party-games.title": {
+    "it": "Ruota dei giochi per feste | Scegli un gioco a caso",
+    "de": "Partyspiele-Rad | Zufälliges Partyspiel auswählen",
+    "fr": "Roue des jeux de fête | Choisir un jeu au hasard",
+    "es": "Ruleta de juegos de fiesta | Elige un juego al azar",
+    "zh": "派对游戏转盘 | 随机选择派对游戏"
+  },
+  "tpl.party-games.desc": {
+    "it": "Gira la ruota dei giochi per feste e il divertimento continua: mimo, gioco della sedia, patata bollente e altro. Gratis per compleanni e pigiama party.",
+    "de": "Dreh das Partyspiele-Rad und der Spaß geht weiter: Scharade, Reise nach Jerusalem, heiße Kartoffel und mehr. Kostenlos für Geburtstage und Pyjamapartys.",
+    "fr": "Tournez la roue des jeux de fête et l’ambiance continue : mime, chaises musicales, patate chaude et plus. Gratuit pour anniversaires et soirées pyjama.",
+    "es": "Gira la ruleta de juegos de fiesta y que siga la diversión: mímica, sillas musicales, patata caliente y más. Gratis para cumpleaños y fiestas de pijamas.",
+    "zh": "转动派对游戏转盘，让欢乐继续：你比我猜、抢椅子、烫手山芋等等。免费用于生日会、睡衣派对和家庭聚会。"
+  },
+  "tpl.party-games.heading": {
+    "it": "Ruota dei giochi per feste",
+    "de": "Partyspiele-Rad",
+    "fr": "Roue des jeux de fête",
+    "es": "Ruleta de juegos de fiesta",
+    "zh": "派对游戏转盘"
+  },
+  "tpl.party-games.intro": {
+    "it": "La festa rallenta ogni volta che qualcuno chiede “a cosa giochiamo adesso?”. Metti i giochi sulla ruota, fai girare il festeggiato e il gioco successivo parte senza discussioni.",
+    "de": "Die Party stockt jedes Mal, wenn jemand fragt: „Was spielen wir jetzt?“ Setz die Spiele aufs Rad, lass das Geburtstagskind drehen, und das nächste Spiel beginnt ohne Diskussion.",
+    "fr": "La fête s’essouffle chaque fois que quelqu’un demande « on joue à quoi maintenant ? ». Mettez les jeux sur la roue, laissez l’enfant qui fête son anniversaire tourner, et le jeu suivant commence sans débat.",
+    "es": "La fiesta se frena cada vez que alguien pregunta “¿a qué jugamos ahora?”. Pon los juegos en la ruleta, deja que gire el cumpleañero y el siguiente juego empieza sin discusión.",
+    "zh": "每当有人问“接下来玩什么？”，派对就会冷场。把游戏放上转盘，让寿星来转，下一个游戏马上开始，不用争论。"
+  },
+  "tpl.party-games.s1.heading": {
+    "it": "Giochi che non richiedono niente",
+    "de": "Spiele, die nichts brauchen",
+    "fr": "Des jeux qui ne demandent rien",
+    "es": "Juegos que no necesitan nada",
+    "zh": "无需道具的游戏"
+  },
+  "tpl.party-games.s1.body": {
+    "it": "Ogni gioco della ruota di esempio funziona con quello che c’è già nella stanza: un po’ di musica, qualche sedia, un cuscino da passarsi. Sostituiscili con i giochi che i tuoi ospiti conoscono e amano.",
+    "de": "Jedes Spiel auf dem Beispielrad funktioniert mit dem, was schon im Raum ist: etwas Musik, ein paar Stühle, ein Kissen zum Weitergeben. Tausch sie gegen die Spiele, die deine Gäste kennen und lieben.",
+    "fr": "Chaque jeu de la roue proposée fonctionne avec ce qu’il y a déjà dans la pièce : un peu de musique, quelques chaises, un coussin à se passer. Remplacez-les par les jeux que vos invités connaissent et adorent.",
+    "es": "Cada juego de la ruleta de ejemplo funciona con lo que ya hay en la sala: algo de música, unas sillas, un cojín para pasarse. Cámbialos por los juegos que tus invitados conocen y les encantan.",
+    "zh": "示例转盘上的每个游戏都只需要房间里现成的东西：一点音乐、几把椅子、一个可以传递的靠垫。换成你的客人熟悉和喜爱的游戏吧。"
+  },
+  "tpl.party-games.s2.heading": {
+    "it": "Schermo grande, grande momento",
+    "de": "Großer Bildschirm, großer Moment",
+    "fr": "Grand écran, grand moment",
+    "es": "Pantalla grande, gran momento",
+    "zh": "大屏幕，大场面"
+  },
+  "tpl.party-games.s2.body": {
+    "it": "Metti la ruota sulla TV o su un proiettore e attiva il conto alla rovescia e gli effetti del vincitore. Il giro stesso diventa parte dello spettacolo, soprattutto per i più piccoli.",
+    "de": "Zeig das Rad auf dem Fernseher oder einem Beamer und schalte Countdown und Gewinnereffekte ein. Die Drehung selbst wird Teil der Unterhaltung, besonders für jüngere Kinder.",
+    "fr": "Affichez la roue sur la télé ou un vidéoprojecteur et activez le compte à rebours et les effets du gagnant. Le tour devient un spectacle en soi, surtout pour les plus petits.",
+    "es": "Pon la ruleta en la tele o en un proyector y activa la cuenta atrás y los efectos del ganador. El propio giro se convierte en parte del espectáculo, sobre todo para los más pequeños.",
+    "zh": "把转盘投到电视或投影仪上，打开倒计时和中奖特效。转动本身就成了节目的一部分，小朋友们尤其喜欢。"
+  },
+  "tpl.party-games.faq1.q": {
+    "it": "È adatta alle feste dei bambini?",
+    "de": "Ist es für Kindergeburtstage geeignet?",
+    "fr": "Est-ce adapté aux fêtes d’enfants ?",
+    "es": "¿Es adecuada para fiestas infantiles?",
+    "zh": "适合儿童派对吗？"
+  },
+  "tpl.party-games.faq1.a": {
+    "it": "Sì. Tutto ciò che c’è sulla ruota di esempio è adatto ai bambini, e puoi sostituire i giochi con altri adatti all’età degli ospiti.",
+    "de": "Ja. Alles auf dem Beispielrad ist kindgerecht, und du kannst die Spiele durch welche ersetzen, die zum Alter deiner Gäste passen.",
+    "fr": "Oui. Tout ce qui figure sur la roue proposée convient aux enfants, et vous pouvez remplacer les jeux par d’autres adaptés à l’âge des invités.",
+    "es": "Sí. Todo lo que hay en la ruleta de ejemplo es apto para niños, y puedes sustituir los juegos por otros adecuados a la edad de tus invitados.",
+    "zh": "适合。示例转盘上的所有内容都适合儿童，你也可以换成适合客人年龄的游戏。"
+  },
+  "tpl.party-games.faq2.q": {
+    "it": "Posso evitare che un gioco esca due volte?",
+    "de": "Kann ich verhindern, dass ein Spiel zweimal kommt?",
+    "fr": "Puis-je éviter qu’un jeu sorte deux fois ?",
+    "es": "¿Puedo evitar que un juego salga dos veces?",
+    "zh": "可以避免同一个游戏出现两次吗？"
+  },
+  "tpl.party-games.faq2.a": {
+    "it": "Togli ogni gioco dopo averlo fatto e la ruota proporrà solo quelli rimasti.",
+    "de": "Entferne jedes Spiel, nachdem es gespielt wurde, dann bietet das Rad nur noch die übrigen an.",
+    "fr": "Retirez chaque jeu une fois joué et la roue ne propose plus que ceux qui restent.",
+    "es": "Quita cada juego después de jugarlo y la ruleta solo ofrecerá los que quedan.",
+    "zh": "每玩完一个游戏就把它移除，转盘只会给出剩下的游戏。"
+  },
+  "tpl.study-subject.tagline": {
+    "it": "Ripasso e compiti",
+    "de": "Lernen & Hausaufgaben",
+    "fr": "Révisions et devoirs",
+    "es": "Repaso y deberes",
+    "zh": "复习与作业"
+  },
+  "tpl.study-subject.name": {
+    "it": "Cosa studiare",
+    "de": "Was lernen?",
+    "fr": "Quoi réviser",
+    "es": "Qué estudiar",
+    "zh": "学什么"
+  },
+  "tpl.study-subject.cardDesc": {
+    "it": "Non sai da dove iniziare a ripassare? Gira per la prossima materia.",
+    "de": "Du weißt nicht, womit du anfangen sollst? Dreh für das nächste Fach.",
+    "fr": "Vous ne savez pas par où commencer ? Tournez pour la prochaine matière.",
+    "es": "¿No sabes por dónde empezar a repasar? Gira para la siguiente asignatura.",
+    "zh": "不知道从哪科开始复习？转一下决定下一科。"
+  },
+  "tpl.study-subject.entry1": {
+    "it": "Matematica",
+    "de": "Mathe",
+    "fr": "Maths",
+    "es": "Matemáticas",
+    "zh": "数学"
+  },
+  "tpl.study-subject.entry2": {
+    "it": "Storia",
+    "de": "Geschichte",
+    "fr": "Histoire",
+    "es": "Historia",
+    "zh": "历史"
+  },
+  "tpl.study-subject.entry3": {
+    "it": "Scienze",
+    "de": "Naturwissenschaften",
+    "fr": "Sciences",
+    "es": "Ciencias",
+    "zh": "科学"
+  },
+  "tpl.study-subject.entry4": {
+    "it": "Lingue",
+    "de": "Sprachen",
+    "fr": "Langues",
+    "es": "Idiomas",
+    "zh": "语言"
+  },
+  "tpl.study-subject.entry5": {
+    "it": "Geografia",
+    "de": "Erdkunde",
+    "fr": "Géographie",
+    "es": "Geografía",
+    "zh": "地理"
+  },
+  "tpl.study-subject.entry6": {
+    "it": "Letteratura",
+    "de": "Literatur",
+    "fr": "Littérature",
+    "es": "Literatura",
+    "zh": "文学"
+  },
+  "tpl.study-subject.entry7": {
+    "it": "Arte",
+    "de": "Kunst",
+    "fr": "Arts plastiques",
+    "es": "Arte",
+    "zh": "美术"
+  },
+  "tpl.study-subject.entry8": {
+    "it": "Quiz veloce",
+    "de": "Schnelles Quiz",
+    "fr": "Quiz rapide",
+    "es": "Test rápido",
+    "zh": "快速小测"
+  },
+  "tpl.study-subject.centerText": {
+    "it": "STUDIA",
+    "de": "LERNEN",
+    "fr": "RÉVISE",
+    "es": "ESTUDIA",
+    "zh": "学习"
+  },
+  "tpl.study-subject.title": {
+    "it": "Ruota cosa studiare | Scegli la materia a caso",
+    "de": "Was lernen? Rad | Zufälliges Lernfach wählen",
+    "fr": "Roue quoi réviser | Choisir une matière au hasard",
+    "es": "Ruleta qué estudiar | Elige una asignatura al azar",
+    "zh": "学什么转盘 | 随机选择复习科目"
+  },
+  "tpl.study-subject.desc": {
+    "it": "Non sai cosa ripassare per primo? Gira la ruota dello studio per la prossima materia e inizia a studiare invece di pianificare. Gratis e senza account.",
+    "de": "Du weißt nicht, was du zuerst lernen sollst? Dreh das Lernrad für das nächste Fach und fang an, statt zu planen. Kostenlos, ohne Anmeldung.",
+    "fr": "Vous ne savez pas quoi réviser d’abord ? Tournez la roue pour la prochaine matière et révisez au lieu de planifier. Gratuit, sans inscription.",
+    "es": "¿No sabes qué repasar primero? Gira la ruleta de estudio para la próxima asignatura y empieza a estudiar en vez de planificar. Gratis, sin registro.",
+    "zh": "不知道先复习哪科？转动学习转盘决定下一科，直接开始学习而不是做计划。免费，无需注册。"
+  },
+  "tpl.study-subject.heading": {
+    "it": "Ruota cosa studiare",
+    "de": "Was lernen? – das Rad",
+    "fr": "Roue quoi réviser",
+    "es": "Ruleta qué estudiar",
+    "zh": "学什么转盘"
+  },
+  "tpl.study-subject.intro": {
+    "it": "Pianificare cosa ripassare può richiedere più tempo del ripasso stesso. Metti le tue materie sulla ruota, gira e inizia con quella che esce per la prossima sessione di studio. La decisione è presa; resta solo il lavoro.",
+    "de": "Planen, was man lernt, kann länger dauern als das Lernen selbst. Setz deine Fächer aufs Rad, dreh und fang mit dem an, was es für die nächste Lerneinheit auswählt. Die Entscheidung ist gefallen; bleibt nur die Arbeit.",
+    "fr": "Planifier ses révisions peut prendre plus de temps que les révisions elles-mêmes. Mettez vos matières sur la roue, tournez et commencez par celle qu’elle désigne pour la prochaine séance. La décision est prise ; il ne reste que le travail.",
+    "es": "Planificar qué repasar puede llevar más tiempo que el propio repaso. Pon tus asignaturas en la ruleta, gira y empieza con la que salga para la próxima sesión. La decisión está tomada; solo queda el trabajo.",
+    "zh": "规划复习什么，可能比复习本身还花时间。把你的科目放上转盘，转一下，下一轮学习就从它选中的科目开始。决定已经做好了，剩下的只有学习。"
+  },
+  "tpl.study-subject.s1.heading": {
+    "it": "Un giro per sessione",
+    "de": "Eine Drehung pro Einheit",
+    "fr": "Un tour par séance",
+    "es": "Un giro por sesión",
+    "zh": "每轮学习转一次"
+  },
+  "tpl.study-subject.s1.body": {
+    "it": "Abbina la ruota a un timer: gira, studia quella materia per 25 minuti, fai una pausa, gira di nuovo. Togli una materia quando l’hai coperta per la giornata, così la ruota ti spinge attraverso tutta la lista.",
+    "de": "Kombiniere das Rad mit einem Timer: drehen, das Fach 25 Minuten lernen, Pause, wieder drehen. Entferne ein Fach, sobald es für heute erledigt ist, dann treibt dich das Rad durch die ganze Liste.",
+    "fr": "Associez la roue à un minuteur : tournez, révisez cette matière 25 minutes, faites une pause, recommencez. Retirez une matière une fois traitée pour la journée, et la roue vous fait parcourir toute la liste.",
+    "es": "Combina la ruleta con un temporizador: gira, estudia esa asignatura 25 minutos, descansa y vuelve a girar. Quita una asignatura cuando la hayas cubierto ese día y la ruleta te llevará por toda la lista.",
+    "zh": "把转盘和计时器搭配使用：转一下，学这科 25 分钟，休息，再转。某科当天学完就把它移除，转盘会推着你把整份清单都学完。"
+  },
+  "tpl.study-subject.s2.heading": {
+    "it": "Dai più peso alle materie difficili",
+    "de": "Schwere Fächer stärker gewichten",
+    "fr": "Donnez plus de poids aux matières difficiles",
+    "es": "Da más peso a las asignaturas difíciles",
+    "zh": "给难科更高权重"
+  },
+  "tpl.study-subject.s2.body": {
+    "it": "La materia che continui a evitare di solito è quella che richiede più tempo. Aggiungila due volte alla ruota e uscirà più spesso.",
+    "de": "Das Fach, das du immer wieder vermeidest, braucht meistens die meiste Zeit. Füge es zweimal hinzu, dann kommt es öfter.",
+    "fr": "La matière que vous évitez sans cesse est souvent celle qui demande le plus de temps. Ajoutez-la deux fois et elle sortira plus souvent.",
+    "es": "La asignatura que sigues evitando suele ser la que más tiempo necesita. Añádela dos veces a la ruleta y saldrá más a menudo.",
+    "zh": "你一直在逃避的那一科，通常最需要时间。把它在转盘上添加两次，它就会更常出现。"
+  },
+  "tpl.study-subject.faq1.q": {
+    "it": "Posso usarla per i gruppi di studio?",
+    "de": "Kann ich es für Lerngruppen nutzen?",
+    "fr": "Puis-je l’utiliser en groupe de révision ?",
+    "es": "¿Puedo usarla en grupos de estudio?",
+    "zh": "可以用于学习小组吗？"
+  },
+  "tpl.study-subject.faq1.a": {
+    "it": "Sì. Condividi lo schermo o pubblica la ruota come link, e il gruppo gira per decidere quale argomento affrontare dopo.",
+    "de": "Ja. Teile deinen Bildschirm oder veröffentliche das Rad als Link, und die Gruppe dreht, um das nächste Thema festzulegen.",
+    "fr": "Oui. Partagez votre écran ou publiez la roue en lien, et le groupe tourne pour décider du prochain sujet.",
+    "es": "Sí. Comparte pantalla o publica la ruleta como enlace, y el grupo gira para decidir el siguiente tema.",
+    "zh": "可以。共享屏幕或把转盘发布为链接，小组一起转，决定接下来学哪个主题。"
+  },
+  "tpl.study-subject.faq2.q": {
+    "it": "Salva le mie materie?",
+    "de": "Speichert es meine Fächer?",
+    "fr": "Mes matières sont-elles enregistrées ?",
+    "es": "¿Guarda mis asignaturas?",
+    "zh": "会保存我的科目吗？"
+  },
+  "tpl.study-subject.faq2.a": {
+    "it": "La tua ruota resta salvata nel browser. Accedendo la sincronizzi tra i tuoi dispositivi.",
+    "de": "Dein Rad bleibt im Browser gespeichert. Mit einer Anmeldung wird es zwischen deinen Geräten synchronisiert.",
+    "fr": "Votre roue reste enregistrée dans le navigateur. En vous connectant, vous la synchronisez entre vos appareils.",
+    "es": "Tu ruleta queda guardada en el navegador. Si inicias sesión, se sincroniza entre tus dispositivos.",
+    "zh": "你的转盘会保存在浏览器中。登录后可在你的设备之间同步。"
+  },
+  "tpl.random-hobby.tagline": {
+    "it": "Prova qualcosa di nuovo",
+    "de": "Probier was Neues",
+    "fr": "Essayez du nouveau",
+    "es": "Prueba algo nuevo",
+    "zh": "尝试新事物"
+  },
+  "tpl.random-hobby.name": {
+    "it": "Hobby casuale",
+    "de": "Zufälliges Hobby",
+    "fr": "Loisir au hasard",
+    "es": "Hobby aleatorio",
+    "zh": "随机爱好"
+  },
+  "tpl.random-hobby.cardDesc": {
+    "it": "Cerchi un nuovo hobby? Gira e prova davvero il primo che esce.",
+    "de": "Auf der Suche nach einem neuen Hobby? Dreh und probier das erste wirklich aus.",
+    "fr": "Vous cherchez un nouveau loisir ? Tournez et essayez vraiment le premier.",
+    "es": "¿Buscas un hobby nuevo? Gira y prueba en serio el primero que salga.",
+    "zh": "想找个新爱好？转一下，认真试试第一个结果。"
+  },
+  "tpl.random-hobby.entry1": {
+    "it": "Pasticceria",
+    "de": "Backen",
+    "fr": "Pâtisserie",
+    "es": "Repostería",
+    "zh": "烘焙"
+  },
+  "tpl.random-hobby.entry2": {
+    "it": "Giardinaggio",
+    "de": "Gärtnern",
+    "fr": "Jardinage",
+    "es": "Jardinería",
+    "zh": "园艺"
+  },
+  "tpl.random-hobby.entry3": {
+    "it": "Scacchi",
+    "de": "Schach",
+    "fr": "Échecs",
+    "es": "Ajedrez",
+    "zh": "国际象棋"
+  },
+  "tpl.random-hobby.entry4": {
+    "it": "Fotografia",
+    "de": "Fotografie",
+    "fr": "Photographie",
+    "es": "Fotografía",
+    "zh": "摄影"
+  },
+  "tpl.random-hobby.entry5": {
+    "it": "Maglia",
+    "de": "Stricken",
+    "fr": "Tricot",
+    "es": "Punto",
+    "zh": "编织"
+  },
+  "tpl.random-hobby.entry6": {
+    "it": "Chitarra",
+    "de": "Gitarre",
+    "fr": "Guitare",
+    "es": "Guitarra",
+    "zh": "吉他"
+  },
+  "tpl.random-hobby.entry7": {
+    "it": "Ceramica",
+    "de": "Töpfern",
+    "fr": "Poterie",
+    "es": "Cerámica",
+    "zh": "陶艺"
+  },
+  "tpl.random-hobby.entry8": {
+    "it": "Birdwatching",
+    "de": "Vogelbeobachtung",
+    "fr": "Observation des oiseaux",
+    "es": "Observación de aves",
+    "zh": "观鸟"
+  },
+  "tpl.random-hobby.centerText": {
+    "it": "PROVA",
+    "de": "LOS",
+    "fr": "ESSAIE",
+    "es": "PRUEBA",
+    "zh": "试试"
+  },
+  "tpl.random-hobby.title": {
+    "it": "Generatore di hobby casuali | Gira per un nuovo hobby",
+    "de": "Zufälliger Hobby-Generator | Dreh für ein neues Hobby",
+    "fr": "Générateur de loisirs | Tournez pour un nouveau loisir",
+    "es": "Generador de hobbies | Gira para un hobby nuevo",
+    "zh": "随机爱好生成器 | 转出一个新爱好"
+  },
+  "tpl.random-hobby.desc": {
+    "it": "Un generatore di hobby gratuito: gira la ruota per un nuovo hobby da provare questo mese, dalla pasticceria agli scacchi, dalla ceramica al birdwatching.",
+    "de": "Ein kostenloser Hobby-Generator: Dreh das Rad für ein neues Hobby für diesen Monat, vom Backen und Schach bis zum Töpfern und zur Vogelbeobachtung.",
+    "fr": "Un générateur de loisirs gratuit : tournez la roue pour un loisir à essayer ce mois-ci, de la pâtisserie aux échecs, de la poterie aux oiseaux.",
+    "es": "Un generador de hobbies gratis: gira la ruleta para un hobby nuevo que probar este mes, de la repostería y el ajedrez a la cerámica y las aves.",
+    "zh": "免费的随机爱好生成器：转动转盘，选出本月要尝试的新爱好，从烘焙、国际象棋到陶艺和观鸟。"
+  },
+  "tpl.random-hobby.heading": {
+    "it": "Generatore di hobby casuali",
+    "de": "Zufälliger Hobby-Generator",
+    "fr": "Générateur de loisirs aléatoires",
+    "es": "Generador de hobbies aleatorios",
+    "zh": "随机爱好生成器"
+  },
+  "tpl.random-hobby.intro": {
+    "it": "Volere un nuovo hobby è facile; sceglierne uno è dove ci si blocca. Gira la ruota, impegnati a provare per un mese quello che esce e scopri se ti piace facendolo, non leggendone.",
+    "de": "Ein neues Hobby wollen ist leicht; eins auszuwählen ist der Punkt, an dem es hakt. Dreh das Rad, versprich dir, das Ergebnis einen Monat lang auszuprobieren, und finde es durch Tun heraus statt durch Lesen.",
+    "fr": "Vouloir un nouveau loisir, c’est facile ; en choisir un, c’est là que ça bloque. Tournez la roue, engagez-vous à essayer le résultat pendant un mois et découvrez si vous aimez en pratiquant plutôt qu’en lisant.",
+    "es": "Querer un hobby nuevo es fácil; elegir uno es donde se atasca todo. Gira la ruleta, comprométete a probar lo que salga durante un mes y descubre si te gusta haciéndolo, no leyendo sobre ello.",
+    "zh": "想要一个新爱好很容易，难的是选一个。转动转盘，承诺把结果试一个月，通过亲自去做而不是看资料来发现自己喜不喜欢。"
+  },
+  "tpl.random-hobby.s1.heading": {
+    "it": "Provalo per un mese",
+    "de": "Probier es einen Monat",
+    "fr": "Essayez-le un mois",
+    "es": "Pruébalo durante un mes",
+    "zh": "坚持试一个月"
+  },
+  "tpl.random-hobby.s1.body": {
+    "it": "Un mese è abbastanza lungo da superare l’inizio impacciato e abbastanza breve da non sembrare un impegno. Finito il mese, togli l’hobby dalla ruota e gira per il prossimo.",
+    "de": "Ein Monat ist lang genug, um über den holprigen Anfang hinwegzukommen, und kurz genug, um sich nicht wie eine Verpflichtung anzufühlen. Ist der Monat vorbei, entferne das Hobby und dreh für das nächste.",
+    "fr": "Un mois, c’est assez long pour dépasser les débuts maladroits et assez court pour ne pas ressembler à un engagement. Le mois terminé, retirez le loisir de la roue et tournez pour le suivant.",
+    "es": "Un mes es lo bastante largo para superar el comienzo torpe y lo bastante corto para no sentirse un compromiso. Cuando acabe el mes, quita el hobby de la ruleta y gira para el siguiente.",
+    "zh": "一个月足以度过笨拙的起步期，又短到不会让人觉得是负担。一个月结束后，把这个爱好从转盘移除，再转出下一个。"
+  },
+  "tpl.random-hobby.s2.heading": {
+    "it": "Aggiungi quelli a cui pensi sempre",
+    "de": "Füge die hinzu, an die du ständig denkst",
+    "fr": "Ajoutez ceux auxquels vous pensez toujours",
+    "es": "Añade los que siempre tienes en mente",
+    "zh": "加入你一直惦记的爱好"
+  },
+  "tpl.random-hobby.s2.body": {
+    "it": "La lista di hobby migliore è quella che hai già in testa: lo strumento nell’armadio, il corso di cui parla sempre un amico. Mettili sulla ruota accanto alle idee di esempio.",
+    "de": "Die beste Hobbyliste ist die, die du schon im Kopf hast: das Instrument im Schrank, der Kurs, von dem ein Freund ständig erzählt. Setz sie neben die Beispielideen aufs Rad.",
+    "fr": "La meilleure liste de loisirs est celle que vous avez déjà en tête : l’instrument au placard, le cours dont un ami parle sans cesse. Mettez-les sur la roue à côté des idées proposées.",
+    "es": "La mejor lista de hobbies es la que ya tienes en la cabeza: el instrumento del armario, el curso del que siempre habla un amigo. Ponlos en la ruleta junto a las ideas de ejemplo.",
+    "zh": "最好的爱好清单就是你脑子里已有的那份：柜子里的乐器、朋友总在提的课程。把它们和示例放在一起加到转盘上。"
+  },
+  "tpl.random-hobby.faq1.q": {
+    "it": "Gli hobby sono costosi?",
+    "de": "Sind die Hobbys teuer?",
+    "fr": "Ces loisirs sont-ils coûteux ?",
+    "es": "¿Los hobbies son caros?",
+    "zh": "这些爱好很花钱吗？"
+  },
+  "tpl.random-hobby.faq1.a": {
+    "it": "La maggior parte degli hobby di esempio si può iniziare con pochissimo. Sostituisci quelli che non vanno bene per il tuo budget o il tuo spazio.",
+    "de": "Die meisten Beispielhobbys lassen sich mit sehr wenig beginnen. Ersetze die, die nicht zu deinem Budget oder Platz passen.",
+    "fr": "La plupart des loisirs proposés se commencent avec très peu. Remplacez ceux qui ne conviennent pas à votre budget ou à votre espace.",
+    "es": "La mayoría de los hobbies de ejemplo se pueden empezar con muy poco. Sustituye los que no encajen con tu presupuesto o tu espacio.",
+    "zh": "大多数示例爱好只需很少投入就能开始。把不适合你预算或空间的换掉即可。"
+  },
+  "tpl.random-hobby.faq2.q": {
+    "it": "Posso usarla con il partner o gli amici?",
+    "de": "Kann ich es mit Partner oder Freunden nutzen?",
+    "fr": "Puis-je l’utiliser en couple ou entre amis ?",
+    "es": "¿Puedo usarla con mi pareja o amigos?",
+    "zh": "可以和伴侣或朋友一起用吗？"
+  },
+  "tpl.random-hobby.faq2.a": {
+    "it": "Sì: giratela insieme e provate lo stesso hobby in gruppo, oppure tenete una ruota a testa.",
+    "de": "Ja — dreht gemeinsam und probiert dasselbe Hobby als Gruppe, oder jeder behält sein eigenes Rad.",
+    "fr": "Oui : tournez-la ensemble et essayez le même loisir en groupe, ou gardez chacun votre roue.",
+    "es": "Sí: giradla juntos y probad el mismo hobby en grupo, o que cada uno tenga su ruleta.",
+    "zh": "可以——一起转，作为一个小组尝试同一个爱好，或者每人保留一个自己的转盘。"
+  },
+  "tpl.bored.tagline": {
+    "it": "Giornate di pioggia",
+    "de": "Regentage",
+    "fr": "Jours de pluie",
+    "es": "Días de lluvia",
+    "zh": "下雨天"
+  },
+  "tpl.bored.name": {
+    "it": "Cosa fare quando ci si annoia",
+    "de": "Was tun bei Langeweile?",
+    "fr": "Quoi faire quand on s’ennuie",
+    "es": "Qué hacer cuando te aburres",
+    "zh": "无聊时做什么"
+  },
+  "tpl.bored.cardDesc": {
+    "it": "Niente da fare? Gira e fai la prima cosa che dice la ruota.",
+    "de": "Nichts zu tun? Dreh und mach das Erste, was das Rad sagt.",
+    "fr": "Rien à faire ? Tournez et faites la première chose que dit la roue.",
+    "es": "¿Nada que hacer? Gira y haz lo primero que diga la ruleta.",
+    "zh": "无事可做？转一下，照转盘说的第一件事去做。"
+  },
+  "tpl.bored.entry1": {
+    "it": "Leggi un capitolo",
+    "de": "Lies ein Kapitel",
+    "fr": "Lis un chapitre",
+    "es": "Lee un capítulo",
+    "zh": "读一章书"
+  },
+  "tpl.bored.entry2": {
+    "it": "Fai una passeggiata",
+    "de": "Geh spazieren",
+    "fr": "Va te promener",
+    "es": "Sal a pasear",
+    "zh": "出去散步"
+  },
+  "tpl.bored.entry3": {
+    "it": "Chiama un amico",
+    "de": "Ruf einen Freund an",
+    "fr": "Appelle un ami",
+    "es": "Llama a un amigo",
+    "zh": "给朋友打电话"
+  },
+  "tpl.bored.entry4": {
+    "it": "Riordina un cassetto",
+    "de": "Schublade aufräumen",
+    "fr": "Range un tiroir",
+    "es": "Ordena un cajón",
+    "zh": "整理一个抽屉"
+  },
+  "tpl.bored.entry5": {
+    "it": "Trucco con le carte",
+    "de": "Kartentrick lernen",
+    "fr": "Un tour de cartes",
+    "es": "Truco de cartas",
+    "zh": "学一个扑克魔术"
+  },
+  "tpl.bored.entry6": {
+    "it": "Prepara un dolce",
+    "de": "Back etwas",
+    "fr": "Fais un gâteau",
+    "es": "Hornea algo",
+    "zh": "烤点东西"
+  },
+  "tpl.bored.entry7": {
+    "it": "Disegna per 10 minuti",
+    "de": "Zeichne 10 Minuten",
+    "fr": "Dessine 10 minutes",
+    "es": "Dibuja 10 minutos",
+    "zh": "画画 10 分钟"
+  },
+  "tpl.bored.entry8": {
+    "it": "Fortino di coperte",
+    "de": "Deckenburg bauen",
+    "fr": "Cabane en couvertures",
+    "es": "Fuerte de mantas",
+    "zh": "用毯子搭个堡垒"
+  },
+  "tpl.bored.centerText": {
+    "it": "VAI",
+    "de": "LOS",
+    "fr": "GO",
+    "es": "YA",
+    "zh": "出发"
+  },
+  "tpl.bored.title": {
+    "it": "Ruota cosa fare quando ci si annoia | Idee antinoia",
+    "de": "Was tun bei Langeweile? Rad | Ideen gegen Langeweile",
+    "fr": "Roue quoi faire quand on s’ennuie | Idées anti-ennui",
+    "es": "Ruleta qué hacer cuando te aburres | Ideas antiaburrimiento",
+    "zh": "无聊时做什么转盘 | 消除无聊的点子"
+  },
+  "tpl.bored.desc": {
+    "it": "Annoiato e senza idee? Gira la ruota antinoia per qualcosa da fare subito, in casa o fuori. Gratis, senza registrazione, e puoi aggiungere le tue idee.",
+    "de": "Gelangweilt und ideenlos? Dreh das Rad gegen Langeweile für etwas, das du sofort tun kannst, drinnen oder draußen. Kostenlos und mit eigenen Ideen.",
+    "fr": "Vous vous ennuyez ? Tournez la roue anti-ennui pour une activité à faire tout de suite, dedans ou dehors. Gratuit, sans compte, avec vos idées.",
+    "es": "¿Aburrido y sin ideas? Gira la ruleta antiaburrimiento para algo que hacer ya, dentro o fuera de casa. Gratis, sin registro y con tus propias ideas.",
+    "zh": "无聊又没主意？转动消除无聊转盘，找到一件马上就能做的事，室内室外都行。免费，无需注册，还能添加自己的点子。"
+  },
+  "tpl.bored.heading": {
+    "it": "Ruota cosa fare quando ci si annoia",
+    "de": "Was tun bei Langeweile? – das Rad",
+    "fr": "Roue quoi faire quand on s’ennuie",
+    "es": "Ruleta qué hacer cuando te aburres",
+    "zh": "无聊时做什么转盘"
+  },
+  "tpl.bored.intro": {
+    "it": "La noia raramente è mancanza di cose da fare: è non riuscire a sceglierne una. Gira la ruota, fai la prima cosa che dice per dieci minuti e vedi dove ti porta.",
+    "de": "Langeweile ist selten ein Mangel an Beschäftigung — man kann sich nur nicht für etwas entscheiden. Dreh das Rad, mach zehn Minuten lang, was es sagt, und schau, wohin es dich führt.",
+    "fr": "L’ennui vient rarement d’un manque d’activités : c’est de ne pas arriver à en choisir une. Tournez la roue, faites ce qu’elle dit pendant dix minutes et voyez où cela vous mène.",
+    "es": "El aburrimiento rara vez es falta de cosas que hacer: es no poder elegir una. Gira la ruleta, haz lo primero que diga durante diez minutos y mira adónde te lleva.",
+    "zh": "无聊很少是因为没事可做，而是选不出要做哪件。转动转盘，照它说的做十分钟，看看会发生什么。"
+  },
+  "tpl.bored.s1.heading": {
+    "it": "Dieci minuti, niente scuse",
+    "de": "Zehn Minuten, keine Ausreden",
+    "fr": "Dix minutes, sans excuse",
+    "es": "Diez minutos, sin excusas",
+    "zh": "十分钟，不找借口"
+  },
+  "tpl.bored.s1.body": {
+    "it": "Tutto ciò che c’è sulla ruota di esempio si può iniziare subito, senza comprare niente né andare lontano. La regola che la fa funzionare: qualunque cosa esca, la fai per almeno dieci minuti.",
+    "de": "Alles auf dem Beispielrad kannst du sofort anfangen, ohne etwas zu kaufen oder weit zu gehen. Die Regel, die es funktionieren lässt: Was auch kommt, du machst es mindestens zehn Minuten.",
+    "fr": "Tout ce qui figure sur la roue proposée se commence tout de suite, sans rien acheter ni aller loin. La règle qui fait marcher le tout : quoi qu’il sorte, vous le faites au moins dix minutes.",
+    "es": "Todo lo que hay en la ruleta de ejemplo se puede empezar ya, sin comprar nada ni ir lejos. La regla que hace que funcione: salga lo que salga, lo haces al menos diez minutos.",
+    "zh": "示例转盘上的所有事情都能立刻开始，不用买东西也不用走远。让它奏效的规则是：不管转出什么，至少做十分钟。"
+  },
+  "tpl.bored.s2.heading": {
+    "it": "Una ruota per i bambini",
+    "de": "Ein Rad für die Kinder",
+    "fr": "Une roue pour les enfants",
+    "es": "Una ruleta para los niños",
+    "zh": "给孩子的转盘"
+  },
+  "tpl.bored.s2.body": {
+    "it": "Crea una versione per le vacanze scolastiche con attività che i bambini possono fare da soli. Lasciarli girare trasforma “mi annoio” in un gioco invece che in una lamentela.",
+    "de": "Bau eine Version für die Schulferien mit Beschäftigungen, die deine Kinder allein machen können. Wenn sie selbst drehen, wird aus „Mir ist langweilig“ ein Spiel statt einer Beschwerde.",
+    "fr": "Créez une version pour les vacances scolaires avec des activités que vos enfants peuvent faire seuls. Les laisser tourner transforme « je m’ennuie » en jeu plutôt qu’en plainte.",
+    "es": "Crea una versión para las vacaciones escolares con actividades que tus hijos puedan hacer solos. Dejar que la giren convierte el “me aburro” en un juego en lugar de una queja.",
+    "zh": "做一个寒暑假版本，放上孩子们能独立完成的活动。让他们自己转，“我好无聊”就从抱怨变成了游戏。"
+  },
+  "tpl.bored.faq1.q": {
+    "it": "Posso fare una versione per casa e una per fuori?",
+    "de": "Kann ich eine Version für drinnen und eine für draußen machen?",
+    "fr": "Puis-je faire une version intérieur et une extérieur ?",
+    "es": "¿Puedo hacer una versión para dentro y otra para fuera?",
+    "zh": "可以做室内和室外两个版本吗？"
+  },
+  "tpl.bored.faq1.a": {
+    "it": "Sì. Tieni due ruote e gira quella adatta al tempo che fa.",
+    "de": "Ja. Leg zwei Räder an und dreh das, das zum Wetter passt.",
+    "fr": "Oui. Gardez deux roues et tournez celle qui convient à la météo.",
+    "es": "Sí. Ten dos ruletas y gira la que vaya con el tiempo que hace.",
+    "zh": "可以。保存两个转盘，根据天气转对应的那个。"
+  },
+  "tpl.bored.faq2.q": {
+    "it": "Funziona offline?",
+    "de": "Funktioniert es offline?",
+    "fr": "Fonctionne-t-elle hors ligne ?",
+    "es": "¿Funciona sin conexión?",
+    "zh": "离线能用吗？"
+  },
+  "tpl.bored.faq2.a": {
+    "it": "L’app Android funziona senza connessione, e sul web la pagina continua a funzionare una volta caricata.",
+    "de": "Die Android-App funktioniert ohne Verbindung, und im Web läuft die Seite weiter, sobald sie geladen ist.",
+    "fr": "L’application Android fonctionne sans connexion, et sur le web la page continue de fonctionner une fois chargée.",
+    "es": "La app de Android funciona sin conexión, y en la web la página sigue funcionando una vez cargada.",
+    "zh": "Android 应用无需联网即可使用；在网页上，页面加载后也能继续使用。"
+  },
+  "tpl.self-care.tagline": {
+    "it": "Benessere",
+    "de": "Wohlbefinden",
+    "fr": "Bien-être",
+    "es": "Bienestar",
+    "zh": "身心健康"
+  },
+  "tpl.self-care.name": {
+    "it": "Ruota della cura di sé",
+    "de": "Selbstfürsorge-Rad",
+    "fr": "Roue du prendre soin de soi",
+    "es": "Ruleta de autocuidado",
+    "zh": "自我关怀转盘"
+  },
+  "tpl.self-care.cardDesc": {
+    "it": "Piccole cose che aiutano: gira per un gesto gentile da fare per te oggi.",
+    "de": "Kleine Dinge, die helfen: Dreh für eine freundliche Sache, die du heute für dich tust.",
+    "fr": "De petites choses qui aident : tournez pour un geste bienveillant envers vous aujourd’hui.",
+    "es": "Pequeñas cosas que ayudan: gira para un gesto amable contigo hoy.",
+    "zh": "有帮助的小事：转一下，今天为自己做一件温柔的事。"
+  },
+  "tpl.self-care.entry1": {
+    "it": "Bevi un po’ d’acqua",
+    "de": "Trink Wasser",
+    "fr": "Bois de l’eau",
+    "es": "Bebe agua",
+    "zh": "喝点水"
+  },
+  "tpl.self-care.entry2": {
+    "it": "Stretching 5 minuti",
+    "de": "5 Minuten dehnen",
+    "fr": "Étirements 5 min",
+    "es": "Estírate 5 minutos",
+    "zh": "拉伸 5 分钟"
+  },
+  "tpl.self-care.entry3": {
+    "it": "Passeggia fuori",
+    "de": "Draußen spazieren",
+    "fr": "Marche dehors",
+    "es": "Pasea fuera",
+    "zh": "出门散步"
+  },
+  "tpl.self-care.entry4": {
+    "it": "Scrivi a un amico",
+    "de": "Schreib einem Freund",
+    "fr": "Écris à un ami",
+    "es": "Escribe a un amigo",
+    "zh": "给朋友发消息"
+  },
+  "tpl.self-care.entry5": {
+    "it": "Leggi 20 minuti",
+    "de": "Lies 20 Minuten",
+    "fr": "Lis 20 minutes",
+    "es": "Lee 20 minutos",
+    "zh": "阅读 20 分钟"
+  },
+  "tpl.self-care.entry6": {
+    "it": "Doccia lunga",
+    "de": "Lange duschen",
+    "fr": "Longue douche",
+    "es": "Ducha larga",
+    "zh": "洗个长长的澡"
+  },
+  "tpl.self-care.entry7": {
+    "it": "Un’ora offline",
+    "de": "Eine Stunde offline",
+    "fr": "Une heure hors ligne",
+    "es": "Una hora sin móvil",
+    "zh": "一小时不看手机"
+  },
+  "tpl.self-care.entry8": {
+    "it": "Vai a letto presto",
+    "de": "Geh früh ins Bett",
+    "fr": "Couche-toi tôt",
+    "es": "Acuéstate temprano",
+    "zh": "早点睡觉"
+  },
+  "tpl.self-care.centerText": {
+    "it": "RESPIRA",
+    "de": "ATMEN",
+    "fr": "RESPIRE",
+    "es": "RESPIRA",
+    "zh": "呼吸"
+  },
+  "tpl.self-care.title": {
+    "it": "Ruota della cura di sé | Idee di self-care a caso",
+    "de": "Selbstfürsorge-Rad | Zufällige Self-Care-Ideen",
+    "fr": "Roue du prendre soin de soi | Idées self-care",
+    "es": "Ruleta de autocuidado | Ideas de self-care al azar",
+    "zh": "自我关怀转盘 | 随机自我关怀点子"
+  },
+  "tpl.self-care.desc": {
+    "it": "Gira la ruota della cura di sé per un piccolo gesto gentile da fare per te oggi. Gratuita, privata, e puoi riempirla con le idee che ti aiutano di più.",
+    "de": "Dreh das Selbstfürsorge-Rad für eine kleine, freundliche Sache, die du heute für dich tust. Kostenlos, privat und mit den Ideen, die dir am meisten helfen.",
+    "fr": "Tournez la roue pour un petit geste bienveillant envers vous aujourd’hui. Gratuite, privée, et vous pouvez la remplir des idées qui vous aident le plus.",
+    "es": "Gira la ruleta de autocuidado para un pequeño gesto amable contigo hoy. Gratis, privada, y puedes llenarla con las ideas que más te ayudan.",
+    "zh": "转动自我关怀转盘，今天为自己做一件温柔的小事。免费、私密，还可以放上最能帮到你的点子。"
+  },
+  "tpl.self-care.heading": {
+    "it": "Ruota della cura di sé",
+    "de": "Selbstfürsorge-Rad",
+    "fr": "Roue du prendre soin de soi",
+    "es": "Ruleta de autocuidado",
+    "zh": "自我关怀转盘"
+  },
+  "tpl.self-care.intro": {
+    "it": "In una giornata difficile anche scegliere come prendersi cura di sé può sembrare una decisione di troppo. Gira la ruota e lascia che scelga una piccola cosa: un bicchiere d’acqua, una passeggiata, andare a letto presto. Piccolo è proprio il punto.",
+    "de": "An einem schweren Tag kann schon die Entscheidung, wie man für sich sorgt, eine zu viel sein. Dreh das Rad und lass es eine kleine Sache wählen — ein Glas Wasser, einen Spaziergang, früh ins Bett. Klein ist genau der Punkt.",
+    "fr": "Un jour difficile, même choisir comment prendre soin de soi peut sembler une décision de trop. Tournez la roue et laissez-la choisir une petite chose : un verre d’eau, une marche, une nuit tôt. Petit, c’est justement l’idée.",
+    "es": "En un día difícil, hasta elegir cómo cuidarte puede parecer una decisión de más. Gira la ruleta y deja que elija algo pequeño: un vaso de agua, un paseo, acostarte temprano. Lo pequeño es justo la idea.",
+    "zh": "在艰难的日子里，连选择怎样照顾自己都可能是多余的负担。转动转盘，让它帮你选一件小事——一杯水、一次散步、早点睡觉。小，正是关键。"
+  },
+  "tpl.self-care.s1.heading": {
+    "it": "Riempila con ciò che funziona per te",
+    "de": "Füll es mit dem, was dir hilft",
+    "fr": "Remplissez-la de ce qui marche pour vous",
+    "es": "Llénala con lo que te funciona",
+    "zh": "放上对你有用的事"
+  },
+  "tpl.self-care.s1.body": {
+    "it": "Le idee di esempio sono semplici e universali. Sostituiscile con ciò che ti aiuta davvero: una canzone in particolare, un posto dove ti piace camminare, una persona che ti piace chiamare.",
+    "de": "Die Beispielideen sind einfach und allgemein. Ersetze sie durch das, was dir wirklich hilft: ein bestimmtes Lied, ein Ort, an dem du gern spazierst, ein Mensch, den du gern anrufst.",
+    "fr": "Les idées proposées sont simples et universelles. Remplacez-les par ce qui vous aide vraiment : une chanson précise, un endroit où vous aimez marcher, une personne que vous aimez appeler.",
+    "es": "Las ideas de ejemplo son sencillas y universales. Cámbialas por lo que de verdad te ayuda: una canción concreta, un lugar donde te gusta caminar, una persona a la que te gusta llamar.",
+    "zh": "示例点子简单通用。换成真正能帮到你的事：某首特定的歌、你喜欢散步的地方、你喜欢打电话的人。"
+  },
+  "tpl.self-care.s2.heading": {
+    "it": "Privata per impostazione predefinita",
+    "de": "Standardmäßig privat",
+    "fr": "Privée par défaut",
+    "es": "Privada por defecto",
+    "zh": "默认私密"
+  },
+  "tpl.self-care.s2.body": {
+    "it": "La tua ruota è salvata solo nel tuo browser. Nulla lascia il dispositivo a meno che tu non scelga di accedere e sincronizzarla, o di pubblicarla come link.",
+    "de": "Dein Rad wird nur in deinem eigenen Browser gespeichert. Nichts verlässt dein Gerät, es sei denn, du meldest dich an und synchronisierst es oder veröffentlichst es als Link.",
+    "fr": "Votre roue n’est enregistrée que dans votre navigateur. Rien ne quitte votre appareil, sauf si vous choisissez de vous connecter pour la synchroniser ou de la publier en lien.",
+    "es": "Tu ruleta solo se guarda en tu propio navegador. Nada sale de tu dispositivo a menos que decidas iniciar sesión y sincronizarla, o publicarla como enlace.",
+    "zh": "你的转盘只保存在你自己的浏览器中。除非你选择登录同步或将其发布为链接，否则任何内容都不会离开你的设备。"
+  },
+  "tpl.self-care.faq1.q": {
+    "it": "Sostituisce un aiuto professionale?",
+    "de": "Ersetzt das professionelle Hilfe?",
+    "fr": "Est-ce que cela remplace une aide professionnelle ?",
+    "es": "¿Sustituye a la ayuda profesional?",
+    "zh": "它能代替专业帮助吗？"
+  },
+  "tpl.self-care.faq1.a": {
+    "it": "No. È un piccolo strumento per tutti i giorni. Se stai attraversando un momento difficile, parla con qualcuno di cui ti fidi o con un professionista della salute.",
+    "de": "Nein. Es ist ein kleines Werkzeug für den Alltag. Wenn es dir nicht gut geht, sprich bitte mit jemandem, dem du vertraust, oder mit einer Fachperson.",
+    "fr": "Non. C’est un petit outil du quotidien. Si vous traversez une période difficile, parlez à quelqu’un de confiance ou à un professionnel de santé.",
+    "es": "No. Es una pequeña herramienta para el día a día. Si lo estás pasando mal, habla con alguien de confianza o con un profesional de la salud.",
+    "zh": "不能。它只是一个日常小工具。如果你正经历困难，请和你信任的人或专业医护人员聊一聊。"
+  },
+  "tpl.self-care.faq2.q": {
+    "it": "Posso usarla ogni giorno?",
+    "de": "Kann ich es jeden Tag nutzen?",
+    "fr": "Puis-je l’utiliser tous les jours ?",
+    "es": "¿Puedo usarla cada día?",
+    "zh": "可以每天用吗？"
+  },
+  "tpl.self-care.faq2.a": {
+    "it": "Sì. La ruota resta salvata, così puoi girarla ogni mattina o quando ne hai bisogno.",
+    "de": "Ja. Das Rad bleibt gespeichert, du kannst es also jeden Morgen drehen oder wann immer du es brauchst.",
+    "fr": "Oui. La roue reste enregistrée : vous pouvez la tourner chaque matin ou dès que vous en avez besoin.",
+    "es": "Sí. La ruleta queda guardada, así que puedes girarla cada mañana o cuando la necesites.",
+    "zh": "可以。转盘会一直保存，你可以每天早上或需要时转一转。"
+  },
+  "tpl.what-to-cook.tagline": {
+    "it": "Cucina di casa",
+    "de": "Kochen zu Hause",
+    "fr": "Cuisine maison",
+    "es": "Cocina casera",
+    "zh": "家常烹饪"
+  },
+  "tpl.what-to-cook.name": {
+    "it": "Cosa cucinare",
+    "de": "Was kochen?",
+    "fr": "Quoi cuisiner",
+    "es": "Qué cocinar",
+    "zh": "做什么菜"
+  },
+  "tpl.what-to-cook.cardDesc": {
+    "it": "Fissi il frigo senza idee? Gira per il piatto di stasera e mettiti ai fornelli.",
+    "de": "Starrst du in den Kühlschrank? Dreh für das heutige Gericht und fang an zu kochen.",
+    "fr": "Vous fixez le frigo ? Tournez pour le plat du soir et passez aux fourneaux.",
+    "es": "¿Mirando la nevera sin ideas? Gira para el plato de esta noche y a cocinar.",
+    "zh": "对着冰箱发呆？转一下决定今晚的菜，开始做饭吧。"
+  },
+  "tpl.what-to-cook.entry1": {
+    "it": "Risotto",
+    "de": "Risotto",
+    "fr": "Risotto",
+    "es": "Risotto",
+    "zh": "意式烩饭"
+  },
+  "tpl.what-to-cook.entry2": {
+    "it": "Saltato in padella",
+    "de": "Pfannengericht",
+    "fr": "Sauté au wok",
+    "es": "Salteado",
+    "zh": "小炒"
+  },
+  "tpl.what-to-cook.entry3": {
+    "it": "Frittata",
+    "de": "Omelett",
+    "fr": "Omelette",
+    "es": "Tortilla francesa",
+    "zh": "煎蛋卷"
+  },
+  "tpl.what-to-cook.entry4": {
+    "it": "Curry",
+    "de": "Curry",
+    "fr": "Curry",
+    "es": "Curry",
+    "zh": "咖喱"
+  },
+  "tpl.what-to-cook.entry5": {
+    "it": "Pizza fatta in casa",
+    "de": "Selbstgemachte Pizza",
+    "fr": "Pizza maison",
+    "es": "Pizza casera",
+    "zh": "自制披萨"
+  },
+  "tpl.what-to-cook.entry6": {
+    "it": "Zuppa",
+    "de": "Suppe",
+    "fr": "Soupe",
+    "es": "Sopa",
+    "zh": "汤"
+  },
+  "tpl.what-to-cook.entry7": {
+    "it": "Tacos",
+    "de": "Tacos",
+    "fr": "Tacos",
+    "es": "Tacos",
+    "zh": "塔可"
+  },
+  "tpl.what-to-cook.entry8": {
+    "it": "Pasta al forno",
+    "de": "Nudelauflauf",
+    "fr": "Gratin de pâtes",
+    "es": "Pasta al horno",
+    "zh": "焗意面"
+  },
+  "tpl.what-to-cook.centerText": {
+    "it": "CUCINA",
+    "de": "KOCHEN",
+    "fr": "CUISINE",
+    "es": "COCINA",
+    "zh": "下厨"
+  },
+  "tpl.what-to-cook.title": {
+    "it": "Ruota cosa cucinare | Scegli la cena a caso",
+    "de": "Was kochen? Rad | Zufälliges Rezept fürs Abendessen",
+    "fr": "Roue quoi cuisiner | Choisir le dîner au hasard",
+    "es": "Ruleta qué cocinar | Elige la cena al azar",
+    "zh": "做什么菜转盘 | 随机选晚餐菜谱"
+  },
+  "tpl.what-to-cook.desc": {
+    "it": "Non sai cosa cucinare stasera? Gira la ruota per un piatto e mettiti ai fornelli. Gratis, e puoi riempirla con le ricette che prepari davvero.",
+    "de": "Du weißt nicht, was du heute kochen sollst? Dreh das Rad für ein Gericht und leg los. Kostenlos, und du kannst es mit deinen eigenen Rezepten füllen.",
+    "fr": "Vous ne savez pas quoi cuisiner ce soir ? Tournez la roue pour un plat et lancez-vous. Gratuit, et vous pouvez la remplir de vos propres recettes.",
+    "es": "¿No sabes qué cocinar esta noche? Gira la ruleta para un plato y a cocinar. Gratis, y puedes llenarla con las recetas que preparas de verdad.",
+    "zh": "不知道今晚做什么菜？转动转盘选一道菜，开始下厨吧。免费，还可以放上你真正会做的菜谱。"
+  },
+  "tpl.what-to-cook.heading": {
+    "it": "Ruota cosa cucinare",
+    "de": "Was kochen? – das Rad",
+    "fr": "Roue quoi cuisiner",
+    "es": "Ruleta qué cocinar",
+    "zh": "做什么菜转盘"
+  },
+  "tpl.what-to-cook.intro": {
+    "it": "Decidere cosa cucinare è la parte della cucina che non piace a nessuno. Metti sulla ruota i piatti che sai preparare, girala mentre la padella si scalda e la cena è decisa.",
+    "de": "Zu entscheiden, was man kocht, ist der Teil des Kochens, den niemand mag. Setz die Gerichte, die du kochen kannst, aufs Rad, dreh es, während die Pfanne heiß wird, und das Abendessen steht fest.",
+    "fr": "Décider quoi cuisiner, c’est la partie de la cuisine que personne n’aime. Mettez sur la roue les plats que vous savez faire, tournez-la pendant que la poêle chauffe, et le dîner est décidé.",
+    "es": "Decidir qué cocinar es la parte de cocinar que no le gusta a nadie. Pon en la ruleta los platos que sabes hacer, gírala mientras se calienta la sartén y la cena está decidida.",
+    "zh": "决定做什么菜，是做饭中没人喜欢的环节。把你会做的菜放上转盘，趁锅热的时候转一下，晚餐就定了。"
+  },
+  "tpl.what-to-cook.s1.heading": {
+    "it": "Le tue ricette, la tua ruota",
+    "de": "Deine Rezepte, dein Rad",
+    "fr": "Vos recettes, votre roue",
+    "es": "Tus recetas, tu ruleta",
+    "zh": "你的菜谱，你的转盘"
+  },
+  "tpl.what-to-cook.s1.body": {
+    "it": "I piatti di esempio sono classici di tutti i giorni. Sostituiscili con il tuo repertorio, e la ruota diventa un modo per smettere di cucinare sempre gli stessi tre piatti ogni settimana.",
+    "de": "Die Beispielgerichte sind Alltagsklassiker. Ersetze sie durch dein eigenes Repertoire, und das Rad hilft dir, nicht jede Woche dieselben drei Gerichte zu kochen.",
+    "fr": "Les plats proposés sont des classiques du quotidien. Remplacez-les par votre répertoire, et la roue devient un moyen d’arrêter de cuisiner les trois mêmes plats chaque semaine.",
+    "es": "Los platos de ejemplo son clásicos de diario. Sustitúyelos por tu repertorio y la ruleta será la forma de dejar de cocinar las mismas tres cosas cada semana.",
+    "zh": "示例菜品都是日常经典。换成你自己的拿手菜，转盘就能帮你摆脱每周都做同样三道菜的循环。"
+  },
+  "tpl.what-to-cook.s2.heading": {
+    "it": "Pianifica tutta la settimana",
+    "de": "Plan die ganze Woche",
+    "fr": "Planifiez toute la semaine",
+    "es": "Planifica toda la semana",
+    "zh": "规划一整周"
+  },
+  "tpl.what-to-cook.s2.body": {
+    "it": "Gira sette volte, togliendo ogni piatto appena esce, e hai una settimana di cene — e la lista della spesa che la accompagna.",
+    "de": "Dreh sieben Mal, entferne jedes Gericht, sobald es kommt, und du hast eine Woche Abendessen — samt Einkaufsliste.",
+    "fr": "Tournez sept fois en retirant chaque plat dès qu’il sort, et vous avez une semaine de dîners — et la liste de courses qui va avec.",
+    "es": "Gira siete veces, quitando cada plato en cuanto salga, y tendrás una semana de cenas, y la lista de la compra que la acompaña.",
+    "zh": "转七次，每道菜出现后就移除，你就有了一周的晚餐安排——还有配套的购物清单。"
+  },
+  "tpl.what-to-cook.faq1.q": {
+    "it": "È diversa dalla ruota “cosa mangiare”?",
+    "de": "Ist das etwas anderes als das „Was essen“-Rad?",
+    "fr": "Est-ce différent de la roue « quoi manger » ?",
+    "es": "¿Es distinta de la ruleta “qué comer”?",
+    "zh": "和“吃什么”转盘有什么不同？"
+  },
+  "tpl.what-to-cook.faq1.a": {
+    "it": "Sì. Questa è per cucinare a casa; la ruota cosa mangiare serve a scegliere un tipo di cucina o un ristorante.",
+    "de": "Ja. Dieses ist zum Kochen zu Hause; das Was-essen-Rad hilft bei der Wahl einer Küche oder eines Restaurants.",
+    "fr": "Oui. Celle-ci sert à cuisiner à la maison ; la roue quoi manger sert à choisir un type de cuisine ou un restaurant.",
+    "es": "Sí. Esta es para cocinar en casa; la ruleta qué comer sirve para elegir un tipo de comida o un restaurante.",
+    "zh": "是的。这个用于在家做饭；“吃什么”转盘用于选择菜系或餐厅。"
+  },
+  "tpl.what-to-cook.faq2.q": {
+    "it": "Tutta la famiglia può aggiungere piatti?",
+    "de": "Kann die ganze Familie Gerichte hinzufügen?",
+    "fr": "Toute la famille peut-elle ajouter des plats ?",
+    "es": "¿Toda la familia puede añadir platos?",
+    "zh": "全家人都可以添加菜品吗？"
+  },
+  "tpl.what-to-cook.faq2.a": {
+    "it": "Condividi la ruota come link in sola lettura per mostrare la lista, e aggiungi i piatti che tutti chiedono.",
+    "de": "Teile das Rad als schreibgeschützten Link, um die Liste zu zeigen, und füge die Gerichte hinzu, die sich alle wünschen.",
+    "fr": "Partagez la roue en lien en lecture seule pour montrer la liste, et ajoutez les plats que tout le monde réclame.",
+    "es": "Comparte la ruleta como enlace de solo lectura para enseñar la lista y añade los platos que todos piden.",
+    "zh": "把转盘分享为只读链接展示清单，再把大家都想吃的菜加进去。"
+  },
+  "tpl.superpower.tagline": {
+    "it": "Bambini e storie",
+    "de": "Kinder & Geschichten",
+    "fr": "Enfants et histoires",
+    "es": "Niños e historias",
+    "zh": "儿童与故事"
+  },
+  "tpl.superpower.name": {
+    "it": "Superpotere casuale",
+    "de": "Zufällige Superkraft",
+    "fr": "Superpouvoir au hasard",
+    "es": "Superpoder aleatorio",
+    "zh": "随机超能力"
+  },
+  "tpl.superpower.cardDesc": {
+    "it": "Se potessi avere un solo potere… gira per scoprire quale ti tocca.",
+    "de": "Wenn du eine Kraft haben könntest … dreh und finde heraus, welche du bekommst.",
+    "fr": "Si vous pouviez avoir un seul pouvoir… tournez pour découvrir lequel.",
+    "es": "Si pudieras tener un solo poder… gira para descubrir cuál te toca.",
+    "zh": "如果只能拥有一种超能力……转一下看看你得到哪种。"
+  },
+  "tpl.superpower.entry1": {
+    "it": "Volare",
+    "de": "Fliegen",
+    "fr": "Voler",
+    "es": "Volar",
+    "zh": "飞行"
+  },
+  "tpl.superpower.entry2": {
+    "it": "Invisibilità",
+    "de": "Unsichtbarkeit",
+    "fr": "Invisibilité",
+    "es": "Invisibilidad",
+    "zh": "隐身"
+  },
+  "tpl.superpower.entry3": {
+    "it": "Teletrasporto",
+    "de": "Teleportation",
+    "fr": "Téléportation",
+    "es": "Teletransporte",
+    "zh": "瞬间移动"
+  },
+  "tpl.superpower.entry4": {
+    "it": "Superforza",
+    "de": "Superkraft",
+    "fr": "Super force",
+    "es": "Superfuerza",
+    "zh": "超级力量"
+  },
+  "tpl.superpower.entry5": {
+    "it": "Viaggiare nel tempo",
+    "de": "Zeitreisen",
+    "fr": "Voyager dans le temps",
+    "es": "Viajar en el tiempo",
+    "zh": "时间旅行"
+  },
+  "tpl.superpower.entry6": {
+    "it": "Leggere nel pensiero",
+    "de": "Gedankenlesen",
+    "fr": "Lire dans les pensées",
+    "es": "Leer la mente",
+    "zh": "读心术"
+  },
+  "tpl.superpower.entry7": {
+    "it": "Parlare agli animali",
+    "de": "Mit Tieren sprechen",
+    "fr": "Parler aux animaux",
+    "es": "Hablar con los animales",
+    "zh": "与动物对话"
+  },
+  "tpl.superpower.entry8": {
+    "it": "Respirare sott’acqua",
+    "de": "Unter Wasser atmen",
+    "fr": "Respirer sous l’eau",
+    "es": "Respirar bajo el agua",
+    "zh": "水下呼吸"
+  },
+  "tpl.superpower.centerText": {
+    "it": "POTERE",
+    "de": "KRAFT",
+    "fr": "POUVOIR",
+    "es": "PODER",
+    "zh": "超能力"
+  },
+  "tpl.superpower.title": {
+    "it": "Generatore di superpoteri casuali | Gira la ruota",
+    "de": "Zufälliger Superkraft-Generator | Dreh das Rad",
+    "fr": "Générateur de superpouvoirs | Tournez la roue",
+    "es": "Generador de superpoderes | Gira la ruleta",
+    "zh": "随机超能力生成器 | 转出你的超能力"
+  },
+  "tpl.superpower.desc": {
+    "it": "Gira il generatore di superpoteri: volo, invisibilità, viaggi nel tempo e altro. Gratis per giochi con i bambini, scrittura, disegno e rompighiaccio.",
+    "de": "Dreh den Superkraft-Generator: Fliegen, Unsichtbarkeit, Zeitreisen und mehr. Kostenlos für Kinderspiele, Geschichten, Zeichnen und zum Kennenlernen.",
+    "fr": "Tournez le générateur de superpouvoirs : vol, invisibilité, voyage dans le temps… Gratuit pour jeux d’enfants, écriture, dessin et brise-glace.",
+    "es": "Gira el generador de superpoderes: volar, invisibilidad, viajar en el tiempo y más. Gratis para juegos infantiles, escritura, dibujo y rompehielos.",
+    "zh": "转动随机超能力生成器：飞行、隐身、时间旅行等等。免费用于儿童游戏、故事写作、绘画和破冰活动。"
+  },
+  "tpl.superpower.heading": {
+    "it": "Generatore di superpoteri casuali",
+    "de": "Zufälliger Superkraft-Generator",
+    "fr": "Générateur de superpouvoirs aléatoires",
+    "es": "Generador de superpoderes aleatorios",
+    "zh": "随机超能力生成器"
+  },
+  "tpl.superpower.intro": {
+    "it": "Tutti hanno una risposta a “quale superpotere sceglieresti?”. La ruota ti toglie la scelta: gira, ottieni il tuo potere e poi spiega cosa ci faresti.",
+    "de": "Jeder hat eine Antwort auf „Welche Superkraft würdest du wählen?“. Das Rad nimmt dir die Wahl ab: drehen, Kraft bekommen und dann erklären, was du damit machen würdest.",
+    "fr": "Tout le monde a une réponse à « quel superpouvoir choisirais-tu ? ». La roue vous retire le choix : tournez, recevez votre pouvoir, puis expliquez ce que vous en feriez.",
+    "es": "Todo el mundo tiene una respuesta a “¿qué superpoder elegirías?”. La ruleta te quita la elección: gira, recibe tu poder y luego explica qué harías con él.",
+    "zh": "每个人都能回答“你会选哪种超能力？”。转盘替你做选择：转一下，拿到你的超能力，然后说说你会用它做什么。"
+  },
+  "tpl.superpower.s1.heading": {
+    "it": "Giochi e storie",
+    "de": "Spiele und Geschichten",
+    "fr": "Jeux et histoires",
+    "es": "Juegos e historias",
+    "zh": "游戏与故事"
+  },
+  "tpl.superpower.s1.body": {
+    "it": "Usala per un giro di racconti in cui ogni giocatore riceve un potere, una sfida di disegno per un nuovo eroe o uno spunto di scrittura creativa. È anche un rompighiaccio affidabile per classi e squadre.",
+    "de": "Nutze es für eine Erzählrunde, in der jeder Spieler eine Kraft bekommt, für eine Zeichenaufgabe mit einem neuen Helden oder als Schreibanlass. Es ist auch ein verlässlicher Eisbrecher für Klassen und Teams.",
+    "fr": "Utilisez-la pour un tour de contes où chaque joueur reçoit un pouvoir, un défi de dessin pour un nouveau héros ou une consigne d’écriture créative. C’est aussi un brise-glace fiable pour les classes et les équipes.",
+    "es": "Úsala para una ronda de cuentos en la que cada jugador recibe un poder, un reto de dibujo para un nuevo héroe o una idea de escritura creativa. También es un rompehielos fiable para clases y equipos.",
+    "zh": "可以用来玩每人获得一种能力的故事接龙、设计新英雄的绘画挑战，或作为创意写作的题目。它也是班级和团队里靠谱的破冰游戏。"
+  },
+  "tpl.superpower.s2.heading": {
+    "it": "Aggiungi le debolezze",
+    "de": "Füge Schwächen hinzu",
+    "fr": "Ajoutez des faiblesses",
+    "es": "Añade debilidades",
+    "zh": "加上弱点"
+  },
+  "tpl.superpower.s2.body": {
+    "it": "Mostra accanto una seconda ruota con una debolezza per ogni eroe. Un eroe che sa volare ma soffre di vertigini fa una storia molto migliore.",
+    "de": "Zeig daneben ein zweites Rad mit einer Schwäche für jeden Helden. Ein Held, der fliegen kann, aber Höhenangst hat, ergibt eine viel bessere Geschichte.",
+    "fr": "Affichez à côté une deuxième roue avec une faiblesse pour chaque héros. Un héros qui vole mais a le vertige fait une bien meilleure histoire.",
+    "es": "Muestra al lado una segunda ruleta con una debilidad para cada héroe. Un héroe que vuela pero tiene vértigo da para una historia mucho mejor.",
+    "zh": "在旁边再放一个转盘，给每位英雄一个弱点。会飞却恐高的英雄，故事会精彩得多。"
+  },
+  "tpl.superpower.faq1.q": {
+    "it": "Va bene per la scuola?",
+    "de": "Eignet es sich für den Unterricht?",
+    "fr": "Est-ce adapté à la classe ?",
+    "es": "¿Sirve para el aula?",
+    "zh": "适合课堂使用吗？"
+  },
+  "tpl.superpower.faq1.a": {
+    "it": "Sì. Proiettala sulla lavagna e fai girare a ogni studente il suo potere prima di un compito di scrittura o disegno.",
+    "de": "Ja. Projizier es an die Tafel und lass jedes Kind vor einer Schreib- oder Zeichenaufgabe seine Kraft drehen.",
+    "fr": "Oui. Projetez-la au tableau et laissez chaque élève tirer son pouvoir avant un exercice d’écriture ou de dessin.",
+    "es": "Sí. Proyéctala en la pizarra y deja que cada alumno gire su poder antes de una tarea de escritura o dibujo.",
+    "zh": "适合。把它投影到黑板上，在写作或绘画任务前让每个学生转出自己的超能力。"
+  },
+  "tpl.superpower.faq2.q": {
+    "it": "Posso aggiungere i miei poteri?",
+    "de": "Kann ich eigene Kräfte hinzufügen?",
+    "fr": "Puis-je ajouter mes propres pouvoirs ?",
+    "es": "¿Puedo añadir mis propios poderes?",
+    "zh": "可以添加自己的超能力吗？"
+  },
+  "tpl.superpower.faq2.a": {
+    "it": "Copia la ruota e aggiungine quanti vuoi; ogni voce è modificabile.",
+    "de": "Kopiere das Rad und füge so viele hinzu, wie du willst; jeder Eintrag ist bearbeitbar.",
+    "fr": "Copiez la roue et ajoutez-en autant que vous voulez ; chaque entrée est modifiable.",
+    "es": "Copia la ruleta y añade todos los que quieras; cada entrada se puede editar.",
+    "zh": "复制转盘，想加多少都行；每个条目都可以编辑。"
+  },
+  "tpl.charades.tagline": {
+    "it": "Serate giochi",
+    "de": "Spieleabend",
+    "fr": "Soirée jeux",
+    "es": "Noche de juegos",
+    "zh": "游戏之夜"
+  },
+  "tpl.charades.name": {
+    "it": "Idee per il mimo",
+    "de": "Scharade-Ideen",
+    "fr": "Idées de mime",
+    "es": "Ideas de mímica",
+    "zh": "你比我猜题目"
+  },
+  "tpl.charades.cardDesc": {
+    "it": "Gira per qualcosa da mimare: niente parole, niente suoni, solo gesti.",
+    "de": "Dreh für etwas zum Vorspielen — keine Worte, keine Geräusche, nur Gesten.",
+    "fr": "Tournez pour quelque chose à mimer : pas de mots, pas de sons, que des gestes.",
+    "es": "Gira para algo que representar: sin palabras, sin sonidos, solo gestos.",
+    "zh": "转出一个要表演的题目——不许说话，不许出声，只能比划。"
+  },
+  "tpl.charades.entry1": {
+    "it": "Lavarsi i denti",
+    "de": "Zähneputzen",
+    "fr": "Se brosser les dents",
+    "es": "Lavarse los dientes",
+    "zh": "刷牙"
+  },
+  "tpl.charades.entry2": {
+    "it": "Fare surf",
+    "de": "Surfen",
+    "fr": "Faire du surf",
+    "es": "Hacer surf",
+    "zh": "冲浪"
+  },
+  "tpl.charades.entry3": {
+    "it": "Un T-rex",
+    "de": "Ein T-Rex",
+    "fr": "Un T-rex",
+    "es": "Un T-rex",
+    "zh": "霸王龙"
+  },
+  "tpl.charades.entry4": {
+    "it": "Cambiare una gomma",
+    "de": "Einen Reifen wechseln",
+    "fr": "Changer un pneu",
+    "es": "Cambiar una rueda",
+    "zh": "换轮胎"
+  },
+  "tpl.charades.entry5": {
+    "it": "Passeggiare col cane",
+    "de": "Gassi gehen",
+    "fr": "Promener le chien",
+    "es": "Pasear al perro",
+    "zh": "遛狗"
+  },
+  "tpl.charades.entry6": {
+    "it": "Fare la pizza",
+    "de": "Pizza backen",
+    "fr": "Faire une pizza",
+    "es": "Hacer pizza",
+    "zh": "做披萨"
+  },
+  "tpl.charades.entry7": {
+    "it": "Un robot che balla",
+    "de": "Ein tanzender Roboter",
+    "fr": "Un robot qui danse",
+    "es": "Un robot bailando",
+    "zh": "跳舞的机器人"
+  },
+  "tpl.charades.entry8": {
+    "it": "Scalare una montagna",
+    "de": "Einen Berg besteigen",
+    "fr": "Escalader une montagne",
+    "es": "Escalar una montaña",
+    "zh": "爬山"
+  },
+  "tpl.charades.centerText": {
+    "it": "MIMA",
+    "de": "SPIEL",
+    "fr": "MIME",
+    "es": "ACTÚA",
+    "zh": "表演"
+  },
+  "tpl.charades.title": {
+    "it": "Ruota del mimo | Generatore di idee da mimare",
+    "de": "Scharade-Rad | Zufällige Begriffe zum Vorspielen",
+    "fr": "Roue du mime | Générateur d’idées à mimer",
+    "es": "Ruleta de mímica | Generador de ideas para mímica",
+    "zh": "你比我猜转盘 | 随机表演题目生成器"
+  },
+  "tpl.charades.desc": {
+    "it": "Un generatore gratuito per il mimo: gira la ruota per qualcosa da mimare, senza parole e senza suoni. Perfetto per serate giochi in famiglia e feste.",
+    "de": "Ein kostenloser Scharade-Generator: Dreh das Rad für etwas zum Vorspielen, ohne Worte und ohne Geräusche. Ideal für Spieleabende und Partys.",
+    "fr": "Un générateur de mime gratuit : tournez la roue pour quelque chose à mimer, sans mots ni sons. Idéal pour les soirées jeux en famille et les fêtes.",
+    "es": "Un generador de mímica gratis: gira la ruleta para algo que representar, sin palabras ni sonidos. Ideal para noches de juegos en familia y fiestas.",
+    "zh": "免费的你比我猜生成器：转动转盘得到一个表演题目，不许说话也不许出声。非常适合家庭游戏夜和派对。"
+  },
+  "tpl.charades.heading": {
+    "it": "Ruota delle idee per il mimo",
+    "de": "Scharade-Ideen-Rad",
+    "fr": "Roue des idées de mime",
+    "es": "Ruleta de ideas de mímica",
+    "zh": "你比我猜题目转盘"
+  },
+  "tpl.charades.intro": {
+    "it": "La parte più difficile del mimo è inventarsi cosa mimare. Lascia fare alla ruota: il giocatore gira dove solo lui vede il telefono, riceve il suo spunto e inizia a mimare.",
+    "de": "Das Schwierigste an Scharade ist, sich etwas zum Vorspielen auszudenken. Überlass es dem Rad: Der Spieler dreht so, dass nur er das Handy sieht, bekommt seinen Begriff und legt los.",
+    "fr": "Le plus dur au mime, c’est de trouver quoi mimer. Laissez faire la roue : le joueur tourne là où lui seul voit le téléphone, reçoit sa consigne et commence à mimer.",
+    "es": "Lo más difícil de la mímica es pensar qué representar. Deja que lo haga la ruleta: el jugador gira donde solo él ve el móvil, recibe su idea y empieza a actuar.",
+    "zh": "你比我猜最难的是想题目。交给转盘吧：表演者在只有自己能看到手机的地方转一下，拿到题目就开始表演。"
+  },
+  "tpl.charades.s1.heading": {
+    "it": "Tieni segreto lo spunto",
+    "de": "Halte den Begriff geheim",
+    "fr": "Gardez la consigne secrète",
+    "es": "Mantén la idea en secreto",
+    "zh": "题目要保密"
+  },
+  "tpl.charades.s1.body": {
+    "it": "Gira sul telefono di chi mima invece che sullo schermo grande, così solo lui vede il risultato. Togli ogni spunto una volta indovinato e il giro non si ripete mai.",
+    "de": "Dreh auf dem Handy des Darstellers statt auf dem großen Bildschirm, damit nur er das Ergebnis sieht. Entferne jeden Begriff, sobald er erraten wurde, dann wiederholt sich die Runde nie.",
+    "fr": "Tournez sur le téléphone du mime plutôt que sur le grand écran, pour que lui seul voie le résultat. Retirez chaque consigne une fois devinée et la manche ne se répète jamais.",
+    "es": "Gira en el móvil de quien actúa y no en la pantalla grande, para que solo él vea el resultado. Quita cada idea una vez adivinada y la ronda nunca se repite.",
+    "zh": "在表演者的手机上转，而不是在大屏幕上，这样只有他能看到结果。题目被猜中后就移除，这一轮就永远不会重复。"
+  },
+  "tpl.charades.s2.heading": {
+    "it": "Manche a tema",
+    "de": "Themenrunden",
+    "fr": "Manches à thème",
+    "es": "Rondas temáticas",
+    "zh": "主题回合"
+  },
+  "tpl.charades.s2.body": {
+    "it": "Tieni una ruota per i film, una per gli animali e una per i mestieri, e lascia che la squadra scelga il tema prima che chi mima giri. Si possono mostrare fino a quattro ruote affiancate.",
+    "de": "Leg ein Rad für Filme, eins für Tiere und eins für Berufe an und lass das Team das Thema wählen, bevor der Darsteller dreht. Bis zu vier Räder lassen sich nebeneinander zeigen.",
+    "fr": "Gardez une roue pour les films, une pour les animaux et une pour les métiers, et laissez l’équipe choisir le thème avant que le mime tourne. Jusqu’à quatre roues peuvent être affichées côte à côte.",
+    "es": "Ten una ruleta para películas, otra para animales y otra para oficios, y deja que el equipo elija el tema antes de que gire quien actúa. Se pueden mostrar hasta cuatro ruletas una al lado de otra.",
+    "zh": "准备电影、动物和职业三个转盘，让队伍在表演者转动之前先选主题。最多可以并排显示四个转盘。"
+  },
+  "tpl.charades.faq1.q": {
+    "it": "È adatta ai bambini?",
+    "de": "Ist es für Kinder geeignet?",
+    "fr": "Est-ce adapté aux enfants ?",
+    "es": "¿Es apta para niños?",
+    "zh": "适合孩子玩吗？"
+  },
+  "tpl.charades.faq1.a": {
+    "it": "Sì. Gli spunti di esempio vanno bene per tutta la famiglia, e puoi sostituirli con cose facili da mimare per i più piccoli.",
+    "de": "Ja. Die Beispielbegriffe sind familienfreundlich, und du kannst sie durch Dinge ersetzen, die jüngere Kinder leicht vorspielen können.",
+    "fr": "Oui. Les consignes proposées conviennent à toute la famille, et vous pouvez les remplacer par des choses faciles à mimer pour les petits.",
+    "es": "Sí. Las ideas de ejemplo son aptas para toda la familia, y puedes cambiarlas por cosas fáciles de representar para los más pequeños.",
+    "zh": "适合。示例题目老少皆宜，你也可以换成小朋友容易表演的内容。"
+  },
+  "tpl.charades.faq2.q": {
+    "it": "Posso usarla a squadre?",
+    "de": "Kann ich es mit Teams nutzen?",
+    "fr": "Puis-je l’utiliser en équipes ?",
+    "es": "¿Puedo usarla por equipos?",
+    "zh": "可以分队玩吗？"
+  },
+  "tpl.charades.faq2.a": {
+    "it": "Sì. Metti i nomi delle squadre su una seconda ruota per decidere chi tocca.",
+    "de": "Ja. Setz die Teamnamen auf ein zweites Rad, um zu entscheiden, wer als Nächstes dran ist.",
+    "fr": "Oui. Mettez les noms des équipes sur une deuxième roue pour décider qui passe ensuite.",
+    "es": "Sí. Pon los nombres de los equipos en una segunda ruleta para decidir a quién le toca.",
+    "zh": "可以。把队名放到第二个转盘上，决定下一个轮到谁。"
+  },
+  "tpl.random-job.tagline": {
+    "it": "Giochi e carriere",
+    "de": "Spiele & Berufe",
+    "fr": "Jeux et métiers",
+    "es": "Juegos y profesiones",
+    "zh": "游戏与职业"
+  },
+  "tpl.random-job.name": {
+    "it": "Lavoro casuale",
+    "de": "Zufälliger Beruf",
+    "fr": "Métier au hasard",
+    "es": "Profesión aleatoria",
+    "zh": "随机职业"
+  },
+  "tpl.random-job.cardDesc": {
+    "it": "Un lavoro a caso per giochi di ruolo, storie, giornate di orientamento e indovinelli.",
+    "de": "Ein zufälliger Beruf für Rollenspiele, Geschichten, Berufstage und Ratespiele.",
+    "fr": "Un métier au hasard pour les jeux de rôle, les histoires, les forums des métiers et les devinettes.",
+    "es": "Una profesión al azar para juegos de rol, historias, jornadas de orientación y adivinanzas.",
+    "zh": "随机职业，用于角色扮演、故事、职业日和猜谜游戏。"
+  },
+  "tpl.random-job.entry1": {
+    "it": "Astronauta",
+    "de": "Astronaut",
+    "fr": "Astronaute",
+    "es": "Astronauta",
+    "zh": "宇航员"
+  },
+  "tpl.random-job.entry2": {
+    "it": "Chef",
+    "de": "Koch",
+    "fr": "Chef cuisinier",
+    "es": "Chef",
+    "zh": "厨师"
+  },
+  "tpl.random-job.entry3": {
+    "it": "Detective",
+    "de": "Detektiv",
+    "fr": "Détective",
+    "es": "Detective",
+    "zh": "侦探"
+  },
+  "tpl.random-job.entry4": {
+    "it": "Vigile del fuoco",
+    "de": "Feuerwehrmann",
+    "fr": "Pompier",
+    "es": "Bombero",
+    "zh": "消防员"
+  },
+  "tpl.random-job.entry5": {
+    "it": "Pilota",
+    "de": "Pilot",
+    "fr": "Pilote",
+    "es": "Piloto",
+    "zh": "飞行员"
+  },
+  "tpl.random-job.entry6": {
+    "it": "Veterinario",
+    "de": "Tierarzt",
+    "fr": "Vétérinaire",
+    "es": "Veterinario",
+    "zh": "兽医"
+  },
+  "tpl.random-job.entry7": {
+    "it": "Architetto",
+    "de": "Architekt",
+    "fr": "Architecte",
+    "es": "Arquitecto",
+    "zh": "建筑师"
+  },
+  "tpl.random-job.entry8": {
+    "it": "Biologo marino",
+    "de": "Meeresbiologe",
+    "fr": "Biologiste marin",
+    "es": "Biólogo marino",
+    "zh": "海洋生物学家"
+  },
+  "tpl.random-job.centerText": {
+    "it": "LAVORO",
+    "de": "BERUF",
+    "fr": "MÉTIER",
+    "es": "OFICIO",
+    "zh": "职业"
+  },
+  "tpl.random-job.title": {
+    "it": "Generatore di lavori casuali | Gira per un mestiere",
+    "de": "Zufälliger Berufe-Generator | Dreh für einen Beruf",
+    "fr": "Générateur de métiers | Tournez pour un métier",
+    "es": "Generador de profesiones | Gira para un oficio",
+    "zh": "随机职业生成器 | 转出一个职业"
+  },
+  "tpl.random-job.desc": {
+    "it": "Un generatore di lavori gratuito per giochi di ruolo, scrittura, orientamento e indovinelli. Gira per un mestiere ed entra nel personaggio.",
+    "de": "Ein kostenloser Berufe-Generator für Rollenspiele, Schreiben, Berufstage und Ratespiele. Dreh für einen Beruf und schlüpf in die Rolle.",
+    "fr": "Un générateur de métiers gratuit pour les jeux de rôle, l’écriture, l’orientation et les devinettes. Tournez pour un métier et entrez dans le rôle.",
+    "es": "Un generador de profesiones gratis para juegos de rol, escritura, orientación y adivinanzas. Gira para un oficio y métete en el papel.",
+    "zh": "免费的随机职业生成器，适用于角色扮演、写作、职业日和猜谜游戏。转出一个职业，进入角色吧。"
+  },
+  "tpl.random-job.heading": {
+    "it": "Generatore di lavori casuali",
+    "de": "Zufälliger Berufe-Generator",
+    "fr": "Générateur de métiers aléatoires",
+    "es": "Generador de profesiones aleatorias",
+    "zh": "随机职业生成器"
+  },
+  "tpl.random-job.intro": {
+    "it": "Astronauta, detective, veterinario: un lavoro a caso è un punto di partenza sorprendentemente buono. Gira per un ruolo in un gioco di finzione, un personaggio per una storia o un argomento per una presentazione di orientamento.",
+    "de": "Astronaut, Detektiv, Tierarzt: Ein zufälliger Beruf ist ein überraschend guter Ausgangspunkt. Dreh für eine Rolle in einem Fantasiespiel, eine Figur für eine Geschichte oder ein Thema für einen Vortrag am Berufstag.",
+    "fr": "Astronaute, détective, vétérinaire : un métier au hasard est un point de départ étonnamment bon. Tournez pour un rôle dans un jeu de faire-semblant, un personnage d’histoire ou un sujet d’exposé sur les métiers.",
+    "es": "Astronauta, detective, veterinario: una profesión al azar es un punto de partida sorprendentemente bueno. Gira para un papel en un juego de imaginación, un personaje para una historia o un tema para una charla de orientación.",
+    "zh": "宇航员、侦探、兽医：随机职业是一个出奇好用的起点。转出过家家游戏里的角色、故事里的人物，或职业日演讲的主题。"
+  },
+  "tpl.random-job.s1.heading": {
+    "it": "Giochi di ruolo e indovinelli",
+    "de": "Rollen- und Ratespiele",
+    "fr": "Jeux de rôle et devinettes",
+    "es": "Juegos de rol y adivinanzas",
+    "zh": "角色扮演与猜谜"
+  },
+  "tpl.random-job.s1.body": {
+    "it": "Un giocatore gira in segreto e risponde alle domande nel personaggio finché gli altri non indovinano il mestiere. Funziona come riscaldamento per classi, squadre e lezioni di lingua.",
+    "de": "Ein Spieler dreht heimlich und beantwortet Fragen in seiner Rolle, bis die anderen den Beruf erraten. Das funktioniert als Aufwärmübung für Klassen, Teams und Sprachkurse.",
+    "fr": "Un joueur tourne en secret et répond aux questions dans son rôle jusqu’à ce que les autres devinent le métier. Parfait pour échauffer une classe, une équipe ou un cours de langue.",
+    "es": "Un jugador gira en secreto y responde preguntas metido en el papel hasta que los demás adivinan la profesión. Funciona como calentamiento para clases, equipos y clases de idiomas.",
+    "zh": "一名玩家偷偷转一下，然后以角色身份回答问题，直到其他人猜出职业。适合作为班级、团队和语言课的热身活动。"
+  },
+  "tpl.random-job.s2.heading": {
+    "it": "Giornate di orientamento",
+    "de": "Berufstage",
+    "fr": "Forums des métiers",
+    "es": "Jornadas de orientación",
+    "zh": "职业日"
+  },
+  "tpl.random-job.s2.body": {
+    "it": "Sostituisci i mestieri di esempio con le carriere che la tua classe sta esplorando, e fai girare a ogni studente quello da ricercare e presentare.",
+    "de": "Ersetze die Beispielberufe durch die, die deine Klasse gerade erkundet, und lass jedes Kind den Beruf drehen, den es recherchiert und vorstellt.",
+    "fr": "Remplacez les métiers proposés par ceux que votre classe explore, et laissez chaque élève tirer celui qu’il va étudier et présenter.",
+    "es": "Sustituye las profesiones de ejemplo por las que tu clase está explorando y deja que cada alumno gire la que investigará y presentará.",
+    "zh": "把示例职业换成你的班级正在了解的职业，让每个学生转出自己要研究和介绍的那一个。"
+  },
+  "tpl.random-job.faq1.q": {
+    "it": "È utile per le lezioni di lingua?",
+    "de": "Ist es für den Sprachunterricht nützlich?",
+    "fr": "Est-ce utile en cours de langue ?",
+    "es": "¿Sirve para clases de idiomas?",
+    "zh": "对语言课有帮助吗？"
+  },
+  "tpl.random-job.faq1.a": {
+    "it": "Sì. Indovinare un mestiere con le domande è un classico esercizio di conversazione, e la ruota mantiene gli spunti casuali.",
+    "de": "Ja. Einen Beruf durch Fragen zu erraten, ist eine klassische Sprechübung, und das Rad hält die Begriffe zufällig.",
+    "fr": "Oui. Deviner un métier par des questions est un exercice oral classique, et la roue garde les consignes aléatoires.",
+    "es": "Sí. Adivinar una profesión mediante preguntas es un ejercicio de conversación clásico, y la ruleta mantiene las ideas aleatorias.",
+    "zh": "有。通过提问猜职业是经典的口语练习，转盘能让题目保持随机。"
+  },
+  "tpl.random-job.faq2.q": {
+    "it": "Posso aggiungere altri mestieri?",
+    "de": "Kann ich weitere Berufe hinzufügen?",
+    "fr": "Puis-je ajouter d’autres métiers ?",
+    "es": "¿Puedo añadir más profesiones?",
+    "zh": "可以添加更多职业吗？"
+  },
+  "tpl.random-job.faq2.a": {
+    "it": "Copia la ruota e aggiungine quanti vuoi.",
+    "de": "Kopiere das Rad und füge so viele hinzu, wie du willst.",
+    "fr": "Copiez la roue et ajoutez-en autant que vous voulez.",
+    "es": "Copia la ruleta y añade todas las que quieras.",
+    "zh": "复制转盘，想加多少都行。"
+  },
+  "tpl.writing-prompts.tagline": {
+    "it": "Scrittori e classi",
+    "de": "Schreibende & Klassen",
+    "fr": "Auteurs et classes",
+    "es": "Escritores y aulas",
+    "zh": "写作者与课堂"
+  },
+  "tpl.writing-prompts.name": {
+    "it": "Spunti di scrittura",
+    "de": "Schreibanlässe",
+    "fr": "Idées d’écriture",
+    "es": "Ideas para escribir",
+    "zh": "写作灵感"
+  },
+  "tpl.writing-prompts.cardDesc": {
+    "it": "Gira per un incipit e scrivi la prima riga prima di pensarci troppo.",
+    "de": "Dreh für einen Anfang und schreib die erste Zeile, bevor du zu viel nachdenkst.",
+    "fr": "Tournez pour un début d’histoire et écrivez la première ligne avant de trop réfléchir.",
+    "es": "Gira para un comienzo de historia y escribe la primera línea antes de pensarlo demasiado.",
+    "zh": "转出一个故事开头，在想太多之前写下第一句。"
+  },
+  "tpl.writing-prompts.entry1": {
+    "it": "Lettera mai spedita",
+    "de": "Nie gesendeter Brief",
+    "fr": "Lettre jamais envoyée",
+    "es": "Carta nunca enviada",
+    "zh": "一封从未寄出的信"
+  },
+  "tpl.writing-prompts.entry2": {
+    "it": "La fine del mondo",
+    "de": "Letzter Tag auf Erden",
+    "fr": "Dernier jour sur Terre",
+    "es": "Último día en la Tierra",
+    "zh": "地球最后一天"
+  },
+  "tpl.writing-prompts.entry3": {
+    "it": "Una porta misteriosa",
+    "de": "Eine geheime Tür",
+    "fr": "Une porte mystérieuse",
+    "es": "Una puerta misteriosa",
+    "zh": "一扇神秘的门"
+  },
+  "tpl.writing-prompts.entry4": {
+    "it": "La storia del cattivo",
+    "de": "Sicht des Bösewichts",
+    "fr": "L’histoire du méchant",
+    "es": "La historia del villano",
+    "zh": "反派的故事"
+  },
+  "tpl.writing-prompts.entry5": {
+    "it": "Messaggio in bottiglia",
+    "de": "Flaschenpost",
+    "fr": "Bouteille à la mer",
+    "es": "Mensaje en una botella",
+    "zh": "漂流瓶里的信"
+  },
+  "tpl.writing-prompts.entry6": {
+    "it": "100 anni dopo",
+    "de": "100 Jahre später",
+    "fr": "100 ans plus tard",
+    "es": "100 años después",
+    "zh": "一百年后"
+  },
+  "tpl.writing-prompts.entry7": {
+    "it": "Un’eredità strana",
+    "de": "Ein seltsames Erbe",
+    "fr": "Un étrange héritage",
+    "es": "Una herencia extraña",
+    "zh": "一笔奇怪的遗产"
+  },
+  "tpl.writing-prompts.entry8": {
+    "it": "La grande tempesta",
+    "de": "Der große Sturm",
+    "fr": "La grande tempête",
+    "es": "La gran tormenta",
+    "zh": "大风暴"
+  },
+  "tpl.writing-prompts.centerText": {
+    "it": "SCRIVI",
+    "de": "SCHREIB",
+    "fr": "ÉCRIS",
+    "es": "ESCRIBE",
+    "zh": "写作"
+  },
+  "tpl.writing-prompts.title": {
+    "it": "Ruota degli spunti di scrittura | Incipit casuali",
+    "de": "Schreibanlass-Rad | Zufällige Story-Ideen",
+    "fr": "Roue d’idées d’écriture | Débuts d’histoire au hasard",
+    "es": "Ruleta de ideas para escribir | Inicios al azar",
+    "zh": "写作灵感转盘 | 随机故事开头生成器"
+  },
+  "tpl.writing-prompts.desc": {
+    "it": "Gira la ruota degli spunti di scrittura per un incipit casuale e inizia a scrivere prima di pensarci troppo. Gratis per scrittori, insegnanti e studenti.",
+    "de": "Dreh das Schreibanlass-Rad für einen zufälligen Anfang und schreib los, bevor du zu viel grübelst. Kostenlos für Schreibende, Lehrkräfte und Schüler.",
+    "fr": "Tournez la roue pour un début d’histoire au hasard et écrivez avant de trop réfléchir. Gratuit pour les auteurs, les enseignants et les élèves.",
+    "es": "Gira la ruleta para un inicio de historia al azar y empieza a escribir antes de pensarlo demasiado. Gratis para escritores, docentes y alumnos.",
+    "zh": "转动写作灵感转盘获得随机故事开头，在想太多之前开始写。免费供写作者、教师和学生使用。"
+  },
+  "tpl.writing-prompts.heading": {
+    "it": "Ruota degli spunti di scrittura",
+    "de": "Schreibanlass-Rad",
+    "fr": "Roue d’idées d’écriture",
+    "es": "Ruleta de ideas para escribir",
+    "zh": "写作灵感转盘"
+  },
+  "tpl.writing-prompts.intro": {
+    "it": "Una pagina bianca diventa più facile con un vincolo. Gira la ruota, prendi lo spunto su cui si ferma e scrivi subito la prima riga: lo spunto è una porta, non una regola.",
+    "de": "Ein leeres Blatt wird mit einer Vorgabe leichter. Dreh das Rad, nimm den Anlass, auf dem es landet, und schreib sofort die erste Zeile — der Anlass ist eine Tür, keine Regel.",
+    "fr": "Une page blanche devient plus facile avec une contrainte. Tournez la roue, prenez l’idée sur laquelle elle s’arrête et écrivez aussitôt la première ligne : l’idée est une porte, pas une règle.",
+    "es": "Una página en blanco es más fácil con una restricción. Gira la ruleta, toma la idea en la que se detenga y escribe enseguida la primera línea: la idea es una puerta, no una regla.",
+    "zh": "有了限制，白纸就没那么难了。转动转盘，接受它停下的题目，立刻写下第一句——题目是一扇门，而不是规则。"
+  },
+  "tpl.writing-prompts.s1.heading": {
+    "it": "Per la classe",
+    "de": "Für den Unterricht",
+    "fr": "Pour la classe",
+    "es": "Para el aula",
+    "zh": "用于课堂"
+  },
+  "tpl.writing-prompts.s1.body": {
+    "it": "Proietta la ruota e gira una volta per tutta la classe, oppure fai girare a ogni studente il proprio. Togliendo ogni spunto dopo l’uso, nessuno scrive la stessa storia del compagno di banco.",
+    "de": "Projizier das Rad und dreh einmal für die ganze Klasse, oder lass jedes Kind selbst drehen. Wenn jeder Anlass nach dem Gebrauch entfernt wird, schreibt niemand dieselbe Geschichte wie der Sitznachbar.",
+    "fr": "Projetez la roue et tournez une fois pour toute la classe, ou laissez chaque élève tourner la sienne. En retirant chaque idée après usage, personne n’écrit la même histoire que son voisin.",
+    "es": "Proyecta la ruleta y gira una vez para toda la clase, o deja que cada alumno gire la suya. Quitando cada idea después de usarla, nadie escribe la misma historia que su compañero.",
+    "zh": "投影转盘，为全班转一次，或者让每个学生自己转。每个题目用过后就移除，就不会有人和同桌写同一个故事。"
+  },
+  "tpl.writing-prompts.s2.heading": {
+    "it": "Combina le ruote",
+    "de": "Kombiniere Räder",
+    "fr": "Combinez les roues",
+    "es": "Combina ruletas",
+    "zh": "组合转盘"
+  },
+  "tpl.writing-prompts.s2.body": {
+    "it": "Mostra una ruota di spunti accanto a una di generi — giallo, commedia, fantascienza — e una terza per l’ambientazione. Tre giri creano uno spunto che nessuna lista può darti.",
+    "de": "Zeig ein Rad mit Anlässen neben einem mit Genres — Krimi, Komödie, Science-Fiction — und ein drittes für den Schauplatz. Drei Drehungen ergeben eine Aufgabe, die keine Liste bieten kann.",
+    "fr": "Affichez une roue d’idées à côté d’une roue de genres — policier, comédie, science-fiction — et d’une troisième pour le décor. Trois tours donnent une consigne qu’aucune liste ne peut offrir.",
+    "es": "Muestra una ruleta de ideas junto a otra de géneros —misterio, comedia, ciencia ficción— y una tercera para el escenario. Tres giros crean una idea que ninguna lista puede darte.",
+    "zh": "把题目转盘和类型转盘（悬疑、喜剧、科幻）并排显示，再加一个场景转盘。三次转动得到的题目，是任何单一列表都给不了的。"
+  },
+  "tpl.writing-prompts.faq1.q": {
+    "it": "Posso aggiungere i miei spunti?",
+    "de": "Kann ich eigene Anlässe hinzufügen?",
+    "fr": "Puis-je ajouter mes propres idées ?",
+    "es": "¿Puedo añadir mis propias ideas?",
+    "zh": "可以添加自己的题目吗？"
+  },
+  "tpl.writing-prompts.faq1.a": {
+    "it": "Sì. Copia la ruota e sostituisci o aggiungi spunti; la ruota resta salvata per la prossima sessione.",
+    "de": "Ja. Kopiere das Rad und ersetze oder ergänze Anlässe; es bleibt für die nächste Sitzung gespeichert.",
+    "fr": "Oui. Copiez la roue et remplacez ou ajoutez des idées ; elle reste enregistrée pour la prochaine séance.",
+    "es": "Sí. Copia la ruleta y sustituye o añade ideas; queda guardada para tu próxima sesión.",
+    "zh": "可以。复制转盘，替换或添加题目；转盘会保存下来，供下次使用。"
+  },
+  "tpl.writing-prompts.faq2.q": {
+    "it": "È gratuita per le scuole?",
+    "de": "Ist es für Schulen kostenlos?",
+    "fr": "Est-ce gratuit pour les écoles ?",
+    "es": "¿Es gratis para colegios?",
+    "zh": "学校使用免费吗？"
+  },
+  "tpl.writing-prompts.faq2.a": {
+    "it": "Sì. Nessun account, nessun abbonamento e nessun dato degli studenti.",
+    "de": "Ja. Kein Konto, kein Abo und keine Schülerdaten.",
+    "fr": "Oui. Pas de compte, pas d’abonnement et aucune donnée d’élève.",
+    "es": "Sí. Sin cuentas, sin suscripción y sin datos de alumnos.",
+    "zh": "免费。无需账户，无需订阅，也不涉及学生数据。"
+  },
+  "tpl.what-to-wear.tagline": {
+    "it": "Sfide di stile",
+    "de": "Outfit-Challenges",
+    "fr": "Défis tenues",
+    "es": "Retos de outfit",
+    "zh": "穿搭挑战"
+  },
+  "tpl.what-to-wear.name": {
+    "it": "Cosa indossare",
+    "de": "Was anziehen?",
+    "fr": "Quoi porter",
+    "es": "Qué ponerme",
+    "zh": "穿什么"
+  },
+  "tpl.what-to-wear.cardDesc": {
+    "it": "Non sai cosa metterti? Gira per la sfida di stile di oggi.",
+    "de": "Du weißt nicht, was du anziehen sollst? Dreh für die heutige Style-Challenge.",
+    "fr": "Vous ne savez pas quoi porter ? Tournez pour le défi style du jour.",
+    "es": "¿No sabes qué ponerte? Gira para el reto de estilo de hoy.",
+    "zh": "不知道穿什么？转一下，接受今天的穿搭挑战。"
+  },
+  "tpl.what-to-wear.entry1": {
+    "it": "Qualcosa di rosso",
+    "de": "Etwas Rotes",
+    "fr": "Un peu de rouge",
+    "es": "Algo rojo",
+    "zh": "一件红色单品"
+  },
+  "tpl.what-to-wear.entry2": {
+    "it": "Total black",
+    "de": "Ganz in Schwarz",
+    "fr": "Tout en noir",
+    "es": "Todo de negro",
+    "zh": "全黑"
+  },
+  "tpl.what-to-wear.entry3": {
+    "it": "Outfit comodissimo",
+    "de": "Bequemstes Outfit",
+    "fr": "Tenue ultra confort",
+    "es": "Lo más cómodo",
+    "zh": "最舒服的一套"
+  },
+  "tpl.what-to-wear.entry4": {
+    "it": "Un capo dimenticato",
+    "de": "Etwas Vergessenes",
+    "fr": "Un vêtement oublié",
+    "es": "Algo olvidado",
+    "zh": "一件被遗忘的衣服"
+  },
+  "tpl.what-to-wear.entry5": {
+    "it": "Elegante per gioco",
+    "de": "Grundlos schick",
+    "fr": "Chic sans raison",
+    "es": "Elegante sin motivo",
+    "zh": "无缘由盛装"
+  },
+  "tpl.what-to-wear.entry6": {
+    "it": "Righe",
+    "de": "Streifen",
+    "fr": "Rayures",
+    "es": "Rayas",
+    "zh": "条纹"
+  },
+  "tpl.what-to-wear.entry7": {
+    "it": "Total denim",
+    "de": "Denim auf Denim",
+    "fr": "Total look denim",
+    "es": "Denim con denim",
+    "zh": "牛仔配牛仔"
+  },
+  "tpl.what-to-wear.entry8": {
+    "it": "Monocromatico",
+    "de": "Ton in Ton",
+    "fr": "Monochrome",
+    "es": "Monocromo",
+    "zh": "单色穿搭"
+  },
+  "tpl.what-to-wear.centerText": {
+    "it": "OUTFIT",
+    "de": "OUTFIT",
+    "fr": "LOOK",
+    "es": "LOOK",
+    "zh": "穿搭"
+  },
+  "tpl.what-to-wear.title": {
+    "it": "Ruota cosa indossare | Sfida outfit casuale",
+    "de": "Was anziehen? Rad | Zufällige Outfit-Challenge",
+    "fr": "Roue quoi porter | Défi tenue aléatoire",
+    "es": "Ruleta qué ponerme | Reto de outfit al azar",
+    "zh": "穿什么转盘 | 随机穿搭挑战"
+  },
+  "tpl.what-to-wear.desc": {
+    "it": "Non sai cosa indossare? Gira la ruota per una sfida di stile: un colore, un tema, un capo che non metti mai. Gratis, senza registrazione.",
+    "de": "Du weißt nicht, was du anziehen sollst? Dreh das Outfit-Rad für eine Style-Challenge: eine Farbe, ein Thema, ein vergessenes Teil. Kostenlos.",
+    "fr": "Vous ne savez pas quoi porter ? Tournez la roue pour un défi style : une couleur, un thème, une pièce jamais portée. Gratuit, sans inscription.",
+    "es": "¿No sabes qué ponerte? Gira la ruleta para un reto de estilo: un color, un tema, una prenda que nunca usas. Gratis, sin registro.",
+    "zh": "不知道穿什么？转动穿搭转盘接受风格挑战：一个颜色、一个主题、一件从不穿的单品。免费，无需注册。"
+  },
+  "tpl.what-to-wear.heading": {
+    "it": "Ruota cosa indossare",
+    "de": "Was anziehen? – das Rad",
+    "fr": "Roue quoi porter",
+    "es": "Ruleta qué ponerme",
+    "zh": "穿什么转盘"
+  },
+  "tpl.what-to-wear.intro": {
+    "it": "Un armadio pieno di vestiti e niente da mettersi. La ruota non ti veste, ma ti dà una regola — total black, qualcosa di rosso, righe — e di solito una regola è tutto ciò che serve per vestirsi.",
+    "de": "Ein Schrank voller Kleidung und nichts anzuziehen. Das Rad zieht dich nicht an, aber es gibt dir eine Regel — ganz in Schwarz, etwas Rotes, Streifen —, und eine Regel reicht meistens, um sich anzuziehen.",
+    "fr": "Une armoire pleine et rien à se mettre. La roue ne vous habille pas, mais elle vous donne une règle — tout en noir, quelque chose de rouge, des rayures — et une règle suffit souvent pour s’habiller.",
+    "es": "Un armario lleno de ropa y nada que ponerse. La ruleta no te viste, pero te da una regla —todo de negro, algo rojo, rayas— y una regla suele bastar para vestirse.",
+    "zh": "衣柜满满却没衣服穿。转盘不会帮你穿衣，但会给你一条规则——全黑、一件红色单品、条纹——而有了规则，穿衣通常就不难了。"
+  },
+  "tpl.what-to-wear.s1.heading": {
+    "it": "Una sfida, non una divisa",
+    "de": "Eine Challenge, keine Uniform",
+    "fr": "Un défi, pas un uniforme",
+    "es": "Un reto, no un uniforme",
+    "zh": "是挑战，不是制服"
+  },
+  "tpl.what-to-wear.s1.body": {
+    "it": "Le voci di esempio sono spunti, non outfit, quindi funzionano con qualsiasi guardaroba. Gira la mattina, costruisci il look attorno allo spunto e hai risparmiato dieci minuti.",
+    "de": "Die Beispieleinträge sind Anregungen statt fertiger Outfits und passen daher zu jedem Kleiderschrank. Dreh morgens, bau den Look um die Vorgabe herum, und du sparst zehn Minuten.",
+    "fr": "Les entrées proposées sont des consignes plutôt que des tenues : elles marchent quelle que soit votre garde-robe. Tournez le matin, construisez le look autour de la consigne, et gagnez dix minutes.",
+    "es": "Las entradas de ejemplo son ideas, no outfits, así que funcionan con cualquier armario. Gira por la mañana, arma el look alrededor de la idea y habrás ahorrado diez minutos.",
+    "zh": "示例条目是提示而不是具体搭配，所以适用于任何衣橱。早上转一下，围绕提示搭配造型，就能省下十分钟。"
+  },
+  "tpl.what-to-wear.s2.heading": {
+    "it": "Contenuti per il tuo profilo",
+    "de": "Content für deinen Feed",
+    "fr": "Du contenu pour votre fil",
+    "es": "Contenido para tu perfil",
+    "zh": "为你的动态做内容"
+  },
+  "tpl.what-to-wear.s2.body": {
+    "it": "Le sfide outfit sono un formato popolare per storie e video brevi. Gira davanti alla fotocamera e poi mostra il risultato: la scheda del vincitore può salvare un’immagine del giro per il tuo post.",
+    "de": "Outfit-Challenges sind ein beliebtes Format für Storys und kurze Videos. Dreh vor der Kamera und zeig dann das Ergebnis — die Gewinnerkarte kann ein Bild der Drehung für deinen Post speichern.",
+    "fr": "Les défis tenues sont un format populaire en story et en vidéo courte. Tournez devant la caméra, puis montrez le résultat : la carte du gagnant peut enregistrer une image du tirage pour votre post.",
+    "es": "Los retos de outfit son un formato popular en historias y vídeos cortos. Gira ante la cámara y luego enseña el resultado: la tarjeta del ganador puede guardar una imagen del giro para tu publicación.",
+    "zh": "穿搭挑战是快拍和短视频中很受欢迎的形式。对着镜头转，再展示结果——中奖卡片可以保存这次转动的图片，方便你发帖。"
+  },
+  "tpl.what-to-wear.faq1.q": {
+    "it": "Posso mettere sulla ruota i miei vestiti?",
+    "de": "Kann ich meine echten Kleidungsstücke aufs Rad setzen?",
+    "fr": "Puis-je mettre mes vrais vêtements sur la roue ?",
+    "es": "¿Puedo poner mi ropa real en la ruleta?",
+    "zh": "可以把自己的衣服放到转盘上吗？"
+  },
+  "tpl.what-to-wear.faq1.a": {
+    "it": "Sì. Aggiungi magliette, pantaloni o scarpe come voci, oppure tieni tre ruote affiancate, una per ciascuno.",
+    "de": "Ja. Füge Oberteile, Hosen oder Schuhe als Einträge hinzu — oder zeig drei Räder nebeneinander, eins für jede Kategorie.",
+    "fr": "Oui. Ajoutez vos hauts, pantalons ou chaussures comme entrées, ou affichez trois roues côte à côte, une pour chaque catégorie.",
+    "es": "Sí. Añade camisetas, pantalones o zapatos como entradas, o ten tres ruletas lado a lado, una para cada cosa.",
+    "zh": "可以。把上衣、裤子或鞋子作为条目添加进去——或者并排放三个转盘，每类一个。"
+  },
+  "tpl.what-to-wear.faq2.q": {
+    "it": "Funziona sul telefono?",
+    "de": "Funktioniert es auf dem Handy?",
+    "fr": "Cela marche sur mon téléphone ?",
+    "es": "¿Funciona en el móvil?",
+    "zh": "手机上能用吗？"
+  },
+  "tpl.what-to-wear.faq2.a": {
+    "it": "Sì, in qualsiasi browser mobile e come app Android.",
+    "de": "Ja, in jedem mobilen Browser und als Android-App.",
+    "fr": "Oui, dans n’importe quel navigateur mobile, et en application Android.",
+    "es": "Sí, en cualquier navegador móvil y como app de Android.",
+    "zh": "能用，任何手机浏览器都可以，也有 Android 应用。"
+  },
+  "tpl.what-game-to-play.tagline": {
+    "it": "Gamer e streamer",
+    "de": "Gamer & Streamer",
+    "fr": "Joueurs et streamers",
+    "es": "Gamers y streamers",
+    "zh": "玩家与主播"
+  },
+  "tpl.what-game-to-play.name": {
+    "it": "A che gioco giocare",
+    "de": "Was spielen?",
+    "fr": "À quoi jouer",
+    "es": "A qué jugar",
+    "zh": "玩什么游戏"
+  },
+  "tpl.what-game-to-play.cardDesc": {
+    "it": "Troppi giochi, troppe poche decisioni: gira per il genere di stasera.",
+    "de": "Zu viele Spiele, zu wenig Entscheidungen: Dreh für das Genre des Abends.",
+    "fr": "Trop de jeux, pas assez de décisions : tournez pour le genre du soir.",
+    "es": "Demasiados juegos y pocas decisiones: gira para el género de esta noche.",
+    "zh": "游戏太多，决定太少：转一下决定今晚玩什么类型。"
+  },
+  "tpl.what-game-to-play.entry1": {
+    "it": "Corse",
+    "de": "Rennspiel",
+    "fr": "Course",
+    "es": "Carreras",
+    "zh": "赛车"
+  },
+  "tpl.what-game-to-play.entry2": {
+    "it": "Puzzle",
+    "de": "Puzzle",
+    "fr": "Puzzle",
+    "es": "Puzles",
+    "zh": "解谜"
+  },
+  "tpl.what-game-to-play.entry3": {
+    "it": "Platform",
+    "de": "Plattformer",
+    "fr": "Plateforme",
+    "es": "Plataformas",
+    "zh": "平台跳跃"
+  },
+  "tpl.what-game-to-play.entry4": {
+    "it": "Strategia",
+    "de": "Strategie",
+    "fr": "Stratégie",
+    "es": "Estrategia",
+    "zh": "策略"
+  },
+  "tpl.what-game-to-play.entry5": {
+    "it": "Horror",
+    "de": "Horror",
+    "fr": "Horreur",
+    "es": "Terror",
+    "zh": "恐怖"
+  },
+  "tpl.what-game-to-play.entry6": {
+    "it": "GDR",
+    "de": "Rollenspiel",
+    "fr": "RPG",
+    "es": "RPG",
+    "zh": "角色扮演"
+  },
+  "tpl.what-game-to-play.entry7": {
+    "it": "Cooperativo",
+    "de": "Koop",
+    "fr": "Coop",
+    "es": "Cooperativo",
+    "zh": "合作"
+  },
+  "tpl.what-game-to-play.entry8": {
+    "it": "Sport",
+    "de": "Sport",
+    "fr": "Sport",
+    "es": "Deportes",
+    "zh": "体育"
+  },
+  "tpl.what-game-to-play.centerText": {
+    "it": "GIOCA",
+    "de": "SPIEL",
+    "fr": "JOUE",
+    "es": "JUEGA",
+    "zh": "开玩"
+  },
+  "tpl.what-game-to-play.title": {
+    "it": "Ruota a che gioco giocare | Scegli il videogioco",
+    "de": "Was spielen? Rad | Zufälliges Videospiel wählen",
+    "fr": "Roue à quoi jouer | Choisir un jeu vidéo au hasard",
+    "es": "Ruleta a qué jugar | Elige un videojuego al azar",
+    "zh": "玩什么游戏转盘 | 随机选择电子游戏"
+  },
+  "tpl.what-game-to-play.desc": {
+    "it": "Troppi giochi in libreria? Gira la ruota per scegliere a cosa giocare stasera, per genere o per titolo. Gratis, e perfetta come momento in live.",
+    "de": "Zu viele Spiele in der Bibliothek? Dreh das Rad und wähle, was du heute spielst — nach Genre oder Titel. Kostenlos und ein tolles Stream-Segment.",
+    "fr": "Trop de jeux dans votre bibliothèque ? Tournez la roue pour choisir à quoi jouer ce soir, par genre ou par titre. Gratuit, et parfait en stream.",
+    "es": "¿Demasiados juegos en tu biblioteca? Gira la ruleta para elegir a qué jugar esta noche, por género o por título. Gratis y perfecta para directos.",
+    "zh": "游戏库里游戏太多？转动转盘，按类型或标题决定今晚玩什么。免费，也很适合作为直播环节。"
+  },
+  "tpl.what-game-to-play.heading": {
+    "it": "Ruota a che gioco giocare",
+    "de": "Was spielen? – das Rad",
+    "fr": "Roue à quoi jouer",
+    "es": "Ruleta a qué jugar",
+    "zh": "玩什么游戏转盘"
+  },
+  "tpl.what-game-to-play.intro": {
+    "it": "Una libreria di cento giochi e una serata passata a scorrerla. Metti sulla ruota i generi — o i titoli veri — gira una volta e gioca a quello che esce.",
+    "de": "Eine Bibliothek mit hundert Spielen und ein Abend, der mit Durchscrollen vergeht. Setz die Genres — oder die echten Titel — aufs Rad, dreh einmal und spiel, was kommt.",
+    "fr": "Une bibliothèque de cent jeux et une soirée passée à la faire défiler. Mettez les genres — ou les vrais titres — sur la roue, tournez une fois et jouez à ce qui sort.",
+    "es": "Una biblioteca de cien juegos y una noche perdida desplazándose por ella. Pon los géneros —o los títulos reales— en la ruleta, gira una vez y juega a lo que salga.",
+    "zh": "游戏库里有一百款游戏，一晚上都在翻来翻去。把类型——或具体的游戏名——放上转盘，转一次，转到什么就玩什么。"
+  },
+  "tpl.what-game-to-play.s1.heading": {
+    "it": "Mettici il tuo backlog",
+    "de": "Pack deinen Backlog drauf",
+    "fr": "Mettez-y votre backlog",
+    "es": "Pon tu lista pendiente",
+    "zh": "放上你的待玩清单"
+  },
+  "tpl.what-game-to-play.s1.body": {
+    "it": "La ruota di esempio usa i generi; la versione che funziona davvero contiene i titoli che possiedi e non hai mai iniziato. Incolla la lista in un colpo solo e lascia che la ruota smaltisca il backlog un giro alla volta.",
+    "de": "Das Beispielrad nutzt Genres; die Version, die wirklich funktioniert, enthält die Titel, die du besitzt und nie angefangen hast. Füge die Liste auf einmal ein und lass das Rad deinen Backlog Drehung für Drehung abbauen.",
+    "fr": "La roue proposée utilise des genres ; la version qui marche vraiment contient les jeux que vous possédez sans jamais les avoir commencés. Collez la liste d’un coup et laissez la roue vider votre backlog, un tour à la fois.",
+    "es": "La ruleta de ejemplo usa géneros; la versión que de verdad funciona contiene los juegos que tienes y nunca empezaste. Pega la lista de una vez y deja que la ruleta vacíe tu lista pendiente giro a giro.",
+    "zh": "示例转盘用的是游戏类型；真正好用的版本，是放上你买了却从没开始玩的游戏。一次粘贴整份清单，让转盘一次一次地帮你清空待玩清单。"
+  },
+  "tpl.what-game-to-play.s2.heading": {
+    "it": "Fai decidere alla chat in live",
+    "de": "Lass den Chat im Stream entscheiden",
+    "fr": "Laissez le chat décider en stream",
+    "es": "Deja que decida el chat en directo",
+    "zh": "直播时让观众决定"
+  },
+  "tpl.what-game-to-play.s2.body": {
+    "it": "Gira in diretta e lascia che la ruota scelga il prossimo gioco davanti ai tuoi spettatori. Conto alla rovescia, suoni ed effetti del vincitore trasformano il giro in un piccolo spettacolo.",
+    "de": "Dreh live und lass das Rad vor deinen Zuschauern das nächste Spiel wählen. Countdown, Sounds und Gewinnereffekte machen die Drehung zu einer kleinen Show.",
+    "fr": "Tournez en direct et laissez la roue choisir le prochain jeu devant vos spectateurs. Le compte à rebours, les sons et les effets du gagnant font du tirage un petit spectacle.",
+    "es": "Gira en directo y deja que la ruleta elija el siguiente juego delante de tus espectadores. La cuenta atrás, los sonidos y los efectos del ganador convierten el giro en un pequeño espectáculo.",
+    "zh": "在直播中转动，让转盘当着观众的面选出下一款游戏。倒计时、音效和中奖特效让每次转动都像一场小表演。"
+  },
+  "tpl.what-game-to-play.faq1.q": {
+    "it": "Posso usarla come overlay in streaming?",
+    "de": "Kann ich es als Stream-Overlay nutzen?",
+    "fr": "Puis-je l’utiliser en overlay de stream ?",
+    "es": "¿Puedo usarla como overlay en directo?",
+    "zh": "可以作为直播叠加层使用吗？"
+  },
+  "tpl.what-game-to-play.faq1.a": {
+    "it": "Sì. Cattura la finestra del browser in OBS o Streamlabs e girala in diretta.",
+    "de": "Ja. Nimm das Browserfenster in OBS oder Streamlabs auf und dreh live.",
+    "fr": "Oui. Capturez la fenêtre du navigateur dans OBS ou Streamlabs et tournez en direct.",
+    "es": "Sí. Captura la ventana del navegador en OBS o Streamlabs y gírala en directo.",
+    "zh": "可以。在 OBS 或 Streamlabs 中捕获浏览器窗口，直播时转动即可。"
+  },
+  "tpl.what-game-to-play.faq2.q": {
+    "it": "Gli spettatori possono aggiungere giochi?",
+    "de": "Können Zuschauer Spiele hinzufügen?",
+    "fr": "Les spectateurs peuvent-ils ajouter des jeux ?",
+    "es": "¿Pueden los espectadores añadir juegos?",
+    "zh": "观众可以添加游戏吗？"
+  },
+  "tpl.what-game-to-play.faq2.a": {
+    "it": "Aggiungi i loro suggerimenti alla ruota prima del giro: inserire un titolo più volte gli dà più probabilità.",
+    "de": "Füge ihre Vorschläge vor der Drehung hinzu — ein mehrfach eingetragener Titel hat bessere Chancen.",
+    "fr": "Ajoutez leurs suggestions à la roue avant le tirage ; un titre ajouté plusieurs fois a plus de chances.",
+    "es": "Añade sus sugerencias a la ruleta antes del giro; poner un título varias veces le da más probabilidades.",
+    "zh": "在转动前把观众的建议加到转盘上——同一游戏添加多次，被选中的概率就更高。"
+  },
+  "tpl.heads-or-tails.tagline": {
+    "it": "Lancio della moneta",
+    "de": "Münzwurf",
+    "fr": "Pile ou face",
+    "es": "Lanzar una moneda",
+    "zh": "抛硬币"
+  },
+  "tpl.heads-or-tails.name": {
+    "it": "Testa o croce",
+    "de": "Kopf oder Zahl",
+    "fr": "Pile ou face",
+    "es": "Cara o cruz",
+    "zh": "正面还是反面"
+  },
+  "tpl.heads-or-tails.cardDesc": {
+    "it": "Il lancio della moneta su una ruota: due facce, un giro, nessuna moneta.",
+    "de": "Münzwurf auf einem Rad: zwei Seiten, eine Drehung, keine Münze nötig.",
+    "fr": "Un pile ou face sur une roue : deux côtés, un tour, sans pièce.",
+    "es": "Lanzar una moneda en una ruleta: dos caras, un giro, sin moneda.",
+    "zh": "转盘版抛硬币：两面，一次转动，不需要硬币。"
+  },
+  "tpl.heads-or-tails.entry1": {
+    "it": "Testa",
+    "de": "Kopf",
+    "fr": "Face",
+    "es": "Cara",
+    "zh": "正面"
+  },
+  "tpl.heads-or-tails.entry2": {
+    "it": "Croce",
+    "de": "Zahl",
+    "fr": "Pile",
+    "es": "Cruz",
+    "zh": "反面"
+  },
+  "tpl.heads-or-tails.centerText": {
+    "it": "LANCIA",
+    "de": "WURF",
+    "fr": "LANCE",
+    "es": "LANZA",
+    "zh": "抛"
+  },
+  "tpl.heads-or-tails.title": {
+    "it": "Ruota testa o croce | Lancia una moneta online",
+    "de": "Kopf oder Zahl Rad | Münze online werfen",
+    "fr": "Roue pile ou face | Lancer une pièce en ligne",
+    "es": "Ruleta cara o cruz | Lanza una moneda online",
+    "zh": "正反面转盘 | 在线抛硬币"
+  },
+  "tpl.heads-or-tails.desc": {
+    "it": "Lancia una moneta online con la ruota testa o croce: due facce, un giro e un risultato equo che tutti possono vedere. Gratis, senza moneta.",
+    "de": "Wirf online eine Münze mit dem Kopf-oder-Zahl-Rad: zwei Seiten, eine Drehung und ein faires Ergebnis, das alle sehen. Kostenlos, ohne Münze.",
+    "fr": "Lancez une pièce en ligne avec la roue pile ou face : deux côtés, un tour et un résultat équitable que tout le monde voit. Gratuit, sans pièce.",
+    "es": "Lanza una moneda online con la ruleta cara o cruz: dos caras, un giro y un resultado justo que todos pueden ver. Gratis, sin moneda.",
+    "zh": "用正反面转盘在线抛硬币：两面，一次转动，结果公平且人人可见。免费，无需硬币。"
+  },
+  "tpl.heads-or-tails.heading": {
+    "it": "Ruota testa o croce",
+    "de": "Kopf-oder-Zahl-Rad",
+    "fr": "Roue pile ou face",
+    "es": "Ruleta cara o cruz",
+    "zh": "正反面转盘"
+  },
+  "tpl.heads-or-tails.intro": {
+    "it": "Niente moneta in tasca? Gira la ruota. Testa e croce si dividono la ruota in parti uguali, e il risultato viene dalla fonte casuale crittografica del browser: equo come una moneta, e nessuno può farla cadere.",
+    "de": "Keine Münze in der Tasche? Dreh stattdessen das Rad. Kopf und Zahl teilen sich das Rad zu gleichen Teilen, und das Ergebnis kommt aus der kryptografischen Zufallsquelle deines Browsers — so fair wie eine Münze, und niemand kann sie fallen lassen.",
+    "fr": "Pas de pièce en poche ? Tournez la roue. Pile et face se partagent la roue à parts égales, et le résultat vient de la source aléatoire cryptographique du navigateur : aussi équitable qu’une pièce, et personne ne peut la faire tomber.",
+    "es": "¿No llevas moneda? Gira la ruleta. Cara y cruz se reparten la ruleta a partes iguales, y el resultado sale de la fuente aleatoria criptográfica del navegador: tan justo como una moneda, y nadie puede dejarla caer.",
+    "zh": "口袋里没有硬币？转转盘吧。正面和反面平分整个转盘，结果来自浏览器的加密随机源——和硬币一样公平，而且没人会把它弄掉。"
+  },
+  "tpl.heads-or-tails.s1.heading": {
+    "it": "Equa per entrambe le parti",
+    "de": "Fair für beide Seiten",
+    "fr": "Équitable pour les deux côtés",
+    "es": "Justa para ambos lados",
+    "zh": "对双方都公平"
+  },
+  "tpl.heads-or-tails.s1.body": {
+    "it": "Ogni faccia è esattamente metà della ruota, quindi le probabilità sono esattamente cinquanta e cinquanta. A differenza di un lancio vero, nessuno può dire che è stata lanciata male o che è caduta di taglio.",
+    "de": "Jede Seite ist genau die Hälfte des Rads, die Chancen stehen also exakt fünfzig zu fünfzig. Anders als bei einem echten Münzwurf kann niemand behaupten, sie sei schlecht geworfen worden oder auf dem Rand gelandet.",
+    "fr": "Chaque côté occupe exactement la moitié de la roue : les chances sont de cinquante-cinquante. Contrairement à un vrai lancer, personne ne peut dire que la pièce a été mal lancée ou est tombée sur la tranche.",
+    "es": "Cada cara ocupa exactamente la mitad de la ruleta, así que las probabilidades son exactamente del cincuenta por ciento. A diferencia de un lanzamiento real, nadie puede decir que se tiró mal o que cayó de canto.",
+    "zh": "每一面正好占转盘的一半，所以概率就是五五开。和真的抛硬币不同，没人能说抛得不好或硬币立起来了。"
+  },
+  "tpl.heads-or-tails.s2.heading": {
+    "it": "Al meglio di tre",
+    "de": "Best of three",
+    "fr": "Au meilleur des trois",
+    "es": "Al mejor de tres",
+    "zh": "三局两胜"
+  },
+  "tpl.heads-or-tails.s2.body": {
+    "it": "Tieni aperta la lista dei vincitori e ogni risultato resta registrato sullo schermo, così è facile seguire un al meglio di tre o di cinque.",
+    "de": "Lass die Gewinnerliste offen, dann wird jedes Ergebnis auf dem Bildschirm festgehalten — so lässt sich ein Best of three oder Best of five leicht verfolgen.",
+    "fr": "Gardez la liste des gagnants ouverte : chaque résultat reste affiché, ce qui rend facile à suivre un match en deux ou trois manches gagnantes.",
+    "es": "Deja abierta la lista de ganadores y cada resultado queda registrado en pantalla, así es fácil seguir un al mejor de tres o de cinco.",
+    "zh": "打开中奖名单，每次结果都会记录在屏幕上，三局两胜或五局三胜都很容易追踪。"
+  },
+  "tpl.heads-or-tails.faq1.q": {
+    "it": "È davvero cinquanta e cinquanta?",
+    "de": "Ist es wirklich fünfzig zu fünfzig?",
+    "fr": "Est-ce vraiment cinquante-cinquante ?",
+    "es": "¿Es de verdad cincuenta y cincuenta?",
+    "zh": "真的是五五开吗？"
+  },
+  "tpl.heads-or-tails.faq1.a": {
+    "it": "Sì. Testa e croce hanno lo stesso numero di spicchi, tutti della stessa dimensione, e il giro usa una fonte casuale crittografica.",
+    "de": "Ja. Kopf und Zahl haben gleich viele Felder, alle gleich groß, und die Drehung nutzt eine kryptografische Zufallsquelle.",
+    "fr": "Oui. Pile et face ont le même nombre de parts, toutes de même taille, et le tirage utilise une source aléatoire cryptographique.",
+    "es": "Sí. Cara y cruz tienen el mismo número de porciones, todas del mismo tamaño, y el giro usa una fuente aleatoria criptográfica.",
+    "zh": "是的。正面和反面的扇区数量相同，大小也都一样，转动使用加密随机源。"
+  },
+  "tpl.heads-or-tails.faq2.q": {
+    "it": "Posso usarla per decidere chi inizia una partita?",
+    "de": "Kann ich damit entscheiden, wer ein Spiel beginnt?",
+    "fr": "Puis-je l’utiliser pour décider qui commence une partie ?",
+    "es": "¿Puedo usarla para decidir quién empieza una partida?",
+    "zh": "可以用它决定谁先开始吗？"
+  },
+  "tpl.heads-or-tails.faq2.a": {
+    "it": "Sì: è uno degli usi più comuni, insieme alla scelta del campo nelle partite sportive.",
+    "de": "Ja — das ist eine der häufigsten Anwendungen, neben der Seitenwahl bei Sportspielen.",
+    "fr": "Oui : c’est l’un des usages les plus courants, avec le choix du côté dans les matchs de sport.",
+    "es": "Sí: es uno de los usos más comunes, junto con elegir campo en los partidos.",
+    "zh": "可以——这是最常见的用法之一，另一个常见用法是体育比赛中选边。"
+  },
+  "tpl.punishment.tagline": {
+    "it": "Penitenze e live",
+    "de": "Strafen & Streams",
+    "fr": "Gages et streams",
+    "es": "Castigos y directos",
+    "zh": "惩罚与直播"
+  },
+  "tpl.punishment.name": {
+    "it": "Ruota delle penitenze",
+    "de": "Strafrad",
+    "fr": "Roue des gages",
+    "es": "Ruleta de castigos",
+    "zh": "惩罚转盘"
+  },
+  "tpl.punishment.cardDesc": {
+    "it": "Hai perso il turno? Gira per una penitenza innocua e accettala sportivamente.",
+    "de": "Runde verloren? Dreh für eine harmlose Strafe und nimm sie sportlich.",
+    "fr": "Manche perdue ? Tournez pour un gage inoffensif et prenez-le avec le sourire.",
+    "es": "¿Perdiste la ronda? Gira para un castigo inofensivo y acéptalo con deportividad.",
+    "zh": "这一轮输了？转出一个无伤大雅的惩罚，愿赌服输。"
+  },
+  "tpl.punishment.entry1": {
+    "it": "Canta una canzone",
+    "de": "Sing ein Lied",
+    "fr": "Chante une chanson",
+    "es": "Canta una canción",
+    "zh": "唱一首歌"
+  },
+  "tpl.punishment.entry2": {
+    "it": "Balla 30 secondi",
+    "de": "Tanz 30 Sekunden",
+    "fr": "Danse 30 secondes",
+    "es": "Baila 30 segundos",
+    "zh": "跳舞 30 秒"
+  },
+  "tpl.punishment.entry3": {
+    "it": "Storia imbarazzante",
+    "de": "Peinliche Geschichte",
+    "fr": "Histoire gênante",
+    "es": "Historia vergonzosa",
+    "zh": "讲一件糗事"
+  },
+  "tpl.punishment.entry4": {
+    "it": "Plank di 30 secondi",
+    "de": "30 Sekunden Plank",
+    "fr": "Gainage 30 secondes",
+    "es": "Plancha 30 segundos",
+    "zh": "平板支撑 30 秒"
+  },
+  "tpl.punishment.entry5": {
+    "it": "Parla con un accento",
+    "de": "Sprich mit Akzent",
+    "fr": "Parle avec un accent",
+    "es": "Habla con acento",
+    "zh": "用口音说话"
+  },
+  "tpl.punishment.entry6": {
+    "it": "Complimenti a tutti",
+    "de": "Allen Komplimente",
+    "fr": "Complimente chacun",
+    "es": "Halaga a todos",
+    "zh": "夸奖每个人"
+  },
+  "tpl.punishment.entry7": {
+    "it": "Imita un animale",
+    "de": "Mach ein Tier nach",
+    "fr": "Imite un animal",
+    "es": "Imita a un animal",
+    "zh": "模仿一种动物"
+  },
+  "tpl.punishment.entry8": {
+    "it": "Parla in rima",
+    "de": "Sprich in Reimen",
+    "fr": "Parle en rimes",
+    "es": "Habla en rima",
+    "zh": "说话押韵"
+  },
+  "tpl.punishment.centerText": {
+    "it": "OPS",
+    "de": "UPS",
+    "fr": "OUPS",
+    "es": "UPS",
+    "zh": "哎呀"
+  },
+  "tpl.punishment.title": {
+    "it": "Ruota delle penitenze | Per giochi e live",
+    "de": "Strafrad | Strafen-Generator für Spiele und Streams",
+    "fr": "Roue des gages | Pour les jeux et les streams",
+    "es": "Ruleta de castigos | Para juegos y directos",
+    "zh": "惩罚转盘 | 游戏与直播惩罚生成器"
+  },
+  "tpl.punishment.desc": {
+    "it": "Hai perso il turno? Gira la ruota delle penitenze per una penitenza innocua. Gratis per serate giochi, feste e live, e ogni penitenza è modificabile.",
+    "de": "Runde verloren? Dreh das Strafrad für eine harmlose Strafe. Kostenlos für Spieleabende, Partys und Livestreams, und jede Strafe ist anpassbar.",
+    "fr": "Manche perdue ? Tournez la roue des gages pour un gage inoffensif. Gratuit pour les soirées jeux, les fêtes et les streams ; chaque gage est modifiable.",
+    "es": "¿Perdiste la ronda? Gira la ruleta de castigos para un castigo inofensivo. Gratis para noches de juegos, fiestas y directos, y todo es editable.",
+    "zh": "这一轮输了？转动惩罚转盘，领取一个无伤大雅的惩罚。免费用于游戏夜、派对和直播，每个惩罚都可以编辑。"
+  },
+  "tpl.punishment.heading": {
+    "it": "Ruota delle penitenze",
+    "de": "Strafrad",
+    "fr": "Roue des gages",
+    "es": "Ruleta de castigos",
+    "zh": "惩罚转盘"
+  },
+  "tpl.punishment.intro": {
+    "it": "Un gioco è più divertente quando perdere costa qualcosa. Metti qualche penitenza innocua sulla ruota e chi perde il turno gira per la sua, davanti a tutti, senza possibilità di trattare.",
+    "de": "Ein Spiel macht mehr Spaß, wenn Verlieren etwas kostet. Setz ein paar harmlose Strafen aufs Rad, und wer die Runde verliert, dreht für seine — vor allen, ohne Verhandlung.",
+    "fr": "Un jeu est plus drôle quand perdre coûte quelque chose. Mettez quelques gages inoffensifs sur la roue, et celui qui perd la manche tourne pour le sien, devant tout le monde, sans négociation.",
+    "es": "Un juego es más divertido cuando perder cuesta algo. Pon unos cuantos castigos inofensivos en la ruleta y quien pierda la ronda gira para el suyo, delante de todos y sin negociar.",
+    "zh": "输了要付出点代价，游戏才更好玩。在转盘上放几个无伤大雅的惩罚，谁输了这一轮就当着大家的面转出自己的惩罚，没得商量。"
+  },
+  "tpl.punishment.s1.heading": {
+    "it": "Tienila innocua",
+    "de": "Halte es harmlos",
+    "fr": "Restez inoffensif",
+    "es": "Que sea inofensivo",
+    "zh": "保持无害"
+  },
+  "tpl.punishment.s1.body": {
+    "it": "Le penitenze migliori sono imbarazzanti, non spiacevoli: una canzone, un balletto, un accento. La ruota di esempio si limita a queste, e tutto è adatto a una serata in famiglia.",
+    "de": "Die besten Strafen sind peinlich, nicht unangenehm: ein Lied, ein Tanz, ein Akzent. Das Beispielrad bleibt dabei, und alles darauf passt zu einem Familienabend.",
+    "fr": "Les meilleurs gages sont gênants, pas désagréables : une chanson, une danse, un accent. La roue proposée s’en tient là, et tout convient à une soirée en famille.",
+    "es": "Los mejores castigos son vergonzosos, no desagradables: una canción, un baile, un acento. La ruleta de ejemplo se queda en eso, y todo es apto para una noche en familia.",
+    "zh": "最好的惩罚是让人尴尬而不是难受：唱首歌、跳段舞、学个口音。示例转盘只包含这类内容，全都适合家庭聚会。"
+  },
+  "tpl.punishment.s2.heading": {
+    "it": "Un classico delle live",
+    "de": "Ein Stream-Favorit",
+    "fr": "Un classique des streams",
+    "es": "Un clásico de los directos",
+    "zh": "直播热门"
+  },
+  "tpl.punishment.s2.body": {
+    "it": "Gli streamer usano le ruote delle penitenze per le partite perse e le sfide della chat. Gira in diretta, e l’effetto fuoco o fuochi d’artificio trasforma ogni sconfitta in un momento.",
+    "de": "Streamer nutzen Strafräder für verlorene Matches und Chat-Challenges. Dreh live, und der Feuer- oder Feuerwerkseffekt macht aus jeder Niederlage einen Moment.",
+    "fr": "Les streamers utilisent des roues des gages pour les parties perdues et les défis du chat. Tournez en direct, et l’effet feu ou feu d’artifice transforme chaque défaite en moment fort.",
+    "es": "Los streamers usan ruletas de castigos para las partidas perdidas y los retos del chat. Gira en directo y el efecto de fuego o de fuegos artificiales convierte cada derrota en un momento.",
+    "zh": "主播们常用惩罚转盘来应对输掉的比赛和观众挑战。直播时转动，火焰或烟花特效让每次失败都成为名场面。"
+  },
+  "tpl.punishment.faq1.q": {
+    "it": "Posso aggiungere le mie penitenze?",
+    "de": "Kann ich eigene Strafen hinzufügen?",
+    "fr": "Puis-je ajouter mes propres gages ?",
+    "es": "¿Puedo añadir mis propios castigos?",
+    "zh": "可以添加自己的惩罚吗？"
+  },
+  "tpl.punishment.faq1.a": {
+    "it": "Sì. Copia la ruota e sostituisci qualsiasi penitenza; tienile abbastanza leggere perché tutti vogliano continuare a giocare.",
+    "de": "Ja. Kopiere das Rad und ersetze jede Strafe; halte sie leicht genug, dass alle weiterspielen wollen.",
+    "fr": "Oui. Copiez la roue et remplacez n’importe quel gage ; gardez-les assez légers pour que tout le monde ait envie de jouer.",
+    "es": "Sí. Copia la ruleta y cambia cualquier castigo; mantenlos lo bastante suaves para que todos quieran seguir jugando.",
+    "zh": "可以。复制转盘并替换任意惩罚；保持足够轻松，让每个人都还想继续玩。"
+  },
+  "tpl.punishment.faq2.q": {
+    "it": "Posso dare più probabilità a quelle leggere?",
+    "de": "Kann ich den milden Strafen bessere Chancen geben?",
+    "fr": "Puis-je donner plus de chances aux gages légers ?",
+    "es": "¿Puedo dar más probabilidad a los suaves?",
+    "zh": "可以让轻松的惩罚概率更高吗？"
+  },
+  "tpl.punishment.faq2.a": {
+    "it": "Aggiungi una penitenza più di una volta: avrà più spicchi e uscirà più spesso.",
+    "de": "Füge eine Strafe mehrmals hinzu, dann belegt sie mehr Felder und kommt öfter.",
+    "fr": "Ajoutez un gage plusieurs fois : il aura plus de parts et sortira plus souvent.",
+    "es": "Añade un castigo más de una vez: tendrá más porciones y saldrá más a menudo.",
+    "zh": "把某个惩罚多添加几次，它会占据更多扇区，出现得更频繁。"
+  },
+  "tpl.music-genre.tagline": {
+    "it": "Playlist e feste",
+    "de": "Playlists & Partys",
+    "fr": "Playlists et fêtes",
+    "es": "Playlists y fiestas",
+    "zh": "歌单与派对"
+  },
+  "tpl.music-genre.name": {
+    "it": "Genere musicale casuale",
+    "de": "Zufälliges Musikgenre",
+    "fr": "Genre musical au hasard",
+    "es": "Género musical aleatorio",
+    "zh": "随机音乐类型"
+  },
+  "tpl.music-genre.cardDesc": {
+    "it": "Gira per un genere e costruisci la playlist di stasera attorno a quello.",
+    "de": "Dreh für ein Genre und bau die heutige Playlist darum herum.",
+    "fr": "Tournez pour un genre et construisez la playlist du soir autour.",
+    "es": "Gira para un género y arma la playlist de esta noche a su alrededor.",
+    "zh": "转出一种音乐类型，围绕它打造今晚的歌单。"
+  },
+  "tpl.music-genre.entry1": {
+    "it": "Rock",
+    "de": "Rock",
+    "fr": "Rock",
+    "es": "Rock",
+    "zh": "摇滚"
+  },
+  "tpl.music-genre.entry2": {
+    "it": "Jazz",
+    "de": "Jazz",
+    "fr": "Jazz",
+    "es": "Jazz",
+    "zh": "爵士"
+  },
+  "tpl.music-genre.entry3": {
+    "it": "Hip hop",
+    "de": "Hip-Hop",
+    "fr": "Hip-hop",
+    "es": "Hip hop",
+    "zh": "嘻哈"
+  },
+  "tpl.music-genre.entry4": {
+    "it": "Classica",
+    "de": "Klassik",
+    "fr": "Classique",
+    "es": "Clásica",
+    "zh": "古典"
+  },
+  "tpl.music-genre.entry5": {
+    "it": "Reggae",
+    "de": "Reggae",
+    "fr": "Reggae",
+    "es": "Reggae",
+    "zh": "雷鬼"
+  },
+  "tpl.music-genre.entry6": {
+    "it": "Elettronica",
+    "de": "Elektronisch",
+    "fr": "Électro",
+    "es": "Electrónica",
+    "zh": "电子"
+  },
+  "tpl.music-genre.entry7": {
+    "it": "Country",
+    "de": "Country",
+    "fr": "Country",
+    "es": "Country",
+    "zh": "乡村"
+  },
+  "tpl.music-genre.entry8": {
+    "it": "Latina",
+    "de": "Latin",
+    "fr": "Latino",
+    "es": "Latina",
+    "zh": "拉丁"
+  },
+  "tpl.music-genre.centerText": {
+    "it": "MUSICA",
+    "de": "MUSIK",
+    "fr": "MUSIQUE",
+    "es": "MÚSICA",
+    "zh": "音乐"
+  },
+  "tpl.music-genre.title": {
+    "it": "Ruota dei generi musicali | Gira per un genere",
+    "de": "Musikgenre-Rad | Dreh für ein zufälliges Genre",
+    "fr": "Roue des genres musicaux | Tirez un genre au hasard",
+    "es": "Ruleta de géneros musicales | Gira para un género",
+    "zh": "随机音乐类型转盘 | 转出一种风格"
+  },
+  "tpl.music-genre.desc": {
+    "it": "Gira la ruota dei generi musicali per la playlist di stasera, il tema di una festa o qualcosa di nuovo da ascoltare. Gratis, e ogni genere è modificabile.",
+    "de": "Dreh das Musikgenre-Rad für die heutige Playlist, ein Partymotto oder etwas Neues zum Hören. Kostenlos, und jedes Genre ist anpassbar.",
+    "fr": "Tournez la roue des genres pour la playlist du soir, le thème d’une fête ou une nouvelle écoute. Gratuit, et chaque genre est modifiable.",
+    "es": "Gira la ruleta de géneros para la playlist de esta noche, el tema de una fiesta o algo nuevo que escuchar. Gratis, y cada género se puede editar.",
+    "zh": "转动音乐类型转盘，决定今晚的歌单、派对主题或新的聆听方向。免费，每种类型都可编辑。"
+  },
+  "tpl.music-genre.heading": {
+    "it": "Ruota dei generi musicali",
+    "de": "Musikgenre-Rad",
+    "fr": "Roue des genres musicaux",
+    "es": "Ruleta de géneros musicales",
+    "zh": "随机音乐类型转盘"
+  },
+  "tpl.music-genre.intro": {
+    "it": "Probabilmente i tuoi ascolti sono bloccati sugli stessi tre generi. Gira la ruota, dedica una serata a quello che esce e trova l’album che non avresti mai scelto da solo.",
+    "de": "Deine Hörgewohnheiten stecken wahrscheinlich in denselben drei Genres fest. Dreh das Rad, widme einen Abend dem, was es wählt, und entdecke das Album, das du selbst nie ausgesucht hättest.",
+    "fr": "Vos écoutes tournent sans doute autour des trois mêmes genres. Tournez la roue, consacrez une soirée à ce qu’elle choisit et trouvez l’album que vous n’auriez jamais choisi vous-même.",
+    "es": "Seguramente escuchas siempre los mismos tres géneros. Gira la ruleta, dedica una noche a lo que salga y encuentra el disco que nunca habrías elegido tú.",
+    "zh": "你的听歌习惯可能一直停留在那三种类型。转动转盘，花一个晚上听它选中的类型，发现一张你自己永远不会选的专辑。"
+  },
+  "tpl.music-genre.s1.heading": {
+    "it": "Playlist e feste",
+    "de": "Playlists und Partys",
+    "fr": "Playlists et fêtes",
+    "es": "Playlists y fiestas",
+    "zh": "歌单与派对"
+  },
+  "tpl.music-genre.s1.body": {
+    "it": "Gira per il tema della playlist di una festa, il genere del prossimo giro di karaoke o lo stile in cui una band deve suonare la prossima canzone.",
+    "de": "Dreh für das Motto einer Party-Playlist, das Genre der nächsten Karaoke-Runde oder den Stil, in dem eine Band den nächsten Song spielen muss.",
+    "fr": "Tournez pour le thème d’une playlist de fête, le genre du prochain tour de karaoké ou le style dans lequel un groupe doit jouer le prochain morceau.",
+    "es": "Gira para el tema de la playlist de una fiesta, el género de la próxima ronda de karaoke o el estilo en que una banda debe tocar la siguiente canción.",
+    "zh": "转出派对歌单的主题、下一轮卡拉OK的类型，或乐队下一首歌必须演奏的风格。"
+  },
+  "tpl.music-genre.s2.heading": {
+    "it": "Vai più a fondo",
+    "de": "Geh tiefer",
+    "fr": "Allez plus loin",
+    "es": "Profundiza",
+    "zh": "深入挖掘"
+  },
+  "tpl.music-genre.s2.body": {
+    "it": "Quando esce un genere, mostra accanto una seconda ruota con i suoi sottogeneri o decenni. Due giri ti portano da “jazz” a un posto dove non sei mai stato.",
+    "de": "Sobald ein Genre kommt, zeig daneben ein zweites Rad mit seinen Subgenres oder Jahrzehnten. Zwei Drehungen bringen dich von „Jazz“ an einen Ort, an dem du noch nie warst.",
+    "fr": "Quand un genre sort, affichez à côté une deuxième roue avec ses sous-genres ou ses décennies. Deux tours vous emmènent de « jazz » vers un endroit inconnu.",
+    "es": "Cuando salga un género, muestra al lado una segunda ruleta con sus subgéneros o décadas. Dos giros te llevan del “jazz” a un sitio donde nunca has estado.",
+    "zh": "转出一种类型后，在旁边放第二个转盘，列出它的子类型或年代。两次转动就能把你从“爵士”带到从未到过的地方。"
+  },
+  "tpl.music-genre.faq1.q": {
+    "it": "Posso aggiungere sottogeneri?",
+    "de": "Kann ich Subgenres hinzufügen?",
+    "fr": "Puis-je ajouter des sous-genres ?",
+    "es": "¿Puedo añadir subgéneros?",
+    "zh": "可以添加子类型吗？"
+  },
+  "tpl.music-genre.faq1.a": {
+    "it": "Sì. Copia la ruota e aggiungi tutti i generi o sottogeneri che vuoi.",
+    "de": "Ja. Kopiere das Rad und füge so viele Genres oder Subgenres hinzu, wie du willst.",
+    "fr": "Oui. Copiez la roue et ajoutez autant de genres ou sous-genres que vous voulez.",
+    "es": "Sí. Copia la ruleta y añade todos los géneros o subgéneros que quieras.",
+    "zh": "可以。复制转盘，想加多少类型或子类型都行。"
+  },
+  "tpl.music-genre.faq2.q": {
+    "it": "Posso aggiungere i miei suoni al giro?",
+    "de": "Kann ich eigene Sounds für die Drehung hinzufügen?",
+    "fr": "Puis-je ajouter mes propres sons au tirage ?",
+    "es": "¿Puedo añadir mis propios sonidos al giro?",
+    "zh": "可以为转动添加自己的音效吗？"
+  },
+  "tpl.music-genre.faq2.a": {
+    "it": "Sì. Puoi caricare i tuoi suoni per il giro e per il vincitore nelle impostazioni audio.",
+    "de": "Ja. In den Sound-Einstellungen kannst du eigene Sounds für Drehung und Gewinner hochladen.",
+    "fr": "Oui. Vous pouvez importer vos propres sons de rotation et de victoire dans les réglages audio.",
+    "es": "Sí. Puedes subir tus propios sonidos de giro y de ganador en los ajustes de sonido.",
+    "zh": "可以。你可以在声音设置中上传自己的转动音效和中奖音效。"
+  },
+  "tpl.halloween-costume.tagline": {
+    "it": "Halloween",
+    "de": "Halloween",
+    "fr": "Halloween",
+    "es": "Halloween",
+    "zh": "万圣节"
+  },
+  "tpl.halloween-costume.name": {
+    "it": "Costume di Halloween",
+    "de": "Halloween-Kostüm",
+    "fr": "Costume d’Halloween",
+    "es": "Disfraz de Halloween",
+    "zh": "万圣节装扮"
+  },
+  "tpl.halloween-costume.cardDesc": {
+    "it": "Ancora senza costume? Gira e travestiti da quello che sceglie la ruota.",
+    "de": "Noch kein Kostüm? Dreh und verkleide dich als das, was das Rad wählt.",
+    "fr": "Pas encore de costume ? Tournez et déguisez-vous en ce que la roue choisit.",
+    "es": "¿Aún sin disfraz? Gira y disfrázate de lo que elija la ruleta.",
+    "zh": "还没想好装扮？转一下，转到什么就扮什么。"
+  },
+  "tpl.halloween-costume.entry1": {
+    "it": "Vampiro",
+    "de": "Vampir",
+    "fr": "Vampire",
+    "es": "Vampiro",
+    "zh": "吸血鬼"
+  },
+  "tpl.halloween-costume.entry2": {
+    "it": "Strega",
+    "de": "Hexe",
+    "fr": "Sorcière",
+    "es": "Bruja",
+    "zh": "女巫"
+  },
+  "tpl.halloween-costume.entry3": {
+    "it": "Fantasma",
+    "de": "Gespenst",
+    "fr": "Fantôme",
+    "es": "Fantasma",
+    "zh": "幽灵"
+  },
+  "tpl.halloween-costume.entry4": {
+    "it": "Zombie",
+    "de": "Zombie",
+    "fr": "Zombie",
+    "es": "Zombi",
+    "zh": "僵尸"
+  },
+  "tpl.halloween-costume.entry5": {
+    "it": "Scheletro",
+    "de": "Skelett",
+    "fr": "Squelette",
+    "es": "Esqueleto",
+    "zh": "骷髅"
+  },
+  "tpl.halloween-costume.entry6": {
+    "it": "Pirata",
+    "de": "Pirat",
+    "fr": "Pirate",
+    "es": "Pirata",
+    "zh": "海盗"
+  },
+  "tpl.halloween-costume.entry7": {
+    "it": "Mummia",
+    "de": "Mumie",
+    "fr": "Momie",
+    "es": "Momia",
+    "zh": "木乃伊"
+  },
+  "tpl.halloween-costume.entry8": {
+    "it": "Lupo mannaro",
+    "de": "Werwolf",
+    "fr": "Loup-garou",
+    "es": "Hombre lobo",
+    "zh": "狼人"
+  },
+  "tpl.halloween-costume.centerText": {
+    "it": "BU",
+    "de": "BUH",
+    "fr": "BOUH",
+    "es": "BU",
+    "zh": "嘘"
+  },
+  "tpl.halloween-costume.title": {
+    "it": "Ruota dei costumi di Halloween | Idee a caso",
+    "de": "Halloween-Kostüm-Rad | Zufälliger Kostüm-Generator",
+    "fr": "Roue des costumes d’Halloween | Idées au hasard",
+    "es": "Ruleta de disfraces de Halloween | Ideas al azar",
+    "zh": "万圣节装扮转盘 | 随机服装生成器"
+  },
+  "tpl.halloween-costume.desc": {
+    "it": "Ancora senza costume di Halloween? Gira la ruota e travestiti da ciò che esce: vampiro, strega, zombie e altro. Gratis, con un effetto da brivido.",
+    "de": "Noch kein Halloween-Kostüm? Dreh das Rad und verkleide dich als das, was kommt: Vampir, Hexe, Zombie und mehr. Kostenlos, mit gruseligem Effekt.",
+    "fr": "Pas encore de costume d’Halloween ? Tournez la roue et déguisez-vous en ce qui sort : vampire, sorcière, zombie… Gratuit, avec un effet effrayant.",
+    "es": "¿Aún sin disfraz de Halloween? Gira la ruleta y disfrázate de lo que salga: vampiro, bruja, zombi y más. Gratis y con un efecto terrorífico.",
+    "zh": "还没有万圣节服装？转动转盘，转到什么就扮什么：吸血鬼、女巫、僵尸等等。免费，还有吓人的特效。"
+  },
+  "tpl.halloween-costume.heading": {
+    "it": "Ruota dei costumi di Halloween",
+    "de": "Halloween-Kostüm-Rad",
+    "fr": "Roue des costumes d’Halloween",
+    "es": "Ruleta de disfraces de Halloween",
+    "zh": "万圣节装扮转盘"
+  },
+  "tpl.halloween-costume.intro": {
+    "it": "Ogni ottobre la stessa domanda: da cosa ti travesti? Gira la ruota e il costume è deciso: l’unico problema rimasto è trovare abbastanza cartone.",
+    "de": "Jeden Oktober dieselbe Frage: Als was gehst du? Dreh das Rad, und das Kostüm steht fest — bleibt nur noch das Problem, genug Pappe aufzutreiben.",
+    "fr": "Chaque octobre, la même question : en quoi tu te déguises ? Tournez la roue et le costume est décidé ; reste seulement à trouver assez de carton.",
+    "es": "Cada octubre la misma pregunta: ¿de qué te disfrazas? Gira la ruleta y el disfraz está decidido; el único problema que queda es conseguir suficiente cartón.",
+    "zh": "每年十月都是同一个问题：你打算扮成什么？转动转盘，服装就定了——剩下的问题只是找够纸板。"
+  },
+  "tpl.halloween-costume.s1.heading": {
+    "it": "Costumi da fare in casa",
+    "de": "Kostüme zum Selbermachen",
+    "fr": "Des costumes faits maison",
+    "es": "Disfraces caseros",
+    "zh": "在家就能做的服装"
+  },
+  "tpl.halloween-costume.s1.body": {
+    "it": "Ogni costume della ruota di esempio si può mettere insieme con cose che quasi tutte le case hanno già: un lenzuolo, un po’ di trucco, una maglia a righe. Sostituiscili con i personaggi che la tua famiglia ama.",
+    "de": "Jedes Kostüm auf dem Beispielrad lässt sich aus Dingen zusammenstellen, die fast jeder zu Hause hat: ein Laken, etwas Schminke, ein gestreiftes Shirt. Ersetze sie durch die Figuren, die deine Familie liebt.",
+    "fr": "Chaque costume de la roue proposée se fabrique avec ce que la plupart des maisons ont déjà : un drap, un peu de maquillage, un haut rayé. Remplacez-les par les personnages que votre famille adore.",
+    "es": "Cada disfraz de la ruleta de ejemplo se puede montar con cosas que casi todas las casas ya tienen: una sábana, algo de maquillaje, una camiseta de rayas. Cámbialos por los personajes que le encantan a tu familia.",
+    "zh": "示例转盘上的每套服装都能用大多数家庭现有的东西拼凑出来：一条床单、一点化妆品、一件条纹上衣。换成你家人喜爱的角色吧。"
+  },
+  "tpl.halloween-costume.s2.heading": {
+    "it": "Costumi di gruppo e di famiglia",
+    "de": "Gruppen- und Familienkostüme",
+    "fr": "Costumes de groupe et de famille",
+    "es": "Disfraces de grupo y en familia",
+    "zh": "团体与家庭装扮"
+  },
+  "tpl.halloween-costume.s2.body": {
+    "it": "Gira una volta per un tema che tutto il gruppo segue, oppure lascia che ognuno giri il suo. Mostra due ruote affiancate per combinare un mostro con un tocco inaspettato.",
+    "de": "Dreh einmal für ein Motto, dem die ganze Gruppe folgt, oder lass jeden selbst drehen. Zeig zwei Räder nebeneinander, um ein Monster mit einer überraschenden Wendung zu kombinieren.",
+    "fr": "Tournez une fois pour un thème que tout le groupe suit, ou laissez chacun tourner le sien. Affichez deux roues côte à côte pour associer un monstre à une touche inattendue.",
+    "es": "Gira una vez para un tema que siga todo el grupo, o deja que cada uno gire el suyo. Muestra dos ruletas lado a lado para combinar un monstruo con un giro inesperado.",
+    "zh": "转一次决定整个团体共同的主题，或者让每个人各转各的。并排显示两个转盘，把怪物和意想不到的元素组合起来。"
+  },
+  "tpl.halloween-costume.faq1.q": {
+    "it": "È adatta ai bambini?",
+    "de": "Ist es für Kinder geeignet?",
+    "fr": "Est-ce adapté aux enfants ?",
+    "es": "¿Es apta para niños?",
+    "zh": "适合孩子吗？"
+  },
+  "tpl.halloween-costume.faq1.a": {
+    "it": "Sì. I costumi di esempio sono classici e adatti ai bambini, e ogni voce si può sostituire.",
+    "de": "Ja. Die Beispielkostüme sind Klassiker und kindgerecht, und jeder Eintrag lässt sich ersetzen.",
+    "fr": "Oui. Les costumes proposés sont classiques et adaptés aux enfants, et chaque entrée peut être remplacée.",
+    "es": "Sí. Los disfraces de ejemplo son clásicos y aptos para niños, y cada entrada se puede cambiar.",
+    "zh": "适合。示例服装都是经典且适合儿童的，每个条目都可以替换。"
+  },
+  "tpl.halloween-costume.faq2.q": {
+    "it": "Posso usarla per una festa di Halloween?",
+    "de": "Kann ich es für eine Halloween-Party nutzen?",
+    "fr": "Puis-je l’utiliser pour une fête d’Halloween ?",
+    "es": "¿Puedo usarla en una fiesta de Halloween?",
+    "zh": "可以在万圣节派对上用吗？"
+  },
+  "tpl.halloween-costume.faq2.a": {
+    "it": "Sì: gira per costumi, giochi o penitenze, e attiva l’effetto fuoco per la rivelazione.",
+    "de": "Ja — dreh für Kostüme, Spiele oder Strafen und schalte für die Enthüllung den Feuereffekt ein.",
+    "fr": "Oui : tournez pour des costumes, des jeux ou des gages, et activez l’effet feu pour la révélation.",
+    "es": "Sí: gira para disfraces, juegos o castigos, y activa el efecto de fuego para la revelación.",
+    "zh": "可以——转出服装、游戏或惩罚，并在揭晓时打开火焰特效。"
   }
 }
