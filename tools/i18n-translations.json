@@ -7055,5 +7055,943 @@
     "fr": "Impossible de créer le clip sur cet appareil.",
     "es": "No se pudo crear el clip en este dispositivo.",
     "zh": "无法在此设备上生成片段。"
+  },
+  "tpl.instagram-giveaway.tagline": {
+    "it": "Giveaway social",
+    "de": "Social-Gewinnspiele",
+    "fr": "Concours sur les réseaux",
+    "es": "Sorteos en redes",
+    "zh": "社交抽奖"
+  },
+  "tpl.instagram-giveaway.name": {
+    "it": "Estrazione giveaway Instagram",
+    "de": "Instagram-Gewinnspiel-Auslosung",
+    "fr": "Tirage au sort Instagram",
+    "es": "Sorteo de Instagram",
+    "zh": "Instagram 抽奖转盘"
+  },
+  "tpl.instagram-giveaway.cardDesc": {
+    "it": "Incolla gli username dai commenti e gira la ruota per il vincitore davanti alla telecamera.",
+    "de": "Füge die Nutzernamen aus den Kommentaren ein und dreh vor der Kamera für einen Gewinner.",
+    "fr": "Collez les noms d’utilisateur des commentaires et tournez la roue devant la caméra.",
+    "es": "Pega los nombres de usuario de los comentarios y gira para elegir al ganador ante la cámara.",
+    "zh": "粘贴评论中的用户名，当着镜头转动转盘选出中奖者。"
+  },
+  "tpl.instagram-giveaway.centerText": {
+    "it": "VINCI",
+    "de": "GEWINN",
+    "fr": "GAGNE",
+    "es": "GANA",
+    "zh": "中奖"
+  },
+  "tpl.instagram-giveaway.title": {
+    "it": "Estrazione giveaway Instagram | Vincitore dai commenti",
+    "de": "Instagram-Gewinnspiel auslosen | Gewinner aus Kommentaren",
+    "fr": "Tirage au sort Instagram | Gagnant parmi les commentaires",
+    "es": "Sorteo de Instagram | Ganador aleatorio de los comentarios",
+    "zh": "Instagram 抽奖转盘 | 从评论中随机抽取中奖者"
+  },
+  "tpl.instagram-giveaway.desc": {
+    "it": "Estrai il vincitore del tuo giveaway Instagram davanti a tutti: incolla gli username dai commenti, gira la ruota e condividi il risultato. Gratis.",
+    "de": "Lose den Gewinner deines Instagram-Gewinnspiels vor der Kamera aus: Nutzernamen einfügen, Rad drehen, Ergebnis teilen. Kostenlos, ohne Anmeldung.",
+    "fr": "Tirez le gagnant de votre concours Instagram devant tout le monde : collez les pseudos, tournez la roue, partagez le résultat. Gratuit, sans compte.",
+    "es": "Elige al ganador de tu sorteo de Instagram ante la cámara: pega los usuarios de los comentarios, gira la ruleta y comparte el resultado. Gratis.",
+    "zh": "当着镜头抽出 Instagram 抽奖的中奖者：粘贴评论中的用户名，转动转盘并分享结果。免费，无需注册。"
+  },
+  "tpl.instagram-giveaway.heading": {
+    "it": "Estrazione giveaway Instagram",
+    "de": "Instagram-Gewinnspiel auslosen",
+    "fr": "Tirage au sort Instagram",
+    "es": "Sorteo de Instagram",
+    "zh": "Instagram 抽奖转盘"
+  },
+  "tpl.instagram-giveaway.intro": {
+    "it": "I follower si fidano di un’estrazione che possono vedere. Incolla gli username di chi ha partecipato, gira la ruota in una storia o in diretta e il vincitore viene scelto davanti a chi ha giocato. Il giro usa la fonte casuale crittografica del browser, quindi nessuno — nemmeno tu — può pilotarlo.",
+    "de": "Follower vertrauen einer Auslosung, die sie sehen können. Füge die Nutzernamen aller Teilnehmer ein, dreh das Rad in einer Story oder einem Live, und der Gewinner wird vor den Augen aller gezogen. Die Drehung nutzt die kryptografische Zufallsquelle deines Browsers — niemand, auch du nicht, kann sie steuern.",
+    "fr": "Vos abonnés font confiance à un tirage qu’ils peuvent voir. Collez les pseudos de tous les participants, tournez la roue en story ou en live, et le gagnant est désigné devant ceux qui ont joué. La roue utilise la source aléatoire cryptographique de votre navigateur : personne, pas même vous, ne peut l’orienter.",
+    "es": "Tus seguidores confían en un sorteo que pueden ver. Pega los usuarios de todos los participantes, gira la ruleta en una historia o en directo y el ganador sale delante de quienes participaron. El giro usa la fuente aleatoria criptográfica de tu navegador, así que nadie —ni tú— puede dirigirlo.",
+    "zh": "粉丝信任他们亲眼看到的抽奖。粘贴所有参与者的用户名，在快拍或直播中转动转盘，中奖者就在所有参与者面前产生。转盘使用浏览器的加密随机源，任何人——包括你自己——都无法操控结果。"
+  },
+  "tpl.instagram-giveaway.s1.heading": {
+    "it": "Dai commenti alla ruota in un minuto",
+    "de": "Von den Kommentaren zum Rad in einer Minute",
+    "fr": "Des commentaires à la roue en une minute",
+    "es": "De los comentarios a la ruleta en un minuto",
+    "zh": "一分钟从评论到转盘"
+  },
+  "tpl.instagram-giveaway.s1.body": {
+    "it": "Copia gli username delle partecipazioni valide, uno per riga, e incolla tutta la lista nella ruota in un colpo solo. Chi ha guadagnato partecipazioni extra — un tag, una condivisione — va semplicemente in lista più volte e ottiene altrettanti spicchi. La stessa lista funziona per giveaway su TikTok, Facebook o YouTube.",
+    "de": "Kopiere die Nutzernamen der gültigen Teilnahmen, einen pro Zeile, und füge die ganze Liste auf einmal ins Rad ein. Wer Zusatzlose verdient hat — eine Markierung, ein Teilen —, steht einfach mehrmals auf der Liste und bekommt entsprechend viele Felder. Dieselbe Liste funktioniert für Gewinnspiele auf TikTok, Facebook oder YouTube.",
+    "fr": "Copiez les pseudos des participations valides, un par ligne, et collez toute la liste d’un coup dans la roue. Quelqu’un qui a gagné des chances supplémentaires — une identification, un partage — figure simplement plusieurs fois et obtient autant de parts. La même liste fonctionne pour les concours TikTok, Facebook ou YouTube.",
+    "es": "Copia los usuarios de las participaciones válidas, uno por línea, y pega la lista entera en la ruleta de una vez. Quien haya ganado participaciones extra —una mención, un compartido— simplemente aparece varias veces y obtiene esa cantidad de porciones. La misma lista sirve para sorteos en TikTok, Facebook o YouTube.",
+    "zh": "复制有效参与者的用户名，每行一个，一次性粘贴到转盘中。获得额外抽奖机会的人（标记好友、分享）只需在列表中多出现几次，就会得到相应数量的扇区。同样的列表也适用于 TikTok、Facebook 或 YouTube 抽奖。"
+  },
+  "tpl.instagram-giveaway.s2.heading": {
+    "it": "Una prova da pubblicare",
+    "de": "Ein Beweis zum Posten",
+    "fr": "Une preuve à publier",
+    "es": "Una prueba para publicar",
+    "zh": "可以发布的证明"
+  },
+  "tpl.instagram-giveaway.s2.body": {
+    "it": "Registra lo schermo mentre giri, oppure lascia fare a Wheelr: dalla scheda del vincitore puoi salvare un’immagine del risultato o una breve clip verticale che ripete il giro, pronte per una storia o un post che annuncia il vincitore.",
+    "de": "Nimm deinen Bildschirm beim Drehen auf oder überlass es Wheelr: Die Gewinnerkarte speichert ein Bild des Ergebnisses oder ein kurzes Hochkantvideo der Drehung, fertig für eine Story oder einen Post mit dem Gewinner.",
+    "fr": "Filmez votre écran pendant le tirage, ou laissez Wheelr s’en charger : la carte du gagnant enregistre une image du résultat ou une courte vidéo verticale qui rejoue le tour, prête pour une story ou un post.",
+    "es": "Graba la pantalla mientras giras, o deja que lo haga Wheelr: la tarjeta del ganador guarda una imagen del resultado o un vídeo vertical corto que repite el giro, listos para una historia o una publicación.",
+    "zh": "转动时录屏，或者交给 Wheelr：中奖卡片可以保存结果图片，或一段重放转动过程的竖屏短视频，直接用于快拍或公布中奖者的帖子。"
+  },
+  "tpl.instagram-giveaway.faq1.q": {
+    "it": "Wheelr legge i commenti da Instagram in automatico?",
+    "de": "Liest Wheelr die Kommentare automatisch aus Instagram aus?",
+    "fr": "Wheelr récupère-t-il automatiquement les commentaires Instagram ?",
+    "es": "¿Wheelr lee los comentarios de Instagram automáticamente?",
+    "zh": "Wheelr 会自动读取 Instagram 评论吗？"
+  },
+  "tpl.instagram-giveaway.faq1.a": {
+    "it": "No. Wheelr non si collega mai al tuo account Instagram: gli username li incolli tu, e così puoi anche togliere prima dell’estrazione chi non ha rispettato le regole. Wheelr non è affiliato a Instagram né a Meta.",
+    "de": "Nein. Wheelr verbindet sich nie mit deinem Instagram-Konto: Du fügst die Nutzernamen selbst ein und kannst so vor der Auslosung Teilnahmen entfernen, die gegen die Regeln verstoßen. Wheelr ist nicht mit Instagram oder Meta verbunden.",
+    "fr": "Non. Wheelr ne se connecte jamais à votre compte Instagram : vous collez les pseudos vous-même, ce qui permet aussi d’écarter avant le tirage les participations non conformes. Wheelr n’est pas affilié à Instagram ni à Meta.",
+    "es": "No. Wheelr nunca se conecta a tu cuenta de Instagram: tú pegas los usuarios, lo que también te permite quitar antes del sorteo a quien no cumplió las reglas. Wheelr no está afiliado a Instagram ni a Meta.",
+    "zh": "不会。Wheelr 从不连接你的 Instagram 账户：用户名由你自己粘贴，这样你也可以在抽奖前移除违规的参与者。Wheelr 与 Instagram 或 Meta 无关联。"
+  },
+  "tpl.instagram-giveaway.faq2.q": {
+    "it": "Come estraggo più di un vincitore?",
+    "de": "Wie lose ich mehr als einen Gewinner aus?",
+    "fr": "Comment tirer plusieurs gagnants ?",
+    "es": "¿Cómo elijo a más de un ganador?",
+    "zh": "如何抽出多名中奖者？"
+  },
+  "tpl.instagram-giveaway.faq2.a": {
+    "it": "Dopo ogni giro togli il vincitore dalla ruota e gira di nuovo. Ogni vincitore finisce nella lista dei vincitori, così il risultato completo resta sullo schermo.",
+    "de": "Entferne nach jeder Drehung den Gewinner vom Rad und dreh erneut. Jeder Gewinner landet in der Gewinnerliste, sodass das vollständige Ergebnis auf dem Bildschirm bleibt.",
+    "fr": "Après chaque tour, retirez le gagnant de la roue et relancez. Chaque gagnant est ajouté à la liste des gagnants, le résultat complet reste donc à l’écran.",
+    "es": "Después de cada giro, quita al ganador de la ruleta y vuelve a girar. Cada ganador se añade a la lista de ganadores, así que el resultado completo queda en pantalla.",
+    "zh": "每次转动后，将中奖者从转盘中移除再转一次。每位中奖者都会加入中奖名单，完整结果会一直显示在屏幕上。"
+  },
+  "tpl.who-pays.tagline": {
+    "it": "Caffè, pranzo e conto",
+    "de": "Kaffee, Mittagessen & Rechnung",
+    "fr": "Café, déjeuner et addition",
+    "es": "Café, comida y la cuenta",
+    "zh": "咖啡、午餐和账单"
+  },
+  "tpl.who-pays.name": {
+    "it": "Chi paga?",
+    "de": "Wer zahlt?",
+    "fr": "Qui paie ?",
+    "es": "¿Quién paga?",
+    "zh": "谁买单？"
+  },
+  "tpl.who-pays.cardDesc": {
+    "it": "Giro di caffè, conto della cena, prossima pizza: la ruota sceglie chi paga.",
+    "de": "Kaffeerunde, Restaurantrechnung, nächste Pizza: Das Rad bestimmt, wer zahlt.",
+    "fr": "Tournée de cafés, addition du dîner, prochaine pizza : la roue choisit qui paie.",
+    "es": "Ronda de cafés, cuenta de la cena, próxima pizza: la ruleta elige quién paga.",
+    "zh": "一轮咖啡、晚餐账单、下一次披萨：由转盘决定谁买单。"
+  },
+  "tpl.who-pays.centerText": {
+    "it": "PAGA",
+    "de": "ZAHLT",
+    "fr": "PAIE",
+    "es": "PAGA",
+    "zh": "买单"
+  },
+  "tpl.who-pays.title": {
+    "it": "Ruota chi paga | Decidi a caso chi paga il conto",
+    "de": "Wer zahlt? Rad | Zufällig bestimmen, wer die Rechnung zahlt",
+    "fr": "Roue qui paie | Tirer au sort qui paie l’addition",
+    "es": "Ruleta quién paga | Decide al azar quién paga la cuenta",
+    "zh": "谁买单转盘 | 随机决定谁付账单"
+  },
+  "tpl.who-pays.desc": {
+    "it": "Gira la ruota del chi paga per decidere il giro di caffè o il conto della cena. Gratis, giusta e veloce: nessuno discute un giro che hanno visto tutti.",
+    "de": "Dreh das Wer-zahlt-Rad für die Kaffeerunde oder die Rechnung. Kostenlos, fair und schnell — einer Drehung, die alle gesehen haben, widerspricht keiner.",
+    "fr": "Tournez la roue pour décider qui paie les cafés ou l’addition. Gratuit, équitable et rapide : personne ne conteste un tirage que tout le monde a vu.",
+    "es": "Gira la ruleta para decidir quién paga los cafés o la cuenta de la cena. Gratis, justa y rápida: nadie discute un giro que todos han visto.",
+    "zh": "转动“谁买单”转盘，决定谁请这轮咖啡或付晚餐账单。免费、公平、快速——大家都看到的结果，没人能争辩。"
+  },
+  "tpl.who-pays.heading": {
+    "it": "Ruota “Chi paga?”",
+    "de": "Wer zahlt? – das Rad",
+    "fr": "Roue « Qui paie ? »",
+    "es": "Ruleta “¿Quién paga?”",
+    "zh": "“谁买单？”转盘"
+  },
+  "tpl.who-pays.intro": {
+    "it": "Il giro di caffè, la pizza da ordinare, il conto a fine serata: qualcuno deve pagare, e nessuno vuole essere quello che propone di farlo lui. Metti il nome di tutti sulla ruota, girala al tavolo e la colpa se la prende la ruota.",
+    "de": "Die Kaffeerunde, die Pizzabestellung, die Rechnung am Ende des Abends: Irgendwer muss zahlen, und niemand will derjenige sein, der sich selbst vorschlägt. Setz alle Namen aufs Rad, dreh es am Tisch, und das Rad ist schuld.",
+    "fr": "La tournée de cafés, la commande de pizzas, l’addition en fin de soirée : quelqu’un doit payer, et personne ne veut être celui qui se propose. Mettez tous les noms sur la roue, tournez-la à table, et c’est la roue qui prend la responsabilité.",
+    "es": "La ronda de cafés, el pedido de pizza, la cuenta al final de la noche: alguien tiene que pagar y nadie quiere ser quien se ofrezca. Pon el nombre de todos en la ruleta, gírala en la mesa y la culpa es de la ruleta.",
+    "zh": "一轮咖啡、点披萨、夜晚结束时的账单：总得有人付钱，但没人想主动说该自己付。把所有人的名字放上转盘，在桌上转一下，责任就交给转盘了。"
+  },
+  "tpl.who-pays.s1.heading": {
+    "it": "Giusto perché l’hanno visto tutti",
+    "de": "Fair, weil alle zugesehen haben",
+    "fr": "Équitable, car tout le monde a vu",
+    "es": "Justo porque todos lo vieron",
+    "zh": "人人都看到，所以公平"
+  },
+  "tpl.who-pays.s1.body": {
+    "it": "Un giro sul telefono in mezzo al tavolo è una decisione che tutto il gruppo ha visto nascere. Nessuna scelta nascosta e nessun “scegli sempre me”: il risultato arriva dalla fonte casuale crittografica del browser e nessuno può pilotarlo.",
+    "de": "Eine Drehung auf dem Handy in der Tischmitte ist eine Entscheidung, die die ganze Gruppe entstehen sah. Keine versteckte Wahl, kein „immer triffst du mich“: Das Ergebnis kommt aus der kryptografischen Zufallsquelle deines Browsers, und niemand kann es steuern.",
+    "fr": "Un tour sur un téléphone au milieu de la table, c’est une décision que tout le groupe a vue se prendre. Aucun choix caché, aucun « c’est toujours moi » : le résultat vient de la source aléatoire cryptographique du navigateur et personne ne peut l’orienter.",
+    "es": "Un giro en un móvil en el centro de la mesa es una decisión que todo el grupo vio tomar. Sin elección oculta ni “siempre me toca a mí”: el resultado sale de la fuente aleatoria criptográfica del navegador y nadie puede dirigirlo.",
+    "zh": "在桌子中间的手机上转一下，整个群体都亲眼看到了这个决定。没有暗箱操作，也没有“怎么又是我”：结果来自浏览器的加密随机源，没有人能操控。"
+  },
+  "tpl.who-pays.s2.heading": {
+    "it": "Trasformala in un turno",
+    "de": "Mach eine Reihenfolge daraus",
+    "fr": "Faites-en un roulement",
+    "es": "Conviértela en un turno",
+    "zh": "变成轮流制"
+  },
+  "tpl.who-pays.s2.body": {
+    "it": "Per il caffè in ufficio, togli chi ha pagato dopo ogni giro. La ruota si riduce finché tutti hanno fatto il loro turno, poi rimetti i nomi e si ricomincia: un turno casuale che nessuno deve ricordarsi.",
+    "de": "Für die Kaffeerunde im Büro entfernst du nach jeder Drehung, wer gezahlt hat. Das Rad schrumpft, bis jeder einmal dran war, dann kommen die Namen zurück und es geht von vorn los — eine zufällige Reihenfolge, die sich niemand merken muss.",
+    "fr": "Pour le café au bureau, retirez celui qui a payé après chaque tour. La roue rétrécit jusqu’à ce que chacun soit passé, puis vous remettez les noms et recommencez : un roulement aléatoire que personne n’a à suivre.",
+    "es": "Para el café de la oficina, quita a quien pagó después de cada giro. La ruleta se reduce hasta que todos han pagado una vez; luego vuelves a poner los nombres y se empieza de nuevo: un turno aleatorio que nadie tiene que recordar.",
+    "zh": "办公室买咖啡时，每次转动后移除已付钱的人。转盘越来越小，直到每个人都轮过一次，然后把名字放回去重新开始——一个无需任何人记录的随机轮值。"
+  },
+  "tpl.who-pays.faq1.q": {
+    "it": "La stessa persona può perdere due volte di fila?",
+    "de": "Kann dieselbe Person zweimal hintereinander verlieren?",
+    "fr": "La même personne peut-elle perdre deux fois de suite ?",
+    "es": "¿La misma persona puede perder dos veces seguidas?",
+    "zh": "同一个人会连续两次输吗？"
+  },
+  "tpl.who-pays.faq1.a": {
+    "it": "Sì, se resta sulla ruota: ogni giro è indipendente. Se preferisci un turno, togli il vincitore dopo ogni giro così nessuno paga di nuovo finché non hanno pagato tutti.",
+    "de": "Ja, wenn sie auf dem Rad bleibt — jede Drehung ist unabhängig. Wenn du lieber eine Reihenfolge willst, entferne den Gewinner nach jeder Drehung, damit niemand erneut zahlt, bevor alle dran waren.",
+    "fr": "Oui, si elle reste sur la roue : chaque tour est indépendant. Pour un roulement, retirez le gagnant après chaque tour afin que personne ne repaie avant que tout le monde soit passé.",
+    "es": "Sí, si sigue en la ruleta: cada giro es independiente. Si prefieres un turno, quita al ganador después de cada giro para que nadie vuelva a pagar hasta que hayan pagado todos.",
+    "zh": "会的，只要这个人还在转盘上——每次转动都是独立的。如果想轮流，每次转动后移除中奖者，这样在所有人都付过之前没人会再付。"
+  },
+  "tpl.who-pays.faq2.q": {
+    "it": "Funziona offline, al ristorante?",
+    "de": "Funktioniert es offline, im Restaurant?",
+    "fr": "Est-ce que ça marche hors ligne, au restaurant ?",
+    "es": "¿Funciona sin conexión, en el restaurante?",
+    "zh": "在餐厅没网时也能用吗？"
+  },
+  "tpl.who-pays.faq2.a": {
+    "it": "L’app Android funziona senza connessione. Sul web la pagina continua a funzionare una volta caricata, e la ruota resta salvata sul dispositivo.",
+    "de": "Die Android-App funktioniert ohne Verbindung. Im Web läuft die Seite weiter, sobald sie geladen ist, und dein Rad bleibt auf dem Gerät gespeichert.",
+    "fr": "L’application Android fonctionne sans connexion. Sur le web, la page continue de fonctionner une fois chargée, et votre roue reste enregistrée sur l’appareil.",
+    "es": "La app de Android funciona sin conexión. En la web, la página sigue funcionando una vez cargada, y tu ruleta queda guardada en el dispositivo.",
+    "zh": "Android 应用无需联网即可使用。在网页上，页面加载后即可继续使用，转盘会保存在你的设备上。"
+  },
+  "tpl.classroom-rewards.tagline": {
+    "it": "Insegnanti e classi",
+    "de": "Lehrkräfte & Klassen",
+    "fr": "Enseignants et classes",
+    "es": "Profes y aulas",
+    "zh": "教师与课堂"
+  },
+  "tpl.classroom-rewards.name": {
+    "it": "Ruota dei premi per la classe",
+    "de": "Belohnungsrad fürs Klassenzimmer",
+    "fr": "Roue des récompenses de classe",
+    "es": "Ruleta de premios para clase",
+    "zh": "课堂奖励转盘"
+  },
+  "tpl.classroom-rewards.cardDesc": {
+    "it": "Premi a costo zero, scelti da un giro che tutta la classe guarda.",
+    "de": "Belohnungen, die nichts kosten, ausgewählt von einer Drehung, die die ganze Klasse sieht.",
+    "fr": "Des récompenses gratuites, choisies par un tour que toute la classe regarde.",
+    "es": "Premios que no cuestan nada, elegidos con un giro que ve toda la clase.",
+    "zh": "零成本的奖励，由全班一起观看的转盘选出。"
+  },
+  "tpl.classroom-rewards.entry1": {
+    "it": "Salta un compito",
+    "de": "Hausaufgaben-Joker",
+    "fr": "Dispense de devoir",
+    "es": "Pase sin deberes",
+    "zh": "免作业券"
+  },
+  "tpl.classroom-rewards.entry2": {
+    "it": "Scegli il posto",
+    "de": "Sitzplatz wählen",
+    "fr": "Choisir sa place",
+    "es": "Elige tu sitio",
+    "zh": "自选座位"
+  },
+  "tpl.classroom-rewards.entry3": {
+    "it": "DJ della classe",
+    "de": "Klassen-DJ",
+    "fr": "DJ de la classe",
+    "es": "DJ de la clase",
+    "zh": "班级 DJ"
+  },
+  "tpl.classroom-rewards.entry4": {
+    "it": "5 minuti extra di ricreazione",
+    "de": "5 Minuten mehr Pause",
+    "fr": "5 minutes de récré en plus",
+    "es": "5 minutos más de recreo",
+    "zh": "多休息 5 分钟"
+  },
+  "tpl.classroom-rewards.entry5": {
+    "it": "Aiutante del prof",
+    "de": "Lehrerhelfer",
+    "fr": "Assistant du prof",
+    "es": "Ayudante del profe",
+    "zh": "老师小助手"
+  },
+  "tpl.classroom-rewards.entry6": {
+    "it": "Adesivo",
+    "de": "Sticker",
+    "fr": "Autocollant",
+    "es": "Pegatina",
+    "zh": "贴纸"
+  },
+  "tpl.classroom-rewards.entry7": {
+    "it": "Scegli il gioco della classe",
+    "de": "Klassenspiel aussuchen",
+    "fr": "Choisir le jeu de la classe",
+    "es": "Elige el juego de la clase",
+    "zh": "选择班级游戏"
+  },
+  "tpl.classroom-rewards.entry8": {
+    "it": "Siediti alla cattedra",
+    "de": "Am Lehrerpult sitzen",
+    "fr": "S’asseoir au bureau du prof",
+    "es": "Siéntate en la mesa del profe",
+    "zh": "坐在讲台上"
+  },
+  "tpl.classroom-rewards.centerText": {
+    "it": "STELLA",
+    "de": "STERN",
+    "fr": "ÉTOILE",
+    "es": "ESTRELLA",
+    "zh": "星星"
+  },
+  "tpl.classroom-rewards.title": {
+    "it": "Ruota dei premi per la classe | Gratis per insegnanti",
+    "de": "Belohnungsrad fürs Klassenzimmer | Kostenlos für Lehrkräfte",
+    "fr": "Roue des récompenses de classe | Gratuite pour enseignants",
+    "es": "Ruleta de premios para clase | Gratis para docentes",
+    "zh": "课堂奖励转盘 | 教师免费奖励转盘"
+  },
+  "tpl.classroom-rewards.desc": {
+    "it": "Una ruota dei premi gratuita per insegnanti: ricompense a costo zero, estratte con un giro alla lavagna. Modifica i premi e riusa la ruota tutto l’anno.",
+    "de": "Kostenloses Belohnungsrad für Lehrkräfte: Belohnungen ohne Kosten, per Drehung an der Tafel gewählt. Preise anpassen und das Rad das ganze Jahr nutzen.",
+    "fr": "Roue des récompenses gratuite pour enseignants : des privilèges qui ne coûtent rien, tirés au tableau. Modifiez les lots et gardez-la toute l’année.",
+    "es": "Una ruleta de premios gratis para docentes: recompensas sin coste, elegidas con un giro en la pizarra. Edita los premios y reutiliza la ruleta todo el año.",
+    "zh": "免费的课堂奖励转盘：零成本奖励，在黑板上转一下选出。可编辑奖品，全年重复使用。"
+  },
+  "tpl.classroom-rewards.heading": {
+    "it": "Ruota dei premi per la classe",
+    "de": "Belohnungsrad fürs Klassenzimmer",
+    "fr": "Roue des récompenses de classe",
+    "es": "Ruleta de premios para clase",
+    "zh": "课堂奖励转盘"
+  },
+  "tpl.classroom-rewards.intro": {
+    "it": "Un premio è più emozionante quando nessuno sa quale arriverà. Metti sulla ruota i privilegi preferiti della classe, proiettala sulla lavagna e fai girare lo studente che se l’è guadagnato. Tutta la classe guarda, e il premio non costa nulla.",
+    "de": "Eine Belohnung ist spannender, wenn niemand weiß, welche kommt. Setz die Lieblingsprivilegien der Klasse aufs Rad, projizier es an die Tafel und lass das Kind drehen, das es sich verdient hat. Die ganze Klasse schaut zu, und der Preis kostet nichts.",
+    "fr": "Une récompense est plus excitante quand personne ne sait laquelle va tomber. Mettez les privilèges préférés de la classe sur la roue, projetez-la au tableau et laissez l’élève qui l’a méritée la faire tourner. Toute la classe regarde, et le lot ne coûte rien.",
+    "es": "Un premio emociona más cuando nadie sabe cuál va a tocar. Pon en la ruleta los privilegios favoritos de la clase, proyéctala en la pizarra y deja que gire el alumno que se lo ha ganado. Toda la clase mira y el premio no cuesta nada.",
+    "zh": "当没人知道会得到哪个奖励时，奖励才更令人兴奋。把全班最喜欢的特权放上转盘，投影到黑板上，让赢得奖励的学生来转。全班一起看，而奖品一分钱都不用花。"
+  },
+  "tpl.classroom-rewards.s1.heading": {
+    "it": "Premi che non costano nulla",
+    "de": "Belohnungen, die nichts kosten",
+    "fr": "Des récompenses qui ne coûtent rien",
+    "es": "Premios que no cuestan nada",
+    "zh": "零成本的奖励"
+  },
+  "tpl.classroom-rewards.s1.body": {
+    "it": "Scegliere il gioco della classe, fare il DJ per la lezione, sedersi alla cattedra: i privilegi funzionano quanto i premi e non finiscono mai. Sostituisci i premi di esempio con quelli che la tua classe chiede davvero: la ruota è tua da modificare.",
+    "de": "Das Klassenspiel aussuchen, DJ für eine Stunde sein, am Lehrerpult sitzen: Privilegien wirken so gut wie Preise und gehen nie aus. Ersetze die Beispiele durch das, was deine Klasse wirklich will — das Rad kannst du frei bearbeiten.",
+    "fr": "Choisir le jeu de la classe, être DJ pendant le cours, s’asseoir au bureau du prof : les privilèges motivent autant que les cadeaux et ne s’épuisent jamais. Remplacez les exemples par ce que votre classe réclame vraiment ; la roue est à vous.",
+    "es": "Elegir el juego de la clase, ser DJ durante la lección, sentarse en la mesa del profe: los privilegios funcionan igual que los regalos y nunca se acaban. Cambia los ejemplos por lo que tu clase pide de verdad; la ruleta es tuya.",
+    "zh": "选择班级游戏、在课上当 DJ、坐在讲台上：特权和奖品一样有效，而且永远用不完。把示例奖励换成你的班级真正想要的——转盘由你随意编辑。"
+  },
+  "tpl.classroom-rewards.s2.heading": {
+    "it": "Una ruota per ogni classe",
+    "de": "Ein Rad für jede Klasse",
+    "fr": "Une roue par classe",
+    "es": "Una ruleta para cada clase",
+    "zh": "每个班一个转盘"
+  },
+  "tpl.classroom-rewards.s2.body": {
+    "it": "Tieni una ruota separata per ogni classe o fascia d’età; restano tutte salvate nel browser, e con l’accesso si sincronizzano tra il computer della classe e il tuo. Nulla viene condiviso se non pubblichi un link.",
+    "de": "Leg für jede Klasse oder Altersstufe ein eigenes Rad an; alle bleiben im Browser gespeichert, und mit einer Anmeldung werden sie zwischen dem Klassenrechner und deinem eigenen synchronisiert. Nichts wird geteilt, solange du keinen Link veröffentlichst.",
+    "fr": "Gardez une roue par classe ou par tranche d’âge ; elles restent toutes enregistrées dans le navigateur, et une connexion les synchronise entre l’ordinateur de la classe et le vôtre. Rien n’est partagé tant que vous ne publiez pas de lien.",
+    "es": "Ten una ruleta distinta para cada clase o edad; todas quedan guardadas en el navegador y, si inicias sesión, se sincronizan entre el ordenador del aula y el tuyo. No se comparte nada a menos que publiques un enlace.",
+    "zh": "为每个班级或年龄段单独保存一个转盘；它们都保存在浏览器中，登录后可在教室电脑和你自己的电脑之间同步。除非你发布链接，否则不会共享任何内容。"
+  },
+  "tpl.classroom-rewards.faq1.q": {
+    "it": "Gli studenti hanno bisogno di un account?",
+    "de": "Brauchen Schüler ein Konto?",
+    "fr": "Les élèves ont-ils besoin d’un compte ?",
+    "es": "¿Los alumnos necesitan una cuenta?",
+    "zh": "学生需要注册账户吗？"
+  },
+  "tpl.classroom-rewards.faq1.a": {
+    "it": "No. La ruota gira nel browser dell’insegnante senza account e senza dati degli studenti. Per farla aprire agli studenti sui loro dispositivi, pubblicala come link in sola lettura.",
+    "de": "Nein. Das Rad läuft im Browser der Lehrkraft, ohne Konto und ohne Schülerdaten. Damit Schüler es auf eigenen Geräten öffnen können, veröffentliche es als schreibgeschützten Link.",
+    "fr": "Non. La roue tourne dans le navigateur de l’enseignant, sans compte ni données d’élèves. Pour que les élèves l’ouvrent sur leurs appareils, publiez-la en lien en lecture seule.",
+    "es": "No. La ruleta funciona en el navegador del docente, sin cuentas ni datos de alumnos. Para que los alumnos la abran en sus dispositivos, publícala como enlace de solo lectura.",
+    "zh": "不需要。转盘在老师的浏览器中运行，无需账户，也不涉及学生数据。若想让学生在自己的设备上打开，可将其发布为只读链接。"
+  },
+  "tpl.classroom-rewards.faq2.q": {
+    "it": "Posso rendere alcuni premi più rari di altri?",
+    "de": "Kann ich manche Belohnungen seltener machen?",
+    "fr": "Puis-je rendre certaines récompenses plus rares ?",
+    "es": "¿Puedo hacer que algunos premios sean más raros?",
+    "zh": "可以让某些奖励更稀有吗？"
+  },
+  "tpl.classroom-rewards.faq2.a": {
+    "it": "Aggiungi più volte i premi comuni: occupano più spicchi e quindi escono più spesso. Un premio che compare una sola volta è quello raro.",
+    "de": "Füge die häufigen Belohnungen mehrmals hinzu: Sie belegen mehr Felder und kommen öfter. Eine Belohnung, die nur einmal vorkommt, ist die seltene.",
+    "fr": "Ajoutez plusieurs fois les récompenses courantes : elles occupent plus de parts et sortent plus souvent. Celle qui n’apparaît qu’une fois est la rare.",
+    "es": "Añade varias veces los premios comunes: ocupan más porciones y salen más a menudo. El premio que aparece solo una vez es el raro.",
+    "zh": "把常见奖励多添加几次，它们会占据更多扇区，出现得更频繁。只出现一次的奖励就是稀有奖励。"
+  },
+  "tpl.fantasy-draft.tagline": {
+    "it": "Leghe fantasy",
+    "de": "Fantasy-Ligen",
+    "fr": "Ligues fantasy",
+    "es": "Ligas fantasy",
+    "zh": "梦幻联赛"
+  },
+  "tpl.fantasy-draft.name": {
+    "it": "Ordine del draft fantasy",
+    "de": "Fantasy-Draft-Reihenfolge",
+    "fr": "Ordre de draft fantasy",
+    "es": "Orden del draft fantasy",
+    "zh": "梦幻选秀顺序"
+  },
+  "tpl.fantasy-draft.cardDesc": {
+    "it": "Decidi l’ordine del draft della lega dal vivo, davanti a tutti gli allenatori.",
+    "de": "Leg die Draft-Reihenfolge deiner Liga live fest, vor allen Managern.",
+    "fr": "Fixez l’ordre de draft de votre ligue en direct, devant tous les managers.",
+    "es": "Decide el orden del draft de tu liga en directo, delante de todos los mánagers.",
+    "zh": "当着所有经理的面，现场决定联赛的选秀顺序。"
+  },
+  "tpl.fantasy-draft.entry1": {
+    "it": "Squadra 1",
+    "de": "Team 1",
+    "fr": "Équipe 1",
+    "es": "Equipo 1",
+    "zh": "队伍 1"
+  },
+  "tpl.fantasy-draft.entry2": {
+    "it": "Squadra 2",
+    "de": "Team 2",
+    "fr": "Équipe 2",
+    "es": "Equipo 2",
+    "zh": "队伍 2"
+  },
+  "tpl.fantasy-draft.entry3": {
+    "it": "Squadra 3",
+    "de": "Team 3",
+    "fr": "Équipe 3",
+    "es": "Equipo 3",
+    "zh": "队伍 3"
+  },
+  "tpl.fantasy-draft.entry4": {
+    "it": "Squadra 4",
+    "de": "Team 4",
+    "fr": "Équipe 4",
+    "es": "Equipo 4",
+    "zh": "队伍 4"
+  },
+  "tpl.fantasy-draft.entry5": {
+    "it": "Squadra 5",
+    "de": "Team 5",
+    "fr": "Équipe 5",
+    "es": "Equipo 5",
+    "zh": "队伍 5"
+  },
+  "tpl.fantasy-draft.entry6": {
+    "it": "Squadra 6",
+    "de": "Team 6",
+    "fr": "Équipe 6",
+    "es": "Equipo 6",
+    "zh": "队伍 6"
+  },
+  "tpl.fantasy-draft.entry7": {
+    "it": "Squadra 7",
+    "de": "Team 7",
+    "fr": "Équipe 7",
+    "es": "Equipo 7",
+    "zh": "队伍 7"
+  },
+  "tpl.fantasy-draft.entry8": {
+    "it": "Squadra 8",
+    "de": "Team 8",
+    "fr": "Équipe 8",
+    "es": "Equipo 8",
+    "zh": "队伍 8"
+  },
+  "tpl.fantasy-draft.entry9": {
+    "it": "Squadra 9",
+    "de": "Team 9",
+    "fr": "Équipe 9",
+    "es": "Equipo 9",
+    "zh": "队伍 9"
+  },
+  "tpl.fantasy-draft.entry10": {
+    "it": "Squadra 10",
+    "de": "Team 10",
+    "fr": "Équipe 10",
+    "es": "Equipo 10",
+    "zh": "队伍 10"
+  },
+  "tpl.fantasy-draft.centerText": {
+    "it": "DRAFT",
+    "de": "DRAFT",
+    "fr": "DRAFT",
+    "es": "DRAFT",
+    "zh": "选秀"
+  },
+  "tpl.fantasy-draft.title": {
+    "it": "Ordine draft Fantacalcio | Sorteggio casuale con la ruota",
+    "de": "Fantasy-Draft-Reihenfolge | Zufällige Draft-Order per Rad",
+    "fr": "Ordre de draft fantasy | Tirage aléatoire avec la roue",
+    "es": "Orden del draft fantasy | Sorteo aleatorio con ruleta",
+    "zh": "梦幻选秀顺序生成器 | 随机选秀顺序转盘"
+  },
+  "tpl.fantasy-draft.desc": {
+    "it": "Sorteggia dal vivo l’ordine del draft o delle chiamate all’asta del Fantacalcio: tutte le squadre sulla ruota, gira finché è vuota e condividi.",
+    "de": "Lose die Draft-Reihenfolge deiner Fantasy-Liga live aus: alle Teams aufs Rad, drehen bis es leer ist, Ergebnis mit der Liga teilen. Kostenlos.",
+    "fr": "Tirez au sort l’ordre de draft de votre ligue fantasy en direct : toutes les équipes sur la roue, tournez jusqu’à la vider et partagez le résultat.",
+    "es": "Sortea en directo el orden del draft de tu liga fantasy: pon todos los equipos en la ruleta, gira hasta vaciarla y comparte el resultado con la liga.",
+    "zh": "现场随机决定梦幻联赛的选秀顺序：把所有队伍放上转盘，一直转到清空，再把结果分享给联赛。"
+  },
+  "tpl.fantasy-draft.heading": {
+    "it": "Ordine del draft fantasy",
+    "de": "Fantasy-Draft-Reihenfolge auslosen",
+    "fr": "Ordre de draft fantasy",
+    "es": "Orden del draft fantasy",
+    "zh": "梦幻选秀顺序生成器"
+  },
+  "tpl.fantasy-draft.intro": {
+    "it": "Niente apre una stagione di lega con più sospetti di un ordine del draft “sorteggiato” dall’admin da solo. Metti tutte le squadre sulla ruota, girala durante la videochiamata del gruppo e l’ordine viene deciso davanti a tutti gli allenatori.",
+    "de": "Nichts startet eine Ligasaison mit mehr Misstrauen als eine Draft-Reihenfolge, die der Commissioner allein „ausgelost“ hat. Setz alle Teams aufs Rad, dreh es im Gruppen-Call, und die Reihenfolge steht vor den Augen aller Manager fest.",
+    "fr": "Rien ne lance une saison avec plus de soupçons qu’un ordre de draft « tiré au sort » par le commissaire tout seul. Mettez toutes les équipes sur la roue, tournez-la pendant l’appel de groupe, et l’ordre est fixé devant tous les managers.",
+    "es": "Nada empieza una temporada con más sospechas que un orden del draft que el comisionado “sorteó” él solo. Pon todos los equipos en la ruleta, gírala en la videollamada del grupo y el orden queda decidido delante de todos los mánagers.",
+    "zh": "没有什么比联盟管理员独自“随机”出的选秀顺序更让人起疑了。把所有队伍放上转盘，在群组通话中转动，顺序就在所有经理面前确定。"
+  },
+  "tpl.fantasy-draft.s1.heading": {
+    "it": "Un giro per ogni scelta",
+    "de": "Eine Drehung pro Pick",
+    "fr": "Un tour par choix",
+    "es": "Un giro por cada elección",
+    "zh": "每个顺位转一次"
+  },
+  "tpl.fantasy-draft.s1.body": {
+    "it": "Attiva la rimozione del vincitore, poi gira: la prima squadra estratta ha la prima scelta ed esce dalla ruota. Continua finché la ruota è vuota. La lista dei vincitori tiene l’ordine sullo schermo mentre si forma, pronta per uno screenshot.",
+    "de": "Schalte das Entfernen des Gewinners ein und dreh: Das erste gezogene Team bekommt den ersten Pick und verlässt das Rad. Dreh weiter, bis das Rad leer ist. Die Gewinnerliste zeigt die Reihenfolge, während sie entsteht — bereit für einen Screenshot.",
+    "fr": "Activez le retrait du gagnant, puis lancez : la première équipe tirée obtient le premier choix et quitte la roue. Continuez jusqu’à ce que la roue soit vide. La liste des gagnants affiche l’ordre au fur et à mesure, prête pour une capture d’écran.",
+    "es": "Activa quitar al ganador y gira: el primer equipo que sale tiene la primera elección y abandona la ruleta. Sigue girando hasta vaciarla. La lista de ganadores muestra el orden mientras se forma, lista para una captura.",
+    "zh": "开启“移除中奖者”后开始转动：第一个抽中的队伍获得第一顺位并离开转盘。一直转到转盘清空。中奖名单会在屏幕上逐步显示顺序，方便截图。"
+  },
+  "tpl.fantasy-draft.s2.heading": {
+    "it": "Qualsiasi lega, qualsiasi dimensione",
+    "de": "Jede Liga, jede Größe",
+    "fr": "Toutes les ligues, toutes les tailles",
+    "es": "Cualquier liga, cualquier tamaño",
+    "zh": "任何联赛，任何规模"
+  },
+  "tpl.fantasy-draft.s2.body": {
+    "it": "Sostituisci le squadre di esempio con i nomi degli allenatori o delle squadre. Funziona allo stesso modo per Fantacalcio, fantabasket, fantasy football o qualsiasi lega con un draft, e anche per l’ordine di chiamata di un’asta.",
+    "de": "Ersetze die Platzhalter durch die Namen der Manager oder Teams. Es funktioniert genauso für Fantasy Football, Basketball, Baseball oder jede Liga mit Draft — und auch für die Aufrufreihenfolge eines Auktions-Drafts.",
+    "fr": "Remplacez les équipes d’exemple par les noms des managers ou des équipes. Cela fonctionne de la même façon pour le football fantasy, le basket, le baseball ou toute ligue avec un draft — et aussi pour l’ordre d’appel d’une enchère.",
+    "es": "Sustituye los equipos de ejemplo por los nombres de los mánagers o de los equipos. Funciona igual para fútbol fantasy, baloncesto, béisbol o cualquier liga con draft, y también para el orden de puja de una subasta.",
+    "zh": "把示例队伍换成经理或队伍的名字。它同样适用于梦幻足球、篮球、棒球或任何有选秀的联赛——也适用于拍卖选秀的叫价顺序。"
+  },
+  "tpl.fantasy-draft.faq1.q": {
+    "it": "Come dimostro che l’ordine del draft è casuale?",
+    "de": "Wie beweise ich, dass die Draft-Reihenfolge zufällig war?",
+    "fr": "Comment prouver que l’ordre de draft était aléatoire ?",
+    "es": "¿Cómo demuestro que el orden del draft fue aleatorio?",
+    "zh": "如何证明选秀顺序是随机的？"
+  },
+  "tpl.fantasy-draft.faq1.a": {
+    "it": "Gira dal vivo in videochiamata o in streaming, oppure salva dalla scheda del vincitore una breve clip di ogni giro e pubblicala nella chat della lega. Ogni giro usa la fonte casuale crittografica del browser.",
+    "de": "Dreh live in einem Videocall oder Stream, oder speichere über die Gewinnerkarte ein kurzes Video jeder Drehung und poste es im Liga-Chat. Jede Drehung nutzt die kryptografische Zufallsquelle deines Browsers.",
+    "fr": "Tournez en direct pendant un appel vidéo ou un stream, ou enregistrez depuis la carte du gagnant une courte vidéo de chaque tour et publiez-la dans le chat de la ligue. Chaque tour utilise la source aléatoire cryptographique du navigateur.",
+    "es": "Gira en directo en una videollamada o un stream, o guarda desde la tarjeta del ganador un vídeo corto de cada giro y publícalo en el chat de la liga. Cada giro usa la fuente aleatoria criptográfica del navegador.",
+    "zh": "在视频通话或直播中现场转动，或者从中奖卡片保存每次转动的短视频并发到联赛群聊。每次转动都使用浏览器的加密随机源。"
+  },
+  "tpl.fantasy-draft.faq2.q": {
+    "it": "Tutta la lega può vedere la ruota?",
+    "de": "Kann die ganze Liga das Rad sehen?",
+    "fr": "Toute la ligue peut-elle voir la roue ?",
+    "es": "¿Toda la liga puede ver la ruleta?",
+    "zh": "整个联赛都能看到这个转盘吗？"
+  },
+  "tpl.fantasy-draft.faq2.a": {
+    "it": "Pubblicala come link pubblico in sola lettura: chiunque può aprirla nel browser, senza account, per controllare le squadre prima del sorteggio.",
+    "de": "Veröffentliche es als schreibgeschützten öffentlichen Link, dann kann es jeder ohne Konto im Browser öffnen und die Teams vor der Auslosung prüfen.",
+    "fr": "Publiez-la en lien public en lecture seule : n’importe qui peut l’ouvrir dans un navigateur, sans compte, pour vérifier les équipes avant le tirage.",
+    "es": "Publícala como enlace público de solo lectura y cualquiera podrá abrirla en el navegador, sin cuenta, para revisar los equipos antes del sorteo.",
+    "zh": "将其发布为只读公开链接，任何人无需账户即可在浏览器中打开，在抽签前核对上面的队伍。"
+  },
+  "tpl.random-color.tagline": {
+    "it": "Arte e giochi",
+    "de": "Kunst & Spiele",
+    "fr": "Art et jeux",
+    "es": "Arte y juegos",
+    "zh": "艺术与游戏"
+  },
+  "tpl.random-color.name": {
+    "it": "Ruota dei colori casuale",
+    "de": "Zufallsfarbenrad",
+    "fr": "Roue des couleurs aléatoire",
+    "es": "Ruleta de colores aleatoria",
+    "zh": "随机颜色转盘"
+  },
+  "tpl.random-color.cardDesc": {
+    "it": "Gira per un colore: sfide artistiche, outfit, temi per feste e giochi.",
+    "de": "Dreh für eine Farbe: Kunst-Challenges, Outfits, Partymottos und Spiele.",
+    "fr": "Tournez pour une couleur : défis artistiques, tenues, thèmes de fête et jeux.",
+    "es": "Gira para un color: retos artísticos, outfits, temas de fiesta y juegos.",
+    "zh": "转出一种颜色：艺术挑战、穿搭、派对主题和游戏。"
+  },
+  "tpl.random-color.entry1": {
+    "it": "Rosso",
+    "de": "Rot",
+    "fr": "Rouge",
+    "es": "Rojo",
+    "zh": "红色"
+  },
+  "tpl.random-color.entry2": {
+    "it": "Arancione",
+    "de": "Orange",
+    "fr": "Orange",
+    "es": "Naranja",
+    "zh": "橙色"
+  },
+  "tpl.random-color.entry3": {
+    "it": "Giallo",
+    "de": "Gelb",
+    "fr": "Jaune",
+    "es": "Amarillo",
+    "zh": "黄色"
+  },
+  "tpl.random-color.entry4": {
+    "it": "Verde",
+    "de": "Grün",
+    "fr": "Vert",
+    "es": "Verde",
+    "zh": "绿色"
+  },
+  "tpl.random-color.entry5": {
+    "it": "Verde acqua",
+    "de": "Türkis",
+    "fr": "Turquoise",
+    "es": "Turquesa",
+    "zh": "青色"
+  },
+  "tpl.random-color.entry6": {
+    "it": "Blu",
+    "de": "Blau",
+    "fr": "Bleu",
+    "es": "Azul",
+    "zh": "蓝色"
+  },
+  "tpl.random-color.entry7": {
+    "it": "Viola",
+    "de": "Lila",
+    "fr": "Violet",
+    "es": "Morado",
+    "zh": "紫色"
+  },
+  "tpl.random-color.entry8": {
+    "it": "Rosa",
+    "de": "Rosa",
+    "fr": "Rose",
+    "es": "Rosa",
+    "zh": "粉色"
+  },
+  "tpl.random-color.entry9": {
+    "it": "Marrone",
+    "de": "Braun",
+    "fr": "Marron",
+    "es": "Marrón",
+    "zh": "棕色"
+  },
+  "tpl.random-color.entry10": {
+    "it": "Nero",
+    "de": "Schwarz",
+    "fr": "Noir",
+    "es": "Negro",
+    "zh": "黑色"
+  },
+  "tpl.random-color.centerText": {
+    "it": "COLORE",
+    "de": "FARBE",
+    "fr": "COULEUR",
+    "es": "COLOR",
+    "zh": "颜色"
+  },
+  "tpl.random-color.title": {
+    "it": "Ruota dei colori casuale | Gira per un colore a caso",
+    "de": "Zufallsfarbenrad | Dreh für eine zufällige Farbe",
+    "fr": "Roue des couleurs aléatoire | Tirez une couleur au hasard",
+    "es": "Ruleta de colores aleatoria | Gira para un color al azar",
+    "zh": "随机颜色转盘 | 转出一个随机颜色"
+  },
+  "tpl.random-color.desc": {
+    "it": "Gira la ruota dei colori per sfide artistiche, giochi sugli outfit, temi per feste e attività in classe. Ogni spicchio è dipinto del colore che nomina.",
+    "de": "Dreh das Zufallsfarbenrad für Kunst-Challenges, Outfit-Spiele, Partymottos und den Unterricht. Jedes Feld ist in der Farbe gemalt, die es nennt.",
+    "fr": "Tournez la roue des couleurs pour des défis artistiques, des jeux de tenues, des thèmes de fête ou en classe. Chaque part a la couleur qu’elle nomme.",
+    "es": "Gira la ruleta de colores para retos artísticos, juegos de outfits, temas de fiesta y actividades en clase. Cada porción tiene el color que nombra.",
+    "zh": "转动随机颜色转盘，用于艺术挑战、穿搭游戏、派对主题和课堂活动。每个扇区都涂成它所写的颜色。"
+  },
+  "tpl.random-color.heading": {
+    "it": "Ruota dei colori casuale",
+    "de": "Zufallsfarbenrad",
+    "fr": "Roue des couleurs aléatoire",
+    "es": "Ruleta de colores aleatoria",
+    "zh": "随机颜色转盘"
+  },
+  "tpl.random-color.intro": {
+    "it": "Disegnalo di questo colore, indossa qualcosa di questo colore, trova un oggetto di questo colore prima che scada il tempo. Un colore scelto a caso è l’inizio di un numero sorprendente di giochi, e ogni spicchio di questa ruota è dipinto del colore che nomina.",
+    "de": "Mal es in dieser Farbe, zieh etwas in dieser Farbe an, finde einen Gegenstand in dieser Farbe, bevor die Zeit abläuft. Eine zufällige Farbe ist der Anfang erstaunlich vieler Spiele, und jedes Feld dieses Rads ist in der Farbe gemalt, die es nennt.",
+    "fr": "Dessinez-le de cette couleur, portez quelque chose de cette couleur, trouvez un objet de cette couleur avant la fin du chrono. Une couleur tirée au hasard lance un nombre surprenant de jeux, et chaque part de cette roue est peinte de la couleur qu’elle nomme.",
+    "es": "Dibújalo de este color, ponte algo de este color, encuentra un objeto de este color antes de que acabe el tiempo. Un color al azar es el comienzo de un número sorprendente de juegos, y cada porción de esta ruleta está pintada del color que nombra.",
+    "zh": "用这个颜色画、穿一件这个颜色的衣服、在计时结束前找到一个这个颜色的物品。随机选出的颜色可以开启许多游戏，而这个转盘的每个扇区都涂成它所写的颜色。"
+  },
+  "tpl.random-color.s1.heading": {
+    "it": "Giochi che iniziano da un colore",
+    "de": "Spiele, die mit einer Farbe beginnen",
+    "fr": "Des jeux qui commencent par une couleur",
+    "es": "Juegos que empiezan con un color",
+    "zh": "从一种颜色开始的游戏"
+  },
+  "tpl.random-color.s1.body": {
+    "it": "Sfide artistiche con un solo colore, una caccia al tesoro per trovare qualcosa di abbinato, un dress code per la festa deciso sul momento, un gioco di smistamento per i più piccoli che imparano i colori. La ruota fornisce il vincolo; il divertimento è in cosa ne fanno le persone.",
+    "de": "Kunst-Challenges mit nur einer Farbe, eine Schnitzeljagd nach etwas Passendem, ein Party-Dresscode, der am Tag selbst entschieden wird, ein Sortierspiel für Kleine, die Farben lernen. Das Rad liefert die Vorgabe; der Spaß liegt darin, was die Leute daraus machen.",
+    "fr": "Des défis artistiques en une seule couleur, une chasse au trésor pour trouver un objet assorti, un dress code de soirée décidé le jour même, un jeu de tri pour les petits qui apprennent les couleurs. La roue donne la contrainte ; le plaisir, c’est ce qu’on en fait.",
+    "es": "Retos artísticos con un solo color, una búsqueda del tesoro de algo que combine, un dress code de fiesta decidido el mismo día, un juego de clasificar para los peques que aprenden los colores. La ruleta pone la regla; la diversión está en lo que cada uno hace con ella.",
+    "zh": "只用一种颜色的艺术挑战、寻找同色物品的寻宝游戏、当天才决定的派对着装要求、给正在学颜色的小朋友玩的分类游戏。转盘给出限制，乐趣在于大家如何发挥。"
+  },
+  "tpl.random-color.s2.heading": {
+    "it": "Crea la tua tavolozza",
+    "de": "Bau deine eigene Palette",
+    "fr": "Créez votre palette",
+    "es": "Crea tu propia paleta",
+    "zh": "打造你自己的调色板"
+  },
+  "tpl.random-color.s2.body": {
+    "it": "Copia la ruota e cambiala: solo pastelli, i colori di un brand, i colori che hai davvero in casa. Puoi impostare tu il colore di ogni spicchio, così la ruota mostra sempre il colore che sceglierà.",
+    "de": "Kopier das Rad und ändere es: nur Pastelltöne, die Farben einer Marke, die Farben, die du wirklich hast. Du kannst die Farbe jedes Feldes selbst festlegen, sodass das Rad immer die Farbe zeigt, die es wählt.",
+    "fr": "Copiez la roue et modifiez-la : uniquement des pastels, les couleurs d’une marque, les peintures que vous avez vraiment. Vous pouvez choisir la couleur de chaque part, pour que la roue montre toujours la couleur qu’elle tirera.",
+    "es": "Copia la ruleta y cámbiala: solo pasteles, los colores de una marca, las pinturas que tienes de verdad. Puedes elegir el color de cada porción, así la ruleta siempre muestra el color que va a elegir.",
+    "zh": "复制转盘并修改：只用粉彩色、某个品牌的颜色、你真正拥有的颜料。你可以自己设置每个扇区的颜色，让转盘始终显示它将选出的颜色。"
+  },
+  "tpl.random-color.faq1.q": {
+    "it": "Posso usare codici esadecimali invece dei nomi dei colori?",
+    "de": "Kann ich Hex-Codes statt Farbnamen verwenden?",
+    "fr": "Puis-je utiliser des codes hexadécimaux au lieu des noms ?",
+    "es": "¿Puedo usar códigos hexadecimales en lugar de nombres?",
+    "zh": "可以用十六进制色值代替颜色名称吗？"
+  },
+  "tpl.random-color.faq1.a": {
+    "it": "Sì. Una voce è solo testo, quindi “#FF5733” funziona quanto “Arancione”; imposta quello spicchio dello stesso colore e la ruota mostra esattamente cosa ha scelto.",
+    "de": "Ja. Ein Eintrag ist nur Text, „#FF5733“ funktioniert also genauso wie „Orange“; gib dem Feld dieselbe Farbe, und das Rad zeigt genau, was es gewählt hat.",
+    "fr": "Oui. Une entrée n’est que du texte, donc « #FF5733 » fonctionne aussi bien que « Orange » ; donnez cette couleur à la part et la roue montre exactement ce qu’elle a tiré.",
+    "es": "Sí. Una entrada es solo texto, así que “#FF5733” funciona igual que “Naranja”; pon esa porción del mismo color y la ruleta muestra exactamente lo que eligió.",
+    "zh": "可以。条目只是文字，所以“#FF5733”和“橙色”一样可用；把该扇区设为同样的颜色，转盘就会准确显示选中的颜色。"
+  },
+  "tpl.random-color.faq2.q": {
+    "it": "Ogni colore ha la stessa probabilità?",
+    "de": "Ist jede Farbe gleich wahrscheinlich?",
+    "fr": "Chaque couleur a-t-elle la même chance ?",
+    "es": "¿Todos los colores tienen la misma probabilidad?",
+    "zh": "每种颜色的概率都一样吗？"
+  },
+  "tpl.random-color.faq2.a": {
+    "it": "Sì: tutti gli spicchi hanno la stessa dimensione e il giro usa la fonte casuale crittografica del browser. Aggiungi un colore due volte per farlo uscire più spesso.",
+    "de": "Ja — alle Felder sind gleich groß, und die Drehung nutzt die kryptografische Zufallsquelle deines Browsers. Füge eine Farbe zweimal hinzu, damit sie öfter kommt.",
+    "fr": "Oui : toutes les parts ont la même taille et le tirage utilise la source aléatoire cryptographique du navigateur. Ajoutez une couleur deux fois pour qu’elle sorte plus souvent.",
+    "es": "Sí: todas las porciones tienen el mismo tamaño y el giro usa la fuente aleatoria criptográfica del navegador. Añade un color dos veces para que salga más a menudo.",
+    "zh": "是的——所有扇区大小相同，转动使用浏览器的加密随机源。把某个颜色添加两次，它就会更常出现。"
+  },
+  "tpl.what-to-draw.tagline": {
+    "it": "Spunti per lo sketchbook",
+    "de": "Ideen fürs Skizzenbuch",
+    "fr": "Idées pour le carnet",
+    "es": "Ideas para el cuaderno",
+    "zh": "速写本灵感"
+  },
+  "tpl.what-to-draw.name": {
+    "it": "Cosa disegnare",
+    "de": "Was soll ich zeichnen?",
+    "fr": "Quoi dessiner",
+    "es": "Qué dibujar",
+    "zh": "画什么"
+  },
+  "tpl.what-to-draw.cardDesc": {
+    "it": "Pagina bianca? Gira per avere qualcosa da disegnare e inizia a schizzare.",
+    "de": "Leeres Blatt? Dreh für ein Motiv und fang an zu skizzieren.",
+    "fr": "Page blanche ? Tournez pour trouver quoi dessiner et lancez-vous.",
+    "es": "¿Página en blanco? Gira para saber qué dibujar y empieza a bocetar.",
+    "zh": "面对白纸没灵感？转一下得到绘画主题，开始画吧。"
+  },
+  "tpl.what-to-draw.entry1": {
+    "it": "Un drago",
+    "de": "Ein Drache",
+    "fr": "Un dragon",
+    "es": "Un dragón",
+    "zh": "一条龙"
+  },
+  "tpl.what-to-draw.entry2": {
+    "it": "Un faro",
+    "de": "Ein Leuchtturm",
+    "fr": "Un phare",
+    "es": "Un faro",
+    "zh": "一座灯塔"
+  },
+  "tpl.what-to-draw.entry3": {
+    "it": "Un robot",
+    "de": "Ein Roboter",
+    "fr": "Un robot",
+    "es": "Un robot",
+    "zh": "一个机器人"
+  },
+  "tpl.what-to-draw.entry4": {
+    "it": "Una casa sull’albero",
+    "de": "Ein Baumhaus",
+    "fr": "Une cabane dans un arbre",
+    "es": "Una casa del árbol",
+    "zh": "一座树屋"
+  },
+  "tpl.what-to-draw.entry5": {
+    "it": "Un polpo",
+    "de": "Ein Oktopus",
+    "fr": "Une pieuvre",
+    "es": "Un pulpo",
+    "zh": "一只章鱼"
+  },
+  "tpl.what-to-draw.entry6": {
+    "it": "Un castello",
+    "de": "Eine Burg",
+    "fr": "Un château",
+    "es": "Un castillo",
+    "zh": "一座城堡"
+  },
+  "tpl.what-to-draw.entry7": {
+    "it": "Un gatto con il cappello",
+    "de": "Eine Katze mit Hut",
+    "fr": "Un chat avec un chapeau",
+    "es": "Un gato con sombrero",
+    "zh": "戴帽子的猫"
+  },
+  "tpl.what-to-draw.entry8": {
+    "it": "Un’astronave",
+    "de": "Ein Raumschiff",
+    "fr": "Un vaisseau spatial",
+    "es": "Una nave espacial",
+    "zh": "一艘宇宙飞船"
+  },
+  "tpl.what-to-draw.entry9": {
+    "it": "Una casa infestata",
+    "de": "Ein Spukhaus",
+    "fr": "Une maison hantée",
+    "es": "Una casa encantada",
+    "zh": "一座鬼屋"
+  },
+  "tpl.what-to-draw.entry10": {
+    "it": "Il tuo snack preferito",
+    "de": "Dein Lieblingssnack",
+    "fr": "Ton en-cas préféré",
+    "es": "Tu snack favorito",
+    "zh": "你最爱的零食"
+  },
+  "tpl.what-to-draw.centerText": {
+    "it": "DISEGNA",
+    "de": "ZEICHNE",
+    "fr": "DESSINE",
+    "es": "DIBUJA",
+    "zh": "画画"
+  },
+  "tpl.what-to-draw.title": {
+    "it": "Ruota cosa disegnare | Generatore di idee da disegnare",
+    "de": "Was zeichnen? Rad | Zufälliger Zeichenideen-Generator",
+    "fr": "Roue quoi dessiner | Générateur d’idées de dessin",
+    "es": "Ruleta qué dibujar | Generador de ideas para dibujar",
+    "zh": "画什么转盘 | 随机绘画主题生成器"
+  },
+  "tpl.what-to-draw.desc": {
+    "it": "Non sai cosa disegnare? Gira la ruota per uno spunto casuale e inizia a schizzare. Aggiungi le tue idee e tieni una ruota per ogni sketchbook.",
+    "de": "Keine Idee, was du zeichnen sollst? Dreh das Rad für ein zufälliges Motiv und fang an. Füge eigene Ideen hinzu und behalte ein Rad pro Skizzenbuch.",
+    "fr": "En panne d’idée ? Tournez la roue pour un sujet de dessin aléatoire et commencez à croquer. Ajoutez vos idées et gardez une roue par carnet.",
+    "es": "¿No sabes qué dibujar? Gira la ruleta para una idea aleatoria y empieza a bocetar. Añade tus ideas y ten una ruleta para cada cuaderno.",
+    "zh": "不知道画什么？转动转盘获得随机绘画主题，马上开始画。添加你自己的点子，为每本速写本准备一个转盘。"
+  },
+  "tpl.what-to-draw.heading": {
+    "it": "Ruota “Cosa disegnare”",
+    "de": "Was soll ich zeichnen? – das Rad",
+    "fr": "Roue « Quoi dessiner »",
+    "es": "Ruleta “Qué dibujar”",
+    "zh": "“画什么”转盘"
+  },
+  "tpl.what-to-draw.intro": {
+    "it": "La parte più difficile del disegno spesso è decidere cosa disegnare. Gira la ruota, accetta quello che esce e la pagina bianca smette di essere una scelta e diventa un punto di partenza.",
+    "de": "Das Schwierigste am Zeichnen ist oft, zu entscheiden, was man zeichnet. Dreh das Rad, nimm, was kommt, und das leere Blatt ist keine Entscheidung mehr, sondern ein Anfang.",
+    "fr": "Le plus dur, en dessin, c’est souvent de choisir quoi dessiner. Tournez la roue, acceptez ce qui sort, et la page blanche cesse d’être un choix pour devenir un point de départ.",
+    "es": "Lo más difícil de dibujar suele ser decidir qué dibujar. Gira la ruleta, acepta lo que salga y la página en blanco deja de ser una elección para convertirse en un punto de partida.",
+    "zh": "画画最难的部分往往是决定画什么。转动转盘，接受它给出的结果，白纸就不再是一个选择题，而是一个起点。"
+  },
+  "tpl.what-to-draw.s1.heading": {
+    "it": "Rendi tuoi gli spunti",
+    "de": "Mach die Ideen zu deinen",
+    "fr": "Faites vôtres les sujets",
+    "es": "Haz tuyas las ideas",
+    "zh": "让主题属于你"
+  },
+  "tpl.what-to-draw.s1.body": {
+    "it": "Gli spunti di esempio sono un riscaldamento. Sostituiscili con quello che vuoi esercitare — mani, riflessi, un personaggio del tuo fumetto — oppure crea una ruota a tema per un mese di schizzi quotidiani.",
+    "de": "Die Beispielideen sind zum Aufwärmen. Ersetze sie durch das, was du üben willst — Hände, Spiegelungen, eine Figur aus deinem Comic — oder bau ein Themenrad für einen Monat täglicher Skizzen.",
+    "fr": "Les sujets proposés servent d’échauffement. Remplacez-les par ce que vous voulez travailler — les mains, les reflets, un personnage de votre BD — ou créez une roue à thème pour un mois de croquis quotidiens.",
+    "es": "Las ideas de ejemplo son un calentamiento. Cámbialas por lo que quieras practicar —manos, reflejos, un personaje de tu cómic— o crea una ruleta temática para un mes de bocetos diarios.",
+    "zh": "示例主题只是热身。把它们换成你想练习的内容——手、倒影、你漫画里的角色——或者做一个主题转盘，用于一个月的每日速写。"
+  },
+  "tpl.what-to-draw.s2.heading": {
+    "it": "Combina due ruote",
+    "de": "Kombiniere zwei Räder",
+    "fr": "Combinez deux roues",
+    "es": "Combina dos ruletas",
+    "zh": "组合两个转盘"
+  },
+  "tpl.what-to-draw.s2.body": {
+    "it": "Mostra fino a quattro ruote affiancate: una per il soggetto, una per lo stile, una per il colore. “Un faro, a china, solo blu” è uno spunto molto migliore di quello che può darti una singola lista.",
+    "de": "Zeig bis zu vier Räder nebeneinander: eins für das Motiv, eins für den Stil, eins für die Farbe. „Ein Leuchtturm, in Tusche, nur Blau“ ist eine viel bessere Aufgabe als jede einzelne Liste.",
+    "fr": "Affichez jusqu’à quatre roues côte à côte : une pour le sujet, une pour le style, une pour la couleur. « Un phare, à l’encre, uniquement en bleu » vaut bien mieux que n’importe quelle liste seule.",
+    "es": "Muestra hasta cuatro ruletas una junto a otra: una para el tema, otra para el estilo, otra para el color. “Un faro, a tinta, solo en azul” es una idea mucho mejor que la que da una sola lista.",
+    "zh": "最多可并排显示四个转盘：一个选主题，一个选风格，一个选颜色。“一座灯塔，用墨水画，只用蓝色”比任何单一列表给出的主题都好得多。"
+  },
+  "tpl.what-to-draw.faq1.q": {
+    "it": "Va bene per le lezioni di arte?",
+    "de": "Eignet es sich für den Kunstunterricht?",
+    "fr": "Est-ce adapté aux cours d’arts plastiques ?",
+    "es": "¿Sirve para clases de arte?",
+    "zh": "适合美术课使用吗？"
+  },
+  "tpl.what-to-draw.faq1.a": {
+    "it": "Sì. Proiettala sulla lavagna e gira una volta per tutta la classe, oppure pubblicala come link così ogni studente può girare il proprio spunto. Non servono account.",
+    "de": "Ja. Projizier es an die Tafel und dreh einmal für die ganze Klasse, oder veröffentliche es als Link, damit jedes Kind sein eigenes Motiv dreht. Konten sind nicht nötig.",
+    "fr": "Oui. Projetez-la au tableau et lancez-la une fois pour toute la classe, ou publiez-la en lien pour que chaque élève tire son propre sujet. Aucun compte n’est nécessaire.",
+    "es": "Sí. Proyéctala en la pizarra y gírala una vez para toda la clase, o publícala como enlace para que cada alumno gire su propia idea. No hace falta cuenta.",
+    "zh": "适合。把它投影到黑板上为全班转一次，或者发布为链接，让每个学生转出自己的主题。无需账户。"
+  },
+  "tpl.what-to-draw.faq2.q": {
+    "it": "Posso evitare di ottenere lo stesso spunto due volte?",
+    "de": "Kann ich vermeiden, dieselbe Idee zweimal zu bekommen?",
+    "fr": "Puis-je éviter de tomber deux fois sur le même sujet ?",
+    "es": "¿Puedo evitar que salga la misma idea dos veces?",
+    "zh": "可以避免抽到重复的主题吗？"
+  },
+  "tpl.what-to-draw.faq2.a": {
+    "it": "Togli lo spunto dopo averlo disegnato e la ruota ti proporrà solo quelli che non hai ancora fatto.",
+    "de": "Entferne die Idee, nachdem du sie gezeichnet hast, dann bietet das Rad nur noch die an, die du noch nicht gemacht hast.",
+    "fr": "Retirez le sujet après l’avoir dessiné : la roue ne propose plus que ceux que vous n’avez pas encore faits.",
+    "es": "Quita la idea después de dibujarla y la ruleta solo te ofrecerá las que aún no has hecho.",
+    "zh": "画完后把该主题移除，转盘就只会给出你还没画过的主题。"
   }
 }

@@ -161,8 +161,11 @@ const section = [
   '',
 ].join('\n');
 
+// The heading holds regex metacharacters ("(one page each)"); unescaped, the
+// pattern never matched and the section silently stayed as first written.
+const headingPattern = heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 const updated = llms.includes(heading)
-  ? llms.replace(new RegExp(`${heading}[\\s\\S]*?(?=\\n## |$)`), section)
+  ? llms.replace(new RegExp(`${headingPattern}[\\s\\S]*?(?=\\n## |$)`), () => section)
   : llms.replace('\n## Optional\n', `\n${section}\n## Optional\n`);
 
 await writeFile(llmsPath, updated, 'utf8');

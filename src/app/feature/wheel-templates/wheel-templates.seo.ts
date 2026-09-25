@@ -664,6 +664,198 @@ export const TEMPLATE_SEO: Readonly<Record<string, WheelTemplateSeo>> = {
       },
     ],
   },
+
+  'instagram-giveaway': {
+    slug: 'instagram-giveaway-picker',
+    title: $localize`:@@tpl.instagram-giveaway.title:Instagram Giveaway Picker | Random Comment Winner Wheel`,
+    description:
+      $localize`:@@tpl.instagram-giveaway.desc:Pick a random Instagram giveaway winner on camera: paste the usernames from the comments, spin the wheel, share the result. Free, no signup.`,
+    heading: $localize`:@@tpl.instagram-giveaway.heading:Instagram Giveaway Picker`,
+    intro:
+      $localize`:@@tpl.instagram-giveaway.intro:Followers trust a draw they can see. Paste the usernames of everyone who entered, spin the wheel on a story or a live, and the winner is picked in front of the people who took part. The spin uses your browser’s cryptographic random source, so nobody — you included — can steer it.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.instagram-giveaway.s1.heading:From comments to wheel in a minute`,
+        body: $localize`:@@tpl.instagram-giveaway.s1.body:Copy the usernames of valid entries, one per line, and paste the whole list into the wheel at once. Someone who earned extra entries — a tag, a share — simply goes on the list more than once and gets that many slices. The same list works for TikTok, Facebook or YouTube giveaways.`,
+      },
+      {
+        heading: $localize`:@@tpl.instagram-giveaway.s2.heading:Proof you can post`,
+        body: $localize`:@@tpl.instagram-giveaway.s2.body:Record your screen while you spin, or let Wheelr do it: the winner card can save an image of the result or a short vertical video replaying the spin, ready for a story or a post announcing the winner.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.instagram-giveaway.faq1.q:Does Wheelr read the comments from Instagram automatically?`,
+        answer:
+          $localize`:@@tpl.instagram-giveaway.faq1.a:No. Wheelr never connects to your Instagram account: you paste the usernames yourself, which also lets you remove entries that broke the rules before the draw. Wheelr is not affiliated with Instagram or Meta.`,
+      },
+      {
+        question: $localize`:@@tpl.instagram-giveaway.faq2.q:How do I pick more than one winner?`,
+        answer:
+          $localize`:@@tpl.instagram-giveaway.faq2.a:After each spin, remove the winner from the wheel and spin again. Every winner is added to the winners list, so the full result stays on screen.`,
+      },
+    ],
+  },
+
+  'who-pays': {
+    slug: 'who-pays-wheel',
+    title: $localize`:@@tpl.who-pays.title:Who Pays Wheel | Decide Who Pays the Bill at Random`,
+    description:
+      $localize`:@@tpl.who-pays.desc:Spin the who pays wheel to settle the coffee round or the dinner bill. Free, fair and fast — nobody can argue with a spin everyone watched.`,
+    heading: $localize`:@@tpl.who-pays.heading:Who Pays? Wheel`,
+    intro:
+      $localize`:@@tpl.who-pays.intro:The coffee round, the pizza order, the bill at the end of the night: someone has to pay, and nobody wants to be the one who suggests it should be them. Put everyone’s name on the wheel, spin it at the table, and the wheel takes the blame.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.who-pays.s1.heading:Fair because everyone watched`,
+        body: $localize`:@@tpl.who-pays.s1.body:A spin on a phone in the middle of the table is a decision the whole group saw happen. There is no hidden choice and no “you always pick me”: the result comes from your browser’s cryptographic random source and nobody can steer it.`,
+      },
+      {
+        heading: $localize`:@@tpl.who-pays.s2.heading:Turn it into a rotation`,
+        body: $localize`:@@tpl.who-pays.s2.body:For the office coffee run, remove whoever paid after each spin. The wheel shrinks until everyone has had a turn, then you put the names back and start again — a random rota that nobody has to keep track of.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.who-pays.faq1.q:Can the same person lose twice in a row?`,
+        answer:
+          $localize`:@@tpl.who-pays.faq1.a:Yes, if they stay on the wheel — every spin is independent. If you want a rotation instead, remove the winner after each spin so nobody pays again until everyone has.`,
+      },
+      {
+        question: $localize`:@@tpl.who-pays.faq2.q:Does it work offline, at a restaurant?`,
+        answer:
+          $localize`:@@tpl.who-pays.faq2.a:The Android app works without a connection. On the web, the page keeps working once it has loaded, and your wheel stays saved on the device.`,
+      },
+    ],
+  },
+
+  'classroom-rewards': {
+    slug: 'classroom-reward-wheel',
+    title: $localize`:@@tpl.classroom-rewards.title:Classroom Reward Wheel | Free Prize Spinner for Teachers`,
+    description:
+      $localize`:@@tpl.classroom-rewards.desc:A free classroom reward wheel for teachers: rewards that cost nothing, picked by a spin on the board. Edit the prizes and reuse the wheel all year.`,
+    heading: $localize`:@@tpl.classroom-rewards.heading:Classroom Reward Wheel`,
+    intro:
+      $localize`:@@tpl.classroom-rewards.intro:A reward is more exciting when nobody knows which one is coming. Put the classroom’s favourite privileges on the wheel, project it on the board, and let the student who earned it spin. The whole class watches, and the prize costs nothing.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.classroom-rewards.s1.heading:Rewards that cost nothing`,
+        body: $localize`:@@tpl.classroom-rewards.s1.body:Choosing the class game, being DJ for the lesson, sitting at the teacher’s desk: privileges work as well as prizes and never run out. Swap the stock rewards for the ones your class actually asks for — the wheel is yours to edit.`,
+      },
+      {
+        heading: $localize`:@@tpl.classroom-rewards.s2.heading:One wheel for every class`,
+        body: $localize`:@@tpl.classroom-rewards.s2.body:Keep a separate wheel for each class or age group; they all stay saved in your browser, and signing in syncs them between the classroom computer and your own. Nothing is shared unless you publish a link.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.classroom-rewards.faq1.q:Do students need an account to use it?`,
+        answer:
+          $localize`:@@tpl.classroom-rewards.faq1.a:No. The wheel runs in the teacher’s browser with no account and no student data. To let students open it on their own devices, publish it as a read-only link.`,
+      },
+      {
+        question: $localize`:@@tpl.classroom-rewards.faq2.q:Can I make some rewards rarer than others?`,
+        answer:
+          $localize`:@@tpl.classroom-rewards.faq2.a:Add the common rewards more than once and they take more slices, so they come up more often. A reward that appears only once is the rare one.`,
+      },
+    ],
+  },
+
+  'fantasy-draft': {
+    slug: 'fantasy-draft-order-generator',
+    title: $localize`:@@tpl.fantasy-draft.title:Fantasy Draft Order Generator | Random Draft Order Wheel`,
+    description:
+      $localize`:@@tpl.fantasy-draft.desc:Randomize your fantasy football draft order live: put every team on the wheel, spin until it is empty, and share the result with the league.`,
+    heading: $localize`:@@tpl.fantasy-draft.heading:Fantasy Draft Order Generator`,
+    intro:
+      $localize`:@@tpl.fantasy-draft.intro:Nothing starts a league season with more suspicion than a draft order the commissioner “randomized” on their own. Put every team on the wheel, spin it on the group call, and the order is settled in front of every manager.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.fantasy-draft.s1.heading:Spin once per pick`,
+        body: $localize`:@@tpl.fantasy-draft.s1.body:Turn on removing the winner, then spin: the first team drawn gets the first pick and leaves the wheel. Keep spinning until the wheel is empty. The winners list keeps the order on screen as it builds up, ready to screenshot.`,
+      },
+      {
+        heading: $localize`:@@tpl.fantasy-draft.s2.heading:Any league, any size`,
+        body: $localize`:@@tpl.fantasy-draft.s2.body:Replace the team placeholders with your managers’ names or team names. It works the same for fantasy football, basketball, baseball or any league with a draft — and for the calling order of an auction draft too.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.fantasy-draft.faq1.q:How do I prove the draft order was random?`,
+        answer:
+          $localize`:@@tpl.fantasy-draft.faq1.a:Spin it live on a video call or a stream, or save a short video of each spin from the winner card and post it in the league chat. Every spin uses your browser’s cryptographic random source.`,
+      },
+      {
+        question: $localize`:@@tpl.fantasy-draft.faq2.q:Can the whole league see the wheel?`,
+        answer:
+          $localize`:@@tpl.fantasy-draft.faq2.a:Publish it as a read-only public link and anyone can open it in a browser, with no account, to check the teams on it before the draw.`,
+      },
+    ],
+  },
+
+  'random-color': {
+    slug: 'random-color-wheel',
+    title: $localize`:@@tpl.random-color.title:Random Color Wheel | Spin for a Random Color`,
+    description:
+      $localize`:@@tpl.random-color.desc:Spin the random color wheel for art challenges, outfit games, party themes and classroom activities. Each slice is painted the color it names.`,
+    heading: $localize`:@@tpl.random-color.heading:Random Color Wheel`,
+    intro:
+      $localize`:@@tpl.random-color.intro:Draw it in this color, wear something this color, find an object this color before the timer runs out. A color picked at random is the start of a surprising number of games, and every slice on this wheel is painted in the color it names.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.random-color.s1.heading:Games that start with a color`,
+        body: $localize`:@@tpl.random-color.s1.body:Art challenges with one color only, a scavenger hunt for something that matches, a party dress code decided on the day, a sorting game for younger children learning their colors. The wheel supplies the constraint; the fun is in what people do with it.`,
+      },
+      {
+        heading: $localize`:@@tpl.random-color.s2.heading:Build your own palette`,
+        body: $localize`:@@tpl.random-color.s2.body:Copy the wheel and change it: pastels only, the colors of a brand, the paints you actually own. You can set the color of each slice yourself, so the wheel always shows the color it will pick.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.random-color.faq1.q:Can I use hex codes instead of color names?`,
+        answer:
+          $localize`:@@tpl.random-color.faq1.a:Yes. An entry is just text, so “#FF5733” works as well as “Orange”; set that slice to the same color and the wheel shows exactly what it picked.`,
+      },
+      {
+        question: $localize`:@@tpl.random-color.faq2.q:Is every color equally likely?`,
+        answer:
+          $localize`:@@tpl.random-color.faq2.a:Yes — all slices are the same size and the spin uses your browser’s cryptographic random source. Add a color twice to make it come up more often.`,
+      },
+    ],
+  },
+
+  'what-to-draw': {
+    slug: 'what-to-draw-wheel',
+    title: $localize`:@@tpl.what-to-draw.title:What to Draw Wheel | Random Drawing Prompt Generator`,
+    description:
+      $localize`:@@tpl.what-to-draw.desc:Stuck on what to draw? Spin the wheel for a random drawing prompt and start sketching. Add your own ideas and keep a wheel for every sketchbook.`,
+    heading: $localize`:@@tpl.what-to-draw.heading:What to Draw Wheel`,
+    intro:
+      $localize`:@@tpl.what-to-draw.intro:The hardest part of drawing is often deciding what to draw. Spin the wheel, accept whatever it lands on, and the blank page stops being a choice and becomes a starting point.`,
+    sections: [
+      {
+        heading: $localize`:@@tpl.what-to-draw.s1.heading:Make the prompts yours`,
+        body: $localize`:@@tpl.what-to-draw.s1.body:The stock prompts are a warm-up. Replace them with the things you want to practise — hands, reflections, a character from your comic — or build a themed wheel for a month of daily sketches.`,
+      },
+      {
+        heading: $localize`:@@tpl.what-to-draw.s2.heading:Combine two wheels`,
+        body: $localize`:@@tpl.what-to-draw.s2.body:Show up to four wheels side by side: one for the subject, one for the style, one for the color. “A lighthouse, in ink, only blue” is a far better prompt than any single list can give you.`,
+      },
+    ],
+    faq: [
+      {
+        question: $localize`:@@tpl.what-to-draw.faq1.q:Is it good for art classes?`,
+        answer:
+          $localize`:@@tpl.what-to-draw.faq1.a:Yes. Project it on the board and spin once for the whole class, or publish it as a link so every student can spin their own prompt. No accounts are needed.`,
+      },
+      {
+        question: $localize`:@@tpl.what-to-draw.faq2.q:Can I avoid getting the same prompt twice?`,
+        answer:
+          $localize`:@@tpl.what-to-draw.faq2.a:Remove the prompt after you draw it and the wheel only offers the ones you have not done yet.`,
+      },
+    ],
+  },
 };
 
 export interface TemplateLandingPage {

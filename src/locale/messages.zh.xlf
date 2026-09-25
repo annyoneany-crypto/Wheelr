@@ -4270,6 +4270,502 @@
           <context context-type="linenumber">431</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.tagline" datatype="html">
+        <source>Social giveaways</source>
+        <target>社交抽奖</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">440</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.name" datatype="html">
+        <source>Instagram Giveaway Picker</source>
+        <target>Instagram 抽奖转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">441</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.cardDesc" datatype="html">
+        <source>Paste the usernames from the comments and spin for a winner on camera.</source>
+        <target>粘贴评论中的用户名，当着镜头转动转盘选出中奖者。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">442</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.centerText" datatype="html">
+        <source>WIN</source>
+        <target>中奖</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">449</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.tagline" datatype="html">
+        <source>Coffee, lunch &amp; the bill</source>
+        <target>咖啡、午餐和账单</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">458</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.name" datatype="html">
+        <source>Who Pays?</source>
+        <target>谁买单？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">459</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.cardDesc" datatype="html">
+        <source>Coffee round, dinner bill, next pizza: the wheel picks who is paying.</source>
+        <target>一轮咖啡、晚餐账单、下一次披萨：由转盘决定谁买单。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">460</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.centerText" datatype="html">
+        <source>PAY</source>
+        <target>买单</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">466</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.tagline" datatype="html">
+        <source>Teachers &amp; classrooms</source>
+        <target>教师与课堂</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">475</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.name" datatype="html">
+        <source>Classroom Reward Wheel</source>
+        <target>课堂奖励转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">476</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.cardDesc" datatype="html">
+        <source>Rewards that cost nothing, picked by a spin the whole class watches.</source>
+        <target>零成本的奖励，由全班一起观看的转盘选出。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">477</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.entry1" datatype="html">
+        <source>Homework pass</source>
+        <target>免作业券</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">479</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.entry2" datatype="html">
+        <source>Pick your seat</source>
+        <target>自选座位</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">480</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.entry3" datatype="html">
+        <source>Class DJ</source>
+        <target>班级 DJ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">481</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.entry4" datatype="html">
+        <source>5 extra minutes of break</source>
+        <target>多休息 5 分钟</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">482</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.entry5" datatype="html">
+        <source>Teacher&apos;s helper</source>
+        <target>老师小助手</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">483</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.entry6" datatype="html">
+        <source>Sticker</source>
+        <target>贴纸</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">484</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.entry7" datatype="html">
+        <source>Choose the class game</source>
+        <target>选择班级游戏</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">485</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.entry8" datatype="html">
+        <source>Sit at the teacher&apos;s desk</source>
+        <target>坐在讲台上</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">486</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.centerText" datatype="html">
+        <source>STAR</source>
+        <target>星星</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">492</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.tagline" datatype="html">
+        <source>Fantasy leagues</source>
+        <target>梦幻联赛</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">501</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.name" datatype="html">
+        <source>Fantasy Draft Order</source>
+        <target>梦幻选秀顺序</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">502</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.cardDesc" datatype="html">
+        <source>Settle your league&apos;s draft order live, in front of every manager.</source>
+        <target>当着所有经理的面，现场决定联赛的选秀顺序。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">503</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry1" datatype="html">
+        <source>Team 1</source>
+        <target>队伍 1</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">505</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry2" datatype="html">
+        <source>Team 2</source>
+        <target>队伍 2</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">505</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry3" datatype="html">
+        <source>Team 3</source>
+        <target>队伍 3</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">505</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry4" datatype="html">
+        <source>Team 4</source>
+        <target>队伍 4</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">505</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry5" datatype="html">
+        <source>Team 5</source>
+        <target>队伍 5</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">505</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry6" datatype="html">
+        <source>Team 6</source>
+        <target>队伍 6</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">506</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry7" datatype="html">
+        <source>Team 7</source>
+        <target>队伍 7</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">506</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry8" datatype="html">
+        <source>Team 8</source>
+        <target>队伍 8</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">506</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry9" datatype="html">
+        <source>Team 9</source>
+        <target>队伍 9</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">506</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.entry10" datatype="html">
+        <source>Team 10</source>
+        <target>队伍 10</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">506</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.centerText" datatype="html">
+        <source>DRAFT</source>
+        <target>选秀</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">512</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.tagline" datatype="html">
+        <source>Art &amp; games</source>
+        <target>艺术与游戏</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">521</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.name" datatype="html">
+        <source>Random Color Wheel</source>
+        <target>随机颜色转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">522</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.cardDesc" datatype="html">
+        <source>Spin for a color: art challenges, outfits, party themes and games.</source>
+        <target>转出一种颜色：艺术挑战、穿搭、派对主题和游戏。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">523</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry1" datatype="html">
+        <source>Red</source>
+        <target>红色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">525</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry2" datatype="html">
+        <source>Orange</source>
+        <target>橙色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">525</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry3" datatype="html">
+        <source>Yellow</source>
+        <target>黄色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">525</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry4" datatype="html">
+        <source>Green</source>
+        <target>绿色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">525</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry5" datatype="html">
+        <source>Teal</source>
+        <target>青色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">525</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry6" datatype="html">
+        <source>Blue</source>
+        <target>蓝色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">526</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry7" datatype="html">
+        <source>Purple</source>
+        <target>紫色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">526</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry8" datatype="html">
+        <source>Pink</source>
+        <target>粉色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">526</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry9" datatype="html">
+        <source>Brown</source>
+        <target>棕色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">526</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.entry10" datatype="html">
+        <source>Black</source>
+        <target>黑色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">526</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.centerText" datatype="html">
+        <source>COLOR</source>
+        <target>颜色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">533</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.tagline" datatype="html">
+        <source>Sketchbook prompts</source>
+        <target>速写本灵感</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">542</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.name" datatype="html">
+        <source>What to Draw</source>
+        <target>画什么</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">543</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.cardDesc" datatype="html">
+        <source>Blank page? Spin for something to draw and start sketching.</source>
+        <target>面对白纸没灵感？转一下得到绘画主题，开始画吧。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">544</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry1" datatype="html">
+        <source>A dragon</source>
+        <target>一条龙</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">546</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry2" datatype="html">
+        <source>A lighthouse</source>
+        <target>一座灯塔</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">546</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry3" datatype="html">
+        <source>A robot</source>
+        <target>一个机器人</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">546</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry4" datatype="html">
+        <source>A treehouse</source>
+        <target>一座树屋</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">546</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry5" datatype="html">
+        <source>An octopus</source>
+        <target>一只章鱼</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">546</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry6" datatype="html">
+        <source>A castle</source>
+        <target>一座城堡</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">547</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry7" datatype="html">
+        <source>A cat in a hat</source>
+        <target>戴帽子的猫</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">547</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry8" datatype="html">
+        <source>A spaceship</source>
+        <target>一艘宇宙飞船</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">547</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry9" datatype="html">
+        <source>A haunted house</source>
+        <target>一座鬼屋</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">547</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.entry10" datatype="html">
+        <source>Your favourite snack</source>
+        <target>你最爱的零食</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">547</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.centerText" datatype="html">
+        <source>DRAW</source>
+        <target>画画</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.data.ts</context>
+          <context context-type="linenumber">553</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="templates.kicker" datatype="html">
         <source>Wheelr • Ready-made wheels</source>
         <target>Wheelr • 现成转盘</target>
@@ -6330,6 +6826,582 @@
           <context context-type="linenumber">663</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.title" datatype="html">
+        <source>Instagram Giveaway Picker | Random Comment Winner Wheel</source>
+        <target>Instagram 抽奖转盘 | 从评论中随机抽取中奖者</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">670</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.desc" datatype="html">
+        <source>Pick a random Instagram giveaway winner on camera: paste the usernames from the comments, spin the wheel, share the result. Free, no signup.</source>
+        <target>当着镜头抽出 Instagram 抽奖的中奖者：粘贴评论中的用户名，转动转盘并分享结果。免费，无需注册。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">672</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.heading" datatype="html">
+        <source>Instagram Giveaway Picker</source>
+        <target>Instagram 抽奖转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">673</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.intro" datatype="html">
+        <source>Followers trust a draw they can see. Paste the usernames of everyone who entered, spin the wheel on a story or a live, and the winner is picked in front of the people who took part. The spin uses your browser’s cryptographic random source, so nobody — you included — can steer it.</source>
+        <target>粉丝信任他们亲眼看到的抽奖。粘贴所有参与者的用户名，在快拍或直播中转动转盘，中奖者就在所有参与者面前产生。转盘使用浏览器的加密随机源，任何人——包括你自己——都无法操控结果。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">675</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.s1.heading" datatype="html">
+        <source>From comments to wheel in a minute</source>
+        <target>一分钟从评论到转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">678</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.s1.body" datatype="html">
+        <source>Copy the usernames of valid entries, one per line, and paste the whole list into the wheel at once. Someone who earned extra entries — a tag, a share — simply goes on the list more than once and gets that many slices. The same list works for TikTok, Facebook or YouTube giveaways.</source>
+        <target>复制有效参与者的用户名，每行一个，一次性粘贴到转盘中。获得额外抽奖机会的人（标记好友、分享）只需在列表中多出现几次，就会得到相应数量的扇区。同样的列表也适用于 TikTok、Facebook 或 YouTube 抽奖。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">679</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.s2.heading" datatype="html">
+        <source>Proof you can post</source>
+        <target>可以发布的证明</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">682</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.s2.body" datatype="html">
+        <source>Record your screen while you spin, or let Wheelr do it: the winner card can save an image of the result or a short vertical video replaying the spin, ready for a story or a post announcing the winner.</source>
+        <target>转动时录屏，或者交给 Wheelr：中奖卡片可以保存结果图片，或一段重放转动过程的竖屏短视频，直接用于快拍或公布中奖者的帖子。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">683</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.faq1.q" datatype="html">
+        <source>Does Wheelr read the comments from Instagram automatically?</source>
+        <target>Wheelr 会自动读取 Instagram 评论吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">688</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.faq1.a" datatype="html">
+        <source>No. Wheelr never connects to your Instagram account: you paste the usernames yourself, which also lets you remove entries that broke the rules before the draw. Wheelr is not affiliated with Instagram or Meta.</source>
+        <target>不会。Wheelr 从不连接你的 Instagram 账户：用户名由你自己粘贴，这样你也可以在抽奖前移除违规的参与者。Wheelr 与 Instagram 或 Meta 无关联。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">690</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.faq2.q" datatype="html">
+        <source>How do I pick more than one winner?</source>
+        <target>如何抽出多名中奖者？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">693</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.instagram-giveaway.faq2.a" datatype="html">
+        <source>After each spin, remove the winner from the wheel and spin again. Every winner is added to the winners list, so the full result stays on screen.</source>
+        <target>每次转动后，将中奖者从转盘中移除再转一次。每位中奖者都会加入中奖名单，完整结果会一直显示在屏幕上。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">695</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.title" datatype="html">
+        <source>Who Pays Wheel | Decide Who Pays the Bill at Random</source>
+        <target>谁买单转盘 | 随机决定谁付账单</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">702</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.desc" datatype="html">
+        <source>Spin the who pays wheel to settle the coffee round or the dinner bill. Free, fair and fast — nobody can argue with a spin everyone watched.</source>
+        <target>转动“谁买单”转盘，决定谁请这轮咖啡或付晚餐账单。免费、公平、快速——大家都看到的结果，没人能争辩。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">704</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.heading" datatype="html">
+        <source>Who Pays? Wheel</source>
+        <target>“谁买单？”转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">705</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.intro" datatype="html">
+        <source>The coffee round, the pizza order, the bill at the end of the night: someone has to pay, and nobody wants to be the one who suggests it should be them. Put everyone’s name on the wheel, spin it at the table, and the wheel takes the blame.</source>
+        <target>一轮咖啡、点披萨、夜晚结束时的账单：总得有人付钱，但没人想主动说该自己付。把所有人的名字放上转盘，在桌上转一下，责任就交给转盘了。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">707</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.s1.heading" datatype="html">
+        <source>Fair because everyone watched</source>
+        <target>人人都看到，所以公平</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">710</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.s1.body" datatype="html">
+        <source>A spin on a phone in the middle of the table is a decision the whole group saw happen. There is no hidden choice and no “you always pick me”: the result comes from your browser’s cryptographic random source and nobody can steer it.</source>
+        <target>在桌子中间的手机上转一下，整个群体都亲眼看到了这个决定。没有暗箱操作，也没有“怎么又是我”：结果来自浏览器的加密随机源，没有人能操控。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">711</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.s2.heading" datatype="html">
+        <source>Turn it into a rotation</source>
+        <target>变成轮流制</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">714</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.s2.body" datatype="html">
+        <source>For the office coffee run, remove whoever paid after each spin. The wheel shrinks until everyone has had a turn, then you put the names back and start again — a random rota that nobody has to keep track of.</source>
+        <target>办公室买咖啡时，每次转动后移除已付钱的人。转盘越来越小，直到每个人都轮过一次，然后把名字放回去重新开始——一个无需任何人记录的随机轮值。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">715</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.faq1.q" datatype="html">
+        <source>Can the same person lose twice in a row?</source>
+        <target>同一个人会连续两次输吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">720</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.faq1.a" datatype="html">
+        <source>Yes, if they stay on the wheel — every spin is independent. If you want a rotation instead, remove the winner after each spin so nobody pays again until everyone has.</source>
+        <target>会的，只要这个人还在转盘上——每次转动都是独立的。如果想轮流，每次转动后移除中奖者，这样在所有人都付过之前没人会再付。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">722</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.faq2.q" datatype="html">
+        <source>Does it work offline, at a restaurant?</source>
+        <target>在餐厅没网时也能用吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">725</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.who-pays.faq2.a" datatype="html">
+        <source>The Android app works without a connection. On the web, the page keeps working once it has loaded, and your wheel stays saved on the device.</source>
+        <target>Android 应用无需联网即可使用。在网页上，页面加载后即可继续使用，转盘会保存在你的设备上。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">727</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.title" datatype="html">
+        <source>Classroom Reward Wheel | Free Prize Spinner for Teachers</source>
+        <target>课堂奖励转盘 | 教师免费奖励转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">734</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.desc" datatype="html">
+        <source>A free classroom reward wheel for teachers: rewards that cost nothing, picked by a spin on the board. Edit the prizes and reuse the wheel all year.</source>
+        <target>免费的课堂奖励转盘：零成本奖励，在黑板上转一下选出。可编辑奖品，全年重复使用。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">736</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.heading" datatype="html">
+        <source>Classroom Reward Wheel</source>
+        <target>课堂奖励转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">737</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.intro" datatype="html">
+        <source>A reward is more exciting when nobody knows which one is coming. Put the classroom’s favourite privileges on the wheel, project it on the board, and let the student who earned it spin. The whole class watches, and the prize costs nothing.</source>
+        <target>当没人知道会得到哪个奖励时，奖励才更令人兴奋。把全班最喜欢的特权放上转盘，投影到黑板上，让赢得奖励的学生来转。全班一起看，而奖品一分钱都不用花。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">739</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.s1.heading" datatype="html">
+        <source>Rewards that cost nothing</source>
+        <target>零成本的奖励</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">742</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.s1.body" datatype="html">
+        <source>Choosing the class game, being DJ for the lesson, sitting at the teacher’s desk: privileges work as well as prizes and never run out. Swap the stock rewards for the ones your class actually asks for — the wheel is yours to edit.</source>
+        <target>选择班级游戏、在课上当 DJ、坐在讲台上：特权和奖品一样有效，而且永远用不完。把示例奖励换成你的班级真正想要的——转盘由你随意编辑。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">743</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.s2.heading" datatype="html">
+        <source>One wheel for every class</source>
+        <target>每个班一个转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">746</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.s2.body" datatype="html">
+        <source>Keep a separate wheel for each class or age group; they all stay saved in your browser, and signing in syncs them between the classroom computer and your own. Nothing is shared unless you publish a link.</source>
+        <target>为每个班级或年龄段单独保存一个转盘；它们都保存在浏览器中，登录后可在教室电脑和你自己的电脑之间同步。除非你发布链接，否则不会共享任何内容。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">747</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.faq1.q" datatype="html">
+        <source>Do students need an account to use it?</source>
+        <target>学生需要注册账户吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">752</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.faq1.a" datatype="html">
+        <source>No. The wheel runs in the teacher’s browser with no account and no student data. To let students open it on their own devices, publish it as a read-only link.</source>
+        <target>不需要。转盘在老师的浏览器中运行，无需账户，也不涉及学生数据。若想让学生在自己的设备上打开，可将其发布为只读链接。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">754</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.faq2.q" datatype="html">
+        <source>Can I make some rewards rarer than others?</source>
+        <target>可以让某些奖励更稀有吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">757</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.classroom-rewards.faq2.a" datatype="html">
+        <source>Add the common rewards more than once and they take more slices, so they come up more often. A reward that appears only once is the rare one.</source>
+        <target>把常见奖励多添加几次，它们会占据更多扇区，出现得更频繁。只出现一次的奖励就是稀有奖励。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">759</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.title" datatype="html">
+        <source>Fantasy Draft Order Generator | Random Draft Order Wheel</source>
+        <target>梦幻选秀顺序生成器 | 随机选秀顺序转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">766</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.desc" datatype="html">
+        <source>Randomize your fantasy football draft order live: put every team on the wheel, spin until it is empty, and share the result with the league.</source>
+        <target>现场随机决定梦幻联赛的选秀顺序：把所有队伍放上转盘，一直转到清空，再把结果分享给联赛。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">768</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.heading" datatype="html">
+        <source>Fantasy Draft Order Generator</source>
+        <target>梦幻选秀顺序生成器</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">769</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.intro" datatype="html">
+        <source>Nothing starts a league season with more suspicion than a draft order the commissioner “randomized” on their own. Put every team on the wheel, spin it on the group call, and the order is settled in front of every manager.</source>
+        <target>没有什么比联盟管理员独自“随机”出的选秀顺序更让人起疑了。把所有队伍放上转盘，在群组通话中转动，顺序就在所有经理面前确定。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">771</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.s1.heading" datatype="html">
+        <source>Spin once per pick</source>
+        <target>每个顺位转一次</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">774</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.s1.body" datatype="html">
+        <source>Turn on removing the winner, then spin: the first team drawn gets the first pick and leaves the wheel. Keep spinning until the wheel is empty. The winners list keeps the order on screen as it builds up, ready to screenshot.</source>
+        <target>开启“移除中奖者”后开始转动：第一个抽中的队伍获得第一顺位并离开转盘。一直转到转盘清空。中奖名单会在屏幕上逐步显示顺序，方便截图。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">775</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.s2.heading" datatype="html">
+        <source>Any league, any size</source>
+        <target>任何联赛，任何规模</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">778</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.s2.body" datatype="html">
+        <source>Replace the team placeholders with your managers’ names or team names. It works the same for fantasy football, basketball, baseball or any league with a draft — and for the calling order of an auction draft too.</source>
+        <target>把示例队伍换成经理或队伍的名字。它同样适用于梦幻足球、篮球、棒球或任何有选秀的联赛——也适用于拍卖选秀的叫价顺序。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">779</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.faq1.q" datatype="html">
+        <source>How do I prove the draft order was random?</source>
+        <target>如何证明选秀顺序是随机的？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">784</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.faq1.a" datatype="html">
+        <source>Spin it live on a video call or a stream, or save a short video of each spin from the winner card and post it in the league chat. Every spin uses your browser’s cryptographic random source.</source>
+        <target>在视频通话或直播中现场转动，或者从中奖卡片保存每次转动的短视频并发到联赛群聊。每次转动都使用浏览器的加密随机源。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">786</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.faq2.q" datatype="html">
+        <source>Can the whole league see the wheel?</source>
+        <target>整个联赛都能看到这个转盘吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">789</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.fantasy-draft.faq2.a" datatype="html">
+        <source>Publish it as a read-only public link and anyone can open it in a browser, with no account, to check the teams on it before the draw.</source>
+        <target>将其发布为只读公开链接，任何人无需账户即可在浏览器中打开，在抽签前核对上面的队伍。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">791</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.title" datatype="html">
+        <source>Random Color Wheel | Spin for a Random Color</source>
+        <target>随机颜色转盘 | 转出一个随机颜色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">798</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.desc" datatype="html">
+        <source>Spin the random color wheel for art challenges, outfit games, party themes and classroom activities. Each slice is painted the color it names.</source>
+        <target>转动随机颜色转盘，用于艺术挑战、穿搭游戏、派对主题和课堂活动。每个扇区都涂成它所写的颜色。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">800</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.heading" datatype="html">
+        <source>Random Color Wheel</source>
+        <target>随机颜色转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">801</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.intro" datatype="html">
+        <source>Draw it in this color, wear something this color, find an object this color before the timer runs out. A color picked at random is the start of a surprising number of games, and every slice on this wheel is painted in the color it names.</source>
+        <target>用这个颜色画、穿一件这个颜色的衣服、在计时结束前找到一个这个颜色的物品。随机选出的颜色可以开启许多游戏，而这个转盘的每个扇区都涂成它所写的颜色。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">803</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.s1.heading" datatype="html">
+        <source>Games that start with a color</source>
+        <target>从一种颜色开始的游戏</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">806</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.s1.body" datatype="html">
+        <source>Art challenges with one color only, a scavenger hunt for something that matches, a party dress code decided on the day, a sorting game for younger children learning their colors. The wheel supplies the constraint; the fun is in what people do with it.</source>
+        <target>只用一种颜色的艺术挑战、寻找同色物品的寻宝游戏、当天才决定的派对着装要求、给正在学颜色的小朋友玩的分类游戏。转盘给出限制，乐趣在于大家如何发挥。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">807</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.s2.heading" datatype="html">
+        <source>Build your own palette</source>
+        <target>打造你自己的调色板</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">810</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.s2.body" datatype="html">
+        <source>Copy the wheel and change it: pastels only, the colors of a brand, the paints you actually own. You can set the color of each slice yourself, so the wheel always shows the color it will pick.</source>
+        <target>复制转盘并修改：只用粉彩色、某个品牌的颜色、你真正拥有的颜料。你可以自己设置每个扇区的颜色，让转盘始终显示它将选出的颜色。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">811</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.faq1.q" datatype="html">
+        <source>Can I use hex codes instead of color names?</source>
+        <target>可以用十六进制色值代替颜色名称吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">816</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.faq1.a" datatype="html">
+        <source>Yes. An entry is just text, so “#FF5733” works as well as “Orange”; set that slice to the same color and the wheel shows exactly what it picked.</source>
+        <target>可以。条目只是文字，所以“#FF5733”和“橙色”一样可用；把该扇区设为同样的颜色，转盘就会准确显示选中的颜色。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">818</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.faq2.q" datatype="html">
+        <source>Is every color equally likely?</source>
+        <target>每种颜色的概率都一样吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">821</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.random-color.faq2.a" datatype="html">
+        <source>Yes — all slices are the same size and the spin uses your browser’s cryptographic random source. Add a color twice to make it come up more often.</source>
+        <target>是的——所有扇区大小相同，转动使用浏览器的加密随机源。把某个颜色添加两次，它就会更常出现。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">823</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.title" datatype="html">
+        <source>What to Draw Wheel | Random Drawing Prompt Generator</source>
+        <target>画什么转盘 | 随机绘画主题生成器</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">830</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.desc" datatype="html">
+        <source>Stuck on what to draw? Spin the wheel for a random drawing prompt and start sketching. Add your own ideas and keep a wheel for every sketchbook.</source>
+        <target>不知道画什么？转动转盘获得随机绘画主题，马上开始画。添加你自己的点子，为每本速写本准备一个转盘。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">832</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.heading" datatype="html">
+        <source>What to Draw Wheel</source>
+        <target>“画什么”转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">833</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.intro" datatype="html">
+        <source>The hardest part of drawing is often deciding what to draw. Spin the wheel, accept whatever it lands on, and the blank page stops being a choice and becomes a starting point.</source>
+        <target>画画最难的部分往往是决定画什么。转动转盘，接受它给出的结果，白纸就不再是一个选择题，而是一个起点。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">835</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.s1.heading" datatype="html">
+        <source>Make the prompts yours</source>
+        <target>让主题属于你</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">838</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.s1.body" datatype="html">
+        <source>The stock prompts are a warm-up. Replace them with the things you want to practise — hands, reflections, a character from your comic — or build a themed wheel for a month of daily sketches.</source>
+        <target>示例主题只是热身。把它们换成你想练习的内容——手、倒影、你漫画里的角色——或者做一个主题转盘，用于一个月的每日速写。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">839</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.s2.heading" datatype="html">
+        <source>Combine two wheels</source>
+        <target>组合两个转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">842</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.s2.body" datatype="html">
+        <source>Show up to four wheels side by side: one for the subject, one for the style, one for the color. “A lighthouse, in ink, only blue” is a far better prompt than any single list can give you.</source>
+        <target>最多可并排显示四个转盘：一个选主题，一个选风格，一个选颜色。“一座灯塔，用墨水画，只用蓝色”比任何单一列表给出的主题都好得多。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">843</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.faq1.q" datatype="html">
+        <source>Is it good for art classes?</source>
+        <target>适合美术课使用吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">848</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.faq1.a" datatype="html">
+        <source>Yes. Project it on the board and spin once for the whole class, or publish it as a link so every student can spin their own prompt. No accounts are needed.</source>
+        <target>适合。把它投影到黑板上为全班转一次，或者发布为链接，让每个学生转出自己的主题。无需账户。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">850</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.faq2.q" datatype="html">
+        <source>Can I avoid getting the same prompt twice?</source>
+        <target>可以避免抽到重复的主题吗？</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">853</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="tpl.what-to-draw.faq2.a" datatype="html">
+        <source>Remove the prompt after you draw it and the wheel only offers the ones you have not done yet.</source>
+        <target>画完后把该主题移除，转盘就只会给出你还没画过的主题。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.seo.ts</context>
+          <context context-type="linenumber">855</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="templates.adLocked" datatype="html">
         <source>The ad has to play all the way through to unlock this template. Give it another go.</source>
         <target>需要完整播放广告才能解锁该模板，请再试一次。</target>
@@ -8231,7 +9303,7 @@
         <target>下载图片</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
-          <context context-type="linenumber">11,15</context>
+          <context context-type="linenumber">11,14</context>
         </context-group>
       </trans-unit>
       <trans-unit id="share.clip.share" datatype="html">
@@ -8247,7 +9319,7 @@
         <target>下载片段</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
-          <context context-type="linenumber">38,40</context>
+          <context context-type="linenumber">38,39</context>
         </context-group>
       </trans-unit>
       <trans-unit id="share.clip.redo" datatype="html">
@@ -8275,7 +9347,7 @@
         <target>片段会重放本次转盘过程。录制期间请保持此页面打开。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
-          <context context-type="linenumber">65,68</context>
+          <context context-type="linenumber">65,67</context>
         </context-group>
       </trans-unit>
       <trans-unit id="share.image.error" datatype="html">

@@ -2,7 +2,7 @@
 title: Wheelr templates — ready-made wheels
 path: /templates
 canonical: https://www.wheelr.xyz/templates
-updated: 2026-09-17
+updated: 2026-09-25
 ---
 
 # Wheelr templates
@@ -32,6 +32,12 @@ with its own entries and colour palette; everything stays editable afterwards.
 | Random Animal | Spin for an animal: charades, drawing games and quiet-time prompts. |
 | Date Night Ideas | Neither of you can decide? The wheel plans the evening. |
 | Where to Travel | Put the shortlist on the wheel and let it settle the argument. |
+| Instagram Giveaway Picker | Paste the usernames from the comments and spin for a winner on camera. |
+| Who Pays? | Coffee round, dinner bill, next pizza: the wheel picks who is paying. |
+| Classroom Reward Wheel | Rewards that cost nothing, picked by a spin the whole class watches. |
+| Fantasy Draft Order | Settle your league's draft order live, in front of every manager. |
+| Random Color Wheel | Spin for a color: art challenges, outfits, party themes and games. |
+| What to Draw | Blank page? Spin for something to draw and start sketching. |
 
 ## Each template has its own page
 
@@ -58,6 +64,12 @@ without copying it first:
 - [Random Animal Wheel](https://www.wheelr.xyz/templates/random-animal-wheel) — A free random animal generator for charades, drawing games and classrooms. Spin the wheel and act out, draw or describe whatever it lands on.
 - [Date Night Ideas Wheel](https://www.wheelr.xyz/templates/date-night-ideas-wheel) — Out of date night ideas? Spin the wheel and let it plan the evening. Free, no signup, and you can fill it with the things you both actually want to do.
 - [Where to Travel Wheel](https://www.wheelr.xyz/templates/where-to-travel-wheel) — A free random destination picker: put your travel shortlist on the wheel, spin, and stop rereading the same three tabs.
+- [Instagram Giveaway Picker](https://www.wheelr.xyz/templates/instagram-giveaway-picker) — Pick a random Instagram giveaway winner on camera: paste the usernames from the comments, spin the wheel, share the result. Free, no signup.
+- [Who Pays? Wheel](https://www.wheelr.xyz/templates/who-pays-wheel) — Spin the who pays wheel to settle the coffee round or the dinner bill. Free, fair and fast — nobody can argue with a spin everyone watched.
+- [Classroom Reward Wheel](https://www.wheelr.xyz/templates/classroom-reward-wheel) — A free classroom reward wheel for teachers: rewards that cost nothing, picked by a spin on the board. Edit the prizes and reuse the wheel all year.
+- [Fantasy Draft Order Generator](https://www.wheelr.xyz/templates/fantasy-draft-order-generator) — Randomize your fantasy football draft order live: put every team on the wheel, spin until it is empty, and share the result with the league.
+- [Random Color Wheel](https://www.wheelr.xyz/templates/random-color-wheel) — Spin the random color wheel for art challenges, outfit games, party themes and classroom activities. Each slice is painted the color it names.
+- [What to Draw Wheel](https://www.wheelr.xyz/templates/what-to-draw-wheel) — Stuck on what to draw? Spin the wheel for a random drawing prompt and start sketching. Add your own ideas and keep a wheel for every sketchbook.
 
 Loading a template creates a new wheel in your workspace — it never overwrites the
 wheel you are already working on. In the Android app, copying a template asks you
