@@ -1,7 +1,8 @@
 import {
-  afterNextRender,
+  afterRenderEffect,
   ChangeDetectionStrategy,
   Component,
+  computed,
   DestroyRef,
   ElementRef,
   inject,
@@ -31,8 +32,21 @@ export class WheelTemplates {
   private readonly ads = inject(AdsService);
   private readonly router = inject(Router);
 
-  protected readonly templates = WHEEL_TEMPLATES;
   protected readonly labels = templateLabels;
+
+  /** What the visitor typed in the search box. */
+  protected readonly query = signal('');
+
+  /**
+   * Templates whose name contains the query, ignoring case and accents, so
+   * "caffe" finds "Caffè" in the Italian bundle. Names are already localized.
+   */
+  protected readonly templates = computed(() => {
+    const needle = normalizeForSearch(this.query());
+    return needle
+      ? WHEEL_TEMPLATES.filter((template) => normalizeForSearch(template.name).includes(needle))
+      : WHEEL_TEMPLATES;
+  });
 
   /** `/templates/<slug>` for a card, so the list links into every landing page. */
   protected readonly landingPath = templateLandingPath;
@@ -50,7 +64,10 @@ export class WheelTemplates {
   private readonly previewCanvases = viewChildren<ElementRef<HTMLCanvasElement>>('previewCanvas');
 
   constructor() {
-    afterNextRender(() => this.drawPreviews());
+    // Cards come and go as the search changes, so the previews are redrawn on
+    // every change rather than once. afterRenderEffect never runs while
+    // prerendering, where there is no canvas to draw on.
+    afterRenderEffect(() => this.drawPreviews(this.previewCanvases()));
 
     // The prompt is a signal, not a route, so Android's back press needs telling.
     this.destroyRef.onDestroy(
@@ -58,9 +75,14 @@ export class WheelTemplates {
     );
   }
 
-  private drawPreviews(): void {
-    this.previewCanvases().forEach((canvasRef, index) => {
-      const template = this.templates[index];
+  protected onSearch(event: Event): void {
+    this.query.set((event.target as HTMLInputElement).value);
+  }
+
+  private drawPreviews(canvases: readonly ElementRef<HTMLCanvasElement>[]): void {
+    canvases.forEach((canvasRef) => {
+      const id = canvasRef.nativeElement.dataset['templateId'];
+      const template = WHEEL_TEMPLATES.find((item) => item.id === id);
       if (!template) {
         return;
       }
@@ -149,4 +171,12 @@ export class WheelTemplates {
       this.copyingTemplateId.set(null);
     }
   }
+}
+
+function normalizeForSearch(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[̀-ͯ]/g, '')
+    .toLowerCase()
+    .trim();
 }

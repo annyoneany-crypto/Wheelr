@@ -2595,7 +2595,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">81,82</context>
+          <context context-type="linenumber">99,100</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.copyCustomize" datatype="html">
@@ -6542,12 +6542,36 @@
           <context context-type="linenumber">21,24</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="templates.search.label" datatype="html">
+        <source>Search templates by name</source>
+        <target>Cerca i template per nome</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
+          <context context-type="linenumber">27,28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="templates.search.placeholder" datatype="html">
+        <source>Search templates…</source>
+        <target>Cerca un template…</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="templates.search.empty" datatype="html">
+        <source>No template matches “<x id="INTERPOLATION" equiv-text="{{ query() }}"/>”.</source>
+        <target>Nessun template corrisponde a “<x id="INTERPOLATION" equiv-text="{{ query() }}"/>”.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
+          <context context-type="linenumber">40,43</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="templates.grid" datatype="html">
         <source>Ready-made wheel templates</source>
         <target>Ruote pronte all'uso</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">26,27</context>
+          <context context-type="linenumber">43,44</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.moreEntries" datatype="html">
@@ -6555,7 +6579,7 @@
         <target>+<x id="INTERPOLATION" equiv-text="{{ template.names.length - 4 }}"/> altre</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">70,71</context>
+          <context context-type="linenumber">88,89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.watchAdUse" datatype="html">
@@ -6563,7 +6587,7 @@
         <target>Guarda l'annuncio e usa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">83,84</context>
+          <context context-type="linenumber">101,102</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.copyUse" datatype="html">
@@ -6571,7 +6595,7 @@
         <target>Copia e usa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">85,87</context>
+          <context context-type="linenumber">103,105</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.readMore" datatype="html">
@@ -6579,7 +6603,7 @@
         <target>Provala e scopri di più</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">111</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.ad.title" datatype="html">
@@ -6587,7 +6611,7 @@
         <target>Sblocca questo modello</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">117,118</context>
+          <context context-type="linenumber">135,136</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.ad.body" datatype="html">
@@ -6595,7 +6619,7 @@
         <target>Guarda un breve video pubblicitario e questa ruota verrà copiata tra le tue, pronta da girare. Gli annunci mantengono Wheelr gratuito.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">122,124</context>
+          <context context-type="linenumber">140,142</context>
         </context-group>
       </trans-unit>
       <trans-unit id="templates.ad.cancel" datatype="html">
@@ -6603,7 +6627,7 @@
         <target>Annulla</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">136,138</context>
+          <context context-type="linenumber">154,156</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
@@ -6615,7 +6639,7 @@
         <target>Caricamento…</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">143,145</context>
+          <context context-type="linenumber">161,163</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
@@ -6627,7 +6651,7 @@
         <target>Guarda l'annuncio</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.html</context>
-          <context context-type="linenumber">145,147</context>
+          <context context-type="linenumber">163,165</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/premium-unlock/premium-unlock.html</context>
@@ -11055,7 +11079,7 @@
         <target>L'annuncio deve essere guardato fino in fondo per sbloccare il template. Riprova.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/wheel-templates.ts</context>
-          <context context-type="linenumber">117</context>
+          <context context-type="linenumber">139</context>
         </context-group>
       </trans-unit>
       <trans-unit id="background.title" datatype="html">

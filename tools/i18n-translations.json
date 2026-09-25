@@ -11171,5 +11171,26 @@
     "fr": "Oui : tournez pour des costumes, des jeux ou des gages, et activez l’effet feu pour la révélation.",
     "es": "Sí: gira para disfraces, juegos o castigos, y activa el efecto de fuego para la revelación.",
     "zh": "可以——转出服装、游戏或惩罚，并在揭晓时打开火焰特效。"
+  },
+  "templates.search.label": {
+    "it": "Cerca i template per nome",
+    "de": "Vorlagen nach Namen suchen",
+    "fr": "Rechercher un modèle par nom",
+    "es": "Buscar plantillas por nombre",
+    "zh": "按名称搜索模板"
+  },
+  "templates.search.placeholder": {
+    "it": "Cerca un template…",
+    "de": "Vorlagen durchsuchen…",
+    "fr": "Rechercher un modèle…",
+    "es": "Buscar plantillas…",
+    "zh": "搜索模板…"
+  },
+  "templates.search.empty": {
+    "it": "Nessun template corrisponde a “{INTERPOLATION}”.",
+    "de": "Keine Vorlage passt zu „{INTERPOLATION}“.",
+    "fr": "Aucun modèle ne correspond à « {INTERPOLATION} ».",
+    "es": "Ninguna plantilla coincide con “{INTERPOLATION}”.",
+    "zh": "没有与“{INTERPOLATION}”匹配的模板。"
   }
 }

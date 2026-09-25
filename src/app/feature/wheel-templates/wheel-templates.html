@@ -23,8 +23,25 @@
       </div>
     </header>
 
+    <div role="search" class="relative max-w-md">
+      <label for="templates-search" class="sr-only" i18n="@@templates.search.label">Search templates by name</label>
+      <i class="fa-solid fa-magnifying-glass pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-white/40" aria-hidden="true"></i>
+      <input
+        id="templates-search"
+        type="search"
+        autocomplete="off"
+        [value]="query()"
+        (input)="onSearch($event)"
+        i18n-placeholder="@@templates.search.placeholder" placeholder="Search templates…"
+        class="w-full rounded-xl border border-white/[0.1] bg-white/[0.04] py-3 pl-11 pr-4 text-sm text-white placeholder:text-white/40 transition-colors duration-200 focus:border-amber-300/50 focus:bg-white/[0.06] focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/40">
+    </div>
+
+    @if (templates().length === 0) {
+      <p class="rounded-2xl border border-white/[0.08] bg-white/[0.03] p-6 text-center text-sm text-white/60" role="status" i18n="@@templates.search.empty">No template matches “{{ query() }}”.</p>
+    }
+
     <ul class="wl-stagger grid gap-5 sm:grid-cols-2 lg:grid-cols-3" i18n-aria-label="@@templates.grid" aria-label="Ready-made wheel templates">
-      @for (template of templates; track template.id) {
+      @for (template of templates(); track template.id) {
         <li>
           <article
             class="group h-full flex flex-col rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.05] to-transparent p-5 transition-all duration-300 hover:border-amber-400/40 hover:shadow-[0_12px_36px_rgba(245,158,11,0.12)] hover:-translate-y-1">
@@ -51,6 +68,7 @@
             <div class="mt-4 flex justify-center">
               <canvas
                 #previewCanvas
+                [attr.data-template-id]="template.id"
                 width="220"
                 height="220"
                 class="w-44 h-44 md:w-52 md:h-52 transition-all duration-500 group-hover:rotate-12 group-hover:drop-shadow-[0_0_20px_rgba(245,158,11,0.25)]"
