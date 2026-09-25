@@ -25,6 +25,7 @@ import {
   storageKeyForWorkspace,
 } from './wheel-configurator-storage';
 import {
+  LastSpin,
   WheelDisplayConfig,
   WheelSettingsSnapshot,
   WheelTemplateDefinition,
@@ -337,6 +338,11 @@ export class WheelConfigurator {
   spinDurationMs = signal(3000);
   currentRotation = signal(0);
   winner = signal<string | null>(null);
+  /**
+   * The last completed spin, exactly as it ran: the winner clip replays it from
+   * these values so the video lands on the slice the audience saw.
+   */
+  lastSpin = signal<LastSpin | null>(null);
   /** Incremented each time the winner is explicitly dismissed. Used to sync per-workspace winner state. */
   winnerDismissCount = signal(0);
 
@@ -1788,6 +1794,13 @@ export class WheelConfigurator {
       let adjustedRotation = (normalizedRotation - 90 + 360) % 360;
       const winningIndex = Math.floor(adjustedRotation / (360 / this.names().length));
       const winningName = this.names()[winningIndex];
+      this.lastSpin.set({
+        workspaceId: spinWorkspaceId,
+        winner: winningName,
+        startRotation,
+        endRotation: totalRotation,
+        durationMs: this.spinDurationMs(),
+      });
       this.winner.set(winningName);
       if (winningName) {
         this.consumePresetWinner(winningName);

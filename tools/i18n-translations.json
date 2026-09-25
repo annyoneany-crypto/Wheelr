@@ -6978,5 +6978,82 @@
     "fr": "Chaque option premium a sa propre courte publicité. Une fois choisie, elle reste ; pour la reprendre après 1 minute, il faut une nouvelle publicité.",
     "es": "Cada opción premium tiene su propio anuncio corto. Una vez elegida se queda; para volver a elegirla después de 1 minuto hace falta un nuevo anuncio.",
     "zh": "每个高级选项都有自己的简短广告。选择后会一直保留；1 分钟后若要重新选择，需要再看一个广告。"
+  },
+  "share.title": {
+    "it": "Vincitore: {NAME}",
+    "de": "Gewinner: {NAME}",
+    "fr": "Gagnant : {NAME}",
+    "es": "Ganador: {NAME}",
+    "zh": "中奖者：{NAME}"
+  },
+  "share.image.share": {
+    "it": "Condividi immagine",
+    "de": "Bild teilen",
+    "fr": "Partager l’image",
+    "es": "Compartir imagen",
+    "zh": "分享图片"
+  },
+  "share.image.download": {
+    "it": "Scarica immagine",
+    "de": "Bild herunterladen",
+    "fr": "Télécharger l’image",
+    "es": "Descargar imagen",
+    "zh": "下载图片"
+  },
+  "share.image.error": {
+    "it": "Impossibile creare l’immagine. Riprova.",
+    "de": "Das Bild konnte nicht erstellt werden. Versuche es erneut.",
+    "fr": "Impossible de créer l’image. Réessayez.",
+    "es": "No se pudo crear la imagen. Inténtalo de nuevo.",
+    "zh": "无法生成图片，请重试。"
+  },
+  "share.clip.create": {
+    "it": "Crea clip video",
+    "de": "Videoclip erstellen",
+    "fr": "Créer un clip vidéo",
+    "es": "Crear clip de vídeo",
+    "zh": "生成视频片段"
+  },
+  "share.clip.recording": {
+    "it": "Registrazione clip… {PERCENT}%",
+    "de": "Clip wird aufgenommen… {PERCENT}%",
+    "fr": "Enregistrement du clip… {PERCENT}%",
+    "es": "Grabando clip… {PERCENT}%",
+    "zh": "正在录制片段… {PERCENT}%"
+  },
+  "share.clip.share": {
+    "it": "Condividi clip",
+    "de": "Clip teilen",
+    "fr": "Partager le clip",
+    "es": "Compartir clip",
+    "zh": "分享片段"
+  },
+  "share.clip.download": {
+    "it": "Scarica clip",
+    "de": "Clip herunterladen",
+    "fr": "Télécharger le clip",
+    "es": "Descargar clip",
+    "zh": "下载片段"
+  },
+  "share.clip.redo": {
+    "it": "Registra di nuovo la clip",
+    "de": "Clip erneut aufnehmen",
+    "fr": "Réenregistrer le clip",
+    "es": "Volver a grabar el clip",
+    "zh": "重新录制片段"
+  },
+  "share.clip.hint": {
+    "it": "La clip ripete il giro della ruota. Tieni aperta questa pagina durante la registrazione.",
+    "de": "Der Clip spielt die Drehung erneut ab. Lass diese Seite während der Aufnahme geöffnet.",
+    "fr": "Le clip rejoue le tour de roue. Gardez cette page ouverte pendant l’enregistrement.",
+    "es": "El clip repite el giro de la ruleta. Mantén esta página abierta mientras se graba.",
+    "zh": "片段会重放本次转盘过程。录制期间请保持此页面打开。"
+  },
+  "share.clip.error": {
+    "it": "Impossibile creare la clip su questo dispositivo.",
+    "de": "Der Clip konnte auf diesem Gerät nicht erstellt werden.",
+    "fr": "Impossible de créer le clip sur cet appareil.",
+    "es": "No se pudo crear el clip en este dispositivo.",
+    "zh": "无法在此设备上生成片段。"
   }
 }

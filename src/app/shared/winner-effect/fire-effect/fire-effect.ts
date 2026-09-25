@@ -10,6 +10,7 @@ import {
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 import { PremiumService } from '../../../services/premium.service';
 import { ChestReveal } from '../chest-reveal/chest-reveal';
+import { WinnerShare } from '../../winner-share/winner-share';
 import type { IWinnerEffect } from '../../../modules/interface/IWinnerEffect';
 import type { effectType } from '../../../modules/classes/custom-type';
 
@@ -92,7 +93,7 @@ interface ApplauseHand {
 
 @Component({
   selector: 'wl-fire-effect',
-  imports: [ChestReveal],
+  imports: [ChestReveal, WinnerShare],
   templateUrl: './fire-effect.html',
   styleUrl: './fire-effect.css',
   changeDetection: ChangeDetectionStrategy.OnPush,

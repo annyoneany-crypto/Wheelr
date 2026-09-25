@@ -223,7 +223,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">175,177</context>
+          <context context-type="linenumber">176,178</context>
         </context-group>
       </trans-unit>
       <trans-unit id="auth.subtitle" datatype="html">
@@ -767,7 +767,7 @@
         <target>Hauptmenü öffnen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">150,151</context>
+          <context context-type="linenumber">151,152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.dialog" datatype="html">
@@ -775,7 +775,7 @@
         <target>Hauptmenü</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">199,201</context>
+          <context context-type="linenumber">200,202</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.close" datatype="html">
@@ -783,7 +783,7 @@
         <target>Menü schließen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">206,207</context>
+          <context context-type="linenumber">207,208</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.closeLabel" datatype="html">
@@ -791,7 +791,7 @@
         <target>Schließen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">209,211</context>
+          <context context-type="linenumber">210,212</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.nav" datatype="html">
@@ -799,7 +799,7 @@
         <target>Hauptseiten</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">217,218</context>
+          <context context-type="linenumber">218,219</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.wheel" datatype="html">
@@ -807,7 +807,7 @@
         <target>Zur Rad-Seite</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">224,225</context>
+          <context context-type="linenumber">225,226</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.wheel" datatype="html">
@@ -815,7 +815,7 @@
         <target>🎡 Wheelr</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">226,228</context>
+          <context context-type="linenumber">227,229</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.templates" datatype="html">
@@ -823,7 +823,7 @@
         <target>Zu den fertigen Rädern</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">233,234</context>
+          <context context-type="linenumber">234,235</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.templates" datatype="html">
@@ -831,7 +831,7 @@
         <target>✨ Fertige Räder</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">235,237</context>
+          <context context-type="linenumber">236,238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.stream" datatype="html">
@@ -839,7 +839,7 @@
         <target>Zum Streaming-Leitfaden</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">242,243</context>
+          <context context-type="linenumber">243,244</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.stream" datatype="html">
@@ -847,7 +847,7 @@
         <target>🎥 Für Streamer</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">244,246</context>
+          <context context-type="linenumber">245,247</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.info" datatype="html">
@@ -855,7 +855,7 @@
         <target>Zur Info-Seite</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">251,252</context>
+          <context context-type="linenumber">252,253</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.info" datatype="html">
@@ -863,7 +863,7 @@
         <target>ℹ️ Info</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">253,255</context>
+          <context context-type="linenumber">254,256</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.donation" datatype="html">
@@ -871,7 +871,7 @@
         <target>Zur Spendenseite</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">260,261</context>
+          <context context-type="linenumber">261,262</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.donation" datatype="html">
@@ -879,7 +879,7 @@
         <target>💝 Spenden</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">262,264</context>
+          <context context-type="linenumber">263,265</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.wiki" datatype="html">
@@ -887,7 +887,7 @@
         <target>Wheelr-Wiki öffnen (in neuem Tab)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">270,271</context>
+          <context context-type="linenumber">271,272</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.wiki" datatype="html">
@@ -895,7 +895,7 @@
         <target>📖 Wiki</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">272,274</context>
+          <context context-type="linenumber">273,275</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.privacy" datatype="html">
@@ -903,7 +903,7 @@
         <target>Zur Datenschutzerklärung</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">279,280</context>
+          <context context-type="linenumber">280,281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.privacy" datatype="html">
@@ -911,7 +911,7 @@
         <target>🛡️ Datenschutz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">281,283</context>
+          <context context-type="linenumber">282,284</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.social.twitter" datatype="html">
@@ -919,7 +919,7 @@
         <target>Twitter-Profil von AnnyoneAny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">292,293</context>
+          <context context-type="linenumber">293,294</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.lang.switchTo" datatype="html">
@@ -927,7 +927,7 @@
         <target>Zu <x id="LANGUAGE" equiv-text="locale.label"/> wechseln</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">194</context>
+          <context context-type="linenumber">219</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.namesCount.title" datatype="html">
@@ -935,7 +935,7 @@
         <target><x id="COUNT" equiv-text="this.wheelConfigurator.namesCount()"/> Namen auf dem Rad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">198</context>
+          <context context-type="linenumber">223</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.multiple" datatype="html">
@@ -943,7 +943,7 @@
         <target>Sichtbare Räder umbenennen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">204</context>
+          <context context-type="linenumber">229</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
@@ -955,7 +955,7 @@
         <target>Ausgewähltes Rad umbenennen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">205</context>
+          <context context-type="linenumber">230</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
@@ -967,7 +967,7 @@
         <target>Kontobereich öffnen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">213</context>
+          <context context-type="linenumber">238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.auth.openLogin" datatype="html">
@@ -975,7 +975,7 @@
         <target>Anmeldefenster öffnen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">213</context>
+          <context context-type="linenumber">238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.saving" datatype="html">
@@ -983,7 +983,7 @@
         <target>Rad wird in der Cloud gespeichert</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">278</context>
+          <context context-type="linenumber">303</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.saved" datatype="html">
@@ -991,7 +991,7 @@
         <target>Rad in der Cloud gespeichert</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">280</context>
+          <context context-type="linenumber">305</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.failed" datatype="html">
@@ -999,7 +999,7 @@
         <target>Speichern fehlgeschlagen, erneut versuchen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">282</context>
+          <context context-type="linenumber">307</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.update" datatype="html">
@@ -1007,7 +1007,7 @@
         <target>Gespeichertes Rad in der Cloud aktualisieren</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">285</context>
+          <context context-type="linenumber">310</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.toCloud" datatype="html">
@@ -1015,7 +1015,7 @@
         <target>Rad in der Cloud speichern</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">286</context>
+          <context context-type="linenumber">311</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.noWheel" datatype="html">
@@ -1023,7 +1023,7 @@
         <target>Kein Rad zum Speichern ausgewählt.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">323</context>
+          <context context-type="linenumber">348</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.notFound" datatype="html">
@@ -1031,7 +1031,7 @@
         <target>Rad-Konfiguration nicht gefunden. Versuche es erneut.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">337</context>
+          <context context-type="linenumber">362</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.updatedMsg" datatype="html">
@@ -1039,7 +1039,7 @@
         <target>Rad in der Cloud aktualisiert.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">351</context>
+          <context context-type="linenumber">376</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.savedMsg" datatype="html">
@@ -1047,7 +1047,7 @@
         <target>Rad in der Cloud gespeichert.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">351</context>
+          <context context-type="linenumber">376</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.signIn" datatype="html">
@@ -1055,7 +1055,7 @@
         <target>Melde dich an, um das Rad in der Cloud zu speichern.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">356</context>
+          <context context-type="linenumber">381</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.error" datatype="html">
@@ -1063,7 +1063,7 @@
         <target>Speichern in der Cloud fehlgeschlagen. Versuche es erneut.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">357</context>
+          <context context-type="linenumber">382</context>
         </context-group>
       </trans-unit>
       <trans-unit id="account.dialog" datatype="html">
@@ -7502,6 +7502,26 @@
           <context context-type="linenumber">85</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="share.title" datatype="html">
+        <source>Winner: <x id="NAME" equiv-text="this.cfg.winner() ?? &apos;&apos;"/></source>
+        <target>Gewinner: <x id="NAME" equiv-text="this.cfg.winner() ?? &apos;&apos;"/></target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/winner-share.service.ts</context>
+          <context context-type="linenumber">201</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="winner.label" datatype="html">
+        <source>Winner</source>
+        <target>Gewinner</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/services/winner-share.service.ts</context>
+          <context context-type="linenumber">265</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
+          <context context-type="linenumber">15,16</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="banner.region" datatype="html">
         <source>Wheelr for Android</source>
         <target>Wheelr für Android</target>
@@ -8150,14 +8170,6 @@
           <context context-type="linenumber">49</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="winner.label" datatype="html">
-        <source>Winner</source>
-        <target>Gewinner</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
-          <context context-type="linenumber">15,16</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="winner.close.aria" datatype="html">
         <source>Close winner dialog</source>
         <target>Gewinner-Dialog schließen</target>
@@ -8204,6 +8216,90 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
           <context context-type="linenumber">39,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.image.share" datatype="html">
+        <source>Share image</source>
+        <target>Bild teilen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">9,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.image.download" datatype="html">
+        <source>Download image</source>
+        <target>Bild herunterladen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">11,15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.clip.share" datatype="html">
+        <source>Share clip</source>
+        <target>Clip teilen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">35,36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.clip.download" datatype="html">
+        <source>Download clip</source>
+        <target>Clip herunterladen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">38,40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.clip.redo" datatype="html">
+        <source>Record the clip again</source>
+        <target>Clip erneut aufnehmen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">43,44</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">44,45</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.clip.create" datatype="html">
+        <source>Create video clip</source>
+        <target>Videoclip erstellen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">57,58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.clip.hint" datatype="html">
+        <source>The clip replays the spin. Keep this page open while it records.</source>
+        <target>Der Clip spielt die Drehung erneut ab. Lass diese Seite während der Aufnahme geöffnet.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">65,68</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.image.error" datatype="html">
+        <source>Could not create the image. Try again.</source>
+        <target>Das Bild konnte nicht erstellt werden. Versuche es erneut.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">68,70</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.clip.error" datatype="html">
+        <source>Could not create the clip on this device.</source>
+        <target>Der Clip konnte auf diesem Gerät nicht erstellt werden.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.html</context>
+          <context context-type="linenumber">71,73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="share.clip.recording" datatype="html">
+        <source>Recording clip… <x id="PERCENT" equiv-text="percent"/>%</source>
+        <target>Clip wird aufgenommen… <x id="PERCENT" equiv-text="percent"/>%</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/shared/winner-share/winner-share.ts</context>
+          <context context-type="linenumber">41</context>
         </context-group>
       </trans-unit>
     </body>

@@ -1,0 +1,72 @@
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-2" (click)="$event.stopPropagation()">
+    <button
+        type="button"
+        [disabled]="imageBusy()"
+        (click)="shareImage()"
+        class="w-full inline-flex items-center justify-center gap-2 border border-sky-400/30 bg-white/[0.06] backdrop-blur-sm hover:bg-sky-500/15 hover:border-sky-300/50 hover:cursor-pointer disabled:opacity-60 disabled:cursor-wait text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-200">
+        <i class="fa-solid" [class.fa-image]="!imageBusy()" [class.fa-spinner]="imageBusy()" [class.fa-spin]="imageBusy()" aria-hidden="true"></i>
+        @if (useShareSheet) {
+            <span i18n="@@share.image.share">Share image</span>
+        } @else {
+            <span i18n="@@share.image.download">Download image</span>
+        }
+    </button>
+
+    @if (share.canRecordClip) {
+        @switch (clipState()) {
+            @case ('recording') {
+                <button
+                    type="button"
+                    disabled
+                    class="relative w-full overflow-hidden inline-flex items-center justify-center gap-2 border border-fuchsia-400/30 bg-white/[0.06] text-white font-semibold py-2.5 px-4 rounded-xl cursor-wait">
+                    <span class="absolute inset-y-0 left-0 bg-fuchsia-500/25 transition-[width] duration-200" [style.width.%]="clipProgress() * 100" aria-hidden="true"></span>
+                    <i class="relative fa-solid fa-circle text-[0.5rem] text-red-400 animate-pulse" aria-hidden="true"></i>
+                    <span class="relative" aria-live="polite">{{ recordingLabel() }}</span>
+                </button>
+            }
+            @case ('ready') {
+                <div class="flex gap-2">
+                    <button
+                        type="button"
+                        (click)="shareClip()"
+                        class="flex-1 inline-flex items-center justify-center gap-2 border border-fuchsia-400/40 bg-fuchsia-500/20 hover:bg-fuchsia-500/30 hover:cursor-pointer text-white font-semibold py-2.5 px-3 rounded-xl transition-all duration-200">
+                        @if (useShareSheet) {
+                            <i class="fa-solid fa-share-nodes" aria-hidden="true"></i>
+                            <span i18n="@@share.clip.share">Share clip</span>
+                        } @else {
+                            <i class="fa-solid fa-download" aria-hidden="true"></i>
+                            <span i18n="@@share.clip.download">Download clip</span>
+                        }
+                    </button>
+                    <button
+                        type="button"
+                        i18n-aria-label="@@share.clip.redo" aria-label="Record the clip again"
+                        i18n-title="@@share.clip.redo" title="Record the clip again"
+                        (click)="createClip()"
+                        class="shrink-0 w-11 inline-flex items-center justify-center border border-white/15 bg-white/[0.06] hover:bg-white/10 hover:cursor-pointer text-white/80 rounded-xl transition-all duration-200">
+                        <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+                    </button>
+                </div>
+            }
+            @default {
+                <button
+                    type="button"
+                    (click)="createClip()"
+                    class="w-full inline-flex items-center justify-center gap-2 border border-fuchsia-400/30 bg-white/[0.06] backdrop-blur-sm hover:bg-fuchsia-500/15 hover:border-fuchsia-300/50 hover:cursor-pointer text-white font-semibold py-2.5 px-4 rounded-xl transition-all duration-200">
+                    <i class="fa-solid fa-video" aria-hidden="true"></i>
+                    <span i18n="@@share.clip.create">Create video clip</span>
+                </button>
+            }
+        }
+    }
+</div>
+
+@if (clipState() === 'recording') {
+    <p class="mt-2 text-center text-xs text-white/60" i18n="@@share.clip.hint">The clip replays the spin. Keep this page open while it records.</p>
+}
+@if (imageError()) {
+    <p class="mt-2 text-center text-xs text-red-300" role="alert" i18n="@@share.image.error">Could not create the image. Try again.</p>
+}
+@if (clipState() === 'error') {
+    <p class="mt-2 text-center text-xs text-red-300" role="alert" i18n="@@share.clip.error">Could not create the clip on this device.</p>
+}

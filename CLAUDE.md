@@ -72,6 +72,14 @@ Order is load-bearing: `reauthenticate()` → `deleteAllCurrentUserWheels()` →
 ### Rendering
 `shared/extraction-effect/wheel-renderer.ts` (`drawWheelCanvas`) is the single canvas drawing implementation shared by: the interactive `Wheel`, the multi-wheel previews on `WheelPage`, and the read-only `PublicWheel`. Four view modes exist (`wheelViewType`): `'wheel'` | `'linear'` | `'cards'` | `'wheel3d'`; the last is premium-only (see below) and is the same canvas inside a CSS 3D scene (`Wheel3d`). Winner effects (`fire`, `cartoon-fire`, `confetti`, `fireworks`, `applause`, premium `chest`) live under `shared/winner-effect/`: `FireEffect` draws them all on one canvas and owns the winner card; `chest` adds the CSS 3D caskets of `ChestReveal`, whose keyframe timings must match `CHEST_OPEN_MS`. `FireEffect` is projected content, so it is created at page load, not when a winner appears: its template must read signals, never fields set in `initAnimation`. Pointer/effect string unions are in `modules/classes/custom-type.ts`.
 
+### Winner sharing (`winner-share.service.ts`, `shared/winner-share/`)
+The winner card (`FireEffect`) carries `WinnerShare`: a 1080×1350 PNG and a 720×1280 video clip (MP4 where `MediaRecorder` supports it, WebM otherwise) with the wheelr.xyz signature. Both are painted by `drawWinnerFrame` from one `WinnerScene`, because the live wheel is DOM + CSS (pointer SVG, centre logo, transforms) and cannot be captured. The scene always draws the classic disc, whatever the view.
+
+- The clip **replays the real spin** from `WheelConfigurator.lastSpin` (start/end rotation, duration), set in `performSpin`, with `easeCubicBezier(SPIN_EASING)` — the same curve as the CSS transition. Change one and the other must follow. Its audio is the same `DefaultSoundPlayer`, pointed at a `MediaStreamAudioDestinationNode` instead of the speakers, or the user's uploaded sounds.
+- Recording runs in real time, so the clip is **shared on a second tap**: by then the original tap has expired and `navigator.share` would throw `NotAllowedError`.
+- In the app the WebView has no Web Share for files: the file is written to the cache with `@capacitor/filesystem` and handed to `@capacitor/share`. On desktop the file is downloaded (`prefersShareSheet`).
+- `WinnerShare` is instantiated at page load and during prerendering (it lives inside `FireEffect`), so everything it touches at construction must tolerate Node.
+
 ### Android app (Capacitor)
 The same Angular bundle ships as a native Android app; `android/` is a checked-in Capacitor project (`appId` `xyz.wheelr.app`, `webDir` `dist/wheelr/browser`). There is **no separate mobile codebase** — the web build *is* the app, so `npm run android:sync` after every web change or the APK keeps serving stale assets.
 

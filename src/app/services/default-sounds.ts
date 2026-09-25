@@ -11,7 +11,7 @@
  */
 
 /** Must match the spin transition in the wheel templates. */
-const SPIN_EASING: [number, number, number, number] = [0.15, 0, 0.15, 1];
+export const SPIN_EASING: [number, number, number, number] = [0.15, 0, 0.15, 1];
 /** Ticks closer than this are dropped: on big wheels they would merge into a buzz. */
 const MIN_TICK_GAP_MS = 38;
 /** The pointer sits at 270° in the angle convention the winner maths uses. */
@@ -23,6 +23,13 @@ export class DefaultSoundPlayer {
   private context: AudioContext | null = null;
   private master: GainNode | null = null;
   private spinNodes: AudioScheduledSourceNode[] = [];
+
+  /**
+   * By default the player owns an AudioContext wired to the speakers. The
+   * winner clip passes its own context and a recording node instead, so the
+   * same ticks and fanfare end up in the video's audio track.
+   */
+  constructor(private readonly output?: { context: AudioContext; destination: AudioNode }) {}
 
   /**
    * Schedules one tick per slice boundary crossing between two rotations.
@@ -101,6 +108,13 @@ export class DefaultSoundPlayer {
   }
 
   private ensureContext(): { context: AudioContext; master: GainNode } | null {
+    if (!this.context && this.output) {
+      this.context = this.output.context;
+      this.master = this.context.createGain();
+      this.master.gain.value = 0.6;
+      this.master.connect(this.output.destination);
+    }
+
     if (!this.context) {
       const Ctor =
         (globalThis as { AudioContext?: AudioContextConstructor }).AudioContext ??

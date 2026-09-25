@@ -3,6 +3,15 @@ import type { effectType, pointerType, wheelViewType } from '../modules/classes/
 
 export type WinnerPanelPosition = 'left' | 'top' | 'right' | 'bottom';
 
+/** One completed spin, as `performSpin` ran it (CSS rotations in degrees). */
+export interface LastSpin {
+  workspaceId: string;
+  winner: string;
+  startRotation: number;
+  endRotation: number;
+  durationMs: number;
+}
+
 export interface WheelWorkspaceMeta {
   id: string;
   name: string;
