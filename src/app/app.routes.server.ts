@@ -1,5 +1,6 @@
 import { RenderMode, ServerRoute } from '@angular/ssr';
 import { TEMPLATE_LANDING_PAGES } from './feature/wheel-templates/wheel-templates.seo';
+import { COMMUNITY_WHEELS } from './feature/community-wheels/community-wheels.data';
 
 /**
  * How each route is produced at build time.
@@ -29,6 +30,13 @@ export const serverRoutes: ServerRoute[] = [
     renderMode: RenderMode.Prerender,
     getPrerenderParams: async () =>
       TEMPLATE_LANDING_PAGES.map((page) => ({ slug: page.seo.slug })),
+  },
+  { path: 'community', renderMode: RenderMode.Prerender },
+  {
+    // One file per community wheel, straight from the list that defines them.
+    path: 'community/:slug',
+    renderMode: RenderMode.Prerender,
+    getPrerenderParams: async () => COMMUNITY_WHEELS.map((wheel) => ({ slug: wheel.slug })),
   },
   { path: ':id', renderMode: RenderMode.Client },
   { path: '**', renderMode: RenderMode.Client },

@@ -1,0 +1,60 @@
+<section class="wl-page-bg min-h-screen pt-28 pb-20 px-4 text-white/90 bg-neutral-950" aria-labelledby="community-title">
+  <div class="wl-stagger max-w-6xl mx-auto space-y-8">
+    <header class="rounded-2xl border border-white/[0.08] bg-gradient-to-b from-white/[0.06] to-white/[0.02] backdrop-blur-sm p-6 shadow-[0_4px_24px_rgba(0,0,0,0.3)] md:p-8">
+      <p class="text-xs uppercase tracking-[0.25em] text-amber-300/80 font-semibold">
+        <i class="fa-solid fa-people-group mr-1.5 text-amber-400/70" aria-hidden="true"></i><span i18n="@@community.list.kicker">Wheelr • Community wheels</span>
+      </p>
+      <h1 id="community-title" class="mt-2 text-3xl md:text-4xl font-black text-white" i18n="@@community.list.heading">Wheels made for communities</h1>
+      <p class="mt-3 text-sm md:text-base leading-relaxed text-white/70 max-w-3xl" i18n="@@community.list.intro">Special wheels designed with and for a community: their own frame, their own background and their own colours. Pick one, write your entries and spin — the style stays exactly as the community made it.</p>
+    </header>
+
+    <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" i18n-aria-label="@@community.list.grid" aria-label="Community wheels">
+      @for (wheel of wheels; track wheel.slug) {
+        <li>
+          <a
+            [routerLink]="['/community', wheel.slug]"
+            class="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-[0_12px_36px_rgba(245,158,11,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60"
+            [attr.aria-label]="labels.open(wheel.name)">
+            <div
+              class="flex justify-center px-6 pt-6"
+              [style.background]="cardBackground(wheel.background.color, wheel.background.gradient)">
+              <div
+                class="wl-community-card-art relative w-full max-w-[16rem]"
+                [style.aspectRatio]="layouts.get(wheel.slug)?.aspectRatio">
+                <span
+                  class="absolute aspect-square rounded-full"
+                  [style.left]="layouts.get(wheel.slug)?.left"
+                  [style.top]="layouts.get(wheel.slug)?.top"
+                  [style.width]="layouts.get(wheel.slug)?.width"
+                  [style.background]="previewDisc(wheel)"
+                  aria-hidden="true"></span>
+                <img
+                  [src]="wheel.frame.src"
+                  [width]="wheel.frame.width"
+                  [height]="wheel.frame.height"
+                  alt=""
+                  loading="lazy"
+                  class="absolute inset-0 h-full w-full" />
+              </div>
+            </div>
+            <div class="flex flex-1 flex-col bg-gradient-to-b from-white/[0.05] to-transparent p-5">
+              <p class="text-[0.65rem] uppercase tracking-[0.2em] text-amber-300/70 font-semibold">{{ wheel.community }}</p>
+              <h2 class="mt-1 text-lg font-bold text-white transition-colors group-hover:text-amber-300">{{ wheel.emoji }} {{ wheel.name }}</h2>
+              <p class="mt-2 text-sm leading-relaxed text-white/60">{{ wheel.tagline }}</p>
+              <div class="mt-4 flex items-center justify-between gap-3">
+                <span class="flex gap-1.5" aria-hidden="true">
+                  @for (color of wheel.palette.colors; track $index) {
+                    <span class="h-4 w-4 rounded-full border border-white/20" [style.backgroundColor]="color"></span>
+                  }
+                </span>
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200">
+                  <span i18n="@@community.list.open">Open</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </span>
+              </div>
+            </div>
+          </a>
+        </li>
+      }
+    </ul>
+  </div>
+</section>

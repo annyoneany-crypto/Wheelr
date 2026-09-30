@@ -96,6 +96,32 @@ export const routes: Routes = [
         }
     },
     {
+        path: 'community',
+        loadComponent: () => import('./feature/community-wheels/community-wheels').then((x) => x.CommunityWheels),
+        data: {
+            seo: {
+                title: $localize`:@@seo.community.title:Community Wheels | Themed Spin Wheels - Wheelr`,
+                description:
+                    $localize`:@@seo.community.description:Spin wheels designed for communities, each with its own frame, background and colours. Add your entries and spin. Free, no signup.`,
+                breadcrumb: $localize`:@@seo.community.breadcrumb:Community wheels`
+            }
+        }
+    },
+    {
+        // Two segments, like templates/:slug, so it never collides with ':id'.
+        path: 'community/:slug',
+        loadComponent: () =>
+            import('./feature/community-wheels/community-wheel/community-wheel').then((x) => x.CommunityWheelPage),
+        data: {
+            seo: {
+                // Replaced per wheel by CommunityWheelPage.applySeo once the slug resolves.
+                title: $localize`:@@seo.communityWheel.fallbackTitle:Community Wheel - Wheelr`,
+                description:
+                    $localize`:@@seo.community.description:Spin wheels designed for communities, each with its own frame, background and colours. Add your entries and spin. Free, no signup.`
+            }
+        }
+    },
+    {
         path: 'stream',
         loadComponent: () => import('./feature/stream/stream').then((x) => x.Stream),
         data: {

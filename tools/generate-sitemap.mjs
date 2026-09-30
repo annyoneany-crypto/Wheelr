@@ -47,6 +47,7 @@ const PAGES = [
     ],
   },
   { loc: '/templates', changefreq: 'monthly', priority: '0.9', sources: ['src/app/feature/wheel-templates'] },
+  { loc: '/community', changefreq: 'monthly', priority: '0.8', sources: ['src/app/feature/community-wheels'] },
   { loc: '/info', changefreq: 'monthly', priority: '0.8', sources: ['src/app/feature/info'] },
   { loc: '/stream', changefreq: 'monthly', priority: '0.8', sources: ['src/app/feature/stream'] },
   { loc: '/donation', changefreq: 'monthly', priority: '0.5', sources: ['src/app/feature/donation'] },
@@ -66,6 +67,18 @@ async function templateSlugs() {
 
   if (!slugs.length) {
     throw new Error('No template slugs found in wheel-templates.seo.ts — has its shape changed?');
+  }
+
+  return slugs;
+}
+
+/** Community wheel slugs, scraped the same way from community-wheels.data.ts. */
+async function communitySlugs() {
+  const source = await readFile(join(root, 'src/app/feature/community-wheels/community-wheels.data.ts'), 'utf8');
+  const slugs = [...source.matchAll(/^\s{4}slug: '([a-z0-9-]+)',$/gm)].map((match) => match[1]);
+
+  if (!slugs.length) {
+    throw new Error('No community wheel slugs found in community-wheels.data.ts — has its shape changed?');
   }
 
   return slugs;
@@ -103,7 +116,14 @@ const templatePages = (await templateSlugs()).map((slug) => ({
   sources: ['src/app/feature/wheel-templates'],
 }));
 
-const allPages = [...PAGES, ...templatePages];
+const communityPages = (await communitySlugs()).map((slug) => ({
+  loc: `/community/${slug}`,
+  changefreq: 'monthly',
+  priority: '0.6',
+  sources: ['src/app/feature/community-wheels', `public/community-art/${slug}`],
+}));
+
+const allPages = [...PAGES, ...templatePages, ...communityPages];
 
 // Each page is listed once per locale. The images ride along only on the source
 // locale's entry: they are the same files, and repeating them six times would

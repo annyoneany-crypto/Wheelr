@@ -130,12 +130,56 @@
           <context context-type="linenumber">94</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="seo.community.title" datatype="html">
+        <source>Community Wheels | Themed Spin Wheels - Wheelr</source>
+        <target>社区转盘 | 主题转盘 - Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.community.description" datatype="html">
+        <source>Spin wheels designed for communities, each with its own frame, background and colours. Add your entries and spin. Free, no signup.</source>
+        <target>为社区设计的转盘，各有专属边框、背景和配色。添加条目即可旋转。免费，无需注册。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">120</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.community.breadcrumb" datatype="html">
+        <source>Community wheels</source>
+        <target>社区转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">13,14</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
+          <context context-type="linenumber">192</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.communityWheel.fallbackTitle" datatype="html">
+        <source>Community Wheel - Wheelr</source>
+        <target>社区转盘 - Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/app.routes.ts</context>
+          <context context-type="linenumber">118</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="seo.stream.title" datatype="html">
         <source>Spin Wheel for Streams | OBS Giveaway Wheel Overlay</source>
         <target>直播转盘 | OBS 抽奖叠加层 - Wheelr</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">103</context>
+          <context context-type="linenumber">129</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.stream.description" datatype="html">
@@ -143,7 +187,7 @@
         <target>把转盘放进你的直播：隐藏界面、在 OBS 或 Streamlabs 中捕获窗口，实时抽出中奖者。免费，无需插件。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">105</context>
+          <context context-type="linenumber">131</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.stream.breadcrumb" datatype="html">
@@ -151,7 +195,7 @@
         <target>主播专区</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">106</context>
+          <context context-type="linenumber">132</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.privacy.title" datatype="html">
@@ -159,7 +203,7 @@
         <target>隐私政策 - Wheelr</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">116</context>
+          <context context-type="linenumber">142</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.privacy.description" datatype="html">
@@ -167,7 +211,7 @@
         <target>Wheelr 在网页端和安卓应用中收集哪些数据、为何收集、依据哪条 GDPR 条款，以及如何随时导出或删除这些数据。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">118</context>
+          <context context-type="linenumber">144</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.privacy.breadcrumb" datatype="html">
@@ -175,7 +219,7 @@
         <target>隐私</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">119</context>
+          <context context-type="linenumber">145</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.shared.title" datatype="html">
@@ -183,7 +227,7 @@
         <target>共享转盘 - Wheelr</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">135</context>
+          <context context-type="linenumber">161</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/public-wheel/public-wheel.ts</context>
@@ -195,7 +239,7 @@
         <target>通过免费在线转盘 Wheelr 共享的转盘。打开链接即可查看条目并转动——无需账户。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/app.routes.ts</context>
-          <context context-type="linenumber">137</context>
+          <context context-type="linenumber">163</context>
         </context-group>
       </trans-unit>
       <trans-unit id="auth.dialog" datatype="html">
@@ -223,7 +267,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">175,177</context>
+          <context context-type="linenumber">176,178</context>
         </context-group>
       </trans-unit>
       <trans-unit id="auth.subtitle" datatype="html">
@@ -384,6 +428,274 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/auth/auth.ts</context>
           <context context-type="linenumber">190</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.breadcrumb" datatype="html">
+        <source>Breadcrumb</source>
+        <target>面包屑导航</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">9,10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.hub" datatype="html">
+        <source>Spin</source>
+        <target>旋转</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">75,77</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.spinning" datatype="html">
+        <source>Spinning…</source>
+        <target>转动中…</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">86,88</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
+          <context context-type="linenumber">58,60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="landing.spin" datatype="html">
+        <source>Spin the wheel</source>
+        <target>转动转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">88,90</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
+          <context context-type="linenumber">60,62</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.winner" datatype="html">
+        <source>The spirit has chosen</source>
+        <target>灵狐选中了</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">95,96</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.empty" datatype="html">
+        <source>Add at least one entry to spin the wheel.</source>
+        <target>至少添加一个条目才能旋转转盘。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">99,101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.entries.title" datatype="html">
+        <source>Entries</source>
+        <target>条目</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">105,106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.entries.hint" datatype="html">
+        <source>One per line. They are saved on this device only.</source>
+        <target>每行一个。仅保存在此设备上。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">106,108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.entries.label" datatype="html">
+        <source>Wheel entries, one per line</source>
+        <target>转盘条目，每行一个</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">108,110</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.entries.reset" datatype="html">
+        <source>Restore defaults</source>
+        <target>恢复默认</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">125,127</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.locked.title" datatype="html">
+        <source>Official community style</source>
+        <target>官方社区风格</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">132,134</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.locked.body" datatype="html">
+        <source>Frame, background and colours are part of this wheel and cannot be changed.</source>
+        <target>边框、背景和颜色是此转盘的一部分，无法更改。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">134,135</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.palette" datatype="html">
+        <source>Wheel colours</source>
+        <target>转盘颜色</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">135,136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.back" datatype="html">
+        <source>All community wheels</source>
+        <target>所有社区转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
+          <context context-type="linenumber">150,152</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.wheelAria" datatype="html">
+        <source>The <x id="NAME" equiv-text="name"/> community wheel</source>
+        <target>“<x id="NAME" equiv-text="name"/>”社区转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
+          <context context-type="linenumber">102</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.page.spinAria" datatype="html">
+        <source>Spin the <x id="NAME" equiv-text="name"/> wheel</source>
+        <target>旋转“<x id="NAME" equiv-text="name"/>”转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="seo.communityWheel.title" datatype="html">
+        <source><x id="NAME" equiv-text="wheel.name"/> - Community Wheel | Wheelr</source>
+        <target><x id="NAME" equiv-text="wheel.name"/> - 社区转盘 | Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
+          <context context-type="linenumber">188</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.community" datatype="html">
+        <source>Fox Spirit community</source>
+        <target>Fox Spirit 社区</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.tagline" datatype="html">
+        <source>Spirit fire, amethyst and gold</source>
+        <target>灵火、紫晶与黄金</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">74</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.description" datatype="html">
+        <source>A wheel wrapped in the flaming tail of the spirit fox. Purple, gold and red slices that stay exactly as the community designed them — you only choose the entries.</source>
+        <target>被灵狐火焰尾巴环绕的转盘。紫色、金色和红色的扇区完全保持社区设计的样子——你只需选择条目。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">75</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.entry1" datatype="html">
+        <source>Ember</source>
+        <target>余烬</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.entry2" datatype="html">
+        <source>Amethyst</source>
+        <target>紫水晶</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">107</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.entry3" datatype="html">
+        <source>Kitsune</source>
+        <target>九尾狐</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.entry4" datatype="html">
+        <source>Golden Tail</source>
+        <target>金尾</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.entry5" datatype="html">
+        <source>Spirit Flame</source>
+        <target>灵焰</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">110</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.fox-spirit.entry6" datatype="html">
+        <source>Moon Fox</source>
+        <target>月狐</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">111</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.list.kicker" datatype="html">
+        <source>Wheelr • Community wheels</source>
+        <target>Wheelr • 社区转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.html</context>
+          <context context-type="linenumber">5,7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.list.heading" datatype="html">
+        <source>Wheels made for communities</source>
+        <target>为社区打造的转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.html</context>
+          <context context-type="linenumber">7,8</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.list.intro" datatype="html">
+        <source>Special wheels designed with and for a community: their own frame, their own background and their own colours. Pick one, write your entries and spin — the style stays exactly as the community made it.</source>
+        <target>与社区共同设计、专为社区打造的特别转盘：专属边框、专属背景和专属配色。选择一个，写下你的条目并旋转——风格完全保持社区创作时的样子。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.html</context>
+          <context context-type="linenumber">8,11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.list.grid" datatype="html">
+        <source>Community wheels</source>
+        <target>社区转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.html</context>
+          <context context-type="linenumber">11,12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.list.open" datatype="html">
+        <source>Open</source>
+        <target>打开</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.list.openAria" datatype="html">
+        <source>Open the <x id="NAME" equiv-text="name"/> wheel</source>
+        <target>打开“<x id="NAME" equiv-text="name"/>”转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.ts</context>
+          <context context-type="linenumber">23</context>
         </context-group>
       </trans-unit>
       <trans-unit id="createWheel.dialog" datatype="html">
@@ -767,7 +1079,7 @@
         <target>打开主菜单</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">150,151</context>
+          <context context-type="linenumber">151,152</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.dialog" datatype="html">
@@ -775,7 +1087,7 @@
         <target>主菜单</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">199,201</context>
+          <context context-type="linenumber">200,202</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.close" datatype="html">
@@ -783,7 +1095,7 @@
         <target>关闭菜单</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">206,207</context>
+          <context context-type="linenumber">207,208</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.closeLabel" datatype="html">
@@ -791,7 +1103,7 @@
         <target>关闭</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">209,211</context>
+          <context context-type="linenumber">210,212</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.nav" datatype="html">
@@ -799,7 +1111,7 @@
         <target>主要页面</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">217,218</context>
+          <context context-type="linenumber">218,219</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.wheel" datatype="html">
@@ -807,7 +1119,7 @@
         <target>前往转盘页面</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">224,225</context>
+          <context context-type="linenumber">225,226</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.wheel" datatype="html">
@@ -815,7 +1127,7 @@
         <target>🎡 Wheelr</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">226,228</context>
+          <context context-type="linenumber">227,229</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.templates" datatype="html">
@@ -823,7 +1135,7 @@
         <target>前往现成转盘页面</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">233,234</context>
+          <context context-type="linenumber">234,235</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.templates" datatype="html">
@@ -831,7 +1143,23 @@
         <target>✨ 现成转盘</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">235,237</context>
+          <context context-type="linenumber">236,238</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.community" datatype="html">
+        <source>Go to community wheels page</source>
+        <target>前往社区转盘页面</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">243,244</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.community" datatype="html">
+        <source>🦊 Community wheels</source>
+        <target>🦊 社区转盘</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.html</context>
+          <context context-type="linenumber">245,247</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.stream" datatype="html">
@@ -839,7 +1167,7 @@
         <target>前往直播指南</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">242,243</context>
+          <context context-type="linenumber">252,253</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.stream" datatype="html">
@@ -847,7 +1175,7 @@
         <target>🎥 主播专区</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">244,246</context>
+          <context context-type="linenumber">254,256</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.info" datatype="html">
@@ -855,7 +1183,7 @@
         <target>前往信息页面</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">251,252</context>
+          <context context-type="linenumber">261,262</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.info" datatype="html">
@@ -863,7 +1191,7 @@
         <target>ℹ️ 信息</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">253,255</context>
+          <context context-type="linenumber">263,265</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.donation" datatype="html">
@@ -871,7 +1199,7 @@
         <target>前往捐赠页面</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">260,261</context>
+          <context context-type="linenumber">270,271</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.donation" datatype="html">
@@ -879,7 +1207,7 @@
         <target>💝 捐赠</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">262,264</context>
+          <context context-type="linenumber">272,274</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.wiki" datatype="html">
@@ -887,7 +1215,7 @@
         <target>打开 Wheelr 维基（新标签页）</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">270,271</context>
+          <context context-type="linenumber">280,281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.wiki" datatype="html">
@@ -895,7 +1223,7 @@
         <target>📖 维基</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">272,274</context>
+          <context context-type="linenumber">282,284</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.privacy" datatype="html">
@@ -903,7 +1231,7 @@
         <target>前往隐私政策</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">279,280</context>
+          <context context-type="linenumber">290,291</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.item.privacy" datatype="html">
@@ -911,7 +1239,7 @@
         <target>🛡️ 隐私</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">281,283</context>
+          <context context-type="linenumber">292,294</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.social.twitter" datatype="html">
@@ -919,7 +1247,7 @@
         <target>AnnyoneAny 的 Twitter 主页</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">292,293</context>
+          <context context-type="linenumber">303,304</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.lang.switchTo" datatype="html">
@@ -927,7 +1255,7 @@
         <target>切换到<x id="LANGUAGE" equiv-text="locale.label"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">194</context>
+          <context context-type="linenumber">219</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.namesCount.title" datatype="html">
@@ -935,7 +1263,7 @@
         <target>转盘上有 <x id="COUNT" equiv-text="this.wheelConfigurator.namesCount()"/> 个名字</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">198</context>
+          <context context-type="linenumber">223</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.multiple" datatype="html">
@@ -943,7 +1271,7 @@
         <target>重命名可见转盘</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">204</context>
+          <context context-type="linenumber">229</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
@@ -955,7 +1283,7 @@
         <target>重命名所选转盘</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">205</context>
+          <context context-type="linenumber">230</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
@@ -967,7 +1295,7 @@
         <target>打开账户面板</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">213</context>
+          <context context-type="linenumber">238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.auth.openLogin" datatype="html">
@@ -975,7 +1303,7 @@
         <target>打开登录窗口</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">213</context>
+          <context context-type="linenumber">238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.saving" datatype="html">
@@ -983,7 +1311,7 @@
         <target>正在将转盘保存到云端</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">278</context>
+          <context context-type="linenumber">303</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.saved" datatype="html">
@@ -991,7 +1319,7 @@
         <target>转盘已保存到云端</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">280</context>
+          <context context-type="linenumber">305</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.failed" datatype="html">
@@ -999,7 +1327,7 @@
         <target>保存失败，请重试</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">282</context>
+          <context context-type="linenumber">307</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.update" datatype="html">
@@ -1007,7 +1335,7 @@
         <target>更新云端已保存的转盘</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">285</context>
+          <context context-type="linenumber">310</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.toCloud" datatype="html">
@@ -1015,7 +1343,7 @@
         <target>将转盘保存到云端</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">286</context>
+          <context context-type="linenumber">311</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.noWheel" datatype="html">
@@ -1023,7 +1351,7 @@
         <target>没有选择要保存的转盘。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">323</context>
+          <context context-type="linenumber">348</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.notFound" datatype="html">
@@ -1031,7 +1359,7 @@
         <target>未找到转盘配置，请重试。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">337</context>
+          <context context-type="linenumber">362</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.updatedMsg" datatype="html">
@@ -1039,7 +1367,7 @@
         <target>转盘已在云端更新。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">351</context>
+          <context context-type="linenumber">376</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.savedMsg" datatype="html">
@@ -1047,7 +1375,7 @@
         <target>转盘已保存到云端。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">351</context>
+          <context context-type="linenumber">376</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.signIn" datatype="html">
@@ -1055,7 +1383,7 @@
         <target>请登录后将转盘保存到云端。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">356</context>
+          <context context-type="linenumber">381</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.error" datatype="html">
@@ -1063,7 +1391,7 @@
         <target>云端保存失败，请重试。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">357</context>
+          <context context-type="linenumber">382</context>
         </context-group>
       </trans-unit>
       <trans-unit id="account.dialog" datatype="html">
@@ -2536,30 +2864,6 @@
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/template-labels.ts</context>
           <context context-type="linenumber">15</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="landing.breadcrumb" datatype="html">
-        <source>Breadcrumb</source>
-        <target>面包屑导航</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
-          <context context-type="linenumber">7,8</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="landing.spinning" datatype="html">
-        <source>Spinning…</source>
-        <target>转动中…</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
-          <context context-type="linenumber">58,60</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="landing.spin" datatype="html">
-        <source>Spin the wheel</source>
-        <target>转动转盘</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
-          <context context-type="linenumber">60,62</context>
         </context-group>
       </trans-unit>
       <trans-unit id="landing.tryHint" datatype="html">

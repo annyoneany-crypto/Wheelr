@@ -93,6 +93,14 @@ There is no purchase flow. The premium options are the `PremiumFeature`s — the
 - The login modal belongs to `Header`, so a locked feature asks for it by bumping `loginRequestToken`. The app's ad prompt is `PremiumUnlock`, mounted in `app.html` because the settings drawer is its own stacking context.
 - Like the templates: a *skipped* ad keeps it locked, an ad that could not *load* unlocks it.
 
+### Community wheels (`feature/community-wheels/`)
+Themed wheels made for a specific community, listed at `/community` and each on its own page at `/community/<slug>` (both prerendered). `COMMUNITY_WHEELS` in `community-wheels.data.ts` is the single source: route, list, prerender params and sitemap all read it.
+
+- **The look is locked**: frame artwork, background and palette live in the data file and the page never touches `WheelConfigurator`, so no settings panel can reach them. The visitor only edits the entries, saved per wheel in localStorage (`wheelr.communityWheel.entries.v1.<slug>`). Spin is the same self-contained CSS rotation as `TemplateLanding`, pointer at the top.
+- **The frame is an image laid over the canvas**; the wheel is positioned inside it by `wheelCenterX`/`wheelCenterY`/`wheelDiameter`, fractions of the image (`frameLayout()`). Change the artwork → re-measure those.
+- Artwork lives in `public/community-art/<slug>/`, **not** `public/community/`, which would share a folder with the prerendered route. Art delivered on black goes through `node tools/community-frame.mjs <in> <out.webp> [--crop l,t,w,h]`, which turns the black into alpha: `mix-blend-mode: screen` breaks as soon as an ancestor opens a stacking context.
+- New wheel: a data entry, its art, and translations for its `community.<slug>.*` ids (`npm run i18n`), then `npm run sitemap`.
+
 ### Ads (`ads.service.ts`, app only)
 `@capacitor-community/admob` monetises the Android build; `AdsService.isEnabled` is false on web and every method short-circuits there, so the browser app is unchanged.
 
@@ -118,7 +126,7 @@ There is no purchase flow. The premium options are the `PremiumFeature`s — the
 - Before publishing, swap the AdMob sample IDs in `admob.config.ts` + `strings.xml` and set `useTestAds: false`, otherwise the store build serves test ads and earns nothing.
 
 ### Routing (`app.routes.ts`)
-All routes lazy-load standalone components. The root `WheelPage` hosts named-outlet child routes (`outlet: 'panel'`) for the settings panels (`users`, `color-settings`, `effects`, `sound`, `wheel-manager`). `/:id` resolves a public shared wheel via `PublicWheel`; `/info`, `/donation`, `/templates` and `/privacy` are static pages.
+All routes lazy-load standalone components. The root `WheelPage` hosts named-outlet child routes (`outlet: 'panel'`) for the settings panels (`users`, `color-settings`, `effects`, `sound`, `wheel-manager`). `/:id` resolves a public shared wheel via `PublicWheel`; `/info`, `/donation`, `/templates`, `/community` and `/privacy` are static pages.
 
 **`:id` swallows any single-segment path**, so every new static route must be declared *above* it in `app.routes.ts` or it will render as a (missing) public wheel. `/privacy` is also the Play Store's required privacy-policy URL — see `docs/play-store-listing.md`.
 
@@ -134,7 +142,7 @@ All routes lazy-load standalone components. The root `WheelPage` hosts named-out
 - `public/sitemap.xml` is **generated** — run `npm run sitemap`; `lastmod` comes from the git history of each page's sources.
 
 ### Localization (`angular.json` i18n, `services/i18n.config.ts`)
-Six locales — `en-US` (source, at the root) plus `it`, `de`, `fr`, `es`, `zh`, each with a `subPath` that Angular uses as both `<base href>` and output directory. `ng build` produces one bundle per locale and prerenders **26 pages × 6 = 156** static files under `/`, `/it/`, `/de/` …
+Six locales — `en-US` (source, at the root) plus `it`, `de`, `fr`, `es`, `zh`, each with a `subPath` that Angular uses as both `<base href>` and output directory. `ng build` produces one bundle per locale and prerenders **28 pages × 6 = 168** static files under `/`, `/it/`, `/de/` …
 
 - `src/app/services/i18n.config.ts` is the single list the SEO layer reads; it must stay in step with the `i18n` block of `angular.json` and with `LOCALE_SUBPATHS` in `tools/generate-sitemap.mjs`. A locale in the build but missing here ships with no alternates pointing at it and is invisible.
 - **The router URL never contains the locale.** `/it/stream` is `/stream` as far as routing is concerned, because the prefix lives in `<base href>`. `SeoService` therefore adds it back for the canonical — without that, every translated page canonicalises to its English twin and search engines drop the translations. This was a real bug caught before any translation existed.

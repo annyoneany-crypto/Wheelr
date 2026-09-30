@@ -1,0 +1,77 @@
+:host {
+  display: block;
+}
+
+.wl-accent-text {
+  color: var(--wl-accent);
+}
+
+.wl-community-title {
+  background: linear-gradient(180deg, #fff7d6 0%, var(--wl-accent) 55%, #d62839 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.55));
+}
+
+/* Same CSS-transition spin as the template landing pages: the duration is bound
+   in the template and matched by the timer that reads the winner. */
+.wl-community-wheel {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.17, 0.67, 0.12, 0.99);
+  will-change: transform;
+}
+
+/* A gem under the fox's chin, in the colour of the one on its forehead. */
+.wl-community-pointer {
+  width: 5%;
+  aspect-ratio: 1;
+  transform: translate(-50%, -35%) rotate(45deg);
+  border-radius: 3px 3px 3px 3px;
+  background: linear-gradient(135deg, #f5e9ff 0%, var(--wl-pointer) 45%, #3b0a78 100%);
+  border: 2px solid rgba(255, 244, 214, 0.85);
+  box-shadow: 0 0 14px var(--wl-pointer), 0 0 4px rgba(0, 0, 0, 0.6);
+}
+
+.wl-community-hub {
+  transform: translate(-50%, -50%);
+  border-width: 3px;
+  border-style: solid;
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.55), 0 0 18px color-mix(in srgb, var(--wl-accent) 45%, transparent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.wl-community-hub:not(:disabled):hover {
+  cursor: pointer;
+  transform: translate(-50%, -50%) scale(1.06);
+  box-shadow: 0 0 22px rgba(0, 0, 0, 0.55), 0 0 28px color-mix(in srgb, var(--wl-accent) 70%, transparent);
+}
+
+.wl-community-spin {
+  background: linear-gradient(180deg, #ffe08a 0%, var(--wl-accent) 60%, #c2410c 100%);
+  box-shadow: 0 4px 22px color-mix(in srgb, var(--wl-accent) 45%, transparent);
+}
+.wl-community-spin:not(:disabled):hover {
+  cursor: pointer;
+  box-shadow: 0 6px 30px color-mix(in srgb, var(--wl-accent) 65%, transparent);
+}
+
+.wl-community-winner {
+  border-color: color-mix(in srgb, var(--wl-accent) 45%, transparent);
+  background: rgba(10, 4, 20, 0.6);
+  box-shadow: 0 0 36px color-mix(in srgb, var(--wl-accent) 30%, transparent);
+  animation: wl-community-reveal 0.45s ease-out both;
+}
+
+@keyframes wl-community-reveal {
+  from { opacity: 0; transform: translateY(8px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-community-wheel {
+    transition-duration: 1ms !important;
+  }
+  .wl-community-winner {
+    animation: none;
+  }
+}

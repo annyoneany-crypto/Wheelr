@@ -238,6 +238,15 @@
                 </li>
                 <li>
                     <a
+                        [routerLink]="['/community']"
+                        (click)="closeMenu()"
+                        i18n-aria-label="@@header.menu.community" aria-label="Go to community wheels page"
+                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
+                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.community">🦊 Community wheels</span>
+                    </a>
+                </li>
+                <li>
+                    <a
                         [routerLink]="['/stream']"
                         (click)="closeMenu()"
                         i18n-aria-label="@@header.menu.stream" aria-label="Go to the streaming guide"
@@ -273,7 +282,8 @@
                         <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.wiki">📖 Wiki</span>
                     </a>
                 </li>
-                <li>
+                <!-- Full width on phones: it is the odd one out of the two-column grid. -->
+                <li class="col-span-2 md:col-span-1">
                     <a
                         [routerLink]="['/privacy']"
                         (click)="closeMenu()"
