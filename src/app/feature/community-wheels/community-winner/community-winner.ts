@@ -34,6 +34,14 @@ interface Spark {
 
 /** Seconds between two bursts of sparks from the centre. */
 const BURST_EVERY_S = 1.1;
+/**
+ * Spawn by time and cap the totals: spawning per frame piled up thousands of
+ * particles on slow devices (a long frame is clamped to 50 ms, so particles
+ * outlive more frames), and the page stopped responding to the Close button.
+ */
+const EMBERS_PER_SECOND = 70;
+const MAX_EMBERS = 200;
+const MAX_SPARKS = 450;
 
 /**
  * The winner reveal of a community wheel: a spirit fire in the wheel's own
@@ -105,11 +113,12 @@ export class CommunityWinner {
     const sparks: Spark[] = [];
     let last = performance.now();
     let sinceBurst = 0;
+    let emberDebt = 0;
 
     const burst = (count: number) => {
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
-      for (let i = 0; i < count; i += 1) {
+      for (let i = 0; i < count && sparks.length < MAX_SPARKS; i += 1) {
         const angle = Math.random() * Math.PI * 2;
         const speed = 120 + Math.random() * 520;
         sparks.push({
@@ -138,24 +147,26 @@ export class CommunityWinner {
       ctx.fillStyle = glow;
       ctx.fillRect(0, height * 0.55, width, height * 0.45);
 
-      if (!reducedMotion || embers.length < 40) {
-        for (let i = 0; i < (reducedMotion ? 1 : 10); i += 1) {
-          const maxLife = 1.6 + Math.random() * 1.8;
-          embers.push({
-            x: Math.random() * width,
-            y: height + 10,
-            vx: (Math.random() - 0.5) * 40,
-            vy: -(70 + Math.random() * 170),
-            life: maxLife,
-            maxLife,
-            size: 1.5 + Math.random() * 3.5,
-            color: pick(),
-          });
+      emberDebt += dt * (reducedMotion ? EMBERS_PER_SECOND / 6 : EMBERS_PER_SECOND);
+      for (; emberDebt >= 1; emberDebt -= 1) {
+        if (embers.length >= (reducedMotion ? 40 : MAX_EMBERS)) {
+          continue;
         }
+        const maxLife = 1.6 + Math.random() * 1.8;
+        embers.push({
+          x: Math.random() * width,
+          y: height + 10,
+          vx: (Math.random() - 0.5) * 40,
+          vy: -(70 + Math.random() * 170),
+          life: maxLife,
+          maxLife,
+          size: 1.5 + Math.random() * 3.5,
+          color: pick(),
+        });
       }
 
       sinceBurst += dt;
-      if (sinceBurst >= BURST_EVERY_S && (!reducedMotion || sparks.length === 0)) {
+      if (sinceBurst >= BURST_EVERY_S) {
         sinceBurst = 0;
         burst(reducedMotion ? 30 : 110);
       }
@@ -175,13 +186,7 @@ export class CommunityWinner {
         ember.y += ember.vy * dt;
 
         const alpha = ember.life / ember.maxLife;
-        ctx.globalAlpha = alpha;
-        ctx.shadowBlur = 14;
-        ctx.shadowColor = ember.color;
-        ctx.fillStyle = ember.color;
-        ctx.beginPath();
-        ctx.arc(ember.x, ember.y, ember.size * (0.6 + alpha * 0.6), 0, Math.PI * 2);
-        ctx.fill();
+        drawGlowDot(ctx, ember.x, ember.y, ember.size * (0.6 + alpha * 0.6), ember.color, alpha);
       }
 
       for (let i = sparks.length - 1; i >= 0; i -= 1) {
@@ -196,17 +201,10 @@ export class CommunityWinner {
         spark.x += spark.vx * dt;
         spark.y += spark.vy * dt;
 
-        ctx.globalAlpha = spark.life;
-        ctx.shadowBlur = 18;
-        ctx.shadowColor = spark.color;
-        ctx.fillStyle = spark.color;
-        ctx.beginPath();
-        ctx.arc(spark.x, spark.y, spark.size, 0, Math.PI * 2);
-        ctx.fill();
+        drawGlowDot(ctx, spark.x, spark.y, spark.size, spark.color, spark.life);
       }
 
       ctx.globalAlpha = 1;
-      ctx.shadowBlur = 0;
       ctx.globalCompositeOperation = 'source-over';
       this.frameId = requestAnimationFrame(frame);
     };
@@ -215,4 +213,27 @@ export class CommunityWinner {
     burst(reducedMotion ? 60 : 260);
     this.frameId = requestAnimationFrame(frame);
   }
+}
+
+/**
+ * A dot with a soft halo. Two plain fills instead of `shadowBlur`, which blurs
+ * every particle separately and is what made the effect expensive.
+ */
+function drawGlowDot(
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  radius: number,
+  color: string,
+  alpha: number
+): void {
+  ctx.fillStyle = color;
+  ctx.globalAlpha = alpha * 0.16;
+  ctx.beginPath();
+  ctx.arc(x, y, radius * 2.2, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.globalAlpha = alpha;
+  ctx.beginPath();
+  ctx.arc(x, y, radius, 0, Math.PI * 2);
+  ctx.fill();
 }

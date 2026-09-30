@@ -77,17 +77,18 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
       colors: ['#8B3FE0', '#F2B632', '#D62839', '#6D28D9', '#E0A526', '#B91C3C'],
       gradientTo: ['#3B0A78', '#9A6206', '#6E0A1A', '#2E0A63', '#8A5A04', '#5C0718'],
     },
-    // The artwork is narrowed to 85% of its width (tools/community-frame.mjs
-    // --scale-x 0.85) so the elliptical ring comes out round and the wheel can
-    // fill it. The wheel's top touches the fox's snout, which is the pointer:
-    // keep wheelCenterX on the snout, or the winner no longer matches it.
+    // Generated with `tools/community-frame.mjs <art> frame.webp --crop 40,80,848,940
+    // --hole 423,700`. The wheel fills the round ring and is centred in it; the
+    // fox's head overlaps its top (made opaque by --hole) and the snout points
+    // down the vertical radius at the winning slice, so wheelCenterX must stay
+    // under the snout.
     frame: {
       src: '/community-art/fox-spirit/frame.webp',
-      width: 755,
-      height: 950,
-      wheelCenterX: 0.4999,
-      wheelCenterY: 0.6232,
-      wheelDiameter: 0.6993,
+      width: 848,
+      height: 940,
+      wheelCenterX: 0.4988,
+      wheelCenterY: 0.5638,
+      wheelDiameter: 0.8396,
     },
     background: {
       color: '#0b0512',

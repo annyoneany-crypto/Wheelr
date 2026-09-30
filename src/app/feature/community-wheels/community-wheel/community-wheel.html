@@ -17,50 +17,53 @@
       </h1>
     </header>
 
-    <!-- The frame artwork sits on top of the wheel, placed inside it by the fractions in the data file. There is no pointer of our own: the artwork's top (the fox's snout) is the pointer. -->
-    <div
-      class="wl-community-stage relative mt-2"
-      [style.width]="stageWidth()"
-      [style.aspectRatio]="wheelBox()?.aspectRatio">
-      <canvas
-        #wheelCanvas
-        width="720"
-        height="720"
-        class="wl-community-wheel absolute aspect-square cursor-pointer rounded-full"
-        [style.left]="wheelBox()?.left"
-        [style.top]="wheelBox()?.top"
-        [style.width]="wheelBox()?.width"
-        [style.transform]="'rotate(' + rotationDeg() + 'deg)'"
-        [style.transitionDuration]="spinning() ? data.spinDurationMs + 'ms' : '0ms'"
-        role="button"
-        tabindex="0"
-        [attr.aria-label]="labels.spin(data.name)"
-        (click)="spin()"
-        (keydown.enter)="spin()"
-        (keydown.space)="spin(); $event.preventDefault()"></canvas>
+    <!-- Takes the height left under the title, so the wheel sits in the middle of the screen. -->
+    <div class="flex w-full flex-1 items-center justify-center">
+      <!-- The frame artwork sits on top of the wheel, placed inside it by the fractions in the data file. There is no pointer of our own: the fox's snout, over the top of the wheel, is the pointer. -->
+      <div
+        class="wl-community-stage relative"
+        [style.width]="stageWidth()"
+        [style.aspectRatio]="wheelBox()?.aspectRatio">
+        <canvas
+          #wheelCanvas
+          width="720"
+          height="720"
+          class="wl-community-wheel absolute aspect-square cursor-pointer rounded-full"
+          [style.left]="wheelBox()?.left"
+          [style.top]="wheelBox()?.top"
+          [style.width]="wheelBox()?.width"
+          [style.transform]="'rotate(' + rotationDeg() + 'deg)'"
+          [style.transitionDuration]="spinning() ? data.spinDurationMs + 'ms' : '0ms'"
+          role="button"
+          tabindex="0"
+          [attr.aria-label]="labels.spin(data.name)"
+          (click)="spin()"
+          (keydown.enter)="spin()"
+          (keydown.space)="spin(); $event.preventDefault()"></canvas>
 
-      <img
-        [src]="data.frame.src"
-        [width]="data.frame.width"
-        [height]="data.frame.height"
-        alt=""
-        class="pointer-events-none absolute inset-0 z-10 h-full w-full select-none"
-        draggable="false" />
+        <img
+          [src]="data.frame.src"
+          [width]="data.frame.width"
+          [height]="data.frame.height"
+          alt=""
+          class="pointer-events-none absolute inset-0 z-10 h-full w-full select-none"
+          draggable="false" />
 
-      <button
-        type="button"
-        class="wl-community-hub absolute z-20 flex aspect-square items-center justify-center rounded-full text-xs font-black uppercase tracking-[0.12em] md:text-sm"
-        [style.left]="wheelBox()?.centerX"
-        [style.top]="wheelBox()?.centerY"
-        [style.width]="wheelBox()?.hubWidth"
-        [style.backgroundColor]="data.hub.color"
-        [style.borderColor]="data.hub.borderColor"
-        [style.color]="data.hub.textColor"
-        [disabled]="spinning() || !entries().length"
-        (click)="spin()"
-        [attr.aria-label]="labels.spin(data.name)">
-        <span i18n="@@community.page.hub">Spin</span>
-      </button>
+        <button
+          type="button"
+          class="wl-community-hub absolute z-20 flex aspect-square items-center justify-center rounded-full text-xs font-black uppercase tracking-[0.12em] md:text-sm"
+          [style.left]="wheelBox()?.centerX"
+          [style.top]="wheelBox()?.centerY"
+          [style.width]="wheelBox()?.hubWidth"
+          [style.backgroundColor]="data.hub.color"
+          [style.borderColor]="data.hub.borderColor"
+          [style.color]="data.hub.textColor"
+          [disabled]="spinning() || !entries().length"
+          (click)="spin()"
+          [attr.aria-label]="labels.spin(data.name)">
+          <span i18n="@@community.page.hub">Spin</span>
+        </button>
+      </div>
     </div>
   </section>
 

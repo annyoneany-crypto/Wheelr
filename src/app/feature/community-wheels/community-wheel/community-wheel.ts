@@ -376,7 +376,7 @@ export class CommunityWheelPage {
     });
   });
 
-  /** Same geometry as the main wheel: the pointer (the frame's snout) sits at the top. */
+  /** Same geometry as the main wheel: the pointer (the frame's snout) is on the top of the vertical radius. */
   private winnerAt(totalRotation: number, names: string[]): string {
     const normalized = (360 - (totalRotation % 360)) % 360;
     const adjusted = (normalized - 90 + 360) % 360;
