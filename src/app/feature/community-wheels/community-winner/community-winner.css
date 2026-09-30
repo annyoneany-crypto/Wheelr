@@ -6,7 +6,7 @@
   border-color: var(--wl-accent);
   box-shadow:
     0 0 40px color-mix(in srgb, var(--wl-accent) 55%, transparent),
-    inset 0 0 24px rgba(139, 63, 224, 0.25);
+    inset 0 0 24px color-mix(in srgb, var(--wl-accent) 20%, transparent);
 }
 
 .wl-community-winner-label {
@@ -14,7 +14,8 @@
 }
 
 .wl-community-winner-close {
-  background: linear-gradient(180deg, #ffe08a 0%, var(--wl-accent) 60%, #c2410c 100%);
+  /* Set per wheel on the page host (CommunityWheel.buttonGradient), inherited here. */
+  background: var(--wl-button-gradient);
   box-shadow: 0 4px 20px color-mix(in srgb, var(--wl-accent) 40%, transparent);
 }
 .wl-community-winner-close:hover {

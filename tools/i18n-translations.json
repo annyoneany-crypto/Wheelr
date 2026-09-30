@@ -7167,5 +7167,26 @@
     "fr": "Ouvrir",
     "es": "Abrir",
     "zh": "打开"
+  },
+  "community.supercycle.community": {
+    "it": "Community Supercycle (real)",
+    "de": "Supercycle-(real)-Community",
+    "fr": "Communauté Supercycle (real)",
+    "es": "Comunidad Supercycle (real)",
+    "zh": "Supercycle (real) 社区"
+  },
+  "community.supercycle.tagline": {
+    "it": "Verde neon, bianco, acciaio e nero",
+    "de": "Neongrün, Weiß, Stahl und Schwarz",
+    "fr": "Vert néon, blanc, acier et noir",
+    "es": "Verde neón, blanco, acero y negro",
+    "zh": "霓虹绿、白、钢灰与黑"
+  },
+  "community.supercycle.description": {
+    "it": "Una ruota dentro l'anello al neon della community Supercycle (real), con la sua freccia come puntatore. Spicchi verdi, bianchi, grigi e neri che restano esattamente come li ha disegnati la community: tu scegli solo i nomi.",
+    "de": "Ein Rad im Neonring der Supercycle-(real)-Community, mit ihrem Pfeil als Zeiger. Grüne, weiße, graue und schwarze Felder, die genau so bleiben, wie die Community sie gestaltet hat — du wählst nur die Einträge.",
+    "fr": "Une roue dans l'anneau néon de la communauté Supercycle (real), avec sa flèche comme pointeur. Des parts vertes, blanches, grises et noires qui restent exactement telles que la communauté les a conçues — vous ne choisissez que les entrées.",
+    "es": "Una ruleta dentro del anillo de neón de la comunidad Supercycle (real), con su flecha como puntero. Sectores verdes, blancos, grises y negros que se quedan tal como los diseñó la comunidad: tú solo eliges las entradas.",
+    "zh": "位于 Supercycle (real) 社区霓虹环中的转盘，以社区的箭头作为指针。绿色、白色、灰色和黑色扇区完全保持社区设计的样子——你只需选择条目。"
   }
 }

@@ -7,7 +7,7 @@
 }
 .group:hover .wl-community-card-art {
   transform: scale(1.04);
-  filter: drop-shadow(0 0 22px rgba(242, 182, 50, 0.35));
+  filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.18));
 }
 
 @media (prefers-reduced-motion: reduce) {

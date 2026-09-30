@@ -27,6 +27,12 @@ export interface CommunityWheelFrame {
   wheelCenterY: number;
   /** Diameter of the wheel, as a fraction of the image width. */
   wheelDiameter: number;
+  /**
+   * Where the artwork's pointer points, in degrees clockwise from 12 o'clock
+   * seen from the wheel's centre. The winner is the slice under it. Defaults
+   * to 0 (straight up); a drawn arrow is rarely exactly vertical.
+   */
+  pointerAngleDeg?: number;
 }
 
 export interface CommunityWheel {
@@ -53,6 +59,9 @@ export interface CommunityWheel {
   };
   /** UI accent (buttons, hub glow, winner card). */
   accent: string;
+  /** CSS gradients for the page title and the winner card's main button. */
+  titleGradient: string;
+  buttonGradient: string;
   hub: {
     color: string;
     borderColor: string;
@@ -98,6 +107,8 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
         'radial-gradient(circle at 50% 38%, rgba(214, 40, 57, 0.28), transparent 55%), radial-gradient(circle at 20% 85%, rgba(139, 63, 224, 0.32), transparent 50%), radial-gradient(circle at 85% 80%, rgba(242, 182, 50, 0.18), transparent 45%)',
     },
     accent: '#F2B632',
+    titleGradient: 'linear-gradient(180deg, #fff7d6 0%, #F2B632 55%, #d62839 100%)',
+    buttonGradient: 'linear-gradient(180deg, #ffe08a 0%, #F2B632 60%, #c2410c 100%)',
     hub: {
       color: '#1a0b2e',
       borderColor: '#F2B632',
@@ -112,6 +123,50 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
       $localize`:@@community.fox-spirit.entry5:Spirit Flame`,
       $localize`:@@community.fox-spirit.entry6:Moon Fox`,
     ],
+    spinDurationMs: 5000,
+  },
+  {
+    slug: 'supercycle',
+    emoji: '🟢',
+    name: 'Supercycle (real)',
+    community: $localize`:@@community.supercycle.community:Supercycle (real) community`,
+    tagline: $localize`:@@community.supercycle.tagline:Neon green, white, steel and black`,
+    description: $localize`:@@community.supercycle.description:A wheel inside the neon ring of the Supercycle (real) community, with its arrow as the pointer. Green, white, grey and black slices that stay exactly as the community designed them — you only choose the entries.`,
+    // Green, white, grey and black from the artwork, in that order so that no
+    // two neighbours share a colour; each deepens towards the rim.
+    palette: {
+      colors: ['#39E75F', '#F2F4F3', '#6B7280', '#15181C'],
+      gradientTo: ['#0E7A2C', '#B9C2BD', '#2F343B', '#050607'],
+    },
+    // Generated with `tools/community-frame.mjs <art> frame.webp --crop 110,110,800,780`
+    // (no --hole: the glitter inside the ring stops the flood fill and would
+    // turn into an opaque band over the wheel). The wheel fills the neon ring;
+    // the logo's arrow tip lands on the rim 4.2° right of vertical.
+    frame: {
+      src: '/community-art/supercycle/frame.webp',
+      width: 800,
+      height: 780,
+      wheelCenterX: 0.4992,
+      wheelCenterY: 0.5322,
+      wheelDiameter: 0.735,
+      pointerAngleDeg: 4.2,
+    },
+    background: {
+      color: '#040705',
+      gradient:
+        'radial-gradient(circle at 50% 45%, rgba(57, 231, 95, 0.16), transparent 55%), radial-gradient(circle at 15% 90%, rgba(107, 114, 128, 0.22), transparent 50%), radial-gradient(circle at 88% 12%, rgba(242, 244, 243, 0.08), transparent 40%)',
+    },
+    accent: '#39E75F',
+    titleGradient: 'linear-gradient(180deg, #ffffff 0%, #c9f7d3 40%, #39E75F 75%, #178a3a 100%)',
+    buttonGradient: 'linear-gradient(180deg, #d9ffe2 0%, #39E75F 60%, #16803a 100%)',
+    hub: {
+      color: '#0b0f0c',
+      borderColor: '#39E75F',
+      textColor: '#D9FFE2',
+    },
+    fontFamily: '"Inter", sans-serif',
+    // Market slang is the same in every language, so these are not translated.
+    defaultEntries: ['Bull Run', 'HODL', 'To the Moon', 'Diamond Hands', 'Green Candle', 'New ATH'],
     spinDurationMs: 5000,
   },
 ];

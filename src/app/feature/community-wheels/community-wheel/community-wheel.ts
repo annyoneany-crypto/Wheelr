@@ -52,7 +52,11 @@ const IDLE_DEG_PER_SECOND = 6;
   styleUrl: './community-wheel.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
   // On the host so the drawer and the winner card, outside the page section, see it too.
-  host: { '[style.--wl-accent]': 'wheel()?.accent' },
+  host: {
+    '[style.--wl-accent]': 'wheel()?.accent',
+    '[style.--wl-title-gradient]': 'wheel()?.titleGradient',
+    '[style.--wl-button-gradient]': 'wheel()?.buttonGradient',
+  },
 })
 export class CommunityWheelPage {
   private readonly route = inject(ActivatedRoute);
@@ -203,7 +207,7 @@ export class CommunityWheelPage {
       this.spinTimer = null;
       // Keep the angle small: the idle drift keeps adding to it.
       this.rotationDeg.set(total % 360);
-      this.winner.set(this.winnerAt(total, names));
+      this.winner.set(this.winnerAt(total, names, wheel.frame.pointerAngleDeg ?? 0));
       this.spinning.set(false);
       this.sounds.playWinner();
     }, wheel.spinDurationMs);
@@ -376,10 +380,14 @@ export class CommunityWheelPage {
     });
   });
 
-  /** Same geometry as the main wheel: the pointer (the frame's snout) is on the top of the vertical radius. */
-  private winnerAt(totalRotation: number, names: string[]): string {
+  /**
+   * Same geometry as the main wheel, turned by the angle the artwork's pointer
+   * makes with the vertical (Fox Spirit's snout: 0°; Supercycle's arrow: 4.2°).
+   */
+  private winnerAt(totalRotation: number, names: string[], pointerAngleDeg: number): string {
     const normalized = (360 - (totalRotation % 360)) % 360;
-    const adjusted = (normalized - 90 + 360) % 360;
+    // The pointer sits at 270° + pointerAngleDeg in canvas angles (0° = 3 o'clock).
+    const adjusted = (((normalized - 90 + pointerAngleDeg) % 360) + 360) % 360;
     const index = Math.floor(adjusted / (360 / names.length));
 
     return names[index] ?? names[0] ?? '';

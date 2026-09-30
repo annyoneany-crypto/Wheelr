@@ -7,7 +7,7 @@
 }
 
 .wl-community-title {
-  background: linear-gradient(180deg, #fff7d6 0%, var(--wl-accent) 55%, #d62839 100%);
+  background: var(--wl-title-gradient);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -35,7 +35,6 @@
   transform: translate(-50%, -50%) scale(1.06);
   box-shadow: 0 0 22px rgba(0, 0, 0, 0.55), 0 0 28px color-mix(in srgb, var(--wl-accent) 70%, transparent);
 }
-
 
 @media (prefers-reduced-motion: reduce) {
   .wl-community-wheel {
