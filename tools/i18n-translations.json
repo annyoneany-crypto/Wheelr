@@ -7188,5 +7188,47 @@
     "fr": "Une roue dans l'anneau néon de la communauté Supercycle (real), avec sa flèche comme pointeur. Des parts vertes, blanches, grises et noires qui restent exactement telles que la communauté les a conçues — vous ne choisissez que les entrées.",
     "es": "Una ruleta dentro del anillo de neón de la comunidad Supercycle (real), con su flecha como puntero. Sectores verdes, blancos, grises y negros que se quedan tal como los diseñó la comunidad: tú solo eliges las entradas.",
     "zh": "位于 Supercycle (real) 社区霓虹环中的转盘，以社区的箭头作为指针。绿色、白色、灰色和黑色扇区完全保持社区设计的样子——你只需选择条目。"
+  },
+  "community.info.toggle": {
+    "it": "Info",
+    "de": "Info",
+    "fr": "Infos",
+    "es": "Info",
+    "zh": "信息"
+  },
+  "community.info.aria": {
+    "it": "Informazioni sulla community {NAME}",
+    "de": "Über die Community „{NAME}“",
+    "fr": "À propos de la communauté « {NAME} »",
+    "es": "Acerca de la comunidad «{NAME}»",
+    "zh": "关于“{NAME}”社区"
+  },
+  "community.info.generic": {
+    "it": "{NAME} è la community per cui è stata creata questa ruota. Cornice, colori e sfondo sono stati disegnati insieme a loro, così è uguale per chiunque la faccia girare.",
+    "de": "{NAME} ist die Community, für die dieses Rad gemacht wurde. Rahmen, Farben und Hintergrund wurden mit ihr gestaltet, damit es für alle, die es drehen, gleich aussieht.",
+    "fr": "{NAME} est la communauté pour laquelle cette roue a été créée. Son cadre, ses couleurs et son fond ont été conçus avec elle, pour qu'elle soit identique pour tous ceux qui la lancent.",
+    "es": "{NAME} es la comunidad para la que se creó esta ruleta. Su marco, sus colores y su fondo se diseñaron con ella, para que se vea igual para todos los que la giran.",
+    "zh": "{NAME} 是这个转盘专为其打造的社区。边框、颜色和背景都是与社区共同设计的，因此每个旋转它的人看到的都一样。"
+  },
+  "community.info.links": {
+    "it": "Unisciti alla community",
+    "de": "Tritt der Community bei",
+    "fr": "Rejoindre la communauté",
+    "es": "Únete a la comunidad",
+    "zh": "加入社区"
+  },
+  "community.info.close": {
+    "it": "Chiudi le informazioni sulla community",
+    "de": "Community-Infos schließen",
+    "fr": "Fermer les infos de la communauté",
+    "es": "Cerrar la información de la comunidad",
+    "zh": "关闭社区信息"
+  },
+  "community.info.link.website": {
+    "it": "Sito web",
+    "de": "Website",
+    "fr": "Site web",
+    "es": "Sitio web",
+    "zh": "网站"
   }
 }

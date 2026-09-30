@@ -35,6 +35,25 @@ export interface CommunityWheelFrame {
   pointerAngleDeg?: number;
 }
 
+/** A place where the community can be found, shown in the page's info popup. */
+export type CommunityLinkKind =
+  | 'website'
+  | 'discord'
+  | 'x'
+  | 'telegram'
+  | 'youtube'
+  | 'twitch'
+  | 'instagram'
+  | 'tiktok';
+
+export interface CommunityLink {
+  kind: CommunityLinkKind;
+  /** Full https URL, supplied by the community — never guessed. */
+  url: string;
+  /** Overrides the default label for the kind (e.g. a server or channel name). */
+  label?: string;
+}
+
 export interface CommunityWheel {
   slug: string;
   emoji: string;
@@ -43,6 +62,15 @@ export interface CommunityWheel {
   community: string;
   tagline: string;
   description: string;
+  /**
+   * The info popup: a few words about the community and where to find it.
+   * Without `about` the popup falls back to a generic line; without links the
+   * links block is left out. Both must come from the community itself.
+   */
+  info: {
+    about?: string;
+    links: readonly CommunityLink[];
+  };
   /** Locked: the slice colours and, optionally, their rim colours (see ColorPalette.gradientTo). */
   palette: {
     colors: readonly string[];
@@ -79,6 +107,8 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     name: 'Fox Spirit',
     community: $localize`:@@community.fox-spirit.community:Fox Spirit community`,
     tagline: $localize`:@@community.fox-spirit.tagline:Spirit fire, amethyst and gold`,
+    // Waiting for the community's own text and links.
+    info: { links: [] },
     description: $localize`:@@community.fox-spirit.description:A wheel wrapped in the flaming tail of the spirit fox. Purple, gold and red slices that stay exactly as the community designed them — you only choose the entries.`,
     // Purple, gold and red, alternating so no two neighbours share a hue. Each
     // slice deepens towards the rim, like embers.
@@ -131,6 +161,8 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     name: 'Supercycle (real)',
     community: $localize`:@@community.supercycle.community:Supercycle (real) community`,
     tagline: $localize`:@@community.supercycle.tagline:Neon green, white, steel and black`,
+    // Waiting for the community's own text and links.
+    info: { links: [] },
     description: $localize`:@@community.supercycle.description:A wheel inside the neon ring of the Supercycle (real) community, with its arrow as the pointer. Green, white, grey and black slices that stay exactly as the community designed them — you only choose the entries.`,
     // Green, white, grey and black from the artwork, in that order so that no
     // two neighbours share a colour; each deepens towards the rim.

@@ -36,6 +36,29 @@
   box-shadow: 0 0 22px rgba(0, 0, 0, 0.55), 0 0 28px color-mix(in srgb, var(--wl-accent) 70%, transparent);
 }
 
+.wl-community-info-toggle {
+  color: var(--wl-accent);
+  border-color: color-mix(in srgb, var(--wl-accent) 45%, transparent);
+  background: color-mix(in srgb, var(--wl-accent) 10%, rgba(0, 0, 0, 0.35));
+}
+.wl-community-info-toggle:hover,
+.wl-community-info-toggle-active {
+  background: color-mix(in srgb, var(--wl-accent) 22%, rgba(0, 0, 0, 0.35));
+  box-shadow: 0 0 18px color-mix(in srgb, var(--wl-accent) 35%, transparent);
+}
+
+.wl-community-info {
+  border-color: color-mix(in srgb, var(--wl-accent) 40%, transparent);
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.55),
+    0 0 40px color-mix(in srgb, var(--wl-accent) 20%, transparent);
+}
+
+.wl-community-info-link:hover {
+  border-color: color-mix(in srgb, var(--wl-accent) 50%, transparent);
+  background: color-mix(in srgb, var(--wl-accent) 12%, transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wl-community-wheel {
     transition-duration: 1ms !important;

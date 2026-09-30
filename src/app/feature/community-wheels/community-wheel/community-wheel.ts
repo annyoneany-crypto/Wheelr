@@ -19,7 +19,12 @@ import { DefaultSoundPlayer } from '../../../services/default-sounds';
 import { NativePlatformService } from '../../../services/native-platform.service';
 import { SeoService } from '../../../services/seo.service';
 import { drawWheelCanvas } from '../../../shared/extraction-effect/wheel-renderer';
-import { CommunityWheel, findCommunityWheel, frameLayout } from '../community-wheels.data';
+import {
+  CommunityLinkKind,
+  CommunityWheel,
+  findCommunityWheel,
+  frameLayout,
+} from '../community-wheels.data';
 import { CommunityWinner } from '../community-winner/community-winner';
 
 /** Full turns before the wheel settles. */
@@ -56,6 +61,7 @@ const IDLE_DEG_PER_SECOND = 6;
     '[style.--wl-accent]': 'wheel()?.accent',
     '[style.--wl-title-gradient]': 'wheel()?.titleGradient',
     '[style.--wl-button-gradient]': 'wheel()?.buttonGradient',
+    '(document:keydown.escape)': 'infoOpen.set(false)',
   },
 })
 export class CommunityWheelPage {
@@ -80,6 +86,19 @@ export class CommunityWheelPage {
   protected readonly spinning = signal(false);
   protected readonly winner = signal('');
   protected readonly panelOpen = signal(false);
+  protected readonly infoOpen = signal(false);
+
+  /** Icon and default label of each kind of community link. */
+  protected readonly linkKinds: Record<CommunityLinkKind, { icon: string; label: string }> = {
+    website: { icon: 'fa-solid fa-globe', label: $localize`:@@community.info.link.website:Website` },
+    discord: { icon: 'fa-brands fa-discord', label: 'Discord' },
+    x: { icon: 'fa-brands fa-x-twitter', label: 'X' },
+    telegram: { icon: 'fa-brands fa-telegram', label: 'Telegram' },
+    youtube: { icon: 'fa-brands fa-youtube', label: 'YouTube' },
+    twitch: { icon: 'fa-brands fa-twitch', label: 'Twitch' },
+    instagram: { icon: 'fa-brands fa-instagram', label: 'Instagram' },
+    tiktok: { icon: 'fa-brands fa-tiktok', label: 'TikTok' },
+  };
 
   /** Inputs of the names drawer, mirroring the main wheel's users panel. */
   protected readonly newName = signal('');
@@ -123,6 +142,9 @@ export class CommunityWheelPage {
   protected readonly labels = {
     wheel: (name: string) => $localize`:@@community.page.wheelAria:The ${name}:NAME: community wheel`,
     spin: (name: string) => $localize`:@@community.page.spinAria:Spin the ${name}:NAME: wheel`,
+    info: (name: string) => $localize`:@@community.info.aria:About the ${name}:NAME: community`,
+    about: (name: string) =>
+      $localize`:@@community.info.generic:${name}:NAME: is the community this wheel was made for. Its frame, colours and background were designed with them, so it looks the same for everyone who spins it.`,
   };
 
   constructor() {
@@ -159,6 +181,10 @@ export class CommunityWheelPage {
     // Android's back button would leave the page instead of closing them.
     this.destroyRef.onDestroy(
       this.nativePlatform.registerBackHandler(() => {
+        if (this.infoOpen()) {
+          this.infoOpen.set(false);
+          return true;
+        }
         if (!this.panelOpen()) {
           return false;
         }
@@ -176,6 +202,10 @@ export class CommunityWheelPage {
     if (this.isBrowser) {
       this.startIdle();
     }
+  }
+
+  protected toggleInfo(): void {
+    this.infoOpen.update((open) => !open);
   }
 
   protected togglePanel(): void {
@@ -314,6 +344,7 @@ export class CommunityWheelPage {
   }
 
   private resetSpin(): void {
+    this.infoOpen.set(false);
     this.clearSpinTimer();
     this.sounds.stopSpin();
     this.panelOpen.set(false);
