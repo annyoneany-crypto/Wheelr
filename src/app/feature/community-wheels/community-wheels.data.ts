@@ -51,10 +51,8 @@ export interface CommunityWheel {
     /** Full-page background artwork, absolute path under `public/`. */
     image?: string;
   };
-  /** UI accent (buttons, pointer glow, winner card). */
+  /** UI accent (buttons, hub glow, winner card). */
   accent: string;
-  /** Colour of the pointer gem at the top of the wheel. */
-  pointerColor: string;
   hub: {
     color: string;
     borderColor: string;
@@ -79,13 +77,17 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
       colors: ['#8B3FE0', '#F2B632', '#D62839', '#6D28D9', '#E0A526', '#B91C3C'],
       gradientTo: ['#3B0A78', '#9A6206', '#6E0A1A', '#2E0A63', '#8A5A04', '#5C0718'],
     },
+    // The artwork is narrowed to 85% of its width (tools/community-frame.mjs
+    // --scale-x 0.85) so the elliptical ring comes out round and the wheel can
+    // fill it. The wheel's top touches the fox's snout, which is the pointer:
+    // keep wheelCenterX on the snout, or the winner no longer matches it.
     frame: {
       src: '/community-art/fox-spirit/frame.webp',
-      width: 888,
+      width: 755,
       height: 950,
-      wheelCenterX: 0.5011,
-      wheelCenterY: 0.6295,
-      wheelDiameter: 0.5901,
+      wheelCenterX: 0.4999,
+      wheelCenterY: 0.6232,
+      wheelDiameter: 0.6993,
     },
     background: {
       color: '#0b0512',
@@ -95,7 +97,6 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
         'radial-gradient(circle at 50% 38%, rgba(214, 40, 57, 0.28), transparent 55%), radial-gradient(circle at 20% 85%, rgba(139, 63, 224, 0.32), transparent 50%), radial-gradient(circle at 85% 80%, rgba(242, 182, 50, 0.18), transparent 45%)',
     },
     accent: '#F2B632',
-    pointerColor: '#A855F7',
     hub: {
       color: '#1a0b2e',
       borderColor: '#F2B632',

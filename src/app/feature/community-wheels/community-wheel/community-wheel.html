@@ -28,7 +28,7 @@
 
       <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
         <div class="flex flex-col items-center">
-          <!-- The frame artwork sits on top of the wheel; the wheel is placed inside it by the fractions in the data file. -->
+          <!-- The frame artwork sits on top of the wheel, placed inside it by the fractions in the data file. There is no pointer of our own: the artwork's top (the fox's snout) is the pointer. -->
           <div
             class="wl-community-stage relative w-[min(92vw,40rem)]"
             [style.aspectRatio]="wheelBox()?.aspectRatio">
@@ -53,12 +53,6 @@
               class="pointer-events-none absolute inset-0 z-10 h-full w-full select-none"
               draggable="false" />
 
-            <span
-              class="wl-community-pointer absolute z-20"
-              [style.left]="wheelBox()?.centerX"
-              [style.top]="wheelBox()?.top"
-              [style.--wl-pointer]="data.pointerColor"
-              aria-hidden="true"></span>
 
             <button
               type="button"

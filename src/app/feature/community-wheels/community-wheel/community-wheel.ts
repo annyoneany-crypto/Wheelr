@@ -32,7 +32,7 @@ const MAX_ENTRIES = 100;
  * the list of entries, stored per wheel under `ENTRIES_KEY_PREFIX + slug`.
  *
  * The spin is the same self-contained CSS rotation as `TemplateLanding`, with
- * the winner read under the pointer at the top.
+ * the winner read at the top — where the frame artwork points (the fox's snout).
  */
 @Component({
   selector: 'app-community-wheel',
@@ -76,7 +76,7 @@ export class CommunityWheelPage {
     return [...layers, background.color].join(', ');
   });
 
-  /** Where the wheel, the pointer and the hub sit inside the frame. */
+  /** Where the wheel and the hub sit inside the frame. */
   protected readonly wheelBox = computed(() => {
     const frame = this.wheel()?.frame;
     return frame
@@ -225,7 +225,7 @@ export class CommunityWheelPage {
     });
   });
 
-  /** Same geometry as the main wheel: the pointer sits at the top. */
+  /** Same geometry as the main wheel: the pointer (the frame's snout) sits at the top. */
   private winnerAt(totalRotation: number, names: string[]): string {
     const normalized = (360 - (totalRotation % 360)) % 360;
     const adjusted = (normalized - 90 + 360) % 360;

@@ -2,7 +2,7 @@
  * Turns community-wheel frame artwork drawn on a black background into a
  * transparent WebP the page can lay over the wheel with plain alpha blending.
  *
- *   node tools/community-frame.mjs <input> <output.webp> [--crop left,top,width,height]
+ *   node tools/community-frame.mjs <input> <output.webp> [--crop left,top,width,height] [--scale-x 0.85]
  *
  * Glowing artwork (fire, sparks, neon) is usually delivered on solid black. It
  * cannot go over the wheel as is — the black would hide it — and CSS
@@ -17,6 +17,10 @@
  * whatever the page does around it. Artwork that already has transparency
  * should be exported to WebP directly instead of going through this.
  *
+ * `--scale-x` narrows the artwork after cropping. A ring drawn as an ellipse
+ * wider than tall cannot be filled by a round wheel; squeezing it round is what
+ * lets the wheel cover the whole hole without the flames eating the slices.
+ *
  * Print the output size afterwards: the wheel geometry in
  * `community-wheels.data.ts` is expressed as fractions of it.
  */
@@ -24,13 +28,21 @@ import sharp from 'sharp';
 
 const [input, output, ...rest] = process.argv.slice(2);
 if (!input || !output) {
-  throw new Error('Usage: node tools/community-frame.mjs <input> <output.webp> [--crop l,t,w,h]');
+  throw new Error(
+    'Usage: node tools/community-frame.mjs <input> <output.webp> [--crop l,t,w,h] [--scale-x n]'
+  );
 }
 
 const cropIndex = rest.indexOf('--crop');
 const crop = cropIndex >= 0 ? rest[cropIndex + 1]?.split(',').map(Number) : null;
 if (crop && (crop.length !== 4 || crop.some((value) => !Number.isFinite(value)))) {
   throw new Error('--crop expects four integers: left,top,width,height');
+}
+
+const scaleIndex = rest.indexOf('--scale-x');
+const scaleX = scaleIndex >= 0 ? Number(rest[scaleIndex + 1]) : 1;
+if (!(scaleX > 0 && scaleX <= 1)) {
+  throw new Error('--scale-x expects a number in (0, 1]');
 }
 
 /** JPEG never delivers a true 0 black: treat the darkest levels as fully transparent. */
@@ -40,6 +52,16 @@ let image = sharp(input).removeAlpha();
 if (crop) {
   const [left, top, width, height] = crop;
   image = image.extract({ left, top, width, height });
+}
+
+if (scaleX !== 1) {
+  // Materialise the crop first: sharp would otherwise resize before extracting.
+  const cropped = await image.toBuffer({ resolveWithObject: true });
+  image = sharp(cropped.data).resize({
+    width: Math.round(cropped.info.width * scaleX),
+    height: cropped.info.height,
+    fit: 'fill',
+  });
 }
 
 const { data, info } = await image.raw().toBuffer({ resolveWithObject: true });
