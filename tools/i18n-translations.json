@@ -7105,40 +7105,12 @@
     "es": "Girar la ruleta «{NAME}»",
     "zh": "旋转“{NAME}”转盘"
   },
-  "community.page.palette": {
-    "it": "Colori della ruota",
-    "de": "Farben des Rads",
-    "fr": "Couleurs de la roue",
-    "es": "Colores de la ruleta",
-    "zh": "转盘颜色"
-  },
   "community.page.hub": {
     "it": "Gira",
     "de": "Drehen",
     "fr": "Lancer",
     "es": "Girar",
     "zh": "旋转"
-  },
-  "community.page.entries.title": {
-    "it": "Nomi",
-    "de": "Einträge",
-    "fr": "Entrées",
-    "es": "Entradas",
-    "zh": "条目"
-  },
-  "community.page.entries.hint": {
-    "it": "Uno per riga. Vengono salvati solo su questo dispositivo.",
-    "de": "Einer pro Zeile. Sie werden nur auf diesem Gerät gespeichert.",
-    "fr": "Une par ligne. Elles sont enregistrées sur cet appareil uniquement.",
-    "es": "Una por línea. Se guardan solo en este dispositivo.",
-    "zh": "每行一个。仅保存在此设备上。"
-  },
-  "community.page.entries.label": {
-    "it": "Nomi della ruota, uno per riga",
-    "de": "Einträge des Rads, einer pro Zeile",
-    "fr": "Entrées de la roue, une par ligne",
-    "es": "Entradas de la ruleta, una por línea",
-    "zh": "转盘条目，每行一个"
   },
   "community.page.entries.reset": {
     "it": "Ripristina predefiniti",
@@ -7153,34 +7125,6 @@
     "fr": "Style officiel de la communauté",
     "es": "Estilo oficial de la comunidad",
     "zh": "官方社区风格"
-  },
-  "community.page.locked.body": {
-    "it": "Cornice, sfondo e colori fanno parte di questa ruota e non possono essere modificati.",
-    "de": "Rahmen, Hintergrund und Farben gehören zu diesem Rad und können nicht geändert werden.",
-    "fr": "Le cadre, le fond et les couleurs font partie de cette roue et ne peuvent pas être modifiés.",
-    "es": "El marco, el fondo y los colores forman parte de esta ruleta y no se pueden cambiar.",
-    "zh": "边框、背景和颜色是此转盘的一部分，无法更改。"
-  },
-  "community.page.back": {
-    "it": "Tutte le ruote community",
-    "de": "Alle Community-Räder",
-    "fr": "Toutes les roues communautaires",
-    "es": "Todas las ruletas de comunidad",
-    "zh": "所有社区转盘"
-  },
-  "community.page.winner": {
-    "it": "Lo spirito ha scelto",
-    "de": "Der Geist hat gewählt",
-    "fr": "L'esprit a choisi",
-    "es": "El espíritu ha elegido",
-    "zh": "灵狐选中了"
-  },
-  "community.page.empty": {
-    "it": "Aggiungi almeno un nome per girare la ruota.",
-    "de": "Füge mindestens einen Eintrag hinzu, um das Rad zu drehen.",
-    "fr": "Ajoutez au moins une entrée pour lancer la roue.",
-    "es": "Añade al menos una entrada para girar la ruleta.",
-    "zh": "至少添加一个条目才能旋转转盘。"
   },
   "community.list.openAria": {
     "it": "Apri la ruota {NAME}",

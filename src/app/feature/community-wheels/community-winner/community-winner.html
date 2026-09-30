@@ -1,0 +1,35 @@
+<div class="fixed inset-0 z-55 bg-black/70" aria-hidden="true" (click)="closed.emit()"></div>
+<div class="pointer-events-none fixed inset-0 z-60 flex items-center justify-center p-3 sm:p-4" role="dialog" aria-modal="true" i18n-aria-label="@@winner.label" aria-label="Winner">
+  <canvas #effectCanvas class="absolute inset-0 h-full w-full" aria-hidden="true"></canvas>
+  <div class="wl-animate-modal pointer-events-auto relative z-10 flex w-full max-w-88 flex-col items-center gap-4 sm:max-w-md sm:scale-125" aria-live="polite" [style.--wl-accent]="accent()">
+    <div class="wl-community-winner-card w-full rounded-2xl border-2 bg-black/85 px-4 py-3 backdrop-blur-md sm:px-6">
+      <p class="wl-community-winner-label text-center text-[0.65rem] font-black uppercase tracking-[0.25em]" i18n="@@winner.label">Winner</p>
+      <p class="wrap-break-word mt-1 text-center text-2xl font-black text-white drop-shadow-[0_2px_10px_rgba(255,255,255,0.5)] sm:text-3xl">{{ winner() }}</p>
+    </div>
+    <div class="flex w-full flex-col gap-2">
+      <button
+        type="button"
+        i18n-aria-label="@@winner.close.aria" aria-label="Close winner dialog"
+        (click)="closed.emit(); $event.stopPropagation()"
+        class="wl-community-winner-close w-full rounded-xl px-6 py-3 font-bold text-neutral-950 transition-all duration-200 hover:cursor-pointer active:scale-95" i18n="@@winner.close">
+        Close
+      </button>
+      <div class="grid grid-cols-1 gap-2 sm:grid-cols-2">
+        <button
+          type="button"
+          i18n-aria-label="@@winner.removeOne.aria" aria-label="Remove one winner entry from users"
+          (click)="removeOne.emit(); $event.stopPropagation()"
+          class="w-full rounded-xl border border-amber-500/30 bg-white/[0.06] px-4 py-2.5 font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:cursor-pointer hover:border-amber-400/50 hover:bg-amber-500/15" i18n="@@winner.removeOne">
+          Remove 1 entry
+        </button>
+        <button
+          type="button"
+          i18n-aria-label="@@winner.removeAll.aria" aria-label="Remove all winner entries from users"
+          (click)="removeAll.emit(); $event.stopPropagation()"
+          class="w-full rounded-xl border border-red-500/30 bg-white/[0.06] px-4 py-2.5 font-semibold text-white backdrop-blur-sm transition-all duration-200 hover:cursor-pointer hover:border-red-400/50 hover:bg-red-500/15" i18n="@@winner.removeAll">
+          Remove all entries
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,150 +1,211 @@
 @if (wheel(); as data) {
   <section
-    class="min-h-screen pt-28 pb-20 px-4 text-white/90"
+    class="flex min-h-screen flex-col items-center px-4 pt-24 pb-10 text-white/90"
     [style.background]="pageBackground()"
-    [style.--wl-accent]="data.accent"
     aria-labelledby="community-wheel-title">
-    <div class="mx-auto max-w-6xl space-y-8">
 
-      <nav class="text-xs text-white/50" i18n-aria-label="@@landing.breadcrumb" aria-label="Breadcrumb">
-        <ol class="flex flex-wrap items-center gap-1.5">
-          <li><a routerLink="/" class="hover:text-amber-300 transition-colors">Wheelr</a></li>
+    <header class="text-center">
+      <nav class="text-[0.7rem] text-white/45" i18n-aria-label="@@landing.breadcrumb" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center justify-center gap-1.5">
+          <li><a routerLink="/" class="transition-colors hover:text-amber-300">Wheelr</a></li>
           <li aria-hidden="true">/</li>
-          <li><a routerLink="/community" class="hover:text-amber-300 transition-colors" i18n="@@seo.community.breadcrumb">Community wheels</a></li>
-          <li aria-hidden="true">/</li>
-          <li class="text-white/75" aria-current="page">{{ data.name }}</li>
+          <li><a routerLink="/community" class="transition-colors hover:text-amber-300" i18n="@@seo.community.breadcrumb">Community wheels</a></li>
         </ol>
       </nav>
+      <h1 id="community-wheel-title" class="mt-1 text-3xl font-black md:text-5xl">
+        <span aria-hidden="true">{{ data.emoji }}</span> <span class="wl-community-title">{{ data.name }}</span>
+      </h1>
+    </header>
 
-      <header class="text-center">
-        <p class="text-xs font-semibold uppercase tracking-[0.3em] wl-accent-text">
-          {{ data.emoji }} {{ data.community }}
-        </p>
-        <h1 id="community-wheel-title" class="wl-community-title mt-2 text-4xl font-black md:text-6xl">
-          {{ data.name }}
-        </h1>
-        <p class="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-white/70 md:text-base">{{ data.tagline }}</p>
-      </header>
+    <!-- The frame artwork sits on top of the wheel, placed inside it by the fractions in the data file. There is no pointer of our own: the artwork's top (the fox's snout) is the pointer. -->
+    <div
+      class="wl-community-stage relative mt-2"
+      [style.width]="stageWidth()"
+      [style.aspectRatio]="wheelBox()?.aspectRatio">
+      <canvas
+        #wheelCanvas
+        width="720"
+        height="720"
+        class="wl-community-wheel absolute aspect-square cursor-pointer rounded-full"
+        [style.left]="wheelBox()?.left"
+        [style.top]="wheelBox()?.top"
+        [style.width]="wheelBox()?.width"
+        [style.transform]="'rotate(' + rotationDeg() + 'deg)'"
+        [style.transitionDuration]="spinning() ? data.spinDurationMs + 'ms' : '0ms'"
+        role="button"
+        tabindex="0"
+        [attr.aria-label]="labels.spin(data.name)"
+        (click)="spin()"
+        (keydown.enter)="spin()"
+        (keydown.space)="spin(); $event.preventDefault()"></canvas>
 
-      <div class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_340px] lg:items-start">
-        <div class="flex flex-col items-center">
-          <!-- The frame artwork sits on top of the wheel, placed inside it by the fractions in the data file. There is no pointer of our own: the artwork's top (the fox's snout) is the pointer. -->
-          <div
-            class="wl-community-stage relative w-[min(92vw,40rem)]"
-            [style.aspectRatio]="wheelBox()?.aspectRatio">
-            <canvas
-              #wheelCanvas
-              width="720"
-              height="720"
-              class="wl-community-wheel absolute aspect-square rounded-full"
-              [style.left]="wheelBox()?.left"
-              [style.top]="wheelBox()?.top"
-              [style.width]="wheelBox()?.width"
-              [style.transform]="'rotate(' + rotationDeg() + 'deg)'"
-              [style.transitionDuration]="data.spinDurationMs + 'ms'"
-              [attr.aria-label]="labels.wheel(data.name)"
-              role="img"></canvas>
+      <img
+        [src]="data.frame.src"
+        [width]="data.frame.width"
+        [height]="data.frame.height"
+        alt=""
+        class="pointer-events-none absolute inset-0 z-10 h-full w-full select-none"
+        draggable="false" />
 
-            <img
-              [src]="data.frame.src"
-              [width]="data.frame.width"
-              [height]="data.frame.height"
-              alt=""
-              class="pointer-events-none absolute inset-0 z-10 h-full w-full select-none"
-              draggable="false" />
-
-
-            <button
-              type="button"
-              class="wl-community-hub absolute z-20 flex aspect-square items-center justify-center rounded-full text-xs font-black uppercase tracking-[0.12em] md:text-sm"
-              [style.left]="wheelBox()?.centerX"
-              [style.top]="wheelBox()?.centerY"
-              [style.width]="wheelBox()?.hubWidth"
-              [style.backgroundColor]="data.hub.color"
-              [style.borderColor]="data.hub.borderColor"
-              [style.color]="data.hub.textColor"
-              [disabled]="spinning() || !entries().length"
-              (click)="spin()"
-              [attr.aria-label]="labels.spin(data.name)">
-              <span i18n="@@community.page.hub">Spin</span>
-            </button>
-          </div>
-
-          <button
-            type="button"
-            class="wl-community-spin mt-4 w-full max-w-xs rounded-xl px-6 py-3 text-base font-black uppercase tracking-[0.14em] text-neutral-950 transition-all duration-200 active:scale-95 disabled:cursor-not-allowed disabled:opacity-60"
-            [disabled]="spinning() || !entries().length"
-            (click)="spin()"
-            [attr.aria-label]="labels.spin(data.name)">
-            @if (spinning()) {
-              <i class="fa-solid fa-spinner fa-spin mr-2" aria-hidden="true"></i><span i18n="@@landing.spinning">Spinning…</span>
-            } @else {
-              <i class="fa-solid fa-fire mr-2" aria-hidden="true"></i><span i18n="@@landing.spin">Spin the wheel</span>
-            }
-          </button>
-
-          <div class="mt-5 min-h-16 w-full max-w-md text-center" role="status" aria-live="polite">
-            @if (winner()) {
-              <div class="wl-community-winner rounded-2xl border px-5 py-4">
-                <p class="text-[0.65rem] font-semibold uppercase tracking-[0.3em] text-white/60" i18n="@@community.page.winner">The spirit has chosen</p>
-                <p class="mt-1 text-2xl font-black wl-accent-text md:text-3xl">{{ winner() }}</p>
-              </div>
-            } @else if (!entries().length) {
-              <p class="text-sm text-white/60" i18n="@@community.page.empty">Add at least one entry to spin the wheel.</p>
-            }
-          </div>
-        </div>
-
-        <aside class="rounded-2xl border border-white/10 bg-black/45 p-6 backdrop-blur-md">
-          <h2 class="text-lg font-bold text-white" i18n="@@community.page.entries.title">Entries</h2>
-          <p class="mt-1 text-xs leading-relaxed text-white/55" i18n="@@community.page.entries.hint">One per line. They are saved on this device only.</p>
-
-          <label for="community-entries" class="sr-only" i18n="@@community.page.entries.label">Wheel entries, one per line</label>
-          <textarea
-            id="community-entries"
-            rows="10"
-            spellcheck="false"
-            class="mt-4 w-full resize-y rounded-xl border border-white/10 bg-white/[0.05] px-3 py-2.5 text-sm text-white placeholder:text-white/30 focus:border-[var(--wl-accent)] focus:outline-none disabled:opacity-60"
-            [value]="draft()"
-            [disabled]="spinning()"
-            (input)="onEntriesInput($event)"></textarea>
-
-          <div class="mt-3 flex items-center justify-between gap-3 text-xs text-white/55">
-            <span>{{ entries().length }} / {{ maxEntries }}</span>
-            <button
-              type="button"
-              class="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 text-white/70 transition-colors hover:cursor-pointer hover:border-white/25 hover:text-white disabled:cursor-not-allowed disabled:opacity-50"
-              [disabled]="spinning()"
-              (click)="resetEntries()">
-              <i class="fa-solid fa-rotate-left" aria-hidden="true"></i><span i18n="@@community.page.entries.reset">Restore defaults</span>
-            </button>
-          </div>
-
-          <!-- The look is fixed by the community: shown, not editable. -->
-          <div class="mt-6 border-t border-white/10 pt-5">
-            <h2 class="flex items-center gap-2 text-sm font-bold text-white">
-              <i class="fa-solid fa-lock text-xs wl-accent-text" aria-hidden="true"></i><span i18n="@@community.page.locked.title">Official community style</span>
-            </h2>
-            <p class="mt-1 text-xs leading-relaxed text-white/55" i18n="@@community.page.locked.body">Frame, background and colours are part of this wheel and cannot be changed.</p>
-            <ul class="mt-3 flex flex-wrap gap-2" i18n-aria-label="@@community.page.palette" aria-label="Wheel colours">
-              @for (color of data.palette.colors; track $index) {
-                <li
-                  class="h-7 w-7 rounded-full border border-white/20 shadow-inner"
-                  [style.background]="'radial-gradient(circle at 35% 30%, ' + color + ', ' + (data.palette.gradientTo?.[$index] ?? color) + ')'"
-                  [title]="color"></li>
-              }
-            </ul>
-          </div>
-
-          <p class="mt-6 text-xs leading-relaxed text-white/55">{{ data.description }}</p>
-
-          <a
-            routerLink="/community"
-            class="mt-5 inline-flex items-center gap-2 text-sm font-semibold wl-accent-text hover:brightness-110">
-            <i class="fa-solid fa-arrow-left" aria-hidden="true"></i><span i18n="@@community.page.back">All community wheels</span>
-          </a>
-        </aside>
-      </div>
+      <button
+        type="button"
+        class="wl-community-hub absolute z-20 flex aspect-square items-center justify-center rounded-full text-xs font-black uppercase tracking-[0.12em] md:text-sm"
+        [style.left]="wheelBox()?.centerX"
+        [style.top]="wheelBox()?.centerY"
+        [style.width]="wheelBox()?.hubWidth"
+        [style.backgroundColor]="data.hub.color"
+        [style.borderColor]="data.hub.borderColor"
+        [style.color]="data.hub.textColor"
+        [disabled]="spinning() || !entries().length"
+        (click)="spin()"
+        [attr.aria-label]="labels.spin(data.name)">
+        <span i18n="@@community.page.hub">Spin</span>
+      </button>
     </div>
   </section>
+
+  <!-- Right-hand rail, as on the main wheel: the only control is the names drawer. -->
+  <button
+    type="button"
+    class="wl-rail-btn fixed top-26 z-50 flex lg:top-28"
+    [class.wl-rail-btn-active]="panelOpen()"
+    [class.right-4]="!panelOpen()"
+    [class.lg:right-8]="!panelOpen()"
+    [class.right-[21rem]]="panelOpen()"
+    [class.lg:right-100]="panelOpen()"
+    [attr.aria-label]="panelAriaLabel"
+    [attr.aria-expanded]="panelOpen()"
+    aria-controls="community-names-panel"
+    (click)="togglePanel()">
+    <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+  </button>
+
+  @if (panelOpen()) {
+    <div class="pointer-events-none fixed inset-0 z-49 bg-black/60" aria-hidden="true"></div>
+  }
+
+  <aside
+    id="community-names-panel"
+    class="fixed top-24 right-0 z-50 my-4 h-[calc(100%-180px)] overflow-y-auto rounded-l-2xl border-y border-l border-white/10 bg-neutral-900 px-4 pb-4 shadow-[-12px_0_40px_rgba(0,0,0,0.45)] transition-all duration-300 ease-in-out"
+    [class.w-80]="panelOpen()"
+    [class.lg:w-96]="panelOpen()"
+    [class.opacity-100]="panelOpen()"
+    [class.w-0]="!panelOpen()"
+    [class.opacity-0]="!panelOpen()"
+    [class.invisible]="!panelOpen()"
+    [attr.aria-hidden]="!panelOpen()">
+    <div class="sticky top-0 z-1 mb-4 flex items-center justify-between border-b border-white/10 bg-neutral-900 py-4">
+      <h2 class="text-base font-semibold uppercase tracking-wide text-white/85">{{ panelTitle }}</h2>
+      <button
+        type="button"
+        i18n-aria-label="@@panel.close" aria-label="Close panel"
+        class="h-8 w-8 rounded-xl border border-white/10 bg-white/[0.06] text-white/80 transition-all duration-200 hover:cursor-pointer hover:bg-white/15 hover:text-white"
+        (click)="panelOpen.set(false)">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="flex h-[calc(100%-5.5rem)] flex-col gap-3">
+      <div class="flex gap-2">
+        <button
+          type="button"
+          (click)="shuffleEntries()"
+          [disabled]="spinning()"
+          class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:cursor-pointer hover:border-amber-400/40 hover:bg-amber-400/10 disabled:opacity-50">
+          <i class="fa-solid fa-shuffle mr-1.5" aria-hidden="true"></i><span i18n="@@users.shuffle">Shuffle Names</span>
+        </button>
+        <button
+          type="button"
+          (click)="clearEntries()"
+          [disabled]="spinning()"
+          class="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:cursor-pointer hover:border-red-400/40 hover:bg-red-500/20 disabled:opacity-50">
+          <i class="fa-solid fa-trash-can mr-1.5" aria-hidden="true"></i><span i18n="@@users.clear">Clear</span>
+        </button>
+      </div>
+
+      <div class="flex items-end gap-2">
+        <div class="flex-1">
+          <label class="sr-only" for="community-new-name" i18n="@@users.name">Name</label>
+          <input
+            id="community-new-name"
+            type="text"
+            class="w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm text-white placeholder:text-white/40"
+            i18n-placeholder="@@users.namePlaceholder" placeholder="Name"
+            [ngModel]="newName()"
+            (ngModelChange)="newName.set($event)"
+            (keydown.enter)="addRepeated()" />
+        </div>
+        <div class="w-20">
+          <label class="sr-only" for="community-repeat-count" i18n="@@users.repeatCount">Repeat count</label>
+          <input
+            id="community-repeat-count"
+            type="number"
+            min="1"
+            class="w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-center text-sm text-white"
+            [ngModel]="repeatCount()"
+            (ngModelChange)="repeatCount.set($event)" />
+        </div>
+        <button
+          type="button"
+          (click)="addRepeated()"
+          [disabled]="spinning()"
+          class="rounded-xl bg-blue-500/30 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:cursor-pointer hover:bg-blue-600/60 active:scale-95 disabled:opacity-50">
+          <i class="fa-solid fa-plus mr-1" aria-hidden="true"></i><span i18n="@@users.add">Add</span>
+        </button>
+      </div>
+
+      <textarea
+        class="min-h-40 w-full flex-1 resize-none rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-sm text-white placeholder:text-white/40 disabled:opacity-60"
+        rows="5"
+        spellcheck="false"
+        i18n-placeholder="@@users.bulkPlaceholder" placeholder="One name per line..."
+        [ngModel]="draft()"
+        (ngModelChange)="onEntriesInput($event)"
+        [disabled]="spinning()"></textarea>
+
+      <div class="flex items-end gap-2">
+        <div class="flex-1">
+          <label class="sr-only" for="community-remove-name" i18n="@@users.nameToRemove">Name to remove</label>
+          <input
+            id="community-remove-name"
+            type="text"
+            class="w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm text-white placeholder:text-white/40"
+            i18n-placeholder="@@users.removePlaceholder" placeholder="Name to remove"
+            [ngModel]="nameToRemove()"
+            (ngModelChange)="nameToRemove.set($event)"
+            (keydown.enter)="removeName()" />
+        </div>
+        <button
+          type="button"
+          (click)="removeName()"
+          [disabled]="spinning()"
+          class="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:cursor-pointer hover:border-red-400/40 hover:bg-red-500/20 disabled:opacity-50">
+          <i class="fa-solid fa-minus mr-1" aria-hidden="true"></i><span i18n="@@users.remove">Remove</span>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between gap-3 border-t border-white/[0.06] pt-3 text-xs text-white/50">
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-lock wl-accent-text" aria-hidden="true"></i><span i18n="@@community.page.locked.title">Official community style</span>
+        </span>
+        <button
+          type="button"
+          class="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 text-white/70 transition-colors hover:cursor-pointer hover:border-white/25 hover:text-white disabled:opacity-50"
+          [disabled]="spinning()"
+          (click)="resetEntries()">
+          <i class="fa-solid fa-rotate-left" aria-hidden="true"></i><span i18n="@@community.page.entries.reset">Restore defaults</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  @if (winner()) {
+    <wl-community-winner
+      [winner]="winner()"
+      [colors]="data.palette.colors"
+      [accent]="data.accent"
+      (closed)="closeWinner()"
+      (removeOne)="removeWinnerOnce()"
+      (removeAll)="removeWinnerEverywhere()" />
+  }
 }

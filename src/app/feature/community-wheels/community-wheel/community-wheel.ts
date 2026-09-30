@@ -12,16 +12,22 @@ import {
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
+import { DefaultSoundPlayer } from '../../../services/default-sounds';
+import { NativePlatformService } from '../../../services/native-platform.service';
 import { SeoService } from '../../../services/seo.service';
 import { drawWheelCanvas } from '../../../shared/extraction-effect/wheel-renderer';
 import { CommunityWheel, findCommunityWheel, frameLayout } from '../community-wheels.data';
+import { CommunityWinner } from '../community-winner/community-winner';
 
 /** Full turns before the wheel settles. */
 const FULL_TURNS = 6;
-/** More than this and the labels stop being readable on a wheel this size. */
-const MAX_ENTRIES = 100;
+/** A cap on what one wheel holds, like a sanity limit on pasted lists. */
+const MAX_ENTRIES = 500;
+/** Idle drift while nobody is spinning, as on the main wheel. */
+const IDLE_DEG_PER_SECOND = 6;
 
 /**
  * One community wheel on its own page (`/community/<slug>`).
@@ -31,26 +37,36 @@ const MAX_ENTRIES = 100;
  * of the settings panels can reach it. The only thing the visitor changes is
  * the list of entries, stored per wheel under `ENTRIES_KEY_PREFIX + slug`.
  *
- * The spin is the same self-contained CSS rotation as `TemplateLanding`, with
- * the winner read at the top — where the frame artwork points (the fox's snout).
+ * It behaves like the main wheel otherwise: it drifts while idle, spins on a
+ * click (wheel or hub) with the default tick sounds, and reveals the winner
+ * with an effect whose card can remove the winner from the entries. The names
+ * live in a drawer opened from the right-hand rail, as on the main wheel.
+ * The winner is read at the top — where the frame artwork points (the fox's
+ * snout); the rotation is a CSS transition with the main wheel's easing, which
+ * `DefaultSoundPlayer` assumes when it schedules the ticks.
  */
 @Component({
   selector: 'app-community-wheel',
-  imports: [RouterLink],
+  imports: [RouterLink, FormsModule, CommunityWinner],
   templateUrl: './community-wheel.html',
   styleUrl: './community-wheel.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // On the host so the drawer and the winner card, outside the page section, see it too.
+  host: { '[style.--wl-accent]': 'wheel()?.accent' },
 })
 export class CommunityWheelPage {
   private readonly route = inject(ActivatedRoute);
   private readonly router = inject(Router);
   private readonly seo = inject(SeoService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly nativePlatform = inject(NativePlatformService);
+  private readonly sounds = new DefaultSoundPlayer();
   /** False while prerendering, where there is no storage, canvas or animation frame. */
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   private readonly canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('wheelCanvas');
   private spinTimer: ReturnType<typeof setTimeout> | null = null;
+  private idleFrameId: number | null = null;
 
   protected readonly wheel = signal<CommunityWheel | null>(null);
   /** The textarea as typed; `entries` is what the wheel actually shows. */
@@ -59,8 +75,24 @@ export class CommunityWheelPage {
   protected readonly rotationDeg = signal(0);
   protected readonly spinning = signal(false);
   protected readonly winner = signal('');
+  protected readonly panelOpen = signal(false);
 
-  protected readonly maxEntries = MAX_ENTRIES;
+  /** Inputs of the names drawer, mirroring the main wheel's users panel. */
+  protected readonly newName = signal('');
+  protected readonly repeatCount = signal(1);
+  protected readonly nameToRemove = signal('');
+
+  protected readonly panelTitle = $localize`:@@bar.panel.users.caption:Names`;
+  protected readonly panelAriaLabel = $localize`:@@bar.panel.users.aria:Open users panel`;
+
+  /** The frame box: as wide as possible while the whole artwork fits the screen height. */
+  protected readonly stageWidth = computed(() => {
+    const frame = this.wheel()?.frame;
+    if (!frame) {
+      return '';
+    }
+    return `min(94vw, 46rem, calc((100dvh - 12rem) * ${frame.width / frame.height}))`;
+  });
 
   /** Page background: the artwork when there is one, over the gradient, over the colour. */
   protected readonly pageBackground = computed(() => {
@@ -119,7 +151,31 @@ export class CommunityWheelPage {
         }
       });
 
-    this.destroyRef.onDestroy(() => this.clearSpinTimer());
+    // The drawer and the winner card are signals, not routes: without these
+    // Android's back button would leave the page instead of closing them.
+    this.destroyRef.onDestroy(
+      this.nativePlatform.registerBackHandler(() => {
+        if (!this.panelOpen()) {
+          return false;
+        }
+        this.panelOpen.set(false);
+        return true;
+      })
+    );
+
+    this.destroyRef.onDestroy(() => {
+      this.clearSpinTimer();
+      this.stopIdle();
+      this.sounds.stopSpin();
+    });
+
+    if (this.isBrowser) {
+      this.startIdle();
+    }
+  }
+
+  protected togglePanel(): void {
+    this.panelOpen.update((open) => !open);
   }
 
   protected spin(): void {
@@ -133,28 +189,101 @@ export class CommunityWheelPage {
       return;
     }
 
+    this.panelOpen.set(false);
     this.spinning.set(true);
     this.winner.set('');
 
-    const total = this.rotationDeg() + 360 * FULL_TURNS + this.secureRandomInt(360);
+    const start = this.rotationDeg();
+    const total = start + 360 * FULL_TURNS + this.secureRandomInt(360);
     this.rotationDeg.set(total);
+    this.sounds.playSpin(start, total, wheel.spinDurationMs, names.length);
 
     this.clearSpinTimer();
     this.spinTimer = setTimeout(() => {
       this.spinTimer = null;
+      // Keep the angle small: the idle drift keeps adding to it.
+      this.rotationDeg.set(total % 360);
       this.winner.set(this.winnerAt(total, names));
       this.spinning.set(false);
+      this.sounds.playWinner();
     }, wheel.spinDurationMs);
   }
 
-  protected onEntriesInput(event: Event): void {
+  protected closeWinner(): void {
+    this.winner.set('');
+  }
+
+  /** "Remove 1 entry" on the winner card: one occurrence, as on the main wheel. */
+  protected removeWinnerOnce(): void {
+    const winner = this.winner();
+    const names = [...this.entries()];
+    const index = names.indexOf(winner);
+    if (index >= 0) {
+      names.splice(index, 1);
+      this.setEntries(names);
+    }
+    this.winner.set('');
+  }
+
+  /** "Remove all entries" on the winner card: every occurrence of the winner. */
+  protected removeWinnerEverywhere(): void {
+    const winner = this.winner();
+    this.setEntries(this.entries().filter((name) => name !== winner));
+    this.winner.set('');
+  }
+
+  protected onEntriesInput(value: string): void {
     const wheel = this.wheel();
     if (!wheel || this.spinning()) {
       return;
     }
 
-    this.draft.set((event.target as HTMLTextAreaElement).value);
-    this.winner.set('');
+    this.draft.set(value);
+    this.writeEntries(wheel.slug, this.entries());
+  }
+
+  protected addRepeated(): void {
+    const name = this.newName().trim();
+    if (!name) {
+      return;
+    }
+
+    const count = Math.max(1, Math.floor(Number(this.repeatCount()) || 1));
+    this.setEntries([...this.entries(), ...Array.from({ length: count }, () => name)]);
+    this.newName.set('');
+    this.repeatCount.set(1);
+  }
+
+  protected removeName(): void {
+    const name = this.nameToRemove().trim();
+    if (!name) {
+      return;
+    }
+
+    this.setEntries(this.entries().filter((entry) => entry !== name));
+    this.nameToRemove.set('');
+  }
+
+  protected shuffleEntries(): void {
+    const names = [...this.entries()];
+    for (let i = names.length - 1; i > 0; i -= 1) {
+      const j = this.secureRandomInt(i + 1);
+      [names[i], names[j]] = [names[j], names[i]];
+    }
+    this.setEntries(names);
+  }
+
+  protected clearEntries(): void {
+    this.setEntries([]);
+  }
+
+  private setEntries(names: string[]): void {
+    const wheel = this.wheel();
+    if (!wheel || this.spinning()) {
+      return;
+    }
+
+    this.draft.set(names.join('\n'));
     this.writeEntries(wheel.slug, this.entries());
   }
 
@@ -165,7 +294,6 @@ export class CommunityWheelPage {
     }
 
     this.draft.set(wheel.defaultEntries.join('\n'));
-    this.winner.set('');
     this.removeStoredEntries(wheel.slug);
   }
 
@@ -183,9 +311,32 @@ export class CommunityWheelPage {
 
   private resetSpin(): void {
     this.clearSpinTimer();
+    this.sounds.stopSpin();
+    this.panelOpen.set(false);
     this.rotationDeg.set(0);
     this.winner.set('');
     this.spinning.set(false);
+  }
+
+  /** Slow drift while the wheel is not spinning and no winner is shown. */
+  private startIdle(): void {
+    let last = performance.now();
+    const tick = (now: number) => {
+      const dt = (now - last) / 1000;
+      last = now;
+      if (!this.spinning() && !this.winner()) {
+        this.rotationDeg.update((deg) => (deg + IDLE_DEG_PER_SECOND * dt) % 360);
+      }
+      this.idleFrameId = requestAnimationFrame(tick);
+    };
+    this.idleFrameId = requestAnimationFrame(tick);
+  }
+
+  private stopIdle(): void {
+    if (this.idleFrameId !== null) {
+      cancelAnimationFrame(this.idleFrameId);
+      this.idleFrameId = null;
+    }
   }
 
   private clearSpinTimer(): void {

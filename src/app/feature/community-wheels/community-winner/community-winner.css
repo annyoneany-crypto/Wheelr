@@ -1,0 +1,22 @@
+:host {
+  display: contents;
+}
+
+.wl-community-winner-card {
+  border-color: var(--wl-accent);
+  box-shadow:
+    0 0 40px color-mix(in srgb, var(--wl-accent) 55%, transparent),
+    inset 0 0 24px rgba(139, 63, 224, 0.25);
+}
+
+.wl-community-winner-label {
+  color: var(--wl-accent);
+}
+
+.wl-community-winner-close {
+  background: linear-gradient(180deg, #ffe08a 0%, var(--wl-accent) 60%, #c2410c 100%);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--wl-accent) 40%, transparent);
+}
+.wl-community-winner-close:hover {
+  filter: brightness(1.08);
+}
