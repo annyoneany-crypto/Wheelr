@@ -192,19 +192,22 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     // --hole 423,600`. The wheel fills the round ring and is centred in it; the
     // fox's head overlaps its top (made opaque by --hole) and the snout points
     // down the vertical radius at the winning slice, so wheelCenterX must stay
-    // under the snout.
+    // under the snout. Then upscaled ×1.5 to 1272×1350 with Real-ESRGAN
+    // (realesrgan-x4plus): the colour runs premultiplied — the art as it looks on
+    // black — and alpha separately, then the colour is unscreened again, so the
+    // glow keeps its look. WebP q80, alpha q75.
     frame: {
       src: '/community-art/fox-spirit/frame.webp',
-      width: 848,
-      height: 900,
+      width: 1272,
+      height: 1350,
       wheelCenterX: 0.4988,
       wheelCenterY: 0.5567,
       wheelDiameter: 0.8396,
     },
     background: {
       color: '#0b0512',
-      // The community's artwork (1024², re-encoded lossy); the gradient below
-      // only shows while it loads.
+      // The community's artwork, upscaled from 1024² to 2048² with Real-ESRGAN
+      // (realesrgan-x4plus, WebP q78); the gradient below only shows while it loads.
       image: '/community-art/fox-spirit/background.webp',
       gradient:
         'radial-gradient(circle at 50% 38%, rgba(214, 40, 57, 0.28), transparent 55%), radial-gradient(circle at 20% 85%, rgba(139, 63, 224, 0.32), transparent 50%), radial-gradient(circle at 85% 80%, rgba(242, 182, 50, 0.18), transparent 45%)',
@@ -395,7 +398,9 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     },
     background: {
       color: '#0a0506',
-      // Placeholder until the community's own background artwork arrives:
+      // The community's artwork, upscaled from 960×1112 to 1920×2224 with
+      // Real-ESRGAN (realesrgan-x4plus, WebP q78); the gradient below only shows
+      // while it loads.
       image: '/community-art/red/background.webp',
       gradient:
         'radial-gradient(circle at 50% 40%, rgba(215, 20, 30, 0.3), transparent 55%), radial-gradient(circle at 15% 88%, rgba(232, 234, 237, 0.08), transparent 45%), radial-gradient(circle at 88% 15%, rgba(142, 10, 18, 0.35), transparent 50%)',
