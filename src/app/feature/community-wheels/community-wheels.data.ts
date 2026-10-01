@@ -94,6 +94,11 @@ export interface CommunityWheel {
     color: string;
     borderColor: string;
     textColor: string;
+    /**
+     * Artwork shown in the hub instead of the "Spin" label, cropped to a circle
+     * (absolute path under `public/`). Square, centred on the subject.
+     */
+    image?: string;
   };
   fontFamily: string;
   defaultEntries: readonly string[];
@@ -103,12 +108,24 @@ export interface CommunityWheel {
 export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
   {
     slug: 'fox-spirit',
-    emoji: '🦊',
+    emoji: '',
     name: 'Fox Spirit',
     community: $localize`:@@community.fox-spirit.community:Fox Spirit community`,
     tagline: $localize`:@@community.fox-spirit.tagline:Spirit fire, amethyst and gold`,
     // Waiting for the community's own text and links.
-    info: { links: [] },
+    info: { links: [
+      {
+        kind: 'x',
+        url: 'https://x.com/DofferLive',
+        label: `Doffer`,
+      },
+      {
+        kind: 'website',
+        url: 'https://blaze.stream/dofferlive',
+        label: `Blaze`,
+      },
+
+    ] },
     description: $localize`:@@community.fox-spirit.description:A wheel wrapped in the flaming tail of the spirit fox. Purple, gold and red slices that stay exactly as the community designed them — you only choose the entries.`,
     // Purple, gold and red, alternating so no two neighbours share a hue. Each
     // slice deepens towards the rim, like embers.
@@ -131,8 +148,9 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     },
     background: {
       color: '#0b0512',
-      // Placeholder until the community's own background artwork arrives:
-      // drop it in public/community-art/fox-spirit/ and set `image`.
+      // The community's artwork (1024², re-encoded lossy); the gradient below
+      // only shows while it loads.
+      image: '/community-art/fox-spirit/background.webp',
       gradient:
         'radial-gradient(circle at 50% 38%, rgba(214, 40, 57, 0.28), transparent 55%), radial-gradient(circle at 20% 85%, rgba(139, 63, 224, 0.32), transparent 50%), radial-gradient(circle at 85% 80%, rgba(242, 182, 50, 0.18), transparent 45%)',
     },
@@ -143,6 +161,8 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
       color: '#1a0b2e',
       borderColor: '#F2B632',
       textColor: '#FDE68A',
+      // The community's logo, cropped round the fox's face and shrunk to 384px.
+      image: '/community-art/fox-spirit/hub-logo.webp',
     },
     fontFamily: '"Inter", sans-serif',
     defaultEntries: [

@@ -13,7 +13,7 @@
           <li><a routerLink="/community" class="transition-colors hover:text-amber-300" i18n="@@seo.community.breadcrumb">Community wheels</a></li>
         </ol>
       </nav>
-      <h1 id="community-wheel-title" class="mt-1 text-2xl font-black sm:text-3xl md:text-5xl">
+      <h1 id="community-wheel-title" class="mt-1 mb-2 text-2xl font-black sm:text-3xl md:text-5xl">
         <span aria-hidden="true">{{ data.emoji }}</span> <span class="wl-community-title">{{ data.name }}</span>
       </h1>
       <button
@@ -62,7 +62,7 @@
 
         <button
           type="button"
-          class="wl-community-hub absolute z-20 flex aspect-square items-center justify-center rounded-full text-xs font-black uppercase tracking-[0.12em] md:text-sm"
+          class="wl-community-hub absolute z-20 flex aspect-square overflow-hidden items-center justify-center rounded-full text-xs font-black uppercase tracking-[0.12em] md:text-sm"
           [style.left]="wheelBox()?.centerX"
           [style.top]="wheelBox()?.centerY"
           [style.width]="wheelBox()?.hubWidth"
@@ -72,7 +72,17 @@
           [disabled]="spinning() || !entries().length"
           (click)="spin()"
           [attr.aria-label]="labels.spin(data.name)">
-          <span i18n="@@community.page.hub">Spin</span>
+          @if (data.hub.image) {
+            <img
+              [src]="data.hub.image"
+              alt=""
+              width="384"
+              height="384"
+              class="pointer-events-none h-full w-full select-none rounded-full object-cover"
+              draggable="false" />
+          } @else {
+            <span i18n="@@community.page.hub">Spin</span>
+          }
         </button>
       </div>
     </div>
