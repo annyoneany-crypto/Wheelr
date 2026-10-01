@@ -14,6 +14,12 @@
   filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.55));
 }
 
+/* The free space under the title. The stage measures itself against it (cqw/cqh),
+   so the frame is as large as the screen allows, whatever its shape. */
+.wl-community-fit {
+  container-type: size;
+}
+
 /* The spin is a CSS transition whose duration is bound in the template (0 while
    idling) and matched by the timer that reads the winner. The easing is the
    main wheel's. */

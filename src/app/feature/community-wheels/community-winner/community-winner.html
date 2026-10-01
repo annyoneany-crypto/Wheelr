@@ -30,6 +30,9 @@
           Remove all entries
         </button>
       </div>
+      @if (share(); as source) {
+        <wl-winner-share [source]="source" />
+      }
     </div>
   </div>
 </div>

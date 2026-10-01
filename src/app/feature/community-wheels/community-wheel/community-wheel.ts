@@ -29,6 +29,8 @@ import {
 import { CommunityWinner } from '../community-winner/community-winner';
 import { parseCommunityText, pickCommunityText } from '../community-text';
 import { resolveLocale } from '../../../services/i18n.config';
+import type { WinnerShareSource } from '../../../services/winner-share.service';
+import { buildCommunityWinnerScene } from '../../../shared/winner-share/winner-share-scene';
 
 /** Full turns before the wheel settles. */
 const FULL_TURNS = 6;
@@ -36,6 +38,10 @@ const FULL_TURNS = 6;
 const MAX_ENTRIES = 500;
 /** Idle drift while nobody is spinning, as on the main wheel. */
 const IDLE_DEG_PER_SECOND = 6;
+/** The drawing size the wheel's proportions (label sizes) were tuned at. */
+const BASE_CANVAS_PX = 720;
+/** Upper bound for the canvas' drawing size, so a 4K screen does not get a 16-megapixel wheel. */
+const MAX_CANVAS_PX = 2048;
 /**
  * The community wheels' own sounds, shared by all of them: one when a spin
  * starts (1.6 s, 22 KB), one when the winner is read (2 s, 36 KB). They replace
@@ -43,6 +49,17 @@ const IDLE_DEG_PER_SECOND = 6;
  */
 const START_SOUND_SRC = '/community-art/start.mp3';
 const WIN_SOUND_SRC = '/community-art/win.mp3';
+/** Slice separators, on the page and in the shared image alike. */
+const SLICE_STROKE = 'rgba(255, 236, 170, 0.35)';
+
+/** The last spin, kept so the winner card can share an image or replay it as a clip. */
+interface CommunitySpin {
+  names: string[];
+  winnerIndex: number;
+  startRotation: number;
+  endRotation: number;
+  durationMs: number;
+}
 
 /**
  * One community wheel on its own page (`/community/<slug>`).
@@ -98,6 +115,56 @@ export class CommunityWheelPage {
   protected readonly rotationDeg = signal(0);
   protected readonly spinning = signal(false);
   protected readonly winner = signal('');
+  private readonly lastSpin = signal<CommunitySpin | null>(null);
+
+  /**
+   * What the winner card's "Download image" / "Create video clip" share: this
+   * wheel's look, its real last spin and its own sounds (no ticks, like the
+   * page). Built from the page's data only — never `WheelConfigurator`.
+   */
+  protected readonly shareSource = computed<WinnerShareSource | null>(() => {
+    const wheel = this.wheel();
+    const spin = this.lastSpin();
+    const winner = this.winner();
+    if (!wheel || !spin || !winner) {
+      return null;
+    }
+
+    return {
+      winner,
+      replay: {
+        startRotation: spin.startRotation,
+        endRotation: spin.endRotation,
+        durationMs: spin.durationMs,
+      },
+      fallbackSpinMs: wheel.spinDurationMs,
+      sounds: {
+        spin: { kind: 'file', src: START_SOUND_SRC },
+        winner: { kind: 'file', src: WIN_SOUND_SRC },
+      },
+      buildScene: (labels) =>
+        buildCommunityWinnerScene(
+          {
+            winner,
+            names: spin.names,
+            winnerIndex: spin.winnerIndex,
+            rotation: spin.endRotation,
+            wheelName: wheel.name,
+            colors: wheel.palette.colors,
+            gradientTo: wheel.palette.gradientTo,
+            fontFamily: wheel.fontFamily,
+            sliceStroke: SLICE_STROKE,
+            backgroundColor: wheel.background.color,
+            backgroundImage: wheel.background.image,
+            frame: wheel.frame,
+            hub: wheel.hub,
+            accent: wheel.accent,
+            baseCanvasPx: BASE_CANVAS_PX,
+          },
+          labels,
+        ),
+    };
+  });
   protected readonly panelOpen = signal(false);
   protected readonly infoOpen = signal(false);
 
@@ -121,14 +188,21 @@ export class CommunityWheelPage {
   protected readonly panelTitle = $localize`:@@bar.panel.users.caption:Names`;
   protected readonly panelAriaLabel = $localize`:@@bar.panel.users.aria:Open users panel`;
 
-  /** The frame box: as wide as possible while the whole artwork fits the screen height. */
+  /**
+   * The frame box: as large as the space under the title allows, keeping the
+   * artwork's proportions — limited by the width on a phone held upright and by
+   * the height on a desktop or a landscape screen.
+   */
   protected readonly stageWidth = computed(() => {
     const frame = this.wheel()?.frame;
     if (!frame) {
       return '';
     }
-    return `min(94vw, 46rem, calc((100dvh - 12rem) * ${frame.width / frame.height}))`;
+    return `min(100cqw, calc(100cqh * ${frame.width / frame.height}))`;
   });
+
+  /** The canvas' drawing size in device pixels, following its size on screen. */
+  private readonly canvasPx = signal(BASE_CANVAS_PX);
 
   /** Page background: the artwork when there is one, over the gradient, over the colour. */
   protected readonly pageBackground = computed(() => {
@@ -244,6 +318,7 @@ export class CommunityWheelPage {
     this.panelOpen.set(false);
     this.spinning.set(true);
     this.winner.set('');
+    this.lastSpin.set(null);
 
     const start = this.rotationDeg();
     const total = start + 360 * FULL_TURNS + this.secureRandomInt(360);
@@ -256,7 +331,15 @@ export class CommunityWheelPage {
       this.spinTimer = null;
       // Keep the angle small: the idle drift keeps adding to it.
       this.rotationDeg.set(total % 360);
-      this.winner.set(this.winnerAt(total, names, wheel.frame.pointerAngleDeg ?? 0));
+      const winnerIndex = this.sliceAt(total, names.length, wheel.frame.pointerAngleDeg ?? 0);
+      this.lastSpin.set({
+        names,
+        winnerIndex,
+        startRotation: start,
+        endRotation: total,
+        durationMs: wheel.spinDurationMs,
+      });
+      this.winner.set(names[winnerIndex] ?? names[0] ?? '');
       this.spinning.set(false);
       playSound(this.winSound);
     }, wheel.spinDurationMs);
@@ -399,6 +482,25 @@ export class CommunityWheelPage {
     }
   }
 
+  /** Keeps the canvas sharp at any size: its pixels follow its box × the screen's density. */
+  private readonly canvasSizeEffect = effect((onCleanup) => {
+    const canvas = this.canvasRef()?.nativeElement;
+    if (!this.isBrowser || !canvas || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+
+    const observer = new ResizeObserver(([entry]) => {
+      const cssSize = entry.contentRect.width;
+      if (!cssSize) {
+        return;
+      }
+      const px = Math.round(cssSize * Math.min(window.devicePixelRatio || 1, 2));
+      this.canvasPx.set(Math.max(240, Math.min(px, MAX_CANVAS_PX)));
+    });
+    observer.observe(canvas);
+    onCleanup(() => observer.disconnect());
+  });
+
   /**
    * Drawn from an effect on the viewChild signal, not a one-shot frame: on a
    * prerendered page the server markup is replaced on boot, and a deferred
@@ -408,9 +510,16 @@ export class CommunityWheelPage {
     const wheel = this.wheel();
     const names = this.entries();
     const canvas = this.canvasRef()?.nativeElement;
+    const size = this.canvasPx();
 
     if (!this.isBrowser || !wheel || !canvas) {
       return;
+    }
+
+    // Resizing clears the canvas, so only when it changed; the draw below follows.
+    if (canvas.width !== size) {
+      canvas.width = size;
+      canvas.height = size;
     }
 
     const ctx = canvas.getContext('2d');
@@ -423,9 +532,12 @@ export class CommunityWheelPage {
       colors: [...wheel.palette.colors],
       gradientTo: wheel.palette.gradientTo ? [...wheel.palette.gradientTo] : undefined,
       fontFamily: wheel.fontFamily,
+      // The renderer's font caps are in pixels, tuned for a 720px canvas: scale
+      // them so the labels keep their proportion at any drawing size.
+      renderScale: size / BASE_CANVAS_PX,
       radiusInset: 2,
       emptyFillStyle: wheel.hub.color,
-      sliceStroke: 'rgba(255, 236, 170, 0.35)',
+      sliceStroke: SLICE_STROKE,
     });
   });
 
@@ -433,13 +545,11 @@ export class CommunityWheelPage {
    * Same geometry as the main wheel, turned by the angle the artwork's pointer
    * makes with the vertical (Fox Spirit's snout: 0°; Supercycle's arrow: 4.2°).
    */
-  private winnerAt(totalRotation: number, names: string[], pointerAngleDeg: number): string {
+  private sliceAt(totalRotation: number, sliceCount: number, pointerAngleDeg: number): number {
     const normalized = (360 - (totalRotation % 360)) % 360;
     // The pointer sits at 270° + pointerAngleDeg in canvas angles (0° = 3 o'clock).
     const adjusted = (((normalized - 90 + pointerAngleDeg) % 360) + 360) % 360;
-    const index = Math.floor(adjusted / (360 / names.length));
-
-    return names[index] ?? names[0] ?? '';
+    return Math.min(sliceCount - 1, Math.floor(adjusted / (360 / sliceCount)));
   }
 
   private secureRandomInt(maxExclusive: number): number {

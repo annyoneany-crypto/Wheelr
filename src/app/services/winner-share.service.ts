@@ -2,7 +2,12 @@ import { Injectable, LOCALE_ID, inject } from '@angular/core';
 import { WheelConfigurator } from './wheel-configurator.service';
 import { NativePlatformService } from './native-platform.service';
 import { DefaultSoundPlayer, SPIN_EASING, easeCubicBezier } from './default-sounds';
-import { buildWinnerScene, drawWinnerFrame, type WinnerScene } from '../shared/winner-share/winner-share-scene';
+import {
+  buildWinnerScene,
+  drawWinnerFrame,
+  type WinnerScene,
+  type WinnerSceneLabels,
+} from '../shared/winner-share/winner-share-scene';
 
 /** Portrait 4:5, the tallest ratio Instagram keeps uncropped in the feed. */
 const IMAGE_SIZE = { width: 1080, height: 1350 };
@@ -34,6 +39,42 @@ export type ShareOutcome = 'shared' | 'downloaded' | 'cancelled';
 export interface WinnerClip {
   blob: Blob;
   filename: string;
+  /** For the share sheet's title. */
+  winner: string;
+}
+
+/** The spin a clip replays, in CSS rotation degrees. */
+export interface ReplaySpin {
+  startRotation: number;
+  endRotation: number;
+  durationMs: number;
+}
+
+/**
+ * One sound of the clip: the synthesised ticks (spin) or fanfare (winner) of
+ * `DefaultSoundPlayer`, or an audio file — a data URL or a path — optionally
+ * cut off when the spin ends, and played as `fallback` if it cannot be decoded.
+ */
+export type ClipSound =
+  | { kind: 'ticks' }
+  | { kind: 'fanfare' }
+  | { kind: 'file'; src: string; clipToSpin?: boolean; fallback?: 'ticks' | 'fanfare' };
+
+/**
+ * Everything the image and the clip need from a wheel. The main wheel's comes
+ * from `WheelConfigurator` (`wheelSource()`); a community wheel builds its own,
+ * so sharing never reads or writes the visitor's wheels.
+ */
+export interface WinnerShareSource {
+  winner: string;
+  /** `rotation`, when given, is where the replayed spin ends. */
+  buildScene(labels: WinnerSceneLabels, rotation?: number): Promise<WinnerScene | null>;
+  /** The spin to replay; null makes up one that lands on the same slice. */
+  replay: ReplaySpin | null;
+  /** Spin length for a made-up replay. */
+  fallbackSpinMs: number;
+  /** The clip's soundtrack; null records it silent. */
+  sounds: { spin: ClipSound | null; winner: ClipSound | null } | null;
 }
 
 /**
@@ -75,8 +116,8 @@ export class WinnerShareService {
     return coarse && navigator.canShare({ files: [probe] });
   }
 
-  async renderImage(): Promise<WinnerClip | null> {
-    const scene = await this.buildScene();
+  async renderImage(source: WinnerShareSource = this.wheelSource()): Promise<WinnerClip | null> {
+    const scene = await source.buildScene(this.sceneLabels());
     if (!scene) return null;
 
     const canvas = document.createElement('canvas');
@@ -93,7 +134,7 @@ export class WinnerShareService {
     });
 
     const blob = await new Promise<Blob | null>((resolve) => canvas.toBlob(resolve, 'image/png'));
-    return blob ? { blob, filename: `${this.fileStem(scene.winner)}.png` } : null;
+    return blob ? { blob, filename: `${this.fileStem(scene.winner)}.png`, winner: scene.winner } : null;
   }
 
   /**
@@ -101,21 +142,22 @@ export class WinnerShareService {
    * than it plays), so it takes as long as the clip lasts. `onProgress`
    * receives 0-1; aborting `signal` stops and discards the recording.
    */
-  async recordClip(onProgress: (progress: number) => void, signal: AbortSignal): Promise<WinnerClip | null> {
+  async recordClip(
+    onProgress: (progress: number) => void,
+    signal: AbortSignal,
+    source: WinnerShareSource = this.wheelSource(),
+  ): Promise<WinnerClip | null> {
     if (!this.canRecordClip || !this.clipMimeType) return null;
 
-    const spin = this.cfg.lastSpin();
-    const winner = this.cfg.winner();
-    const replay = spin && spin.winner === winner && spin.workspaceId === this.cfg.activeWheelId() ? spin : null;
-
-    const scene = await this.buildScene(replay?.endRotation);
+    const replay = source.replay;
+    const scene = await source.buildScene(this.sceneLabels(), replay?.endRotation);
     if (!scene || signal.aborted) return null;
 
     // Without a recorded spin (e.g. a multi-wheel preview), replay a
     // plausible one that lands on the same slice.
     const endRotation = scene.finalRotation;
     const startRotation = replay?.startRotation ?? endRotation - 360 * 6 - 137;
-    const spinMs = Math.min(MAX_SPIN_MS, Math.max(1500, replay?.durationMs ?? this.cfg.spinDurationMs()));
+    const spinMs = Math.min(MAX_SPIN_MS, Math.max(1500, replay?.durationMs ?? source.fallbackSpinMs));
     const revealAt = INTRO_MS + spinMs + PAUSE_MS;
     const totalMs = revealAt + REVEAL_MS + HOLD_MS;
 
@@ -138,7 +180,7 @@ export class WinnerShareService {
     draw(0);
 
     const stream = canvas.captureStream(CLIP_FPS);
-    const audio = this.cfg.soundEnabled() ? await this.createClipAudio() : null;
+    const audio = source.sounds ? await createClipAudio(source.sounds) : null;
     audio?.stream.getAudioTracks().forEach((track) => stream.addTrack(track));
 
     const recorder = new MediaRecorder(stream, {
@@ -193,12 +235,13 @@ export class WinnerShareService {
     return {
       blob: new Blob(chunks, { type }),
       filename: `${this.fileStem(scene.winner)}.${extension}`,
+      winner: scene.winner,
     };
   }
 
   /** Opens the share sheet where that is the natural move, otherwise downloads. */
   async shareOrDownload(file: WinnerClip): Promise<ShareOutcome> {
-    const title = $localize`:@@share.title:Winner: ${this.cfg.winner() ?? ''}:NAME:`;
+    const title = $localize`:@@share.title:Winner: ${file.winner}:NAME:`;
 
     if (this.native.isNative) {
       return this.shareNative(file, title);
@@ -258,46 +301,42 @@ export class WinnerShareService {
     }
   }
 
-  private buildScene(rotation?: number): Promise<WinnerScene | null> {
-    const date = new Intl.DateTimeFormat(this.locale, { dateStyle: 'long' }).format(new Date());
-    return buildWinnerScene(
-      this.cfg,
-      { winner: $localize`:@@winner.label:Winner`, date },
-      rotation,
-    );
-  }
-
   /**
-   * An audio graph whose output is recorded instead of played: the clip gets
-   * the user's uploaded sounds when there are any, the synthesised ticks and
+   * The main wheel, as `WheelConfigurator` has it now. The clip replays the
+   * last spin only if it belongs to this wheel and this winner, and gets the
+   * user's uploaded sounds when there are any, the synthesised ticks and
    * fanfare otherwise, just like the live spin.
    */
-  private async createClipAudio(): Promise<ClipAudio | null> {
-    if (typeof AudioContext === 'undefined') return null;
-
-    const context = new AudioContext();
-    await context.resume().catch(() => {});
-    const destination = context.createMediaStreamDestination();
-    const defaults = new DefaultSoundPlayer({ context, destination });
-    const [customSpin, customWinner] = await Promise.all([
-      decodeAudio(context, this.cfg.customAudio()),
-      decodeAudio(context, this.cfg.winnerAudio()),
-    ]);
-
-    const playBuffer = (buffer: AudioBuffer, maxSeconds?: number) => {
-      const source = context.createBufferSource();
-      source.buffer = buffer;
-      source.connect(destination);
-      source.start();
-      if (maxSeconds) source.stop(context.currentTime + maxSeconds);
-    };
+  private wheelSource(): WinnerShareSource {
+    const cfg = this.cfg;
+    const winner = cfg.winner() ?? '';
+    const spin = cfg.lastSpin();
+    const replay = spin && spin.winner === winner && spin.workspaceId === cfg.activeWheelId() ? spin : null;
+    const spinAudio = cfg.customAudio();
+    const winnerAudio = cfg.winnerAudio();
 
     return {
-      stream: destination.stream,
-      playSpin: (from, to, durationMs, slices) =>
-        customSpin ? playBuffer(customSpin, durationMs / 1000) : defaults.playSpin(from, to, durationMs, slices),
-      playWinner: () => (customWinner ? playBuffer(customWinner) : defaults.playWinner()),
-      close: () => void context.close().catch(() => {}),
+      winner,
+      buildScene: (labels, rotation) => buildWinnerScene(cfg, labels, rotation),
+      replay,
+      fallbackSpinMs: cfg.spinDurationMs(),
+      sounds: cfg.soundEnabled()
+        ? {
+            spin: spinAudio
+              ? { kind: 'file', src: spinAudio, clipToSpin: true, fallback: 'ticks' }
+              : { kind: 'ticks' },
+            winner: winnerAudio
+              ? { kind: 'file', src: winnerAudio, fallback: 'fanfare' }
+              : { kind: 'fanfare' },
+          }
+        : null,
+    };
+  }
+
+  private sceneLabels(): WinnerSceneLabels {
+    return {
+      winner: $localize`:@@winner.label:Winner`,
+      date: new Intl.DateTimeFormat(this.locale, { dateStyle: 'long' }).format(new Date()),
     };
   }
 
@@ -318,6 +357,51 @@ interface ClipAudio {
   playSpin(fromDeg: number, toDeg: number, durationMs: number, sliceCount: number): void;
   playWinner(): void;
   close(): void;
+}
+
+/** An audio graph whose output is recorded instead of played. */
+async function createClipAudio(sounds: {
+  spin: ClipSound | null;
+  winner: ClipSound | null;
+}): Promise<ClipAudio | null> {
+  if (typeof AudioContext === 'undefined') return null;
+
+  const context = new AudioContext();
+  await context.resume().catch(() => {});
+  const destination = context.createMediaStreamDestination();
+  const defaults = new DefaultSoundPlayer({ context, destination });
+  const [spinBuffer, winnerBuffer] = await Promise.all([
+    sounds.spin?.kind === 'file' ? decodeAudio(context, sounds.spin.src) : null,
+    sounds.winner?.kind === 'file' ? decodeAudio(context, sounds.winner.src) : null,
+  ]);
+
+  const playBuffer = (buffer: AudioBuffer, maxSeconds?: number) => {
+    const source = context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(destination);
+    source.start();
+    if (maxSeconds) source.stop(context.currentTime + maxSeconds);
+  };
+
+  // A file that does not decode plays its fallback, or nothing.
+  const spin = sounds.spin;
+  const winner = sounds.winner;
+  const spinKind = spin?.kind === 'file' ? (spinBuffer ? 'file' : spin.fallback) : spin?.kind;
+  const winnerKind = winner?.kind === 'file' ? (winnerBuffer ? 'file' : winner.fallback) : winner?.kind;
+  return {
+    stream: destination.stream,
+    playSpin: (from, to, durationMs, slices) => {
+      if (spinKind === 'ticks') defaults.playSpin(from, to, durationMs, slices);
+      else if (spinKind === 'file' && spinBuffer) {
+        playBuffer(spinBuffer, spin?.kind === 'file' && spin.clipToSpin ? durationMs / 1000 : undefined);
+      }
+    },
+    playWinner: () => {
+      if (winnerKind === 'fanfare') defaults.playWinner();
+      else if (winnerKind === 'file' && winnerBuffer) playBuffer(winnerBuffer);
+    },
+    close: () => void context.close().catch(() => {}),
+  };
 }
 
 function pickClipMimeType(): string | null {

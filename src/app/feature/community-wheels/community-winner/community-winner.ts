@@ -10,6 +10,8 @@ import {
   viewChild,
 } from '@angular/core';
 import { NativePlatformService } from '../../../services/native-platform.service';
+import type { WinnerShareSource } from '../../../services/winner-share.service';
+import { WinnerShare } from '../../../shared/winner-share/winner-share';
 
 interface Ember {
   x: number;
@@ -54,6 +56,7 @@ const MAX_SPARKS = 450;
  */
 @Component({
   selector: 'wl-community-winner',
+  imports: [WinnerShare],
   templateUrl: './community-winner.html',
   styleUrl: './community-winner.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -65,6 +68,8 @@ export class CommunityWinner {
   readonly winner = input.required<string>();
   readonly colors = input.required<readonly string[]>();
   readonly accent = input.required<string>();
+  /** Image and clip of this draw; without it the share buttons are hidden. */
+  readonly share = input<WinnerShareSource | null>(null);
 
   readonly closed = output<void>();
   readonly removeOne = output<void>();

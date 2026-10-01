@@ -5,11 +5,16 @@ import {
   computed,
   effect,
   inject,
+  input,
   signal,
   untracked,
 } from '@angular/core';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
-import { WinnerShareService, type WinnerClip } from '../../services/winner-share.service';
+import {
+  WinnerShareService,
+  type WinnerClip,
+  type WinnerShareSource,
+} from '../../services/winner-share.service';
 
 type ClipState = 'idle' | 'recording' | 'ready' | 'error';
 
@@ -17,6 +22,9 @@ type ClipState = 'idle' | 'recording' | 'ready' | 'error';
  * "Share image" and "Create video clip" under the winner card. The clip is
  * recorded first and shared on a second tap: recording takes several seconds,
  * longer than a browser keeps the original tap valid for `navigator.share`.
+ *
+ * Shares the main wheel by default; a community wheel passes its own
+ * `source`, so its winner never goes through `WheelConfigurator`.
  */
 @Component({
   selector: 'wl-winner-share',
@@ -26,6 +34,9 @@ type ClipState = 'idle' | 'recording' | 'ready' | 'error';
 export class WinnerShare {
   private readonly cfg = inject(WheelConfigurator);
   protected readonly share = inject(WinnerShareService);
+
+  /** What to share; null means the main wheel. A new source is a new winner. */
+  readonly source = input<WinnerShareSource | null>(null);
 
   protected readonly imageBusy = signal(false);
   protected readonly imageError = signal(false);
@@ -44,7 +55,9 @@ export class WinnerShare {
   constructor() {
     // A new spin or a dismissed card makes any clip in progress (or ready) stale.
     effect(() => {
-      this.cfg.winner();
+      if (!this.source()) {
+        this.cfg.winner();
+      }
       untracked(() => this.reset());
     });
     inject(DestroyRef).onDestroy(() => this.abort?.abort());
@@ -55,7 +68,7 @@ export class WinnerShare {
     this.imageBusy.set(true);
     this.imageError.set(false);
     try {
-      const image = await this.share.renderImage();
+      const image = await this.share.renderImage(this.source() ?? undefined);
       if (!image) {
         this.imageError.set(true);
         return;
@@ -78,7 +91,11 @@ export class WinnerShare {
     this.clipState.set('recording');
 
     try {
-      const clip = await this.share.recordClip((p) => this.clipProgress.set(p), abort.signal);
+      const clip = await this.share.recordClip(
+        (p) => this.clipProgress.set(p),
+        abort.signal,
+        this.source() ?? undefined,
+      );
       if (abort.signal.aborted) return;
       this.clip.set(clip);
       this.clipState.set(clip ? 'ready' : 'error');

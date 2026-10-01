@@ -10,9 +10,14 @@
  *
  * The wheel is always drawn as the classic disc, whatever the view on screen:
  * linear and cards have no single still that reads as "this one won".
+ *
+ * A community wheel's scene (`buildCommunityWinnerScene`) adds its frame
+ * artwork over the disc — the artwork is the pointer there — plus its own hub,
+ * accent and confetti colours, and never reads `WheelConfigurator`.
  */
 import { clampDeg, contrastForHex, paletteRimColor, type ColorPalette } from '../../services/global_function';
 import type { WheelConfigurator } from '../../services/wheel-configurator.service';
+import { drawWheelCanvas } from '../extraction-effect/wheel-renderer';
 
 /** Side of the pre-rendered wheel bitmap, in pixels. */
 const WHEEL_BITMAP_SIZE = 1400;
@@ -42,6 +47,27 @@ export interface WinnerScene {
   centerRatio: number;
   winnerLabel: string;
   dateLabel: string;
+  /** Community wheels: artwork laid over the disc, replacing the drop pointer. */
+  frame?: WinnerSceneFrame;
+  /** Ring round the centre disc; dark by default. */
+  centerBorderColor?: string;
+  /** Card border, glow, label and winning-slice outline; amber by default. */
+  accent?: string;
+  confettiColors?: readonly string[];
+}
+
+/** The frame artwork and where the wheel sits in it, as fractions of the image (see `CommunityWheelFrame`). */
+export interface WinnerSceneFrame {
+  image: HTMLImageElement;
+  wheelCenterX: number;
+  wheelCenterY: number;
+  /** Fraction of the image width. */
+  wheelDiameter: number;
+}
+
+export interface WinnerSceneLabels {
+  winner: string;
+  date: string;
 }
 
 export interface FrameState {
@@ -85,7 +111,7 @@ export function loadImage(src: string): Promise<HTMLImageElement | null> {
  */
 export async function buildWinnerScene(
   cfg: WheelConfigurator,
-  labels: { winner: string; date: string },
+  labels: WinnerSceneLabels,
   rotation?: number,
 ): Promise<WinnerScene | null> {
   const winner = cfg.winner();
@@ -147,6 +173,131 @@ export async function buildWinnerScene(
   };
 }
 
+/** What a community wheel hands over to be shared: plain data, no service. */
+export interface CommunitySceneInput {
+  winner: string;
+  names: readonly string[];
+  winnerIndex: number;
+  /** CSS rotation the wheel stopped at. */
+  rotation: number;
+  wheelName: string;
+  colors: readonly string[];
+  gradientTo?: readonly string[];
+  fontFamily: string;
+  sliceStroke: string;
+  backgroundColor: string;
+  backgroundImage?: string;
+  frame: { src: string; wheelCenterX: number; wheelCenterY: number; wheelDiameter: number };
+  hub: { color: string; borderColor: string; image?: string };
+  accent: string;
+  /** The page's drawing size its label proportions were tuned at. */
+  baseCanvasPx: number;
+}
+
+/** The hub is a fifth of the wheel, as on the community page. */
+const COMMUNITY_HUB_RATIO = 0.2;
+
+export async function buildCommunityWinnerScene(
+  input: CommunitySceneInput,
+  labels: WinnerSceneLabels,
+): Promise<WinnerScene | null> {
+  if (!input.winner || !input.names.length) return null;
+
+  const [bgImage, centerImage, frameImage] = await Promise.all([
+    loadImage(input.backgroundImage ?? ''),
+    loadImage(input.hub.image ?? ''),
+    loadImage(input.frame.src),
+    document.fonts?.ready.catch(() => undefined),
+  ]);
+  if (!frameImage) return null;
+
+  const wheel = document.createElement('canvas');
+  wheel.width = WHEEL_BITMAP_SIZE;
+  wheel.height = WHEEL_BITMAP_SIZE;
+  const wctx = wheel.getContext('2d');
+  if (!wctx) return null;
+
+  drawWheelCanvas(wheel, wctx, {
+    names: [...input.names],
+    colors: [...input.colors],
+    gradientTo: input.gradientTo ? [...input.gradientTo] : undefined,
+    fontFamily: input.fontFamily,
+    renderScale: WHEEL_BITMAP_SIZE / input.baseCanvasPx,
+    radiusInset: 2,
+    emptyFillStyle: input.hub.color,
+    sliceStroke: input.sliceStroke,
+  });
+
+  return {
+    winner: input.winner,
+    wheelName: input.wheelName,
+    sliceCount: input.names.length,
+    winnerIndex: input.winnerIndex,
+    finalRotation: input.rotation,
+    palette: { name: input.wheelName, colors: [...input.colors] },
+    wheel,
+    bgColor: input.backgroundColor,
+    bgImage,
+    centerColor: input.hub.color,
+    centerText: '',
+    centerImage,
+    centerRatio: COMMUNITY_HUB_RATIO,
+    winnerLabel: labels.winner,
+    dateLabel: labels.date,
+    frame: {
+      image: frameImage,
+      wheelCenterX: input.frame.wheelCenterX,
+      wheelCenterY: input.frame.wheelCenterY,
+      wheelDiameter: input.frame.wheelDiameter,
+    },
+    centerBorderColor: input.hub.borderColor,
+    accent: input.accent,
+    confettiColors: [...input.colors, input.accent],
+  };
+}
+
+/** Where the wheel, the name above it and the card below it go. */
+interface FrameLayout {
+  cx: number;
+  cy: number;
+  diameter: number;
+  nameY: number;
+  cardTop: number;
+  /** The frame artwork's box, when there is one. */
+  art?: { x: number; y: number; w: number; h: number };
+}
+
+function layoutFrame(width: number, height: number, unit: number, scene: WinnerScene): FrameLayout {
+  const frame = scene.frame;
+  if (!frame) {
+    const diameter = Math.min(width * 0.82, height * 0.55);
+    const cy = height * 0.42;
+    return {
+      cx: width / 2,
+      cy,
+      diameter,
+      nameY: cy - diameter / 2 - 90 * unit,
+      cardTop: cy + diameter / 2 + height * 0.04,
+    };
+  }
+
+  // The artwork is larger than the wheel (a head, a ring of flames): fit all
+  // of it, then place the wheel inside by its fractions.
+  const ratio = frame.image.naturalWidth / frame.image.naturalHeight;
+  const artW = Math.min(width * 0.92, height * 0.6 * ratio);
+  const artH = artW / ratio;
+  const artX = (width - artW) / 2;
+  const artY = height * 0.42 - artH / 2;
+  return {
+    cx: artX + frame.wheelCenterX * artW,
+    cy: artY + frame.wheelCenterY * artH,
+    diameter: frame.wheelDiameter * artW,
+    nameY: artY - 40 * unit,
+    cardTop: artY + artH + height * 0.02,
+    art: { x: artX, y: artY, w: artW, h: artH },
+  };
+}
+
 export function drawWinnerFrame(
   ctx: CanvasRenderingContext2D,
   width: number,
@@ -155,19 +306,23 @@ export function drawWinnerFrame(
   state: FrameState,
 ): void {
   const unit = Math.min(width, height / 1.25) / 1000;
-  const diameter = Math.min(width * 0.82, height * 0.55);
-  const cx = width / 2;
-  const cy = height * 0.42;
+  const { cx, cy, diameter, nameY, cardTop, art } = layoutFrame(width, height, unit, scene);
 
   drawBackground(ctx, width, height, scene);
-  drawWheelName(ctx, width, cy - diameter / 2, unit, scene);
+  drawWheelName(ctx, width, nameY, unit, scene);
   drawWheel(ctx, cx, cy, diameter, scene, state);
+  if (scene.frame && art) {
+    // Over the wheel and under the hub, as on the page.
+    ctx.drawImage(scene.frame.image, art.x, art.y, art.w, art.h);
+  }
   drawCenter(ctx, cx, cy, diameter, scene);
-  drawPointer(ctx, cx, cy - diameter / 2, diameter, scene, state.rotation);
+  if (!scene.frame) {
+    drawPointer(ctx, cx, cy - diameter / 2, diameter, scene, state.rotation);
+  }
 
   if (state.reveal > 0) {
-    drawConfetti(ctx, width, height, state);
-    drawWinnerCard(ctx, width, cy + diameter / 2 + height * 0.04, height * 0.14, unit, scene, state.reveal);
+    drawConfetti(ctx, width, height, state, scene.confettiColors ?? CONFETTI_COLORS);
+    drawWinnerCard(ctx, width, cardTop, height * 0.14, unit, scene, state.reveal);
   }
 
   drawFooter(ctx, width, height, unit, scene);
@@ -211,7 +366,7 @@ function setLetterSpacing(ctx: CanvasRenderingContext2D, px: number): void {
 function drawWheelName(
   ctx: CanvasRenderingContext2D,
   w: number,
-  wheelTop: number,
+  y: number,
   unit: number,
   scene: WinnerScene,
 ): void {
@@ -226,7 +381,7 @@ function drawWheelName(
   ctx.shadowColor = 'rgba(0,0,0,0.6)';
   ctx.shadowBlur = 12 * unit;
   const text = fitText(ctx, scene.wheelName.toUpperCase(), w * 0.86, `800 {size}px ${UI_FONT}`, size, size * 0.6);
-  ctx.fillText(text, w / 2, wheelTop - 90 * unit);
+  ctx.fillText(text, w / 2, y);
   ctx.restore();
 }
 
@@ -259,11 +414,12 @@ function drawWheel(
   if (state.reveal > 0 && scene.sliceCount > 1) {
     const slice = (Math.PI * 2) / scene.sliceCount;
     const r = radius * (1 - 10 / 1400);
+    const accent = scene.accent ?? ACCENT;
     ctx.globalAlpha = Math.min(1, state.reveal * 1.5);
-    ctx.strokeStyle = ACCENT;
+    ctx.strokeStyle = accent;
     ctx.lineWidth = Math.max(3, diameter * 0.008);
     ctx.lineJoin = 'round';
-    ctx.shadowColor = ACCENT;
+    ctx.shadowColor = accent;
     ctx.shadowBlur = diameter * 0.03;
     ctx.beginPath();
     ctx.moveTo(0, 0);
@@ -287,7 +443,7 @@ function drawCenter(
   ctx.save();
   ctx.shadowColor = 'rgba(0,0,0,0.45)';
   ctx.shadowBlur = r * 0.5;
-  ctx.fillStyle = '#171717';
+  ctx.fillStyle = scene.centerBorderColor ?? '#171717';
   ctx.beginPath();
   ctx.arc(cx, cy, r, 0, Math.PI * 2);
   ctx.fill();
@@ -365,7 +521,13 @@ function seeded(seed: number): () => number {
   };
 }
 
-function drawConfetti(ctx: CanvasRenderingContext2D, w: number, h: number, state: FrameState): void {
+function drawConfetti(
+  ctx: CanvasRenderingContext2D,
+  w: number,
+  h: number,
+  state: FrameState,
+  colors: readonly string[],
+): void {
   const rand = seeded(7);
   const count = 110;
   const piece = Math.min(w, h) * 0.014;
@@ -378,7 +540,7 @@ function drawConfetti(ctx: CanvasRenderingContext2D, w: number, h: number, state
     const sway = (0.01 + rand() * 0.03) * w;
     const phase = rand() * Math.PI * 2;
     const spin = (rand() - 0.5) * 10;
-    const color = CONFETTI_COLORS[i % CONFETTI_COLORS.length];
+    const color = colors[i % colors.length];
 
     let y: number;
     let t: number;
@@ -434,19 +596,20 @@ function drawWinnerCard(
   ctx.scale(0.85 + 0.15 * pop, 0.85 + 0.15 * pop);
   ctx.translate(-w / 2, -(top + height / 2));
 
-  ctx.shadowColor = 'rgba(251,191,36,0.55)';
+  // A community's accent is a #rrggbb hex: 8c is the same 55% glow as the default.
+  ctx.shadowColor = scene.accent ? `${scene.accent}8c` : 'rgba(251,191,36,0.55)';
   ctx.shadowBlur = 40 * unit;
   roundRect(ctx, x, top, cardW, height, 28 * unit);
   ctx.fillStyle = 'rgba(0,0,0,0.85)';
   ctx.fill();
   ctx.shadowBlur = 0;
   ctx.lineWidth = 3 * unit;
-  ctx.strokeStyle = ACCENT;
+  ctx.strokeStyle = scene.accent ?? ACCENT;
   ctx.stroke();
 
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillStyle = '#fde68a';
+  ctx.fillStyle = scene.accent ?? '#fde68a';
   ctx.font = `900 ${Math.round(24 * unit)}px ${UI_FONT}`;
   setLetterSpacing(ctx, 7 * unit);
   ctx.fillText(scene.winnerLabel.toUpperCase(), w / 2, top + height * 0.27);

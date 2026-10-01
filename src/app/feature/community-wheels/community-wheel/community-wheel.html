@@ -1,6 +1,9 @@
 @if (wheel(); as data) {
+  <!-- overflow-clip: the canvas is a square turned by `rotate()`, and its invisible corners
+       (up to 41% past its box) would otherwise poke out of a page one screen tall and
+       bring the scrollbar in and out as it spins. -->
   <section
-    class="flex min-h-screen flex-col items-center px-4 pt-24 pb-10 text-white/90"
+    class="flex h-dvh min-h-[34rem] flex-col items-center overflow-clip px-4 pt-24 pb-6 text-white/90"
     [style.background]="pageBackground()"
     aria-labelledby="community-wheel-title">
 
@@ -28,8 +31,8 @@
       </button>
     </header>
 
-    <!-- Takes the height left under the title, so the wheel sits in the middle of the screen. -->
-    <div class="flex w-full flex-1 items-center justify-center">
+    <!-- Takes the space left under the title; as a size container it lets the stage fit both its width and its height. -->
+    <div class="wl-community-fit flex min-h-0 w-full flex-1 items-center justify-center">
       <!-- The frame artwork sits on top of the wheel, placed inside it by the fractions in the data file. There is no pointer of our own: the artwork has one (Fox Spirit's snout, Supercycle's arrow), at frame.pointerAngleDeg. -->
       <div
         class="wl-community-stage relative"
@@ -305,6 +308,7 @@
       [winner]="winner()"
       [colors]="data.palette.colors"
       [accent]="data.accent"
+      [share]="shareSource()"
       (closed)="closeWinner()"
       (removeOne)="removeWinnerOnce()"
       (removeAll)="removeWinnerEverywhere()" />
