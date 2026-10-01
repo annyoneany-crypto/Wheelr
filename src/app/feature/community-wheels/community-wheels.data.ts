@@ -379,15 +379,16 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
       gradientTo: ['#6E070C', '#A3A8AF', '#3A0307', '#0E0F11'],
     },
     // Delivered already transparent at 500px, so it skips `tools/community-frame.mjs`;
-    // upscaled ×3 (Lanczos + light sharpening, WebP q90) so it is not stretched
-    // on large or high-density screens. Measured on the 500px original: the
-    // opening is a circle of radius 147–150 px centred at (252, 250.5); the
-    // wheel is a few pixels wider so it tucks under the metal edge. The badge
-    // sits over the top of the wheel and marks the winner at 12 o'clock.
+    // upscaled ×4 to 2000px with Real-ESRGAN (realesrgan-x4plus; colour and
+    // alpha run separately, then WebP q90) so it stays sharp on large and
+    // high-density screens. Measured on the 500px original: the opening is a
+    // circle of radius 147–150 px centred at (252, 250.5), unchanged by the
+    // upscale; the wheel is a few pixels wider so it tucks under the metal edge.
+    // The badge sits over the top of the wheel and marks the winner at 12 o'clock.
     frame: {
       src: '/community-art/red/frame.webp',
-      width: 1500,
-      height: 1500,
+      width: 2000,
+      height: 2000,
       wheelCenterX: 0.504,
       wheelCenterY: 0.501,
       wheelDiameter: 0.606,
