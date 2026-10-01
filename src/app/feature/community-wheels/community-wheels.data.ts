@@ -289,11 +289,14 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     // Generated with `tools/community-frame.mjs <art> frame.webp --crop 110,110,800,780`
     // (no --hole: the glitter inside the ring stops the flood fill and would
     // turn into an opaque band over the wheel). The wheel fills the neon ring;
-    // the logo's arrow tip lands on the rim 4.2° right of vertical.
+    // the logo's arrow tip lands on the rim 4.2° right of vertical. Then
+    // upscaled ×1.5 to 1200×1170 with Real-ESRGAN like Fox Spirit's (colour
+    // premultiplied, alpha separately, then unscreened again); WebP q80, alpha
+    // q75 — lower bands the neon halo.
     frame: {
       src: '/community-art/supercycle/frame.webp',
-      width: 800,
-      height: 780,
+      width: 1200,
+      height: 1170,
       wheelCenterX: 0.4992,
       wheelCenterY: 0.5322,
       wheelDiameter: 0.735,
