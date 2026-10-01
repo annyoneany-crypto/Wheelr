@@ -11,6 +11,7 @@
  * translations for its `community.<slug>.*` ids. The route, the list page, the
  * prerender and the sitemap all read this array.
  */
+import type { CommunityText } from './community-text';
 
 /**
  * The artwork drawn around the wheel. The wheel is placed inside it by
@@ -63,12 +64,16 @@ export interface CommunityWheel {
   tagline: string;
   description: string;
   /**
-   * The info popup: a few words about the community and where to find it.
-   * Without `about` the popup falls back to a generic line; without links the
-   * links block is left out. Both must come from the community itself.
+   * The info popup: the community's own text and where to find it. Without
+   * `about` the popup falls back to a generic line; without links the links
+   * block is left out. Both must come from the community itself.
+   *
+   * `about` is free text written by hand — paragraphs, `## headings`, `- lists`
+   * and `**bold**` (see `community-text.ts`) — either one string for everyone
+   * or one per language (`{ en: …, it: … }`, falling back to English).
    */
   info: {
-    about?: string;
+    about?: CommunityText;
     links: readonly CommunityLink[];
   };
   /** Locked: the slice colours and, optionally, their rim colours (see ColorPalette.gradientTo). */
@@ -112,8 +117,26 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     name: 'Fox Spirit',
     community: $localize`:@@community.fox-spirit.community:Fox Spirit community`,
     tagline: $localize`:@@community.fox-spirit.tagline:Spirit fire, amethyst and gold`,
-    // Waiting for the community's own text and links.
-    info: { links: [
+    info: { 
+      about: {
+        it: `
+          Fox Spirits è uno spazio inclusivo e dinamico pensato per streamer, gamer, appassionati di anime, crypto-enthusiast, fotografi e creativi. Gli obiettivi principali del gruppo sono:
+
+          - Socializzare e giocare: Trovare compagni di gioco e fare nuove amicizie.
+          - Crescere insieme: Condividere contenuti, fare networking e scambiarsi idee.
+          - Vibrare e rilassarsi: Godersi le chat vocali e chiacchierare delle proprie passioni.
+          - Partecipare attivamente: Contribuire con idee e feedback per plasmare il futuro della community.
+        `,
+        en: `
+          Fox Spirits is an inclusive and dynamic space designed for streamers, gamers, anime enthusiasts, crypto-enthusiasts, photographers, and creatives. The main goals of the group are:
+
+          - Socialize and play: Find gaming companions and make new friends.
+          - Grow together: Share content, network, and exchange ideas.
+          - Vibe and relax: Enjoy voice chats and discuss your passions.
+          - Participate actively: Contribute ideas and feedback to shape the community's future.
+        `,
+      },
+      links: [
       {
         kind: 'x',
         url: 'https://x.com/DofferLive',
@@ -182,7 +205,33 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     community: $localize`:@@community.supercycle.community:Supercycle (real) community`,
     tagline: $localize`:@@community.supercycle.tagline:Neon green, white, steel and black`,
     // Waiting for the community's own text and links.
-    info: { links: [] },
+    info: { 
+      about: {
+        it: `
+          Supercycle è lo spazio esclusivo e vibrante che riunisce tutte le persone appassionate e i sostenitori del token $Super. Questa non è una semplice community, ma un vero e proprio ecosistema guidato dalla visione del fondatore, il quale ha sviluppato una vasta gamma di strumenti innovativi e meccanismi strategici pensati appositamente per generare valore reale e sostenibile attorno al token.
+        `,
+        en: `
+          Supercycle is the exclusive, vibrant space that brings together all the enthusiasts and supporters of the $Super token. This is not merely a community, but a genuine ecosystem driven by the founder's vision—a vision that has led to the development of a wide range of innovative tools and strategic mechanisms specifically designed to generate real, sustainable value around the token.
+        `,
+      },
+      links: [
+      {
+        kind: 'x',
+        url: 'https://x.com/supercyclereal_',
+        label: `Supercycle`,
+      },
+      {
+        kind: 'website',
+        url: 'https://blaze.stream/supercyclereal',
+        label: `Blaze`,
+      },
+      {
+        kind: 'website',
+        url: 'https://supercyclereal.tech/',
+        label: `Website`,
+      },
+
+    ]},
     description: $localize`:@@community.supercycle.description:A wheel inside the neon ring of the Supercycle (real) community, with its arrow as the pointer. Green, white, grey and black slices that stay exactly as the community designed them — you only choose the entries.`,
     // Green, white, grey and black from the artwork, in that order so that no
     // two neighbours share a colour; each deepens towards the rim.
@@ -205,6 +254,9 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     },
     background: {
       color: '#040705',
+      // The community's artwork (1024², re-encoded lossy); the gradient below
+      // only shows while it loads.
+      image: '/community-art/supercycle/background.webp',
       gradient:
         'radial-gradient(circle at 50% 45%, rgba(57, 231, 95, 0.16), transparent 55%), radial-gradient(circle at 15% 90%, rgba(107, 114, 128, 0.22), transparent 50%), radial-gradient(circle at 88% 12%, rgba(242, 244, 243, 0.08), transparent 40%)',
     },
@@ -215,6 +267,9 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
       color: '#0b0f0c',
       borderColor: '#39E75F',
       textColor: '#D9FFE2',
+      // The community's logo cropped to its arrow symbol (the wordmark would be
+      // unreadable at hub size), 384px.
+      image: '/community-art/supercycle/hub-logo.webp',
     },
     fontFamily: '"Inter", sans-serif',
     // Market slang is the same in every language, so these are not translated.
@@ -230,6 +285,8 @@ export interface CommunityFrameLayout {
   width: string;
   centerX: string;
   centerY: string;
+  /** The hub: a fifth of the wheel's diameter. */
+  hubWidth: string;
   aspectRatio: string;
 }
 
@@ -244,8 +301,22 @@ export function frameLayout(frame: CommunityWheelFrame): CommunityFrameLayout {
     width: `${frame.wheelDiameter * 100}%`,
     centerX: `${frame.wheelCenterX * 100}%`,
     centerY: `${frame.wheelCenterY * 100}%`,
+    hubWidth: `${frame.wheelDiameter * 20}%`,
     aspectRatio: `${frame.width} / ${frame.height}`,
   };
+}
+
+/**
+ * The wheel's background as a CSS `background` value: the artwork when there
+ * is one, over the gradient, over the colour. Shared by the wheel page and the
+ * cards of the list, so both show the same thing.
+ */
+export function backgroundCss(background: CommunityWheel['background']): string {
+  return [
+    ...(background.image ? [`url("${background.image}") center / cover no-repeat`] : []),
+    ...(background.gradient ? [background.gradient] : []),
+    background.color,
+  ].join(', ');
 }
 
 export function findCommunityWheel(slug: string): CommunityWheel | null {

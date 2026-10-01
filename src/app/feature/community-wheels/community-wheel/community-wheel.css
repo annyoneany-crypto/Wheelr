@@ -15,8 +15,8 @@
 }
 
 /* The spin is a CSS transition whose duration is bound in the template (0 while
-   idling) and matched by the timer that reads the winner. The easing must stay
-   the main wheel's: DefaultSoundPlayer computes the tick times from it. */
+   idling) and matched by the timer that reads the winner. The easing is the
+   main wheel's. */
 .wl-community-wheel {
   transition-property: transform;
   transition-timing-function: cubic-bezier(0.15, 0, 0.15, 1);

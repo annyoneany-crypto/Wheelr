@@ -17,7 +17,7 @@
             [attr.aria-label]="labels.open(wheel.name)">
             <div
               class="flex justify-center px-6 pt-6"
-              [style.background]="cardBackground(wheel.background.color, wheel.background.gradient)">
+              [style.background]="backgrounds.get(wheel.slug)">
               <div
                 class="wl-community-card-art relative w-full max-w-[16rem]"
                 [style.aspectRatio]="layouts.get(wheel.slug)?.aspectRatio">
@@ -35,6 +35,19 @@
                   alt=""
                   loading="lazy"
                   class="absolute inset-0 h-full w-full" />
+                @if (wheel.hub.image) {
+                  <img
+                    [src]="wheel.hub.image"
+                    width="384"
+                    height="384"
+                    alt=""
+                    loading="lazy"
+                    class="wl-community-card-hub absolute aspect-square rounded-full border-2 object-cover"
+                    [style.left]="layouts.get(wheel.slug)?.centerX"
+                    [style.top]="layouts.get(wheel.slug)?.centerY"
+                    [style.width]="layouts.get(wheel.slug)?.hubWidth"
+                    [style.borderColor]="wheel.hub.borderColor" />
+                }
               </div>
             </div>
             <div class="flex flex-1 flex-col bg-gradient-to-b from-white/[0.05] to-transparent p-5">

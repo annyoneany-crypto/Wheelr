@@ -3,6 +3,7 @@ import {
   Component,
   DestroyRef,
   ElementRef,
+  LOCALE_ID,
   PLATFORM_ID,
   computed,
   effect,
@@ -10,22 +11,24 @@ import {
   signal,
   viewChild,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { NgTemplateOutlet, isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
-import { DefaultSoundPlayer } from '../../../services/default-sounds';
 import { NativePlatformService } from '../../../services/native-platform.service';
 import { SeoService } from '../../../services/seo.service';
 import { drawWheelCanvas } from '../../../shared/extraction-effect/wheel-renderer';
 import {
   CommunityLinkKind,
   CommunityWheel,
+  backgroundCss,
   findCommunityWheel,
   frameLayout,
 } from '../community-wheels.data';
 import { CommunityWinner } from '../community-winner/community-winner';
+import { parseCommunityText, pickCommunityText } from '../community-text';
+import { resolveLocale } from '../../../services/i18n.config';
 
 /** Full turns before the wheel settles. */
 const FULL_TURNS = 6;
@@ -33,6 +36,13 @@ const FULL_TURNS = 6;
 const MAX_ENTRIES = 500;
 /** Idle drift while nobody is spinning, as on the main wheel. */
 const IDLE_DEG_PER_SECOND = 6;
+/**
+ * The community wheels' own sounds, shared by all of them: one when a spin
+ * starts (1.6 s, 22 KB), one when the winner is read (2 s, 36 KB). They replace
+ * `DefaultSoundPlayer`'s ticks and winner jingle.
+ */
+const START_SOUND_SRC = '/community-art/start.mp3';
+const WIN_SOUND_SRC = '/community-art/win.mp3';
 
 /**
  * One community wheel on its own page (`/community/<slug>`).
@@ -43,16 +53,16 @@ const IDLE_DEG_PER_SECOND = 6;
  * the list of entries, stored per wheel under `ENTRIES_KEY_PREFIX + slug`.
  *
  * It behaves like the main wheel otherwise: it drifts while idle, spins on a
- * click (wheel or hub) with the default tick sounds, and reveals the winner
- * with an effect whose card can remove the winner from the entries. The names
- * live in a drawer opened from the right-hand rail, as on the main wheel.
+ * click (wheel or hub) playing `start.mp3` — no ticks while it turns — and
+ * plays `win.mp3` as it reveals the winner, with an effect whose card can
+ * remove the winner from the entries. The names live in a drawer opened from
+ * the right-hand rail, as on the main wheel.
  * The winner is read at the top — where the frame artwork points (the fox's
- * snout); the rotation is a CSS transition with the main wheel's easing, which
- * `DefaultSoundPlayer` assumes when it schedules the ticks.
+ * snout); the rotation is a CSS transition with the main wheel's easing.
  */
 @Component({
   selector: 'app-community-wheel',
-  imports: [RouterLink, FormsModule, CommunityWinner],
+  imports: [RouterLink, FormsModule, NgTemplateOutlet, CommunityWinner],
   templateUrl: './community-wheel.html',
   styleUrl: './community-wheel.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -70,9 +80,12 @@ export class CommunityWheelPage {
   private readonly seo = inject(SeoService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly nativePlatform = inject(NativePlatformService);
-  private readonly sounds = new DefaultSoundPlayer();
   /** False while prerendering, where there is no storage, canvas or animation frame. */
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
+  /** Browser only (there is no `Audio` while prerendering); preloaded so they are not late. */
+  private readonly startSound = this.isBrowser ? createSound(START_SOUND_SRC) : null;
+  private readonly winSound = this.isBrowser ? createSound(WIN_SOUND_SRC) : null;
 
   private readonly canvasRef = viewChild<ElementRef<HTMLCanvasElement>>('wheelCanvas');
   private spinTimer: ReturnType<typeof setTimeout> | null = null;
@@ -120,23 +133,27 @@ export class CommunityWheelPage {
   /** Page background: the artwork when there is one, over the gradient, over the colour. */
   protected readonly pageBackground = computed(() => {
     const background = this.wheel()?.background;
-    if (!background) {
-      return '';
-    }
+    return background ? backgroundCss(background) : '';
+  });
 
-    const layers = [
-      ...(background.image ? [`url("${background.image}") center / cover no-repeat`] : []),
-      ...(background.gradient ? [background.gradient] : []),
-    ];
-    return [...layers, background.color].join(', ');
+  private readonly language = resolveLocale(inject(LOCALE_ID)).hreflang;
+
+  /** The info popup's text: the community's own, in this language if written in it, else the generic line. */
+  protected readonly aboutBlocks = computed(() => {
+    const wheel = this.wheel();
+    if (!wheel) {
+      return [];
+    }
+    const text = pickCommunityText(wheel.info.about, this.language);
+    return text
+      ? parseCommunityText(text)
+      : [{ kind: 'paragraph' as const, lines: [[{ text: this.labels.about(wheel.name), bold: false }]] }];
   });
 
   /** Where the wheel and the hub sit inside the frame. */
   protected readonly wheelBox = computed(() => {
     const frame = this.wheel()?.frame;
-    return frame
-      ? { ...frameLayout(frame), hubWidth: `${frame.wheelDiameter * 20}%` }
-      : null;
+    return frame ? frameLayout(frame) : null;
   });
 
   protected readonly labels = {
@@ -196,7 +213,8 @@ export class CommunityWheelPage {
     this.destroyRef.onDestroy(() => {
       this.clearSpinTimer();
       this.stopIdle();
-      this.sounds.stopSpin();
+      this.startSound?.pause();
+      this.winSound?.pause();
     });
 
     if (this.isBrowser) {
@@ -230,7 +248,8 @@ export class CommunityWheelPage {
     const start = this.rotationDeg();
     const total = start + 360 * FULL_TURNS + this.secureRandomInt(360);
     this.rotationDeg.set(total);
-    this.sounds.playSpin(start, total, wheel.spinDurationMs, names.length);
+    this.winSound?.pause();
+    playSound(this.startSound);
 
     this.clearSpinTimer();
     this.spinTimer = setTimeout(() => {
@@ -239,7 +258,7 @@ export class CommunityWheelPage {
       this.rotationDeg.set(total % 360);
       this.winner.set(this.winnerAt(total, names, wheel.frame.pointerAngleDeg ?? 0));
       this.spinning.set(false);
-      this.sounds.playWinner();
+      playSound(this.winSound);
     }, wheel.spinDurationMs);
   }
 
@@ -346,7 +365,6 @@ export class CommunityWheelPage {
   private resetSpin(): void {
     this.infoOpen.set(false);
     this.clearSpinTimer();
-    this.sounds.stopSpin();
     this.panelOpen.set(false);
     this.rotationDeg.set(0);
     this.winner.set('');
@@ -488,4 +506,19 @@ function parseEntries(text: string): string[] {
     .map((line) => line.trim())
     .filter(Boolean)
     .slice(0, MAX_ENTRIES);
+}
+
+function createSound(src: string): HTMLAudioElement {
+  const audio = new Audio(src);
+  audio.preload = 'auto';
+  return audio;
+}
+
+/** From the start. The page has had a click by then, so autoplay rules allow it; a failure only costs the sound. */
+function playSound(audio: HTMLAudioElement | null): void {
+  if (!audio) {
+    return;
+  }
+  audio.currentTime = 0;
+  audio.play().catch(() => undefined);
 }

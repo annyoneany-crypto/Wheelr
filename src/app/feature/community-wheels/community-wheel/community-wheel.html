@@ -227,7 +227,7 @@
     <div class="fixed inset-0 z-70 bg-black/70 backdrop-blur-sm" aria-hidden="true" (click)="infoOpen.set(false)"></div>
     <div class="pointer-events-none fixed inset-0 z-75 flex items-center justify-center p-4">
       <div
-        class="wl-animate-modal wl-community-info pointer-events-auto w-full max-w-md rounded-2xl border bg-neutral-950/95 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.55)]"
+        class="wl-animate-modal wl-community-info pointer-events-auto max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto overscroll-contain rounded-2xl border bg-neutral-950/95 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.55)]"
         role="dialog"
         aria-modal="true"
         aria-labelledby="community-info-title">
@@ -247,7 +247,36 @@
           </button>
         </div>
 
-        <p class="mt-4 text-sm leading-relaxed text-white/75">{{ data.info.about ?? labels.about(data.name) }}</p>
+        <div class="wl-community-about mt-4 space-y-3 text-sm leading-relaxed text-white/75">
+          @for (block of aboutBlocks(); track $index) {
+            @switch (block.kind) {
+              @case ('heading') {
+                <h3 class="pt-2 text-base font-bold text-white">
+                  <ng-container *ngTemplateOutlet="textLines; context: { $implicit: block.lines }" />
+                </h3>
+              }
+              @case ('list') {
+                <ul class="list-disc space-y-1 pl-5">
+                  @for (item of block.items; track $index) {
+                    <li><ng-container *ngTemplateOutlet="textLines; context: { $implicit: [item] }" /></li>
+                  }
+                </ul>
+              }
+              @default {
+                <p><ng-container *ngTemplateOutlet="textLines; context: { $implicit: block.lines }" /></p>
+              }
+            }
+          }
+        </div>
+
+        <ng-template #textLines let-lines>
+          @for (line of lines; track $index) {
+            @if (!$first) {<br />}
+            @for (span of line; track $index) {
+              @if (span.bold) {<strong class="font-semibold text-white">{{ span.text }}</strong>} @else {<span>{{ span.text }}</span>}
+            }
+          }
+        </ng-template>
 
         @if (data.info.links.length) {
           <h3 class="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/50" i18n="@@community.info.links">Join the community</h3>

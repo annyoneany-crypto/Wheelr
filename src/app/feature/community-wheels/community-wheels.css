@@ -10,6 +10,12 @@
   filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.18));
 }
 
+/* Centred on the wheel, like the page's hub. */
+.wl-community-card-hub {
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.55);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .wl-community-card-art {
     transition: none;
