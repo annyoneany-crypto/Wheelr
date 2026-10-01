@@ -135,6 +135,38 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
           - Vibe and relax: Enjoy voice chats and discuss your passions.
           - Participate actively: Contribute ideas and feedback to shape the community's future.
         `,
+        de: `
+          Fox Spirits ist ein offener und lebendiger Ort für Streamer, Gamer, Anime-Fans, Krypto-Begeisterte, Fotografen und Kreative. Die wichtigsten Ziele der Gruppe sind:
+
+          - Kontakte knüpfen und spielen: Mitspieler finden und neue Freundschaften schließen.
+          - Gemeinsam wachsen: Inhalte teilen, sich vernetzen und Ideen austauschen.
+          - Abschalten und entspannen: Voice-Chats genießen und über die eigenen Leidenschaften plaudern.
+          - Aktiv mitmachen: Mit Ideen und Feedback die Zukunft der Community mitgestalten.
+        `,
+        fr: `
+          Fox Spirits est un espace inclusif et dynamique pensé pour les streamers, les gamers, les passionnés d'anime, les amateurs de crypto, les photographes et les créatifs. Les principaux objectifs du groupe sont :
+
+          - Socialiser et jouer : trouver des partenaires de jeu et se faire de nouveaux amis.
+          - Grandir ensemble : partager du contenu, développer son réseau et échanger des idées.
+          - Se détendre et profiter de l'ambiance : savourer les chats vocaux et parler de ses passions.
+          - Participer activement : proposer des idées et des retours pour façonner l'avenir de la communauté.
+        `,
+        es: `
+          Fox Spirits es un espacio inclusivo y dinámico pensado para streamers, gamers, fans del anime, entusiastas de las criptomonedas, fotógrafos y creativos. Los principales objetivos del grupo son:
+
+          - Socializar y jugar: encontrar compañeros de juego y hacer nuevos amigos.
+          - Crecer juntos: compartir contenido, hacer networking e intercambiar ideas.
+          - Desconectar y relajarse: disfrutar de los chats de voz y charlar sobre tus pasiones.
+          - Participar activamente: aportar ideas y comentarios para dar forma al futuro de la comunidad.
+        `,
+        zh: `
+          Fox Spirits 是一个包容而充满活力的空间，专为主播、游戏玩家、动漫爱好者、加密货币爱好者、摄影师和创作者打造。社群的主要目标是：
+
+          - 社交与游戏：寻找游戏伙伴，结识新朋友。
+          - 共同成长：分享内容、拓展人脉、交流想法。
+          - 放松身心：享受语音聊天，畅谈各自的爱好。
+          - 积极参与：贡献想法和反馈，共同塑造社群的未来。
+        `,
       },
       links: [
       {
@@ -212,6 +244,18 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
         `,
         en: `
           Supercycle is the exclusive, vibrant space that brings together all the enthusiasts and supporters of the $Super token. This is not merely a community, but a genuine ecosystem driven by the founder's vision—a vision that has led to the development of a wide range of innovative tools and strategic mechanisms specifically designed to generate real, sustainable value around the token.
+        `,
+        de: `
+          Supercycle ist der exklusive, lebendige Ort, an dem alle Fans und Unterstützer des $Super-Tokens zusammenkommen. Das ist nicht einfach eine Community, sondern ein echtes Ökosystem, angetrieben von der Vision des Gründers, der eine breite Palette innovativer Tools und strategischer Mechanismen entwickelt hat, die gezielt darauf ausgelegt sind, echten und nachhaltigen Wert rund um den Token zu schaffen.
+        `,
+        fr: `
+          Supercycle est l'espace exclusif et vibrant qui rassemble tous les passionnés et soutiens du token $Super. Ce n'est pas une simple communauté, mais un véritable écosystème porté par la vision de son fondateur, qui a développé une large gamme d'outils innovants et de mécanismes stratégiques conçus spécialement pour créer une valeur réelle et durable autour du token.
+        `,
+        es: `
+          Supercycle es el espacio exclusivo y vibrante que reúne a todos los apasionados y seguidores del token $Super. No es una simple comunidad, sino un auténtico ecosistema impulsado por la visión de su fundador, que ha desarrollado una amplia gama de herramientas innovadoras y mecanismos estratégicos pensados específicamente para generar un valor real y sostenible en torno al token.
+        `,
+        zh: `
+          Supercycle 是一个专属而充满活力的空间，汇聚了 $Super 代币的所有爱好者和支持者。这不仅仅是一个社群，更是一个由创始人愿景驱动的完整生态系统——创始人开发了一系列创新工具和战略机制，专门用于围绕该代币创造真实、可持续的价值。
         `,
       },
       links: [
