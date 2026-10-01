@@ -11206,5 +11206,257 @@
     "fr": "Une citrouille 3D sculptée qui fait tourner votre roue dans son sourire plein de dents.",
     "es": "Una calabaza 3D tallada que gira tu ruleta en su sonrisa llena de dientes.",
     "zh": "一个雕刻的 3D 南瓜灯，在它满是牙齿的笑口中转动你的转盘。"
+  },
+  "header.menu.community": {
+    "it": "Vai alla pagina delle ruote community",
+    "de": "Zur Seite der Community-Räder",
+    "fr": "Aller à la page des roues communautaires",
+    "es": "Ir a la página de ruletas de comunidad",
+    "zh": "前往社区转盘页面"
+  },
+  "header.menu.item.community": {
+    "it": "🦊 Ruote community",
+    "de": "🦊 Community-Räder",
+    "fr": "🦊 Roues communautaires",
+    "es": "🦊 Ruletas de comunidad",
+    "zh": "🦊 社区转盘"
+  },
+  "seo.community.title": {
+    "it": "Ruote community | Ruote a tema da girare - Wheelr",
+    "de": "Community-Räder | Glücksräder mit Thema - Wheelr",
+    "fr": "Roues communautaires | Roues à thème - Wheelr",
+    "es": "Ruletas de comunidad | Ruletas temáticas - Wheelr",
+    "zh": "社区转盘 | 主题转盘 - Wheelr"
+  },
+  "seo.community.description": {
+    "it": "Ruote create per le community, ognuna con cornice, sfondo e colori propri. Aggiungi i tuoi nomi e gira. Gratis, senza registrazione.",
+    "de": "Glücksräder für Communities, jedes mit eigenem Rahmen, Hintergrund und Farben. Einträge hinzufügen und drehen. Kostenlos, ohne Anmeldung.",
+    "fr": "Des roues conçues pour des communautés, chacune avec son cadre, son fond et ses couleurs. Ajoutez vos entrées et lancez. Gratuit, sans inscription.",
+    "es": "Ruletas creadas para comunidades, cada una con su marco, fondo y colores. Añade tus entradas y gira. Gratis, sin registro.",
+    "zh": "为社区设计的转盘，各有专属边框、背景和配色。添加条目即可旋转。免费，无需注册。"
+  },
+  "seo.community.breadcrumb": {
+    "it": "Ruote community",
+    "de": "Community-Räder",
+    "fr": "Roues communautaires",
+    "es": "Ruletas de comunidad",
+    "zh": "社区转盘"
+  },
+  "seo.communityWheel.fallbackTitle": {
+    "it": "Ruota community - Wheelr",
+    "de": "Community-Rad - Wheelr",
+    "fr": "Roue communautaire - Wheelr",
+    "es": "Ruleta de comunidad - Wheelr",
+    "zh": "社区转盘 - Wheelr"
+  },
+  "seo.communityWheel.title": {
+    "it": "{NAME} - Ruota community | Wheelr",
+    "de": "{NAME} - Community-Rad | Wheelr",
+    "fr": "{NAME} - Roue communautaire | Wheelr",
+    "es": "{NAME} - Ruleta de comunidad | Wheelr",
+    "zh": "{NAME} - 社区转盘 | Wheelr"
+  },
+  "community.fox-spirit.community": {
+    "it": "Community Fox Spirit",
+    "de": "Fox-Spirit-Community",
+    "fr": "Communauté Fox Spirit",
+    "es": "Comunidad Fox Spirit",
+    "zh": "Fox Spirit 社区"
+  },
+  "community.fox-spirit.tagline": {
+    "it": "Fuoco spirituale, ametista e oro",
+    "de": "Geisterfeuer, Amethyst und Gold",
+    "fr": "Feu spirituel, améthyste et or",
+    "es": "Fuego espiritual, amatista y oro",
+    "zh": "灵火、紫晶与黄金"
+  },
+  "community.fox-spirit.description": {
+    "it": "Una ruota avvolta dalla coda fiammeggiante della volpe spirituale. Spicchi viola, oro e rossi che restano esattamente come li ha disegnati la community: tu scegli solo i nomi.",
+    "de": "Ein Rad, umschlungen vom flammenden Schweif des Geisterfuchses. Lila, goldene und rote Felder, die genau so bleiben, wie die Community sie gestaltet hat — du wählst nur die Einträge.",
+    "fr": "Une roue enlacée par la queue enflammée du renard spirituel. Des parts violettes, dorées et rouges qui restent exactement telles que la communauté les a conçues — vous ne choisissez que les entrées.",
+    "es": "Una ruleta envuelta por la cola en llamas del zorro espiritual. Sectores morados, dorados y rojos que se quedan tal como los diseñó la comunidad: tú solo eliges las entradas.",
+    "zh": "被灵狐火焰尾巴环绕的转盘。紫色、金色和红色的扇区完全保持社区设计的样子——你只需选择条目。"
+  },
+  "community.fox-spirit.entry1": {
+    "it": "Brace",
+    "de": "Glut",
+    "fr": "Braise",
+    "es": "Brasa",
+    "zh": "余烬"
+  },
+  "community.fox-spirit.entry2": {
+    "it": "Ametista",
+    "de": "Amethyst",
+    "fr": "Améthyste",
+    "es": "Amatista",
+    "zh": "紫水晶"
+  },
+  "community.fox-spirit.entry3": {
+    "it": "Kitsune",
+    "de": "Kitsune",
+    "fr": "Kitsune",
+    "es": "Kitsune",
+    "zh": "九尾狐"
+  },
+  "community.fox-spirit.entry4": {
+    "it": "Coda d'oro",
+    "de": "Goldschweif",
+    "fr": "Queue dorée",
+    "es": "Cola dorada",
+    "zh": "金尾"
+  },
+  "community.fox-spirit.entry5": {
+    "it": "Fiamma spirituale",
+    "de": "Geisterflamme",
+    "fr": "Flamme spirituelle",
+    "es": "Llama espiritual",
+    "zh": "灵焰"
+  },
+  "community.fox-spirit.entry6": {
+    "it": "Volpe lunare",
+    "de": "Mondfuchs",
+    "fr": "Renard lunaire",
+    "es": "Zorro lunar",
+    "zh": "月狐"
+  },
+  "community.page.wheelAria": {
+    "it": "La ruota community {NAME}",
+    "de": "Das Community-Rad „{NAME}“",
+    "fr": "La roue communautaire « {NAME} »",
+    "es": "La ruleta de comunidad «{NAME}»",
+    "zh": "“{NAME}”社区转盘"
+  },
+  "community.page.spinAria": {
+    "it": "Gira la ruota {NAME}",
+    "de": "Das Rad „{NAME}“ drehen",
+    "fr": "Lancer la roue « {NAME} »",
+    "es": "Girar la ruleta «{NAME}»",
+    "zh": "旋转“{NAME}”转盘"
+  },
+  "community.page.hub": {
+    "it": "Gira",
+    "de": "Drehen",
+    "fr": "Lancer",
+    "es": "Girar",
+    "zh": "旋转"
+  },
+  "community.page.entries.reset": {
+    "it": "Ripristina predefiniti",
+    "de": "Standard wiederherstellen",
+    "fr": "Rétablir par défaut",
+    "es": "Restaurar predeterminados",
+    "zh": "恢复默认"
+  },
+  "community.page.locked.title": {
+    "it": "Stile ufficiale della community",
+    "de": "Offizieller Community-Stil",
+    "fr": "Style officiel de la communauté",
+    "es": "Estilo oficial de la comunidad",
+    "zh": "官方社区风格"
+  },
+  "community.list.openAria": {
+    "it": "Apri la ruota {NAME}",
+    "de": "Das Rad „{NAME}“ öffnen",
+    "fr": "Ouvrir la roue « {NAME} »",
+    "es": "Abrir la ruleta «{NAME}»",
+    "zh": "打开“{NAME}”转盘"
+  },
+  "community.list.grid": {
+    "it": "Ruote community",
+    "de": "Community-Räder",
+    "fr": "Roues communautaires",
+    "es": "Ruletas de comunidad",
+    "zh": "社区转盘"
+  },
+  "community.list.kicker": {
+    "it": "Wheelr • Ruote community",
+    "de": "Wheelr • Community-Räder",
+    "fr": "Wheelr • Roues communautaires",
+    "es": "Wheelr • Ruletas de comunidad",
+    "zh": "Wheelr • 社区转盘"
+  },
+  "community.list.heading": {
+    "it": "Ruote create per le community",
+    "de": "Räder für Communities",
+    "fr": "Des roues faites pour les communautés",
+    "es": "Ruletas hechas para comunidades",
+    "zh": "为社区打造的转盘"
+  },
+  "community.list.intro": {
+    "it": "Ruote speciali disegnate con e per una community: cornice, sfondo e colori tutti loro. Scegline una, scrivi i tuoi nomi e gira — lo stile resta esattamente come l'ha creato la community.",
+    "de": "Besondere Räder, gestaltet mit und für eine Community: eigener Rahmen, eigener Hintergrund, eigene Farben. Wähle eines, trage deine Einträge ein und dreh — der Stil bleibt genau so, wie die Community ihn geschaffen hat.",
+    "fr": "Des roues spéciales conçues avec et pour une communauté : leur propre cadre, leur propre fond et leurs propres couleurs. Choisissez-en une, écrivez vos entrées et lancez — le style reste exactement tel que la communauté l'a créé.",
+    "es": "Ruletas especiales diseñadas con y para una comunidad: su propio marco, su propio fondo y sus propios colores. Elige una, escribe tus entradas y gira: el estilo se queda tal como lo creó la comunidad.",
+    "zh": "与社区共同设计、专为社区打造的特别转盘：专属边框、专属背景和专属配色。选择一个，写下你的条目并旋转——风格完全保持社区创作时的样子。"
+  },
+  "community.list.open": {
+    "it": "Apri",
+    "de": "Öffnen",
+    "fr": "Ouvrir",
+    "es": "Abrir",
+    "zh": "打开"
+  },
+  "community.supercycle.community": {
+    "it": "Community Supercycle (real)",
+    "de": "Supercycle-(real)-Community",
+    "fr": "Communauté Supercycle (real)",
+    "es": "Comunidad Supercycle (real)",
+    "zh": "Supercycle (real) 社区"
+  },
+  "community.supercycle.tagline": {
+    "it": "Verde neon, bianco, acciaio e nero",
+    "de": "Neongrün, Weiß, Stahl und Schwarz",
+    "fr": "Vert néon, blanc, acier et noir",
+    "es": "Verde neón, blanco, acero y negro",
+    "zh": "霓虹绿、白、钢灰与黑"
+  },
+  "community.supercycle.description": {
+    "it": "Una ruota dentro l'anello al neon della community Supercycle (real), con la sua freccia come puntatore. Spicchi verdi, bianchi, grigi e neri che restano esattamente come li ha disegnati la community: tu scegli solo i nomi.",
+    "de": "Ein Rad im Neonring der Supercycle-(real)-Community, mit ihrem Pfeil als Zeiger. Grüne, weiße, graue und schwarze Felder, die genau so bleiben, wie die Community sie gestaltet hat — du wählst nur die Einträge.",
+    "fr": "Une roue dans l'anneau néon de la communauté Supercycle (real), avec sa flèche comme pointeur. Des parts vertes, blanches, grises et noires qui restent exactement telles que la communauté les a conçues — vous ne choisissez que les entrées.",
+    "es": "Una ruleta dentro del anillo de neón de la comunidad Supercycle (real), con su flecha como puntero. Sectores verdes, blancos, grises y negros que se quedan tal como los diseñó la comunidad: tú solo eliges las entradas.",
+    "zh": "位于 Supercycle (real) 社区霓虹环中的转盘，以社区的箭头作为指针。绿色、白色、灰色和黑色扇区完全保持社区设计的样子——你只需选择条目。"
+  },
+  "community.info.toggle": {
+    "it": "Info",
+    "de": "Info",
+    "fr": "Infos",
+    "es": "Info",
+    "zh": "信息"
+  },
+  "community.info.aria": {
+    "it": "Informazioni sulla community {NAME}",
+    "de": "Über die Community „{NAME}“",
+    "fr": "À propos de la communauté « {NAME} »",
+    "es": "Acerca de la comunidad «{NAME}»",
+    "zh": "关于“{NAME}”社区"
+  },
+  "community.info.generic": {
+    "it": "{NAME} è la community per cui è stata creata questa ruota. Cornice, colori e sfondo sono stati disegnati insieme a loro, così è uguale per chiunque la faccia girare.",
+    "de": "{NAME} ist die Community, für die dieses Rad gemacht wurde. Rahmen, Farben und Hintergrund wurden mit ihr gestaltet, damit es für alle, die es drehen, gleich aussieht.",
+    "fr": "{NAME} est la communauté pour laquelle cette roue a été créée. Son cadre, ses couleurs et son fond ont été conçus avec elle, pour qu'elle soit identique pour tous ceux qui la lancent.",
+    "es": "{NAME} es la comunidad para la que se creó esta ruleta. Su marco, sus colores y su fondo se diseñaron con ella, para que se vea igual para todos los que la giran.",
+    "zh": "{NAME} 是这个转盘专为其打造的社区。边框、颜色和背景都是与社区共同设计的，因此每个旋转它的人看到的都一样。"
+  },
+  "community.info.links": {
+    "it": "Unisciti alla community",
+    "de": "Tritt der Community bei",
+    "fr": "Rejoindre la communauté",
+    "es": "Únete a la comunidad",
+    "zh": "加入社区"
+  },
+  "community.info.close": {
+    "it": "Chiudi le informazioni sulla community",
+    "de": "Community-Infos schließen",
+    "fr": "Fermer les infos de la communauté",
+    "es": "Cerrar la información de la comunidad",
+    "zh": "关闭社区信息"
+  },
+  "community.info.link.website": {
+    "it": "Sito web",
+    "de": "Website",
+    "fr": "Site web",
+    "es": "Sitio web",
+    "zh": "网站"
   }
 }

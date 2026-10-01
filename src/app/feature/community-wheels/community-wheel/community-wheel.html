@@ -1,0 +1,273 @@
+@if (wheel(); as data) {
+  <section
+    class="flex min-h-screen flex-col items-center px-4 pt-24 pb-10 text-white/90"
+    [style.background]="pageBackground()"
+    aria-labelledby="community-wheel-title">
+
+    <!-- Side padding below lg keeps a long name clear of the fixed names button on the right. -->
+    <header class="px-16 text-center lg:px-0">
+      <nav class="text-[0.7rem] text-white/45" i18n-aria-label="@@landing.breadcrumb" aria-label="Breadcrumb">
+        <ol class="flex flex-wrap items-center justify-center gap-1.5">
+          <li><a routerLink="/" class="transition-colors hover:text-amber-300">Wheelr</a></li>
+          <li aria-hidden="true">/</li>
+          <li><a routerLink="/community" class="transition-colors hover:text-amber-300" i18n="@@seo.community.breadcrumb">Community wheels</a></li>
+        </ol>
+      </nav>
+      <h1 id="community-wheel-title" class="mt-1 text-2xl font-black sm:text-3xl md:text-5xl">
+        <span aria-hidden="true">{{ data.emoji }}</span> <span class="wl-community-title">{{ data.name }}</span>
+      </h1>
+      <button
+        type="button"
+        class="wl-community-info-toggle mt-2 inline-flex items-center gap-1.5 rounded-full border px-3.5 py-1 text-xs font-semibold uppercase tracking-[0.18em] transition-all duration-200 hover:cursor-pointer"
+        [class.wl-community-info-toggle-active]="infoOpen()"
+        [attr.aria-label]="labels.info(data.name)"
+        [attr.aria-expanded]="infoOpen()"
+        aria-haspopup="dialog"
+        (click)="toggleInfo()">
+        <i class="fa-solid fa-circle-info" aria-hidden="true"></i><span i18n="@@community.info.toggle">Info</span>
+      </button>
+    </header>
+
+    <!-- Takes the height left under the title, so the wheel sits in the middle of the screen. -->
+    <div class="flex w-full flex-1 items-center justify-center">
+      <!-- The frame artwork sits on top of the wheel, placed inside it by the fractions in the data file. There is no pointer of our own: the artwork has one (Fox Spirit's snout, Supercycle's arrow), at frame.pointerAngleDeg. -->
+      <div
+        class="wl-community-stage relative"
+        [style.width]="stageWidth()"
+        [style.aspectRatio]="wheelBox()?.aspectRatio">
+        <canvas
+          #wheelCanvas
+          width="720"
+          height="720"
+          class="wl-community-wheel absolute aspect-square cursor-pointer rounded-full"
+          [style.left]="wheelBox()?.left"
+          [style.top]="wheelBox()?.top"
+          [style.width]="wheelBox()?.width"
+          [style.transform]="'rotate(' + rotationDeg() + 'deg)'"
+          [style.transitionDuration]="spinning() ? data.spinDurationMs + 'ms' : '0ms'"
+          role="button"
+          tabindex="0"
+          [attr.aria-label]="labels.spin(data.name)"
+          (click)="spin()"
+          (keydown.enter)="spin()"
+          (keydown.space)="spin(); $event.preventDefault()"></canvas>
+
+        <img
+          [src]="data.frame.src"
+          [width]="data.frame.width"
+          [height]="data.frame.height"
+          alt=""
+          class="pointer-events-none absolute inset-0 z-10 h-full w-full select-none"
+          draggable="false" />
+
+        <button
+          type="button"
+          class="wl-community-hub absolute z-20 flex aspect-square items-center justify-center rounded-full text-xs font-black uppercase tracking-[0.12em] md:text-sm"
+          [style.left]="wheelBox()?.centerX"
+          [style.top]="wheelBox()?.centerY"
+          [style.width]="wheelBox()?.hubWidth"
+          [style.backgroundColor]="data.hub.color"
+          [style.borderColor]="data.hub.borderColor"
+          [style.color]="data.hub.textColor"
+          [disabled]="spinning() || !entries().length"
+          (click)="spin()"
+          [attr.aria-label]="labels.spin(data.name)">
+          <span i18n="@@community.page.hub">Spin</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Right-hand rail, as on the main wheel: the only control is the names drawer. -->
+  <button
+    type="button"
+    class="wl-rail-btn fixed top-26 z-50 flex lg:top-28"
+    [class.wl-rail-btn-active]="panelOpen()"
+    [class.right-4]="!panelOpen()"
+    [class.lg:right-8]="!panelOpen()"
+    [class.right-[21rem]]="panelOpen()"
+    [class.lg:right-100]="panelOpen()"
+    [attr.aria-label]="panelAriaLabel"
+    [attr.aria-expanded]="panelOpen()"
+    aria-controls="community-names-panel"
+    (click)="togglePanel()">
+    <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
+  </button>
+
+  @if (panelOpen()) {
+    <div class="pointer-events-none fixed inset-0 z-49 bg-black/60" aria-hidden="true"></div>
+  }
+
+  <aside
+    id="community-names-panel"
+    class="fixed top-24 right-0 z-50 my-4 h-[calc(100%-180px)] overflow-y-auto rounded-l-2xl border-y border-l border-white/10 bg-neutral-900 px-4 pb-4 shadow-[-12px_0_40px_rgba(0,0,0,0.45)] transition-all duration-300 ease-in-out"
+    [class.w-80]="panelOpen()"
+    [class.lg:w-96]="panelOpen()"
+    [class.opacity-100]="panelOpen()"
+    [class.w-0]="!panelOpen()"
+    [class.opacity-0]="!panelOpen()"
+    [class.invisible]="!panelOpen()"
+    [attr.aria-hidden]="!panelOpen()">
+    <div class="sticky top-0 z-1 mb-4 flex items-center justify-between border-b border-white/10 bg-neutral-900 py-4">
+      <h2 class="text-base font-semibold uppercase tracking-wide text-white/85">{{ panelTitle }}</h2>
+      <button
+        type="button"
+        i18n-aria-label="@@panel.close" aria-label="Close panel"
+        class="h-8 w-8 rounded-xl border border-white/10 bg-white/[0.06] text-white/80 transition-all duration-200 hover:cursor-pointer hover:bg-white/15 hover:text-white"
+        (click)="panelOpen.set(false)">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
+
+    <div class="flex h-[calc(100%-5.5rem)] flex-col gap-3">
+      <div class="flex gap-2">
+        <button
+          type="button"
+          (click)="shuffleEntries()"
+          [disabled]="spinning()"
+          class="flex-1 rounded-xl border border-white/10 bg-white/[0.06] py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:cursor-pointer hover:border-amber-400/40 hover:bg-amber-400/10 disabled:opacity-50">
+          <i class="fa-solid fa-shuffle mr-1.5" aria-hidden="true"></i><span i18n="@@users.shuffle">Shuffle Names</span>
+        </button>
+        <button
+          type="button"
+          (click)="clearEntries()"
+          [disabled]="spinning()"
+          class="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:cursor-pointer hover:border-red-400/40 hover:bg-red-500/20 disabled:opacity-50">
+          <i class="fa-solid fa-trash-can mr-1.5" aria-hidden="true"></i><span i18n="@@users.clear">Clear</span>
+        </button>
+      </div>
+
+      <div class="flex items-end gap-2">
+        <div class="flex-1">
+          <label class="sr-only" for="community-new-name" i18n="@@users.name">Name</label>
+          <input
+            id="community-new-name"
+            type="text"
+            class="w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm text-white placeholder:text-white/40"
+            i18n-placeholder="@@users.namePlaceholder" placeholder="Name"
+            [ngModel]="newName()"
+            (ngModelChange)="newName.set($event)"
+            (keydown.enter)="addRepeated()" />
+        </div>
+        <div class="w-20">
+          <label class="sr-only" for="community-repeat-count" i18n="@@users.repeatCount">Repeat count</label>
+          <input
+            id="community-repeat-count"
+            type="number"
+            min="1"
+            class="w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-center text-sm text-white"
+            [ngModel]="repeatCount()"
+            (ngModelChange)="repeatCount.set($event)" />
+        </div>
+        <button
+          type="button"
+          (click)="addRepeated()"
+          [disabled]="spinning()"
+          class="rounded-xl bg-blue-500/30 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:cursor-pointer hover:bg-blue-600/60 active:scale-95 disabled:opacity-50">
+          <i class="fa-solid fa-plus mr-1" aria-hidden="true"></i><span i18n="@@users.add">Add</span>
+        </button>
+      </div>
+
+      <textarea
+        class="min-h-40 w-full flex-1 resize-none rounded-xl border border-white/10 bg-white/[0.06] px-3 py-3 text-sm text-white placeholder:text-white/40 disabled:opacity-60"
+        rows="5"
+        spellcheck="false"
+        i18n-placeholder="@@users.bulkPlaceholder" placeholder="One name per line..."
+        [ngModel]="draft()"
+        (ngModelChange)="onEntriesInput($event)"
+        [disabled]="spinning()"></textarea>
+
+      <div class="flex items-end gap-2">
+        <div class="flex-1">
+          <label class="sr-only" for="community-remove-name" i18n="@@users.nameToRemove">Name to remove</label>
+          <input
+            id="community-remove-name"
+            type="text"
+            class="w-full rounded-xl border border-white/10 bg-white/[0.06] px-3 py-2.5 text-sm text-white placeholder:text-white/40"
+            i18n-placeholder="@@users.removePlaceholder" placeholder="Name to remove"
+            [ngModel]="nameToRemove()"
+            (ngModelChange)="nameToRemove.set($event)"
+            (keydown.enter)="removeName()" />
+        </div>
+        <button
+          type="button"
+          (click)="removeName()"
+          [disabled]="spinning()"
+          class="rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-2.5 text-sm font-semibold text-white transition-all duration-200 hover:cursor-pointer hover:border-red-400/40 hover:bg-red-500/20 disabled:opacity-50">
+          <i class="fa-solid fa-minus mr-1" aria-hidden="true"></i><span i18n="@@users.remove">Remove</span>
+        </button>
+      </div>
+
+      <div class="flex items-center justify-between gap-3 border-t border-white/[0.06] pt-3 text-xs text-white/50">
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-lock wl-accent-text" aria-hidden="true"></i><span i18n="@@community.page.locked.title">Official community style</span>
+        </span>
+        <button
+          type="button"
+          class="inline-flex items-center gap-1.5 rounded-lg border border-white/10 px-2.5 py-1.5 text-white/70 transition-colors hover:cursor-pointer hover:border-white/25 hover:text-white disabled:opacity-50"
+          [disabled]="spinning()"
+          (click)="resetEntries()">
+          <i class="fa-solid fa-rotate-left" aria-hidden="true"></i><span i18n="@@community.page.entries.reset">Restore defaults</span>
+        </button>
+      </div>
+    </div>
+  </aside>
+
+  @if (infoOpen()) {
+    <div class="fixed inset-0 z-70 bg-black/70 backdrop-blur-sm" aria-hidden="true" (click)="infoOpen.set(false)"></div>
+    <div class="pointer-events-none fixed inset-0 z-75 flex items-center justify-center p-4">
+      <div
+        class="wl-animate-modal wl-community-info pointer-events-auto w-full max-w-md rounded-2xl border bg-neutral-950/95 p-6 shadow-[0_25px_60px_rgba(0,0,0,0.55)]"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="community-info-title">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <p class="text-[0.65rem] font-semibold uppercase tracking-[0.25em] wl-accent-text">{{ data.community }}</p>
+            <h2 id="community-info-title" class="mt-1 text-2xl font-black text-white">
+              <span aria-hidden="true">{{ data.emoji }}</span> {{ data.name }}
+            </h2>
+          </div>
+          <button
+            type="button"
+            i18n-aria-label="@@community.info.close" aria-label="Close community info"
+            class="h-8 w-8 shrink-0 rounded-xl border border-white/10 bg-white/[0.06] text-white/80 transition-all duration-200 hover:cursor-pointer hover:bg-white/15 hover:text-white"
+            (click)="infoOpen.set(false)">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <p class="mt-4 text-sm leading-relaxed text-white/75">{{ data.info.about ?? labels.about(data.name) }}</p>
+
+        @if (data.info.links.length) {
+          <h3 class="mt-6 text-xs font-semibold uppercase tracking-[0.2em] text-white/50" i18n="@@community.info.links">Join the community</h3>
+          <ul class="mt-3 grid gap-2">
+            @for (link of data.info.links; track link.url) {
+              <li>
+                <a
+                  [href]="link.url"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="wl-community-info-link flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-white transition-all duration-200">
+                  <i class="w-5 text-center text-lg wl-accent-text" [class]="linkKinds[link.kind].icon" aria-hidden="true"></i>
+                  <span class="flex-1">{{ link.label ?? linkKinds[link.kind].label }}</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-xs text-white/40" aria-hidden="true"></i>
+                </a>
+              </li>
+            }
+          </ul>
+        }
+      </div>
+    </div>
+  }
+
+  @if (winner()) {
+    <wl-community-winner
+      [winner]="winner()"
+      [colors]="data.palette.colors"
+      [accent]="data.accent"
+      (closed)="closeWinner()"
+      (removeOne)="removeWinnerOnce()"
+      (removeAll)="removeWinnerEverywhere()" />
+  }
+}

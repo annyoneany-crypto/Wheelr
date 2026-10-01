@@ -1,0 +1,17 @@
+:host {
+  display: block;
+}
+
+.wl-community-card-art {
+  transition: transform 0.5s ease, filter 0.5s ease;
+}
+.group:hover .wl-community-card-art {
+  transform: scale(1.04);
+  filter: drop-shadow(0 0 22px rgba(255, 255, 255, 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-community-card-art {
+    transition: none;
+  }
+}
