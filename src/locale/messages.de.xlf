@@ -159,11 +159,11 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">13,15</context>
+          <context context-type="linenumber">16,18</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">340</context>
+          <context context-type="linenumber">442</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.communityWheel.fallbackTitle" datatype="html">
@@ -435,7 +435,7 @@
         <target>Navigationspfad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">9,10</context>
+          <context context-type="linenumber">12,13</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-templates/template-landing/template-landing.html</context>
@@ -447,7 +447,7 @@
         <target>Info</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">27,29</context>
+          <context context-type="linenumber">30,32</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.page.hub" datatype="html">
@@ -455,7 +455,7 @@
         <target>Drehen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">75,77</context>
+          <context context-type="linenumber">87,89</context>
         </context-group>
       </trans-unit>
       <trans-unit id="panel.close" datatype="html">
@@ -463,7 +463,7 @@
         <target>Bereich schließen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">115,116</context>
+          <context context-type="linenumber">128,129</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.html</context>
@@ -475,7 +475,7 @@
         <target>Namen mischen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">129,131</context>
+          <context context-type="linenumber">142,144</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -487,7 +487,7 @@
         <target>Leeren</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">136,137</context>
+          <context context-type="linenumber">149,150</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -503,7 +503,7 @@
         <target>Name</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">142,143</context>
+          <context context-type="linenumber">155,156</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -515,7 +515,7 @@
         <target>Name</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">148</context>
+          <context context-type="linenumber">161</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -527,7 +527,7 @@
         <target>Anzahl der Wiederholungen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">153,155</context>
+          <context context-type="linenumber">166,168</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -539,7 +539,7 @@
         <target>Hinzufügen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">167,168</context>
+          <context context-type="linenumber">180,181</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -551,7 +551,7 @@
         <target>Ein Name pro Zeile...</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">175,177</context>
+          <context context-type="linenumber">188,190</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -563,7 +563,7 @@
         <target>Zu entfernender Name</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">182,184</context>
+          <context context-type="linenumber">195,197</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -575,7 +575,7 @@
         <target>Zu entfernender Name</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">187,188</context>
+          <context context-type="linenumber">200,201</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -587,7 +587,7 @@
         <target>Entfernen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">197,198</context>
+          <context context-type="linenumber">210,211</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wl-settings/users/users.html</context>
@@ -599,7 +599,7 @@
         <target>Offizieller Community-Stil</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">203,205</context>
+          <context context-type="linenumber">216,218</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.page.entries.reset" datatype="html">
@@ -607,7 +607,7 @@
         <target>Standard wiederherstellen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">210,213</context>
+          <context context-type="linenumber">223,226</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.info.close" datatype="html">
@@ -615,7 +615,7 @@
         <target>Community-Infos schließen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">233,234</context>
+          <context context-type="linenumber">246,247</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.info.links" datatype="html">
@@ -623,7 +623,7 @@
         <target>Tritt der Community bei</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.html</context>
-          <context context-type="linenumber">243,244</context>
+          <context context-type="linenumber">285,286</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.info.link.website" datatype="html">
@@ -631,7 +631,7 @@
         <target>Website</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">93</context>
+          <context context-type="linenumber">173</context>
         </context-group>
       </trans-unit>
       <trans-unit id="bar.panel.users.caption" datatype="html">
@@ -639,7 +639,7 @@
         <target>Namen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">188</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
@@ -651,7 +651,7 @@
         <target>Namen-Bereich öffnen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">189</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/child/wheel-button/wheel-button.ts</context>
@@ -663,7 +663,7 @@
         <target>Das Community-Rad „<x id="NAME" equiv-text="name"/>“</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">143</context>
+          <context context-type="linenumber">234</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.page.spinAria" datatype="html">
@@ -671,7 +671,7 @@
         <target>Das Rad „<x id="NAME" equiv-text="name"/>“ drehen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">144</context>
+          <context context-type="linenumber">235</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.info.aria" datatype="html">
@@ -679,7 +679,7 @@
         <target>Über die Community „<x id="NAME" equiv-text="name"/>“</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">145</context>
+          <context context-type="linenumber">236</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.info.generic" datatype="html">
@@ -687,7 +687,7 @@
         <target><x id="NAME" equiv-text="name"/> ist die Community, für die dieses Rad gemacht wurde. Rahmen, Farben und Hintergrund wurden mit ihr gestaltet, damit es für alle, die es drehen, gleich aussieht.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">147</context>
+          <context context-type="linenumber">238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="seo.communityWheel.title" datatype="html">
@@ -695,7 +695,7 @@
         <target><x id="NAME" equiv-text="wheel.name"/> - Community-Rad | Wheelr</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheel/community-wheel.ts</context>
-          <context context-type="linenumber">336</context>
+          <context context-type="linenumber">438</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.community" datatype="html">
@@ -703,7 +703,7 @@
         <target>Fox-Spirit-Community</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">108</context>
+          <context context-type="linenumber">118</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.tagline" datatype="html">
@@ -711,7 +711,7 @@
         <target>Geisterfeuer, Amethyst und Gold</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">109</context>
+          <context context-type="linenumber">119</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.description" datatype="html">
@@ -719,7 +719,7 @@
         <target>Ein Rad, umschlungen vom flammenden Schweif des Geisterfuchses. Lila, goldene und rote Felder, die genau so bleiben, wie die Community sie gestaltet hat — du wählst nur die Einträge.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">112</context>
+          <context context-type="linenumber">184</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry1" datatype="html">
@@ -727,7 +727,7 @@
         <target>Glut</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">149</context>
+          <context context-type="linenumber">224</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry2" datatype="html">
@@ -735,7 +735,7 @@
         <target>Amethyst</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">150</context>
+          <context context-type="linenumber">225</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry3" datatype="html">
@@ -743,7 +743,7 @@
         <target>Kitsune</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">151</context>
+          <context context-type="linenumber">226</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry4" datatype="html">
@@ -751,7 +751,7 @@
         <target>Goldschweif</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">152</context>
+          <context context-type="linenumber">227</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry5" datatype="html">
@@ -759,7 +759,7 @@
         <target>Geisterflamme</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">153</context>
+          <context context-type="linenumber">228</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry6" datatype="html">
@@ -767,7 +767,7 @@
         <target>Mondfuchs</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">154</context>
+          <context context-type="linenumber">229</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.community" datatype="html">
@@ -775,7 +775,7 @@
         <target>Supercycle-(real)-Community</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">162</context>
+          <context context-type="linenumber">237</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.tagline" datatype="html">
@@ -783,7 +783,7 @@
         <target>Neongrün, Weiß, Stahl und Schwarz</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">163</context>
+          <context context-type="linenumber">238</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.description" datatype="html">
@@ -791,7 +791,79 @@
         <target>Ein Rad im Neonring der Supercycle-(real)-Community, mit ihrem Pfeil als Zeiger. Grüne, weiße, graue und schwarze Felder, die genau so bleiben, wie die Community sie gestaltet hat — du wählst nur die Einträge.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">166</context>
+          <context context-type="linenumber">279</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.community" datatype="html">
+        <source>RED community</source>
+        <target>RED-Community</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">327</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.tagline" datatype="html">
+        <source>Red, silver and black</source>
+        <target>Rot, Silber und Schwarz</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">328</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.description" datatype="html">
+        <source>A wheel set in the engraved silver ring of the RED community, under its red badge. Red, silver and black slices that stay exactly as the community designed them — you only choose the entries.</source>
+        <target>Ein Rad im gravierten Silberring der RED-Community, unter ihrem roten Abzeichen. Rote, silberne und schwarze Felder, die genau so bleiben, wie die Community sie gestaltet hat — du wählst nur die Einträge.</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">331</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.entry1" datatype="html">
+        <source>Ruby</source>
+        <target>Rubin</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">369</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.entry2" datatype="html">
+        <source>Scarlet</source>
+        <target>Scharlach</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">370</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.entry3" datatype="html">
+        <source>Red Star</source>
+        <target>Roter Stern</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">371</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.entry4" datatype="html">
+        <source>Crimson</source>
+        <target>Karmesin</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">372</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.entry5" datatype="html">
+        <source>Lucky Red</source>
+        <target>Glücksrot</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">373</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="community.red.entry6" datatype="html">
+        <source>Big Win</source>
+        <target>Großer Gewinn</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
+          <context context-type="linenumber">374</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.list.kicker" datatype="html">
@@ -831,7 +903,7 @@
         <target>Öffnen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.html</context>
-          <context context-type="linenumber">51</context>
+          <context context-type="linenumber">64</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.list.openAria" datatype="html">
@@ -839,7 +911,7 @@
         <target>Das Rad „<x id="NAME" equiv-text="name"/>“ öffnen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.ts</context>
-          <context context-type="linenumber">23</context>
+          <context context-type="linenumber">24</context>
         </context-group>
       </trans-unit>
       <trans-unit id="winner.label" datatype="html">
@@ -855,7 +927,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/services/winner-share.service.ts</context>
-          <context context-type="linenumber">265</context>
+          <context context-type="linenumber">338</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-effect/fire-effect/fire-effect.html</context>
@@ -12723,11 +12795,11 @@
         </context-group>
       </trans-unit>
       <trans-unit id="share.title" datatype="html">
-        <source>Winner: <x id="NAME" equiv-text="this.cfg.winner() ?? &apos;&apos;"/></source>
-        <target>Gewinner: <x id="NAME" equiv-text="this.cfg.winner() ?? &apos;&apos;"/></target>
+        <source>Winner: <x id="NAME" equiv-text="file.winner"/></source>
+        <target>Gewinner: <x id="NAME" equiv-text="file.winner"/></target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/services/winner-share.service.ts</context>
-          <context context-type="linenumber">201</context>
+          <context context-type="linenumber">244</context>
         </context-group>
       </trans-unit>
       <trans-unit id="banner.region" datatype="html">
@@ -13471,7 +13543,7 @@
         <target>Clip wird aufgenommen… <x id="PERCENT" equiv-text="percent"/>%</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/shared/winner-share/winner-share.ts</context>
-          <context context-type="linenumber">41</context>
+          <context context-type="linenumber">52</context>
         </context-group>
       </trans-unit>
     </body>

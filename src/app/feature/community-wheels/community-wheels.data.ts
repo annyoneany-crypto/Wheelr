@@ -320,6 +320,105 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
     defaultEntries: ['Bull Run', 'HODL', 'To the Moon', 'Diamond Hands', 'Green Candle', 'New ATH'],
     spinDurationMs: 5000,
   },
+  {
+    slug: 'red',
+    emoji: '🔴',
+    name: 'RED',
+    community: $localize`:@@community.red.community:RED community`,
+    tagline: $localize`:@@community.red.tagline:Red, silver and black`,
+    // Waiting for the community's own text and links.
+    info: { 
+      about: {
+        it: `
+          La comunità RED, fondata sull'ecosistema Avalanche, si impegna a creare un ambiente di supporto reciproco per i detentori dei suoi NFT. Sotto la guida esperta di vRoshi e Bronzeagle, RED punta a diventare un punto di riferimento per gli appassionati di Avalanche e NFT.
+        `,
+        en: `
+          The RED community, built on the Avalanche ecosystem, is committed to creating an environment of mutual support for its NFT holders. Under the expert leadership of vRoshi and Bronzeagle, RED aims to become a key hub for Avalanche and NFT enthusiasts.
+        `,
+        de: `
+          Die RED-Community, die auf dem Avalanche-Ökosystem basiert, hat sich zum Ziel gesetzt, ein Umfeld gegenseitiger Unterstützung für ihre NFT-Inhaber zu schaffen. Unter der fachkundigen Leitung von vRoshi und Bronzeagle möchte RED zu einem zentralen Anlaufpunkt für Avalanche- und NFT-Begeisterte werden.
+        `,
+        fr: `
+          La communauté RED, bâtie sur l'écosystème Avalanche, s'engage à créer un environnement d'entraide pour ses détenteurs de NFT. Sous l'égide de vRoshi et Bronzeagle, RED ambitionne de devenir un lieu de rencontre incontournable pour les passionnés d'Avalanche et de NFT.
+        `,
+        es: `
+          La comunidad RED, construida sobre el ecosistema Avalanche, se compromete a crear un entorno de apoyo mutuo para sus poseedores de NFT. Bajo la experta dirección de vRoshi y Bronzeagle, RED aspira a convertirse en un centro neurálgico para los entusiastas de Avalanche y los NFT.
+        `,
+        zh: `
+          RED社区建立在Avalanche生态系统之上，致力于为NFT持有者打造互助互惠的环境。在vRoshi和Bronzeagle的专业指导下，RED的目标是成为Avalanche和NFT爱好者的聚集地。
+        `,
+      },
+      links: [
+        {
+          kind: 'x',
+          url: 'https://x.com/vRoshi55',
+          label: `x vRoshi`,
+        },
+        {
+          kind: 'x',
+          url: 'https://x.com/BroNzEagLe23',
+          label: `x BroNzEagLe23`,
+        },
+        {
+          kind: 'x',
+          url: 'https://x.com/LucidThingsNFT',
+          label: `Project LUCID`,
+        },
+        {
+          kind: 'website',
+          url: 'https://salvor.io/collections/0x4160c72898bb4ebafe2612d76777008e78880478',
+          label: `RED Collection`,
+        },
+      ] 
+    },
+    description: $localize`:@@community.red.description:A wheel set in the engraved silver ring of the RED community, under its red badge. Red, silver and black slices that stay exactly as the community designed them — you only choose the entries.`,
+    // Red, silver, deep red and graphite from the artwork, alternating so no
+    // two neighbours match; each deepens towards the rim.
+    palette: {
+      colors: ['#D7141E', '#E8EAED', '#8E0A12', '#3A3D43'],
+      gradientTo: ['#6E070C', '#A3A8AF', '#3A0307', '#0E0F11'],
+    },
+    // Delivered already transparent at 500px, so it skips `tools/community-frame.mjs`;
+    // upscaled ×3 (Lanczos + light sharpening, WebP q90) so it is not stretched
+    // on large or high-density screens. Measured on the 500px original: the
+    // opening is a circle of radius 147–150 px centred at (252, 250.5); the
+    // wheel is a few pixels wider so it tucks under the metal edge. The badge
+    // sits over the top of the wheel and marks the winner at 12 o'clock.
+    frame: {
+      src: '/community-art/red/frame.webp',
+      width: 1500,
+      height: 1500,
+      wheelCenterX: 0.504,
+      wheelCenterY: 0.501,
+      wheelDiameter: 0.606,
+    },
+    background: {
+      color: '#0a0506',
+      // Placeholder until the community's own background artwork arrives:
+      image: '/community-art/red/background.webp',
+      gradient:
+        'radial-gradient(circle at 50% 40%, rgba(215, 20, 30, 0.3), transparent 55%), radial-gradient(circle at 15% 88%, rgba(232, 234, 237, 0.08), transparent 45%), radial-gradient(circle at 88% 15%, rgba(142, 10, 18, 0.35), transparent 50%)',
+    },
+    accent: '#E32630',
+    titleGradient: 'linear-gradient(180deg, #ffffff 0%, #e8eaed 40%, #ff4d55 72%, #a30d16 100%)',
+    buttonGradient: 'linear-gradient(180deg, #ffb3b7 0%, #E32630 60%, #8E0A12 100%)',
+    hub: {
+      color: '#140708',
+      borderColor: '#C9CDD2',
+      textColor: '#FFFFFF',
+      image: '/community-art/red/hub-logo.webp',
+    },
+    fontFamily: '"Inter", sans-serif',
+    defaultEntries: [
+      $localize`:@@community.red.entry1:Ruby`,
+      $localize`:@@community.red.entry2:Scarlet`,
+      $localize`:@@community.red.entry3:Red Star`,
+      $localize`:@@community.red.entry4:Crimson`,
+      $localize`:@@community.red.entry5:Lucky Red`,
+      $localize`:@@community.red.entry6:Big Win`,
+    ],
+    spinDurationMs: 5000,
+  },
 ];
 
 /** Where the wheel sits inside its frame, as CSS percentages of the frame box. */

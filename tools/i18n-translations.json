@@ -11458,5 +11458,68 @@
     "fr": "Site web",
     "es": "Sitio web",
     "zh": "网站"
+  },
+  "community.red.community": {
+    "it": "Community RED",
+    "de": "RED-Community",
+    "fr": "Communauté RED",
+    "es": "Comunidad RED",
+    "zh": "RED 社区"
+  },
+  "community.red.tagline": {
+    "it": "Rosso, argento e nero",
+    "de": "Rot, Silber und Schwarz",
+    "fr": "Rouge, argent et noir",
+    "es": "Rojo, plata y negro",
+    "zh": "红、银与黑"
+  },
+  "community.red.description": {
+    "it": "Una ruota incastonata nell'anello d'argento inciso della community RED, sotto il suo distintivo rosso. Spicchi rossi, argento e neri che restano esattamente come li ha disegnati la community: tu scegli solo i nomi.",
+    "de": "Ein Rad im gravierten Silberring der RED-Community, unter ihrem roten Abzeichen. Rote, silberne und schwarze Felder, die genau so bleiben, wie die Community sie gestaltet hat — du wählst nur die Einträge.",
+    "fr": "Une roue sertie dans l'anneau d'argent gravé de la communauté RED, sous son badge rouge. Des parts rouges, argentées et noires qui restent exactement telles que la communauté les a conçues — vous ne choisissez que les entrées.",
+    "es": "Una ruleta engastada en el anillo de plata grabado de la comunidad RED, bajo su insignia roja. Sectores rojos, plateados y negros que se quedan tal como los diseñó la comunidad: tú solo eliges las entradas.",
+    "zh": "镶嵌在 RED 社区雕花银环中的转盘，上方是社区的红色徽章。红色、银色和黑色扇区完全保持社区设计的样子——你只需选择条目。"
+  },
+  "community.red.entry1": {
+    "it": "Rubino",
+    "de": "Rubin",
+    "fr": "Rubis",
+    "es": "Rubí",
+    "zh": "红宝石"
+  },
+  "community.red.entry2": {
+    "it": "Scarlatto",
+    "de": "Scharlach",
+    "fr": "Écarlate",
+    "es": "Escarlata",
+    "zh": "猩红"
+  },
+  "community.red.entry3": {
+    "it": "Stella Rossa",
+    "de": "Roter Stern",
+    "fr": "Étoile Rouge",
+    "es": "Estrella Roja",
+    "zh": "红星"
+  },
+  "community.red.entry4": {
+    "it": "Cremisi",
+    "de": "Karmesin",
+    "fr": "Cramoisi",
+    "es": "Carmesí",
+    "zh": "深红"
+  },
+  "community.red.entry5": {
+    "it": "Rosso Fortunato",
+    "de": "Glücksrot",
+    "fr": "Rouge Chance",
+    "es": "Rojo de la Suerte",
+    "zh": "幸运红"
+  },
+  "community.red.entry6": {
+    "it": "Gran Vincita",
+    "de": "Großer Gewinn",
+    "fr": "Gros Lot",
+    "es": "Gran Premio",
+    "zh": "大奖"
   }
 }

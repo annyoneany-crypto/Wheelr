@@ -3,7 +3,7 @@
  * transparent WebP the page can lay over the wheel with plain alpha blending.
  *
  *   node tools/community-frame.mjs <input> <output.webp> [--crop left,top,width,height]
- *     [--scale-x 0.85] [--hole x,y]
+ *     [--scale-x 0.85] [--hole x,y] [--dark 80] [--hole-dark n]
  *
  * Glowing artwork (fire, sparks, neon) is usually delivered on solid black. It
  * cannot go over the wheel as is — the black would hide it — and CSS
@@ -37,7 +37,7 @@ import sharp from 'sharp';
 const [input, output, ...rest] = process.argv.slice(2);
 if (!input || !output) {
   throw new Error(
-    'Usage: node tools/community-frame.mjs <input> <output.webp> [--crop l,t,w,h] [--scale-x n] [--hole x,y]'
+    'Usage: node tools/community-frame.mjs <input> <output.webp> [--crop l,t,w,h] [--scale-x n] [--hole x,y] [--dark n] [--hole-dark n]'
   );
 }
 
@@ -59,8 +59,27 @@ if (hole && (hole.length !== 2 || hole.some((value) => !Number.isFinite(value)))
   throw new Error('--hole expects two integers: x,y');
 }
 
-/** Below this peak channel a pixel counts as dark when looking for the background. */
-const DARK_LEVEL = 80;
+/**
+ * Below this peak channel a pixel counts as dark when looking for the background.
+ * 80 suits glowing art; solid artwork with shaded detail (RED's engraved metal
+ * ring) needs it lower, or its grooves join the background and turn see-through.
+ */
+const darkIndex = rest.indexOf('--dark');
+const DARK_LEVEL = darkIndex >= 0 ? Number(rest[darkIndex + 1]) : 80;
+if (!Number.isFinite(DARK_LEVEL) || DARK_LEVEL < 1 || DARK_LEVEL > 255) {
+  throw new Error('--dark expects a level between 1 and 255');
+}
+/**
+ * The same, for the flood from `--hole` only. A ring drawn in perspective has a
+ * dark inner wall between its metal and the black hole: a looser level here
+ * lets that wall become a translucent shadow over the wheel instead of an
+ * opaque band hiding its edge, while `--dark` keeps the outside strict.
+ */
+const holeDarkIndex = rest.indexOf('--hole-dark');
+const HOLE_DARK_LEVEL = holeDarkIndex >= 0 ? Number(rest[holeDarkIndex + 1]) : DARK_LEVEL;
+if (!Number.isFinite(HOLE_DARK_LEVEL) || HOLE_DARK_LEVEL < 1 || HOLE_DARK_LEVEL > 255) {
+  throw new Error('--hole-dark expects a level between 1 and 255');
+}
 
 /** JPEG never delivers a true 0 black: treat the darkest levels as fully transparent. */
 const BLACK_FLOOR = 10;
@@ -91,33 +110,38 @@ const peakAt = (pixel) =>
 let background = null;
 if (hole) {
   background = new Uint8Array(pixels);
-  const stack = [];
-  const seed = (x, y) => {
-    const pixel = y * info.width + x;
-    if (!background[pixel] && peakAt(pixel) < DARK_LEVEL) {
-      background[pixel] = 1;
-      stack.push(pixel);
+  const flood = (level, seeds) => {
+    const stack = [];
+    const seed = (x, y) => {
+      const pixel = y * info.width + x;
+      if (!background[pixel] && peakAt(pixel) < level) {
+        background[pixel] = 1;
+        stack.push(pixel);
+      }
+    };
+    seeds(seed);
+    while (stack.length) {
+      const pixel = stack.pop();
+      const x = pixel % info.width;
+      const y = (pixel - x) / info.width;
+      if (x > 0) seed(x - 1, y);
+      if (x < info.width - 1) seed(x + 1, y);
+      if (y > 0) seed(x, y - 1);
+      if (y < info.height - 1) seed(x, y + 1);
     }
   };
-  for (let x = 0; x < info.width; x += 1) {
-    seed(x, 0);
-    seed(x, info.height - 1);
-  }
-  for (let y = 0; y < info.height; y += 1) {
-    seed(0, y);
-    seed(info.width - 1, y);
-  }
-  seed(Math.round(hole[0]), Math.round(hole[1]));
 
-  while (stack.length) {
-    const pixel = stack.pop();
-    const x = pixel % info.width;
-    const y = (pixel - x) / info.width;
-    if (x > 0) seed(x - 1, y);
-    if (x < info.width - 1) seed(x + 1, y);
-    if (y > 0) seed(x, y - 1);
-    if (y < info.height - 1) seed(x, y + 1);
-  }
+  flood(DARK_LEVEL, (seed) => {
+    for (let x = 0; x < info.width; x += 1) {
+      seed(x, 0);
+      seed(x, info.height - 1);
+    }
+    for (let y = 0; y < info.height; y += 1) {
+      seed(0, y);
+      seed(info.width - 1, y);
+    }
+  });
+  flood(HOLE_DARK_LEVEL, (seed) => seed(Math.round(hole[0]), Math.round(hole[1])));
 }
 
 /** 1 where the drawing is solid, 0 on the background, feathered in between. */
