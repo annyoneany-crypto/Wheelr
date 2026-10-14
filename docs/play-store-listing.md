@@ -65,12 +65,12 @@ Wheelr runs without a connection. Sign in with your email or Google account if y
 want your wheels backed up and synced across your devices — but you never have to.
 
 FREE
-Wheelr is free. Ads keep it that way: watch a short video to unlock a ready-made
-wheel, and expect an occasional full-screen ad between spins.
+Wheelr is free, with no ads. Every ready-made wheel and every premium look is
+yours to use.
 
 Questions or ideas? We'd love to hear them.
 ```
-[1,955]
+[1,871]
 
 ---
 
@@ -80,11 +80,11 @@ Questions or ideas? We'd love to hear them.
 | --- | --- |
 | Category | Tools *(alternative: Entertainment)* |
 | Tags | Random picker, Raffle, Giveaway, Decision maker, Spinner |
-| Contains ads | **Yes** |
+| Contains ads | **No** |
 | In-app purchases | No |
 | Privacy policy URL | `https://www.wheelr.xyz/privacy` |
 | Website | `https://www.wheelr.xyz` |
-| Content rating | Everyone / PEGI 3 — declare ads in the questionnaire |
+| Content rating | Everyone / PEGI 3 |
 
 ## Graphic assets still needed
 
@@ -112,10 +112,6 @@ deletion URL; that page documents both the in-app path and the email fallback.
 | Name (Google profile) | Yes | No | Optional (Google sign-in only) | Account management |
 | Photos / images | Yes | No | Optional (only if added to a wheel and synced) | App functionality |
 | Other user-generated content (wheel entries) | Yes | No | Optional (only if synced) | App functionality |
-| Device or other IDs (advertising ID) | Yes | **Yes** | No | Advertising, analytics |
-| App interactions | Yes | **Yes** | No | Advertising |
-
-The last two rows are AdMob's, not ours — Google's SDK collects and shares them.
 
 ---
 
@@ -123,9 +119,6 @@ The last two rows are AdMob's, not ours — Google's SDK collects and shares the
 
 1. Add the **release SHA-1** and the **Play App Signing SHA-1** to Firebase and
    re-download `google-services.json`, or Google sign-in fails in production only.
-2. Confirm `useTestAds: false` and the live ad unit IDs in `admob.config.ts`.
-3. Bump `versionCode` in `android/app/build.gradle` for every upload.
-4. Link the app in the AdMob console once it is published, and host
-   `app-ads.txt` at `https://www.wheelr.xyz/app-ads.txt`.
-5. Upload to **internal testing** first and install from Play — that build is
+2. Bump `versionCode` in `android/app/build.gradle` for every upload.
+3. Upload to **internal testing** first and install from Play — that build is
    signed by Google, so it is the only way to test the real production signing.

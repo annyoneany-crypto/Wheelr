@@ -1,6 +1,5 @@
 import { computed, effect, ElementRef, Injectable, PLATFORM_ID, inject, signal, untracked } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { AdsService } from './ads.service';
 import {
   STORAGE_KEYS,
   DEFAULT_PALETTES,
@@ -41,20 +40,11 @@ export type { WheelDisplayConfig, WheelWorkspaceMeta } from './wheel-configurato
   providedIn: 'root',
 })
 export class WheelConfigurator {
-  private readonly ads = inject(AdsService);
-
   /**
    * False while the app is being prerendered in Node, where localStorage,
    * IndexedDB and requestAnimationFrame do not exist.
    */
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-
-  /**
-   * Breathing room between the winner landing and an interstitial covering the
-   * screen. Without it the ad swallows the reveal the user just waited for; the
-   * winner and its effect are still on screen once the ad is dismissed.
-   */
-  private static readonly INTERSTITIAL_DELAY_AFTER_WINNER_MS = 1500;
 
   private static readonly MAX_WHEELS_PER_GROUP = 4;
   private static readonly DEFAULT_FONT_LINK =
@@ -1815,12 +1805,6 @@ export class WheelConfigurator {
           this.defaultSounds.playWinner();
         }
       }
-
-      // Every Nth spin this shows an interstitial; on web it only counts.
-      setTimeout(
-        () => void this.ads.registerCompletedSpin(),
-        WheelConfigurator.INTERSTITIAL_DELAY_AFTER_WINNER_MS,
-      );
     }, this.spinDurationMs());
   }
 

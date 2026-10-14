@@ -112,8 +112,7 @@ without copying it first:
 - [Halloween Costume Wheel](https://www.wheelr.xyz/templates/halloween-costume-wheel) — No Halloween costume yet? Spin the costume wheel and dress as whatever it picks: vampire, witch, zombie and more. Free, with a spooky effect.
 
 Loading a template creates a new wheel in your workspace — it never overwrites the
-wheel you are already working on. In the Android app, copying a template asks you
-to watch a short rewarded video first; on the web it is immediate.
+wheel you are already working on.
 
 ## Links
 

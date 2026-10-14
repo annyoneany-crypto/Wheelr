@@ -3,17 +3,15 @@ import { isPlatformBrowser } from '@angular/common';
 import { Header } from './feature/header/header';
 import { RouterOutlet } from '@angular/router';
 import { injectSpeedInsights } from '@vercel/speed-insights';
-import { AdsService } from './services/ads.service';
 import { SeoService } from './services/seo.service';
 import { NativePlatformService } from './services/native-platform.service';
 import { WlAppDownloadBanner } from './shared/app-download-banner/app-download-banner';
 import { WlSiteFooter } from './shared/site-footer/site-footer';
-import { PremiumUnlock } from './shared/premium-unlock/premium-unlock';
 
 @Component({
   selector: 'app-root',
   imports: [Header, RouterOutlet, WlAppDownloadBanner,
-    WlSiteFooter, PremiumUnlock],
+    WlSiteFooter],
   templateUrl: './app.html',
   styleUrl: './app.css',
   changeDetection: ChangeDetectionStrategy.Eager,
@@ -25,7 +23,6 @@ export class App implements OnInit {
   private readonly seo = inject(SeoService);
   nativePlatform = inject(NativePlatformService);
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
-  ads = inject(AdsService);
 
   constructor() {
     // Subscribed in the constructor so the very first NavigationEnd is caught.
@@ -35,9 +32,6 @@ export class App implements OnInit {
   ngOnInit() {
     // Status bar, tasto indietro Android e chiusura dello splash: no-op sul web.
     void this.nativePlatform.initialize();
-
-    // Consenso GDPR + preload del primo interstitial: anche questo no-op sul web.
-    void this.ads.initialize();
 
     // ngOnInit also runs while prerendering, where Speed Insights has no
     // window to attach to — and a build-time pageview would be meaningless.

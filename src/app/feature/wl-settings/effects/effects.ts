@@ -34,12 +34,12 @@ export class Effects {
     this.wheelConfigurator.wheelView.set(view);
   }
 
-  /** Premium-only: opens the login (web) or the rewarded-ad prompt (app) when locked. */
+  /** Premium-only: opens the login on the web when locked. */
   select3dView(): void {
     this.choosePremium('wheel3d', () => this.setView('wheel3d'));
   }
 
-  /** Premium-only, like the 3D wheel: its own ad in the app, a login on the web. */
+  /** Premium-only, like the 3D wheel. */
   selectPumpkinView(): void {
     this.choosePremium('pumpkin', () => this.setView('pumpkin'));
   }
@@ -60,12 +60,11 @@ export class Effects {
   }
 
   /**
-   * Applies `apply` now if `feature` is unlocked; otherwise asks for its own ad
-   * (app) or a login (web) and applies it once that succeeds.
+   * Applies `apply` now if `feature` is unlocked; otherwise asks for a login and
+   * applies it once that succeeds.
    */
   private choosePremium(feature: PremiumFeature, apply: () => void): void {
-    // Already the option in use: it stays in use after its timer, so no new ad.
-    // Only switching away and coming back asks again.
+    // Already the option in use: nothing to ask.
     if (this.isInUse(feature) || this.premium.requestUnlock(feature)) {
       apply();
       return;

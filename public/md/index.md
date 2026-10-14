@@ -55,8 +55,7 @@ the same chance.
 
 ## Pricing
 
-Free. The website carries no ads. The Android app shows a rewarded video ad when
-unlocking a ready-made template and an occasional full-screen ad between spins.
+Free, with no ads on the website or in the Android app.
 Donations are optional and are what keep the project running.
 
 ## Links

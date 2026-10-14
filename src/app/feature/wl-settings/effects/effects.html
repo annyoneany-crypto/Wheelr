@@ -60,8 +60,6 @@
       </span>
       @if (!premium.isUnlocked('wheel3d') && !isInUse('wheel3d')) {
         <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
-      } @else if (premium.remainingLabel('wheel3d')) {
-        <span class="rounded-full bg-amber-400/15 px-1.5 py-0.5 text-[0.6rem] font-bold tabular-nums text-amber-300" i18n-title="@@effects.premium.timeLeft" title="Time left on this unlock">{{ premium.remainingLabel('wheel3d') }}</span>
       } @else if (premium.renderedWheelView() === 'wheel3d') {
         <i class="fa-solid fa-check text-amber-300" aria-hidden="true"></i>
       }
@@ -89,19 +87,13 @@
       </span>
       @if (!premium.isUnlocked('pumpkin') && !isInUse('pumpkin')) {
         <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
-      } @else if (premium.remainingLabel('pumpkin')) {
-        <span class="rounded-full bg-amber-400/15 px-1.5 py-0.5 text-[0.6rem] font-bold tabular-nums text-amber-300" i18n-title="@@effects.premium.timeLeft" title="Time left on this unlock">{{ premium.remainingLabel('pumpkin') }}</span>
       } @else if (premium.renderedWheelView() === 'pumpkin') {
         <i class="fa-solid fa-check text-orange-300" aria-hidden="true"></i>
       }
     </button>
     @if ((!premium.isUnlocked('wheel3d') && !isInUse('wheel3d')) || (!premium.isUnlocked('pumpkin') && !isInUse('pumpkin'))) {
       <p class="text-xs text-white/40">
-        @if (premium.unlocksWithAd) {
-          <span i18n="@@effects.premium.adRule">Each premium option has its own short ad. Once chosen it stays; switching back to it after 1 minute needs a new ad.</span>
-        } @else {
-          <span i18n="@@effects.wheel3d.lockedWeb">Sign in for free to unlock it.</span>
-        }
+        <span i18n="@@effects.wheel3d.lockedWeb">Sign in for free to unlock it.</span>
       </p>
     }
   </div>
@@ -226,8 +218,6 @@
         </span>
         @if (!premium.isUnlocked('chest') && !isInUse('chest')) {
           <i class="fa-solid fa-lock text-white/50" aria-hidden="true"></i>
-        } @else if (premium.remainingLabel('chest')) {
-          <span class="rounded-full bg-amber-400/15 px-1.5 py-0.5 text-[0.6rem] font-bold tabular-nums text-amber-300" i18n-title="@@effects.premium.timeLeft" title="Time left on this unlock">{{ premium.remainingLabel('chest') }}</span>
         }
       </button>
     </div>
@@ -359,16 +349,12 @@
           [class.border-white/10]="premium.renderedPointerType() !== pointer.id"
           [class.text-white/70]="premium.renderedPointerType() !== pointer.id"
           [class.hover:border-amber-300/40]="premium.renderedPointerType() !== pointer.id">
-          @if (premium.remainingLabel(pointer.id); as left) {
-            <span class="absolute top-1 right-1 text-[0.55rem] font-bold tabular-nums text-amber-300" i18n-title="@@effects.premium.timeLeft" title="Time left on this unlock">{{ left }}</span>
-          } @else {
-            <i class="fa-solid absolute top-1.5 right-1.5 text-[0.6rem]"
-              [class.fa-crown]="premium.isUnlocked(pointer.id) || isInUse(pointer.id)"
-              [class.text-amber-300]="premium.isUnlocked(pointer.id) || isInUse(pointer.id)"
-              [class.fa-lock]="!premium.isUnlocked(pointer.id) && !isInUse(pointer.id)"
-              [class.text-white/40]="!premium.isUnlocked(pointer.id) && !isInUse(pointer.id)"
-              aria-hidden="true"></i>
-          }
+          <i class="fa-solid absolute top-1.5 right-1.5 text-[0.6rem]"
+            [class.fa-crown]="premium.isUnlocked(pointer.id) || isInUse(pointer.id)"
+            [class.text-amber-300]="premium.isUnlocked(pointer.id) || isInUse(pointer.id)"
+            [class.fa-lock]="!premium.isUnlocked(pointer.id) && !isInUse(pointer.id)"
+            [class.text-white/40]="!premium.isUnlocked(pointer.id) && !isInUse(pointer.id)"
+            aria-hidden="true"></i>
           <svg width="24" height="24" viewBox="0 0 64 64" aria-hidden="true">
             @if (pointer.id === 'crown') {
               <path d="M11 31L8 11L20 20L32 5L44 20L56 11L53 31Z M23 35H41L32 61Z" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>

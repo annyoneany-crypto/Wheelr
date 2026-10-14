@@ -2,12 +2,12 @@
 title: Wheelr privacy policy
 path: /privacy
 canonical: https://www.wheelr.xyz/privacy
-updated: 2026-08-08
+updated: 2026-10-12
 ---
 
 # Privacy policy
 
-Last updated: 8 August 2026. This policy covers both the website at wheelr.xyz and
+Last updated: 12 October 2026. This policy covers both the website at wheelr.xyz and
 the Wheelr Android app. Contact for any privacy or deletion request:
 annyone.any@gmail.com.
 
@@ -15,8 +15,8 @@ annyone.any@gmail.com.
 
 - You can use Wheelr without an account. If you do, your wheels stay on your device and are never sent to us.
 - If you sign in, your wheels are synced to our cloud so you can reach them from other devices.
-- The Android app shows ads through Google AdMob, which collects advertising data.
-- We do not sell your data and we do not build advertising profiles ourselves.
+- Wheelr shows no ads, on the website or in the Android app.
+- We do not sell your data and we do not build advertising profiles.
 
 ## What is collected
 
@@ -29,10 +29,6 @@ Google Sign-In, the basic profile information Google releases. Authentication is
 handled by Firebase Authentication; we never see or store your password. The content
 of the wheels you sync — entries, palettes, images, sounds and settings — is stored
 in Google Cloud Firestore under an identifier tied to your account.
-
-**In the Android app:** Google AdMob collects data to serve and measure ads,
-including the device advertising ID, device and network information, and ad
-interactions. AdMob acts as an independent controller for this.
 
 **On the website only:** Vercel Analytics and Vercel Speed Insights count page views
 and measure loading performance. They are aggregate, cookie-less and do not identify
@@ -48,15 +44,7 @@ the wheel from your account.
 ## Legal basis (GDPR)
 
 - Art. 6(1)(b) — performing the service you asked for: your account and wheel syncing.
-- Art. 6(1)(a) — consent: personalized advertising, asked on first launch and changeable later.
 - Art. 6(1)(f) — legitimate interest: aggregate website measurement and keeping the service secure.
-
-## Advertising
-
-Ads appear in two places in the app: an optional video you choose to watch to unlock
-a ready-made wheel, and an occasional full-screen ad between spins. In regions that
-require it, Google's consent form asks about personalized ads on first launch;
-declining still shows ads, but non-personalized ones.
 
 ## Retention and your rights
 

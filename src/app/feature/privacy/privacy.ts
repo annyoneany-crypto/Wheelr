@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
 })
 export class Privacy {
   /** Shown in the header and in the "last updated" line. */
-  protected readonly lastUpdated = '8 August 2026';
+  protected readonly lastUpdated = '12 October 2026';
   /** Where privacy and data-deletion requests are handled. */
   protected readonly contactEmail = 'annyone.any@gmail.com';
 }

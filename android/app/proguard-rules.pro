@@ -5,7 +5,7 @@
 #   - @capacitor/android keeps every @CapacitorPlugin class and its @PluginMethod
 #     methods, which is what the bridge resolves by reflection at runtime.
 #   - The default proguard-android-optimize.txt keeps @JavascriptInterface methods.
-#   - Play Services (AdMob) and Firebase Auth ship their own keeps.
+#   - Play Services and Firebase Auth ship their own keeps.
 # Note that Firestore here is the JavaScript SDK running inside the WebView, so it
 # is part of the web bundle and R8 never sees it.
 #

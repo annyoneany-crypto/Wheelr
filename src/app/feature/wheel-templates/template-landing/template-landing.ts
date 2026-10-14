@@ -14,7 +14,6 @@ import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { filter } from 'rxjs';
-import { AdsService } from '../../../services/ads.service';
 import { SeoService } from '../../../services/seo.service';
 import { WheelConfigurator } from '../../../services/wheel-configurator.service';
 import { drawWheelCanvas } from '../../../shared/extraction-effect/wheel-renderer';
@@ -55,7 +54,6 @@ export class TemplateLanding {
   private readonly router = inject(Router);
   private readonly seo = inject(SeoService);
   private readonly wheelConfigurator = inject(WheelConfigurator);
-  private readonly ads = inject(AdsService);
   private readonly destroyRef = inject(DestroyRef);
   /** False while prerendering, where there is no canvas and no animation frame. */
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
@@ -77,9 +75,6 @@ export class TemplateLanding {
     const current = this.page()?.seo.slug;
     return TEMPLATE_LANDING_PAGES.filter((entry) => entry.seo.slug !== current);
   });
-
-  /** In the Android app a template is unlocked by a rewarded ad (see WheelTemplates). */
-  protected readonly adsRequired = this.ads.isEnabled;
 
   constructor() {
     this.route.paramMap.pipe(takeUntilDestroyed()).subscribe((params) => {
@@ -137,18 +132,11 @@ export class TemplateLanding {
 
   /**
    * Copies the wheel into the visitor's own wheels and opens it — the same thing
-   * the templates list does. On the app that copy is gated behind a rewarded ad,
-   * and AdMob requires the offer to be made before the ad starts; that prompt
-   * lives on `/templates`, so native visitors are sent there to complete it.
+   * the templates list does.
    */
   protected async useTemplate(): Promise<void> {
     const template = this.template();
     if (!template || this.copying()) {
-      return;
-    }
-
-    if (this.adsRequired) {
-      await this.router.navigate(['/templates']);
       return;
     }
 

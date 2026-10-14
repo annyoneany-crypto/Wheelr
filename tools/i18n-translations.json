@@ -1554,13 +1554,6 @@
     "es": "Renombrar la rueda seleccionada",
     "zh": "重命名所选转盘"
   },
-  "templates.adLocked": {
-    "it": "L'annuncio deve essere guardato fino in fondo per sbloccare il template. Riprova.",
-    "de": "Die Anzeige muss vollständig abgespielt werden, um diese Vorlage freizuschalten. Versuche es noch einmal.",
-    "fr": "La publicité doit être regardée jusqu'au bout pour débloquer ce modèle. Réessayez.",
-    "es": "El anuncio debe reproducirse por completo para desbloquear esta plantilla. Inténtalo otra vez.",
-    "zh": "需要完整播放广告才能解锁该模板，请再试一次。"
-  },
   "sync.inProgress": {
     "it": "Sincronizzazione delle ruote...",
     "de": "Räder werden synchronisiert...",
@@ -3269,13 +3262,6 @@
     "es": "Una colección de ruletas listas para usar: decisiones, premios, juegos de fiesta y sorteos. Copia cualquier plantilla a tus ruletas y personalízala como quieras: nombres, colores, efectos y sonidos.",
     "zh": "一系列现成可用的转盘：做决定、抽奖品、聚会游戏和抽签。把任意模板复制到你的转盘，随心自定义名称、颜色、特效和声音。"
   },
-  "templates.badge.ad": {
-    "it": "Guarda un breve annuncio per sbloccare",
-    "de": "Kurze Werbung ansehen zum Freischalten",
-    "fr": "Regardez une courte pub pour débloquer",
-    "es": "Mira un anuncio corto para desbloquear",
-    "zh": "观看简短广告即可解锁"
-  },
   "templates.badge.copy": {
     "it": "Copia e usa con un clic",
     "de": "Mit einem Klick kopieren & nutzen",
@@ -3297,13 +3283,6 @@
     "es": "+{INTERPOLATION} más",
     "zh": "还有 {INTERPOLATION} 个"
   },
-  "templates.watchAdUse": {
-    "it": "Guarda l'annuncio e usa",
-    "de": "Werbung ansehen & nutzen",
-    "fr": "Voir la pub et utiliser",
-    "es": "Ver anuncio y usar",
-    "zh": "看广告后使用"
-  },
   "templates.copyUse": {
     "it": "Copia e usa",
     "de": "Kopieren & nutzen",
@@ -3317,41 +3296,6 @@
     "fr": "L'essayer et en savoir plus",
     "es": "Pruébala y lee más",
     "zh": "试用并了解更多"
-  },
-  "templates.ad.title": {
-    "it": "Sblocca questo modello",
-    "de": "Diese Vorlage freischalten",
-    "fr": "Débloquer ce modèle",
-    "es": "Desbloquear esta plantilla",
-    "zh": "解锁此模板"
-  },
-  "templates.ad.body": {
-    "it": "Guarda un breve video pubblicitario e questa ruota verrà copiata tra le tue, pronta da girare. Gli annunci mantengono Wheelr gratuito.",
-    "de": "Sieh dir ein kurzes Werbevideo an, und dieses Rad wird zu deinen Rädern kopiert – bereit zum Drehen. Werbung hält Wheelr kostenlos.",
-    "fr": "Regardez une courte vidéo publicitaire et cette roue est copiée dans vos roues, prête à tourner. La publicité permet à Wheelr de rester gratuit.",
-    "es": "Mira un breve vídeo publicitario y esta ruleta se copiará a las tuyas, lista para girar. Los anuncios mantienen Wheelr gratis.",
-    "zh": "观看一段简短的视频广告，这个转盘就会复制到你的转盘中，随时可转。广告让 Wheelr 保持免费。"
-  },
-  "templates.ad.cancel": {
-    "it": "Annulla",
-    "de": "Abbrechen",
-    "fr": "Annuler",
-    "es": "Cancelar",
-    "zh": "取消"
-  },
-  "templates.ad.loading": {
-    "it": "Caricamento…",
-    "de": "Wird geladen…",
-    "fr": "Chargement…",
-    "es": "Cargando…",
-    "zh": "加载中…"
-  },
-  "templates.ad.watch": {
-    "it": "Guarda l'annuncio",
-    "de": "Werbung ansehen",
-    "fr": "Voir la pub",
-    "es": "Ver anuncio",
-    "zh": "观看广告"
   },
   "tpl.yes-or-no.tagline": {
     "it": "Decisioni istantanee",
@@ -6943,41 +6887,6 @@
     "fr": "Écouter le son du gagnant par défaut",
     "es": "Escuchar el sonido de ganador predeterminado",
     "zh": "试听默认获胜音效"
-  },
-  "premium.feature.skipped": {
-    "it": "L'annuncio deve essere guardato fino alla fine per sbloccarla. Riprova.",
-    "de": "Die Werbung muss bis zum Ende laufen, um die Option freizuschalten. Versuch es noch einmal.",
-    "fr": "La publicité doit être regardée jusqu’au bout pour la débloquer. Réessayez.",
-    "es": "El anuncio tiene que verse hasta el final para desbloquearla. Inténtalo de nuevo.",
-    "zh": "需要完整观看广告才能解锁。请再试一次。"
-  },
-  "effects.premium.timeLeft": {
-    "it": "Tempo rimasto di questo sblocco",
-    "de": "Verbleibende Zeit dieser Freischaltung",
-    "fr": "Temps restant pour ce déblocage",
-    "es": "Tiempo restante de este desbloqueo",
-    "zh": "本次解锁的剩余时间"
-  },
-  "premium.feature.window": {
-    "it": "Premium · un annuncio per opzione",
-    "de": "Premium · eine Werbung pro Option",
-    "fr": "Premium · une publicité par option",
-    "es": "Premium · un anuncio por opción",
-    "zh": "高级 · 每个选项一个广告"
-  },
-  "premium.feature.explain": {
-    "it": "Guarda un breve video pubblicitario per usare questa opzione. Resta attiva finché la tieni; per riselezionarla dopo 1 minuto serve un nuovo annuncio. Gli annunci mantengono Wheelr gratuito.",
-    "de": "Sieh dir ein kurzes Werbevideo an, um diese Option zu nutzen. Sie bleibt aktiv, solange du sie behältst; um sie nach 1 Minute erneut auszuwählen, brauchst du eine neue Werbung. Werbung hält Wheelr kostenlos.",
-    "fr": "Regardez une courte vidéo publicitaire pour utiliser cette option. Elle reste active tant que vous la gardez ; pour la sélectionner de nouveau après 1 minute, il faut une nouvelle publicité. La publicité permet à Wheelr de rester gratuit.",
-    "es": "Mira un breve vídeo publicitario para usar esta opción. Permanece activa mientras la mantengas; para volver a seleccionarla después de 1 minuto hace falta un nuevo anuncio. Los anuncios mantienen Wheelr gratis.",
-    "zh": "观看一段简短的视频广告即可使用此选项。只要你保持选择，它就一直有效；1 分钟后若要重新选择，需要再看一个广告。广告让 Wheelr 保持免费。"
-  },
-  "effects.premium.adRule": {
-    "it": "Ogni opzione premium ha il suo breve annuncio. Una volta scelta resta; per riselezionarla dopo 1 minuto serve un nuovo annuncio.",
-    "de": "Jede Premium-Option hat ihre eigene kurze Werbung. Einmal gewählt, bleibt sie; um sie nach 1 Minute erneut zu wählen, brauchst du eine neue Werbung.",
-    "fr": "Chaque option premium a sa propre courte publicité. Une fois choisie, elle reste ; pour la reprendre après 1 minute, il faut une nouvelle publicité.",
-    "es": "Cada opción premium tiene su propio anuncio corto. Una vez elegida se queda; para volver a elegirla después de 1 minuto hace falta un nuevo anuncio.",
-    "zh": "每个高级选项都有自己的简短广告。选择后会一直保留；1 分钟后若要重新选择，需要再看一个广告。"
   },
   "share.title": {
     "it": "Vincitore: {NAME}",
