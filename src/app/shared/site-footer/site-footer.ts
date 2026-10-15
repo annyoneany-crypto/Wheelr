@@ -1,5 +1,7 @@
 import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { NavigationEnd, Router, RouterLink } from '@angular/router';
+import { filter, map } from 'rxjs';
 import { NativePlatformService } from '../../services/native-platform.service';
 import { SiteFooterState } from './site-footer-state';
 
@@ -30,6 +32,43 @@ export class WlSiteFooter {
 
   protected readonly expanded = inject(SiteFooterState).expanded;
 
+  private readonly router = inject(Router);
+
+  /**
+   * The wheel route has no heading of its own (it is a canvas), so there the
+   * summary's title is the page's `<h1>`, carrying each locale's head term
+   * ("Glücksrad online kostenlos", "Ruleta online gratis"…). Every other page
+   * owns its `<h1>`, and the title stays an `<h2>`.
+   */
+  protected readonly isHome = toSignal(
+    this.router.events.pipe(
+      filter((event): event is NavigationEnd => event instanceof NavigationEnd),
+      map((event) => isHomeUrl(event.urlAfterRedirects))
+    ),
+    { initialValue: isHomeUrl(this.router.url) }
+  );
+
+  /**
+   * The ready-made wheels people search for most (Search Console, impressions),
+   * linked from every page. Labels reuse the landing pages' `tpl.<id>.heading`
+   * ids — same text, same translation — rather than importing `TEMPLATE_SEO`,
+   * which would put every landing page's copy in the initial bundle.
+   */
+  protected readonly popularTemplates: readonly { slug: string; label: string }[] = [
+    { slug: 'random-letter-generator', label: $localize`:@@tpl.random-letter.heading:Random Letter Generator` },
+    { slug: 'prize-wheel', label: $localize`:@@tpl.prize-giveaway.heading:Prize Wheel for Giveaways` },
+    { slug: 'truth-or-dare-wheel', label: $localize`:@@tpl.truth-or-dare.heading:Truth or Dare Wheel` },
+    { slug: 'discount-wheel', label: $localize`:@@tpl.discount-wheel.heading:Spin-to-Win Discount Wheel` },
+    { slug: 'random-team-generator', label: $localize`:@@tpl.team-picker.heading:Random Team Generator` },
+    { slug: 'charades-ideas-wheel', label: $localize`:@@tpl.charades.heading:Charades Ideas Wheel` },
+    { slug: 'random-country-wheel', label: $localize`:@@tpl.random-country.heading:Random Country Wheel` },
+    { slug: 'random-animal-wheel', label: $localize`:@@tpl.random-animal.heading:Random Animal Wheel` },
+    { slug: 'punishment-wheel', label: $localize`:@@tpl.punishment.heading:Punishment Wheel` },
+    { slug: 'random-job-generator', label: $localize`:@@tpl.random-job.heading:Random Job Generator` },
+    { slug: 'random-zodiac-sign-wheel', label: $localize`:@@tpl.zodiac-sign.heading:Random Zodiac Sign Wheel` },
+    { slug: 'heads-or-tails-wheel', label: $localize`:@@tpl.heads-or-tails.heading:Heads or Tails Wheel` },
+  ];
+
   protected readonly toggleLabel = computed(() =>
     this.expanded()
       ? $localize`:@@footer.toggle.collapse:Collapse footer summary`
@@ -55,4 +94,10 @@ export class WlSiteFooter {
   protected toggle(): void {
     this.expanded.update((value) => !value);
   }
+}
+
+/** The wheel route, whatever named outlets (settings panels) are open. */
+function isHomeUrl(url: string): boolean {
+  const primary = url.split(/[?#(]/)[0];
+  return primary === '/' || primary === '';
 }

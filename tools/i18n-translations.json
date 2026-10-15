@@ -2066,10 +2066,10 @@
     "zh": "Wheelr • 免费转盘"
   },
   "footer.heading": {
-    "it": "Ruota della fortuna online gratuita",
-    "de": "Kostenloses Online-Glücksrad",
+    "it": "Ruota della fortuna online gratis",
+    "de": "Glücksrad online kostenlos",
     "fr": "Roue de la fortune en ligne gratuite",
-    "es": "Ruleta online gratuita",
+    "es": "Ruleta online gratis",
     "zh": "免费在线转盘"
   },
   "footer.intro": {
@@ -3903,7 +3903,7 @@
     "it": "Ruota Obbligo o Verità | Gioco per feste gratis",
     "de": "Wahrheit-oder-Pflicht-Rad | Kostenloses Partyspiel",
     "fr": "Roue Action ou Vérité | Jeu de soirée gratuit",
-    "es": "Ruleta Verdad o Reto | Juego de fiesta gratis",
+    "es": "Ruleta de Verdad o Reto | Juego para Fiestas Gratis",
     "zh": "真心话大冒险转盘 | 免费聚会游戏"
   },
   "tpl.truth-or-dare.desc": {
@@ -3917,7 +3917,7 @@
     "it": "Ruota Obbligo o Verità",
     "de": "Wahrheit-oder-Pflicht-Rad",
     "fr": "Roue Action ou Vérité",
-    "es": "Ruleta Verdad o Reto",
+    "es": "Ruleta de Verdad o Reto",
     "zh": "真心话大冒险转盘"
   },
   "tpl.truth-or-dare.intro": {
@@ -4071,14 +4071,14 @@
     "it": "Ruota degli Sconti | Ruota promo Gira e Vinci gratis",
     "de": "Rabattrad | Kostenloses Dreh-und-gewinn-Aktionsrad",
     "fr": "Roue des Remises | Roue promo gratuite tournez et gagnez",
-    "es": "Ruleta de Descuentos | Ruleta promo gira y gana gratis",
+    "es": "Ruleta de Descuentos y Promociones | Gira y Gana Gratis",
     "zh": "折扣转盘 | 免费转一转赢优惠促销转盘"
   },
   "tpl.discount-wheel.desc": {
     "it": "Una ruota degli sconti «gira e vinci» gratuita per negozi, bancarelle e promozioni. Metti le tue offerte sulla ruota e lascia girare i clienti.",
     "de": "Ein kostenloses Dreh-und-gewinn-Rabattrad für Läden, Marktstände und Aktionen. Trag deine Angebote ein und lass Kunden ihren Rabatt erdrehen.",
     "fr": "Une roue des remises gratuite pour boutiques, stands de marché et promos. Mettez vos offres sur la roue et laissez vos clients tourner pour leur remise.",
-    "es": "Una ruleta de descuentos gratis para tiendas, puestos de mercado y promociones. Pon tus ofertas en la ruleta y deja que tus clientes giren por su descuento.",
+    "es": "Una ruleta promo gratis para tiendas, eventos y redes: pon tus descuentos y promociones en la ruleta y deja que tus clientes giren por su premio.",
     "zh": "免费的“转一转赢优惠”折扣转盘，适合店铺、市集摊位和促销活动。把优惠放上转盘，让顾客自己转出折扣。"
   },
   "tpl.discount-wheel.heading": {
@@ -5524,24 +5524,24 @@
     "zh": "A-Z"
   },
   "tpl.random-letter.title": {
-    "it": "Generatore di Lettere Casuali | Ruota A–Z gratis",
-    "de": "Zufallsbuchstaben-Generator | Kostenloses A–Z-Rad",
-    "fr": "Générateur de Lettres Aléatoires | Roue A–Z gratuite",
-    "es": "Generador de Letras Aleatorias | Ruleta A–Z gratis",
+    "it": "Lettera Casuale | Generatore di Lettere A–Z Gratis",
+    "de": "Zufallsbuchstabe | Buchstaben-Generator & ABC-Rad",
+    "fr": "Lettre Aléatoire | Générateur de Lettre A–Z (Petit Bac)",
+    "es": "Letra Aleatoria | Ruleta de Letras al Azar A–Z Gratis",
     "zh": "随机字母生成器 | 免费 A–Z 转盘"
   },
   "tpl.random-letter.desc": {
-    "it": "Un generatore di lettere casuali gratuito: gira la ruota dalla A alla Z per giochi di parole, categorie, esercizi di ortografia e spunti di scrittura.",
-    "de": "Ein kostenloser Zufallsbuchstaben-Generator: Dreh das A-bis-Z-Rad für Wortspiele, Stadt-Land-Fluss, Rechtschreibübungen und Schreibimpulse.",
-    "fr": "Un générateur de lettres aléatoires gratuit : lancez la roue de A à Z pour les jeux de mots, le petit bac, l'orthographe et les idées d'écriture.",
-    "es": "Un generador de letras aleatorias gratis: gira la ruleta de la A a la Z para juegos de palabras, tutti frutti, ortografía e ideas para escribir.",
+    "it": "Estrai una lettera casuale dell'alfabeto: gira la ruota dalla A alla Z. Generatore di lettere gratis per nomi-cose-città, giochi di parole e scuola.",
+    "de": "Nenne mir einen Buchstaben: Dreh das ABC-Rad für einen zufälligen Buchstaben von A bis Z. Kostenloser Buchstaben-Generator für Stadt-Land-Fluss.",
+    "fr": "Tirez une lettre au hasard de A à Z avec la roue de l'alphabet. Générateur de lettre aléatoire gratuit pour le petit bac, les jeux de mots et la classe.",
+    "es": "Dime una letra al azar: gira la ruleta de letras de la A a la Z. Generador de letras aleatorias gratis para tutti frutti, juegos de palabras y clases.",
     "zh": "免费的随机字母生成器：转动 A–Z 转盘，用于文字游戏、分类接龙、拼写练习和写作灵感。"
   },
   "tpl.random-letter.heading": {
     "it": "Generatore di Lettere Casuali",
-    "de": "Zufallsbuchstaben-Generator",
-    "fr": "Générateur de Lettres Aléatoires",
-    "es": "Generador de Letras Aleatorias",
+    "de": "Zufallsbuchstabe: Buchstaben-Generator",
+    "fr": "Générateur de Lettre Aléatoire",
+    "es": "Ruleta de Letras al Azar",
     "zh": "随机字母生成器"
   },
   "tpl.random-letter.intro": {
@@ -5723,14 +5723,14 @@
     "it": "Ruota dei Paesi Casuali | Estrai un paese gratis",
     "de": "Zufälliges-Land-Rad | Kostenloser Ländergenerator",
     "fr": "Roue des Pays Aléatoires | Tirage de pays gratuit",
-    "es": "Ruleta de Países Aleatorios | Elige un país gratis",
+    "es": "Ruleta de Países al Azar | País Aleatorio Gratis",
     "zh": "随机国家转盘 | 免费国家抽选工具"
   },
   "tpl.random-country.desc": {
     "it": "Un estrattore di paesi casuali gratuito: gira la ruota per lezioni di geografia, round di quiz, idee di viaggio e pratica delle lingue.",
     "de": "Ein kostenloser Zufallsländer-Generator: Dreh das Rad für Erdkundestunden, Quizrunden, Reiseideen und Sprachübungen.",
     "fr": "Un tirage de pays aléatoire gratuit : lancez la roue pour les cours de géographie, les quiz, les idées de voyage et la pratique des langues.",
-    "es": "Un selector de países aleatorios gratis: gira la ruleta para clases de geografía, rondas de preguntas, ideas de viaje y práctica de idiomas.",
+    "es": "Dime un país al azar: gira la ruleta de países para clases de geografía, concursos, ideas de viaje y práctica de idiomas. Gratis y editable.",
     "zh": "免费的随机国家抽选工具：转动转盘，用于地理课、问答环节、旅行灵感和语言练习。"
   },
   "tpl.random-country.heading": {
@@ -8114,7 +8114,7 @@
     "zh": "星座"
   },
   "tpl.zodiac-sign.title": {
-    "it": "Ruota dei segni zodiacali | Segno a caso",
+    "it": "Ruota dei Segni Zodiacali | Segno a Caso Gratis",
     "de": "Sternzeichen-Rad | Zufälliges Sternzeichen drehen",
     "fr": "Roue du zodiaque | Tirez un signe au hasard",
     "es": "Ruleta del zodiaco | Gira para un signo al azar",
@@ -9852,21 +9852,21 @@
   "tpl.random-job.title": {
     "it": "Generatore di lavori casuali | Gira per un mestiere",
     "de": "Zufälliger Berufe-Generator | Dreh für einen Beruf",
-    "fr": "Générateur de métiers | Tournez pour un métier",
+    "fr": "Métier au Hasard | Générateur de Métier Aléatoire",
     "es": "Generador de profesiones | Gira para un oficio",
     "zh": "随机职业生成器 | 转出一个职业"
   },
   "tpl.random-job.desc": {
     "it": "Un generatore di lavori gratuito per giochi di ruolo, scrittura, orientamento e indovinelli. Gira per un mestiere ed entra nel personaggio.",
     "de": "Ein kostenloser Berufe-Generator für Rollenspiele, Schreiben, Berufstage und Ratespiele. Dreh für einen Beruf und schlüpf in die Rolle.",
-    "fr": "Un générateur de métiers gratuit pour les jeux de rôle, l’écriture, l’orientation et les devinettes. Tournez pour un métier et entrez dans le rôle.",
+    "fr": "Un métier au hasard : tournez la roue des métiers pour les jeux de rôle, l'écriture, l'orientation et les devinettes. Gratuit et modifiable.",
     "es": "Un generador de profesiones gratis para juegos de rol, escritura, orientación y adivinanzas. Gira para un oficio y métete en el papel.",
     "zh": "免费的随机职业生成器，适用于角色扮演、写作、职业日和猜谜游戏。转出一个职业，进入角色吧。"
   },
   "tpl.random-job.heading": {
     "it": "Generatore di lavori casuali",
     "de": "Zufälliger Berufe-Generator",
-    "fr": "Générateur de métiers aléatoires",
+    "fr": "Générateur de Métier au Hasard",
     "es": "Generador de profesiones aleatorias",
     "zh": "随机职业生成器"
   },
@@ -11570,5 +11570,33 @@
     "fr": "Comment tes données sont traitées",
     "es": "Cómo se tratan tus datos",
     "zh": "我们如何处理你的数据"
+  },
+  "footer.popular.title": {
+    "it": "Ruote pronte più usate",
+    "de": "Beliebte fertige Räder",
+    "fr": "Roues prêtes populaires",
+    "es": "Ruletas listas populares",
+    "zh": "热门现成转盘"
+  },
+  "footer.popular.all": {
+    "it": "Tutte le ruote pronte",
+    "de": "Alle fertigen Räder",
+    "fr": "Toutes les roues prêtes",
+    "es": "Todas las ruletas listas",
+    "zh": "全部现成转盘"
+  },
+  "tpl.random-letter.faq3.q": {
+    "it": "Come estraggo una lettera casuale?",
+    "de": "Wie bekomme ich einen zufälligen Buchstaben?",
+    "fr": "Comment tirer une lettre au hasard ?",
+    "es": "¿Cómo saco una letra al azar?",
+    "zh": "如何随机抽一个字母？"
+  },
+  "tpl.random-letter.faq3.a": {
+    "it": "Premi gira: la ruota si ferma su una lettera dalla A alla Z scelta a caso. Gira di nuovo per il turno successivo, oppure copia la ruota e togli le lettere già uscite.",
+    "de": "Tippe auf Drehen: Das Rad stoppt auf einem zufällig gewählten Buchstaben von A bis Z. Dreh für die nächste Runde einfach erneut, oder kopiere das Rad und entferne bereits gezogene Buchstaben.",
+    "fr": "Appuyez sur tourner : la roue s’arrête sur une lettre de A à Z choisie au hasard. Relancez pour la manche suivante, ou copiez la roue et retirez les lettres déjà sorties.",
+    "es": "Pulsa girar: la ruleta se detiene en una letra de la A a la Z elegida al azar. Vuelve a girar para la siguiente ronda, o copia la ruleta y quita las letras que ya salieron.",
+    "zh": "点击旋转：转盘会停在 A 到 Z 之间随机选出的一个字母上。下一轮再转一次，或者复制转盘并删掉已经抽过的字母。"
   }
 }

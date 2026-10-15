@@ -534,6 +534,11 @@ export const TEMPLATE_SEO: Readonly<Record<string, WheelTemplateSeo>> = {
         answer:
           $localize`:@@tpl.random-letter.faq2.a:Twenty-six slices is a lot for one wheel. Removing letters you do not need makes the rest larger, and the linear and card views show the same wheel with more room for each label.`,
       },
+      {
+        question: $localize`:@@tpl.random-letter.faq3.q:How do I get a random letter?`,
+        answer:
+          $localize`:@@tpl.random-letter.faq3.a:Press spin: the wheel stops on one letter from A to Z, picked at random. Spin again for the next round, or copy the wheel and remove the letters that have already come up.`,
+      },
     ],
   },
 

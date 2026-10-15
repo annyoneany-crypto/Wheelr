@@ -2,7 +2,7 @@
 title: Random Letter Generator | Free A–Z Wheel
 path: /templates/random-letter-generator
 canonical: https://www.wheelr.xyz/templates/random-letter-generator
-updated: 2026-09-17
+updated: 2026-10-15
 ---
 
 # Random Letter Generator
@@ -59,6 +59,10 @@ Yes, every letter is one slice of the same size, and the spin uses a cryptograph
 **The letters look small — can I make them bigger?**
 
 Twenty-six slices is a lot for one wheel. Removing letters you do not need makes the rest larger, and the linear and card views show the same wheel with more room for each label.
+
+**How do I get a random letter?**
+
+Press spin: the wheel stops on one letter from A to Z, picked at random. Spin again for the next round, or copy the wheel and remove the letters that have already come up.
 
 ## Links
 
