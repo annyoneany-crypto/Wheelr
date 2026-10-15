@@ -28,6 +28,9 @@ export const SITE_LOCALES: readonly SiteLocale[] = [
   { id: 'fr', subPath: 'fr', hreflang: 'fr', label: 'Français', ogLocale: 'fr_FR' },
   { id: 'es', subPath: 'es', hreflang: 'es', label: 'Español', ogLocale: 'es_ES' },
   { id: 'zh', subPath: 'zh', hreflang: 'zh', label: '中文', ogLocale: 'zh_CN' },
+  // Brazilian Portuguese (Angular's `pt`). Declared as plain `pt` so Portugal is
+  // sent here too rather than to the English fallback.
+  { id: 'pt', subPath: 'pt', hreflang: 'pt', label: 'Português', ogLocale: 'pt_BR' },
 ];
 
 /** The locale search engines are sent to when no language matches the user. */

@@ -15,7 +15,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const localeDir = join(root, 'src/locale');
-const LOCALES = ['it', 'de', 'fr', 'es', 'zh'];
+const LOCALES = ['it', 'de', 'fr', 'es', 'zh', 'pt'];
 
 const dictionary = JSON.parse(await readFile(join(root, 'tools/i18n-translations.json'), 'utf8'));
 const source = await readFile(join(localeDir, 'messages.xlf'), 'utf8');

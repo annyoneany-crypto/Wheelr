@@ -723,7 +723,7 @@
         <target>Una ruota avvolta dalla coda fiammeggiante della volpe spirituale. Spicchi viola, oro e rossi che restano esattamente come li ha disegnati la community: tu scegli solo i nomi.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">199</context>
+          <context context-type="linenumber">207</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry1" datatype="html">
@@ -731,7 +731,7 @@
         <target>Brace</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">242</context>
+          <context context-type="linenumber">250</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry2" datatype="html">
@@ -739,7 +739,7 @@
         <target>Ametista</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">243</context>
+          <context context-type="linenumber">251</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry3" datatype="html">
@@ -747,7 +747,7 @@
         <target>Kitsune</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">244</context>
+          <context context-type="linenumber">252</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry4" datatype="html">
@@ -755,7 +755,7 @@
         <target>Coda d'oro</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">245</context>
+          <context context-type="linenumber">253</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry5" datatype="html">
@@ -763,7 +763,7 @@
         <target>Fiamma spirituale</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">246</context>
+          <context context-type="linenumber">254</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry6" datatype="html">
@@ -771,7 +771,7 @@
         <target>Volpe lunare</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">247</context>
+          <context context-type="linenumber">255</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.community" datatype="html">
@@ -779,7 +779,7 @@
         <target>Community Supercycle (real)</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">255</context>
+          <context context-type="linenumber">263</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.tagline" datatype="html">
@@ -787,7 +787,7 @@
         <target>Verde neon, bianco, acciaio e nero</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">256</context>
+          <context context-type="linenumber">264</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.description" datatype="html">
@@ -795,7 +795,7 @@
         <target>Una ruota dentro l'anello al neon della community Supercycle (real), con la sua freccia come puntatore. Spicchi verdi, bianchi, grigi e neri che restano esattamente come li ha disegnati la community: tu scegli solo i nomi.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">297</context>
+          <context context-type="linenumber">308</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.community" datatype="html">
@@ -803,7 +803,7 @@
         <target>Community RED</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">348</context>
+          <context context-type="linenumber">359</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.tagline" datatype="html">
@@ -811,7 +811,7 @@
         <target>Rosso, argento e nero</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">349</context>
+          <context context-type="linenumber">360</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.description" datatype="html">
@@ -819,7 +819,7 @@
         <target>Una ruota incastonata nell'anello d'argento inciso della community RED, sotto il suo distintivo rosso. Spicchi rossi, argento e neri che restano esattamente come li ha disegnati la community: tu scegli solo i nomi.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">395</context>
+          <context context-type="linenumber">409</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry1" datatype="html">
@@ -827,7 +827,7 @@
         <target>Rubino</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">437</context>
+          <context context-type="linenumber">451</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry2" datatype="html">
@@ -835,7 +835,7 @@
         <target>Scarlatto</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">438</context>
+          <context context-type="linenumber">452</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry3" datatype="html">
@@ -843,7 +843,7 @@
         <target>Stella Rossa</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">439</context>
+          <context context-type="linenumber">453</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry4" datatype="html">
@@ -851,7 +851,7 @@
         <target>Cremisi</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">440</context>
+          <context context-type="linenumber">454</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry5" datatype="html">
@@ -859,7 +859,7 @@
         <target>Rosso Fortunato</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">441</context>
+          <context context-type="linenumber">455</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry6" datatype="html">
@@ -867,7 +867,7 @@
         <target>Gran Vincita</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">442</context>
+          <context context-type="linenumber">456</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.list.kicker" datatype="html">

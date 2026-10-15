@@ -18,7 +18,7 @@
 export type CommunityText = string | Partial<Record<CommunityTextLanguage, string>>;
 
 /** The site's languages, as `SiteLocale.hreflang`. */
-export type CommunityTextLanguage = 'en' | 'it' | 'de' | 'fr' | 'es' | 'zh';
+export type CommunityTextLanguage = 'en' | 'it' | 'de' | 'fr' | 'es' | 'zh' | 'pt';
 
 /** A run of text, bold or not. */
 export interface CommunityTextSpan {

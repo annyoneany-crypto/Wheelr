@@ -723,7 +723,7 @@
         <target>被灵狐火焰尾巴环绕的转盘。紫色、金色和红色的扇区完全保持社区设计的样子——你只需选择条目。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">199</context>
+          <context context-type="linenumber">207</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry1" datatype="html">
@@ -731,7 +731,7 @@
         <target>余烬</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">242</context>
+          <context context-type="linenumber">250</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry2" datatype="html">
@@ -739,7 +739,7 @@
         <target>紫水晶</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">243</context>
+          <context context-type="linenumber">251</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry3" datatype="html">
@@ -747,7 +747,7 @@
         <target>九尾狐</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">244</context>
+          <context context-type="linenumber">252</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry4" datatype="html">
@@ -755,7 +755,7 @@
         <target>金尾</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">245</context>
+          <context context-type="linenumber">253</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry5" datatype="html">
@@ -763,7 +763,7 @@
         <target>灵焰</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">246</context>
+          <context context-type="linenumber">254</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.fox-spirit.entry6" datatype="html">
@@ -771,7 +771,7 @@
         <target>月狐</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">247</context>
+          <context context-type="linenumber">255</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.community" datatype="html">
@@ -779,7 +779,7 @@
         <target>Supercycle (real) 社区</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">255</context>
+          <context context-type="linenumber">263</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.tagline" datatype="html">
@@ -787,7 +787,7 @@
         <target>霓虹绿、白、钢灰与黑</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">256</context>
+          <context context-type="linenumber">264</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.supercycle.description" datatype="html">
@@ -795,7 +795,7 @@
         <target>位于 Supercycle (real) 社区霓虹环中的转盘，以社区的箭头作为指针。绿色、白色、灰色和黑色扇区完全保持社区设计的样子——你只需选择条目。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">297</context>
+          <context context-type="linenumber">308</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.community" datatype="html">
@@ -803,7 +803,7 @@
         <target>RED 社区</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">348</context>
+          <context context-type="linenumber">359</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.tagline" datatype="html">
@@ -811,7 +811,7 @@
         <target>红、银与黑</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">349</context>
+          <context context-type="linenumber">360</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.description" datatype="html">
@@ -819,7 +819,7 @@
         <target>镶嵌在 RED 社区雕花银环中的转盘，上方是社区的红色徽章。红色、银色和黑色扇区完全保持社区设计的样子——你只需选择条目。</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">395</context>
+          <context context-type="linenumber">409</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry1" datatype="html">
@@ -827,7 +827,7 @@
         <target>红宝石</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">437</context>
+          <context context-type="linenumber">451</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry2" datatype="html">
@@ -835,7 +835,7 @@
         <target>猩红</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">438</context>
+          <context context-type="linenumber">452</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry3" datatype="html">
@@ -843,7 +843,7 @@
         <target>红星</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">439</context>
+          <context context-type="linenumber">453</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry4" datatype="html">
@@ -851,7 +851,7 @@
         <target>深红</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">440</context>
+          <context context-type="linenumber">454</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry5" datatype="html">
@@ -859,7 +859,7 @@
         <target>幸运红</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">441</context>
+          <context context-type="linenumber">455</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.red.entry6" datatype="html">
@@ -867,7 +867,7 @@
         <target>大奖</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/community-wheels/community-wheels.data.ts</context>
-          <context context-type="linenumber">442</context>
+          <context context-type="linenumber">456</context>
         </context-group>
       </trans-unit>
       <trans-unit id="community.list.kicker" datatype="html">

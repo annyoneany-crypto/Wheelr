@@ -112,6 +112,10 @@
           "zh": {
             "translation": "src/locale/messages.zh.xlf",
             "subPath": "zh"
+          },
+          "pt": {
+            "translation": "src/locale/messages.pt.xlf",
+            "subPath": "pt"
           }
         }
       }

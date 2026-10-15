@@ -23,7 +23,7 @@ const ORIGIN = 'https://www.wheelr.xyz';
  * Locale subpaths, mirroring `angular.json` and `src/app/services/i18n.config.ts`.
  * The source locale lives at the root, so its prefix is empty.
  */
-const LOCALE_SUBPATHS = ['', 'it', 'de', 'fr', 'es', 'zh'];
+const LOCALE_SUBPATHS = ['', 'it', 'de', 'fr', 'es', 'zh', 'pt'];
 
 function localized(subPath, loc) {
   const prefix = subPath ? `/${subPath}` : '';

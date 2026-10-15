@@ -182,6 +182,14 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
           - 放松身心：享受语音聊天，畅谈各自的爱好。
           - 积极参与：贡献想法和反馈，共同塑造社群的未来。
         `,
+        pt: `
+          Fox Spirits é um espaço inclusivo e dinâmico pensado para streamers, gamers, fãs de anime, entusiastas de cripto, fotógrafos e criativos. Os principais objetivos do grupo são:
+
+          - Socializar e jogar: encontrar parceiros de jogo e fazer novas amizades.
+          - Crescer juntos: compartilhar conteúdo, fazer networking e trocar ideias.
+          - Curtir e relaxar: aproveitar os chats de voz e conversar sobre as suas paixões.
+          - Participar ativamente: contribuir com ideias e feedback para moldar o futuro da comunidade.
+        `,
       },
       links: [
       {
@@ -275,6 +283,9 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
         zh: `
           Supercycle 是一个专属而充满活力的空间，汇聚了 $Super 代币的所有爱好者和支持者。这不仅仅是一个社群，更是一个由创始人愿景驱动的完整生态系统——创始人开发了一系列创新工具和战略机制，专门用于围绕该代币创造真实、可持续的价值。
         `,
+        pt: `
+          Supercycle é o espaço exclusivo e vibrante que reúne todos os entusiastas e apoiadores do token $Super. Não é apenas uma comunidade, mas um verdadeiro ecossistema movido pela visão do fundador, que desenvolveu uma ampla gama de ferramentas inovadoras e mecanismos estratégicos pensados especificamente para gerar valor real e sustentável em torno do token.
+        `,
       },
       links: [
       {
@@ -367,6 +378,9 @@ export const COMMUNITY_WHEELS: readonly CommunityWheel[] = [
         `,
         zh: `
           RED社区建立在Avalanche生态系统之上，致力于为NFT持有者打造互助互惠的环境。在vRoshi和Bronzeagle的专业指导下，RED的目标是成为Avalanche和NFT爱好者的聚集地。
+        `,
+        pt: `
+          A comunidade RED, construída sobre o ecossistema Avalanche, tem o compromisso de criar um ambiente de apoio mútuo para os detentores dos seus NFTs. Sob a liderança experiente de vRoshi e Bronzeagle, a RED quer se tornar um ponto de encontro para os entusiastas de Avalanche e de NFTs.
         `,
       },
       links: [
