@@ -11,10 +11,12 @@
     <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3" i18n-aria-label="@@community.list.grid" aria-label="Community wheels">
       @for (wheel of wheels; track wheel.slug) {
         <li>
-          <a
-            [routerLink]="['/community', wheel.slug]"
-            class="group flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-[0_12px_36px_rgba(245,158,11,0.14)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-300/60"
-            [attr.aria-label]="labels.open(wheel.name)">
+          <!-- The card is not itself a link: its social links must stay real,
+               separately clickable anchors, and anchors cannot nest. The title
+               link stretches over the whole card instead (::after), and the
+               social links sit above it. -->
+          <article
+            class="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] transition-all duration-300 hover:-translate-y-1 hover:border-amber-400/40 hover:shadow-[0_12px_36px_rgba(245,158,11,0.14)] has-[.wl-card-link:focus-visible]:ring-2 has-[.wl-card-link:focus-visible]:ring-amber-300/60">
             <div
               class="flex justify-center px-6 pt-6"
               [style.background]="backgrounds.get(wheel.slug)">
@@ -52,20 +54,42 @@
             </div>
             <div class="flex flex-1 flex-col bg-gradient-to-b from-white/[0.05] to-transparent p-5">
               <p class="text-[0.65rem] uppercase tracking-[0.2em] text-amber-300/70 font-semibold">{{ wheel.community }}</p>
-              <h2 class="mt-1 text-lg font-bold text-white transition-colors group-hover:text-amber-300">{{ wheel.emoji }} {{ wheel.name }}</h2>
+              <h2 class="mt-1 text-lg font-bold text-white transition-colors group-hover:text-amber-300">
+                <a
+                  [routerLink]="['/community', wheel.slug]"
+                  class="wl-card-link focus-visible:outline-none after:absolute after:inset-0 after:content-['']"
+                  [attr.aria-label]="labels.open(wheel.name)">{{ wheel.emoji }} {{ wheel.name }}</a>
+              </h2>
               <p class="mt-2 text-sm leading-relaxed text-white/60">{{ wheel.tagline }}</p>
+              @if (wheel.info.links.length) {
+                <ul class="relative z-10 mt-4 flex flex-wrap gap-2" [attr.aria-label]="labels.links(wheel.community)">
+                  @for (link of wheel.info.links; track link.url) {
+                    <li>
+                      <a
+                        [href]="link.url"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white/75 transition-all duration-200 hover:border-amber-400/50 hover:bg-amber-400/15 hover:text-amber-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-amber-400 active:scale-95"
+                        [attr.aria-label]="labels.link(link.label ?? linkKinds[link.kind].label)"
+                        [title]="link.label ?? linkKinds[link.kind].label">
+                        <i [class]="linkKinds[link.kind].icon" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                  }
+                </ul>
+              }
               <div class="mt-4 flex items-center justify-between gap-3">
                 <span class="flex gap-1.5" aria-hidden="true">
                   @for (color of wheel.palette.colors; track $index) {
                     <span class="h-4 w-4 rounded-full border border-white/20" [style.backgroundColor]="color"></span>
                   }
                 </span>
-                <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200">
+                <span class="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-[0.14em] text-amber-200" aria-hidden="true">
                   <span i18n="@@community.list.open">Open</span><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                 </span>
               </div>
             </div>
-          </a>
+          </article>
         </li>
       }
     </ul>

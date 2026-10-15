@@ -20,7 +20,7 @@ import { NativePlatformService } from '../../../services/native-platform.service
 import { SeoService } from '../../../services/seo.service';
 import { drawWheelCanvas } from '../../../shared/extraction-effect/wheel-renderer';
 import {
-  CommunityLinkKind,
+  COMMUNITY_LINK_KINDS,
   CommunityWheel,
   backgroundCss,
   findCommunityWheel,
@@ -169,16 +169,7 @@ export class CommunityWheelPage {
   protected readonly infoOpen = signal(false);
 
   /** Icon and default label of each kind of community link. */
-  protected readonly linkKinds: Record<CommunityLinkKind, { icon: string; label: string }> = {
-    website: { icon: 'fa-solid fa-globe', label: $localize`:@@community.info.link.website:Website` },
-    discord: { icon: 'fa-brands fa-discord', label: 'Discord' },
-    x: { icon: 'fa-brands fa-x-twitter', label: 'X' },
-    telegram: { icon: 'fa-brands fa-telegram', label: 'Telegram' },
-    youtube: { icon: 'fa-brands fa-youtube', label: 'YouTube' },
-    twitch: { icon: 'fa-brands fa-twitch', label: 'Twitch' },
-    instagram: { icon: 'fa-brands fa-instagram', label: 'Instagram' },
-    tiktok: { icon: 'fa-brands fa-tiktok', label: 'TikTok' },
-  };
+  protected readonly linkKinds = COMMUNITY_LINK_KINDS;
 
   /** Inputs of the names drawer, mirroring the main wheel's users panel. */
   protected readonly newName = signal('');

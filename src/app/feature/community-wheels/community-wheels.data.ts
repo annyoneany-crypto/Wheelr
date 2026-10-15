@@ -47,6 +47,21 @@ export type CommunityLinkKind =
   | 'instagram'
   | 'tiktok';
 
+/**
+ * Icon (FontAwesome Free) and default label of each kind of link. Shared by the
+ * list cards and the wheel page's info popup, so both show the same icon.
+ */
+export const COMMUNITY_LINK_KINDS: Record<CommunityLinkKind, { icon: string; label: string }> = {
+  website: { icon: 'fa-solid fa-globe', label: $localize`:@@community.info.link.website:Website` },
+  discord: { icon: 'fa-brands fa-discord', label: 'Discord' },
+  x: { icon: 'fa-brands fa-x-twitter', label: 'X' },
+  telegram: { icon: 'fa-brands fa-telegram', label: 'Telegram' },
+  youtube: { icon: 'fa-brands fa-youtube', label: 'YouTube' },
+  twitch: { icon: 'fa-brands fa-twitch', label: 'Twitch' },
+  instagram: { icon: 'fa-brands fa-instagram', label: 'Instagram' },
+  tiktok: { icon: 'fa-brands fa-tiktok', label: 'TikTok' },
+};
+
 export interface CommunityLink {
   kind: CommunityLinkKind;
   /** Full https URL, supplied by the community — never guessed. */

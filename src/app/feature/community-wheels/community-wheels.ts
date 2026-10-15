@@ -1,6 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { COMMUNITY_WHEELS, CommunityWheel, backgroundCss, frameLayout } from './community-wheels.data';
+import {
+  COMMUNITY_LINK_KINDS,
+  COMMUNITY_WHEELS,
+  CommunityWheel,
+  backgroundCss,
+  frameLayout,
+} from './community-wheels.data';
 
 /**
  * `/community`: the list of community wheels, each opening its own page.
@@ -22,7 +28,12 @@ export class CommunityWheels {
 
   protected readonly labels = {
     open: (name: string) => $localize`:@@community.list.openAria:Open the ${name}:NAME: wheel`,
+    links: (community: string) => $localize`:@@community.list.linksAria:${community}:COMMUNITY: links`,
+    link: (label: string) => $localize`:@@community.list.linkAria:${label}:LINK: (opens in a new tab)`,
   };
+
+  /** Same icons as the info popup on each wheel's page. */
+  protected readonly linkKinds = COMMUNITY_LINK_KINDS;
 
   protected readonly layouts = new Map(
     COMMUNITY_WHEELS.map((wheel) => [wheel.slug, frameLayout(wheel.frame)])

@@ -11486,5 +11486,19 @@
     "fr": "Roues communautaires",
     "es": "Ruletas de comunidad",
     "zh": "社区转盘"
+  },
+  "community.list.linksAria": {
+    "it": "Link di {COMMUNITY}",
+    "de": "Links von {COMMUNITY}",
+    "fr": "Liens de {COMMUNITY}",
+    "es": "Enlaces de {COMMUNITY}",
+    "zh": "{COMMUNITY} 的链接"
+  },
+  "community.list.linkAria": {
+    "it": "{LINK} (si apre in una nuova scheda)",
+    "de": "{LINK} (öffnet in einem neuen Tab)",
+    "fr": "{LINK} (s'ouvre dans un nouvel onglet)",
+    "es": "{LINK} (se abre en una pestaña nueva)",
+    "zh": "{LINK}（在新标签页中打开）"
   }
 }
