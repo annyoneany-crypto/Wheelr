@@ -37,7 +37,7 @@
 
 
 <div
-  class="min-h-screen text-white font-sans
+  class="wl-wheel-stage min-h-screen min-h-dvh text-white font-sans
     flex flex-col items-center justify-center
     p-4 overflow-hidden bg-cover bg-center bg-no-repeat
     transition-all duration-500"
@@ -148,7 +148,7 @@
   } @else {
     @switch (premium.renderedWheelView()) {
       @case ('linear') {
-        <wl-linear-wheel>
+        <wl-linear-wheel #linearView>
           <wl-fire-effect></wl-fire-effect>
         </wl-linear-wheel>
       }
@@ -163,7 +163,7 @@
         </wl-wheel-pumpkin>
       }
       @case ('cards') {
-        <wl-cards-effect>
+        <wl-cards-effect #cardsView>
           <wl-fire-effect></wl-fire-effect>
         </wl-cards-effect>
       }
@@ -304,7 +304,9 @@
 }
 
 @if(showPanelSettings()){
-  <div class="fixed inset-0 bg-black/60 pointer-events-none z-49" [class.wl-ui-hidden]="uiChromeHidden()"></div>
+  <!-- On phones the backdrop is lighter (the wheel stays visible above the sheet)
+       and tapping it closes the sheet; on desktop it only dims. -->
+  <div class="fixed inset-0 bg-black/35 lg:bg-black/60 lg:pointer-events-none z-49" [class.wl-ui-hidden]="uiChromeHidden()" (click)="closePanel()"></div>
 }
 
 <wl-wheel-button
@@ -316,6 +318,11 @@
   [uiChromeToggleAriaLabel]="uiChromeToggleAriaLabel()"
   [canShowQrButton]="canShowQrButton()"
   [qrModalOpen]="qrModalOpen()"
+  [isSpinning]="wheelConfigurator.isSpinning() || wheelConfigurator.countdownInProgress()"
+  [canSpin]="wheelConfigurator.names().length > 0"
+  [winners]="winnerHistory()"
+  [showWinners]="wheelConfigurator.showWinnersList()"
+  (spinRequested)="spinFromBar()"
   (togglePanelRequested)="togglePaletSettings($event)"
   (closePanelRequested)="closePanel()"
   (usersButtonTransitionEnd)="closeUserPaneltransitionEnd()"

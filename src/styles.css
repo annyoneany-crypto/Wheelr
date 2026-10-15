@@ -13,16 +13,32 @@
 @import "@fontsource/inter/latin-400.css";
 @import "@fontsource/inter/latin-700.css";
 
-/* Geometry of the mobile bottom bar (see wheel-button.css). It has to clear the
-   SEO footer, which the web build pins to the bottom of the viewport — the
-   Android build strips that footer, so there the bar sits flush. */
+/* Geometry of the mobile bottom bar (see wheel-button.css) and of the SEO
+   footer's collapsed strip. On desktop the web build pins that 3rem strip to
+   the bottom of the viewport and bottom-anchored UI clears it. Below lg the
+   strip collapses to nothing (its content stays in the render tree, the header
+   menu opens it), so the bar sits flush — as it always does in the Android
+   build, which does not render the footer at all. */
 :root {
-  --wl-bottom-bar-height: 3.5rem;
+  --wl-bottom-bar-height: 3.75rem;
   --wl-bottom-bar-offset: 3rem;
+  --wl-footer-collapsed: 3rem;
 }
 
 :root.capacitor-native {
   --wl-bottom-bar-offset: 0rem;
+}
+
+@media (max-width: 1023.98px) {
+  :root {
+    --wl-bottom-bar-offset: 0rem;
+    --wl-footer-collapsed: 0rem;
+  }
+}
+
+/* No grey flash on tap in mobile browsers; every control has its own :active state. */
+html {
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -347,4 +363,13 @@ body.immersive-ui-hidden .wl-site-footer {
   visibility: hidden;
   pointer-events: none;
   transform: translateY(16px);
+}
+
+/* Phones: the floating app banner would cover the spin and the winner card. */
+@media (max-width: 1023.98px) {
+  /* `visibility`, not `opacity`: the banner's entrance animation fills both ways
+     and would keep overriding an opacity set here. */
+  body.wl-wheel-busy .wl-app-banner {
+    visibility: hidden;
+  }
 }

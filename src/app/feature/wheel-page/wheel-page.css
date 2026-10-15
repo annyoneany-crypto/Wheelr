@@ -27,3 +27,16 @@
     );
   }
 }
+
+/* Phones: the wheel is centred in the space left between the fixed header and
+   the bottom bar (whose spin button rises ~1.6rem above it), not the whole
+   screen, so it never slides under either. */
+@media (max-width: 1023.98px) {
+  .wl-wheel-stage {
+    padding-top: 4.5rem;
+    padding-bottom: calc(
+      var(--wl-bottom-bar-offset) + var(--wl-bottom-bar-height) +
+      env(safe-area-inset-bottom) + 1.75rem
+    );
+  }
+}

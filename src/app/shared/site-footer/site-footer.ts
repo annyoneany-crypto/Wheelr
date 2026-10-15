@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { NativePlatformService } from '../../services/native-platform.service';
+import { SiteFooterState } from './site-footer-state';
 
 /**
  * The fixed footer with the expandable summary of what Wheelr does.
@@ -11,7 +12,9 @@ import { NativePlatformService } from '../../services/native-platform.service';
  * routes through `routerLink`, so `<base href>` keeps visitors in their language.
  *
  * Inside the Android shell it is not rendered at all: nothing crawls the app,
- * and a 3rem bar would eat screen the wheel needs. `index.html` still tags the
+ * and a 3rem bar would eat screen the wheel needs. On the web below lg the
+ * collapsed bar has zero height for the same reason (`--wl-footer-collapsed`);
+ * the content stays in the render tree and the header menu opens it. `index.html` still tags the
  * root with `capacitor-native` before first paint, which is what zeroes
  * `--wl-bottom-bar-offset` for the mobile controls.
  */
@@ -25,7 +28,7 @@ import { NativePlatformService } from '../../services/native-platform.service';
 export class WlSiteFooter {
   protected readonly isNative = inject(NativePlatformService).isNative;
 
-  protected readonly expanded = signal(false);
+  protected readonly expanded = inject(SiteFooterState).expanded;
 
   protected readonly toggleLabel = computed(() =>
     this.expanded()

@@ -364,20 +364,6 @@
     "es": "Controles de la rueda",
     "zh": "转盘控件"
   },
-  "bar.home": {
-    "it": "Chiudi le impostazioni e mostra la ruota",
-    "de": "Einstellungen schließen und Rad anzeigen",
-    "fr": "Fermer les réglages et afficher la roue",
-    "es": "Cerrar los ajustes y mostrar la rueda",
-    "zh": "关闭设置并显示转盘"
-  },
-  "bar.home.label": {
-    "it": "Ruota",
-    "de": "Start",
-    "fr": "Accueil",
-    "es": "Inicio",
-    "zh": "首页"
-  },
   "qr.open": {
     "it": "Apri il codice QR della ruota",
     "de": "QR-Code des Rads öffnen",
@@ -11430,5 +11416,75 @@
     "fr": "Gros Lot",
     "es": "Gran Premio",
     "zh": "大奖"
+  },
+  "bar.spin.label": {
+    "it": "Gira",
+    "de": "Drehen",
+    "fr": "Tourner",
+    "es": "Girar",
+    "zh": "旋转"
+  },
+  "bar.spin.aria": {
+    "it": "Gira la ruota",
+    "de": "Rad drehen",
+    "fr": "Faire tourner la roue",
+    "es": "Girar la rueda",
+    "zh": "旋转转盘"
+  },
+  "bar.more.label": {
+    "it": "Altro",
+    "de": "Mehr",
+    "fr": "Plus",
+    "es": "Más",
+    "zh": "更多"
+  },
+  "bar.more.aria": {
+    "it": "Apri altre opzioni",
+    "de": "Weitere Optionen öffnen",
+    "fr": "Ouvrir plus d'options",
+    "es": "Abrir más opciones",
+    "zh": "打开更多选项"
+  },
+  "more.qr": {
+    "it": "Codice QR",
+    "de": "QR-Code",
+    "fr": "Code QR",
+    "es": "Código QR",
+    "zh": "二维码"
+  },
+  "more.hideUi": {
+    "it": "Nascondi controlli",
+    "de": "Steuerung ausblenden",
+    "fr": "Masquer les commandes",
+    "es": "Ocultar controles",
+    "zh": "隐藏控件"
+  },
+  "header.menu.about": {
+    "it": "Cos'è Wheelr",
+    "de": "Über Wheelr",
+    "fr": "À propos de Wheelr",
+    "es": "Acerca de Wheelr",
+    "zh": "关于 Wheelr"
+  },
+  "header.menu.language": {
+    "it": "Lingua",
+    "de": "Sprache",
+    "fr": "Langue",
+    "es": "Idioma",
+    "zh": "语言"
+  },
+  "more.templates": {
+    "it": "Ruote pronte",
+    "de": "Fertige Räder",
+    "fr": "Roues prêtes",
+    "es": "Ruedas listas",
+    "zh": "现成转盘"
+  },
+  "more.community": {
+    "it": "Ruote community",
+    "de": "Community-Räder",
+    "fr": "Roues communautaires",
+    "es": "Ruletas de comunidad",
+    "zh": "社区转盘"
   }
 }

@@ -5,10 +5,10 @@
   Translatable text sits on single lines, like the other content pages.
 -->
 @if (!isNative) {
-<footer class="wl-site-footer block fixed inset-x-0 bottom-0 z-50" i18n-aria-label="@@footer.region" aria-label="Site footer">
+<footer class="wl-site-footer block fixed inset-x-0 bottom-0 z-[52]" i18n-aria-label="@@footer.region" aria-label="Site footer">
   <div
     class="overflow-hidden border-t border-white/[0.08] text-white transition-all duration-300 ease-out"
-    [style.height]="expanded() ? '80vh' : '3rem'">
+    [style.height]="expanded() ? '80vh' : 'var(--wl-footer-collapsed)'">
     <div class="h-12 px-6 flex items-center justify-between gap-6 bg-neutral-950/70 backdrop-blur-xl">
       <span class="min-w-0 truncate text-sm md:text-base text-white/60 hover:text-amber-400/80 transition-colors">
         <a href="https://x.com/AnnyoneAny" target="_blank" rel="noopener noreferrer" i18n="@@footer.copyright">Copyright © 2026 AnnyoneAny. All rights reserved</a>

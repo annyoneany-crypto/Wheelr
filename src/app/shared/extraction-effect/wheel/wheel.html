@@ -279,7 +279,8 @@
           <span i18n="@@wheel.zoomOut">Zoom out</span>
         </button>
       } @else if (!wheelConfigurator.winner()) {
-        <p class="text-white/70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] uppercase tracking-[0.2em] font-medium text-sm transition-opacity duration-300 hover:text-white/90">
+        <!-- Phones have the bar's spin button right below; the hint would only repeat it. -->
+        <p class="max-lg:hidden text-white/70 drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] uppercase tracking-[0.2em] font-medium text-sm transition-opacity duration-300 hover:text-white/90">
           <i class="fa-solid fa-hand-pointer mr-2 text-amber-400/60" aria-hidden="true"></i><span i18n="@@wheel.clickToSpin">Click the wheel to spin</span>
         </p>
       }

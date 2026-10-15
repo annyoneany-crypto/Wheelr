@@ -8,6 +8,7 @@ import {
   PLATFORM_ID,
   signal,
   untracked,
+  viewChild,
   viewChildren,
   ChangeDetectionStrategy,
 } from '@angular/core';
@@ -63,6 +64,9 @@ export class WheelPage {
   /** False while prerendering: no window to measure, no frame to animate. */
   private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
   previewCanvasRefs = viewChildren<ElementRef<HTMLCanvasElement>>('previewWheelCanvas');
+  /** The linear and cards views run their own extraction; the bar's spin button delegates to them. */
+  private readonly linearView = viewChild<LinearWheel>('linearView');
+  private readonly cardsView = viewChild<CardsEffect>('cardsView');
 
   showPanelSettings = signal<boolean>(false);
   displyPanel = signal<boolean>(true);
@@ -395,6 +399,20 @@ export class WheelPage {
    * (via the fire-effect dismiss button), also clear that workspace's entry in
    * previewWinners so the glow disappears.
    */
+  /**
+   * Tags <body> while a spin or a winner card is on screen, so shell-level
+   * floating UI (the app banner on phones) can step out of the way.
+   */
+  private readonly wheelBusyClassEffect = effect(() => {
+    const busy =
+      this.wheelConfigurator.isSpinning() ||
+      this.wheelConfigurator.countdownInProgress() ||
+      !!this.wheelConfigurator.winner();
+    if (this.isBrowser) {
+      document.body.classList.toggle('wl-wheel-busy', busy);
+    }
+  });
+
   private readonly winnerDismissEffect = effect(() => {
     if (!this.showIndependentPreview()) return;
     this.wheelConfigurator.winnerDismissCount(); // subscribe to dismiss events
@@ -472,6 +490,9 @@ export class WheelPage {
 
   ngOnDestroy(): void {
     this.syncGlobalUiChromeClass(false);
+    if (this.isBrowser) {
+      document.body.classList.remove('wl-wheel-busy');
+    }
 
     if (this.idleAnimationFrameId !== null) {
       cancelAnimationFrame(this.idleAnimationFrameId);
@@ -600,7 +621,9 @@ export class WheelPage {
       : isMobile
       ? 20
       : 180;
-    const verticalUiReserve = visibleWheelCount > 1 ? (isMobile ? 120 : 170) : isMobile ? 130 : 140;
+    // Phones: header + context chip on top, bottom bar and its raised spin button
+    // below, plus each cell's padding — stacked wheels must all fit between them.
+    const verticalUiReserve = visibleWheelCount > 1 ? (isMobile ? 260 : 170) : isMobile ? 130 : 140;
 
     const usableWidth = Math.max(220, viewportWidth - horizontalUiReserve);
     const usableHeight = Math.max(220, viewportHeight - verticalUiReserve);
@@ -887,14 +910,46 @@ export class WheelPage {
     return this.showPanelSettings() && this.currentPanelPath() === path;
   }
 
+  /** Same ids as the bottom-bar captions, so the sheet title matches the tab that opened it. */
   panelTitle(): string {
     const path = this.currentPanelPath();
-    if (path === 'users') return 'Users';
-    if (path === 'color-settings') return 'Colors';
-    if (path === 'effects') return 'Effects';
-    if (path === 'sound') return 'Audio';
-    if (path === 'wheel-manager') return 'Wheels';
+    if (path === 'users') return $localize`:@@bar.panel.users.caption:Names`;
+    if (path === 'color-settings') return $localize`:@@bar.panel.colors.caption:Colors`;
+    if (path === 'effects') return $localize`:@@bar.panel.effects.caption:Effects`;
+    if (path === 'sound') return $localize`:@@bar.panel.sound.caption:Sound`;
+    if (path === 'wheel-manager') return $localize`:@@bar.panel.wheels.caption:Wheels`;
     return 'Settings';
+  }
+
+  /**
+   * The mobile bar's spin button. Closes any open sheet first so the spin is
+   * actually seen, then spins whatever is on screen the same way tapping it would.
+   */
+  spinFromBar(): void {
+    if (this.showPanelSettings()) {
+      this.closePanel();
+    }
+
+    // A winner card still on screen would cover the new spin.
+    if (this.wheelConfigurator.winner()) {
+      this.wheelConfigurator.resetWinnerEffect();
+    }
+
+    if (this.showIndependentPreview()) {
+      void this.onPreviewWheelClick(this.wheelConfigurator.activeWheelId());
+      return;
+    }
+
+    switch (this.premium.renderedWheelView()) {
+      case 'linear':
+        this.linearView()?.spin();
+        return;
+      case 'cards':
+        this.cardsView()?.startExtraction();
+        return;
+      default:
+        this.wheelConfigurator.spinWheel();
+    }
   }
 
   private syncPanelStateFromRoute(): void {

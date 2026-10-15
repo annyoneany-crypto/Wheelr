@@ -1,24 +1,16 @@
 <!-- ── Mobile: bottom navigation bar ──────────────────────────────────────────
-     Below lg the rail would crowd the wheel on a phone, so the same actions
-     become a thumb-reachable bar. Home closes whatever panel is open. -->
-<nav class="wl-bottom-bar lg:hidden fixed inset-x-0 z-50
+     Below lg the rail would crowd the wheel on a phone, so the actions become a
+     thumb-reachable bar built around one big spin button. The two most used
+     panels sit left of it, effects and a "More" sheet (sound, wheels, QR, hide
+     controls, recent winners) right of it. -->
+<nav class="wl-bottom-bar lg:hidden fixed inset-x-0 z-[51]
   flex items-stretch
-  border-t border-white/[0.08] bg-neutral-950/85 backdrop-blur-xl
+  border-t border-white/[0.08] bg-neutral-950/90 backdrop-blur-xl
   transition-all duration-300 ease-in-out"
   [class.wl-ui-hidden]="uiChromeHidden()"
   i18n-aria-label="@@bar.controls" aria-label="Wheel controls">
 
-  <button type="button"
-    class="wl-bottom-bar-item"
-    [class.wl-bottom-bar-item-active]="isHomeActive()"
-    i18n-aria-label="@@bar.home" aria-label="Close settings panel and show the wheel"
-    [attr.aria-current]="isHomeActive() ? 'true' : null"
-    (click)="requestClosePanel()">
-    <i class="fa-solid fa-house" aria-hidden="true"></i>
-    <span i18n="@@bar.home.label">Home</span>
-  </button>
-
-  @for (action of panelActions; track action.path) {
+  @for (action of barActionsStart; track action.path) {
     <button type="button"
       class="wl-bottom-bar-item"
       [class.wl-bottom-bar-item-active]="isPanelActive(action.path)"
@@ -30,42 +22,121 @@
       <span>{{ action.caption }}</span>
     </button>
   }
+
+  <!-- Spin: raised above the bar, always in reach of the thumb. -->
+  <div class="wl-bottom-bar-spin-slot">
+    <button type="button"
+      class="wl-spin-fab"
+      [class.wl-spin-fab-busy]="isSpinning()"
+      [disabled]="!canSpin() || isSpinning()"
+      i18n-aria-label="@@bar.spin.aria" aria-label="Spin the wheel"
+      (click)="requestSpin()">
+      <i class="fa-solid fa-rotate-right" [class.fa-spin]="isSpinning()" aria-hidden="true"></i>
+      <span i18n="@@bar.spin.label">Spin</span>
+    </button>
+  </div>
+
+  @for (action of barActionsEnd; track action.path) {
+    <button type="button"
+      class="wl-bottom-bar-item"
+      [class.wl-bottom-bar-item-active]="isPanelActive(action.path)"
+      [attr.aria-label]="action.ariaLabel"
+      [attr.aria-current]="isPanelActive(action.path) ? 'true' : null"
+      (click)="requestTogglePanel(action.path)">
+      <i class="fa-solid" [class]="action.icon" aria-hidden="true"></i>
+      <span>{{ action.caption }}</span>
+    </button>
+  }
+
+  <button type="button"
+    class="wl-bottom-bar-item"
+    [class.wl-bottom-bar-item-active]="isMoreActive()"
+    [attr.aria-expanded]="moreSheetOpen()"
+    i18n-aria-label="@@bar.more.aria" aria-label="Open more options"
+    (click)="toggleMoreSheet()">
+    <i class="fa-solid fa-ellipsis" aria-hidden="true"></i>
+    <span i18n="@@bar.more.label">More</span>
+  </button>
 </nav>
 
-<!-- ── Mobile: floating utilities ─────────────────────────────────────────────
-     Deliberately kept off the bar: these are toggles, not destinations. The
-     chrome toggle stays reachable while the chrome is hidden — it is the only
-     way back. -->
-<div class="wl-rail-btn lg:hidden fixed flex z-50"
-  [class.top-26]="!uiChromeHidden()"
-  [class.top-10]="uiChromeHidden()"
-  [class.right-4]="!showPanelSettings()"
-  [class.right-[21rem]]="showPanelSettings()"
-  [class]="uiChromeHidden() ? 'wl-rail-btn-active' : ''"
-  role="button"
-  tabindex="0"
-  [attr.aria-label]="uiChromeToggleAriaLabel()"
-  [attr.aria-pressed]="uiChromeHidden()"
-  (click)="requestUiChromeToggle()"
-  (keydown.enter)="requestUiChromeToggle()"
-  (keydown.space)="requestUiChromeToggle(); $event.preventDefault()">
-  <i class="fa-solid" [class.fa-eye-slash]="!uiChromeHidden()" [class.fa-eye]="uiChromeHidden()" aria-hidden="true"></i>
-</div>
+<!-- ── Mobile: "More" sheet ─────────────────────────────────────────────────── -->
+@if (moreSheetOpen()) {
+  <div class="lg:hidden fixed inset-0 z-[48] bg-black/50 backdrop-blur-[2px]" (click)="closeMoreSheet()"></div>
+  <section
+    class="wl-more-sheet lg:hidden fixed inset-x-0 z-[49] rounded-t-3xl border-t border-white/10 bg-neutral-900/98
+      shadow-[0_-16px_40px_rgba(0,0,0,0.5)] px-4 pt-2 pb-8"
+    role="dialog"
+    aria-modal="true"
+    i18n-aria-label="@@bar.more.aria" aria-label="Open more options">
+    <div class="mx-auto mb-3 h-1.5 w-10 rounded-full bg-white/20" aria-hidden="true"></div>
 
-@if (canShowQrButton()) {
-  <div class="wl-rail-btn lg:hidden fixed top-42 flex z-50"
-    [class.wl-ui-hidden]="uiChromeHidden()"
-    [class.right-4]="!showPanelSettings()"
-    [class.right-[21rem]]="showPanelSettings()"
-    [class]="qrModalOpen() ? 'wl-rail-btn-active' : ''"
-    role="button"
-    tabindex="0"
-    i18n-aria-label="@@qr.open" aria-label="Open wheel QR code"
-    (click)="requestOpenQr()"
-    (keydown.enter)="requestOpenQr()"
-    (keydown.space)="requestOpenQr(); $event.preventDefault()">
-    <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
-  </div>
+    <div class="grid grid-cols-2 gap-2.5">
+      @for (action of moreActions; track action.path) {
+        <button type="button" class="wl-more-tile" [class.wl-more-tile-active]="isPanelActive(action.path)"
+          [attr.aria-label]="action.ariaLabel"
+          (click)="requestTogglePanel(action.path)">
+          <i class="fa-solid" [class]="action.icon" aria-hidden="true"></i>
+          <span>{{ action.caption }}</span>
+        </button>
+      }
+      <!-- Straight to the other ways of starting a wheel. -->
+      <a routerLink="/templates" class="wl-more-tile" (click)="closeMoreSheet()">
+        <i class="fa-solid fa-shapes" aria-hidden="true"></i>
+        <span i18n="@@more.templates">Ready-made wheels</span>
+      </a>
+      <a routerLink="/community" class="wl-more-tile" (click)="closeMoreSheet()">
+        <i class="fa-solid fa-users" aria-hidden="true"></i>
+        <span i18n="@@more.community">Community wheels</span>
+      </a>
+      @if (canShowQrButton()) {
+        <button type="button" class="wl-more-tile"
+          i18n-aria-label="@@qr.open" aria-label="Open wheel QR code"
+          (click)="requestOpenQr()">
+          <i class="fa-solid fa-qrcode" aria-hidden="true"></i>
+          <span i18n="@@more.qr">QR code</span>
+        </button>
+      }
+      <button type="button" class="wl-more-tile"
+        [attr.aria-label]="uiChromeToggleAriaLabel()"
+        (click)="requestUiChromeToggle()">
+        <i class="fa-solid fa-expand" aria-hidden="true"></i>
+        <span i18n="@@more.hideUi">Hide controls</span>
+      </button>
+    </div>
+
+    @if (showWinners()) {
+      <div class="mt-5">
+        <h2 class="mb-2 flex items-center justify-between text-xs font-bold uppercase tracking-[0.2em] text-white/60">
+          <span><i class="fa-solid fa-trophy mr-2 text-amber-400/70" aria-hidden="true"></i><span i18n="@@winnerPanel.title">Winners</span></span>
+          <span class="rounded-full border border-amber-400/30 bg-amber-400/10 px-2.5 py-0.5 text-amber-300 tracking-normal">{{ winners().length }}</span>
+        </h2>
+        @if (winners().length === 0) {
+          <p class="rounded-xl border border-white/[0.08] bg-white/[0.03] p-3 text-sm text-white/40" i18n="@@winnerPanel.empty">No winners yet. Start spinning to fill this list.</p>
+        } @else {
+          <ol class="max-h-[30dvh] space-y-1.5 overflow-y-auto">
+            @for (entry of recentWinners(); track entry.id) {
+              <li class="flex items-center justify-between gap-3 rounded-xl border border-white/[0.08] bg-white/[0.03] px-3 py-2">
+                <span class="min-w-0 truncate font-bold text-white">{{ entry.name }}</span>
+                <span class="shrink-0 text-[0.65rem] uppercase tracking-[0.12em] text-amber-300/60">{{ entry.timestamp }}</span>
+              </li>
+            }
+          </ol>
+        }
+      </div>
+    }
+  </section>
+}
+
+<!-- ── Mobile: way back from hidden controls ───────────────────────────────────
+     With the chrome hidden the bar is gone too, so this is the only way back. -->
+@if (uiChromeHidden()) {
+  <button type="button"
+    class="wl-rail-btn wl-rail-btn-active lg:hidden fixed top-4 right-4 flex z-50"
+    [attr.aria-label]="uiChromeToggleAriaLabel()"
+    [attr.aria-pressed]="true"
+    (click)="requestUiChromeToggle()">
+    <i class="fa-solid fa-eye" aria-hidden="true"></i>
+  </button>
 }
 
 <!-- ── Desktop: right-hand rail (unchanged behaviour) ─────────────────────── -->
@@ -119,34 +190,48 @@
   </div>
 }
 
-<!-- ── Settings drawer (shared by both layouts) ───────────────────────────── -->
-<div class="fixed top-24 right-0 my-4 px-4 pb-4
-  bg-neutral-900
-  h-[calc(100%-180px-var(--wl-bottom-bar-offset)-var(--wl-bottom-bar-height))]
+<!-- ── Settings panel ──────────────────────────────────────────────────────────
+     One element, two shapes: below lg a full-width bottom sheet that slides up
+     above the bar (drag the handle down to close), from lg the right-hand drawer.
+     `displyPanel` only gates the desktop drawer; the sheet hides by sliding away. -->
+<div class="wl-panel fixed z-50 block overflow-y-auto bg-neutral-900 border-white/10
+  inset-x-0 rounded-t-3xl border-t px-4 pb-6
+  lg:inset-x-auto lg:right-0 lg:top-24 lg:my-4 lg:pb-4
   lg:h-[calc(100%-180px)]
-  border-y border-l rounded-l-2xl border-white/10
-  shadow-[-12px_0_40px_rgba(0,0,0,0.45)]
-  transition-all duration-300 ease-in-out z-50 overflow-y-auto"
+  lg:rounded-t-none lg:rounded-l-2xl lg:border-t-0 lg:border-y lg:border-l
+  shadow-[0_-16px_40px_rgba(0,0,0,0.5)] lg:shadow-[-12px_0_40px_rgba(0,0,0,0.45)]
+  transition-all duration-300 ease-in-out"
+  [class.wl-panel-open]="showPanelSettings()"
+  [class.wl-panel-dragging]="isDraggingSheet()"
+  [style.--wl-sheet-drag]="sheetDragOffset() + 'px'"
   [class.wl-ui-hidden]="uiChromeHidden()"
   [class.lg:w-96]="showPanelSettings()"
-  [class.w-80]="showPanelSettings()"
-  [class.opacity-100]="showPanelSettings()"
-  [class.w-0]="!showPanelSettings()"
-  [class.opacity-0]="!showPanelSettings()"
-  [class.hidden]="displyPanel()">
+  [class.lg:opacity-100]="showPanelSettings()"
+  [class.lg:w-0]="!showPanelSettings()"
+  [class.lg:opacity-0]="!showPanelSettings()"
+  [class.lg:hidden]="displyPanel()"
+  role="region"
+  [attr.aria-label]="panelTitle()"
+  [attr.aria-hidden]="showPanelSettings() ? null : 'true'">
 
-  <div class="flex items-center justify-between 
-    mb-4 py-4 z-1
-    border-b border-white/10  
-    sticky top-0 bg-neutral-900">
-    <h2 class="text-base font-semibold uppercase tracking-wide text-white/85">{{ panelTitle() }}</h2>
-    <button
-      type="button"
-      i18n-aria-label="@@panel.close" aria-label="Close panel"
-      class="h-8 w-8 rounded-xl border border-white/10 bg-white/[0.06] text-white/80 hover:bg-white/15 hover:text-white transition-all duration-200 hover:cursor-pointer"
-      (click)="requestClosePanel()">
-      <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-    </button>
+  <div class="wl-panel-header sticky top-0 z-1 mb-4 bg-neutral-900 border-b border-white/10
+    pt-2 pb-3 lg:py-4 touch-none lg:touch-auto"
+    (pointerdown)="onSheetPointerDown($event)"
+    (pointermove)="onSheetPointerMove($event)"
+    (pointerup)="onSheetPointerUp()"
+    (pointercancel)="onSheetPointerUp()">
+    <div class="lg:hidden mx-auto mb-2 h-1.5 w-10 rounded-full bg-white/20" aria-hidden="true"></div>
+    <div class="flex items-center justify-between">
+      <h2 class="text-base font-semibold uppercase tracking-wide text-white/85">{{ panelTitle() }}</h2>
+      <button
+        type="button"
+        i18n-aria-label="@@panel.close" aria-label="Close panel"
+        class="h-10 w-10 lg:h-8 lg:w-8 rounded-xl border border-white/10 bg-white/[0.06] text-white/80 hover:bg-white/15 hover:text-white transition-all duration-200 hover:cursor-pointer"
+        (pointerdown)="$event.stopPropagation()"
+        (click)="requestClosePanel()">
+        <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+      </button>
+    </div>
   </div>
 
   <router-outlet name="panel"></router-outlet>

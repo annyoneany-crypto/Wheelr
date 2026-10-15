@@ -27,14 +27,27 @@
     </a>
 
     @if (isWheelRoute()) {
-      <!-- Mobile-only names counter, moved below the header bar to avoid crowding it -->
-      <span
-        class="md:hidden fixed top-[4.5rem] left-3 z-20 inline-flex items-center gap-1.5 rounded-full border border-amber-400/40 bg-neutral-950/70 backdrop-blur-sm px-2.5 py-1 text-xs font-bold text-amber-200"
-        [title]="namesCountTitle()"
-        i18n-aria-label="@@header.namesCount" aria-label="Number of names on the wheel">
-        <i class="fa-solid fa-users text-[0.6rem]" aria-hidden="true"></i>
-        {{ wheelConfigurator.namesCount() }}
-      </span>
+      <!-- Mobile-only context chip below the header bar: how many names, which
+           wheel is selected (tap the name to rename it). -->
+      <div class="md:hidden fixed top-[4.5rem] left-3 right-3 z-20 flex items-center gap-2 pointer-events-none">
+        <span
+          class="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-amber-400/40 bg-neutral-950/70 backdrop-blur-sm px-2.5 py-1.5 text-xs font-bold text-amber-200"
+          [title]="namesCountTitle()"
+          i18n-aria-label="@@header.namesCount" aria-label="Number of names on the wheel">
+          <i class="fa-solid fa-users text-[0.6rem]" aria-hidden="true"></i>
+          {{ wheelConfigurator.namesCount() }}
+        </span>
+        @if (showSelectedWheelBadge()) {
+          <button
+            type="button"
+            class="pointer-events-auto inline-flex min-w-0 items-center gap-2 rounded-full border border-white/10 bg-neutral-950/70 backdrop-blur-sm px-3 py-1.5 text-xs font-bold text-white/90 active:scale-95 transition-transform"
+            (click)="requestRenameModal()"
+            [attr.aria-label]="renameAriaLabel()">
+            <span class="truncate">{{ selectedWheelName() }}</span>
+            <i class="fa-solid fa-pen text-[0.6rem] text-white/50" aria-hidden="true"></i>
+          </button>
+        }
+      </div>
     }
 
         @if (showSelectedWheelBadge()) {
@@ -99,7 +112,8 @@
                 </button>
             }
 
-            <div class="relative">
+            <!-- Below md the language list lives in the main menu: one less icon in a crowded bar. -->
+            <div class="relative hidden md:block">
                 <button
                     type="button"
                     (click)="toggleLangMenu()"
@@ -141,7 +155,7 @@
                 }
             </div>
 
-            <span class="wl-hdivider" aria-hidden="true"></span>
+            <span class="wl-hdivider hidden md:block" aria-hidden="true"></span>
 
             <button
                 type="button"
@@ -294,6 +308,44 @@
                 </li>
             </ul>
 
+            <!-- Phones only: the header has no room for these. -->
+            <div class="md:hidden mt-5 space-y-4">
+                <button
+                    type="button"
+                    (click)="openAbout()"
+                    class="flex w-full items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.03] px-3 py-3 text-sm font-bold text-white/80 active:bg-white/10">
+                    <i class="fa-solid fa-circle-info text-amber-300/80" aria-hidden="true"></i>
+                    <span i18n="@@header.menu.about">About Wheelr</span>
+                </button>
+
+                <div>
+                    <p class="mb-2 text-center text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-white/40">
+                        <i class="fa-solid fa-globe mr-1.5" aria-hidden="true"></i><span i18n="@@header.menu.language">Language</span>
+                    </p>
+                    <ul class="flex flex-wrap justify-center gap-2" i18n-aria-label="@@header.lang.list" aria-label="Choose a language">
+                        @for (locale of locales; track locale.id) {
+                            <li>
+                                <a
+                                    [href]="localeHref(locale)"
+                                    (click)="rememberLocale(locale)"
+                                    [attr.hreflang]="locale.hreflang"
+                                    [attr.lang]="locale.hreflang"
+                                    [attr.aria-current]="locale.id === currentLocale.id ? 'true' : null"
+                                    [attr.aria-label]="languageAriaLabel(locale)"
+                                    class="inline-flex min-h-10 items-center rounded-full border px-4 text-sm font-semibold transition-colors"
+                                    [class.border-amber-400/60]="locale.id === currentLocale.id"
+                                    [class.bg-amber-400/15]="locale.id === currentLocale.id"
+                                    [class.text-amber-200]="locale.id === currentLocale.id"
+                                    [class.border-white/10]="locale.id !== currentLocale.id"
+                                    [class.text-white/70]="locale.id !== currentLocale.id">
+                                    {{ locale.label }}
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+
         </nav>
 
         <a
@@ -327,4 +379,4 @@
     [email]="authService.email()"
     (closeRequested)="closeUserPanel()"
     (logoutRequested)="logoutFromUserPanel()"
-    (accountDeleted)="onAccountDeleted()"></wl-user-info>
+    (accountDeleted)="onAccountDeleted()"></wl-user-info>

@@ -33,6 +33,7 @@ import {
 
 type CloudSaveState = 'idle' | 'saving' | 'success' | 'error';
 
+import { SiteFooterState } from '../../shared/site-footer/site-footer-state';
 @Component({
   selector: 'wl-header',
   imports: [RouterLink, NgOptimizedImage, WlAuth, WlCreateWheel, WlInfoUtente],
@@ -54,6 +55,7 @@ export class Header {
     () => this.authService.email().trim().charAt(0).toUpperCase() || '?',
   );
   private readonly premium = inject(PremiumService);
+  private readonly siteFooterState = inject(SiteFooterState);
   private handledLoginRequestToken = this.premium.loginRequestToken();
 
   isMenuOpen = signal(false);
@@ -174,6 +176,12 @@ export class Header {
 
   closeMenu(): void {
     this.isMenuOpen.set(false);
+  }
+
+  /** Phones have no visible footer strip, so the menu is how its summary opens. */
+  openAbout(): void {
+    this.closeMenu();
+    this.siteFooterState.open();
   }
 
   toggleLangMenu(): void {
