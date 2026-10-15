@@ -11500,5 +11500,75 @@
     "fr": "{LINK} (s'ouvre dans un nouvel onglet)",
     "es": "{LINK} (se abre en una pestaña nueva)",
     "zh": "{LINK}（在新标签页中打开）"
+  },
+  "header.menu.section.wheels": {
+    "it": "Ruote",
+    "de": "Räder",
+    "fr": "Roues",
+    "es": "Ruletas",
+    "zh": "转盘"
+  },
+  "header.menu.section.discover": {
+    "it": "Scopri",
+    "de": "Entdecken",
+    "fr": "Découvrir",
+    "es": "Descubre",
+    "zh": "了解更多"
+  },
+  "header.menu.desc.wheel": {
+    "it": "Crea e gira la tua ruota",
+    "de": "Erstelle und drehe dein eigenes Rad",
+    "fr": "Crée et fais tourner ta propre roue",
+    "es": "Crea y gira tu propia ruleta",
+    "zh": "创建并旋转你自己的转盘"
+  },
+  "header.menu.desc.templates": {
+    "it": "Ruote già pronte per ogni occasione",
+    "de": "Fertige Räder für jeden Anlass",
+    "fr": "Des roues prêtes pour chaque occasion",
+    "es": "Ruletas listas para cada ocasión",
+    "zh": "适合各种场合的现成转盘"
+  },
+  "header.menu.desc.community": {
+    "it": "Ruote a tema create con le community",
+    "de": "Themenräder, gemeinsam mit Communitys gestaltet",
+    "fr": "Des roues thématiques créées avec les communautés",
+    "es": "Ruletas temáticas creadas con comunidades",
+    "zh": "与社区共同打造的主题转盘"
+  },
+  "header.menu.desc.stream": {
+    "it": "Giveaway ed estrazioni durante le tue live",
+    "de": "Giveaways und Auslosungen in deinen Livestreams",
+    "fr": "Giveaways et tirages pendant tes lives",
+    "es": "Sorteos y elecciones durante tus directos",
+    "zh": "直播中的抽奖与抽选"
+  },
+  "header.menu.desc.info": {
+    "it": "Come funziona e domande frequenti",
+    "de": "So funktioniert's und FAQ",
+    "fr": "Fonctionnement et FAQ",
+    "es": "Cómo funciona y preguntas frecuentes",
+    "zh": "使用方法与常见问题"
+  },
+  "header.menu.desc.wiki": {
+    "it": "Guida completa a tutte le funzioni",
+    "de": "Vollständige Anleitung zu allen Funktionen",
+    "fr": "Guide complet de toutes les fonctions",
+    "es": "Guía completa de todas las funciones",
+    "zh": "所有功能的完整指南"
+  },
+  "header.menu.desc.donation": {
+    "it": "Sostieni il progetto",
+    "de": "Unterstütze das Projekt",
+    "fr": "Soutiens le projet",
+    "es": "Apoya el proyecto",
+    "zh": "支持本项目"
+  },
+  "header.menu.desc.privacy": {
+    "it": "Come vengono trattati i tuoi dati",
+    "de": "Wie deine Daten verarbeitet werden",
+    "fr": "Comment tes données sont traitées",
+    "es": "Cómo se tratan tus datos",
+    "zh": "我们如何处理你的数据"
   }
 }

@@ -208,13 +208,12 @@
 
 <div [class.hidden]="!isMenuOpen()">
     <div
-        class="wl-menu-overlay fixed inset-0 z-80 bg-neutral-950/95 backdrop-blur-2xl flex items-center justify-center"
+        class="wl-menu-overlay fixed inset-0 z-80 bg-neutral-950/90 backdrop-blur-2xl flex items-center justify-center p-4 md:p-8"
         role="dialog"
         aria-modal="true"
         i18n-aria-label="@@header.menu.dialog" aria-label="Main menu"
         (click)="closeMenu()">
-        <div
-            class="absolute top-3 right-3 md:top-5 md:right-6">
+        <div class="absolute top-3 right-3 md:top-5 md:right-6">
             <button
                 type="button"
                 class="secondaryButton inline-flex items-center gap-2 px-3! py-2! text-sm md:px-6! md:py-2.5!"
@@ -225,88 +224,51 @@
             </button>
         </div>
 
-        <!-- Seven entries at the desktop size overflow a phone screen, so below
-             `md` they become a compact two-column grid that fits without scrolling. -->
+        <!-- Two groups: ways to get a wheel, then the site itself. Side by side
+             from md, each entry with a one-line description; on phones a compact
+             two-column grid of labels only, so the whole menu fits. -->
         <nav
-            class="w-full max-w-xl max-h-[76vh] overflow-y-auto px-4 md:px-6"
+            class="w-full max-w-4xl max-h-[calc(100dvh-6rem)] overflow-y-auto md:rounded-3xl md:border md:border-white/10 md:bg-gradient-to-b md:from-white/[0.05] md:to-white/[0.02] md:p-6 md:shadow-[0_25px_60px_rgba(0,0,0,0.5)]"
             i18n-aria-label="@@header.menu.nav" aria-label="Main pages"
             (click)="$event.stopPropagation()">
-            <ul class="grid grid-cols-2 gap-2.5 text-center md:grid-cols-1 md:gap-5">
-                <li class="col-span-2 md:col-span-1">
-                    <a
-                        [routerLink]="['/']"
-                        (click)="closeMenu()"
-                        i18n-aria-label="@@header.menu.wheel" aria-label="Go to Wheelr page"
-                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
-                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.wheel">🎡 Wheelr</span>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        [routerLink]="['/templates']"
-                        (click)="closeMenu()"
-                        i18n-aria-label="@@header.menu.templates" aria-label="Go to ready-made wheels page"
-                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
-                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.templates">✨ Ready-made wheels</span>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        [routerLink]="['/community']"
-                        (click)="closeMenu()"
-                        i18n-aria-label="@@header.menu.community" aria-label="Go to community wheels page"
-                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
-                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.community">🦊 Community wheels</span>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        [routerLink]="['/stream']"
-                        (click)="closeMenu()"
-                        i18n-aria-label="@@header.menu.stream" aria-label="Go to the streaming guide"
-                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
-                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.stream">🎥 For streamers</span>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        [routerLink]="['/info']"
-                        (click)="closeMenu()"
-                        i18n-aria-label="@@header.menu.info" aria-label="Go to Info page"
-                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
-                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.info">ℹ️ Info</span>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        [routerLink]="['/donation']"
-                        (click)="closeMenu()"
-                        i18n-aria-label="@@header.menu.donation" aria-label="Go to Donation page"
-                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
-                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.donation">💝 Donation</span>
-                    </a>
-                </li>
-                <li>
-                    <a
-                        href="https://annyoneany-crypto.github.io/Wheelr/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        i18n-aria-label="@@header.menu.wiki" aria-label="Open Wheelr wiki (opens in a new tab)"
-                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
-                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.wiki">📖 Wiki</span>
-                    </a>
-                </li>
-                <!-- Full width on phones: it is the odd one out of the two-column grid. -->
-                <li class="col-span-2 md:col-span-1">
-                    <a
-                        [routerLink]="['/privacy']"
-                        (click)="closeMenu()"
-                        i18n-aria-label="@@header.menu.privacy" aria-label="Go to Privacy Policy page"
-                        class="group flex h-full items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-white/[0.06] to-white/[0.02] px-3 py-3.5 text-base md:px-6 md:py-6 md:text-2xl font-black text-white hover:border-amber-400/40 hover:shadow-[0_0_30px_rgba(245,158,11,0.18)] hover:-translate-y-1 hover:bg-amber-400/[0.06] transition-all duration-300">
-                        <span class="group-hover:text-amber-300 transition-colors" i18n="@@header.menu.item.privacy">🛡️ Privacy</span>
-                    </a>
-                </li>
-            </ul>
+            <div class="grid gap-5 md:grid-cols-2 md:gap-6">
+                @for (section of menuSections; track section.title) {
+                    <section>
+                        <h2 class="mb-2 px-1 text-[0.65rem] font-semibold uppercase tracking-[0.22em] text-amber-300/70 md:mb-3">{{ section.title }}</h2>
+                        <ul class="grid grid-cols-2 gap-2 md:grid-cols-1">
+                            @for (item of section.items; track item.label) {
+                                <li>
+                                    @if (item.route) {
+                                        <a
+                                            [routerLink]="item.route"
+                                            routerLinkActive="wl-menu-item-active"
+                                            [routerLinkActiveOptions]="{ exact: true }"
+                                            ariaCurrentWhenActive="page"
+                                            (click)="closeMenu()"
+                                            [attr.aria-label]="item.ariaLabel"
+                                            class="wl-menu-item group">
+                                            <span class="wl-menu-item-label">{{ item.label }}</span>
+                                            <span class="wl-menu-item-desc">{{ item.description }}</span>
+                                            <i class="wl-menu-item-arrow fa-solid fa-arrow-right" aria-hidden="true"></i>
+                                        </a>
+                                    } @else {
+                                        <a
+                                            [href]="item.href"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            [attr.aria-label]="item.ariaLabel"
+                                            class="wl-menu-item group">
+                                            <span class="wl-menu-item-label">{{ item.label }}</span>
+                                            <span class="wl-menu-item-desc">{{ item.description }}</span>
+                                            <i class="wl-menu-item-arrow fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i>
+                                        </a>
+                                    }
+                                </li>
+                            }
+                        </ul>
+                    </section>
+                }
+            </div>
 
             <!-- Phones only: the header has no room for these. -->
             <div class="md:hidden mt-5 space-y-4">
@@ -346,22 +308,18 @@
                 </div>
             </div>
 
-        </nav>
 
-        <a
-            href="https://x.com/AnnyoneAny"
-            target="_blank"
-            rel="noopener noreferrer"
-            i18n-aria-label="@@header.social.twitter" aria-label="AnnyoneAny Twitter profile"
-            class="absolute bottom-4 left-1/2 -translate-x-1/2 transition-transform hover:scale-105 invert md:bottom-8"
-            (click)="$event.stopPropagation()">
-            <img
-                ngSrc="/twitter-logo.webp"
-                width="60"
-                height="60"
-                alt="Twitter"
-                class="h-10 w-10 md:h-14 md:w-14" />
-        </a>
+            <div class="mt-5 flex items-center justify-center border-t border-white/[0.08] pt-4 md:mt-6">
+                <a
+                    href="https://x.com/AnnyoneAny"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    i18n-aria-label="@@header.social.twitter" aria-label="AnnyoneAny Twitter profile"
+                    class="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-lg text-white/70 transition-colors hover:border-amber-400/40 hover:text-amber-200">
+                    <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                </a>
+            </div>
+        </nav>
     </div>
 </div>
 

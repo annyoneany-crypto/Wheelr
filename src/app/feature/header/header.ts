@@ -9,8 +9,7 @@ import {
   untracked,
   ChangeDetectionStrategy,
 } from '@angular/core';
-import { NgOptimizedImage } from '@angular/common';
-import { NavigationEnd, PRIMARY_OUTLET, Router, RouterLink } from '@angular/router';
+import { NavigationEnd, PRIMARY_OUTLET, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { WheelConfigurator } from '../../services/wheel-configurator.service';
 import { filter } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -34,9 +33,23 @@ import {
 type CloudSaveState = 'idle' | 'saving' | 'success' | 'error';
 
 import { SiteFooterState } from '../../shared/site-footer/site-footer-state';
+
+/** One entry of the main menu: an internal route, or an external `href`. */
+interface MenuItem {
+  label: string;
+  description: string;
+  ariaLabel: string;
+  route?: string;
+  href?: string;
+}
+
+interface MenuSection {
+  title: string;
+  items: readonly MenuItem[];
+}
 @Component({
   selector: 'wl-header',
-  imports: [RouterLink, NgOptimizedImage, WlAuth, WlCreateWheel, WlInfoUtente],
+  imports: [RouterLink, RouterLinkActive, WlAuth, WlCreateWheel, WlInfoUtente],
   templateUrl: './header.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './header.css',
@@ -77,6 +90,32 @@ export class Header {
   /** Baked in at compile time: each locale is its own bundle. */
   protected readonly currentLocale = resolveLocale(inject(LOCALE_ID));
   isLangMenuOpen = signal(false);
+
+  /**
+   * The main menu, grouped: ways to get a wheel first, then everything about the
+   * site. Labels and aria-labels keep the ids they had as template strings, so
+   * their translations carry over.
+   */
+  protected readonly menuSections: readonly MenuSection[] = [
+    {
+      title: $localize`:@@header.menu.section.wheels:Wheels`,
+      items: [
+        { route: '/', label: $localize`:@@header.menu.item.wheel:🎡 Wheelr`, ariaLabel: $localize`:@@header.menu.wheel:Go to Wheelr page`, description: $localize`:@@header.menu.desc.wheel:Create and spin your own wheel` },
+        { route: '/templates', label: $localize`:@@header.menu.item.templates:✨ Ready-made wheels`, ariaLabel: $localize`:@@header.menu.templates:Go to ready-made wheels page`, description: $localize`:@@header.menu.desc.templates:Ready-to-use wheels for every occasion` },
+        { route: '/community', label: $localize`:@@header.menu.item.community:🦊 Community wheels`, ariaLabel: $localize`:@@header.menu.community:Go to community wheels page`, description: $localize`:@@header.menu.desc.community:Themed wheels made with communities` },
+        { route: '/stream', label: $localize`:@@header.menu.item.stream:🎥 For streamers`, ariaLabel: $localize`:@@header.menu.stream:Go to the streaming guide`, description: $localize`:@@header.menu.desc.stream:Giveaways and picks during your live streams` },
+      ],
+    },
+    {
+      title: $localize`:@@header.menu.section.discover:Discover`,
+      items: [
+        { route: '/info', label: $localize`:@@header.menu.item.info:ℹ️ Info`, ariaLabel: $localize`:@@header.menu.info:Go to Info page`, description: $localize`:@@header.menu.desc.info:How it works and FAQ` },
+        { href: 'https://annyoneany-crypto.github.io/Wheelr/', label: $localize`:@@header.menu.item.wiki:📖 Wiki`, ariaLabel: $localize`:@@header.menu.wiki:Open Wheelr wiki (opens in a new tab)`, description: $localize`:@@header.menu.desc.wiki:Complete guide to every feature` },
+        { route: '/donation', label: $localize`:@@header.menu.item.donation:💝 Donation`, ariaLabel: $localize`:@@header.menu.donation:Go to Donation page`, description: $localize`:@@header.menu.desc.donation:Support the project` },
+        { route: '/privacy', label: $localize`:@@header.menu.item.privacy:🛡️ Privacy`, ariaLabel: $localize`:@@header.menu.privacy:Go to Privacy Policy page`, description: $localize`:@@header.menu.desc.privacy:How your data is handled` },
+      ],
+    },
+  ];
 
   cloudSaveState = signal<CloudSaveState>('idle');
   cloudSaveMessage = signal('');

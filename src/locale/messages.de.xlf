@@ -1403,7 +1403,7 @@
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">325,326</context>
+          <context context-type="linenumber">287,288</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.open" datatype="html">
@@ -1427,7 +1427,7 @@
         <target>Menü schließen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">221,222</context>
+          <context context-type="linenumber">220,221</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.closeLabel" datatype="html">
@@ -1435,7 +1435,7 @@
         <target>Schließen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">224,226</context>
+          <context context-type="linenumber">223,225</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.nav" datatype="html">
@@ -1446,140 +1446,12 @@
           <context context-type="linenumber">232,233</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="header.menu.wheel" datatype="html">
-        <source>Go to Wheelr page</source>
-        <target>Zur Rad-Seite</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">239,240</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.item.wheel" datatype="html">
-        <source>🎡 Wheelr</source>
-        <target>🎡 Wheelr</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">241,243</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.templates" datatype="html">
-        <source>Go to ready-made wheels page</source>
-        <target>Zu den fertigen Rädern</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">248,249</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.item.templates" datatype="html">
-        <source>✨ Ready-made wheels</source>
-        <target>✨ Fertige Räder</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">250,252</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.community" datatype="html">
-        <source>Go to community wheels page</source>
-        <target>Zur Seite der Community-Räder</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">257,258</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.item.community" datatype="html">
-        <source>🦊 Community wheels</source>
-        <target>🦊 Community-Räder</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">259,261</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.stream" datatype="html">
-        <source>Go to the streaming guide</source>
-        <target>Zum Streaming-Leitfaden</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">266,267</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.item.stream" datatype="html">
-        <source>🎥 For streamers</source>
-        <target>🎥 Für Streamer</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">268,270</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.info" datatype="html">
-        <source>Go to Info page</source>
-        <target>Zur Info-Seite</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">275,276</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.item.info" datatype="html">
-        <source>ℹ️ Info</source>
-        <target>ℹ️ Info</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">277,279</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.donation" datatype="html">
-        <source>Go to Donation page</source>
-        <target>Zur Spendenseite</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">284,285</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.item.donation" datatype="html">
-        <source>💝 Donation</source>
-        <target>💝 Spenden</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">286,288</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.wiki" datatype="html">
-        <source>Open Wheelr wiki (opens in a new tab)</source>
-        <target>Wheelr-Wiki öffnen (in neuem Tab)</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">294,295</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.item.wiki" datatype="html">
-        <source>📖 Wiki</source>
-        <target>📖 Wiki</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">296,298</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.privacy" datatype="html">
-        <source>Go to Privacy Policy page</source>
-        <target>Zur Datenschutzerklärung</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">304,305</context>
-        </context-group>
-      </trans-unit>
-      <trans-unit id="header.menu.item.privacy" datatype="html">
-        <source>🛡️ Privacy</source>
-        <target>🛡️ Datenschutz</target>
-        <context-group purpose="location">
-          <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">306,308</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="header.menu.about" datatype="html">
         <source>About Wheelr</source>
         <target>Über Wheelr</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">318,319</context>
+          <context context-type="linenumber">280,281</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.menu.language" datatype="html">
@@ -1587,7 +1459,7 @@
         <target>Sprache</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">323,325</context>
+          <context context-type="linenumber">285,287</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.social.twitter" datatype="html">
@@ -1595,7 +1467,215 @@
         <target>Twitter-Profil von AnnyoneAny</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.html</context>
-          <context context-type="linenumber">355,356</context>
+          <context context-type="linenumber">317,318</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.section.wheels" datatype="html">
+        <source>Wheels</source>
+        <target>Räder</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">101</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.wheel" datatype="html">
+        <source>🎡 Wheelr</source>
+        <target>🎡 Wheelr</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.wheel" datatype="html">
+        <source>Go to Wheelr page</source>
+        <target>Zur Rad-Seite</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.desc.wheel" datatype="html">
+        <source>Create and spin your own wheel</source>
+        <target>Erstelle und drehe dein eigenes Rad</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">103</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.templates" datatype="html">
+        <source>✨ Ready-made wheels</source>
+        <target>✨ Fertige Räder</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.templates" datatype="html">
+        <source>Go to ready-made wheels page</source>
+        <target>Zu den fertigen Rädern</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.desc.templates" datatype="html">
+        <source>Ready-to-use wheels for every occasion</source>
+        <target>Fertige Räder für jeden Anlass</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.community" datatype="html">
+        <source>🦊 Community wheels</source>
+        <target>🦊 Community-Räder</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.community" datatype="html">
+        <source>Go to community wheels page</source>
+        <target>Zur Seite der Community-Räder</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.desc.community" datatype="html">
+        <source>Themed wheels made with communities</source>
+        <target>Themenräder, gemeinsam mit Communitys gestaltet</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">105</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.stream" datatype="html">
+        <source>🎥 For streamers</source>
+        <target>🎥 Für Streamer</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.stream" datatype="html">
+        <source>Go to the streaming guide</source>
+        <target>Zum Streaming-Leitfaden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.desc.stream" datatype="html">
+        <source>Giveaways and picks during your live streams</source>
+        <target>Giveaways und Auslosungen in deinen Livestreams</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.section.discover" datatype="html">
+        <source>Discover</source>
+        <target>Entdecken</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">110</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.info" datatype="html">
+        <source>ℹ️ Info</source>
+        <target>ℹ️ Info</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.info" datatype="html">
+        <source>Go to Info page</source>
+        <target>Zur Info-Seite</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.desc.info" datatype="html">
+        <source>How it works and FAQ</source>
+        <target>So funktioniert's und FAQ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">112</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.wiki" datatype="html">
+        <source>📖 Wiki</source>
+        <target>📖 Wiki</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.wiki" datatype="html">
+        <source>Open Wheelr wiki (opens in a new tab)</source>
+        <target>Wheelr-Wiki öffnen (in neuem Tab)</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.desc.wiki" datatype="html">
+        <source>Complete guide to every feature</source>
+        <target>Vollständige Anleitung zu allen Funktionen</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.donation" datatype="html">
+        <source>💝 Donation</source>
+        <target>💝 Spenden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.donation" datatype="html">
+        <source>Go to Donation page</source>
+        <target>Zur Spendenseite</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.desc.donation" datatype="html">
+        <source>Support the project</source>
+        <target>Unterstütze das Projekt</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">114</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.item.privacy" datatype="html">
+        <source>🛡️ Privacy</source>
+        <target>🛡️ Datenschutz</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.privacy" datatype="html">
+        <source>Go to Privacy Policy page</source>
+        <target>Zur Datenschutzerklärung</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">115</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="header.menu.desc.privacy" datatype="html">
+        <source>How your data is handled</source>
+        <target>Wie deine Daten verarbeitet werden</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/feature/header/header.ts</context>
+          <context context-type="linenumber">115</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.lang.switchTo" datatype="html">
@@ -1603,7 +1683,7 @@
         <target>Zu <x id="LANGUAGE" equiv-text="locale.label"/> wechseln</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">227</context>
+          <context context-type="linenumber">266</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.namesCount.title" datatype="html">
@@ -1611,7 +1691,7 @@
         <target><x id="COUNT" equiv-text="this.wheelConfigurator.namesCount()"/> Namen auf dem Rad</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">231</context>
+          <context context-type="linenumber">270</context>
         </context-group>
       </trans-unit>
       <trans-unit id="wheelPage.rename.multiple" datatype="html">
@@ -1619,7 +1699,7 @@
         <target>Sichtbare Räder umbenennen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">237</context>
+          <context context-type="linenumber">276</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
@@ -1631,7 +1711,7 @@
         <target>Ausgewähltes Rad umbenennen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">238</context>
+          <context context-type="linenumber">277</context>
         </context-group>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/wheel-page/wheel-page.ts</context>
@@ -1643,7 +1723,7 @@
         <target>Kontobereich öffnen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">246</context>
+          <context context-type="linenumber">285</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.auth.openLogin" datatype="html">
@@ -1651,7 +1731,7 @@
         <target>Anmeldefenster öffnen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">246</context>
+          <context context-type="linenumber">285</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.saving" datatype="html">
@@ -1659,7 +1739,7 @@
         <target>Rad wird in der Cloud gespeichert</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">311</context>
+          <context context-type="linenumber">350</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.saved" datatype="html">
@@ -1667,7 +1747,7 @@
         <target>Rad in der Cloud gespeichert</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">313</context>
+          <context context-type="linenumber">352</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.failed" datatype="html">
@@ -1675,7 +1755,7 @@
         <target>Speichern fehlgeschlagen, erneut versuchen</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">315</context>
+          <context context-type="linenumber">354</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.update" datatype="html">
@@ -1683,7 +1763,7 @@
         <target>Gespeichertes Rad in der Cloud aktualisieren</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">318</context>
+          <context context-type="linenumber">357</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.toCloud" datatype="html">
@@ -1691,7 +1771,7 @@
         <target>Rad in der Cloud speichern</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">319</context>
+          <context context-type="linenumber">358</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.noWheel" datatype="html">
@@ -1699,7 +1779,7 @@
         <target>Kein Rad zum Speichern ausgewählt.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">356</context>
+          <context context-type="linenumber">395</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.notFound" datatype="html">
@@ -1707,7 +1787,7 @@
         <target>Rad-Konfiguration nicht gefunden. Versuche es erneut.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">370</context>
+          <context context-type="linenumber">409</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.updatedMsg" datatype="html">
@@ -1715,7 +1795,7 @@
         <target>Rad in der Cloud aktualisiert.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">384</context>
+          <context context-type="linenumber">423</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.savedMsg" datatype="html">
@@ -1723,7 +1803,7 @@
         <target>Rad in der Cloud gespeichert.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">384</context>
+          <context context-type="linenumber">423</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.signIn" datatype="html">
@@ -1731,7 +1811,7 @@
         <target>Melde dich an, um das Rad in der Cloud zu speichern.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">389</context>
+          <context context-type="linenumber">428</context>
         </context-group>
       </trans-unit>
       <trans-unit id="header.save.error" datatype="html">
@@ -1739,7 +1819,7 @@
         <target>Speichern in der Cloud fehlgeschlagen. Versuche es erneut.</target>
         <context-group purpose="location">
           <context context-type="sourcefile">src/app/feature/header/header.ts</context>
-          <context context-type="linenumber">390</context>
+          <context context-type="linenumber">429</context>
         </context-group>
       </trans-unit>
       <trans-unit id="account.dialog" datatype="html">

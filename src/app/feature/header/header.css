@@ -20,3 +20,105 @@
   @apply relative z-10 text-xl md:text-3xl uppercase font-black text-white truncate
     tracking-wide drop-shadow-[0_0_12px_rgba(245,158,11,0.3)];
 }
+
+/* ── Main menu entries ───────────────────────────────────────────────────────
+   Phones: a centred label tile. From md (768px): a row with the label, a
+   one-line description underneath and an arrow that appears on hover. Plain CSS
+   rather than @apply: the header ships in the initial bundle. */
+.wl-menu-item {
+  position: relative;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  border: 1px solid rgb(255 255 255 / 0.1);
+  background: linear-gradient(to bottom right, rgb(255 255 255 / 0.06), rgb(255 255 255 / 0.02));
+  padding: 0.875rem 0.75rem;
+  text-align: center;
+  transition: all 0.2s ease;
+}
+
+.wl-menu-item:hover {
+  border-color: rgb(251 191 36 / 0.4);
+  background: rgb(251 191 36 / 0.06);
+}
+
+.wl-menu-item:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+.wl-menu-item-label {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #fff;
+}
+
+.wl-menu-item:hover .wl-menu-item-label,
+.wl-menu-item-active .wl-menu-item-label {
+  color: #fcd34d;
+}
+
+.wl-menu-item-desc,
+.wl-menu-item-arrow {
+  display: none;
+}
+
+/* The page you are on. */
+.wl-menu-item.wl-menu-item-active {
+  border-color: rgb(251 191 36 / 0.5);
+  background: rgb(251 191 36 / 0.1);
+}
+
+@media (min-width: 768px) {
+  .wl-menu-item {
+    align-items: flex-start;
+    justify-content: flex-start;
+    border-radius: 0.75rem;
+    border-color: transparent;
+    background: none;
+    padding: 0.75rem 2.5rem 0.75rem 1rem;
+    text-align: left;
+  }
+
+  .wl-menu-item:hover {
+    border-color: rgb(255 255 255 / 0.1);
+    background: rgb(255 255 255 / 0.05);
+  }
+
+  .wl-menu-item.wl-menu-item-active {
+    border-color: rgb(251 191 36 / 0.3);
+    background: rgb(251 191 36 / 0.08);
+  }
+
+  .wl-menu-item-label {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .wl-menu-item-desc {
+    display: block;
+    margin-top: 0.125rem;
+    font-size: 0.875rem;
+    color: rgb(255 255 255 / 0.5);
+  }
+
+  .wl-menu-item-arrow {
+    display: block;
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.75rem;
+    color: rgb(255 255 255 / 0.3);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .wl-menu-item:hover .wl-menu-item-arrow {
+    opacity: 1;
+    color: #fcd34d;
+  }
+}
